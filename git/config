@@ -1,0 +1,5 @@
+[user]
+	name = Björn Lindström
+	email = bnl@dayjob.example.com
+[push]
+	default = simple
