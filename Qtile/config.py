@@ -3,7 +3,7 @@ from libqtile.command import lazy
 from libqtile import layout, hook, bar, widget
 
 
-################################################################################
+####
 # Key bindings
 
 dmenu_options = "-i -fn 'Inconsolata-14'"
@@ -49,14 +49,16 @@ keys = [
     Key([mod], 'F7', lazy.spawn('amixer -c 0 set Master 1+')),
     Key([mod], 'F8', lazy.spawn('alsactl -f ~/.asound.state restore')),
     Key([], 'XF86AudioMute', lazy.spawn('amixer -c 0 set Master mute')),
-    Key(['shift'], 'XF86AudioMute', lazy.spawn('amixer -c 0 set Master unmute')),
+    Key(['shift'],
+        'XF86AudioMute',
+        lazy.spawn('amixer -c 0 set Master unmute')),
 
     # Restart
     Key([mod, "control"], "r", lazy.restart()),
-] 
+]
 
 
-################################################################################
+####
 # Groups
 
 groups = [
@@ -77,7 +79,7 @@ for i in groups:
     keys.append(Key([mod, "shift"], i.name, lazy.window.togroup(i.name)))
 
 
-################################################################################
+####
 # Layouts
 
 layouts = [
@@ -86,28 +88,32 @@ layouts = [
     layout.Max(),
 ]
 
-floating_layout = layout.Floating(auto_float_types=['utility', 'notification', 'toolbar', 'splash'])
+floating_layout = layout.Floating(auto_float_types=[
+    'utility',
+    'notification',
+    'toolbar',
+    'splash'])
 
 
-################################################################################
+####
 # Screens
 
-widget_defaults = dict(font = 'Inconsolata', fontsize = 18)
+widget_defaults = dict(font='Inconsolata', fontsize=18)
 
 screens = [
     Screen(
-        bottom = bar.Bar(
+        bottom=bar.Bar(
             [
                 widget.GroupBox(
-                    font = 'Inconsolata',
-                    fontsize = 12,
-                    borderwidth = 3),
+                    font='Inconsolata',
+                    fontsize=12,
+                    borderwidth=3),
                 widget.WindowName(**widget_defaults),
                 widget.Systray(**widget_defaults),
                 widget.Battery(
-                    format = '{char} {percent:2.0%} {hour:d}:{min:02d}',
-                    charge_char = 'C',
-                    discharge_char = 'D',
+                    format='{char} {percent:2.0%} {hour:d}:{min:02d}',
+                    charge_char='C',
+                    discharge_char='D',
                     **widget_defaults),
                 widget.Clock('%a %-d %b %H:%M', **widget_defaults),
             ],
@@ -116,13 +122,14 @@ screens = [
     )
 ]
 
-# Restart on screen change
+
 @hook.subscribe.screen_change
 def restart_on_screen_change(qtile, event):
+    """Restart on screen change."""
     qtile.cmd_restart()
 
 
-################################################################################
+####
 # Mouse
 
 follow_mouse_focus = True

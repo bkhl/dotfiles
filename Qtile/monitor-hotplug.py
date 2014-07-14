@@ -1,12 +1,15 @@
 #!/usr/bin/env python
 
 # To be triggered by a udev rule similar to this:
-# KERNEL=="card0", SUBSYSTEM=="drm", ENV{DISPLAY}=":0", ENV{XAUTHORITY}="/home/bnl/.Xauthority", RUN+="/home/bnl/conf/Qtile/monitor-hotplug.py"
+#     KERNEL=="card0", SUBSYSTEM=="drm", ENV{DISPLAY}=":0", \
+#     ENV{XAUTHORITY}="/home/bnl/.Xauthority", \
+#     RUN+="/home/bnl/conf/Qtile/monitor-hotplug.py"
 
 import subprocess
 
 # Appears to be necessary to refresh certain /sys/class/drm/*/modes files
 subprocess.check_call('xrandr', stdout=open('/dev/null', 'a'))
+
 
 class Monitor:
     primary = False
@@ -31,18 +34,23 @@ for device, label in (
 
 # Check which monitors are connected.
 for monitor in monitors:
-    with open('/sys/class/drm/{}/status'.format(monitor.device)) as status_file:
+    with open('/sys/class/drm/{}/status'
+              .format(monitor.device)) as status_file:
         if status_file.read().rstrip() == 'connected':
             monitor.connected = True
 
 # Extract highest available resolution for connected monitors.
 for monitor in monitors:
     if monitor.connected:
-        with open('/sys/class/drm/{}/modes'.format(monitor.device)) as modes_file:
-            monitor.resolution = tuple([int(x) for x in modes_file.readline().rstrip().split('x')])
+        with open('/sys/class/drm/{}/modes'
+                  .format(monitor.device)) as modes_file:
+            monitor.resolution = tuple(
+                [int(x) for x in modes_file.readline().rstrip().split('x')]
+            )
 
 # Set the monitor with the highest vertical resolution as primary.
-primary_monitor = max([m for m in monitors if m.connected], key=lambda m: m.resolution[1])
+primary_monitor = max([m for m in monitors if m.connected],
+                      key=lambda m: m.resolution[1])
 primary_monitor.primary = True
 
 # Set the internal monitor.
@@ -57,9 +65,11 @@ for monitor in [m for m in monitors if m.connected]:
         monitor.position = (offset, 0)
         offset = offset + monitor.resolution[0]
     if not monitor.primary:
-        monitor.position = (monitor.position[0], primary_monitor.resolution[1] - monitor.resolution[1])
+        monitor.position = (monitor.position[0],
+                            primary_monitor.resolution[1]
+                            - monitor.resolution[1])
 
-xrandr_call = [ 'xrandr' ]
+xrandr_call = ['xrandr']
 
 # Build xrandr command line.
 for monitor in monitors:
