@@ -3,7 +3,7 @@
 # To be triggered by a udev rule similar to this:
 #     KERNEL=="card0", SUBSYSTEM=="drm", ENV{DISPLAY}=":0", \
 #     ENV{XAUTHORITY}="/home/bnl/.Xauthority", \
-#     RUN+="/home/bnl/conf//monitor-hotplug.py"
+#     RUN+="/home/bnl/conf/monitor-hotplug.py"
 
 import re
 import subprocess
