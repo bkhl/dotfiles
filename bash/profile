@@ -8,7 +8,7 @@ if command -v keychain > /dev/null; then
 fi
 
 # Path
-for d in $HOME/bin /opt/local/sbin /opt/local/bin; do
+for d in $HOME/bin $HOME/opt/*/bin /opt/local/sbin /opt/local/bin; do
     if [ -d $d ]; then
         PATH=$d:$PATH
     fi
