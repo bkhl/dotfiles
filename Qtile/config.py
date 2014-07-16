@@ -36,7 +36,7 @@ keys = [
     Key([mod], 'h', lazy.to_screen(1)),
 
     # Launch applications
-    Key([mod], 'Return', lazy.spawn('xterm')),
+    Key([mod], 'Return', lazy.spawn('st')),
     Key([mod], 'space', lazy.spawn('dmenu_run {}'.format(dmenu_options))),
 
     # Choose layout
