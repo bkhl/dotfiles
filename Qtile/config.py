@@ -41,7 +41,8 @@ keys = [
 
     # Choose layout
     Key([mod], 'm', lazy.group.setlayout('max')),
-    Key([mod], 't', lazy.group.setlayout('stack')),
+    Key([mod], '2', lazy.group.setlayout('stack2')),
+    Key([mod], '3', lazy.group.setlayout('stack3')),
     Key([mod], 'r', lazy.group.setlayout('ratiotile')),
 
     # Sound volume
@@ -83,8 +84,21 @@ for i in groups:
 # Layouts
 
 layouts = [
-    layout.Stack(stacks=2, border_focus='Firebrick4', border_width=2),
-    layout.RatioTile(border_focus='SteelBlue4', border_width=2),
+    layout.Stack(
+        name='stack2',
+        num_stacks=2,
+        border_focus='DimGray',
+        border_width=1,
+        autosplit=True
+    ),
+    layout.Stack(
+        name='stack3',
+        num_stacks=3,
+        border_focus='DimGray',
+        border_width=1,
+        autosplit=True
+    ),
+    layout.RatioTile(border_focus='DimGray', border_width=1),
     layout.Max(),
 ]
 
