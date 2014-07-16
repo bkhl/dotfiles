@@ -1,6 +1,6 @@
 ! xterm
-XTerm*faceName: Inconsolata
-XTerm*faceSize: 12
+XTerm*faceName: Dina
+XTerm*faceSize: 8
 XTerm*background: black
 XTerm*foreground: white
 XTerm*loginShell: true

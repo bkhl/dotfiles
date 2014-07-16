@@ -6,7 +6,7 @@ from libqtile import layout, hook, bar, widget
 ####
 # Key bindings
 
-dmenu_options = "-i -fn 'Inconsolata-14'"
+dmenu_options = "-i -fn 'Dina-10'"
 
 mod = 'mod4'
 
@@ -112,15 +112,15 @@ floating_layout = layout.Floating(auto_float_types=[
 ####
 # Screens
 
-widget_defaults = dict(font='Inconsolata', fontsize=18)
+widget_defaults = dict(font='Dina', fontsize=10)
 
 screens = [
     Screen(
         bottom=bar.Bar(
             [
                 widget.GroupBox(
-                    font='Inconsolata',
-                    fontsize=12,
+                    font='Dina',
+                    fontsize=8,
                     borderwidth=3),
                 widget.WindowName(**widget_defaults),
                 widget.Systray(**widget_defaults),
@@ -131,7 +131,7 @@ screens = [
                     **widget_defaults),
                 widget.Clock('%a %-d %b %H:%M', **widget_defaults),
             ],
-            32,
+            24,
         )
     )
 ]
