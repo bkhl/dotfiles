@@ -6,9 +6,6 @@ xset b off
 
 eval $(keychain --noask --quiet --quick --eval id_dsa)
 
-# Tray
-parcellite &
-
 ~/conf/monitor-hotplug.py
 xterm &
 exec qtile --config ~/conf/Qtile/config.py
