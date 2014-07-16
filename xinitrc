@@ -10,5 +10,5 @@ eval $(keychain --noask --quiet --quick --eval id_dsa)
 parcellite &
 
 ~/conf/monitor-hotplug.py
-st &
+xterm &
 exec qtile --config ~/conf/Qtile/config.py
