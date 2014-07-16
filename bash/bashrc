@@ -12,9 +12,6 @@ shopt -s checkwinsize
 shopt -s extglob
 shopt -s globstar
 
-# make less more friendly for non-text input files, see lesspipe(1)
-[[ -x /usr/bin/lesspipe ]] && eval "$(SHELL=/bin/sh lesspipe)"
-
 # Return code before prompt if non-zero
 
 # Prompt and window title
@@ -30,18 +27,12 @@ PROMPT_COMMAND=_prompt_return_code
 
 PS1='${prompt_return_code}\u@\h \w\$ '
 
-case "$TERM" in
-xterm*)
-    PS1="\[\e]0;\u@\h: \W\a\]$PS1"
-esac
-
 # Aliases
 alias du='du -h'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias grep='grep --color=auto'
 alias ls='ls --color=auto'
-command -v vim > /dev/null && alias vi=vim
 
 if [ -n "$DISPLAY" ]; then
     if command -v ssh > /dev/null; then
