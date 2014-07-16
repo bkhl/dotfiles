@@ -6,6 +6,8 @@ xset b off
 
 eval $(keychain --noask --quiet --quick --eval id_dsa)
 
+clipit --no-icon &
+
 ~/conf/monitor-hotplug.py
 xterm &
 exec qtile --config ~/conf/Qtile/config.py
