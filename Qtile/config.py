@@ -123,6 +123,7 @@ screens = [
                     fontsize=8,
                     borderwidth=3),
                 widget.WindowName(**widget_defaults),
+                widget.Systray(**widget_defaults),
                 widget.Battery(
                     format='{char} {percent:2.0%} {hour:d}:{min:02d}',
                     charge_char='C',
