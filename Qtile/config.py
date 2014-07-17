@@ -86,8 +86,8 @@ for i in groups:
 # Layouts
 
 layout_defaults = dict(
-    border_normal='Grey',
-    border_focus='RoyalBlue',
+    border_normal='#303030',
+    border_focus='#4169E1',
     border_width=3
 )
 
@@ -127,7 +127,12 @@ screens = [
                 widget.GroupBox(
                     font='Dina',
                     fontsize=8,
-                    borderwidth=3),
+                    borderwidth=2,
+                    rounded=False,
+                    this_current_screen_border='#4169E1',
+                    other_screen_border='#707070',
+                    inactive='#707070'
+                ),
                 widget.WindowName(**widget_defaults),
                 widget.Systray(**widget_defaults),
                 netctl.NetctlStatus(**widget_defaults),
@@ -139,6 +144,8 @@ screens = [
                 widget.Clock('%a %-d %b %H:%M', **widget_defaults),
             ],
             24,
+            foreground='#000000',
+            background='#303030'
         )
     )
 ]
