@@ -92,6 +92,7 @@ layout_defaults = dict(
 )
 
 layouts = [
+    layout.Max(**layout_defaults),
     layout.Stack(
         name='stack2',
         num_stacks=2,
@@ -105,7 +106,6 @@ layouts = [
         **layout_defaults
     ),
     layout.RatioTile(**layout_defaults),
-    layout.Max(**layout_defaults),
 ]
 
 floating_layout = layout.Floating(auto_float_types=[
@@ -118,21 +118,40 @@ floating_layout = layout.Floating(auto_float_types=[
 ####
 # Screens
 
-widget_defaults = dict(font='Dina', fontsize=10)
+widget_defaults = dict(
+    font='Dina',
+    fontsize=10
+)
+
+groupbox_defaults = dict(
+    font='Dina',
+    fontsize=8,
+    highlight_method='block',
+    urgent_alert_method='block',
+    borderwidth=3,
+    padding=0,
+    margin_x=0,
+    margin_y=0,
+    rounded=False,
+    active='#FFFFFF',
+    inactive='#000000',
+    urgent_text='#FFFFFF',
+    urgent_border='#FF0000',
+    this_screen_border='#4169E1',
+    this_current_screen_border='#E14169',
+    other_screen_border='#707070',
+)
+
+bar_defaults = dict(
+    foreground='#000000',
+    background='#303030',
+)
 
 screens = [
     Screen(
         bottom=bar.Bar(
             [
-                widget.GroupBox(
-                    font='Dina',
-                    fontsize=8,
-                    borderwidth=2,
-                    rounded=False,
-                    this_current_screen_border='#4169E1',
-                    other_screen_border='#707070',
-                    inactive='#707070'
-                ),
+                widget.GroupBox(**groupbox_defaults),
                 widget.WindowName(**widget_defaults),
                 widget.Systray(**widget_defaults),
                 netctl.NetctlStatus(**widget_defaults),
@@ -143,9 +162,18 @@ screens = [
                     **widget_defaults),
                 widget.Clock('%a %-d %b %H:%M', **widget_defaults),
             ],
-            24,
-            foreground='#000000',
-            background='#303030'
+            16,
+            **bar_defaults
+        )
+    ),
+    Screen(
+        bottom=bar.Bar(
+            [
+                widget.GroupBox(**groupbox_defaults),
+                widget.WindowName(**widget_defaults),
+            ],
+            16,
+            **bar_defaults
         )
     )
 ]
