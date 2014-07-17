@@ -85,23 +85,27 @@ for i in groups:
 ####
 # Layouts
 
+layout_defaults = dict(
+    border_normal='Grey',
+    border_focus='RoyalBlue',
+    border_width=3
+)
+
 layouts = [
     layout.Stack(
         name='stack2',
         num_stacks=2,
-        border_focus='DimGray',
-        border_width=1,
-        autosplit=True
+        autosplit=True,
+        **layout_defaults
     ),
     layout.Stack(
         name='stack3',
         num_stacks=3,
-        border_focus='DimGray',
-        border_width=1,
-        autosplit=True
+        autosplit=True,
+        **layout_defaults
     ),
-    layout.RatioTile(border_focus='DimGray', border_width=1),
-    layout.Max(),
+    layout.RatioTile(**layout_defaults),
+    layout.Max(**layout_defaults),
 ]
 
 floating_layout = layout.Floating(auto_float_types=[
