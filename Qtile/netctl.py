@@ -46,7 +46,7 @@ class NetctlStatus(widget.base.InLoopPollText):
             if match:
                 output.append(match.group('profile'))
         if self._is_auto_active():
-            output.append('AUTO')
+            output.append('Auto')
         return ' '.join(output)
 
     def tick(self):
