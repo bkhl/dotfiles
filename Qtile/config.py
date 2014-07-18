@@ -1,8 +1,17 @@
-from libqtile.config import Key, Screen, Group
+from libqtile.config import Key, Screen, Group, Match
 from libqtile.command import lazy
+from libqtile.dgroups import simple_key_binder
 from libqtile import layout, hook, bar, widget
 
 import netctl
+
+BAR_TEXT = "#FFFFFF"
+HIGHLIGHT = '#4169E1'
+SECONDARY_HIGHLIGHT = '#806925'
+BACKGROUND = '#303030'
+OTHER_SCREEN = '#707070'
+URGENT = '#FF0000'
+URGENT_TEXT = '#FFFFFF'
 
 
 ####
@@ -43,8 +52,8 @@ keys = [
 
     # Choose layout
     Key([mod], 'm', lazy.group.setlayout('max')),
-    Key([mod], '2', lazy.group.setlayout('stack2')),
-    Key([mod], '3', lazy.group.setlayout('stack3')),
+    Key([mod], 's', lazy.group.setlayout('stack2')),
+    Key([mod, 'shift'], 's', lazy.group.setlayout('stack3')),
     Key([mod], 'r', lazy.group.setlayout('ratiotile')),
 
     # Sound volume
@@ -62,37 +71,85 @@ keys = [
 
 
 ####
-# Groups
+# Group and application configuration
 
-groups = [
-    Group("a"),
-    Group("s"),
-    Group("d"),
-    Group("f"),
-    Group("u"),
-    Group("i"),
-    Group("o"),
-    Group("p"),
-]
-for i in groups:
-    # mod4 + letter of group = switch to group
-    keys.append(Key([mod], i.name, lazy.group[i.name].toscreen()))
+groups = []
 
-    # mod4 + shift + letter of group = switch to & move focused window to group
-    keys.append(Key([mod, "shift"], i.name, lazy.window.togroup(i.name)))
+
+def app_or_group(group, app):
+    """ Go to specified group if it exists. Otherwise, run the specified app.
+    When used in conjunction with dgroups to auto-assign apps to specific
+    groups, this can be used as a way to go to an app if it is already
+    running. """
+    def f(qtile):
+        try:
+            qtile.groupMap[group].cmd_toscreen()
+        except KeyError:
+            qtile.cmd_spawn(app)
+    return f
+
+
+groups.append(
+    Group(
+        'Terminal',
+        init=True,
+        persist=True,
+        exclusive=True,
+        layout='ratiotile',
+        matches=[Match(wm_class=['XTerm'])]
+    )
+)
+keys.append(
+    Key(
+        [mod], 't',
+        lazy.function(app_or_group('Terminal', 'xterm -e ~/conf/tmux/tmux.sh'))
+    )
+)
+
+groups.append(
+    Group(
+        'WWW',
+        init=True,
+        persist=False,
+        exclusive=True,
+        matches=[Match(wm_class=['Google-chrome-beta'])]
+    )
+)
+keys.append(
+    Key([mod], 'w', lazy.function(app_or_group('WWW', 'google-chrome-beta')))
+)
+
+groups.append(
+    Group(
+        'Skype',
+        init=False,
+        persist=False,
+        exclusive=False,
+        layout='stack2',
+        matches=[Match(wm_class=['Skype'])]
+    )
+)
+keys.append(
+    Key([mod], 'c', lazy.function(app_or_group('Skype', 'skype')))
+)
+
+dgroups_key_binder = simple_key_binder(mod)
 
 
 ####
 # Layouts
 
 layout_defaults = dict(
-    border_normal='#303030',
-    border_focus='#4169E1',
+    border_normal=BACKGROUND,
+    border_focus=HIGHLIGHT,
     border_width=3
 )
 
 layouts = [
-    layout.Max(**layout_defaults),
+    layout.Max(
+        name='max',
+        **layout_defaults
+    ),
     layout.Stack(
         name='stack2',
         num_stacks=2,
@@ -105,14 +162,20 @@ layouts = [
         autosplit=True,
         **layout_defaults
     ),
-    layout.RatioTile(**layout_defaults),
+    layout.RatioTile(
+        name='ratiotile',
+        **layout_defaults
+    ),
 ]
 
-floating_layout = layout.Floating(auto_float_types=[
-    'utility',
-    'notification',
-    'toolbar',
-    'splash'])
+floating_layout = layout.Floating(
+    auto_float_types=[
+        'utility',
+        'notification',
+        'toolbar',
+        'splash'
+    ]
+)
 
 
 ####
@@ -120,31 +183,24 @@ floating_layout = layout.Floating(auto_float_types=[
 
 widget_defaults = dict(
     font='Dina',
-    fontsize=10
+    fontsize=10,
+    foreground=BAR_TEXT,
 )
 
 groupbox_defaults = dict(
     font='Dina',
     fontsize=8,
-    highlight_method='block',
-    urgent_alert_method='block',
-    borderwidth=3,
-    padding=0,
-    margin_x=0,
-    margin_y=0,
     rounded=False,
-    active='#FFFFFF',
-    inactive='#000000',
-    urgent_text='#FFFFFF',
-    urgent_border='#FF0000',
-    this_screen_border='#4169E1',
-    this_current_screen_border='#E14169',
-    other_screen_border='#707070',
+    active=BAR_TEXT,
+    inactive=BAR_TEXT,
+    urgent_border=URGENT,
+    urgent_text=URGENT_TEXT,
+    this_current_screen_border=HIGHLIGHT,
+    this_screen_border=SECONDARY_HIGHLIGHT,
+    other_screen_border=OTHER_SCREEN,
 )
 
 bar_defaults = dict(
-    foreground='#000000',
-    background='#303030',
 )
 
 screens = [
@@ -162,8 +218,8 @@ screens = [
                     **widget_defaults),
                 widget.Clock('%a %-d %b %H:%M', **widget_defaults),
             ],
-            16,
-            **bar_defaults
+            24,
+            background=BACKGROUND
         )
     ),
     Screen(
@@ -172,8 +228,8 @@ screens = [
                 widget.GroupBox(**groupbox_defaults),
                 widget.WindowName(**widget_defaults),
             ],
-            16,
-            **bar_defaults
+            24,
+            background=BACKGROUND
         )
     )
 ]
