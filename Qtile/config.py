@@ -200,9 +200,6 @@ groupbox_defaults = dict(
     other_screen_border=OTHER_SCREEN,
 )
 
-bar_defaults = dict(
-)
-
 screens = [
     Screen(
         bottom=bar.Bar(
