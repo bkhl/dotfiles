@@ -6,8 +6,8 @@ from libqtile import layout, hook, bar, widget
 import netctl
 
 BAR_TEXT = "#FFFFFF"
-HIGHLIGHT = '#4169E1'
-SECONDARY_HIGHLIGHT = '#806925'
+HIGHLIGHT = '#2A52BE'
+SECONDARY_HIGHLIGHT = '#80651C'
 BACKGROUND = '#303030'
 OTHER_SCREEN = '#707070'
 URGENT = '#FF0000'
