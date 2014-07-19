@@ -17,7 +17,7 @@ URGENT_TEXT = '#FFFFFF'
 ####
 # Key bindings
 
-dmenu_options = "-i -fn 'Dina-10'"
+dmenu_options = "-i -fn 'Envy Code R-11'"
 
 mod = 'mod4'
 
@@ -182,14 +182,14 @@ floating_layout = layout.Floating(
 # Screens
 
 widget_defaults = dict(
-    font='Dina',
-    fontsize=10,
+    font='Envy Code R',
+    fontsize=14,
     foreground=BAR_TEXT,
 )
 
 groupbox_defaults = dict(
-    font='Dina',
-    fontsize=8,
+    font='Envy Code R',
+    fontsize=11,
     rounded=False,
     active=BAR_TEXT,
     inactive=BAR_TEXT,

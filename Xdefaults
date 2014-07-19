@@ -1,6 +1,6 @@
 ! xterm
-XTerm*faceName: Dina
-XTerm*faceSize: 8
+XTerm*faceName: Envy Code R
+XTerm*faceSize: 10
 XTerm*background: black
 XTerm*foreground: white
 XTerm*loginShell: true
