@@ -47,7 +47,6 @@ keys = [
     Key([mod], 'h', lazy.to_screen(1)),
 
     # Launch applications
-    Key([mod], 'Return', lazy.spawn('xterm')),
     Key([mod], 'space', lazy.spawn('dmenu_run {}'.format(dmenu_options))),
 
     # Choose layout
@@ -101,7 +100,7 @@ groups.append(
 )
 keys.append(
     Key(
-        [mod], 't',
+        [mod], 'Return',
         lazy.function(app_or_group('Terminal', 'xterm -e tmux attach'))
     )
 )
