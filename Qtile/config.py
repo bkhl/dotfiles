@@ -102,7 +102,7 @@ groups.append(
 keys.append(
     Key(
         [mod], 't',
-        lazy.function(app_or_group('Terminal', 'xterm -e ~/conf/tmux/tmux.sh'))
+        lazy.function(app_or_group('Terminal', 'xterm -e tmux attach'))
     )
 )
 

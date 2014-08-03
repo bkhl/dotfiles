@@ -10,6 +10,6 @@ xset b off
 eval $(keychain --noask --quiet --quick --eval id_dsa)
 
 clipit --no-icon &
-xterm -title tmux -e ~/conf/tmux/tmux.sh &
+xterm -e tmux attach &
 google-chrome-beta &
 exec qtile --config ~/conf/Qtile/config.py
