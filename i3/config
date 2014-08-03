@@ -60,7 +60,7 @@ bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
 
 # Switch screen of workspace
-bindsym $mod+shift+o move workspace to output right
+bindsym $mod+o move workspace to output right
 
 # Move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1
@@ -85,17 +85,18 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Do you really want to exit i
 
 # Resize window mode
 mode "resize" {
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
+    bindsym h resize shrink width 10 px or 10 ppt
+    bindsym j resize grow height 10 px or 10 ppt
+    bindsym k resize shrink height 10 px or 10 ppt
+    bindsym l resize grow width 10 px or 10 ppt
 
-        bindsym Escape mode "default"
+    bindsym Escape mode "default"
 }
 
 bindsym $mod+r mode "resize"
 
 # Start i3bar
 bar {
-        status_command i3status
+    status_command i3status
+    tray_output primary
 }
