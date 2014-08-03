@@ -1,4 +1,4 @@
-from libqtile.config import Key, Screen, Group, Match
+from libqtile.config import Key, Screen, Group, Match, Drag, Click
 from libqtile.command import lazy
 from libqtile.dgroups import simple_key_binder
 from libqtile import layout, hook, bar, widget
@@ -124,7 +124,7 @@ groups.append(
         'Skype',
         init=False,
         persist=False,
-        exclusive=False,
+        exclusive=True,
         layout='stack2',
         matches=[Match(wm_class=['Skype'])]
     )
@@ -132,6 +132,24 @@ groups.append(
 keys.append(
     Key([mod], 'c', lazy.function(app_or_group('Skype', 'skype')))
 )
+
+groups.append(
+    Group(
+        'AfterShot',
+        init=False,
+        persist=False,
+        exclusive=True,
+        layout='floating',
+        matches=[Match(wm_class=['AfterShotPro'])]
+    )
+)
+keys.append(
+    Key(
+        [mod], 'a',
+        lazy.function(app_or_group('AfterShot', 'AfterShotPro2X64'))
+    )
+)
+
 
 dgroups_key_binder = simple_key_binder(mod)
 
@@ -166,6 +184,10 @@ layouts = [
         name='ratiotile',
         **layout_defaults
     ),
+    layout.Floating(
+        name='floating',
+        **layout_defaults
+    )
 ]
 
 floating_layout = layout.Floating(
@@ -174,7 +196,8 @@ floating_layout = layout.Floating(
         'notification',
         'toolbar',
         'splash'
-    ]
+    ],
+    **layout_defaults
 )
 
 
@@ -243,4 +266,20 @@ def restart_on_screen_change(qtile, event):
 
 follow_mouse_focus = True
 cursor_warp = False
-mouse = ()
+
+mouse = [
+    Drag(
+        [mod], "Button1",
+        lazy.window.set_position_floating(),
+        start=lazy.window.get_position()
+    ),
+    Drag(
+        [mod], "Button3",
+        lazy.window.set_size_floating(),
+        start=lazy.window.get_size()
+    ),
+    Click(
+        [mod], "Button2",
+        lazy.window.bring_to_front()
+    )
+]
