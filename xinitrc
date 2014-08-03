@@ -8,7 +8,7 @@ xset b off
 
 eval $(keychain --noask --quiet --quick --eval id_dsa)
 
-xss-lock -- i3lock --color 000000 --ignore-empty-password &
+xss-lock -- i3lock --color 161616 --ignore-empty-password &
 clipit --no-icon &
 xterm -e tmux attach &
 google-chrome-beta &
