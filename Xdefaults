@@ -5,4 +5,3 @@ XTerm*background: black
 XTerm*foreground: white
 XTerm*loginShell: true
 XTerm*eightBitInput: false
-XTerm*saveLines: 0

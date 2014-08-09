@@ -10,6 +10,7 @@ eval $(keychain --noask --quiet --quick --eval id_dsa)
 
 xss-lock -- i3lock --color 5f676a --ignore-empty-password &
 clipit --no-icon &
-xterm -e tmux attach &
+xterm &
 google-chrome-beta &
+xterm -e irssi &
 exec i3
