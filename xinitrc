@@ -8,7 +8,7 @@ xset b off
 
 eval $(keychain --noask --quiet --quick --eval id_dsa)
 
-xss-lock -- i3lock --color 5f676a --ignore-empty-password &
+xss-lock -- i3lock --color 899599 --ignore-empty-password &
 clipit --no-icon &
 xterm &
 google-chrome-beta &
