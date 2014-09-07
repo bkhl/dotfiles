@@ -11,10 +11,10 @@ floating_modifier $mod
 bindsym $mod+Return exec xterm
 
 # Kill focused window
-bindsym $mod+Shift+q kill
+bindsym $mod+Shift+w kill
 
 # Start dmenu
-bindsym $mod+Shift+d exec dmenu_run -i -fn 'Envy Code R-10'
+bindsym $mod+space exec dmenu_run -i -fn 'Envy Code R-10'
 
 # Change focus
 bindsym $mod+h focus left
@@ -32,16 +32,16 @@ bindsym $mod+Shift+l move right
 bindsym $mod+f fullscreen
 
 # Change container layout
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
-bindsym $mod+s split h
-bindsym $mod+v split v
+bindsym $mod+t layout tabbed
+bindsym $mod+s layout toggle split
+bindsym $mod+v split h
+bindsym $mod+Shift+V split v
 
 # Toggle tiling/floating
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+Shift+m floating toggle
 
 # Change focus between tiling/floating windows
-bindsym $mod+space focus mode_toggle
+bindsym $mod+m focus mode_toggle
 
 # Focus the parent container
 bindsym $mod+a focus parent
@@ -80,8 +80,6 @@ bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
-# Focus applications
-bindsym $mod+Shift+w [class="Google-chrome-beta"] focus
 
 # Reload the configuration file
 bindsym $mod+Shift+c reload
