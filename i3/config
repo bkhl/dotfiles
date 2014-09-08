@@ -53,7 +53,7 @@ bindsym $mod+d focus child
 bindsym $mod+1 workspace 1: Terminal
 assign [class="XTerm" title="xterm"] "1: Terminal"
 bindsym $mod+2 workspace 2: WWW
-assign [class="Google-chrome-beta"] "2: WWW"
+assign [window_role="browser"] "2: WWW"
 bindsym $mod+3 workspace 3: IM
 assign [class="Skype"] "3: IM"
 assign [class="XTerm" title="irssi"] "3: IM"
