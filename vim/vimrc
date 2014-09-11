@@ -26,6 +26,12 @@ autocmd FileType make setlocal noexpandtab
 
 
 """"
+" Backup and swap file directories
+
+set backupdir=~/.vimtmp,.
+set directory=~/.vimtmp,.
+
+""""
 " Other
 
 set modeline
