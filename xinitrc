@@ -11,6 +11,6 @@ eval $(keychain --noask --quiet --quick --eval id_dsa)
 xss-lock -- i3lock --color 899599 --ignore-empty-password &
 clipit --no-icon &
 xterm &
-firefox &
+google-chrome-stable &
 xterm -e irssi &
 exec i3
