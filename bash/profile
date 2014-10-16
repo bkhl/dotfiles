@@ -14,4 +14,8 @@ for d in $HOME/bin $HOME/opt/*/bin /opt/local/sbin /opt/local/bin; do
     fi
 done
 
+# Preferences
 export EDITOR=vim
+
+# Other
+export ARBZRUSER=bnl
