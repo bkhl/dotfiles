@@ -12,12 +12,18 @@ import subprocess
 ####
 # Sorting outputs as they should be arranged, left to right.
 
+
 output_order = (
     'LVDS',
+    'LVDS-1',
+    'DP-0',
+    'DP-1',
+    'DP-2',
     'DisplayPort-0',
     'DisplayPort-1',
     'DisplayPort-2',
-    'VGA-0'
+    'VGA-0',
+    'VGA-1'
 )
 
 
