@@ -12,5 +12,4 @@ xss-lock -- i3lock --color 899599 --ignore-empty-password &
 clipit --no-icon &
 xterm &
 google-chrome-stable &
-xterm -e irssi &
 exec i3
