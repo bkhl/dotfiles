@@ -16,6 +16,9 @@ bindsym $mod+Shift+w kill
 # Start dmenu
 bindsym $mod+space exec dmenu_run -i -fn 'Envy Code R-10'
 
+# Lock screen
+bindsym $mod+Shift+x exec xset dpms force off
+
 # Change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
