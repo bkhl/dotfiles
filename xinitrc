@@ -12,5 +12,6 @@ xss-lock -- i3lock --color 899599 --ignore-empty-password &
 clipit &
 nm-applet &
 xterm &
+pcmanfm --daemon-mode &
 google-chrome-stable &
 exec i3
