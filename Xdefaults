@@ -6,3 +6,37 @@ XTerm*foreground: white
 XTerm*loginShell: true
 XTerm*eightBitInput: false
 XTerm*saveLines: 8192
+
+! rofi
+rofi.modi:                 window,run,ssh
+rofi.opacity:              100
+rofi.width:                100
+rofi.lines:                8
+rofi.columns:              1
+rofi.font:                 Envy Code R 12
+rofi.fg:                   #222222
+rofi.bg:                   #f2f1f0
+rofi.bgalt:                #f2f1f0
+rofi.hlfg:                 #ffffff
+rofi.hlbg:                 #005577
+rofi.bc:                   black
+rofi.bw:                   1
+rofi.location:             2
+rofi.padding:              5
+rofi.yoffset:              0
+rofi.xoffset:              0
+rofi.fixed-num-lines:      false
+rofi.terminal:             xterm
+rofi.ssh-client:           ssh
+rofi.ssh-command:          {terminal} -e {ssh-client} {host}
+rofi.run-command:          {cmd}
+rofi.run-list-command:
+rofi.run-shell-command:    {terminal} -e {cmd}
+rofi.disable-history:      false
+rofi.levenshtein-sort:     false
+rofi.case-sensitive:       false
+rofi.sidebar-mode:         false
+rofi.lazy-filter-limit:    5000
+rofi.eh:                   1
+rofi.auto-select:          false
+rofi.pid:                  /run/user/1000/rofi.pid
