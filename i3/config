@@ -15,6 +15,7 @@ bindsym $mod+Shift+w kill
 
 # Start dmenu
 bindsym $mod+space exec rofi -show window
+bindsym $mod+Shift+space exec rofi -show run
 
 # Lock screen
 bindsym $mod+Shift+x exec xset dpms force off
