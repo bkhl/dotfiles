@@ -5,6 +5,7 @@
 xsetroot -solid black -cursor_name left_ptr
 setxkbmap -layout se -option ctrl:nocaps -option compose:menu
 xset b off
+xrdb ~/.Xresources
 
 eval $(keychain --noask --quiet --quick --agents ssh --eval id_dsa)
 
