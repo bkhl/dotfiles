@@ -9,6 +9,9 @@ xrdb ~/.Xresources
 
 eval $(keychain --noask --quiet --quick --agents ssh --eval id_dsa)
 
+eval $(dbus-launch)
+export DBUS_SESSION_BUS_ADDRESS DBUS_SESSION_BUS_PID
+
 xss-lock -- i3lock --color 899599 --ignore-empty-password &
 clipit &
 nm-applet &
