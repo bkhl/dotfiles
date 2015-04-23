@@ -74,6 +74,7 @@ bindsym $mod+3 workspace $workspace_3_im
 assign [class="Skype"] $workspace_3_im
 assign [class="XTerm" title="irssi"] $workspace_3_im
 bindsym $mod+4 workspace $workspace_4_vbox
+assign [class="VirtualBox"] $workspace_4_vbox
 bindsym $mod+5 workspace $workspace_5
 bindsym $mod+6 workspace $workspace_6
 bindsym $mod+7 workspace $workspace_7
