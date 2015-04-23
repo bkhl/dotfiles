@@ -57,7 +57,7 @@ bindsym $mod+d focus child
 set $workspace_1_terminal 1: Terminal
 set $workspace_2_www 2: WWW
 set $workspace_3_im 3: IM
-set $workspace_4_vbox 4: VBox
+set $workspace_4_vbox 4: VM
 set $workspace_5 5
 set $workspace_6 6
 set $workspace_7 7
