@@ -57,7 +57,7 @@ bindsym $mod+d focus child
 set $workspace_1_terminal 1: Terminal
 set $workspace_2_www 2: WWW
 set $workspace_3_im 3: IM
-set $workspace_4 4
+set $workspace_4_vbox 4: VBox
 set $workspace_5 5
 set $workspace_6 6
 set $workspace_7 7
@@ -73,7 +73,7 @@ assign [class="Firefox"] $workspace_2_www
 bindsym $mod+3 workspace $workspace_3_im
 assign [class="Skype"] $workspace_3_im
 assign [class="XTerm" title="irssi"] $workspace_3_im
-bindsym $mod+4 workspace $workspace_4
+bindsym $mod+4 workspace $workspace_4_vbox
 bindsym $mod+5 workspace $workspace_5
 bindsym $mod+6 workspace $workspace_6
 bindsym $mod+7 workspace $workspace_7
@@ -88,7 +88,7 @@ bindsym $mod+o move workspace to output right
 bindsym $mod+Shift+1 move container to workspace $workspace_1_terminal
 bindsym $mod+Shift+2 move container to workspace $workspace_2_www
 bindsym $mod+Shift+3 move container to workspace $workspace_3_im
-bindsym $mod+Shift+4 move container to workspace $workspace_4
+bindsym $mod+Shift+4 move container to workspace $workspace_4_vbox
 bindsym $mod+Shift+5 move container to workspace $workspace_5
 bindsym $mod+Shift+6 move container to workspace $workspace_6
 bindsym $mod+Shift+7 move container to workspace $workspace_7
