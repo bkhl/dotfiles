@@ -17,6 +17,5 @@ clipit &
 nm-applet &
 pa-applet &
 xterm &
-pcmanfm --daemon-mode &
 google-chrome-stable &
 exec i3
