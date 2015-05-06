@@ -23,6 +23,9 @@ let g:syntastic_check_on_open = 1
 " Make
 autocmd FileType make setlocal noexpandtab
 
+" JSON
+autocmd FileType json setlocal shiftwidth=2 tabstop=2
+
 
 """"
 " Backup and swap file directories
