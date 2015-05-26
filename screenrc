@@ -10,7 +10,7 @@ defmonitor on
 defscrollback 50000
 
 # Status bar
-hardstatus alwayslastline "%H | %w%=| %D %Y/%m/%d %c"
+hardstatus alwayslastline "%H | %w%=| %D %Y-%m-%d %c"
 shelltitle '$ |bash'
 
 # Startup message
