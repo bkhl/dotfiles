@@ -25,7 +25,7 @@ function _prompt_return_code {
 }
 PROMPT_COMMAND=_prompt_return_code
 
-PS1='${prompt_return_code}\u@\h \w\$ '
+PS1='\[\033k\033\\\]${prompt_return_code}\u@\h \w\$ '
 
 # Aliases
 alias du='du -h'
