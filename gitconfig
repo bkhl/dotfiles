@@ -1,3 +1,5 @@
 [user]
 	email = bkhl@elektrubadur.se
 	name = Björn Lindström
+[push]
+	default = simple
