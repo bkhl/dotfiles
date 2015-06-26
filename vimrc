@@ -6,8 +6,7 @@ execute pathogen#infect()
 """"
 " Syntax highlighting
 
-autocmd colorscheme * highlight ColorColumn ctermbg=8 guibg='#303030'
-colorscheme torte
+set background=dark
 syntax on
 
 
