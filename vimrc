@@ -27,6 +27,13 @@ autocmd FileType json setlocal shiftwidth=2 tabstop=2
 
 
 """"
+" Custom commands
+
+" Save file as root
+command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
+
+
+""""
 " Backup and swap file directories
 
 set backupdir=~/.vimtmp,.
