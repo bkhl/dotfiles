@@ -12,8 +12,6 @@ if [ $BASH_VERSINFO -gt 4 ]; then
 fi
 
 # Return code before prompt if non-zero
-
-# Prompt and window title
 function _prompt_return_code {
     prompt_return_code=$?
     if [[ $prompt_return_code -eq 0 ]]; then
