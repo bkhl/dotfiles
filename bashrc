@@ -39,22 +39,6 @@ elif ls --color > /dev/null; then
     alias ls='ls --color=auto'
 fi
 
-if [ -n "$DISPLAY" ]; then
-    command -v gvim > /dev/null && alias gv='gvim --remote-tab'
-    
-    if command -v ssh > /dev/null; then
-        function xssh {
-            (xterm -e ssh "$@" &)
-        }
-    fi
-     
-    if command -v mosh > /dev/null; then
-        function xmosh {
-            (xterm -e mosh "$@" &)
-        }
-    fi
-fi
-
 # Programmable completion
 if ! shopt -oq posix; then
     if [[ -f /usr/share/bash-completion/bash_completion ]]; then
