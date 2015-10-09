@@ -11,6 +11,8 @@ HISTFILESIZE=16384
 HISTSIZE=8192
 shopt -s histappend
 shopt -s cmdhist # Save multi-line command as single history entry
+
+# Other settings
 shopt -s checkwinsize
 shopt -s extglob
 if [ $BASH_VERSINFO -gt 4 ]; then
