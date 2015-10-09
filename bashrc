@@ -1,3 +1,10 @@
+# Load V1 environment
+if [ -f /opt/ardendo-install/vme/env ]; then
+   source /opt/ardendo-install/vme/env
+elif [ -f /var/ardendo/installer/env ]; then
+   source /var/ardendo/installer/env
+fi
+
 # History
 HISTCONTROL=erasedups:ignorespace
 HISTFILESIZE=16384
