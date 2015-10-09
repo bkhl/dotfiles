@@ -1,0 +1,15 @@
+#!/bin/sh
+
+DESTINATION="${1}"
+SESSION="${2:-${USER}}"
+LOCALTMP="$(mktemp --tmpdir --directory home.XXXXXXXX)"
+REMOTEHOME="/tmp/${USER}"
+
+for f in bash_profile bashrc gitconfig hgrc inputrc profile screenrc vim vimrc; do
+    ln -s "${HOME}/Config/${f}" "${LOCALTMP}/.${f}"
+done
+
+rsync --archive --copy-links "${LOCALTMP}/" "${DESTINATION}:${REMOTEHOME}"
+rm --recursive --force "${LOCALTMP}"
+
+ssh -t "${DESTINATION}" env "HOME=${REMOTEHOME}" screen -DR "${SESSION}"
