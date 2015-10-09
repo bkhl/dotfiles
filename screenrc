@@ -15,3 +15,6 @@ shelltitle '$ |bash'
 
 # Startup message
 startup_message off 
+
+# Change to home directory.
+chdir ${HOME}
