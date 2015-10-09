@@ -4,13 +4,12 @@ HISTFILESIZE=16384
 HISTSIZE=8192
 shopt -s histappend
 shopt -s cmdhist # Save multi-line command as single history entry
-
-shopt -s autocd
 shopt -s checkwinsize
-
-# Globbing
 shopt -s extglob
-shopt -s globstar
+if [ $BASH_VERSINFO -gt 4 ]; then
+    shopt -s autocd
+    shopt -s globstar
+fi
 
 # Return code before prompt if non-zero
 
