@@ -9,7 +9,23 @@ for f in bash_profile bashrc gitconfig hgrc inputrc profile screenrc vim vimrc; 
     ln -s "${HOME}/Config/${f}" "${LOCALTMP}/.${f}"
 done
 
+BIN="${LOCALTMP}/.bin"
+mkdir "${BIN}"
+
+LOCALMYSCREEN="${BIN}/my-screen"
+cat << HERE > "${LOCALMYSCREEN}"
+#!/bin/sh
+export HOME="${REMOTEHOME}"
+screen -DR "${SESSION}"
+HERE
+chmod +x "${LOCALMYSCREEN}"
+
 rsync --archive --copy-links "${LOCALTMP}/" "${DESTINATION}:${REMOTEHOME}"
 rm --recursive --force "${LOCALTMP}"
 
-ssh -t "${DESTINATION}" env "HOME=${REMOTEHOME}" screen -DR "${SESSION}"
+REMOTEMYSCREEN="${REMOTEHOME}/.bin/my-screen"
+if mosh "${DESTINATION}" "${REMOTEMYSCREEN}"; then
+    exit
+else
+    ssh -t "${DESTINATION}" "${REMOTEMYSCREEN}" 
+fi
