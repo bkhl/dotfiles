@@ -4,6 +4,10 @@ if [ -f /opt/ardendo-install/vme/env ]; then
 elif [ -f /var/ardendo/installer/env ]; then
    source /var/ardendo/installer/env
 fi
+if [ -f /home/ardome/bzr/mam-dev/trunk/overlay.sh ]; then
+    source /home/ardome/bzr/mam-dev/trunk/overlay.sh
+    ofrompkg trunk
+fi
 
 # History
 HISTCONTROL=erasedups:ignorespace
