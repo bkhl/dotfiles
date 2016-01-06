@@ -9,11 +9,6 @@ if [ -f /home/ardome/bzr/mam-dev/trunk/overlay.sh ]; then
     ofrompkg trunk
 fi
 
-# Load autojump if available.
-if [ -f /usr/share/autojump/autojump.sh ]; then
-    source /usr/share/autojump/autojump.sh
-fi
-
 # History
 HISTCONTROL=erasedups:ignorespace
 HISTFILESIZE=16384
