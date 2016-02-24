@@ -14,6 +14,7 @@ syntax on
 " Syntax checking
 
 let g:syntastic_check_on_open = 1
+let g:syntastic_python_checkers = ['python', 'pyflakes']
 let g:syntastic_quiet_messages = { "regex": '\mline too long' }
 
 
