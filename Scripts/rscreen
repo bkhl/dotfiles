@@ -5,6 +5,8 @@ SESSION="${2:-${USER}}"
 LOCALTMP="$(mktemp --tmpdir --directory home.XXXXXXXX)"
 REMOTEHOME="$(ssh ${DESTINATION} printenv HOME)/${USER}"
 
+chmod 755 "${LOCALTMP}"
+
 for f in bash_profile bashrc gitconfig hgrc inputrc profile screenrc vim vimrc; do
     ln -s "${HOME}/Config/${f}" "${LOCALTMP}/.${f}"
 done
