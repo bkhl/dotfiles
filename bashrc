@@ -37,6 +37,11 @@ PROMPT_COMMAND=_prompt_return_code
 
 PS1='${prompt_return_code}\u@\h \w\$ '
 
+case $TERM in
+    xterm*)
+    PS1="\[\033]0;\u@\h: \w\007\]${PS1}"
+esac
+
 # Aliases
 alias du='du -h'
 alias egrep='egrep --color=auto'
