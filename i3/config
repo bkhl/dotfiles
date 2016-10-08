@@ -1,0 +1,159 @@
+# Font
+font pango:Envy Code R 10
+
+# Modifier key
+set $mod Mod4
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# Start a terminal
+bindsym $mod+Return exec x-terminal-emulator
+
+# Kill focused window
+bindsym $mod+Shift+w kill
+
+# Start dmenu
+bindsym $mod+space exec rofi -show run
+bindsym $mod+Shift+space exec rofi -show window
+
+# Lock screen
+bindsym $mod+Shift+x exec xset dpms force off
+
+# Change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# Move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# Enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen
+
+# Change container layout
+bindsym $mod+t layout tabbed
+bindsym $mod+s layout toggle split
+bindsym $mod+v split h
+bindsym $mod+Shift+V split v
+
+# Toggle tiling/floating
+bindsym $mod+Shift+m floating toggle
+
+# Change focus between tiling/floating windows
+bindsym $mod+m focus mode_toggle
+
+# Focus the parent container
+bindsym $mod+a focus parent
+
+# Focus the child container
+bindsym $mod+d focus child
+
+# Switch screen of workspace
+bindsym $mod+o move workspace to output right
+
+
+# Reload the configuration file
+bindsym $mod+Shift+c reload
+
+# Restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# Exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Do you really want to exit i3?' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# Resize window mode
+mode "resize" {
+    bindsym h resize shrink width 10 px or 10 ppt
+    bindsym j resize grow height 10 px or 10 ppt
+    bindsym k resize shrink height 10 px or 10 ppt
+    bindsym l resize grow width 10 px or 10 ppt
+    bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+
+# Colours
+client.focused #888888 #dddddd #222222 #2e9ef4
+client.focused_inactive #333333 #555555 #bbbbbb #484e50
+client.unfocused #333333 #333333 #888888 #292d2e
+client.urgent #2f343a #900000 #ffffff #900000
+
+# Start i3bar
+
+bar {
+    status_command i3status
+    tray_output primary
+    colors {
+        separator #666666
+        background #000000
+        statusline #bbbbbb
+        focused_workspace #888888 #dddddd #222222
+        active_workspace #333333 #555555 #bbbbbb
+        inactive_workspace #333333 #555555 #bbbbbb
+        urgent_workspace #2f343a #900000 #ffffff
+    }
+}
+
+
+###
+# Workspaces
+
+# Workspace 1: Terminal
+set $workspace_1_terminal 1: Terminal
+bindsym $mod+1 workspace $workspace_1_terminal
+bindsym $mod+Shift+1 move container to workspace $workspace_1_terminal
+assign [class="XTerm" title="xterm"] $workspace_1_terminal
+
+# Workspace 2: IDE
+set $workspace_2_ide 2: IDE
+bindsym $mod+2 workspace $workspace_2_ide
+bindsym $mod+Shift+2 move container to workspace $workspace_2_ide
+assign [class="jetbrains-idea-ce"] $workspace_2_ide
+
+# Workspace 3: WWW
+set $workspace_3_www 3: WWW
+bindsym $mod+3 workspace $workspace_3_www
+bindsym $mod+Shift+3 move container to workspace $workspace_3_www
+assign [window_role="browser"] $workspace_3_www
+assign [class="Firefox"] $workspace_3_www
+
+# Workspace 4: IM
+set $workspace_4_im 4: IM
+bindsym $mod+4 workspace $workspace_4_im
+bindsym $mod+Shift+4 move container to workspace $workspace_4_im
+assign [class="Skype"] $workspace_4_im
+
+# Workspace 5: VM
+set $workspace_5_vm 5: VM
+bindsym $mod+5 workspace $workspace_5_vm
+bindsym $mod+Shift+5 move container to workspace $workspace_5_vm
+assign [class="VirtualBox"] $workspace_5_vm
+
+# Workspace 6
+set $workspace_6 6
+bindsym $mod+6 workspace $workspace_6
+bindsym $mod+Shift+6 move container to workspace $workspace_6
+
+# Workspace 7
+set $workspace_7 7
+bindsym $mod+7 workspace $workspace_7
+bindsym $mod+Shift+7 move container to workspace $workspace_7
+
+# Workspace 8
+set $workspace_8 8
+bindsym $mod+8 workspace $workspace_8
+bindsym $mod+Shift+8 move container to workspace $workspace_8
+
+# Workspace 9
+set $workspace_9 9
+bindsym $mod+9 workspace $workspace_9
+bindsym $mod+Shift+9 move container to workspace $workspace_9
+
+# Workspace 10
+set $workspace_10 10
+bindsym $mod+0 workspace $workspace_10
+bindsym $mod+Shift+0 move container to workspace $workspace_10
