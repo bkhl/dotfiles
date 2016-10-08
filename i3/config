@@ -72,8 +72,8 @@ bindsym $mod+r mode "resize"
 # Colours
 
 client.focused #87a752 #87a752 #000000 #adc487
-client.focused_inactive #f08763 #f08763 #3c3b37 #f4aa90
-client.unfocused #3c3b37 #3c3b37 #aea79f #4c4c4c
+client.focused_inactive #aea79f #aea79f #000000 #aea79f
+client.unfocused #3c3b37 #3c3b37 #aea79f #3c3b37
 client.urgent #FF0000 #FF0000 #ffffff #FF0000
 
 # Start i3bar
@@ -85,7 +85,7 @@ bar {
     background #3c3b37
     statusline #ffffff
     focused_workspace #87a752 #87a752 #000000
-    active_workspace #f08763 #f08763 #3c3b37
+    active_workspace #4c4c4c #4c4c4c #3c3b37
     inactive_workspace #3c3b37 #3c3b37 #aea79f
     urgent_workspace #FF0000 #FF0000 #ffffff
   }
