@@ -30,6 +30,9 @@ cat << HERE > "${LOCALMYSCREEN}"
 export REAL_HOME="\${HOME}"
 export HOME="${REMOTEHOME}"
 screen -DR "${SESSION}"
+if [ ! -e "\${HOME}/.ssh" ]; then
+    ln -s "\${REAL_HOME}/.ssh" "\${HOME}"
+fi
 HERE
 chmod +x "${LOCALMYSCREEN}"
 
