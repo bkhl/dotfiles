@@ -78,22 +78,22 @@ bindsym $mod+r mode "resize"
 
 # Colours
 client.focused #888888 #dddddd #222222 #2e9ef4
-client.focused_inactive #333333 #555555 #bbbbbb #484e50
-client.unfocused #333333 #333333 #888888 #292d2e
+client.focused_inactive #3c3b37 #555555 #bbbbbb #484e50
+client.unfocused #3c3b37 #3c3b37 #888888 #292d2e
 client.urgent #2f343a #900000 #ffffff #900000
 
 # Start i3bar
 
 bar {
-    status_command i3status
+    # status_command i3status
     tray_output primary
     colors {
         separator #666666
         background #000000
         statusline #bbbbbb
         focused_workspace #888888 #dddddd #222222
-        active_workspace #333333 #555555 #bbbbbb
-        inactive_workspace #333333 #555555 #bbbbbb
+        active_workspace #3c3b37 #555555 #bbbbbb
+        inactive_workspace #3c3b37 #555555 #bbbbbb
         urgent_workspace #2f343a #900000 #ffffff
     }
 }
