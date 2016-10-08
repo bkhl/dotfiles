@@ -85,7 +85,6 @@ client.urgent #2f343a #900000 #ffffff #900000
 # Start i3bar
 
 bar {
-    # status_command i3status
     tray_output primary
     colors {
         separator #666666
