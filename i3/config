@@ -13,7 +13,7 @@ bindsym $mod+Return exec x-terminal-emulator
 # Kill focused window
 bindsym $mod+Shift+w kill
 
-# Start dmenu
+# Start rofi
 bindsym $mod+space exec rofi -show run
 bindsym $mod+Shift+space exec rofi -show window
 
