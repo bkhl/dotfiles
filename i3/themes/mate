@@ -22,7 +22,7 @@ window_colors:
   focused_inactive:
     border: orange
     background: orange 
-    text: lightgrey
+    text: darkgrey
     indicator: lightorange
   unfocused:
     border: darkgrey
