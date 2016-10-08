@@ -1,5 +1,15 @@
 #!/bin/sh
 
+# rscreen DESTINATION [SESSION]
+#
+# Copy config files to the directory $HOME/{SESSION} at the remote host given
+# by DESTINATION. Then login and start a screen session on the remote host with
+# the session directory set as $HOME.
+#
+# DESTINATION is an ssh target of the form # [user@]hostname
+#
+# SESSION is an optional argument. If not given, defaults to local username. 
+
 DESTINATION="${1}"
 SESSION="${2:-${USER}}"
 LOCALTMP="$(mktemp --tmpdir --directory home.XXXXXXXX)"
