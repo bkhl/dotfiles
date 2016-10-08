@@ -1,5 +1,5 @@
 # Font
-font pango:Envy Code R 10
+font pango:Sans 10
 
 # Modifier key
 set $mod Mod4
