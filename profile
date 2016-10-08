@@ -1,3 +1,8 @@
+# Load regular user profile, when logging in with rscreen
+if [ -n "${REAL_HOME}" -a -e "${REAL_HOME}/.profile" ]; then
+    HOME="${REAL_HOME}" source "${REAL_HOME}/.profile"
+fi
+
 # Locale
 export LC_ALL=en_US.UTF-8
 export LC_TIME=sv_SE.UTF-8

@@ -17,6 +17,7 @@ mkdir "${BIN}"
 LOCALMYSCREEN="${BIN}/my-screen"
 cat << HERE > "${LOCALMYSCREEN}"
 #!/bin/sh
+export REAL_HOME="\${HOME}"
 export HOME="${REMOTEHOME}"
 screen -DR "${SESSION}"
 HERE

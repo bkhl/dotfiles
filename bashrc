@@ -1,12 +1,6 @@
-# Load V1 environment
-if [ -f /opt/ardendo-install/vme/env ]; then
-   source /opt/ardendo-install/vme/env
-elif [ -f /var/ardendo/installer/env ]; then
-   source /var/ardendo/installer/env
-fi
-if [ -f /home/ardome/bzr/mam-dev/trunk/overlay.sh ]; then
-    source /home/ardome/bzr/mam-dev/trunk/overlay.sh
-    ofrompkg trunk
+# Load regular user bashrc, when logging in with rscreen
+if [ -n "${REAL_HOME}" -a -e "${REAL_HOME}/.bashrc" ]; then
+    HOME="${REAL_HOME}" source "${REAL_HOME}/.bashrc"
 fi
 
 # History
