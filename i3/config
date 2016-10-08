@@ -81,7 +81,7 @@ hide_edge_borders both
 # Start i3bar
 
 bar {
-  tray_output primary
+  tray_output none
   colors {
     separator #ffffff
     background #3c3b37
