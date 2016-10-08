@@ -102,6 +102,7 @@ set $workspace_1_terminal 1: Terminal
 bindsym $mod+1 workspace $workspace_1_terminal
 bindsym $mod+Shift+1 move container to workspace $workspace_1_terminal
 assign [class="XTerm" title="xterm"] $workspace_1_terminal
+assign [class="Mate-terminal"] $workspace_1_terminal
 
 # Workspace 2: IDE
 set $workspace_2_ide 2: IDE
