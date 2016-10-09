@@ -6,6 +6,7 @@ URxvt.font: xft:Envy Code R:Regular:pixelsize=13
 URxvt.boldFont: xft:Envy Code R:Regular:pixelsize=13
 URxvt.italicFont: xft:Envy Code R:Italic:pixelsize=13
 URxvt.boldItalicFont: xft:Envy Code R:Italic:pixelsize=13
+URxvt.letterSpace: -1
 
 URxvt.color0: #000000
 URxvt.color8: #555555
