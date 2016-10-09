@@ -1,2 +1,30 @@
-! rofi settings
+! rxvt
+URxvt.foreground: white
+URxvt.background: black
+
+URxvt.font: xft:Envy Code R:Regular:pixelsize=13
+URxvt.boldFont: xft:Envy Code R:Regular:pixelsize=13
+URxvt.italicFont: xft:Envy Code R:Italic:pixelsize=13
+URxvt.boldItalicFont: xft:Envy Code R:Italic:pixelsize=13
+
+URxvt.color0: #000000
+URxvt.color8: #555555
+URxvt.color1: #aa0000
+URxvt.color9: #ff5555
+URxvt.color2: #00aa00
+URxvt.color10: #55ff55
+URxvt.color3: #aa5500
+URxvt.color11: #ffff55
+URxvt.color4: #0000aa
+URxvt.color12: #5555ff
+URxvt.color5: #aa00aa
+URxvt.color13: #ff55ff
+URxvt.color6: #00aaaa
+URxvt.color14: #55ffff
+URxvt.color7: #aaaaaa
+URxvt.color15: #ffffff
+
+URxvt.scrollBar: false
+
+! rofi
 rofi.font: Mono 10
