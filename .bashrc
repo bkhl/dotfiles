@@ -10,13 +10,16 @@ HISTSIZE=8192
 shopt -s histappend
 shopt -s cmdhist # Save multi-line command as single history entry
 
-# Other settings
-shopt -s checkwinsize
+# Globbing
 shopt -s extglob
 if [ $BASH_VERSINFO -gt 4 ]; then
     shopt -s autocd
     shopt -s globstar
 fi
+GLOBIGNORE=.:..
+
+# Check window size after each command
+shopt -s checkwinsize
 
 # Return code before prompt if non-zero
 function _prompt_return_code {
