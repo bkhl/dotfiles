@@ -51,6 +51,7 @@ bindsym $mod+a focus parent
 bindsym $mod+d focus child
 
 # Switch screen of workspace
+bindsym $mod+Shift+o move workspace to output left
 bindsym $mod+o move workspace to output right
 
 # Reload the configuration file
