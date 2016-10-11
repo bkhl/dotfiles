@@ -6,6 +6,7 @@ execute pathogen#infect()
 """"
 " Syntax highlighting
 
+colorscheme base16-bright
 set background=dark
 syntax on
 
