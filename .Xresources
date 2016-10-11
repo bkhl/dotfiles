@@ -1,30 +1,38 @@
-! rxvt
-URxvt.foreground: white
-URxvt.background: black
+! Colours (based on base16-bright)
+*.foreground: #e0e0e0
+*.background: #000000
+*.cursorColor: #e0e0e0
+*.color0: #000000
+*.color1: #fb0120
+*.color2: #a1c659
+*.color3: #fda331
+*.color4: #6fb3d2
+*.color5: #d381c3
+*.color6: #76c7b7
+*.color7: #e0e0e0
+*.color8: #b0b0b0
+*.color9: #fb0120
+*.color10: #a1c659
+*.color11: #fda331
+*.color12: #6fb3d2
+*.color13: #d381c3
+*.color14: #76c7b7
+*.color15: #ffffff
+*.color16: #fc6d24
+*.color17: #be643c
+*.color18: #303030
+*.color19: #505050
+*.color20: #d0d0d0
+*.color21: #f5f5f5
 
-URxvt.font: xft:Envy Code R:Regular:pixelsize=13
-URxvt.boldFont: xft:Envy Code R:Regular:pixelsize=13
-URxvt.italicFont: xft:Envy Code R:Italic:pixelsize=13
-URxvt.boldItalicFont: xft:Envy Code R:Italic:pixelsize=13
+! Fonts
+*.font: xft:Envy Code R:Regular:pixelsize=13
+*.boldFont: xft:Envy Code R:Regular:pixelsize=13
+*.italicFont: xft:Envy Code R:Italic:pixelsize=13
+*.boldItalicFont: xft:Envy Code R:Italic:pixelsize=13
+
+! URxvt
 URxvt.letterSpace: -1
-
-URxvt.color0: #000000
-URxvt.color8: #555555
-URxvt.color1: #aa0000
-URxvt.color9: #ff5555
-URxvt.color2: #00aa00
-URxvt.color10: #55ff55
-URxvt.color3: #aa5500
-URxvt.color11: #ffff55
-URxvt.color4: #0000aa
-URxvt.color12: #5555ff
-URxvt.color5: #aa00aa
-URxvt.color13: #ff55ff
-URxvt.color6: #00aaaa
-URxvt.color14: #55ffff
-URxvt.color7: #aaaaaa
-URxvt.color15: #ffffff
-
 URxvt.scrollBar: false
 
 ! rofi
