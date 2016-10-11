@@ -19,7 +19,7 @@ REMOTEHOME="$(ssh ${DESTINATION} printenv HOME)/${USER}"
 
 chmod 755 "${LOCALTMP}"
 
-for f in bash_profile bashrc gitconfig hgrc inputrc profile screenrc vim vimrc zshrc; do
+for f in bash_profile bashrc gitconfig hgrc inputrc profile screenrc vim vimrc zlogin zshrc; do
     ln -sT "${HOME}/.${f}" "${LOCALTMP}/.${f}"
 done
 
@@ -37,6 +37,7 @@ fi
 if ! command -V zsh > /dev/null; then
     sed -i 's/^defshell -zsh$/defshell -bash/' "\${HOME}/.screenrc"
 fi
+cd "${HOME}"
 screen -DR "${SESSION}"
 HERE
 chmod +x "${LOCALMYSCREEN}"
