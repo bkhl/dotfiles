@@ -46,3 +46,6 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 # Named directories
 hash -d a=/opt/ardome
 hash -d p=/opt/ardome/lib/perl
+
+# Aliases
+alias ls='ls --color=auto'
