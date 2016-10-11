@@ -20,4 +20,4 @@ startup_message off
 chdir ${HOME}
 
 # Default to login shell
-defshell -bash
+defshell -zsh
