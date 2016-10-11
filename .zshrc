@@ -3,6 +3,16 @@ PROMPT='%(?..?: %? )%n@%m %~%# '
 
 setopt histignorealldups sharehistory
 
+# Window title
+case $TERM in
+  *xterm*|rxvt|rxvt-unicode|rxvt-256color|rxvt-unicode-256color)
+    precmd () {
+      print -Pn "\e]0;%(?..?: %? )%n@%m %~\a"
+    } 
+    preexec () { print -Pn "\e]0;%(?..?: %? )%n@%m %~ ($1)\a" }
+    ;;
+esac
+
 # Use emacs keybindings even if our EDITOR is set to vi
 bindkey -e
 
