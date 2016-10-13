@@ -32,3 +32,4 @@ URxvt.scrollBar: false
 
 ! rofi
 rofi.font: Mono 10
+rofi.bw: 3
