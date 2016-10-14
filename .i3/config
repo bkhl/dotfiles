@@ -72,9 +72,9 @@ bindsym $mod+r mode "resize"
 
 # Colours and style
 
-client.focused #888888 #dddddd #222222 #2e9ef4
-client.focused_inactive #333333 #555555 #bbbbbb #484e50
-client.unfocused #333333 #333333 #888888 #292d2e
+client.focused #888888 #dddddd #222222 #84a752
+client.focused_inactive #3c3b37 #555555 #bbbbbb #484e50
+client.unfocused #3c3b37 #3c3b37 #888888 #292d2e
 client.urgent #2f343a #900000 #ffffff #900000
 
 hide_edge_borders both
@@ -85,12 +85,12 @@ bar {
   tray_output none
   colors {
     separator #666666
-    background #333333
+    background #3c3b37
     statusline #bbbbbb
-    focused_workspace #888888 #dddddd #222222
-    active_workspace #333333 #555555 #bbbbbb
-    inactive_workspace #333333 #555555 #bbbbbb
-    urgent_workspace #2f343a #900000 #ffffff
+    focused_workspace #dddddd #dddddd #222222
+    active_workspace #555555 #555555 #bbbbbb
+    inactive_workspace #555555 #555555 #bbbbbb
+    urgent_workspace #900000 #900000 #ffffff
   }
 }
 
