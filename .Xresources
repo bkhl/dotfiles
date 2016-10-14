@@ -1,35 +1,6 @@
-! Colours
-*foreground: #ffffff
-*background: #000000
-*cursorColor: #ffffff
-
-*.color0: #000000
-*.color8: #555555
-*.color1: #aa0000
-*.color9: #ff5555
-*.color2: #00aa00
-*.color10: #55ff55
-*.color3: #aa5500
-*.color11: #ffff55
-*.color4: #0000aa
-*.color12: #5555ff
-*.color5: #aa00aa
-*.color13: #ff55ff
-*.color6: #00aaaa
-*.color14: #55ffff
-*.color7: #aaaaaa
-*.color15: #ffffff
-
-! Fonts
-*font: xft:Envy Code R:Regular:pixelsize=13
-*boldFont: xft:Envy Code R:Regular:pixelsize=13
-*italicFont: xft:Envy Code R:Italic:pixelsize=13
-*boldItalicFont: xft:Envy Code R:Italic:pixelsize=13
-
-! URxvt
-URxvt.letterSpace: -1
-URxvt.scrollBar: false
-
 ! rofi
 rofi.font: Mono 10
 rofi.bw: 3
+rofi.background: #3c3b37
+rofi.foreground: #ffffff
+rofi.bc: #555555
