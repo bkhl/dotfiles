@@ -44,11 +44,7 @@ alias du='du -h'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias grep='grep --color=auto'
-if [ "$(uname)" == Darwin ]; then
-    if command -V gls > /dev/null; then
-        alias ls='gls --color=auto'
-    fi
-elif ls --color > /dev/null; then
+if ls --color > /dev/null; then
     alias ls='ls --color=auto'
 fi
 
