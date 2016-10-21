@@ -18,10 +18,10 @@ window_colors:
     text: white
     indicator: lightbrown
   focused_inactive:
-    border: lightbrown
-    background: lightbrown 
-    text: black
-    indicator: lightbrown
+    border: grey
+    background: grey 
+    text: white
+    indicator: grey
   unfocused:
     border: darkgrey
     background: darkgrey
