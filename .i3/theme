@@ -1,13 +1,13 @@
 # vim: filetype=yaml
 ---
 meta:
-  description: 'Theme for blending i3 into MATE'
+  description: 'My current theme'
 colors:
   brown: '#5d4037'  
   lightbrown: '#795548'
-  darkgrey: '#3c3b37'
-  grey: '#4c4c4c'
-  lightgrey: '#aea79f'
+  darkgrey: '#212121'
+  grey: '#616161'
+  lightgrey: '#9e9e9e'
   black: '#000000'
   white: '#ffffff'
   red: '#d32f2f'
@@ -18,10 +18,10 @@ window_colors:
     text: white
     indicator: lightbrown
   focused_inactive:
-    border: darkgrey
-    background: darkgrey 
-    text: lightgrey
-    indicator: darkgrey
+    border: lightbrown
+    background: lightbrown 
+    text: darkbrown
+    indicator: lightbrown
   unfocused:
     border: darkgrey
     background: darkgrey
