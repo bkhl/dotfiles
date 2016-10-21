@@ -20,7 +20,7 @@ window_colors:
   focused_inactive:
     border: lightbrown
     background: lightbrown 
-    text: darkbrown
+    text: black
     indicator: lightbrown
   unfocused:
     border: darkgrey
