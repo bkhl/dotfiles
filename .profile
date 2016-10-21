@@ -13,7 +13,7 @@ if command -v keychain > /dev/null; then
 fi
 
 # Path
-for d in $HOME/.bin $HOME/.local/bin $HOME/.local/share/umake/bin $HOME/.npm/bin /opt/local/sbin /opt/local/bin; do
+for d in $HOME/.bin $HOME/.local/bin $HOME/.npm/bin /opt/local/sbin /opt/local/bin; do
     if [ -d $d ]; then
         PATH=$d:$PATH
     fi
