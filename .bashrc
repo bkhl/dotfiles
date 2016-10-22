@@ -40,7 +40,7 @@ if ! shopt -oq posix; then
 fi
 
 # Prompt
-PS1='$(if [ $? != 0 ]; then echo "?:$? "; fi)\u@\h \w\$ '
+PS1='$(r=$?; if [ $r != 0 ]; then echo "?:$r "; fi)\u@\h \w\$ '
 
 # Set window titles
 case "${TERM}" in
