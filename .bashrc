@@ -21,24 +21,6 @@ GLOBIGNORE=.:..
 # Check window size after each command
 shopt -s checkwinsize
 
-# Return code before prompt if non-zero
-function _prompt_return_code {
-    prompt_return_code=$?
-    if [[ $prompt_return_code -eq 0 ]]; then
-        prompt_return_code=
-    else
-        prompt_return_code="?:$prompt_return_code "
-    fi
-}
-PROMPT_COMMAND=_prompt_return_code
-
-PS1='${prompt_return_code}\u@\h \w\$ '
-
-case $TERM in
-    xterm*|*rxvt*)
-    PS1="\[\033]0;\u@\h: \w\007\]${PS1}"
-esac
-
 # Aliases
 alias du='du -h'
 alias egrep='egrep --color=auto'
@@ -56,5 +38,33 @@ if ! shopt -oq posix; then
       . /etc/bash_completion
     fi
 fi
+
+# Prompt
+PS1='$(if [ $? != 0 ]; then echo "?:$? "; fi)\u@\h \w\$ '
+
+# Set window titles
+case "${TERM}" in
+    xterm*|*rxvt*)
+        # Get from https://github.com/rcaloras/bash-preexec
+        if [ -e "${HOME}/.bash/bash-preexec.sh" ] && command -V xtitle > /dev/null; then
+            source "${HOME}/.bash/bash-preexec.sh"
+            if [ ${UID} = 0 ]; then
+                PROMPT_CHARACTER='#'
+            else
+                PROMPT_CHARACTER='$'
+            fi
+            get_title() {
+                echo "${USER}@${HOSTNAME} ${PWD/#${HOME}/\~}${PROMPT_CHARACTER}";
+            }
+            precmd() {
+                xtitle -t "$(get_title)"
+            }
+            preexec() {
+                xtitle -t "$(get_title) $1"
+            }
+        else
+            PS1="\[\033]0;\u@\h \w\$\007\]${PS1}"
+        fi
+esac
 
 # vi: ts=4 et

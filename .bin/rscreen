@@ -19,7 +19,7 @@ REMOTEHOME="$(ssh ${DESTINATION} printenv HOME)/${USER}"
 
 chmod 755 "${LOCALTMP}"
 
-for f in bash_profile bashrc gitconfig hgrc inputrc profile screenrc vim vimrc; do
+for f in bash_profile bashrc bash gitconfig hgrc inputrc profile screenrc vim vimrc; do
     ln -sT "${HOME}/.${f}" "${LOCALTMP}/.${f}"
 done
 
