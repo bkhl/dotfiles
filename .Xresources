@@ -1,7 +1,0 @@
-! rofi
-rofi.font: Source Code Pro 10
-rofi.color-enabled: true
-rofi.color-window: #212121, #212121, #795548
-rofi.color-normal: #212121, #ffffff, #212121, #795548, #ffffff
-rofi.color-active: #212121, #ffffff, #212121, #795548, #ffffff
-rofi.color-urgent: #212121, #ffffff, #212121, #795548, #ffffff

@@ -1,3 +1,6 @@
+# Start compositor
+exec --no-startup-id compton
+
 # Font
 font pango:Sans Bold 10
 
@@ -13,9 +16,8 @@ bindsym $mod+Return exec x-terminal-emulator
 # Kill focused window
 bindsym $mod+Shift+w kill
 
-# Start rofi
-bindsym $mod+space exec rofi -show run
-bindsym $mod+Shift+space exec rofi -show window
+# Start launcher
+bindsym $mod+space exec synapse
 
 # Change focus
 bindsym $mod+h focus left
