@@ -2,7 +2,7 @@
 exec --no-startup-id compton
 
 # Font
-font pango:Sans Bold 10
+font pango:Sans Bold 8
 
 # Modifier key
 set $mod Mod4
