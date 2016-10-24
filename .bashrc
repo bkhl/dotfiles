@@ -26,9 +26,7 @@ alias du='du -h'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias grep='grep --color=auto'
-if ls --color > /dev/null; then
-    alias ls='ls --color=auto'
-fi
+alias ls='ls --color=auto'
 
 # Programmable completion
 if ! shopt -oq posix; then
