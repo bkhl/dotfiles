@@ -84,7 +84,7 @@ hide_edge_borders both
 # Start i3bar
 
 bar {
-  status_command i3status
+  status_command env LC_ALL=sv_SE.UTF-8 i3status
 
   colors {
     separator #ffffff
