@@ -85,6 +85,7 @@ hide_edge_borders both
 
 bar {
   status_command env LC_ALL=sv_SE.UTF-8 i3status
+  tray_output primary
 
   colors {
     separator #ffffff
