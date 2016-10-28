@@ -1,6 +1,3 @@
-# Start compositor
-exec --no-startup-id compton
-
 # Font
 font pango:Sans Bold 8
 
