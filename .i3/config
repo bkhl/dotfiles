@@ -118,8 +118,8 @@ assign [class="Geany"] $workspace_2_ide
 set $workspace_3_www 3: WWW
 bindsym $mod+3 workspace $workspace_3_www
 bindsym $mod+Shift+3 move container to workspace $workspace_3_www
-assign [window_role="browser"] $workspace_3_www
 assign [class="Firefox"] $workspace_3_www
+assign [class="Google-chrome"] $workspace_3_www
 
 # Workspace 4: VM
 set $workspace_4_vm 4: VM
