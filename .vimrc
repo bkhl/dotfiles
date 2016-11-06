@@ -21,6 +21,8 @@ let g:syntastic_quiet_messages = { "regex": '\mline too long' }
 """"
 " File formats
 
+filetype plugin on
+
 " Make
 autocmd FileType make setlocal noexpandtab
 
