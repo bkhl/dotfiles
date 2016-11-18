@@ -43,6 +43,13 @@ command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
 set backupdir=~/.vimtmp,.
 set directory=~/.vimtmp,.
 
+
+""""
+" Buffers
+
+set hidden
+
+
 """"
 " Other
 
