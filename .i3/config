@@ -113,6 +113,7 @@ bindsym $mod+2 workspace $workspace_2_ide
 bindsym $mod+Shift+2 move container to workspace $workspace_2_ide
 assign [class="jetbrains-idea-ce"] $workspace_2_ide
 assign [class="Geany"] $workspace_2_ide
+assign [class="Eclipse"] $workspace_2_ide
 
 # Workspace 3: WWW
 set $workspace_3_www 3: WWW
