@@ -1,7 +1,24 @@
-"""
-" Pathogen
+""""
+" Vundle
 
-execute pathogen#infect()
+" Vundle preliminary configuration
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+
+" Vundle plugin list
+Plugin 'bling/vim-bufferline'
+Plugin 'chase/vim-ansible-yaml'
+Plugin 'elixir-lang/vim-elixir'
+Plugin 'scrooloose/syntastic'
+Plugin 'tpope/vim-surround'
+
+" Vundle final configuration
+call vundle#end()
+filetype plugin indent on
+
 
 """"
 " Syntax highlighting
@@ -11,7 +28,7 @@ syntax on
 
 
 """"
-" Syntax checking
+" Syntax checking with Syntastic
 
 let g:syntastic_check_on_open = 1
 let g:syntastic_python_checkers = ['python', 'pyflakes']
@@ -21,7 +38,6 @@ let g:syntastic_quiet_messages = { "regex": '\mline too long' }
 """"
 " File formats
 
-filetype plugin on
 
 " Make
 autocmd FileType make setlocal noexpandtab
@@ -34,7 +50,7 @@ autocmd FileType json setlocal shiftwidth=2 tabstop=2
 " Custom commands
 
 " Save file as root
-command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
+command! W :execute ':silent w !sudo tee % > /dev/null' | :edit!
 
 
 """"
