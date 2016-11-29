@@ -8,23 +8,28 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
+
 " Bufferline - Show list of buffers in command line
 Plugin 'bling/vim-bufferline'
 
-" Ansible YAML filetype support
-Plugin 'chase/vim-ansible-yaml'
-
-" Elixir filetype support
-Plugin 'elixir-lang/vim-elixir'
-
-" textX filetype support
-Plugin 'igordejanovic/textx.vim'
+" Mappings for handling surrounding pairs
+Plugin 'tpope/vim-surround'
 
 " Syntastic syntax checker
 Plugin 'scrooloose/syntastic'
 
-" Mappings for handling surrounding pairs
-Plugin 'tpope/vim-surround'
+
+" Filetype support plugins
+
+" Ansible YAML
+Plugin 'chase/vim-ansible-yaml'
+
+" Elixir
+Plugin 'elixir-lang/vim-elixir'
+
+" textX
+Plugin 'igordejanovic/textx.vim'
+
 
 " Vundle final configuration
 call vundle#end()
