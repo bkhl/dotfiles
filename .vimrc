@@ -17,6 +17,9 @@ Plugin 'chase/vim-ansible-yaml'
 " Elixir filetype support
 Plugin 'elixir-lang/vim-elixir'
 
+" textX filetype support
+Plugin 'igordejanovic/textx.vim'
+
 " Syntastic syntax checker
 Plugin 'scrooloose/syntastic'
 
