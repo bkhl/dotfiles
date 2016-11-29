@@ -83,6 +83,13 @@ set hidden
 
 
 """"
+" Hidden characters
+
+set list
+set listchars=trail:·,tab:→-
+
+
+""""
 " Other
 
 set modeline
