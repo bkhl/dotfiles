@@ -90,6 +90,16 @@ set listchars=trail:·,tab:→-
 
 
 """"
+" Line numbering
+"
+
+set number
+if exists('+relativenumber')
+    set relativenumber
+endif
+
+
+""""
 " Other
 
 set modeline
