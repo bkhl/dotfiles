@@ -99,40 +99,41 @@ bar {
 ###
 # Workspaces
 
-# Workspace 1: Terminal
-set $workspace_1_terminal 1: Terminal
-bindsym $mod+1 workspace $workspace_1_terminal
-bindsym $mod+Shift+1 move container to workspace $workspace_1_terminal
-assign [class="XTerm" title="xterm"] $workspace_1_terminal
-assign [class="Mate-terminal"] $workspace_1_terminal
-assign [class="URxvt"] $workspace_1_terminal
+# Workspace 1: TERM
+set $workspace_1_term 1: TERM
+bindsym $mod+1 workspace $workspace_1_term
+bindsym $mod+Shift+1 move container to workspace $workspace_1_term
+assign [class="^XTerm$" title="^xterm$"] $workspace_1_term
+assign [class="^Mate-terminal$"] $workspace_1_term
+assign [class="^URxvt$"] $workspace_1_term
 
 # Workspace 2: IDE
 set $workspace_2_ide 2: IDE
 bindsym $mod+2 workspace $workspace_2_ide
 bindsym $mod+Shift+2 move container to workspace $workspace_2_ide
-assign [class="jetbrains-idea-ce"] $workspace_2_ide
-assign [class="jetbrains-idea"] $workspace_2_ide
-assign [class="Geany"] $workspace_2_ide
-assign [class="Eclipse"] $workspace_2_ide
+assign [class="^jetbrains-idea-ce$"] $workspace_2_ide
+assign [class="^jetbrains-idea$"] $workspace_2_ide
+assign [class="^Eclipse$"] $workspace_2_ide
 
 # Workspace 3: WWW
 set $workspace_3_www 3: WWW
 bindsym $mod+3 workspace $workspace_3_www
 bindsym $mod+Shift+3 move container to workspace $workspace_3_www
-assign [class="Firefox"] $workspace_3_www
-assign [class="Google-chrome"] $workspace_3_www
+assign [class="^Firefox$"] $workspace_3_www
+assign [class="^Google-chrome$"] $workspace_3_www
 
-# Workspace 4: VM
-set $workspace_4_vm 4: VM
-bindsym $mod+4 workspace $workspace_4_vm
-bindsym $mod+Shift+4 move container to workspace $workspace_4_vm
-assign [class="VirtualBox"] $workspace_4_vm
+# Workspace 4: COMM
+set $workspace_4_comm 4: COMM
+bindsym $mod+4 workspace $workspace_4_COMM
+bindsym $mod+Shift+4 move container to workspace $workspace_4_comm
+assign [class="^skypeforlinux$"] $workspace_4_comm
+assign [class="^Slack$"] $workspace_4_comm
 
-# Workspace 5
-set $workspace_5 5
-bindsym $mod+5 workspace $workspace_5
-bindsym $mod+Shift+5 move container to workspace $workspace_5
+# Workspace 5: VM
+set $workspace_5_vm 5: VM
+bindsym $mod+5 workspace $workspace_5_vm
+bindsym $mod+Shift+5 move container to workspace $workspace_5_vm
+assign [class="^VirtualBox$"] $workspace_5_vm
 
 # Workspace 6
 set $workspace_6 6
