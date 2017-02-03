@@ -27,10 +27,6 @@ Plugin 'chase/vim-ansible-yaml'
 " Elixir
 Plugin 'elixir-lang/vim-elixir'
 
-" textX
-Plugin 'igordejanovic/textx.vim'
-
-
 " Vundle final configuration
 call vundle#end()
 filetype plugin indent on
