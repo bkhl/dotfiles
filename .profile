@@ -17,6 +17,7 @@ done
 
 # Preferences
 export EDITOR=vim
+export PAGER='less -r'
 
 # Other
 export ARBZRUSER=bnl
