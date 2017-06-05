@@ -1,0 +1,6 @@
+rofi.font: Sans 10
+rofi.color-enabled: true
+rofi.color-window: #3C3B37, #3C3B37, #526532
+rofi.color-normal: #3C3B37, #ffffff, #3C3B37, #526532, #ffffff
+rofi.color-active: #3C3B37, #ffffff, #3C3B37, #526532, #ffffff
+rofi.color-urgent: #3C3B37, #ffffff, #3C3B37, #526532, #ffffff
