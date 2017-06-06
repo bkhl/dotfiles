@@ -130,9 +130,9 @@ assign [class="^gmail-nativefier-"] $workspace_4_comm
 assign [class="^hangouts-nativefier-"] $workspace_4_comm
 assign [class="^messenger-nativefier-"] $workspace_4_comm
 assign [class="^outlook-nativefier-"] $workspace_4_comm
-assign [class="^Slack$"] $workspace_4_comm
 assign [class="^skypeforlinux$"] $workspace_4_comm
 assign [class="^Sky$"] $workspace_4_comm
+assign [class="^slack-nativefier-"] $workspace_4_comm
 assign [class="^whats-app-nativefier-"] $workspace_4_comm
 
 # Workspace 5: VM
