@@ -14,7 +14,7 @@ bindsym $mod+Return exec x-terminal-emulator
 bindsym $mod+Shift+w kill
 
 # Start launcher
-bindsym $mod+space exec i3-dmenu-desktop --dmenu='rofi -dmenu -i -p "Start: "'
+bindsym $mod+space exec "rofi -modi drun,window -show drun"
 
 # Change focus
 bindsym $mod+h focus left
