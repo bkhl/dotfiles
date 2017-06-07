@@ -13,8 +13,9 @@ bindsym $mod+Return exec x-terminal-emulator
 # Kill focused window
 bindsym $mod+Shift+w kill
 
-# Start launcher
+# Start rofi
 bindsym $mod+space exec "rofi -modi drun,window -show drun"
+bindsym $mod+Tab exec "rofi -modi drun,window -show window"
 
 # Change focus
 bindsym $mod+h focus left
