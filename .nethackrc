@@ -1,4 +1,0 @@
-NAME=Bjrn
-OPTIONS=autopickup
-OPTIONS=pickup_types:$?!/=
-OPTIONS=pickup_burden:Unencumbered
