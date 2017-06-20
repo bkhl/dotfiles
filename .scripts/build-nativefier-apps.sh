@@ -12,6 +12,7 @@ nativefier --single-instance --name Deezer 'http://www.deezer.com' ~/Software/De
 nativefier --single-instance --name Gmail --internal-urls '^https?://mail.google.com(/.*)?$' 'https://mail.google.com' ~/Software/Gmail
 nativefier --single-instance --name Hangouts --internal-urls '^https?://hangouts.google.com(/.*)?$' 'https://hangouts.google.com/' ~/Software/Hangouts
 nativefier --single-instance --name Messenger 'https://www.messenger.com' ~/Software/Messenger/
+nativefier --single-instance --name Noisli 'https://www.noisli.com' ~/Software/Noisli/
 nativefier --single-instance --name OGS 'https://online-go.com' ~/Software/OGS/
 nativefier --single-instance --name Outlook --internal-urls '^https?://mail.dayjob.example.com(/.*)?$' 'https://mail.dayjob.example.com/owa/' ~/Software/Outlook
 nativefier --single-instance --name Skype --internal-urls '^https?://web.skype.com(/.*)?$' 'https://web.skype.com/en/' ~/Software/Skype
