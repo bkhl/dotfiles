@@ -18,4 +18,5 @@ nativefier --single-instance --name Outlook --internal-urls '^https?://mail.dayj
 nativefier --single-instance --name Skype --internal-urls '^https?://web.skype.com(/.*)?$' 'https://web.skype.com/en/' ~/Software/Skype
 nativefier --name Slack --internal-urls '^https?://(.*\.)?slack.com(/.*)?$' 'https://dayjobapac.slack.com' ~/Software/Slack
 nativefier --single-instance --name Todoist 'https://todoist.com' ~/Software/Todoist/
+nativefier --single-instance --name Twist 'https://twistapp.com' ~/Software/Twist/
 nativefier --single-instance --name WhatsApp --internal-urls '^https?://web.whatsapp.com(/.*)?$' 'https://web.whatsapp.com' ~/Software/WhatsApp/
