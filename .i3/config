@@ -134,6 +134,7 @@ assign [class="^outlook-nativefier-"] $workspace_4_comm
 assign [class="^skypeforlinux$"] $workspace_4_comm
 assign [class="^Sky$"] $workspace_4_comm
 assign [class="^slack-nativefier-"] $workspace_4_comm
+assign [class="^twist-nativefier-"] $workspace_4_comm
 assign [class="^whats-app-nativefier-"] $workspace_4_comm
 
 # Workspace 5: VM
