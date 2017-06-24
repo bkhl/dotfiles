@@ -72,10 +72,10 @@ bindsym $mod+r mode "resize"
 
 # Colours and style
 
-client.focused #526532 #526532 #ffffff #a4cb64
-client.focused_inactive #aea79f #aea79f #3c3b37 #aea79f
-client.unfocused #3c3b37 #3c3b37 #aea79f #3c3b37
-client.urgent #FF0000 #FF0000 #ffffff #FF0000
+client.focused #888888 #dddddd #222222 #2e9ef4
+client.focused_inactive #333333 #555555 #bbbbbb #484e50
+client.unfocused #333333 #333333 #888888 #292d2e
+client.urgent #2f343a #900000 #ffffff #900000
 
 hide_edge_borders both
 
@@ -84,15 +84,14 @@ hide_edge_borders both
 bar {
   status_command env LC_ALL=sv_SE.UTF-8 i3status
   tray_output primary
-
   colors {
-    separator #ffffff
-    background #3c3b37
-    statusline #ffffff
-    focused_workspace #526532 #526532 #ffffff
-    active_workspace #aea79f #aea79f #3c3b37
-    inactive_workspace #3c3b37 #3c3b37 #aea79f
-    urgent_workspace #FF0000 #FF0000 #ffffff
+    separator #666666
+    background #333333
+    statusline #bbbbbb
+    focused_workspace #dddddd #dddddd #222222
+    active_workspace #555555 #555555 #bbbbbb
+    inactive_workspace #555555 #555555 #bbbbbb
+    urgent_workspace #900000 #900000 #ffffff
   }
 }
 
