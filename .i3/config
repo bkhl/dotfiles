@@ -72,9 +72,9 @@ bindsym $mod+r mode "resize"
 
 # Colours and style
 
-client.focused #888888 #dddddd #222222 #2e9ef4
+client.focused #888888 #dddddd #222222 #285577
 client.focused_inactive #333333 #555555 #bbbbbb #484e50
-client.unfocused #333333 #333333 #888888 #292d2e
+client.unfocused #333333 #333333 #888888 #285577
 client.urgent #2f343a #900000 #ffffff #900000
 
 hide_edge_borders both
