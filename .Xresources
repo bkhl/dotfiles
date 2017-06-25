@@ -57,6 +57,7 @@
 URxvt.font: xft:monospace:antialias=true:hinting=false:pixelsize=12
 URxvt.boldFont: xft:Monospace:bold:antialias=true:hinting=false:pixelsize=12
 URxvt.scrollBar: false
+URXvt.saveLines: 262144
 
 ! rofi
 rofi.font: Sans 10
