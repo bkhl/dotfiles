@@ -70,6 +70,11 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
+# Change volume
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
+
 # Colours and style
 
 client.focused #888888 #dddddd #222222 #285577
@@ -82,7 +87,7 @@ hide_edge_borders both
 # Start i3bar
 
 bar {
-  status_command env LC_ALL=sv_SE.UTF-8 i3status
+  status_command i3blocks
   tray_output primary
   colors {
     separator #666666
