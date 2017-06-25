@@ -54,8 +54,6 @@
 *.color21:      base06
 
 ! urxvt
-!URxvt.background: black
-!URxvt.foreground: white
 URxvt.font: xft:monospace:antialias=true:hinting=false:pixelsize=12
 URxvt.boldFont: xft:Monospace:bold:antialias=true:hinting=false:pixelsize=12
 URxvt.scrollBar: false
