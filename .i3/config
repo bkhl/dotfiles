@@ -111,6 +111,7 @@ bindsym $mod+Shift+1 move container to workspace $workspace_1_term
 assign [class="^XTerm$" title="^xterm$"] $workspace_1_term
 assign [class="^Mate-terminal$"] $workspace_1_term
 assign [class="^URxvt$"] $workspace_1_term
+assign [title="^Terminal"] $workspace_1_term
 
 # Workspace 2: IDE
 set $workspace_2_ide 2: IDE
