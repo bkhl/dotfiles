@@ -10,6 +10,12 @@ floating_modifier $mod
 # Start a terminal
 bindsym $mod+Return exec x-terminal-emulator
 
+# Start a file manager
+bindsym $mod+Shift+f exec thunar
+
+# Log out
+bindsym Control+Mod1+Delete exec xfce4-session-logout
+
 # Kill focused window
 bindsym $mod+Shift+w kill
 
