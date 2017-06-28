@@ -118,8 +118,7 @@ assign [title="^Terminal"] $workspace_1_term
 set $workspace_2_ide 2: IDE
 bindsym $mod+2 workspace $workspace_2_ide
 bindsym $mod+Shift+2 move container to workspace $workspace_2_ide
-assign [class="^jetbrains-idea-ce$"] $workspace_2_ide
-assign [class="^jetbrains-idea$"] $workspace_2_ide
+assign [class="^jetbrains-idea"] $workspace_2_ide
 assign [class="^Eclipse$"] $workspace_2_ide
 
 # Workspace 3: WWW
