@@ -1,7 +1,7 @@
 ! rofi
 rofi.font: Noto Sans 10
 rofi.color-enabled: true
-rofi.color-window: #333333, #333333, #388DE7
-rofi.color-normal: #333333, white, #333333, #388DE7, white
-rofi.color-active: #333333, white, #333333, #388DE7, white
-rofi.color-urgent: #333333, white, #333333, #388DE7, white
+rofi.color-window: #333333, #333333, #398EE7
+rofi.color-normal: #333333, white, #333333, #398EE7, white
+rofi.color-active: #333333, white, #333333, #398EE7, white
+rofi.color-urgent: #333333, white, #333333, #398EE7, white

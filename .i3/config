@@ -79,9 +79,9 @@ bindsym $mod+r mode "resize"
 # Colours and style
 
 exec_always --no-startup-id "xsetroot -solid '#333333'"
-client.focused #888888 #DDDDDD #222222 #388DE7
+client.focused #888888 #DDDDDD #222222 #398EE7
 client.focused_inactive #333333 #555555 #BBBBBB #484E50
-client.unfocused #333333 #333333 #888888 #388DE7
+client.unfocused #333333 #333333 #888888 #398EE7
 client.urgent #2F343A #900000 #FFFFFF #900000
 
 hide_edge_borders both
