@@ -1,6 +1,7 @@
 # Font
 font pango:Sans Bold 8
 
+
 # Modifier key
 set $mod Mod4
 
@@ -78,6 +79,7 @@ bindsym $mod+r mode "resize"
 
 # Colours and style
 
+exec_always --no-startup-id "xsetroot -solid '#333333'"
 client.focused #888888 #dddddd #222222 #285577
 client.focused_inactive #333333 #555555 #bbbbbb #484e50
 client.unfocused #333333 #333333 #888888 #285577
