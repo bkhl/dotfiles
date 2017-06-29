@@ -1,6 +1,5 @@
 # Font
-font pango:Sans Bold 8
-
+font pango:Noto Sans Bold 8
 
 # Modifier key
 set $mod Mod4

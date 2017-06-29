@@ -1,5 +1,5 @@
 ! rofi
-rofi.font: Sans 10
+rofi.font: Noto Sans 10
 rofi.color-enabled: true
 rofi.color-window: #333333, #333333, #388DE7
 rofi.color-normal: #333333, white, #333333, #388DE7, white
