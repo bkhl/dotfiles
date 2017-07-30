@@ -129,25 +129,16 @@ bindsym $mod+Shift+3 move container to workspace $workspace_3_www
 assign [class="^Firefox$"] $workspace_3_www
 assign [class="^Google-chrome$"] $workspace_3_www
 
-# Workspace 4: COMM
-set $workspace_4_comm 4: COMM
-bindsym $mod+4 workspace $workspace_4_comm
-bindsym $mod+Shift+4 move container to workspace $workspace_4_comm
-assign [class="^gmail-nativefier-"] $workspace_4_comm
-assign [class="^hangouts-nativefier-"] $workspace_4_comm
-assign [class="^messenger-nativefier-"] $workspace_4_comm
-assign [class="^outlook-nativefier-"] $workspace_4_comm
-assign [class="^skypeforlinux$"] $workspace_4_comm
-assign [class="^Sky$"] $workspace_4_comm
-assign [class="^slack-nativefier-"] $workspace_4_comm
-assign [class="^twist-nativefier-"] $workspace_4_comm
-assign [class="^whats-app-nativefier-"] $workspace_4_comm
+# Workspace 4: VM
+set $workspace_4_vm 4: VM
+bindsym $mod+4 workspace $workspace_4_vm
+bindsym $mod+Shift+4 move container to workspace $workspace_4_vm
+assign [class="^VirtualBox$"] $workspace_4_vm
 
-# Workspace 5: VM
-set $workspace_5_vm 5: VM
-bindsym $mod+5 workspace $workspace_5_vm
-bindsym $mod+Shift+5 move container to workspace $workspace_5_vm
-assign [class="^VirtualBox$"] $workspace_5_vm
+# Workspace 5
+set $workspace_5 5
+bindsym $mod+5 workspace $workspace_5
+bindsym $mod+Shift+5 move container to workspace $workspace_5
 
 # Workspace 6
 set $workspace_6 6
