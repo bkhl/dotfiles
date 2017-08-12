@@ -10,6 +10,7 @@
 #
 # SESSION is an optional argument. If not given, defaults to local username. 
 
+set -e
 set -x
 
 DESTINATION="${1}"
