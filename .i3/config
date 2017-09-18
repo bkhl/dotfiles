@@ -133,10 +133,9 @@ assign [class="^Google-chrome$"] $workspace_3_www
 set $workspace_4_comm 4: COMM
 bindsym $mod+4 workspace $workspace_4_comm
 bindsym $mod+Shift+4 move container to workspace $workspace_4_comm
-assign [class="^hiri$"] $workspace_4_comm
 assign [class="^sky$"] $workspace_4_comm
 assign [class="^skypeforlinux$"] $workspace_4_comm
-assign [class="^slack$"] $workspace_4_comm
+assign [class="^Slack$"] $workspace_4_comm
 
 # Workspace 5: VM
 set $workspace_5_vm 5: VM
