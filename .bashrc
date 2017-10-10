@@ -44,7 +44,7 @@ PS1='$(r=$?; if [ $r != 0 ]; then echo "?:$r "; fi)\u@\h \w\$ '
 case "${TERM}" in
     xterm*|*rxvt*)
         # Get from https://github.com/rcaloras/bash-preexec
-        if [ -e "${HOME}/.bash/bash-preexec.sh" ] && command -V xtitle > /dev/null; then
+        if [ -e "${HOME}/.bash/bash-preexec.sh" ] && command -V xtitle > /dev/null 2>&1; then
             source "${HOME}/.bash/bash-preexec.sh"
             if [ ${UID} = 0 ]; then
                 PROMPT_CHARACTER='#'
