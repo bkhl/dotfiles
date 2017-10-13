@@ -28,6 +28,17 @@ alias fgrep='fgrep --color=auto'
 alias grep='grep --color=auto'
 alias ls='ls --color=auto'
 
+if command -V nnn > /dev/null 2>&1; then
+    export NNN_TMPFILE="$(mktemp -u /tmp/nnn.XXXXXXXX)"
+    function n {
+       nnn "$@"
+       if [ -f "$NNN_TMPFILE" ]; then
+           source "$NNN_TMPFILE"
+           rm "$NNN_TMPFILE"
+       fi
+    }
+fi
+
 # Programmable completion
 if ! shopt -oq posix; then
     if [[ -f /usr/share/bash-completion/bash_completion ]]; then
