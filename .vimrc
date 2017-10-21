@@ -8,15 +8,19 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
-
 " Bufferline - Show list of buffers in command line
 Plugin 'bling/vim-bufferline'
 
 " Mappings for handling surrounding pairs
 Plugin 'tpope/vim-surround'
 
-" Syntastic syntax checker
-Plugin 'scrooloose/syntastic'
+if v:version >= 800
+    " Syntastic syntax checker
+    Plugin 'w0rp/ale'
+else
+    " ALE syntax checker
+    Plugin 'scrooloose/syntastic'
+endif
 
 
 " Filetype support plugins
@@ -49,6 +53,14 @@ syntax on
 let g:syntastic_check_on_open = 1
 let g:syntastic_python_checkers = ['python', 'pyflakes']
 let g:syntastic_quiet_messages = { "regex": '\mline too long' }
+
+
+"""
+" Syntax checking with ALE
+"
+
+let g:ale_python_flake8_executable = 'python'
+let g:ale_python_flake8_options = '-m flake8'
 
 
 """"
