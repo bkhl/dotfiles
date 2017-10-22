@@ -1,6 +1,6 @@
 # Load regular user profile, when logging in with rscreen
 if [ -n "${REAL_HOME}" -a -e "${REAL_HOME}/.profile" ]; then
-    HOME="${REAL_HOME}" source "${REAL_HOME}/.profile"
+    HOME="${REAL_HOME}" . "${REAL_HOME}/.profile"
 fi
 
 # Locale
