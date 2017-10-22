@@ -15,7 +15,7 @@ for d in $HOME/bin $HOME/.local/bin $HOME/.npm/bin /opt/local/sbin /opt/local/bi
     fi
 done
 
-# Preferences
+# Application preferences
 export EDITOR=vim
 export PAGER='less -r'
 
