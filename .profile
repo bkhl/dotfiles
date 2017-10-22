@@ -19,5 +19,5 @@ done
 export EDITOR=vim
 export PAGER='less -r'
 
-# Other
+# Username for prod &c.
 export ARBZRUSER=bnl
