@@ -15,6 +15,12 @@ for d in $HOME/bin $HOME/.local/bin $HOME/.npm/bin /opt/local/sbin /opt/local/bi
     fi
 done
 
+# Python virtual environment
+if [ -d $HOME/venv ]; then
+    echo found it
+    VIRTUAL_ENV_DISABLE_PROMPT=1 . $HOME/venv/bin/activate
+fi
+
 # Application preferences
 export EDITOR=vim
 export PAGER='less -r'
