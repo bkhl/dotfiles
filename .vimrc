@@ -111,11 +111,31 @@ if exists('+relativenumber')
 endif
 
 
-""""
-" Other
+"""
+" Allow setting Vim options in modelines
+"
 
 set modeline
+
+
+""""
+" Default indentation settings
+
 set autoindent
 set shiftwidth=4
 set tabstop=4
 set expandtab
+
+"""
+" Status line
+"
+
+set laststatus=2
+set statusline=%n\ %f\ %h%w%m%r\ %=%(%l,%c%V\ %=\ %L%)"""
+
+"""
+" Keyboard mapping
+"
+
+let mapleader = ","
+nmap <leader>b :<C-U>buffers<CR>
