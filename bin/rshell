@@ -1,0 +1,71 @@
+#!/bin/sh
+
+# rshell DESTINATION [SESSION]
+# rscreen DESTINATION [SESSION]
+#
+# Copy config files to the directory $HOME/{SESSION} at the remote host given
+# by DESTINATION. Then login to the remote host with the the session directory
+# set as $HOME.
+#
+# If called as 'rscreen', also start or reconnect to a Screen session on the
+# remote host using the same session name.
+#
+# DESTINATION is an ssh target of the form # [user@]hostname
+#
+# SESSION is an optional argument. If not given, defaults to local username.
+#
+
+set -e
+set -x
+
+DESTINATION="${1}"
+SESSION="${2:-${USER}}"
+local_tmp="$(mktemp --tmpdir --directory home.XXXXXXXX)"
+remote_home="$(ssh ${DESTINATION} printenv HOME)/${USER}"
+
+chmod 755 "${local_tmp}"
+
+for f in bash_profile bashrc bash gitconfig hgrc inputrc profile screenrc vim vimrc; do
+    ln -sT "${HOME}/.${f}" "${local_tmp}/.${f}"
+done
+
+bin="${local_tmp}/bin"
+mkdir "${bin}"
+
+preamble="#!/bin/sh
+export REAL_HOME=\"\${HOME}\"
+export HOME=\"${remote_home}\"
+if [ ! -e \"\${HOME}/.ssh\" ]; then
+    ln -sT \"\${REAL_HOME}/.ssh\" \"\${HOME}/.ssh\"
+fi
+cd \"\${HOME}\""
+
+myscreen="${bin}/my-screen"
+cat << HERE > "${myscreen}"
+${preamble}
+screen -DR "${SESSION}"
+HERE
+chmod +x "${myscreen}"
+
+myshell="${bin}/my-shell"
+cat << HERE > "${myshell}"
+${preamble}
+exec ${SHELL} -
+HERE
+chmod +x "${myshell}"
+
+rsync --archive --copy-links "${local_tmp}/" "${DESTINATION}:${remote_home}"
+rm --recursive --force "${local_tmp}"
+
+if [ "${0}" = rshell ]; then
+    remote_command="${remote_home}/bin/my-shell"
+elif [ "${0}" = rscreen ]; then
+    remote_command="${remote_home}/bin/my-screen"
+fi
+
+remote_command="${remote_home}/bin/my-screen"
+if mosh "${DESTINATION}" "${remote_command}"; then
+    exit
+else
+    ssh -t "${DESTINATION}" "${remote_command}" 
+fi
