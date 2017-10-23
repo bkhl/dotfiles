@@ -15,6 +15,7 @@ Plugin 'bling/vim-bufferline'
 Plugin 'tpope/vim-surround'
 
 " Programming
+Plugin 'Townk/vim-autoclose'
 Plugin 'majutsushi/tagbar'
 Plugin 'janko-m/vim-test'
 if v:version >= 800
