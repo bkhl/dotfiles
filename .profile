@@ -16,8 +16,8 @@ for d in $HOME/bin $HOME/.local/bin $HOME/.npm/bin /opt/local/sbin /opt/local/bi
 done
 
 # Python virtual environment
-if [ -d $HOME/venv ]; then
-    VIRTUAL_ENV_DISABLE_PROMPT=1 . $HOME/venv/bin/activate
+if [ -d $HOME/venvs/default ]; then
+    VIRTUAL_ENV_DISABLE_PROMPT=1 . $HOME/venvs/default/bin/activate
 fi
 
 # Application preferences
