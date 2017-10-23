@@ -15,6 +15,7 @@ Plugin 'bling/vim-bufferline'
 Plugin 'tpope/vim-surround'
 
 " Programming
+Plugin 'majutsushi/tagbar'
 Plugin 'janko-m/vim-test'
 if v:version >= 800
     Plugin 'w0rp/ale'
@@ -48,6 +49,8 @@ nmap <silent> <leader>q :copen<CR>
 " Open NERDTree
 map <C-n> :NERDTreeToggle<CR>
 
+" Open tabar
+map <C-m> :TagbarToggle<CR>
 
 " Save file as root
 command! W :execute ':silent w !sudo tee % > /dev/null' | :edit!
