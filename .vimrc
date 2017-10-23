@@ -22,6 +22,12 @@ else
     Plugin 'scrooloose/syntastic'
 endif
 
+" Test runner
+Plugin 'janko-m/vim-test'
+
+" Run async commands and output to quickfix window
+Plugin 'skywind3000/asyncrun.vim'
+
 
 " Filetype support plugins
 
@@ -61,6 +67,13 @@ let g:syntastic_quiet_messages = { "regex": '\mline too long' }
 
 let g:ale_python_flake8_executable = 'python'
 let g:ale_python_flake8_options = '-m flake8'
+
+
+"""
+" vim-test test runner
+"
+
+let test#strategy = 'asyncrun'
 
 
 """"
@@ -138,4 +151,16 @@ set statusline=%n\ %f\ %h%w%m%r\ %=%(%l,%c%V\ %=\ %L%)"""
 "
 
 let mapleader = ","
-nmap <leader>b :<C-U>buffers<CR>
+
+" Buffers
+nmap <silent> <leader>b :<C-U>buffers<CR>
+
+" Test runner
+nmap <silent> <leader>t :TestNearest<CR>
+nmap <silent> <leader>T :TestFile<CR>
+nmap <silent> <leader>a :TestSuite<CR>
+nmap <silent> <leader>l :TestLast<CR>
+nmap <silent> <leader>g :TestVisit<CR>
+
+" Open quickfix window
+nmap <silent> <leader>q :copen<CR>
