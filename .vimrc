@@ -12,6 +12,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'skywind3000/asyncrun.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'bling/vim-bufferline'
+Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
 
 " Programming
