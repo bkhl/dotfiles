@@ -10,6 +10,7 @@ Plugin 'VundleVim/Vundle.vim'
 
 " Utilities
 Plugin 'skywind3000/asyncrun.vim'
+Plugin 'scrooloose/nerdtree'
 Plugin 'bling/vim-bufferline'
 Plugin 'tpope/vim-surround'
 
@@ -43,6 +44,10 @@ nmap <silent> <leader>b :<C-U>buffers<CR>
 
 " Open quickfix window
 nmap <silent> <leader>q :copen<CR>
+
+" Open NERDTree
+map <C-n> :NERDTreeToggle<CR>
+
 
 " Save file as root
 command! W :execute ':silent w !sudo tee % > /dev/null' | :edit!
