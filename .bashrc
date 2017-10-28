@@ -39,6 +39,17 @@ if command -V nnn > /dev/null 2>&1; then
     }
 fi
 
+# Manage Python virtual environments
+export WORKON_HOME="$HOME/venvs"
+function activate {
+    local environment=default
+    if [[ -n "$1" ]]; then
+        environment="$1"
+    fi
+    source "$WORKON_HOME/$environment/bin/activate"
+}
+
+
 # Programmable completion
 if ! shopt -oq posix; then
     if [[ -f /usr/share/bash-completion/bash_completion ]]; then
