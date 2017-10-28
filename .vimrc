@@ -59,6 +59,9 @@ map <C-n> :NERDTreeToggle<CR>
 " Open tabar
 map <C-m> :TagbarToggle<CR>
 
+" Go to declaration
+nmap gd :YcmCompleter GoTo<CR>
+
 " Save file as root
 command! W :execute ':silent w !sudo tee % > /dev/null' | :edit!
 
