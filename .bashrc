@@ -48,7 +48,18 @@ function activate {
     fi
     source "$WORKON_HOME/$environment/bin/activate"
 }
+_activate()
+{
+    local cur venvs
+    venvs=$(cd $WORKON_HOME; echo *)
 
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    COMPREPLY=( $(compgen -W "${venvs}" -- ${cur}) )
+
+    return 0
+}
+complete -o nospace -F _activate activate
 
 # Programmable completion
 if ! shopt -oq posix; then
