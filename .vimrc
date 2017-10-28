@@ -110,6 +110,8 @@ endif
 " Allow setting Vim options in modelines
 set modeline
 
+" Fix behaviour of ENTER/ESC while using autoclose together with YouCompleteMe
+let g:AutoClosePumvisible = {"ENTER": "", "ESC": ""}
 
 " Indentation settings
 set autoindent
