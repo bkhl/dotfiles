@@ -1,5 +1,5 @@
 # Load regular user profile, when logging in with rscreen
-if [ -n "${REAL_HOME}" -a -e "${REAL_HOME}/.profile" ]; then
+if [ -n "${REAL_HOME}" ] && [ -e "${REAL_HOME}/.profile" ]; then
     HOME="${REAL_HOME}" . "${REAL_HOME}/.profile"
 fi
 
@@ -10,7 +10,7 @@ export LC_COLLATE=C
 
 # Path
 for d in $HOME/bin $HOME/opt/*/bin; do
-    if [ -d $d ]; then
+    if [ -d "$d" ]; then
         PATH="$d${PATH:+:$PATH}"
     fi
 done
