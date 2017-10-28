@@ -23,6 +23,7 @@ endif
 Plugin 'Townk/vim-autoclose'
 Plugin 'majutsushi/tagbar'
 Plugin 'janko-m/vim-test'
+Plugin 'Valloric/YouCompleteMe'
 if v:version >= 800
     Plugin 'w0rp/ale'
 else
