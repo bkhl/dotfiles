@@ -1,14 +1,18 @@
 """"
 " Plugins
 
+""
 " Vundle preliminary configuration
+
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
+""
 " Utilities
+
 Plugin 'skywind3000/asyncrun.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'bling/vim-bufferline'
@@ -19,7 +23,9 @@ if executable('git')
     Plugin 'airblade/vim-gitgutter'
 endif
 
+""
 " Programming
+
 Plugin 'Townk/vim-autoclose'
 Plugin 'majutsushi/tagbar'
 Plugin 'janko-m/vim-test'
@@ -36,7 +42,9 @@ Plugin 'elixir-lang/vim-elixir'
 Plugin 'suan/vim-instant-markdown'
 Plugin 'jmcantrell/vim-virtualenv'
 
+""
 " Vundle final configuration
+
 call vundle#end()
 filetype plugin indent on
 
@@ -56,7 +64,7 @@ nmap <silent> <leader>q :copen<CR>
 " Open NERDTree
 map <C-n> :NERDTreeToggle<CR>
 
-" Open tabar
+" Open tagbar
 map <C-m> :TagbarToggle<CR>
 
 " Go to declaration
