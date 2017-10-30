@@ -21,3 +21,9 @@ export PAGER='less -r'
 
 # Username for prod &c.
 export ARBZRUSER=bnl
+
+# Go
+export GOPATH="$HOME/opt/go"
+
+# Rust
+export CARGO_HOME="$HOME/opt/cargo"
