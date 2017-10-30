@@ -32,6 +32,7 @@ endif
 " Programming
 
 Plugin 'Townk/vim-autoclose'
+Plugin 'tpope/vim-commentary'
 Plugin 'majutsushi/tagbar'
 Plugin 'janko-m/vim-test'
 Plugin 'Valloric/YouCompleteMe'
