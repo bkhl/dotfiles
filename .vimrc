@@ -18,6 +18,11 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'bling/vim-bufferline'
 Plugin 'tpope/vim-surround'
 
+if executable('fzf')
+    Plugin 'junegunn/fzf'
+    Plugin 'junegunn/fzf.vim'
+endif
+
 if executable('git')
     Plugin 'tpope/vim-fugitive'
     Plugin 'airblade/vim-gitgutter'
