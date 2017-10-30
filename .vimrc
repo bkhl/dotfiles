@@ -35,7 +35,7 @@ Plugin 'Townk/vim-autoclose'
 Plugin 'tpope/vim-commentary'
 Plugin 'majutsushi/tagbar'
 Plugin 'janko-m/vim-test'
-"Plugin 'sheerun/vim-polyglot'
+Plugin 'sheerun/vim-polyglot'
 Plugin 'Valloric/YouCompleteMe'
 if v:version >= 800
     Plugin 'w0rp/ale'
