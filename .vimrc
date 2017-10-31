@@ -36,7 +36,9 @@ Plugin 'tpope/vim-commentary'
 Plugin 'majutsushi/tagbar'
 Plugin 'janko-m/vim-test'
 Plugin 'sheerun/vim-polyglot'
-Plugin 'Valloric/YouCompleteMe'
+if v:version > 704 || (v:version == 704 && has('patchi578'))
+    Plugin 'Valloric/YouCompleteMe'
+endif
 if v:version >= 800
     Plugin 'w0rp/ale'
 else
