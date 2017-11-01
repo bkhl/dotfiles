@@ -114,6 +114,7 @@ set $workspace_1_term 1: TERM
 bindsym $mod+1 workspace $workspace_1_term
 bindsym $mod+Shift+1 move container to workspace $workspace_1_term
 assign [class="^Xfce4-terminal$"] $workspace_1_term
+assign [class="^X-terminal-emulator$"] $workspace_1_term
 
 # Workspace 2: IDE
 set $workspace_2_ide 2: IDE
