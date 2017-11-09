@@ -25,5 +25,8 @@ export ARBZRUSER=bnl
 # Go
 export GOPATH="$HOME/opt/go"
 
+# Python
+export PYTHONUSERBASE="$HOME/opt/python"
+
 # Rust
 export CARGO_HOME="$HOME/opt/cargo"

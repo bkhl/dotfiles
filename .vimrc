@@ -45,9 +45,6 @@ else
     Plugin 'scrooloose/syntastic'
 endif
 
-" Python
-Plugin 'jmcantrell/vim-virtualenv'
-
 ""
 " Vundle final configuration
 
