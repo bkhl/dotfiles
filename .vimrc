@@ -147,10 +147,3 @@ autocmd FileType make setlocal noexpandtab
 
 " JSON
 autocmd FileType json setlocal shiftwidth=2 tabstop=2
-
-" Python
-let g:ale_python_flake8_executable = 'python'
-let g:ale_python_flake8_options = '-m flake8'
-let g:syntastic_check_on_open = 1
-let g:syntastic_python_checkers = ['python', 'pyflakes']
-let g:syntastic_quiet_messages = { "regex": '\mline too long' }
