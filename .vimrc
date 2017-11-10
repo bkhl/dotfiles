@@ -45,6 +45,10 @@ else
     Plugin 'scrooloose/syntastic'
 endif
 
+" Python
+Plugin 'jmcantrell/vim-virtualenv'
+
+
 ""
 " Vundle final configuration
 
@@ -150,4 +154,3 @@ let g:ale_python_flake8_options = '-m flake8'
 let g:syntastic_check_on_open = 1
 let g:syntastic_python_checkers = ['python', 'pyflakes']
 let g:syntastic_quiet_messages = { "regex": '\mline too long' }
-let g:virtualenv_directory = '~/venvs'
