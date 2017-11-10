@@ -77,6 +77,9 @@ map <C-m> :TagbarToggle<CR>
 " Go to declaration
 nmap gd :YcmCompleter GoTo<CR>
 
+" Go to first error
+nmap <leader>f :ALEFirst<CR>
+
 " Save file as root
 command! W :execute ':silent w !sudo tee % > /dev/null' | :edit!
 
