@@ -45,7 +45,6 @@ if v:version >= 800
     \   'python': [
     \       'isort',
     \       'yapf',
-    \       'add_blank_lines_for_python_control_statements',
     \   ],
     \}
 else
