@@ -76,17 +76,17 @@ nmap <silent> <leader>b :<C-U>buffers<CR>
 nmap <silent> <leader>q :copen<CR>
 
 " Open NERDTree
-map <C-n> :NERDTreeToggle<CR>
+map <silent> <C-n> :NERDTreeToggle<CR>
 
 " Open tagbar
-map <C-m> :TagbarToggle<CR>
+map <silent> <C-m> :TagbarToggle<CR>
 
 " Go to declaration
-nmap gd :YcmCompleter GoTo<CR>
+nmap <silent> gd :YcmCompleter GoTo<CR>
 
 " Go to first error
-nmap <leader>f :ALEFirst<CR>
-nmap <leader>n :ALENext<CR>
+nmap <silent> <leader>f :ALEFirst<CR>
+nmap <silent> <leader>n :ALENext<CR>
 
 " Save file as root
 command! W :execute ':silent w !sudo tee % > /dev/null' | :edit!
