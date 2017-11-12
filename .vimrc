@@ -41,6 +41,13 @@ if v:version > 704 || (v:version == 704 && has('patchi578'))
 endif
 if v:version >= 800
     Plugin 'w0rp/ale'
+    let g:ale_fixers = {
+    \   'python': [
+    \       'isort',
+    \       'yapf',
+    \       'add_blank_lines_for_python_control_statements',
+    \   ],
+    \}
 else
     Plugin 'scrooloose/syntastic'
 endif
