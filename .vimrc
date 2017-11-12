@@ -15,6 +15,7 @@ Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'skywind3000/asyncrun.vim'
 Plugin 'scrooloose/nerdtree'
+Plugin 'mbbill/undotree'
 Plugin 'bling/vim-bufferline'
 Plugin 'tpope/vim-surround'
 
@@ -79,6 +80,9 @@ map <silent> <C-n> :NERDTreeToggle<CR>
 
 " Open tagbar
 map <silent> <C-m> :TagbarToggle<CR>
+
+" Open undo tree
+nnoremap <silent> <leader>u :UndotreeToggle<CR>
 
 " Go to declaration
 nmap <silent> gd :YcmCompleter GoTo<CR>
