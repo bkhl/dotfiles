@@ -155,6 +155,12 @@ set expandtab
 set laststatus=2
 set statusline=%n\ %f\ %h%w%m%r\ %=%(%l,%c%V\ %=\ %L%)"""
 
+" Persistent undo
+if has("persistent_undo")
+    set undodir=~/.vimundo/
+    set undofile
+endif
+
 
 """""
 " File formats
