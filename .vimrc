@@ -86,6 +86,7 @@ nmap gd :YcmCompleter GoTo<CR>
 
 " Go to first error
 nmap <leader>f :ALEFirst<CR>
+nmap <leader>n :ALENext<CR>
 
 " Save file as root
 command! W :execute ':silent w !sudo tee % > /dev/null' | :edit!
