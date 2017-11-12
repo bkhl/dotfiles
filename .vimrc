@@ -84,9 +84,12 @@ map <silent> <C-m> :TagbarToggle<CR>
 " Go to declaration
 nmap <silent> gd :YcmCompleter GoTo<CR>
 
-" Go to first error
+" Navigate ALE warnings
 nmap <silent> <leader>f :ALEFirst<CR>
 nmap <silent> <leader>n :ALENext<CR>
+
+" Reformat buffer
+nmap <silent> <leader>o :ALEFix<CR>
 
 " Save file as root
 command! W :execute ':silent w !sudo tee % > /dev/null' | :edit!
