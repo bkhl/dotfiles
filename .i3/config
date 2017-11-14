@@ -19,8 +19,15 @@ bindsym $mod+Shift+f exec thunar
 # Log out
 bindsym Control+Mod1+Delete exec xfce4-session-logout
 
-# Kill focused window
-bindsym $mod+Shift+w kill
+# Close window
+set $close "Close?"
+mode $close {
+    bindsym y kill, mode default
+    bindsym Return kill, mode default
+    bindsym n mode default
+    bindsym Escape mode default
+}
+bindsym $mod+Shift+q mode $close
 
 # Start rofi
 bindsym $mod+space exec "rofi -modi drun,run,window -show drun"
