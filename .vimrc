@@ -37,7 +37,7 @@ Plugin 'tpope/vim-commentary'
 Plugin 'majutsushi/tagbar'
 Plugin 'janko-m/vim-test'
 Plugin 'sheerun/vim-polyglot'
-if v:version > 704 || (v:version == 704 && has('patchi578'))
+if v:version > 704 || (v:version == 704 && has('patch1578'))
     Plugin 'Valloric/YouCompleteMe'
 endif
 if v:version >= 800
