@@ -116,24 +116,39 @@ bar {
 ###
 # Workspaces
 
-# Workspace 1: WWW
-set $workspace_1_www 1: WWW
-bindsym $mod+1 workspace $workspace_1_www
-bindsym $mod+Shift+1 move container to workspace $workspace_1_www
-assign [class="^Firefox$"] $workspace_1_www
-assign [class="^Google-chrome$"] $workspace_1_www
+# Workspace WWW
+set $workspace_www WWW
+bindsym $mod+w workspace $workspace_www
+bindsym $mod+Shift+w move container to workspace $workspace_www
+assign [class="^Firefox$"] $workspace_www
+assign [class="^Google-chrome$"] $workspace_www
 
-# Workspace 2: IM
-set $workspace_2_im 2: IM
-bindsym $mod+2 workspace $workspace_2_im
-bindsym $mod+Shift+2 move container to workspace $workspace_2_im
-assign [class="^Hexchat$"] $workspace_2_im
+# Workspace IM
+set $workspace_im IM
+bindsym $mod+i workspace $workspace_im
+bindsym $mod+Shift+i move container to workspace $workspace_im
+assign [class="^Hexchat$"] $workspace_im
 
-# Workspace 3: VM
-set $workspace_3_vm 3: VM
-bindsym $mod+3 workspace $workspace_3_vm
-bindsym $mod+Shift+3 move container to workspace $workspace_3_vm
-assign [class="^VirtualBox$"] $workspace_3_vm
+# Workspace VM
+set $workspace_vm VM
+bindsym $mod+b workspace $workspace_vm
+bindsym $mod+Shift+b move container to workspace $workspace_vm
+assign [class="^VirtualBox$"] $workspace_vm
+
+# Workspace 1
+set $workspace_1 1
+bindsym $mod+1 workspace $workspace_1
+bindsym $mod+Shift+1 move container to workspace $workspace_1
+
+# Workspace 2
+set $workspace_2 2
+bindsym $mod+2 workspace $workspace_2
+bindsym $mod+Shift+2 move container to workspace $workspace_2
+
+# Workspace 3
+set $workspace_3 3
+bindsym $mod+3 workspace $workspace_3
+bindsym $mod+Shift+3 move container to workspace $workspace_3
 
 # Workspace 4
 set $workspace_4 4
