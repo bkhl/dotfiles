@@ -26,7 +26,11 @@ endif
 
 if executable('git')
     Plugin 'tpope/vim-fugitive'
-    Plugin 'airblade/vim-gitgutter'
+endif
+
+Plugin 'mhinz/vim-signify'
+if v:version > 704 || (v:version == 704 && has('patch1967'))
+    let g:signify_realtime = 1
 endif
 
 ""
