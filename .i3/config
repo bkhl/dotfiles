@@ -109,38 +109,34 @@ bar {
 ###
 # Workspaces
 
-# Workspace 1: TERM
-set $workspace_1_term 1: TERM
-bindsym $mod+1 workspace $workspace_1_term
-bindsym $mod+Shift+1 move container to workspace $workspace_1_term
-assign [class="^Xfce4-terminal$"] $workspace_1_term
-assign [class="^X-terminal-emulator$"] $workspace_1_term
+# Workspace 1: WWW
+set $workspace_1_www 1: WWW
+bindsym $mod+1 workspace $workspace_1_www
+bindsym $mod+Shift+1 move container to workspace $workspace_1_www
+assign [class="^Firefox$"] $workspace_1_www
+assign [class="^Google-chrome$"] $workspace_1_www
 
-# Workspace 2: IDE
-set $workspace_2_ide 2: IDE
-bindsym $mod+2 workspace $workspace_2_ide
-bindsym $mod+Shift+2 move container to workspace $workspace_2_ide
-assign [class="^jetbrains-idea"] $workspace_2_ide
-assign [class="^Eclipse$"] $workspace_2_ide
+# Workspace 2: IM
+set $workspace_2_im 2: IM
+bindsym $mod+2 workspace $workspace_2_im
+bindsym $mod+Shift+2 move container to workspace $workspace_2_im
+assign [class="^Hexchat$"] $workspace_2_im
 
-# Workspace 3: WWW
-set $workspace_3_www 3: WWW
-bindsym $mod+3 workspace $workspace_3_www
-bindsym $mod+Shift+3 move container to workspace $workspace_3_www
-assign [class="^Firefox$"] $workspace_3_www
-assign [class="^Google-chrome$"] $workspace_3_www
+# Workspace 3: VM
+set $workspace_3_vm 3: VM
+bindsym $mod+3 workspace $workspace_3_vm
+bindsym $mod+Shift+3 move container to workspace $workspace_3_vm
+assign [class="^VirtualBox$"] $workspace_3_vm
 
-# Workspace 4: IM
-set $workspace_4_im 4: IM
-bindsym $mod+4 workspace $workspace_4_im
-bindsym $mod+Shift+4 move container to workspace $workspace_4_im
-assign [class="^Hexchat$"] $workspace_4_im
+# Workspace 4
+set $workspace_4 4
+bindsym $mod+4 workspace $workspace_4
+bindsym $mod+Shift+4 move container to workspace $workspace_4
 
-# Workspace 5: VM
-set $workspace_5_vm 5: VM
-bindsym $mod+5 workspace $workspace_5_vm
-bindsym $mod+Shift+5 move container to workspace $workspace_5_vm
-assign [class="^VirtualBox$"] $workspace_5_vm
+# Workspace 5
+set $workspace_5 5
+bindsym $mod+5 workspace $workspace_5
+bindsym $mod+Shift+5 move container to workspace $workspace_5
 
 # Workspace 6
 set $workspace_6 6
