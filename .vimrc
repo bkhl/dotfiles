@@ -31,6 +31,7 @@ endif
 Plugin 'mhinz/vim-signify'
 if v:version > 704 || (v:version == 704 && has('patch1967'))
     let g:signify_realtime = 1
+    let g:signify_vcs_list = [ 'git', 'bzr', 'hg', 'svn' ]
 endif
 
 ""
