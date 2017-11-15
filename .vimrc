@@ -1,50 +1,79 @@
-""""
-" Plugins
+" Keyboard map leader
+let mapleader = ","
 
-""
-" Vundle preliminary configuration
-
+" BEGIN Vundle preliminary configuration
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
+" BEGIN Vundle preliminary configuration
 
-""
-" Utilities
-
+" Run shell commands asynchronously
 Plugin 'skywind3000/asyncrun.vim'
+
+" File tree navigator
 Plugin 'scrooloose/nerdtree'
+noremap <silent> <C-n> :NERDTreeToggle<CR>
+
+" Undo tree navigator
 Plugin 'mbbill/undotree'
+nnoremap <silent> <leader>u :UndotreeToggle<CR>
+
+" Show buffers in command bar
 Plugin 'bling/vim-bufferline'
+
+" Navigate and manage surrounding character pairs
 Plugin 'tpope/vim-surround'
 
+" Fuzzy finder
 if executable('fzf')
     Plugin 'junegunn/fzf'
     Plugin 'junegunn/fzf.vim'
 endif
 
+" Git wrapper
 if executable('git')
     Plugin 'tpope/vim-fugitive'
 endif
 
+" Show VCS changes in sign column
 Plugin 'mhinz/vim-signify'
 if v:version > 704 || (v:version == 704 && has('patch1967'))
     let g:signify_realtime = 1
     let g:signify_vcs_list = [ 'git', 'bzr', 'hg', 'svn' ]
 endif
 
-""
-" Programming
-
+" Automatically close character pairs
 Plugin 'Townk/vim-autoclose'
+
+" Comment/uncomment
 Plugin 'tpope/vim-commentary'
+
+" Ctags-based outline viewer
 Plugin 'majutsushi/tagbar'
+noremap <silent> <C-m> :TagbarToggle<CR>
+
+" Test runner
 Plugin 'janko-m/vim-test'
+let test#strategy = 'asyncrun'
+nnoremap <silent> <leader>t :TestNearest<CR>
+nnoremap <silent> <leader>T :TestFile<CR>
+nnoremap <silent> <leader>a :TestSuite<CR>
+nnoremap <silent> <leader>l :TestLast<CR>
+nnoremap <silent> <leader>g :TestVisit<CR>
+
+" Language syntax support
 Plugin 'sheerun/vim-polyglot'
+
+" Code completion
 if v:version > 704 || (v:version == 704 && has('patch1578'))
     Plugin 'Valloric/YouCompleteMe'
+    let g:AutoClosePumvisible = {"ENTER": "", "ESC": ""}
+    nnoremap <silent> gd :YcmCompleter GoTo<CR>
 endif
+
+" Syntax error highlighters
 if v:version >= 800
     Plugin 'w0rp/ale'
     let g:ale_fixers = {
@@ -53,6 +82,9 @@ if v:version >= 800
     \       'yapf',
     \   ],
     \}
+    nnoremap <silent> <leader>f :ALEFirst<CR>
+    nnoremap <silent> <leader>n :ALENext<CR>
+    nnoremap <silent> <leader>o :ALEFix<CR>
 else
     Plugin 'scrooloose/syntastic'
 endif
@@ -61,77 +93,29 @@ endif
 Plugin 'jmcantrell/vim-virtualenv'
 
 
-""
-" Vundle final configuration
-
+" BEGIN Vundle final configuration
 call vundle#end()
 filetype plugin indent on
+" END Vundle final configuration
 
-
-"""
-" Keyboard mapping
-"
-
-let mapleader = ","
-
-" Buffers
-nmap <silent> <leader>b :<C-U>buffers<CR>
+" Show buffers
+nnoremap <silent> <leader>b :<C-U>buffers<CR>
 
 " Open quickfix window
-nmap <silent> <leader>q :copen<CR>
-
-" Open NERDTree
-map <silent> <C-n> :NERDTreeToggle<CR>
-
-" Open tagbar
-map <silent> <C-m> :TagbarToggle<CR>
-
-" Open undo tree
-nnoremap <silent> <leader>u :UndotreeToggle<CR>
-
-" Go to declaration
-nmap <silent> gd :YcmCompleter GoTo<CR>
-
-" Navigate ALE warnings
-nmap <silent> <leader>f :ALEFirst<CR>
-nmap <silent> <leader>n :ALENext<CR>
-
-" Reformat buffer
-nmap <silent> <leader>o :ALEFix<CR>
+nnoremap <silent> <leader>q :copen<CR>
 
 " Save file as root
 command! W :execute ':silent w !sudo tee % > /dev/null' | :edit!
 
-
-""""
 " Syntax highlighting
-
 set background=dark
 syntax on
-
-
-""""
-" Testing
-"
-
-let test#strategy = 'asyncrun'
-
-nmap <silent> <leader>t :TestNearest<CR>
-nmap <silent> <leader>T :TestFile<CR>
-nmap <silent> <leader>a :TestSuite<CR>
-nmap <silent> <leader>l :TestLast<CR>
-nmap <silent> <leader>g :TestVisit<CR>
-
-
-""""
-" Other settings
-"
 
 " Backup and swap file directories
 set backupdir=~/.vimtmp,.
 set directory=~/.vimtmp,.
 
-" Buffers
+" Hide buffer when abandonded
 set hidden
 
 " Hidden characters
@@ -146,9 +130,6 @@ endif
 
 " Allow setting Vim options in modelines
 set modeline
-
-" Fix behaviour of ENTER/ESC while using autoclose together with YouCompleteMe
-let g:AutoClosePumvisible = {"ENTER": "", "ESC": ""}
 
 " Indentation settings
 set autoindent
@@ -166,12 +147,8 @@ if has("persistent_undo")
     set undofile
 endif
 
-
-"""""
-" File formats
-
-" Make
+" Makefile preferences
 autocmd FileType make setlocal noexpandtab
 
-" JSON
+" JSON preferences
 autocmd FileType json setlocal shiftwidth=2 tabstop=2
