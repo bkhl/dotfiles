@@ -136,7 +136,7 @@ set guioptions-=r
 set guioptions-=T
 
 " Set GUI font
-set guifont=Inconsolata\ 11
+set guifont=Inconsolata\ 12
 
 " Backup and swap file directories
 set backupdir=~/.vimtmp,.
