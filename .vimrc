@@ -66,6 +66,15 @@ nnoremap <silent> <leader>g :TestVisit<CR>
 " Language syntax support
 Plugin 'sheerun/vim-polyglot'
 
+" Rainbow parentheses
+Plugin 'kien/rainbow_parentheses.vim'
+if has('gui_running')
+    au VimEnter * RainbowParenthesesToggle
+    au Syntax * RainbowParenthesesLoadRound
+    au Syntax * RainbowParenthesesLoadSquare
+    au Syntax * RainbowParenthesesLoadBraces
+endif
+
 " Code completion
 if v:version > 704 || (v:version == 704 && has('patch1578'))
     Plugin 'Valloric/YouCompleteMe'
@@ -92,7 +101,6 @@ endif
 " Python
 Plugin 'jmcantrell/vim-virtualenv'
 
-
 " BEGIN Vundle final configuration
 call vundle#end()
 filetype plugin indent on
@@ -108,8 +116,27 @@ nnoremap <silent> <leader>q :copen<CR>
 command! W :execute ':silent w !sudo tee % > /dev/null' | :edit!
 
 " Syntax highlighting
-set background=dark
 syntax on
+
+" Colour scheme
+set background=dark
+let terminal_env = $TERM
+if terminal_env =~ '^xterm\(-256color\)$'
+    set t_Co=256
+endif
+colorscheme industry
+
+" Disable menu bar
+set guioptions-=m
+
+" Disable scroll bar
+set guioptions-=r
+
+" Disable toolbar
+set guioptions-=T
+
+" Set GUI font
+set guifont=Inconsolata\ 11
 
 " Backup and swap file directories
 set backupdir=~/.vimtmp,.
