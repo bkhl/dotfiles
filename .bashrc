@@ -39,6 +39,10 @@ if command -V nnn > /dev/null 2>&1; then
     }
 fi
 
+if [[ "$TERM" =~ ^xterm(-256color)?$ ]] && command -V gvim > /dev/null 2>&1; then
+    alias vim='gvim'
+fi
+
 # Programmable completion
 if ! shopt -oq posix; then
     if [[ -f /usr/share/bash-completion/bash_completion ]]; then
