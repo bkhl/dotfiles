@@ -101,6 +101,12 @@ endif
 " Python
 Plugin 'jmcantrell/vim-virtualenv'
 
+" Jellybeans color scheme
+Plugin 'nanotech/jellybeans.vim'
+let g:jellybeans_overrides = {
+\    'background': { 'guibg': '000000' },
+\}
+
 " BEGIN Vundle final configuration
 call vundle#end()
 filetype plugin indent on
@@ -119,16 +125,12 @@ command! W :execute ':silent w !sudo tee % > /dev/null' | :edit!
 syntax on
 
 " Colour scheme
-set background=dark
 let terminal_env = $TERM
 if terminal_env =~ '^xterm\(-256color\)$'
     set t_Co=256
 endif
-if has('gui_running')
-    colorscheme desert
-else
-    colorscheme industry
-endif
+set background=dark
+colorscheme jellybeans
 
 " Disable menu bar
 set guioptions-=m
