@@ -103,9 +103,6 @@ Plugin 'jmcantrell/vim-virtualenv'
 
 " Jellybeans color scheme
 Plugin 'nanotech/jellybeans.vim'
-let g:jellybeans_overrides = {
-\    'background': { 'guibg': '000000' },
-\}
 
 " BEGIN Vundle final configuration
 call vundle#end()
