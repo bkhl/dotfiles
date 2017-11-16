@@ -124,7 +124,11 @@ let terminal_env = $TERM
 if terminal_env =~ '^xterm\(-256color\)$'
     set t_Co=256
 endif
-colorscheme industry
+if has('gui_running')
+    colorscheme desert
+else
+    colorscheme industry
+endif
 
 " Disable menu bar
 set guioptions-=m
