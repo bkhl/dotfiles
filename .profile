@@ -8,6 +8,9 @@ export LC_ALL=en_US.UTF-8
 export LC_TIME=sv_SE.UTF-8
 export LC_COLLATE=C
 
+# Disable accessability bridge
+export NO_AT_BRIDGE=1
+
 # Path
 for d in $HOME/bin $HOME/opt/*/bin; do
     if [ -d "$d" ]; then
