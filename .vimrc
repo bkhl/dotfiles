@@ -101,9 +101,6 @@ endif
 " Python
 Plugin 'jmcantrell/vim-virtualenv'
 
-" Jellybeans color scheme
-Plugin 'nanotech/jellybeans.vim'
-
 " BEGIN Vundle final configuration
 call vundle#end()
 filetype plugin indent on
@@ -126,8 +123,8 @@ let terminal_env = $TERM
 if terminal_env =~ '^xterm\(-256color\)$'
     set t_Co=256
 endif
+colorscheme torte
 set background=dark
-colorscheme jellybeans
 
 " Disable menu bar
 set guioptions-=m
