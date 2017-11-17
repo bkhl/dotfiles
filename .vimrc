@@ -66,15 +66,6 @@ nnoremap <silent> <leader>g :TestVisit<CR>
 " Language syntax support
 Plugin 'sheerun/vim-polyglot'
 
-" Rainbow parentheses
-Plugin 'kien/rainbow_parentheses.vim'
-if has('gui_running')
-    au VimEnter * RainbowParenthesesToggle
-    au Syntax * RainbowParenthesesLoadRound
-    au Syntax * RainbowParenthesesLoadSquare
-    au Syntax * RainbowParenthesesLoadBraces
-endif
-
 " Code completion
 if v:version > 704 || (v:version == 704 && has('patch1578'))
     Plugin 'Valloric/YouCompleteMe'
