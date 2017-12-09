@@ -114,7 +114,7 @@ let terminal_env = $TERM
 if terminal_env =~ '^xterm\(-256color\)$'
     set t_Co=256
 endif
-colorscheme torte
+colorscheme koehler
 set background=dark
 
 " Disable menu bar
