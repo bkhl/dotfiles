@@ -115,8 +115,12 @@ let terminal_env = $TERM
 if terminal_env =~ '^xterm\(-256color\)$'
     set t_Co=256
 endif
-colorscheme koehler
-set background=dark
+if has("gui_running")
+  colorscheme koehler
+else
+  set background=dark
+  colorscheme torte
+endif
 
 " Disable menu bar
 set guioptions-=m
