@@ -14,7 +14,7 @@ Plugin 'skywind3000/asyncrun.vim'
 
 " File tree navigator
 Plugin 'scrooloose/nerdtree'
-noremap <silent> <A-n> :NERDTreeToggle<CR>
+noremap <silent> <A-t> :NERDTreeToggle<CR>
 
 " Undo tree navigator
 Plugin 'mbbill/undotree'
