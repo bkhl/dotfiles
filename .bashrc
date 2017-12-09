@@ -30,14 +30,6 @@ if ! shopt -oq posix; then
     fi
 fi
 
-# fzf
-if [[ -f "${HOME}/opt/go/src/github.com/junegunn/fzf/shell/completion.bash" ]]; then
-    source "${HOME}/opt/go/src/github.com/junegunn/fzf/shell/completion.bash"
-fi
-if [[ -f "${HOME}/opt/go/src/github.com/junegunn/fzf/shell/key-bindings.bash" ]]; then
-    source "${HOME}/opt/go/src/github.com/junegunn/fzf/shell/key-bindings.bash"
-fi
-
 # Aliases
 alias du='du -h'
 alias egrep='egrep --color=auto'

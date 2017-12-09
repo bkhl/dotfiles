@@ -26,12 +26,6 @@ Plugin 'bling/vim-bufferline'
 " Navigate and manage surrounding character pairs
 Plugin 'tpope/vim-surround'
 
-" Fuzzy finder
-if executable('fzf')
-    Plugin 'junegunn/fzf'
-    Plugin 'junegunn/fzf.vim'
-endif
-
 " Git wrapper
 if executable('git')
     Plugin 'tpope/vim-fugitive'
