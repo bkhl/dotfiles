@@ -12,7 +12,7 @@ shopt -s cmdhist # Save multi-line command as single history entry
 
 # Globbing
 shopt -s extglob
-if [ $BASH_VERSINFO -gt 4 ]; then
+if [[ $BASH_VERSINFO -ge 4 ]]; then
     shopt -s autocd
     shopt -s globstar
 fi
