@@ -58,10 +58,10 @@ bindsym $mod+v split h
 bindsym $mod+Shift+V split v
 
 # Toggle tiling/floating
-bindsym $mod+Shift+m floating toggle
+bindsym $mod+Shift+p floating toggle
 
 # Change focus between tiling/floating windows
-bindsym $mod+m focus mode_toggle
+bindsym $mod+p focus mode_toggle
 
 # Focus the parent container
 bindsym $mod+a focus parent
@@ -176,11 +176,11 @@ bindsym $mod+Shift+w move container to workspace $workspace_www
 assign [class="^Firefox$"] $workspace_www
 assign [class="^Google-chrome$"] $workspace_www
 
-# Workspace IM
-set $workspace_im IM
-bindsym $mod+i workspace $workspace_im
-bindsym $mod+Shift+i move container to workspace $workspace_im
-assign [class="^Hexchat$"] $workspace_im
+# Workspace Mail
+set $workspace_mail Mail
+bindsym $mod+m workspace $workspace_mail
+bindsym $mod+Shift+m move container to workspace $workspace_mail
+assign [class="^Evolution$"] $workspace_mail
 
 # Workspace VM
 set $workspace_vm VM
