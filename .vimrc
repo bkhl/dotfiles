@@ -126,7 +126,7 @@ set guioptions-=r
 set guioptions-=T
 
 " Set GUI font
-set guifont=Envy\ Code\ R\ 10
+set guifont=IBM\ Plex\ Mono\ Regular\ 10
 
 " Backup and swap file directories
 set backupdir=~/.vimtmp,.
