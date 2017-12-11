@@ -180,7 +180,7 @@ assign [class="^Google-chrome$"] $workspace_www
 set $workspace_mail Mail
 bindsym $mod+m workspace $workspace_mail
 bindsym $mod+Shift+m move container to workspace $workspace_mail
-assign [class="^Evolution$"] $workspace_mail
+assign [class="^Thunderbird$"] $workspace_mail
 
 # Workspace VM
 set $workspace_vm VM
