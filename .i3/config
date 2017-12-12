@@ -182,6 +182,12 @@ bindsym $mod+m workspace $workspace_mail
 bindsym $mod+Shift+m move container to workspace $workspace_mail
 assign [class="^Thunderbird$"] $workspace_mail
 
+# Workspace IM
+set $workspace_im IM
+bindsym $mod+i workspace $workspace_im
+bindsym $mod+Shift+i move container to workspace $workspace_im
+assign [class="^Thunderbird$"] $workspace_im
+
 # Workspace VM
 set $workspace_vm VM
 bindsym $mod+b workspace $workspace_vm
