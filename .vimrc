@@ -112,8 +112,8 @@ endif
 if has("gui_running")
   colorscheme koehler
 else
+  colorscheme default
   set background=dark
-  colorscheme torte
 endif
 
 " Disable menu bar
