@@ -1,5 +1,5 @@
 # Font
-font pango:IBM Plex Sans Text 10
+font pango:Noto Sans Bold 8
 
 # Focus behaviour
 focus_follows_mouse no
