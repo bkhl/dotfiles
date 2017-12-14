@@ -4,7 +4,8 @@ if [ -n "${REAL_HOME}" ] && [ -e "${REAL_HOME}/.profile" ]; then
 fi
 
 # Locale
-export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+export LANGUAGE=en
 export LC_TIME=sv_SE.UTF-8
 export LC_COLLATE=C
 
