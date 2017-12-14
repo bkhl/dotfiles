@@ -188,6 +188,7 @@ bindsym $mod+i workspace $workspace_im
 bindsym $mod+Shift+i move container to workspace $workspace_im
 assign [class="^Skype$"] $workspace_im
 assign [class="^Sky$"] $workspace_im
+assign [class="^Slack$"] $workspace_im
 
 # Workspace VM
 set $workspace_vm VM
