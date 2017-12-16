@@ -184,6 +184,13 @@ workspace $workspace_10 output DP-2-2
 bindsym $mod+0 workspace $workspace_10
 bindsym $mod+Shift+0 move container to workspace $workspace_10
 
+# Workspace IDE
+set $workspace_ide IDE
+workspace $workspace_ide output DP-2-2
+bindsym $mod+e workspace $workspace_ide
+bindsym $mod+Shift+e move container to workspace $workspace_ide
+assign [class="^jetbrains-idea$"] $workspace_ide
+
 # Workspace WWW
 set $workspace_www WWW
 workspace $workspace_www output DP-2-2
