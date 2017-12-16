@@ -9,13 +9,6 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 " BEGIN Vundle preliminary configuration
 
-" Run shell commands asynchronously
-Plugin 'skywind3000/asyncrun.vim'
-
-" File tree navigator
-Plugin 'scrooloose/nerdtree'
-noremap <silent> <A-t> :NERDTreeToggle<CR>
-
 " Undo tree navigator
 Plugin 'mbbill/undotree'
 nnoremap <silent> <A-u> :UndotreeToggle<CR>
@@ -44,29 +37,8 @@ Plugin 'Townk/vim-autoclose'
 " Comment/uncomment
 Plugin 'tpope/vim-commentary'
 
-" Ctags-based outline viewer
-Plugin 'majutsushi/tagbar'
-noremap <silent> <A-m> :TagbarToggle<CR>
-
-" Test runner
-Plugin 'janko-m/vim-test'
-let test#strategy = 'asyncrun'
-nnoremap <silent> <leader>t :TestNearest<CR>
-nnoremap <silent> <leader>T :TestFile<CR>
-nnoremap <silent> <leader>a :TestSuite<CR>
-nnoremap <silent> <leader>l :TestLast<CR>
-nnoremap <silent> <leader>g :TestVisit<CR>
-
-
 " Language syntax support
 Plugin 'sheerun/vim-polyglot'
-
-" Code completion
-if v:version > 704 || (v:version == 704 && has('patch1578'))
-    Plugin 'Valloric/YouCompleteMe'
-    let g:AutoClosePumvisible = {"ENTER": "", "ESC": ""}
-    nnoremap <silent> gd :YcmCompleter GoTo<CR>
-endif
 
 " Syntax error highlighters
 if v:version >= 800
@@ -84,9 +56,6 @@ else
     Plugin 'scrooloose/syntastic'
 endif
 
-" Python
-Plugin 'jmcantrell/vim-virtualenv'
-
 " BEGIN Vundle final configuration
 call vundle#end()
 filetype plugin indent on
@@ -94,9 +63,6 @@ filetype plugin indent on
 
 " Show buffers
 nnoremap <silent> <A-b> :<C-u>buffers<CR>
-
-" Open quickfix window
-nnoremap <silent> <A-q> :copen<CR>
 
 " Save file as root
 command! W :execute ':silent w !sudo tee % > /dev/null' | :edit!
