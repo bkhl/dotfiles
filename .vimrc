@@ -76,7 +76,7 @@ if terminal_env =~ '^xterm\(-256color\)$'
     set t_Co=256
 endif
 if has("gui_running")
-  colorscheme koehler
+  colorscheme torte
 else
   colorscheme default
   set background=dark
