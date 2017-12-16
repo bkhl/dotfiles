@@ -126,56 +126,67 @@ bar {
 
 # Workspace 1
 set $workspace_1 1
+workspace $workspace_1 output DP-2-2
 bindsym $mod+1 workspace $workspace_1
 bindsym $mod+Shift+1 move container to workspace $workspace_1
 
 # Workspace 2
 set $workspace_2 2
+workspace $workspace_2 output DP-2-2
 bindsym $mod+2 workspace $workspace_2
 bindsym $mod+Shift+2 move container to workspace $workspace_2
 
 # Workspace 3
 set $workspace_3 3
+workspace $workspace_3 output DP-2-2
 bindsym $mod+3 workspace $workspace_3
 bindsym $mod+Shift+3 move container to workspace $workspace_3
 
 # Workspace 4
 set $workspace_4 4
+workspace $workspace_4 output DP-2-2
 bindsym $mod+4 workspace $workspace_4
 bindsym $mod+Shift+4 move container to workspace $workspace_4
 
 # Workspace 5
 set $workspace_5 5
+workspace $workspace_5 output DP-2-2
 bindsym $mod+5 workspace $workspace_5
 bindsym $mod+Shift+5 move container to workspace $workspace_5
 
 # Workspace 6
 set $workspace_6 6
+workspace $workspace_6 output DP-2-2
 bindsym $mod+6 workspace $workspace_6
 bindsym $mod+Shift+6 move container to workspace $workspace_6
 
 # Workspace 7
 set $workspace_7 7
+workspace $workspace_7 output DP-2-2
 bindsym $mod+7 workspace $workspace_7
 bindsym $mod+Shift+7 move container to workspace $workspace_7
 
 # Workspace 8
 set $workspace_8 8
+workspace $workspace_8 output DP-2-2
 bindsym $mod+8 workspace $workspace_8
 bindsym $mod+Shift+8 move container to workspace $workspace_8
 
 # Workspace 9
 set $workspace_9 9
+workspace $workspace_9 output DP-2-2
 bindsym $mod+9 workspace $workspace_9
 bindsym $mod+Shift+9 move container to workspace $workspace_9
 
 # Workspace 10
 set $workspace_10 10
+workspace $workspace_10 output DP-2-2
 bindsym $mod+0 workspace $workspace_10
 bindsym $mod+Shift+0 move container to workspace $workspace_10
 
 # Workspace WWW
 set $workspace_www WWW
+workspace $workspace_www output DP-2-2
 bindsym $mod+w workspace $workspace_www
 bindsym $mod+Shift+w move container to workspace $workspace_www
 assign [class="^Firefox$"] $workspace_www
@@ -183,12 +194,14 @@ assign [class="^Google-chrome$"] $workspace_www
 
 # Workspace Mail
 set $workspace_mail Mail
+workspace $workspace_mail output eDP-1
 bindsym $mod+m workspace $workspace_mail
 bindsym $mod+Shift+m move container to workspace $workspace_mail
 assign [class="^Thunderbird$"] $workspace_mail
 
 # Workspace IM
 set $workspace_im IM
+workspace $workspace_im output eDP-1
 bindsym $mod+i workspace $workspace_im
 bindsym $mod+Shift+i move container to workspace $workspace_im
 assign [class="^Skype$"] $workspace_im
