@@ -20,7 +20,7 @@ for d in $HOME/bin $HOME/opt/*/bin; do
 done
 
 # Application preferences
-export EDITOR=vim
+export EDITOR=micro
 export PAGER='less -r'
 
 # Username for prod &c.
