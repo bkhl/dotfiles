@@ -28,6 +28,8 @@ done
 bin="${local_tmp}/bin"
 mkdir "${bin}"
 
+ln -sT "${HOME}/bin/micro" "${bin}"/micro
+
 my_screen="${bin}/my-screen"
 cat << HERE > "${my_screen}"
 #!/bin/sh
