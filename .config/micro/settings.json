@@ -38,5 +38,6 @@
     "tabsize": 4,
     "tabstospaces": true,
     "termtitle": false,
+    "trimdiff": false,
     "useprimary": true
 }
