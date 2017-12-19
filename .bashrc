@@ -36,9 +36,17 @@ alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias grep='grep --color=auto'
 alias ls='ls --color=auto'
-alias micro="$(which micro)"
-alias m=micro
 alias sudo='sudo '
+
+if [[ "$TERM" =~ ^xterm(-256color)?$ ]] && command -V gvim > /dev/null 2>&1; then
+    function vim {
+        if [[ -z "$(gvim --serverlist)" ]]; then
+            gvim "$@"
+        else
+            gvim --remote "$@"
+        fi
+    }
+fi
 
 # Prompt
 PS1='$(r=$?; if [[ $r != 0 ]]; then echo "?:$r "; fi)\u@\h \w\$ '
