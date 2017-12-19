@@ -83,9 +83,15 @@ endif
 if v:version >= 800
     Plugin 'w0rp/ale'
     let g:ale_fixers = {
-    \   'python': [
+    \   'haskell': [
+    \       'hfmt',
+    \   ],
+     \   'python': [
     \       'isort',
     \       'yapf',
+    \   ],
+    \   'sh': [
+    \       'shfmt',
     \   ],
     \}
     nnoremap <silent> <A-f> :ALEFirst<CR>
