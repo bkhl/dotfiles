@@ -21,12 +21,13 @@ remote_home="$(ssh ${DESTINATION} printenv HOME)/${USER}"
 
 chmod 755 "${local_tmp}"
 
-for f in .bash_profile .bashrc .bash bin/micro .config/micro/settings.json .gitconfig .hgrc .inputrc .profile .screenrc; do
+for f in .bash .bash_profile .bashrc .gitconfig .hgrc .inputrc .profile .screenrc .vim .vimrc ; do
     mkdir -p "${local_tmp}/$(dirname ${f})"
     ln -sT "${HOME}/${f}" "${local_tmp}/${f}"
 done
 
 bin="${local_tmp}/bin"
+mkdir "${bin}"
 
 my_screen="${bin}/my-screen"
 cat << HERE > "${my_screen}"
