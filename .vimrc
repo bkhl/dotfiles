@@ -62,11 +62,14 @@ nnoremap <silent> <leader>g :TestVisit<CR>
 Plugin 'sheerun/vim-polyglot'
 
 " Code completion
-if v:version > 704 || (v:version == 704 && has('patch1578'))
-    Plugin 'Valloric/YouCompleteMe'
-    let g:AutoClosePumvisible = {"ENTER": "", "ESC": ""}
-    nnoremap <silent> gd :YcmCompleter GoTo<CR>
-endif
+Plugin 'prabirshrestha/async.vim'
+Plugin 'prabirshrestha/vim-lsp'
+Plugin 'prabirshrestha/asyncomplete.vim'
+Plugin 'prabirshrestha/asyncomplete-lsp.vim'
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
+imap <c-space> <Plug>(asyncomplete_force_refresh)
 
 " Syntax error highlighters
 if v:version >= 800
@@ -164,8 +167,18 @@ if has("persistent_undo")
     set undofile
 endif
 
-" Makefile preferences
+" Makefile
 autocmd FileType make setlocal noexpandtab
 
-" JSON preferences
+" JSON
 autocmd FileType json setlocal shiftwidth=2 tabstop=2
+
+" Python
+if executable('pyls')
+    " pip install python-language-server
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'pyls',
+        \ 'cmd': {server_info->['pyls']},
+        \ 'whitelist': ['python'],
+        \ })
+endif
