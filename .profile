@@ -6,8 +6,16 @@ fi
 # Locale
 export LANG=en_US.UTF-8
 export LANGUAGE=en
-export LC_TIME=sv_SE.UTF-8
+export LC_ADDRESS=C
 export LC_COLLATE=C
+export LC_IDENTIFICATION=C
+export LC_MEASUREMENT=C
+export LC_MONETARY=C
+export LC_NAME=C
+export LC_NUMERIC=C
+export LC_PAPER=C
+export LC_TELEPHONE=C
+export LC_TIME=sv_SE.UTF-8
 
 # Disable accessability bridge
 export NO_AT_BRIDGE=1
