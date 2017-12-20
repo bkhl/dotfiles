@@ -1,11 +1,13 @@
 import           Data.Monoid
 import           System.Exit
+import           System.Taffybar.Hooks.PagerHints (pagerHints)
 import           XMonad
 import           XMonad.Actions.PhysicalScreens
+import           XMonad.Hooks.EwmhDesktops        (ewmh)
 import           XMonad.Hooks.ManageDocks
 
-import qualified Data.Map                       as M
-import qualified XMonad.StackSet                as W
+import qualified Data.Map                         as M
+import qualified XMonad.StackSet                  as W
 
 myTerminal = "x-terminal-emulator"
 
@@ -86,7 +88,7 @@ myLogHook = return ()
 
 myStartupHook = return ()
 
-main = xmonad $ docks defaults
+main = xmonad $ docks $ ewmh $ pagerHints defaults
 
 defaults =
   def
