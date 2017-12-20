@@ -2,6 +2,7 @@ import           Data.Monoid
 import           System.Exit
 import           XMonad
 import           XMonad.Actions.PhysicalScreens
+import           XMonad.Hooks.ManageDocks
 
 import qualified Data.Map                       as M
 import qualified XMonad.StackSet                as W
@@ -70,7 +71,7 @@ myMouseBindings XConfig {XMonad.modMask = modm} =
       , \w -> focus w >> mouseResizeWindow w >> windows W.shiftMaster)
     ]
 
-myLayout = tiled ||| Mirror tiled ||| Full
+myLayout = avoidStruts (tiled ||| Mirror tiled ||| Full)
   where
     tiled = Tall nmaster delta ratio
     nmaster = 1
@@ -85,7 +86,7 @@ myLogHook = return ()
 
 myStartupHook = return ()
 
-main = xmonad defaults
+main = xmonad $ docks defaults
 
 defaults =
   def
