@@ -1,9 +1,10 @@
 import           Data.Monoid
 import           System.Exit
 import           XMonad
+import           XMonad.Actions.PhysicalScreens
 
-import qualified Data.Map        as M
-import qualified XMonad.StackSet as W
+import qualified Data.Map                       as M
+import qualified XMonad.StackSet                as W
 
 myTerminal = "x-terminal-emulator"
 
@@ -50,9 +51,14 @@ myKeys conf@XConfig {XMonad.modMask = modm} =
   | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
   , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]
   ] ++
-  [ ((m .|. modm, key), screenWorkspace sc >>= flip whenJust (windows . f))
+  [ ((modm, xK_a), onPrevNeighbour W.view)
+  , ((modm, xK_o), onNextNeighbour W.view)
+  , ((modm .|. shiftMask, xK_a), onPrevNeighbour W.shift)
+  , ((modm .|. shiftMask, xK_o), onNextNeighbour W.shift)
+  ] ++
+  [ ((modm .|. mask, key), f sc)
   | (key, sc) <- zip [xK_w, xK_e, xK_r] [0 ..]
-  , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]
+  , (f, mask) <- [(viewScreen, 0), (sendToScreen, shiftMask)]
   ]
 
 myMouseBindings XConfig {XMonad.modMask = modm} =
