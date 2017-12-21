@@ -86,7 +86,7 @@ if v:version >= 800
     \   'haskell': [
     \       'hfmt',
     \   ],
-     \   'python': [
+    \   'python': [
     \       'isort',
     \       'yapf',
     \   ],
