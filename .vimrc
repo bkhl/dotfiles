@@ -129,14 +129,16 @@ command! W :execute ':silent w !sudo tee % > /dev/null' | :edit!
 syntax on
 
 " Colour scheme
+set background=dark
 let terminal_env = $TERM
-if terminal_env =~ '^\(xterm\|screen\)\(\-256color\)\=$'
+if terminal_env =~ '^xterm\(\-256color\)\=$'
     set t_Co=256
 endif
-
-set background=dark
-let base16colorspace=256
-colorscheme base16-bright
+if has("gui_running") || (&t_Co == 256)
+    let base16colorspace=256
+    colorscheme base16-bright
+    redraw
+endif
 
 " Disable menu bar
 set guioptions-=m
