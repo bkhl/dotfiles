@@ -28,14 +28,7 @@ bindsym XF86AudioLowerVolume exec amixer -D pulse -q sset Master 10%-
 bindsym XF86AudioMute exec amixer -D pulse -q sset Master toggle
 
 # Close window
-set $close "Close?"
-mode $close {
-    bindsym y kill, mode default
-    bindsym Return kill, mode default
-    bindsym n mode default
-    bindsym Escape mode default
-}
-bindsym $mod+Shift+q mode $close
+bindsym $mod+Shift+q kill
 
 # Start rofi
 bindsym $mod+space exec "rofi -modi drun,run,window -show drun"
