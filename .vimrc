@@ -90,6 +90,9 @@ if v:version >= 800
     \       'isort',
     \       'yapf',
     \   ],
+    \   'rust': [
+    \       'rustfmt',
+    \   ],
     \   'sh': [
     \       'shfmt',
     \   ],
