@@ -49,8 +49,8 @@ if [[ "$TERM" =~ ^xterm(-256color)?$ ]] && command -V gvim > /dev/null 2>&1; the
 fi
 
 # Colour scheme
-BASE16_SHELL=$HOME/.config/base16-shell/
-eval "$($BASE16_SHELL/profile_helper.sh)"
+BASE16_SHELL="${HOME}/.config/base16-shell"
+eval "$("${BASE16_SHELL}"/profile_helper.sh)"
 base16_bright
 
 # Prompt
