@@ -21,7 +21,7 @@ remote_home="$(ssh ${DESTINATION} printenv HOME)/${USER}"
 
 chmod 755 "${local_tmp}"
 
-for f in .bash .bash_profile .bashrc .gitconfig .hgrc .inputrc .profile .screenrc .vim .vimrc ; do
+for f in .bash .bash_profile .bashrc .config/base16-shell .gitconfig .hgrc .inputrc .profile .screenrc .vim .vimrc ; do
     mkdir -p "${local_tmp}/$(dirname ${f})"
     ln -sT "${HOME}/${f}" "${local_tmp}/${f}"
 done

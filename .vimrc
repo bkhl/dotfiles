@@ -60,6 +60,9 @@ nnoremap <silent> <leader>g :TestVisit<CR>
 " Language syntax support
 Plugin 'sheerun/vim-polyglot'
 
+" Colour scheme
+Plugin 'chriskempson/base16-vim'
+
 " Code completion
 if v:version > 704
     Plugin 'prabirshrestha/async.vim'
@@ -112,6 +115,7 @@ call vundle#end()
 filetype plugin indent on
 " END Vundle final configuration
 
+
 " Show buffers
 nnoremap <silent> <A-b> :<C-u>buffers<CR>
 
@@ -125,16 +129,9 @@ command! W :execute ':silent w !sudo tee % > /dev/null' | :edit!
 syntax on
 
 " Colour scheme
-let terminal_env = $TERM
-if terminal_env =~ '^xterm\(-256color\)$'
-    set t_Co=256
-endif
-if has("gui_running")
-  colorscheme koehler
-else
-  set background=dark
-  colorscheme torte
-endif
+set background=dark
+let base16colorspace=256
+colorscheme base16-bright
 
 " Disable menu bar
 set guioptions-=m
