@@ -95,7 +95,7 @@ client.focused_inactive #333333 #555555 #BBBBBB #484E50
 client.unfocused #333333 #333333 #888888 #398EE7
 client.urgent #2F343A #900000 #FFFFFF #900000
 
-hide_edge_borders none
+hide_edge_borders both
 
 # Start i3bar
 
