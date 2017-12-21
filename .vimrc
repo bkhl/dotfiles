@@ -129,6 +129,11 @@ command! W :execute ':silent w !sudo tee % > /dev/null' | :edit!
 syntax on
 
 " Colour scheme
+let terminal_env = $TERM
+if terminal_env =~ '^\(xterm\|screen\)\(\-256color\)\=$'
+    set t_Co=256
+endif
+
 set background=dark
 let base16colorspace=256
 colorscheme base16-bright
