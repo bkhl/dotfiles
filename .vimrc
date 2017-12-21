@@ -14,11 +14,11 @@ Plugin 'skywind3000/asyncrun.vim'
 
 " File tree navigator
 Plugin 'scrooloose/nerdtree'
-noremap <silent> <A-t> :NERDTreeToggle<CR>
+noremap <silent> <leader>f :NERDTreeToggle<CR>
 
 " Undo tree navigator
 Plugin 'mbbill/undotree'
-nnoremap <silent> <A-u> :UndotreeToggle<CR>
+nnoremap <silent> <leader>u :UndotreeToggle<CR>
 
 " Show buffers in command bar
 Plugin 'bling/vim-bufferline'
@@ -46,16 +46,16 @@ Plugin 'tpope/vim-commentary'
 
 " Ctags-based outline viewer
 Plugin 'majutsushi/tagbar'
-noremap <silent> <A-m> :TagbarToggle<CR>
+noremap <silent> <leader>m :TagbarToggle<CR>
 
 " Test runner
 Plugin 'janko-m/vim-test'
 let test#strategy = 'asyncrun'
-nnoremap <silent> <leader>t :TestNearest<CR>
-nnoremap <silent> <leader>T :TestFile<CR>
-nnoremap <silent> <leader>a :TestSuite<CR>
-nnoremap <silent> <leader>l :TestLast<CR>
-nnoremap <silent> <leader>g :TestVisit<CR>
+nnoremap <silent> <leader>tn :TestNearest<CR>
+nnoremap <silent> <leader>tf :TestFile<CR>
+nnoremap <silent> <leader>ts :TestSuite<CR>
+nnoremap <silent> <leader>tl :TestLast<CR>
+nnoremap <silent> <leader>tv :TestVisit<CR>
 
 " Language syntax support
 Plugin 'sheerun/vim-polyglot'
@@ -100,9 +100,9 @@ if v:version >= 800
     \       'shfmt',
     \   ],
     \}
-    nnoremap <silent> <A-f> :ALEFirst<CR>
-    nnoremap <silent> <A-n> :ALENext<CR>
-    nnoremap <silent> <leader>o :ALEFix<CR>
+    nnoremap <silent> <leader>lf :ALEFirst<CR>
+    nnoremap <silent> <leader>ln :ALENext<CR>
+    nnoremap <silent> <leader>lo :ALEFix<CR>
 else
     Plugin 'scrooloose/syntastic'
 endif
@@ -117,10 +117,10 @@ filetype plugin indent on
 
 
 " Show buffers
-nnoremap <silent> <A-b> :<C-u>buffers<CR>
+nnoremap <silent> <leader>b :<C-u>buffers<CR>
 
 " Open quickfix window
-nnoremap <silent> <A-q> :copen<CR>
+nnoremap <silent> <leader>q :copen<CR>
 
 " Save file as root
 command! W :execute ':silent w !sudo tee % > /dev/null' | :edit!
