@@ -19,6 +19,9 @@ bindsym $mod+Shift+f exec thunar
 # Log out
 bindsym Control+Mod1+Delete exec xfce4-session-logout
 
+# Lock
+bindsym $mod+Control+l exec xflock4
+
 # Pick a new screen layout
 bindsym $mod+Shift+s exec screenlayout-menu
 
