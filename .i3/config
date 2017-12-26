@@ -196,4 +196,4 @@ assign [class="^Slack$"] $workspace_im
 set $workspace_vm VM
 bindsym $mod+b workspace $workspace_vm
 bindsym $mod+Shift+b move container to workspace $workspace_vm
-assign [class="^VirtualBox$"] $workspace_vm
+assign [class="^VirtualBox"] $workspace_vm
