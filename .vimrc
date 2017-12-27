@@ -64,22 +64,10 @@ Plugin 'sheerun/vim-polyglot'
 Plugin 'chriskempson/base16-vim'
 
 " Code completion
-if v:version > 704
-    Plugin 'prabirshrestha/async.vim'
-    Plugin 'prabirshrestha/vim-lsp'
-    Plugin 'prabirshrestha/asyncomplete.vim'
-    Plugin 'prabirshrestha/asyncomplete-lsp.vim'
-    if executable('pyls')
-        au User lsp_setup call lsp#register_server({
-            \ 'name': 'pyls',
-            \ 'cmd': {server_info->['pyls']},
-            \ 'whitelist': ['python'],
-            \ })
-    endif
-    inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-    inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-    inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
-    imap <c-space> <Plug>(asyncomplete_force_refresh)
+if v:version > 704 || (v:version == 704 && has('patch1578'))
+    Plugin 'Valloric/YouCompleteMe'
+    let g:AutoClosePumvisible = {"ENTER": "", "ESC": ""}
+    nnoremap <silent> gd :YcmCompleter GoTo<CR>
 endif
 
 " Syntax error highlighters
