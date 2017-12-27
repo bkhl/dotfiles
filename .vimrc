@@ -73,6 +73,13 @@ endif
 " Syntax error highlighters
 if v:version >= 800
     Plugin 'w0rp/ale'
+
+    let g:ale_linters = {
+    \   'rust': [
+    \       'cargo', 'rustc'
+    \   ],
+    \}
+
     let g:ale_fixers = {
     \   'haskell': [
     \       'hfmt',
@@ -88,9 +95,14 @@ if v:version >= 800
     \       'shfmt',
     \   ],
     \}
-    nnoremap <silent> <leader>lf :ALEFirst<CR>
-    nnoremap <silent> <leader>ln :ALENext<CR>
-    nnoremap <silent> <leader>lo :ALEFix<CR>
+
+    let g:ale_rust_rustfmt_executable = 'rustup'
+    let g:ale_rust_rustfmt_options = 'run nightly rustfmt'
+
+    nmap <silent> <leader>lf <Plug>(ale_first)
+    nmap <silent> <leader>ln <Plug>(ale_next_wrap)
+    nmap <silent> <leader>lp <Plug>(ale_previous_wrap)
+    nmap <silent> <leader>lo <Plug>(ale_fix)
 else
     Plugin 'scrooloose/syntastic'
 endif
