@@ -115,7 +115,6 @@ call vundle#end()
 filetype plugin indent on
 " END Vundle final configuration
 
-
 " Show buffers
 nnoremap <silent> <leader>b :<C-u>buffers<CR>
 
