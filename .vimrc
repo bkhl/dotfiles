@@ -74,12 +74,6 @@ endif
 if v:version >= 800
     Plugin 'w0rp/ale'
 
-    let g:ale_linters = {
-    \   'rust': [
-    \       'cargo', 'rustc'
-    \   ],
-    \}
-
     let g:ale_fixers = {
     \   'haskell': [
     \       'hfmt',
