@@ -85,8 +85,10 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-# Colours and style
+# Window decorations
+new_window pixel
 
+# Colours and style
 exec_always --no-startup-id "xsetroot -solid '#333333'"
 client.focused #888888 #DDDDDD #222222 #398EE7
 client.focused_inactive #333333 #555555 #BBBBBB #484E50
@@ -94,7 +96,6 @@ client.unfocused #333333 #333333 #888888 #398EE7
 client.urgent #2F343A #900000 #FFFFFF #900000
 
 # Start i3bar
-
 bar {
   status_command i3blocks
   tray_output primary
@@ -108,12 +109,6 @@ bar {
     urgent_workspace #900000 #900000 #ffffff
   }
 }
-
-
-###
-# Application preferences
-
-for_window [class="Gnome-terminal"] border pixel
 
 
 ###
