@@ -113,6 +113,12 @@ bar {
 
 
 ###
+# Application preferences
+
+for_window [class="Gnome-terminal"] border pixel
+
+
+###
 # Workspaces
 
 # Workspace 1

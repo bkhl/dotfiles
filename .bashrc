@@ -71,29 +71,4 @@ fi
 # Prompt
 PS1='$(r=$?; if [[ $r != 0 ]]; then echo "?:$r "; fi)$(_get_git_branch)\u@\h \w\$ '
 
-# Set window titles
-case "${TERM}" in
-    xterm*|*rxvt*)
-        # Get from https://github.com/rcaloras/bash-preexec
-        if [[ -e "${HOME}/.bash/bash-preexec.sh" ]] && command -V xtitle > /dev/null 2>&1; then
-            source "${HOME}/.bash/bash-preexec.sh"
-            if [[ ${UID} = 0 ]]; then
-                PROMPT_CHARACTER='#'
-            else
-                PROMPT_CHARACTER='$'
-            fi
-            get_title() {
-                echo "${USER}@${HOSTNAME} ${PWD/#${HOME}/\~}${PROMPT_CHARACTER}";
-            }
-            precmd() {
-                xtitle -t "$(get_title)"
-            }
-            preexec() {
-                xtitle -t "$(get_title) $1"
-            }
-        else
-            PS1="\[\033]0;\u@\h \w\$\007\]${PS1}"
-        fi
-esac
-
 # vi: ts=4 et
