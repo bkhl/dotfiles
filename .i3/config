@@ -87,7 +87,7 @@ bindsym $mod+r mode "resize"
 
 # Window decorations
 new_window pixel
-hide_edge_borders both
+hide_edge_borders smart
 
 # Colours and style
 exec_always --no-startup-id "xsetroot -solid '#333333'"
