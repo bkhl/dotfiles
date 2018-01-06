@@ -1,5 +1,11 @@
+""""
 " Keyboard map leader
+
 let mapleader = ","
+
+
+""""
+" Plugin configuration
 
 " BEGIN Vundle preliminary configuration
 set nocompatible
@@ -26,7 +32,7 @@ Plugin 'bling/vim-bufferline'
 " Navigate and manage surrounding character pairs
 Plugin 'tpope/vim-surround'
 
-" Git wrapper
+" Git integration
 if executable('git')
     Plugin 'tpope/vim-fugitive'
 endif
@@ -70,7 +76,7 @@ if v:version > 704 || (v:version == 704 && has('patch1578'))
     nnoremap <silent> gd :YcmCompleter GoTo<CR>
 endif
 
-" Syntax error highlighters
+" Linting
 if v:version >= 800
     Plugin 'w0rp/ale'
 
@@ -109,17 +115,9 @@ call vundle#end()
 filetype plugin indent on
 " END Vundle final configuration
 
-" Show buffers
-nnoremap <silent> <leader>b :<C-u>buffers<CR>
 
-" Open quickfix window
-nnoremap <silent> <leader>q :copen<CR>
-
-" Save file as root
-command! W :execute ':silent w !sudo tee % > /dev/null' | :edit!
-
-" Syntax highlighting
-syntax on
+""""
+" Appearance
 
 " Colour scheme
 set background=dark
@@ -133,6 +131,9 @@ if has("gui_running") || (&t_Co == 256)
 endif
 redraw
 
+" Syntax highlighting
+syntax on
+
 " Disable menu bar
 set guioptions-=m
 
@@ -145,13 +146,6 @@ set guioptions-=T
 " Set GUI font
 set guifont=Monospace\ 10
 
-" Backup and swap file directories
-set backupdir=~/.vimtmp,.
-set directory=~/.vimtmp,.
-
-" Hide buffer when abandonded
-set hidden
-
 " Hidden characters
 set list
 set listchars=trail:·,tab:→-
@@ -162,6 +156,21 @@ if exists('+relativenumber')
     set relativenumber
 endif
 
+" Status line
+set laststatus=2
+set statusline=%n\ %f\ %h%w%m%r\ %=%(%l,%c%V\ %=\ %L%)"""
+
+
+""""
+" Behaviour
+
+" Backup and swap file directories
+set backupdir=~/.vimtmp,.
+set directory=~/.vimtmp,.
+
+" Hide buffer when abandonded
+set hidden
+
 " Allow setting Vim options in modelines
 set modeline
 
@@ -171,15 +180,32 @@ set shiftwidth=4
 set tabstop=4
 set expandtab
 
-" Status line
-set laststatus=2
-set statusline=%n\ %f\ %h%w%m%r\ %=%(%l,%c%V\ %=\ %L%)"""
-
 " Persistent undo
 if has("persistent_undo")
     set undodir=~/.vimundo/
     set undofile
 endif
+
+
+""""
+" Custom commands
+
+" Save file as root
+command! W :execute ':silent w !sudo tee % > /dev/null' | :edit!
+
+
+""""
+" Key bindings
+
+" Open quickfix window
+nnoremap <silent> <leader>q :copen<CR>
+
+" Show buffers
+nnoremap <silent> <leader>b :<C-u>buffers<CR>
+
+
+""""
+" File type specific settings
 
 " Makefile
 autocmd FileType make setlocal noexpandtab
