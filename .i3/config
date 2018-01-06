@@ -87,13 +87,14 @@ bindsym $mod+r mode "resize"
 
 # Window decorations
 new_window pixel
+hide_edge_borders both
 
 # Colours and style
 exec_always --no-startup-id "xsetroot -solid '#333333'"
-client.focused #888888 #DDDDDD #222222 #398EE7
-client.focused_inactive #333333 #555555 #BBBBBB #484E50
-client.unfocused #333333 #333333 #888888 #398EE7
-client.urgent #2F343A #900000 #FFFFFF #900000
+client.focused #888888 #dddddd #222222 #398ee7
+client.focused_inactive #333333 #555555 #bbbbbb #484e50
+client.unfocused #333333 #333333 #888888 #398ee7
+client.urgent #2f343a #900000 #ffffff #900000
 
 # Start i3bar
 bar {
