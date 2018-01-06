@@ -85,9 +85,6 @@ if v:version >= 800
     \   'rust': [
     \       'rustfmt',
     \   ],
-    \   'sh': [
-    \       'shfmt',
-    \   ],
     \}
 
     let g:ale_rust_rustfmt_executable = 'rustup'
