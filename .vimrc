@@ -186,6 +186,11 @@ if has("persistent_undo")
     set undofile
 endif
 
+" Ignore comment leader when joining lines
+if v:version > 703 || v:version == 703 && has('patch541')
+  set formatoptions+=j
+endif
+
 
 """"
 " Custom commands
