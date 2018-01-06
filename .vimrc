@@ -7,7 +7,7 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
-" BEGIN Vundle preliminary configuration
+" END Vundle preliminary configuration
 
 " Run shell commands asynchronously
 Plugin 'skywind3000/asyncrun.vim'
