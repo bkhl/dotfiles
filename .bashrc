@@ -60,7 +60,10 @@ fi
 # Function for getting current git branch, to show in prompt
 if command -V git > /dev/null 2>&1; then
     _get_git_branch() {
-        git branch 2> /dev/null | sed '/^[^*]/d; s/* \(.*\)/(\1) /'
+        branch=$(git branch 2> /dev/null | sed '/^[^*]/d; s/* \(.*\)/\1/')
+        if [[ $branch != master ]]; then
+            echo "(${branch}) "
+        fi
     }
 else
     _get_git_branch() {
