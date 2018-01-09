@@ -7,7 +7,7 @@ let mapleader = ","
 """"
 " Plugin configuration
 
-call plug#begin('~/.vim/plugged')
+silent! call plug#begin('~/.vim/plugged')
 
 " Run shell commands asynchronously
 Plug 'skywind3000/asyncrun.vim'
