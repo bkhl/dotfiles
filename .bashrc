@@ -61,7 +61,7 @@ fi
 if command -V git > /dev/null 2>&1; then
     _get_git_branch() {
         branch=$(git branch 2> /dev/null | sed '/^[^*]/d; s/* \(.*\)/\1/')
-        if [[ $branch != master ]]; then
+        if [[ $branch != master && $branch != '' ]]; then
             echo "(${branch}) "
         fi
     }
