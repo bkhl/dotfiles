@@ -8,6 +8,11 @@ if [ -n $HOME/.profile ]; then
     source $HOME/.profile
 fi
 
+# Load SDKMAN! environment
+if [ -e "$HOME/opt/sdkman/bin/sdkman-init.sh" ]; then
+    source "$HOME/opt/sdkman/bin/sdkman-init.sh"
+fi
+
 # Always read ~/.bashrc for interactive shells
 if [ -n "$BASH" ]; then
     case $- in

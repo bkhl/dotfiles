@@ -37,6 +37,9 @@ export ARBZRUSER=bnl
 # Go
 export GOPATH="$HOME/opt/go"
 
+# Java
+export SDKMAN_DIR="$HOME/opt/sdkman"
+
 # Python
 export PYTHONUSERBASE="$HOME/opt/python"
 
