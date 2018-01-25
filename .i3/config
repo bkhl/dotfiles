@@ -1,5 +1,5 @@
 # Font
-font pango:Noto Sans Bold 8
+font pango:Noto Sans Bold 9
 
 # Focus behaviour
 focus_follows_mouse no

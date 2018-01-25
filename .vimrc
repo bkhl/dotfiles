@@ -132,7 +132,7 @@ set guioptions-=r
 set guioptions-=T
 
 " Set GUI font
-set guifont=Monospace\ 10
+set guifont=Monospace\ 11
 
 " Hidden characters
 set list
