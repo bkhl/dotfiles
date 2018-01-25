@@ -57,21 +57,7 @@ if alias base16_bright > /dev/null 2>&1; then
     base16_bright
 fi
 
-# Function for getting current git branch, to show in prompt
-if command -V git > /dev/null 2>&1; then
-    _get_git_branch() {
-        branch=$(git branch 2> /dev/null | sed '/^[^*]/d; s/* \(.*\)/\1/')
-        if [[ $branch != master && $branch != '' ]]; then
-            echo "(${branch}) "
-        fi
-    }
-else
-    _get_git_branch() {
-        :
-    }
-fi
-
 # Prompt
-PS1='$(r=$?; if [[ $r != 0 ]]; then echo "?:$r "; fi)$(_get_git_branch)\u@\h \w\$ '
+PS1='$(r=$?; if [[ $r != 0 ]]; then echo "?:$r "; fi)\u@\h \w\$ '
 
 # vi: ts=4 et
