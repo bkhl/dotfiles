@@ -6,7 +6,8 @@ fi
 # Read ~/.profile
 if [[ -e "$HOME/.profile" ]]; then
     source "$HOME/.profile"
-fi 
+fi
+
 # Load SDKMAN! environment
 if [[ -e "$HOME/opt/sdkman/bin/sdkman-init.sh" ]]; then
     source "$HOME/opt/sdkman/bin/sdkman-init.sh"
