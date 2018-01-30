@@ -39,6 +39,9 @@ export GOPATH="$HOME/opt/go"
 
 # Java
 export SDKMAN_DIR="$HOME/opt/sdkman"
+if [ -n "$BASH" -a -e "$HOME/opt/sdkman/bin/sdkman-init.sh" ]; then
+    . "$HOME/opt/sdkman/bin/sdkman-init.sh"
+fi
 
 # Python
 export PYTHONUSERBASE="$HOME/opt/python"
