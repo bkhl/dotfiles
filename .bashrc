@@ -60,4 +60,9 @@ fi
 # Prompt
 PS1='$(r=$?; if [[ $r != 0 ]]; then echo "?:$r "; fi)\u@\h \w\$ '
 
+# Java
+if [[ -e "${HOME}/opt/sdkman/bin/sdkman-init.sh" ]]; then
+    source "${HOME}/opt/sdkman/bin/sdkman-init.sh"
+fi
+
 # vi: ts=4 et
