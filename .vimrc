@@ -12,14 +12,6 @@ silent! call plug#begin('~/.vim/plugged')
 " Run shell commands asynchronously
 Plug 'skywind3000/asyncrun.vim'
 
-" File tree navigator
-Plug 'scrooloose/nerdtree'
-noremap <silent> <leader>f :NERDTreeToggle<CR>
-
-" Undo tree navigator
-Plug 'mbbill/undotree'
-nnoremap <silent> <leader>u :UndotreeToggle<CR>
-
 " Show buffers in command bar
 Plug 'bling/vim-bufferline'
 
@@ -43,19 +35,6 @@ Plug 'Townk/vim-autoclose'
 
 " Comment/uncomment
 Plug 'tpope/vim-commentary'
-
-" Ctags-based outline viewer
-Plug 'majutsushi/tagbar'
-noremap <silent> <leader>m :TagbarToggle<CR>
-
-" Test runner
-Plug 'janko-m/vim-test'
-let test#strategy = 'asyncrun'
-nnoremap <silent> <leader>tn :TestNearest<CR>
-nnoremap <silent> <leader>tf :TestFile<CR>
-nnoremap <silent> <leader>ts :TestSuite<CR>
-nnoremap <silent> <leader>tl :TestLast<CR>
-nnoremap <silent> <leader>tv :TestVisit<CR>
 
 " Language syntax support
 Plug 'sheerun/vim-polyglot'
