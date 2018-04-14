@@ -1,4 +1,4 @@
-# Font
+#Font
 font pango:Noto Sans Bold 9
 
 # Focus behaviour
@@ -191,3 +191,9 @@ bindsym $mod+Shift+i move container to workspace $workspace_im
 assign [class="^Signal$"] $workspace_im
 assign [class="^Sky$"] $workspace_im
 assign [class="^Skype$"] $workspace_im
+
+# Workspace IDE
+set $workspace_ide IDE
+bindsym $mod+e workspace $workspace_ide
+bindsym $mod+Shift+e move container to workspace $workspace_ide
+assign [class="^jetbrains-idea$"] $workspace_ide
