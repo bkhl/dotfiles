@@ -48,15 +48,6 @@ if [[ "$TERM" =~ ^xterm(-256color)?$ ]] && command -V gvim > /dev/null 2>&1; the
     }
 fi
 
-# Colour scheme
-if [[ "${TERM}" =~ ^xterm(-256color)?$ ]]; then
-    BASE16_SHELL="${HOME}/.config/base16-shell"
-    eval "$("${BASE16_SHELL}"/profile_helper.sh)"
-fi
-if alias base16_bright > /dev/null 2>&1; then
-    base16_bright
-fi
-
 # Prompt
 PS1='$(r=$?; if [[ $r != 0 ]]; then echo "?:$r "; fi)\u@\h \w\$ '
 

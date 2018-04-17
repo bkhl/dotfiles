@@ -39,9 +39,6 @@ Plug 'tpope/vim-commentary'
 " Language syntax support
 Plug 'sheerun/vim-polyglot'
 
-" Colour scheme
-Plug 'chriskempson/base16-vim'
-
 " Code completion
 if v:version > 704 || (v:version == 704 && has('patch1578'))
     Plug 'Valloric/YouCompleteMe'
@@ -88,15 +85,7 @@ call plug#end()
 
 " Colour scheme
 set background=dark
-let terminal_env = $TERM
-if terminal_env =~ '^xterm\(\-256color\)\=$'
-    set t_Co=256
-endif
-if has("gui_running") || (&t_Co == 256)
-    let base16colorspace=256
-    colorscheme base16-bright
-endif
-redraw
+colorscheme torte
 
 " Syntax highlighting
 syntax on
