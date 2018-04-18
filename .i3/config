@@ -172,12 +172,6 @@ bindsym $mod+Shift+w move container to workspace $workspace_www
 assign [class="^Firefox$"] $workspace_www
 assign [class="^Google-chrome$"] $workspace_www
 
-# Workspace Mail
-set $workspace_mail Mail
-bindsym $mod+m workspace $workspace_mail
-bindsym $mod+Shift+m move container to workspace $workspace_mail
-assign [class="^Thunderbird$"] $workspace_mail
-
 # Workspace VM
 set $workspace_vm VM
 bindsym $mod+b workspace $workspace_vm
