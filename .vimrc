@@ -85,7 +85,11 @@ call plug#end()
 
 " Colour scheme
 set background=dark
-colorscheme torte
+if has("gui_running")
+    colorscheme koehler
+else
+    colorscheme default
+endif
 
 " Syntax highlighting
 syntax on
