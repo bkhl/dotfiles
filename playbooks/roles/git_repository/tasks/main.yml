@@ -1,0 +1,84 @@
+# vim:ft=ansible
+
+- name: Get user name
+  set_fact:
+    remote_git_user: "{{ ansible_user | default(lookup('env', 'USER')) }}"
+
+- name: Find local git repository
+  local_action: command git remote get-url origin
+  register: git_local_origin
+  changed_when: false
+
+- name: Create remote home directory
+  file:
+    path: '{{ remote_home }}'
+    mode: 0755
+    state: directory
+
+- name: Create temporary bare repository
+  tempfile:
+    state: directory
+    suffix: .git
+  register: temporary_git_repository
+
+- name: Initialize temporary bare repository
+  command: git init --bare
+  args:
+    chdir: '{{ temporary_git_repository.path }}'
+
+- name: Push to temporary repository
+  local_action: command git push ssh://{{ remote_git_user }}@{{ ansible_host }}:{{ ansible_ssh_port }}/{{ temporary_git_repository.path }}/ master:master
+
+- name: Check if there is a repository in the home directory
+  stat:
+    path: '{{ remote_home }}/.git'
+  register: git_path
+
+- when: git_path.stat.exists
+  block:
+
+  - name: Check remote origin
+    command: git remote get-url --all origin
+    args:
+      chdir: '{{ remote_home }}'
+    register: git_origin
+    changed_when: false
+
+  - fail:
+      msg: Repository already exists, with wrong origin.
+    when: git_origin.stdout != git_local_origin.stdout
+
+- when: not git_path.stat.exists
+  block:
+    - name: Initialize repository in home directory
+      command: '{{ item }}'
+      args:
+        chdir: '{{ remote_home }}'
+      with_items:
+        - git init
+        - git remote add origin {{ git_local_origin.stdout }}
+
+    - name: Get list of files in Git repository
+      command: git ls-tree --full-tree -r HEAD --name-only
+      args:
+        chdir: '{{ temporary_git_repository.path  }}'
+      register: git_managed_files
+
+    - name: Remove conflicting files
+      file:
+        path: '{{ remote_home }}/{{ item  }}'
+        state: absent
+      with_items:
+        - '{{ git_managed_files.stdout_lines }}'
+
+- name: Pull from temporary bare repository
+  command: git pull {{ temporary_git_repository.path }}
+  args:
+    chdir: '{{ remote_home }}'
+  register: git_pull_result
+  changed_when: git_pull_result.stdout != 'Already up-to-date.'
+
+- name: Remove temporary bare repository
+  file:
+    path: '{{ temporary_git_repository.path }}'
+    state: absent

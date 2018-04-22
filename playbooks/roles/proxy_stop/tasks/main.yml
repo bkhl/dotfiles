@@ -1,0 +1,21 @@
+# vim:ft=ansible
+
+- name: Check for SSH socket
+  local_action: stat path=ssh.socket
+  register: ssh_socket_stat
+
+- name: Stop SSH tunnel
+  when: ssh_socket_stat.stat.issock is defined and ssh_socket_stat.stat.issock
+  local_action: command ssh -S ssh.socket -O exit {{ ansible_user }}@{{ ansible_host }}
+
+- name: Check for Tinyproxy PID file
+  local_action: stat path=tinyproxy.pid
+  register: tinyproxy_pid_stat
+
+- name: Stop Tinyproxy
+  when: tinyproxy_pid_stat.stat.isreg is defined and tinyproxy_pid_stat.stat.isreg
+  vars:
+    tinyproxy_pid: "{{ lookup('file', 'tinyproxy.pid') }}"
+  block:
+    - local_action: command kill {{ tinyproxy_pid }}
+    - local_action: file path='tinyproxy.pid' state=absent

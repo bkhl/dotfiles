@@ -1,0 +1,7 @@
+# vim:ft=ansible
+
+- hosts: all
+  roles:
+    - proxy_start
+    - git_repository
+    - proxy_stop

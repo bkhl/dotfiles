@@ -1,1 +1,3 @@
-home_directory: "{{ lookup('env', 'HOME') }}"
+local_user: "{{ lookup('env', 'USER') }}"
+local_home: "{{ lookup('env', 'HOME') }}"
+remote_home: '{{ ansible_env.HOME }}/{{ local_user }}'

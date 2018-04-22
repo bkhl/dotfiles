@@ -1,0 +1,16 @@
+# vim:ft=ruby
+
+Vagrant.configure('2') do |config|
+  config.vm.box = 'ubuntu/bionic64'
+
+  config.vm.provider 'virtualbox'
+
+  config.vm.provision 'vagrant', type:'ansible' do |ansible|
+      ansible.playbook = 'vagrant.yml'
+  end
+
+  config.vm.provision 'homepush', type:'ansible' do |ansible|
+      ansible.playbook = 'homepush.yml'
+      ansible.verbose = true
+  end
+end

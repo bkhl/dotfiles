@@ -1,0 +1,30 @@
+# vim:ft=ansible
+
+- hosts: all
+  become: true
+  gather_facts: false
+  tasks:
+    - name: Check if Python is available
+      raw: command -V python
+      register: python_check_result
+      ignore_errors: true
+      changed_when: false
+
+    - name: Install Python
+      raw: apt install -y python-minimal
+      when: python_check_result.rc != 0
+
+- hosts: all
+  gather_facts: false
+  tasks:
+    - name: Find SSH public keys
+      local_action: find paths="{{ lookup('env', 'HOME') }}/.ssh" pattern='*.pub'
+      register: ssh_public_keys
+
+    - name: Add SSH keys to authorized keys in Vagrant
+      authorized_key:
+        user: "{{ ansible_user | default(lookup('env', 'USER')) }}"
+        state: present
+        key: "{{ lookup('file', item.path) }}"
+      with_items:
+        - '{{ ssh_public_keys.files }}'
