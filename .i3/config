@@ -182,6 +182,7 @@ assign [class="^VirtualBox"] $workspace_vm
 set $workspace_im IM
 bindsym $mod+i workspace $workspace_im
 bindsym $mod+Shift+i move container to workspace $workspace_im
+assign [class="^Hexchat$"] $workspace_im
 assign [class="^Signal$"] $workspace_im
 assign [class="^Sky$"] $workspace_im
 assign [class="^Skype$"] $workspace_im
