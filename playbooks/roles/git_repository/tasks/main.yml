@@ -1,5 +1,3 @@
-# vim:ft=ansible
-
 - name: Get user name
   set_fact:
     remote_git_user: "{{ ansible_user | default(lookup('env', 'USER')) }}"

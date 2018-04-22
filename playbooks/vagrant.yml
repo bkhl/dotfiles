@@ -1,5 +1,3 @@
-# vim:ft=ansible
-
 - hosts: all
   become: true
   gather_facts: false
