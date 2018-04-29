@@ -2,3 +2,4 @@
   roles:
     - desktop
     - python
+    - rust
