@@ -10,6 +10,5 @@
     clipboard_enabled_result.rc != 0
     and clipboard_enabled_result.stderr != "'clipboard-indicator@tudmotu.com' is already enabled."
 
-
 - name: Clipboard GNOME Shell extension reloaded
   command: gnome-shell-extension-tool --reload-extension=clipboard-indicator@tudmotu.com
