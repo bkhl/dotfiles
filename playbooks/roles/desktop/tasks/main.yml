@@ -1,0 +1,4 @@
+- name: Clipboard GNOME Shell extension checked out
+  git:
+    repo: https://github.com/Tudmotu/gnome-shell-extension-clipboard-indicator.git
+    dest: '{{ ansible_env.HOME }}/.local/share/gnome-shell/extensions/clipboard-indicator@tudmotu.com'
