@@ -1,3 +1,0 @@
-local_user: "{{ lookup('env', 'USER') }}"
-local_home: "{{ lookup('env', 'HOME') }}"
-home: '{{ ansible_env.HOME }}/{{ local_user }}'
