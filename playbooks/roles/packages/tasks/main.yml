@@ -1,0 +1,78 @@
+- name: Remove unused packages
+  apt:
+    name: '{{ item }}'
+    state: absent
+  with_items:
+    - gedit
+    - nano
+
+- name: Add packages
+  apt:
+    name: '{{ item }}'
+    state: latest
+  with_items:
+    # Applications
+    - hexchat
+    - mplayer
+    - mpv
+    - pinta
+    - quodlibet
+    - remmina
+    - simplescreenrecorder
+    - vim-gtk3
+    - virtualbox
+    - virtualbox-ext-pack
+    - virtualbox-qt
+
+    # Appearance
+    - fonts-hack
+    - fonts-noto
+    - gnome-tweak-tool
+
+    # Handy terminal tools
+    - curl
+    - jq
+    - mmv
+    - mosh
+    - pandoc
+    - rar
+    - unrar
+    - unzip
+    - tmux
+    - xmlstarlet
+    - zip
+
+    # Development tools
+    - bzr
+    - docker.io
+    - git
+    - libperl-critic-perl
+    - python-minimal
+    - python-pip
+    - python3-minimal
+    - python3-pip
+    - shellcheck
+    - sqlite3
+    - subversion
+    - vagrant
+
+    # System tools
+    - duply
+    - krb5-user
+
+    # My languages
+    - firefox-locale-en
+    - firefox-locale-sv
+    - firefox-locale-th
+    - language-pack-gnome-en
+    - language-pack-gnome-sv
+    - language-pack-gnome-th
+    - wamerican
+    - wbritish
+    - wswedish
+
+    # Necessary to install Ansible with pip
+    - libssl-dev
+
+    # Useful for scripts that need secrets
+    - libsecret-tools
