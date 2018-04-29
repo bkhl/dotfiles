@@ -1,4 +1,55 @@
-- name: Remove unused packages
+- name: Google Chrome APT key added
+  apt_key:
+    url: https://dl-ssl.google.com/linux/linux_signing_key.pub
+    id: 9534C9C4130B4DC9927992BF4F30B6B4C07CB649
+    state: present
+
+- name: Google Chrome repo enabled
+  apt_repository:
+    repo: deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main
+    filename: google-chrome
+    state: present
+
+- name: Skype APT key added
+  apt_key:
+    url: https://repo.skype.com/data/SKYPE-GPG-KEY
+    id: F60A017E3CA5558FAF2439556B4A0000A4EBB320
+    state: present
+
+- name: Skype repo enabled
+  apt_repository:
+    repo: deb [arch=amd64] https://repo.skype.com/deb stable main
+    filename: skype-stable
+    state: present
+
+- name: Sky APT key added
+  apt_key:
+    keyserver: keyserver.ubuntu.com
+    id: 07C8CCAFCE49F8C5
+
+- name: Sky repo enabled
+  apt_repository:
+    repo:  deb https://tel.red/repos/ubuntu bionic non-free
+    filename: sky
+    state: present
+
+- name: Signal APT key added
+  apt_key:
+    url:  https://updates.signal.org/desktop/apt/keys.asc
+    id: D980A17457F6FB06
+    state: present
+
+- name: Signal repo enabled
+  apt_repository:
+    repo: deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main
+    filename: signal
+    state: present
+
+- name: Update APT cache
+  apt:
+    update_cache: yes
+
+- name: Unused packages removed
   apt:
     name: '{{ item }}'
     state: absent
@@ -6,28 +57,40 @@
     - gedit
     - nano
 
-- name: Add packages
+- name: Packages added
   apt:
     name: '{{ item }}'
     state: latest
   with_items:
     # Applications
+    - calibre
+    - google-chrome-stable
     - hexchat
     - mplayer
     - mpv
     - pinta
     - quodlibet
     - remmina
+    - signal-desktop
     - simplescreenrecorder
+    - sky
+    - skypeforlinux
+    - usb-creator-gtk
     - vim-gtk3
     - virtualbox
-    - virtualbox-ext-pack
+    # - virtualbox-ext-pack  # https://bugs.launchpad.net/ubuntu/+source/virtualbox-ext-pack/+bug/1767402
     - virtualbox-qt
 
     # Appearance
     - fonts-hack
     - fonts-noto
     - gnome-tweak-tool
+
+    # Handy GUI tools
+    - xclip
+
+    # Games
+    - wesnoth
 
     # Handy terminal tools
     - curl
@@ -76,3 +139,9 @@
 
     # Useful for scripts that need secrets
     - libsecret-tools
+
+- name: Firefox set as default browser
+  alternatives:
+    name: x-www-browser
+    path: /usr/bin/firefox
+
