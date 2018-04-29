@@ -1,6 +1,6 @@
 - name: Get Python environment directory
   set_fact:
-    python_directory: '{{ home_directory }}/opt/python'
+    python_directory: '{{ home }}/opt/python'
 
 - name: Get Ansible path
   command: which ansible
@@ -32,7 +32,7 @@
     path: '{{ python_directory }}'
   with_items:
     - absent
-    - present
+    - directory
 
 - name: Install Python 3 packages
   pip:

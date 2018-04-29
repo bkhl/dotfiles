@@ -9,7 +9,7 @@
 
 - name: Create remote home directory
   file:
-    path: '{{ remote_home }}'
+    path: '{{ home }}'
     mode: 0755
     state: directory
 
@@ -29,7 +29,7 @@
 
 - name: Check if there is a repository in the home directory
   stat:
-    path: '{{ remote_home }}/.git'
+    path: '{{ home }}/.git'
   register: git_path
 
 - when: git_path.stat.exists
@@ -38,7 +38,7 @@
   - name: Check remote origin
     command: git remote get-url --all origin
     args:
-      chdir: '{{ remote_home }}'
+      chdir: '{{ home }}'
     register: git_origin
     changed_when: false
 
@@ -51,7 +51,7 @@
     - name: Initialize repository in home directory
       command: '{{ item }}'
       args:
-        chdir: '{{ remote_home }}'
+        chdir: '{{ home }}'
       with_items:
         - git init
         - git remote add origin {{ git_local_origin.stdout }}
@@ -64,7 +64,7 @@
 
     - name: Remove conflicting files
       file:
-        path: '{{ remote_home }}/{{ item  }}'
+        path: '{{ home }}/{{ item  }}'
         state: absent
       with_items:
         - '{{ git_managed_files.stdout_lines }}'
@@ -72,7 +72,7 @@
 - name: Pull from temporary bare repository
   command: git pull {{ temporary_git_repository.path }}
   args:
-    chdir: '{{ remote_home }}'
+    chdir: '{{ home }}'
   register: git_pull_result
   changed_when: git_pull_result.stdout != 'Already up-to-date.'
 
