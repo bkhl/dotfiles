@@ -2,3 +2,9 @@
   git:
     repo: https://github.com/Tudmotu/gnome-shell-extension-clipboard-indicator.git
     dest: '{{ ansible_env.HOME }}/.local/share/gnome-shell/extensions/clipboard-indicator@tudmotu.com'
+
+- name: Clipboard GNOME Shell extension enabled
+  command: gnome-shell-extension-tool --enable-extension=clipboard-indicator@tudmotu.com
+
+- name: Clipboard GNOME Shell extension reloaded
+  command: gnome-shell-extension-tool --reload-extension=clipboard-indicator@tudmotu.com
