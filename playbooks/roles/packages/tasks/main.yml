@@ -45,6 +45,16 @@
     filename: signal
     state: present
 
+- name: Pick APT key added
+  apt_key:
+    keyserver: keyserver.ubuntu.com
+    id: 0EDF8453E8783FF786AF6DED2D2F9F912F2229FF
+
+- name: Pick repo enabled
+  apt_repository:
+    repo: deb http://ppa.launchpad.net/sil/pick/ubuntu xenial main
+    filename: pick
+
 - name: Update APT cache
   apt:
     update_cache: yes
@@ -63,6 +73,8 @@
     state: latest
   with_items:
     # Applications
+    - anki
+    - audacity
     - calibre
     - google-chrome-stable
     - hexchat
@@ -87,6 +99,7 @@
     - gnome-tweak-tool
 
     # Handy GUI tools
+    - pick-colour-picker
     - xclip
 
     # Games
