@@ -175,3 +175,14 @@
   alternatives:
     name: x-www-browser
     path: /usr/bin/firefox
+
+- name: Global keyboard defaults set
+  lineinfile:
+    path: /etc/default/keyboard
+    regexp: '^{{ item.key }}='
+    line: '{{ item.key }}="{{ item.value }}"'
+  with_items:
+    - { key: 'XKBLAYOUT', value: 'us' }
+    - { key: 'XKBVARIANT', value: 'altgr-intl' }
+    - { key: 'XKBOPTIONS', value: 'compose:caps' }
+    - { key: 'BACKSPACE', value: 'guess'}
