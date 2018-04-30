@@ -47,3 +47,11 @@
         state: file
         mode: 0755
 
+- name: Check exercism configuration
+  command: exercism configure
+  register: exercism_config
+  changed_when: false
+
+- name: Exercism directory set
+  command: exercism configure --dir={{ ansible_env.HOME }}/Development/exercism
+  when: exercism_config.stdout is not search('--dir=' + ansible_env.HOME + '/Development/exercism')
