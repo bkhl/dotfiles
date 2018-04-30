@@ -1,0 +1,23 @@
+- name: TLP repo enabled
+  apt_repository:
+    repo: 'ppa:linrunner/tlp'
+    filename: tlp
+
+- name: Update APT cache
+  apt:
+    update_cache: yes
+
+- name: TLP packages installed
+  apt:
+    name: '{{ item }}'
+    state: latest
+  with_items:
+    - tlp
+    - tlp-rdw
+    - tp-smapi-dkms
+    - acpi-call-dkms
+
+- name: TLP service started
+  service:
+    name: tlp
+    state: started

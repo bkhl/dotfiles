@@ -1,4 +1,8 @@
 - hosts: all
-  become: yes
+  become: true
   roles:
     - base
+    - {
+        role: laptop,
+        when: ansible_product_version.startswith('ThinkPad'),
+      }
