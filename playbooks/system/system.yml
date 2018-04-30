@@ -2,7 +2,5 @@
   become: true
   roles:
     - base
-    - {
-        role: laptop,
-        when: ansible_product_version.startswith('ThinkPad'),
-      }
+    - role: laptop
+      when: ansible_product_version.startswith('ThinkPad')
