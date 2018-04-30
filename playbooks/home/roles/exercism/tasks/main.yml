@@ -1,0 +1,32 @@
+- name: Check for Exercism CLI client
+  stat:
+    path: '{{ ansible_env.HOME }}/bin/exercism'
+  register: exercism_check
+
+- when: exercism_check.stat.executable is not defined or not exercism_check.stat.executable
+  block:
+    - name: Download Exercism
+      get_url:
+        url: https://github.com/exercism/cli/releases/download/v2.4.1/exercism-linux-64bit.tgz
+        dest: /tmp/exercism-linux-64bit.tgz
+        checksum: sha256:bea54bee63105970ae75be889f78bece1377056e687eca59e6b32b9d58ea6502
+
+    - name: Unpack exercism
+      unarchive:
+        src: /tmp/exercism-linux-64bit.tgz
+        dest: '{{ ansible_env.HOME }}/bin/'
+
+    - name: Exercism CLI client is executable file
+      file:
+        path: '{{ ansible_env.HOME }}/bin/exercism'
+        state: file
+        mode: 0755
+
+- name: Check exercism configuration
+  command: exercism configure
+  register: exercism_config
+  changed_when: false
+
+- name: Exercism directory set
+  command: exercism configure --dir={{ ansible_env.HOME }}/Development/exercism
+  when: exercism_config.stdout is not search('--dir=' + ansible_env.HOME + '/Development/exercism')

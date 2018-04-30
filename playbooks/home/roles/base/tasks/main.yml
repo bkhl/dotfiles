@@ -1,79 +1,11 @@
-- name: Python psutils installed
-  tags: test
-  pip:
-    executable: pip2
-    extra_args: --user
-    name: psutil
-    state: present
+- import_tasks: keyboard.yml
+  tags:
+    - keyboard
 
-- name: Media keyboard shortcuts set
-  dconf:
-    key: '/org/gnome/settings-daemon/plugins/media-keys/{{ item.action }}'
-    value: "'{{ item.key }}'"
-  with_items:
-    - { action: 'terminal', key: '<Super>Return' }
+- import_tasks: gui_preferences.yml
+  tags:
+    - gui_preferences
 
-- name: Window manager keyboard shortcuts set
-  dconf:
-    key: '/org/gnome/desktop/wm/keybindings/{{ item.action }}'
-    value: "['{{ item.key }}']"
-  with_items:
-    - { action: 'toggle-fullscreen', key: '<Super>f' }
-
-- name: Check setting of click-to-minimize in dock
-  command: gsettings get org.gnome.shell.extensions.dash-to-dock click-action
-  register: click_to_minimize_check
-  ignore_errors: true
-  changed_when: false
-
-- name: Enable click-to-minimize in dock
-  when: click_to_minimize_check.stdout != "'minimize'"
-  command: gsettings set org.gnome.shell.extensions.dash-to-dock click-action 'minimize'
-
-- name: Clipboard GNOME Shell extension checked out
-  git:
-    repo: https://github.com/Tudmotu/gnome-shell-extension-clipboard-indicator.git
-    dest: '{{ ansible_env.HOME }}/.local/share/gnome-shell/extensions/clipboard-indicator@tudmotu.com'
-
-- name: Clipboard GNOME Shell extension enabled
-  command: gnome-shell-extension-tool --enable-extension=clipboard-indicator@tudmotu.com
-  register: clipboard_enabled_result
-  failed_when: >
-    clipboard_enabled_result.rc != 0
-    and clipboard_enabled_result.stderr != "'clipboard-indicator@tudmotu.com' is already enabled."
-
-- name: Clipboard GNOME Shell extension reloaded
-  command: gnome-shell-extension-tool --reload-extension=clipboard-indicator@tudmotu.com
-
-- name: Check for Exercism CLI client
-  stat:
-    path: '{{ ansible_env.HOME }}/bin/exercism'
-  register: exercism_check
-
-- when: exercism_check.stat.executable is not defined or exercism_check.stat.executable
-  block:
-    - name: Download Exercism
-      get_url:
-        url: https://github.com/exercism/cli/releases/download/v2.4.1/exercism-linux-64bit.tgz
-        dest: /tmp/exercism-linux-64bit.tgz
-        checksum: sha256:bea54bee63105970ae75be889f78bece1377056e687eca59e6b32b9d58ea6502
-
-    - name: Unpack exercism
-      unarchive:
-        src: /tmp/exercism-linux-64bit.tgz
-        dest: '{{ ansible_env.HOME }}/bin/'
-
-    - name: Exercism CLI client is executable file
-      file:
-        path: '{{ ansible_env.HOME }}/bin/exercism'
-        state: file
-        mode: 0755
-
-- name: Check exercism configuration
-  command: exercism configure
-  register: exercism_config
-  changed_when: false
-
-- name: Exercism directory set
-  command: exercism configure --dir={{ ansible_env.HOME }}/Development/exercism
-  when: exercism_config.stdout is not search('--dir=' + ansible_env.HOME + '/Development/exercism')
+- import_tasks: gnome_shell_extensions.yml
+  tags:
+    - gnome_shell_extensions

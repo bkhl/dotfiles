@@ -1,0 +1,21 @@
+- name: Python psutils installed
+  tags: test
+  pip:
+    executable: pip2
+    extra_args: --user
+    name: psutil
+    state: present
+
+- name: Media keyboard shortcuts set
+  dconf:
+    key: '/org/gnome/settings-daemon/plugins/media-keys/{{ item.action }}'
+    value: "'{{ item.key }}'"
+  with_items:
+    - { action: 'terminal', key: '<Super>Return' }
+
+- name: Window manager keyboard shortcuts set
+  dconf:
+    key: '/org/gnome/desktop/wm/keybindings/{{ item.action }}'
+    value: "['{{ item.key }}']"
+  with_items:
+    - { action: 'toggle-fullscreen', key: '<Super>f' }
