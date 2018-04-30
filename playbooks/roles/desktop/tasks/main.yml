@@ -1,3 +1,13 @@
+- name: Check setting of click-to-minimize in dock
+  command: gsettings get org.gnome.shell.extensions.dash-to-dock click-action
+  register: click_to_minimize_check
+  ignore_errors: true
+  changed_when: false
+
+- name: Enable click-to-minimize in dock
+  when: click_to_minimize_check.stdout != "'minimize'"
+  command: gsettings set org.gnome.shell.extensions.dash-to-dock click-action 'minimize'
+
 - name: Clipboard GNOME Shell extension checked out
   git:
     repo: https://github.com/Tudmotu/gnome-shell-extension-clipboard-indicator.git
