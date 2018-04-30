@@ -1,3 +1,20 @@
+- name: Ubuntu repositories enabled
+  apt_repository:
+    repo: '{{ item }}'
+    state: present
+  with_items:
+    - 'deb http://th.archive.ubuntu.com/ubuntu/ {{ ansible_distribution_release }} main restricted'
+    - 'deb http://th.archive.ubuntu.com/ubuntu/ {{ ansible_distribution_release }}-updates main restricted'
+    - 'deb http://th.archive.ubuntu.com/ubuntu/ {{ ansible_distribution_release }} universe'
+    - 'deb http://th.archive.ubuntu.com/ubuntu/ {{ ansible_distribution_release }}-updates universe'
+    - 'deb http://th.archive.ubuntu.com/ubuntu/ {{ ansible_distribution_release }} multiverse'
+    - 'deb http://th.archive.ubuntu.com/ubuntu/ {{ ansible_distribution_release }}-updates multiverse'
+    - 'deb http://th.archive.ubuntu.com/ubuntu/ {{ ansible_distribution_release }}-backports main restricted universe multiverse'
+    - 'deb http://security.ubuntu.com/ubuntu {{ ansible_distribution_release }}-security main restricted'
+    - 'deb http://security.ubuntu.com/ubuntu {{ ansible_distribution_release }}-security universe'
+    - 'deb http://security.ubuntu.com/ubuntu {{ ansible_distribution_release }}-security multiverse'
+    - 'deb http://archive.canonical.com/ubuntu {{ ansible_distribution_release }} partner'
+
 - name: Google Chrome APT key added
   apt_key:
     url: https://dl-ssl.google.com/linux/linux_signing_key.pub
@@ -29,7 +46,7 @@
 
 - name: Sky repo enabled
   apt_repository:
-    repo:  deb https://tel.red/repos/ubuntu bionic non-free
+    repo:  deb https://tel.red/repos/ubuntu {{ ansible_distribution_release }} non-free
     filename: sky
     state: present
 
@@ -158,4 +175,3 @@
   alternatives:
     name: x-www-browser
     path: /usr/bin/firefox
-
