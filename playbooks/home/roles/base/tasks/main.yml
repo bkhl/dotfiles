@@ -2,10 +2,6 @@
   tags:
     - keyboard
 
-- import_tasks: gui_preferences.yml
-  tags:
-    - gui_preferences
-
 - import_tasks: gnome_shell_extensions.yml
   tags:
     - gnome_shell_extensions
