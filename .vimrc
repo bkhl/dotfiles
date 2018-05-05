@@ -40,12 +40,12 @@ if &t_Co == 8 && $TERM !~# '^linux'
 endif
 
 " Colour scheme
-set background=dark
 if has("gui_running")
     colorscheme koehler
 else
     colorscheme default
 endif
+set background=dark
 
 " Disable menu bar
 set guioptions-=m
