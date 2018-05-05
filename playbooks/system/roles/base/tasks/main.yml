@@ -160,6 +160,17 @@
     - subversion
     - vagrant
 
+    # Network tools
+    - net-tools
+    - traceroute
+    - network-manager-openconnect-gnome
+    - network-manager-openvpn-gnome
+    - network-manager-vpnc-gnome
+
+    # Printing
+    - python3-smbc
+    - smbclient
+
     # System tools
     - duply
     - krb5-user
@@ -170,6 +181,7 @@
 
     # Useful for scripts that need secrets
     - libsecret-tools
+
 
 - name: Firefox set as default browser
   alternatives:
