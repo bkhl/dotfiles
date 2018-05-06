@@ -107,7 +107,7 @@
     - usb-creator-gtk
     - vim-gtk3
     - virtualbox
-    # - virtualbox-ext-pack  # https://bugs.launchpad.net/ubuntu/+source/virtualbox-ext-pack/+bug/1767402
+    - virtualbox-ext-pack
     - virtualbox-qt
 
     # Handy GUI tools
