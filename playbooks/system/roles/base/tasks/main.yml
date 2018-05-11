@@ -39,17 +39,6 @@
     filename: skype-stable
     state: present
 
-- name: Sky APT key added
-  apt_key:
-    keyserver: keyserver.ubuntu.com
-    id: 07C8CCAFCE49F8C5
-
-- name: Sky repo enabled
-  apt_repository:
-    repo:  deb https://tel.red/repos/ubuntu {{ ansible_distribution_release }} non-free
-    filename: sky
-    state: present
-
 - name: Signal APT key added
   apt_key:
     url:  https://updates.signal.org/desktop/apt/keys.asc
@@ -102,7 +91,6 @@
     - remmina
     - signal-desktop
     - simplescreenrecorder
-    - sky
     - skypeforlinux
     - usb-creator-gtk
     - vim-gtk3
