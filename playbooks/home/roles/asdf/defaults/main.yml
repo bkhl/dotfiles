@@ -1,0 +1,2 @@
+---
+asdf_command: '{{ ansible_env.HOME }}/opt/asdf/bin/asdf'

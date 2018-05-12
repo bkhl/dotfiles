@@ -164,8 +164,12 @@
     - krb5-user
     - ubuntu-restricted-addons
 
-    # Necessary to install Ansible with pip
+    # Ansible dependency
     - libssl-dev
+
+    # Erlang dependencies
+    - autoconf
+    - libncurses5-dev
 
     # Useful for scripts that need secrets
     - libsecret-tools

@@ -1,6 +1,8 @@
 - hosts: all
   roles:
-    - base
-    - exercism
-    - python
-    - rust
+    - { role: base, tags: [ base ] }
+    - { role: exercism, tags: [ exercism ] }
+    - { role: python, tags: [ python ] }
+    - { role: rust, tags: [ rust ] }
+    - { role: erlang, tags: [ erlang ] }
+    - { role: elixir, tags: [ elixir ] }

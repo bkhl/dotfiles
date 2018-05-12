@@ -1,0 +1,18 @@
+- name: Check if Erlang plugin installed
+  command: '{{ asdf_command }} list erlang'
+  register: erlang_check
+  ignore_errors: true
+
+- name: Erlang plugin installed
+  when: erlang_check.rc != 0
+  command: '{{ asdf_command }} plugin-add erlang'
+
+- name: Erlang plugin up to date
+  when: erlang_check.rc == 0
+  command: '{{ asdf_command }} plugin-update erlang'
+
+- name: Erlang 20.3 installed
+  command: '{{ asdf_command }} install erlang 20.3'
+
+- name: Erlang 20.3 activated
+  command: '{{ asdf_command }} global erlang 20.3'

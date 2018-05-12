@@ -21,7 +21,7 @@ export LC_TIME=sv_SE.UTF-8
 export NO_AT_BRIDGE=1
 
 # Path
-for d in $HOME/bin $HOME/opt/*/bin; do
+for d in $HOME/bin $HOME/opt/*/bin $HOME/opt/asdf/shims; do
     if [ -d "$d" ]; then
         PATH="$d${PATH:+:$PATH}"
     fi
