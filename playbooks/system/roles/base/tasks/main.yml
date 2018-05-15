@@ -123,6 +123,7 @@
 
     # Handy terminal tools
     - curl
+    - httpie
     - jq
     - mmv
     - mosh
@@ -131,6 +132,7 @@
     - unrar
     - unzip
     - tmux
+    - woof
     - xmlstarlet
     - zip
 
