@@ -1,6 +1,6 @@
 - hosts: all
   roles:
-    - base
+    - desktop
     - exercism
     - python
     - rust
