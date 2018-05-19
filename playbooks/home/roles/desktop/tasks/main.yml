@@ -5,3 +5,7 @@
 - import_tasks: gnome_shell_extensions.yml
   tags:
     - gnome_shell_extensions
+
+- import_tasks: fonts.yml
+  tags:
+    - fonts

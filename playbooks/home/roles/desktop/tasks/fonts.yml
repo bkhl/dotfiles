@@ -1,0 +1,31 @@
+- name: Create temporary font download directory
+  tempfile:
+    state: directory
+    suffix: fonts
+  register: temp_font_directory
+
+- name: Download fonts
+  get_url:
+    url: "https://fonts.google.com/download?family=\
+      Athiti|\
+      Chonburi|\
+      Itim|\
+      Kanit|\
+      Maitree|\
+      Mitr|\
+      Pridi|\
+      Prompt|\
+      Sriracha|\
+      Taviraj|\
+      Trirong"
+    dest: '{{ temp_font_directory.path }}/fonts.zip'
+
+- name: Create font directory
+  file:
+    path: "{{ fonts_directory }}"
+    state: directory
+
+- name: Unpack fonts
+  unarchive:
+    src: '{{ temp_font_directory.path }}/fonts.zip'
+    dest: '{{ fonts_directory }}/'
