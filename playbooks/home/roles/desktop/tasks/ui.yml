@@ -12,3 +12,8 @@
 
 - name: Clipboard GNOME Shell extension reloaded
   command: gnome-shell-extension-tool --reload-extension=clipboard-indicator@tudmotu.com
+
+- name: Auto-hide dock
+  dconf:
+    key: /org/gnome/shell/extensions/dash-to-dock/dock-fixed
+    value: 'false'

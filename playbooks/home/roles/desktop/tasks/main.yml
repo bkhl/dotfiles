@@ -1,11 +1,11 @@
+- import_tasks: fonts.yml
+  tags:
+    - fonts
+
 - import_tasks: keyboard.yml
   tags:
     - keyboard
 
-- import_tasks: gnome_shell_extensions.yml
+- import_tasks: ui.yml
   tags:
-    - gnome_shell_extensions
-
-- import_tasks: fonts.yml
-  tags:
-    - fonts
+    - ui
