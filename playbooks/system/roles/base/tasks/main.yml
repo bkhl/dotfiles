@@ -61,6 +61,19 @@
     repo: deb http://ppa.launchpad.net/sil/pick/ubuntu xenial main
     filename: pick
 
+- name: Teamviewer APT key added
+  apt_key:
+    keyserver: keyserver.ubuntu.com
+    id: C5E224500C1289C0
+
+- name: Teamviewer repo enabled
+  apt_repository:
+    repo: '{{ item }}'
+    filename: teamviewer
+  with_items:
+    - deb http://linux.teamviewer.com/deb stable main
+    - deb http://linux.teamviewer.com/deb preview main
+
 - name: Update APT cache
   apt:
     update_cache: yes
@@ -92,6 +105,7 @@
     - signal-desktop
     - simplescreenrecorder
     - skypeforlinux
+    - teamviewer
     - usb-creator-gtk
     - vim-gtk3
     - virtualbox
@@ -192,3 +206,12 @@
     - { key: 'XKBVARIANT', value: 'altgr-intl' }
     - { key: 'XKBOPTIONS', value: 'compose:caps' }
     - { key: 'BACKSPACE', value: 'guess'}
+
+- name: Teamviewer service disabled on startup
+  blockinfile:
+    path: /etc/rc.local
+    marker: '# {mark} Disable Teamviewer service on startup'
+    block: |
+      if [ -x "$(command -v teamviewer)" ]; then
+          teamviewer --daemon disable
+      fi
