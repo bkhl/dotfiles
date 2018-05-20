@@ -1,0 +1,5 @@
+---
+sdkman_init: '{{ ansible_env.HOME}}/opt/sdkman/bin/sdkman-init.sh'
+sdkman_packages:
+  - java
+  - gradle
