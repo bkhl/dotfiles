@@ -16,6 +16,7 @@
     - tlp-rdw
     - tp-smapi-dkms
     - acpi-call-dkms
+    - intel-microcode
 
 - name: TLP service started
   service:
