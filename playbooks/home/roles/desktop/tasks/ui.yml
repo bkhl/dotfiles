@@ -17,6 +17,25 @@
   when: >
     clipboard_enabled_result.stderr != "'clipboard-indicator@tudmotu.com' is already enabled."
 
+- name: ShellTile GNOME Shell extension checked out
+  git:
+    repo: https://github.com/emasab/shelltile.git
+    dest: '{{ ansible_env.HOME }}/.local/share/gnome-shell/extensions/ShellTile@emasab.it'
+
+- name: ShellTile GNOME Shell extension enabled
+  command: gnome-shell-extension-tool --enable-extension=ShellTile@emasab.it
+  register: clipboard_enabled_result
+  changed_when: >
+    clipboard_enabled_result.stderr != "'ShellTile@emasab.it' is already enabled."
+  failed_when: >
+    clipboard_enabled_result.rc != 0
+    and clipboard_enabled_result.stderr != "'ShellTile@emasab.it' is already enabled."
+
+- name: ShellTile GNOME Shell extension reloaded
+  command: gnome-shell-extension-tool --reload-extension=ShellTile@emasab.it
+  when: >
+    clipboard_enabled_result.stderr != "'ShellTile@emasab.it' is already enabled."
+
 - name: Auto-hide dock
   dconf:
     key: /org/gnome/shell/extensions/dash-to-dock/dock-fixed
