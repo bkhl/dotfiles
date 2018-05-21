@@ -17,6 +17,11 @@
   when: >
     clipboard_enabled_result.stderr != "'clipboard-indicator@tudmotu.com' is already enabled."
 
+- name: Show dock at bottom of screen
+  dconf:
+    key: /org/gnome/shell/extensions/dash-to-dock/dock-position
+    value: "'BOTTOM'"
+
 - name: Auto-hide dock
   dconf:
     key: /org/gnome/shell/extensions/dash-to-dock/dock-fixed
