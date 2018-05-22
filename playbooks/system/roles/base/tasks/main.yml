@@ -77,6 +77,7 @@
 - name: Update APT cache
   apt:
     update_cache: yes
+  changed_when: false
 
 - name: Unused packages removed
   apt:

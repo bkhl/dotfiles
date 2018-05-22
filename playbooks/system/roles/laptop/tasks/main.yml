@@ -6,6 +6,7 @@
 - name: Update APT cache
   apt:
     update_cache: yes
+  changed_when: false
 
 - name: TLP packages installed
   apt:
