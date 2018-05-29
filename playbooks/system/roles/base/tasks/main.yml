@@ -213,10 +213,7 @@
     - { key: 'BACKSPACE', value: 'guess'}
 
 - name: Teamviewer service disabled on startup
-  blockinfile:
-    path: /etc/rc.local
-    marker: '# {mark} Disable Teamviewer service on startup'
-    block: |
-      if [ -x "$(command -v teamviewer)" ]; then
-          teamviewer --daemon disable
-      fi
+  copy:
+    src: rc.local
+    dest: /etc/rc.local
+    mode: u+rwx,g+rx,o+rx
