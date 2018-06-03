@@ -124,8 +124,8 @@
     - wesnoth
 
     # Appearance
-    - fonts-hack
-    - fonts-noto
+    - fonts-dejavu
+    - fonts-dejavu-extra
     - gnome-tweak-tool
 
     # My languages
