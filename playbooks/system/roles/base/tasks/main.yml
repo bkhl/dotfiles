@@ -126,6 +126,8 @@
     # Appearance
     - fonts-dejavu
     - fonts-dejavu-extra
+    - fonts-noto
+    - fonts-mononoki
     - gnome-tweak-tool
 
     # My languages
