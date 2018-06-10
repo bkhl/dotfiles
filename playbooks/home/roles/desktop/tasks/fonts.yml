@@ -6,26 +6,18 @@
 
 - name: Download fonts
   get_url:
-    url: "https://fonts.google.com/download?family=\
-      Athiti|\
-      Chonburi|\
-      Itim|\
-      Kanit|\
-      Maitree|\
-      Mitr|\
-      Pridi|\
-      Prompt|\
-      Sriracha|\
-      Taviraj|\
-      Trirong"
-    dest: '{{ temp_font_directory.path }}/fonts.zip'
+    url: 'https://fonts.google.com/download?family={{ item | urlencode }}'
+    dest: '{{ temp_font_directory.path }}/{{ item }}.zip'
+  with_items: '{{ fonts_families }}'
 
-- name: Create font directory
+- name: Create font directories
   file:
-    path: "{{ fonts_directory }}"
+    path: "{{ fonts_directory }}/{{ item }}"
     state: directory
+  with_items: '{{ fonts_families }}'
 
 - name: Unpack fonts
   unarchive:
-    src: '{{ temp_font_directory.path }}/fonts.zip'
-    dest: '{{ fonts_directory }}/'
+    src: '{{ temp_font_directory.path }}/{{ item }}.zip'
+    dest: '{{ fonts_directory }}/{{ item }}'
+  with_items: '{{ fonts_families }}'
