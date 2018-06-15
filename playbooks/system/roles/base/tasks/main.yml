@@ -158,6 +158,7 @@
     - bzr
     - docker.io
     - git
+    - graphviz
     - libperl-critic-perl
     - python-minimal
     - python-pip
