@@ -182,6 +182,7 @@
     - smbclient
 
     # System tools
+    - chrony
     - duply
     - krb5-user
     - ubuntu-restricted-addons
