@@ -142,6 +142,7 @@
     - curl
     - httpie
     - jq
+    - libimage-exiftool-perl
     - mmv
     - mosh
     - pandoc
