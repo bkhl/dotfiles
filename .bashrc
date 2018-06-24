@@ -61,13 +61,13 @@ PROMPT_COMMAND=_update_prompt
 # Window title
 _update_title () {
     if [ "$BASH_COMMAND" == '_update_prompt' ]; then
-        title="$USER@$HOSTNAME:$PWD"
+        local t="$USER@$HOSTNAME:$(dirs +0)"
     elif [ "$1" ]; then
-        title="$*"
+        local t="$*"
     else
-        title="$BASH_COMMAND"
+        local t="$BASH_COMMAND"
     fi
-    printf "\e]0;%s\007" "$title"
+    printf "\e]0;%s\007" "$t"
 }
 trap _update_title DEBUG
 
