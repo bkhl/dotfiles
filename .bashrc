@@ -74,11 +74,11 @@ trap _update_title DEBUG
 _foreground() {
     case "$1" in
         [0-9]*([0-9]))
-            local p=$(jobs -l | grep -e "^\[$1\]" | awk '{print $2}');;
+            local p=$(jobs -l | grep -e "^\[$1\]" | cut -d' ' -f2);;
         +|-)
-            local p=$(jobs -l | grep -e "^\[[[:digit:]]\+\]$1" | awk '{print $2}');;
+            local p=$(jobs -l | grep -e "^\[[[:digit:]]\+\]$1" | cut -d' ' -f2);;
         *)
-            local p=$(jobs -l | grep -e "^\[[[:digit:]]\+\]+" | awk '{print $2}');;
+            local p=$(jobs -l | grep -e "^\[[[:digit:]]\+\]+" | cut -d' ' -f2);;
     esac
     _update_title $(tr '\000' ' ' < /proc/$p/cmdline)
     command fg $1
