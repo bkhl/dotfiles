@@ -49,7 +49,41 @@ if [[ "$TERM" =~ ^xterm(-256color)?$ ]] && command -V gvim > /dev/null 2>&1; the
 fi
 
 # Prompt
-PS1='$(r=$?; if [[ $r != 0 ]]; then echo "?:$r "; fi)\u@\h \w\$ '
+_update_prompt() {
+    local r=$?
+    PS1='\u@\h:\w\$ '
+    if [[ $r != 0 ]]; then
+        PS1="?:${r} ${PS1}"
+    fi
+}
+PROMPT_COMMAND=_update_prompt
+
+# Window title
+_update_title () {
+    if [ "$BASH_COMMAND" == '_update_prompt' ]; then
+        title="$USER@$HOSTNAME:$PWD"
+    elif [ "$1" ]; then
+        title="$*"
+    else
+        title="$BASH_COMMAND"
+    fi
+    printf "\e]0;%s\007" "$title"
+}
+trap _update_title DEBUG
+
+_foreground() {
+    case "$1" in
+        [0-9]*([0-9]))
+            local p=$(jobs -l | grep -e "^\[$1\]" | awk '{print $2}');;
+        +|-)
+            local p=$(jobs -l | grep -e "^\[[[:digit:]]\+\]$1" | awk '{print $2}');;
+        *)
+            local p=$(jobs -l | grep -e "^\[[[:digit:]]\+\]+" | awk '{print $2}');;
+    esac
+    _update_title $(tr '\000' ' ' < /proc/$p/cmdline)
+    command fg $1
+}
+alias fg=_foreground
 
 # Java
 if [[ -e "${HOME}/opt/sdkman/bin/sdkman-init.sh" ]]; then
