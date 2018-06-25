@@ -1,5 +1,8 @@
+#!/bin/sh
+
 # Load regular user profile, when logging in with rscreen
 if [ -n "${REAL_HOME}" ] && [ -e "${REAL_HOME}/.profile" ]; then
+    # shellcheck source=/dev/null
     HOME="${REAL_HOME}" . "${REAL_HOME}/.profile"
 fi
 
