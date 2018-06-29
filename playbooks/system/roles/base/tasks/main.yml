@@ -159,6 +159,7 @@
     # Development tools
     - bzr
     - docker.io
+    - docker-compose
     - git
     - graphviz
     - libperl-critic-perl
