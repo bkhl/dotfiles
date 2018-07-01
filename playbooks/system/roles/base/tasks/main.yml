@@ -157,9 +157,13 @@
     - zsync
 
     # Development tools
+    - build-essential
     - bzr
-    - docker.io
+    - debhelper
+    - devscripts
+    - dh-make
     - docker-compose
+    - docker.io
     - git
     - graphviz
     - libperl-critic-perl
