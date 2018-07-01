@@ -74,6 +74,10 @@
     - deb http://linux.teamviewer.com/deb stable main
     - deb http://linux.teamviewer.com/deb preview main
 
+- name: docker-gc repo enabled
+  apt_repository:
+    repo: ppa:nschloe/docker-gc-nightly
+
 - name: Update APT cache
   apt:
     update_cache: yes
@@ -163,6 +167,7 @@
     - devscripts
     - dh-make
     - docker-compose
+    - docker-gc
     - docker.io
     - git
     - graphviz
