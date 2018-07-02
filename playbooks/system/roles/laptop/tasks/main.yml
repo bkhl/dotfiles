@@ -8,6 +8,14 @@
     update_cache: yes
   changed_when: false
 
+- name: Unused packages removed
+  apt:
+    name: '{{ item }}'
+    state: absent
+  with_items:
+    - gedit
+    - nano
+
 - name: TLP packages installed
   apt:
     name: '{{ item }}'
