@@ -86,7 +86,7 @@ set display+=lastline
 
 " Hidden characters
 set list
-set listchars=trail:·,tab:>-,extends:>,precedes:<,nbsp:+
+set listchars=trail:-,tab:>-,extends:>,precedes:<,nbsp:+
 
 
 """"
