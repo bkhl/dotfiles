@@ -17,6 +17,55 @@
   when: >
     clipboard_enabled_result.stderr != "'clipboard-indicator@tudmotu.com' is already enabled."
 
+- name: User-theme GNOME Shell extension downloaded
+  get_url:
+    url: '{{ ui_usertheme_url }}'
+    checksum: '{{ ui_usertheme_checksum }}'
+    dest: '/tmp/{{ ui_usertheme_filename }}'
+
+- name: User-theme GNOME Shell extension path created
+  file:
+    path: '{{ ui_usertheme_path }}'
+    state: directory
+
+- name: User-theme GNOME Shell extension installed
+  unarchive:
+    src: '/tmp/{{ ui_usertheme_filename }}'
+    dest: '{{ ui_usertheme_path }}'
+
+- name: User-theme GNOME Shell extension enabled
+  command: 'gnome-shell-extension-tool --enable-extension={{ ui_usertheme_basename }}'
+  register: usertheme_enabled_result
+  changed_when: >
+    usertheme_enabled_result.stderr != "'" + ui_usertheme_basename + "'" + " is already enabled."
+  failed_when: >
+    usertheme_enabled_result.rc != 0
+    and usertheme_enabled_result.stderr != "'" + ui_usertheme_basename + "'" + " is already enabled."
+
+- name: User-theme GNOME Shell extension reloaded
+  command: 'gnome-shell-extension-tool --reload-extension={{ ui_usertheme_basename }}'
+  when: >
+    usertheme_enabled_result.stderr != "'" + ui_usertheme_basename + "'" + " is already enabled."
+
+- name: GTK theme set to Arc-Dark
+  tags: [ foo ]
+  dconf:
+    key: /org/gnome/desktop/interface/gtk-theme
+    value: "'Arc-Dark'"
+
+- name: GNOME Shell theme set to Arc-Dark
+  tags: [ foo ]
+  dconf:
+    key: /org/gnome/shell/extensions/user-theme/name
+    value: "'Arc-Dark'"
+
+- name: Icon theme set to Papirus
+  tags: [ foo ]
+  dconf:
+    key: /org/gnome/desktop/interface/icon-theme
+    value: "'Papirus'"
+
+
 - name: Show dock at bottom of screen
   dconf:
     key: /org/gnome/shell/extensions/dash-to-dock/dock-position

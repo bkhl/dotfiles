@@ -57,7 +57,7 @@ set guioptions-=r
 set guioptions-=T
 
 " Set GUI font
-set guifont=Monospace\ 11
+set guifont=Monospace\ 12
 
 " Line numbering
 set number
