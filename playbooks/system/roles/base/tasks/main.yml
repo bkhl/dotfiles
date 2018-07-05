@@ -120,10 +120,8 @@
     - wesnoth
 
     # Appearance
-    - arc-theme
     - fonts-noto
     - gnome-tweak-tool
-    - papirus-icon-theme
 
     # My languages
     - firefox-locale-en
