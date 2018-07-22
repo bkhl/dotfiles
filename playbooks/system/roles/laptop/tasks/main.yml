@@ -32,16 +32,16 @@
     name: tlp
     state: started
 
-- name: Disable Bluetooth on startup
+- name: Disable WWAN on startup
   lineinfile:
     path: /etc/default/tlp
     regexp: '^DEVICES_TO_DISABLE_ON_STARTUP='
-    line: 'DEVICES_TO_DISABLE_ON_STARTUP="bluetooth wwan"'
+    line: 'DEVICES_TO_DISABLE_ON_STARTUP="wwan"'
     insertafter: '^#DEVICES_TO_DISABLE_ON_STARTUP='
 
-- name: Enable Wi-Fi on startup
+- name: Enable Bluetooth and Wi-Fi on startup
   lineinfile:
     path: /etc/default/tlp
     regexp: '^DEVICES_TO_ENABLE_ON_STARTUP='
-    line: 'DEVICES_TO_ENABLE_ON_STARTUP="wifi"'
+    line: 'DEVICES_TO_ENABLE_ON_STARTUP="bluetooth wifi"'
     insertafter: '^#DEVICES_TO_ENABLE_ON_STARTUP='
