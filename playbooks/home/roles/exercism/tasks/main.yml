@@ -7,14 +7,15 @@
   block:
     - name: Download Exercism
       get_url:
-        url: https://github.com/exercism/cli/releases/download/v2.4.1/exercism-linux-64bit.tgz
+        url: https://github.com/exercism/cli/releases/download/v3.0.5/exercism-linux-64bit.tgz
         dest: /tmp/exercism-linux-64bit.tgz
-        checksum: sha256:bea54bee63105970ae75be889f78bece1377056e687eca59e6b32b9d58ea6502
+        checksum: sha256:d32a63542ca3588faeaa02f6f2a28c50a6eec50354d2838cd82470d262dff020
 
     - name: Unpack exercism
       unarchive:
         src: /tmp/exercism-linux-64bit.tgz
         dest: '{{ ansible_env.HOME }}/bin/'
+        exclude: 'shell'
 
     - name: Exercism CLI client is executable file
       file:
@@ -28,5 +29,5 @@
   changed_when: false
 
 - name: Exercism directory set
-  command: exercism configure --dir={{ ansible_env.HOME }}/Development/exercism
-  when: exercism_config.stdout is not search('--dir=' + ansible_env.HOME + '/Development/exercism')
+  command: exercism configure --workspace={{ ansible_env.HOME }}/Development/exercism
+  when: exercism_config.stdout is not match('^Workspace:.*' + ansible_env.HOME + '/Development/exercism')
