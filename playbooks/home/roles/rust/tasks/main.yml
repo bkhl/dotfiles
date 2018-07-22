@@ -8,7 +8,7 @@
     - name: Get rustup installation script
       get_url:
         url: https://static.rust-lang.org/rustup/rustup-init.sh
-        checksum: sha256:22aa1f7f4c4b9be99a9d7e13ad45b2aec6714165a0578dd5ef81ca11f55ea24e
+        checksum: sha256:0cb6ce30f81cfedeeac4c6b72d92859aa7652bdd3aa4759858a192129e8f6e1f
         dest: /tmp/rustup-init.sh
 
     - name: Run rustup installation
@@ -25,7 +25,12 @@
     - beta
     - nightly
 
-- name: Components installed
-  command: '{{ rustup_path }} component add {{ item }}'
+- name: stable components installed
+  command: '{{ rustup_path }} component add {{ item }} --toolchain=stable'
   with_items:
     - rustfmt-preview
+
+- name: nightly components installed
+  command: '{{ rustup_path }} component add {{ item }} --toolchain=nightly'
+  with_items:
+    - clippy-preview
