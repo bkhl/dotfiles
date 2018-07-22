@@ -78,6 +78,10 @@
   apt_repository:
     repo: ppa:nschloe/docker-gc-nightly
 
+- name: Picard repo enabled
+  apt_repository:
+    repo: ppa:musicbrainz-developers/stable
+
 - name: Update APT cache
   apt:
     update_cache: yes
@@ -98,6 +102,7 @@
     - hexchat
     - mplayer
     - mpv
+    - picard
     - pinta
     - quodlibet
     - remmina
