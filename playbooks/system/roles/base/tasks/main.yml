@@ -82,6 +82,16 @@
   apt_repository:
     repo: ppa:musicbrainz-developers/stable
 
+- name: MellowPlayer APT key added
+  apt_key:
+    id: E481C081DB2A84F7
+    url: https://download.opensuse.org/repositories/home:ColinDuquesnoy/xUbuntu_18.04/Release.key
+
+- name: MellowPlayer repo enabled
+  apt_repository:
+    repo: deb http://download.opensuse.org/repositories/home:/ColinDuquesnoy/xUbuntu_18.04/ /
+    filename: mellowplayer
+
 - name: Update APT cache
   apt:
     update_cache: yes
@@ -100,6 +110,7 @@
     - evolution-ews
     - google-chrome-stable
     - hexchat
+    - mellowplayer
     - mplayer
     - mpv
     - picard
