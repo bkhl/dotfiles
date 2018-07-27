@@ -169,6 +169,7 @@
     - zsync
 
     # Development tools
+    - bats
     - build-essential
     - bzr
     - debhelper
