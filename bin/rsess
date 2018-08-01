@@ -49,5 +49,5 @@ remote_command="${remote_home}/bin/my-screen"
 if mosh "${DESTINATION}" "${remote_command}"; then
     exit
 else
-    ssh -t "${DESTINATION}" "${remote_command}" 
+    autossh -t "${DESTINATION}" "${remote_command}" 
 fi

@@ -191,6 +191,7 @@
     - vagrant
 
     # Network tools
+    - autossh
     - dnsmasq
     - net-tools
     - network-manager-openconnect-gnome
