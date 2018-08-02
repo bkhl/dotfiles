@@ -96,7 +96,7 @@
 
 - name: SWI Prolog repo enabled
   apt_repository:
-    repo: deb http://ppa.launchpad.net/swi-prolog/stable/ubuntu devel main
+    repo: deb http://ppa.launchpad.net/swi-prolog/devel/ubuntu bionic main
     filename: swi-prolog
 
 - name: Update APT cache
