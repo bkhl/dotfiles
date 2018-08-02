@@ -77,10 +77,12 @@
 - name: docker-gc repo enabled
   apt_repository:
     repo: ppa:nschloe/docker-gc-nightly
+    filename: docker-gc
 
 - name: Picard repo enabled
   apt_repository:
     repo: ppa:musicbrainz-developers/stable
+    filename: musicbrainz
 
 - name: MellowPlayer APT key added
   apt_key:
@@ -91,6 +93,11 @@
   apt_repository:
     repo: deb http://download.opensuse.org/repositories/home:/ColinDuquesnoy/xUbuntu_18.04/ /
     filename: mellowplayer
+
+- name: SWI Prolog repo enabled
+  apt_repository:
+    repo: deb http://ppa.launchpad.net/swi-prolog/stable/ubuntu devel main
+    filename: swi-prolog
 
 - name: Update APT cache
   apt:
@@ -186,6 +193,7 @@
     - python3-minimal
     - python3-pip
     - shellcheck
+    - swi-prolog
     - sqlite3
     - subversion
     - vagrant
