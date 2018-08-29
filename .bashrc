@@ -3,6 +3,10 @@ if [[ -n "${REAL_HOME}" ]] && [[ -e "${REAL_HOME}/.bashrc" ]]; then
     HOME="${REAL_HOME}" source "${REAL_HOME}/.bashrc"
 fi
 
+if [[ $TILIX_ID || $VTE_VERSION ]]; then
+    source /etc/profile.d/vte.sh
+fi
+
 # History
 HISTCONTROL=erasedups:ignorespace
 HISTFILESIZE=16384
@@ -49,14 +53,16 @@ if [[ "$TERM" =~ ^xterm(-256color)?$ ]] && command -V gvim > /dev/null 2>&1; the
 fi
 
 # Prompt
-_update_prompt() {
+_custom_prompt() {
     local r=$?
     PS1='\u@\h:\w\$ '
     if [[ $r != 0 ]]; then
         PS1="?:${r} ${PS1}"
     fi
+
+    PS1="${PS1}$(__vte_osc7)"
 }
-PROMPT_COMMAND=_update_prompt
+PROMPT_COMMAND=_custom_prompt
 
 # Window title
 _update_title () {

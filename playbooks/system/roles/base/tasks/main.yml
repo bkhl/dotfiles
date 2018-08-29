@@ -127,6 +127,7 @@
     - simplescreenrecorder
     - skypeforlinux
     - teamviewer
+    - tilix
     - usb-creator-gtk
     - vim-gtk3
     - virtualbox
@@ -275,3 +276,9 @@
   service:
     name: resolvconf
     state: restarted
+
+- name: Create vte.sh symlink
+  file:
+    src: /etc/profile.d/vte-2.91.sh
+    dest: /etc/profile.d/vte.sh
+    state: link
