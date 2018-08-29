@@ -3,10 +3,6 @@ if [[ -n "${REAL_HOME}" ]] && [[ -e "${REAL_HOME}/.bashrc" ]]; then
     HOME="${REAL_HOME}" source "${REAL_HOME}/.bashrc"
 fi
 
-if [[ $TILIX_ID || $VTE_VERSION ]]; then
-    source /etc/profile.d/vte.sh
-fi
-
 # History
 HISTCONTROL=erasedups:ignorespace
 HISTFILESIZE=16384
@@ -59,8 +55,6 @@ _custom_prompt() {
     if [[ $r != 0 ]]; then
         PS1="?:${r} ${PS1}"
     fi
-
-    PS1="${PS1}$(__vte_osc7)"
 }
 PROMPT_COMMAND=_custom_prompt
 
