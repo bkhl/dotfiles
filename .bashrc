@@ -49,14 +49,14 @@ if [[ "$TERM" =~ ^xterm(-256color)?$ ]] && command -V gvim > /dev/null 2>&1; the
 fi
 
 # Prompt
-_custom_prompt() {
+_update_prompt() {
     local r=$?
     PS1='\u@\h:\w\$ '
     if [[ $r != 0 ]]; then
         PS1="?:${r} ${PS1}"
     fi
 }
-PROMPT_COMMAND=_custom_prompt
+PROMPT_COMMAND=_update_prompt
 
 # Window title
 _update_title () {
