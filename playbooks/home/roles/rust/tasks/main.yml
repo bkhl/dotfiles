@@ -28,9 +28,5 @@
 - name: stable components installed
   command: '{{ rustup_path }} component add {{ item }} --toolchain=stable'
   with_items:
-    - rustfmt-preview
-
-- name: nightly components installed
-  command: '{{ rustup_path }} component add {{ item }} --toolchain=nightly'
-  with_items:
     - clippy-preview
+    - rustfmt-preview
