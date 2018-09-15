@@ -94,6 +94,11 @@
     repo: deb http://download.opensuse.org/repositories/home:/ColinDuquesnoy/xUbuntu_18.04/ /
     filename: mellowplayer
 
+- name: SWI Prolog APT key added
+  apt_key:
+    keyserver: keyserver.ubuntu.com
+    id: EF8406856DBFCA18
+
 - name: SWI Prolog repo enabled
   apt_repository:
     repo: deb http://ppa.launchpad.net/swi-prolog/devel/ubuntu bionic main
