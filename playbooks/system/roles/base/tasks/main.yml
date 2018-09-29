@@ -259,6 +259,19 @@
     dest: /etc/rc.local
     mode: u+rwx,g+rx,o+rx
 
+- name: systemd-resolved stub listener disabled
+  tags: [test]
+  lineinfile:
+    path: /etc/systemd/resolved.conf
+    regexp: '^DNSStubListener='
+    line: 'DNSStubListener=no'
+
+- name: systemd-resolved restarted
+  tags: [test]
+  service:
+    name: systemd-resolved
+    state: restarted
+
 - name: dnsmasq configured
   copy:
     src: dnsmasq.conf
