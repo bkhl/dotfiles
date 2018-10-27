@@ -236,6 +236,11 @@
     # Useful for scripts that need secrets
     - libsecret-tools
 
+- name: User added to additional groups
+  user:
+     name: "{{ lookup('env','USER') }}"
+     groups: docker,vboxusers
+     append: yes
 
 - name: Firefox set as default browser
   alternatives:
