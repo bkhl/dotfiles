@@ -85,6 +85,10 @@ _foreground() {
 }
 alias fg=_foreground
 
+# asdf
+source "${ASDF_DIR}/asdf.sh"
+source "${ASDF_DIR}/completions/asdf.bash"
+
 # Java
 if [[ -e "${HOME}/opt/sdkman/bin/sdkman-init.sh" ]]; then
     source "${HOME}/opt/sdkman/bin/sdkman-init.sh"

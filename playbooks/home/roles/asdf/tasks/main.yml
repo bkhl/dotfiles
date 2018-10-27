@@ -1,13 +1,8 @@
-- name: check if asdf installed
-  stat:
-    path: '{{ asdf_command }}'
-  register: asdf_command_check
-
 - name: asdf checked out
-  when: not asdf_command_check.stat.exists
   git:
     repo: https://github.com/asdf-vm/asdf.git
     dest: '{{ ansible_env.HOME }}/opt/asdf'
+    update: no
 
 - name: asdf at latest stable version
   command: "{{ asdf_command }} update"

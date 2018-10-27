@@ -37,6 +37,10 @@ export PAGER='less -r'
 # Username for prod &c.
 export ARBZRUSER=bnl
 
+# asdf
+export ASDF_DIR="$HOME/opt/asdf"
+export ASDF_DATA_DIR="$ASDF_DIR"
+
 # Go
 export GOPATH="$HOME/opt/go"
 
