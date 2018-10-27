@@ -45,3 +45,13 @@
     regexp: '^DEVICES_TO_ENABLE_ON_STARTUP='
     line: 'DEVICES_TO_ENABLE_ON_STARTUP="bluetooth wifi"'
     insertafter: '^#DEVICES_TO_ENABLE_ON_STARTUP='
+
+- name: Configure modprobe for ThinkPad
+  register: modprobe_config
+  copy:
+    src: thinkpad.conf
+    dest: /etc/modprobe.d/thinkpad.conf
+
+- name: Regenerate initramfs image
+  command: update-initramfs -u
+  when: modprobe_config.changed
