@@ -253,6 +253,11 @@
     - { key: 'XKBOPTIONS', value: 'compose:caps' }
     - { key: 'BACKSPACE', value: 'guess'}
 
+- name: Change GNOME Shell font
+  patch:
+    src: gnome_shell_font.diff
+    basedir: /usr/share/gnome-shell/theme
+
 - name: Teamviewer service disabled on startup
   copy:
     src: rc.local
