@@ -160,6 +160,7 @@
 
     # Appearance
     - fonts-noto
+    - fonts-noto-color-emoji
     - gnome-tweak-tool
 
     # My languages
