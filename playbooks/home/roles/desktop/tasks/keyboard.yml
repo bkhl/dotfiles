@@ -1,17 +1,24 @@
 - name: Python psutils installed
-  tags: test
   pip:
     executable: pip2
     extra_args: --user
     name: psutil
     state: present
 
-- name: Media keyboard shortcuts set
+# FIXME: Make a nested loop to automatically generate numbers and create this list.
+- name: One custom keyboard shortcut enabled
   dconf:
-    key: '/org/gnome/settings-daemon/plugins/media-keys/{{ item.action }}'
+    key: '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings'
+    value: "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']"
+
+- name: Keyboard shortcut for Tilix Quake mode set
+  dconf:
+    key: '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/{{ item.action }}'
     value: "'{{ item.key }}'"
   with_items:
-    - { action: 'terminal', key: '<Super>Return' }
+    - { action: 'name', key: 'Tilix Quake Mode' }
+    - { action: 'command', key: 'tilix --quake' }
+    - { action: 'binding', key: '<Super>Return' }
 
 - name: Window manager keyboard shortcuts set
   dconf:
