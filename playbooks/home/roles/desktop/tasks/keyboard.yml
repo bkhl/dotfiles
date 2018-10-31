@@ -1,4 +1,4 @@
-- name: Python psutils installed
+- name: Python 2 psutil installed
   pip:
     executable: pip2
     extra_args: --user
