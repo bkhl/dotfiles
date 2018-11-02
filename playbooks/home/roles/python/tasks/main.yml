@@ -43,6 +43,7 @@
   with_items:
     - black
     - pipenv
+    - pre-commit
 
 - name: Install Python 3 packages that require libssl-dev
   when: libssl_dev_present
