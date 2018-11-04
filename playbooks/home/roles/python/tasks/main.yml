@@ -42,6 +42,7 @@
     state: latest
   with_items:
     - black
+    - csvkit
     - pipenv
     - pre-commit
 
