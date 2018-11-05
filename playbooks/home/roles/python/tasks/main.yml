@@ -43,6 +43,7 @@
   with_items:
     - black
     - csvkit
+    - isort
     - pipenv
     - pre-commit
 

@@ -1,4 +1,9 @@
 """"
+" Keyboard map leader
+
+let mapleader = " "
+
+""""
 " Plugins
 
 silent! call plug#begin('~/.vim/plugged')
@@ -27,6 +32,30 @@ Plug 'tpope/vim-commentary'
 
 " Language syntax support
 Plug 'sheerun/vim-polyglot'
+
+" Linting
+if v:version >= 800
+    Plug 'w0rp/ale'
+
+    let g:ale_fixers = {
+    \   'python': [
+    \       'isort',
+    \       'black',
+    \   ],
+    \   'rust': [
+    \       'rustfmt',
+    \   ],
+    \}
+
+    nmap <silent> <leader>f <Plug>(ale_first)
+    nmap <silent> <leader>n <Plug>(ale_next_wrap)
+    nmap <silent> <leader>p <Plug>(ale_previous_wrap)
+    nmap <silent> <leader>o <Plug>(ale_fix)
+else
+    Plug 'scrooloose/syntastic'
+endif
+
+Plug 'rust-lang/rust.vim'
 
 " File system explorer
 Plug 'scrooloose/nerdtree'
