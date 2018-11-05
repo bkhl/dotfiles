@@ -85,11 +85,6 @@
     - deb http://linux.teamviewer.com/deb stable main
     - deb http://linux.teamviewer.com/deb preview main
 
-- name: Tilix repository enabled
-  apt_repository:
-    repo: ppa:webupd8team/terminix
-    filename: tilix
-
 - name: docker-gc repo enabled
   apt_repository:
     repo: ppa:nschloe/docker-gc-nightly
@@ -149,7 +144,6 @@
     - sky
     - skypeforlinux
     - teamviewer
-    - tilix
     - usb-creator-gtk
     - vim-gtk3
     - virtualbox
