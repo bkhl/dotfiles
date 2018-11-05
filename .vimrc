@@ -30,6 +30,7 @@ Plug 'sheerun/vim-polyglot'
 
 " File system explorer
 Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 map <C-n> :NERDTreeToggle<CR>
 
 call plug#end()
