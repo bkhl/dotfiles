@@ -28,6 +28,10 @@ Plug 'tpope/vim-commentary'
 " Language syntax support
 Plug 'sheerun/vim-polyglot'
 
+" File system explorer
+Plug 'scrooloose/nerdtree'
+map <C-n> :NERDTreeToggle<CR>
+
 call plug#end()
 
 
