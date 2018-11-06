@@ -1,0 +1,4 @@
+[flake8]
+
+# Set max line length to match black defaults.
+max-line-length = 88
