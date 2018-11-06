@@ -33,6 +33,16 @@ Plug 'tpope/vim-commentary'
 " Language syntax support
 Plug 'sheerun/vim-polyglot'
 
+" async job control
+Plug 'prabirshrestha/async.vim'
+
+" async completion
+Plug 'prabirshrestha/asyncomplete.vim'
+
+" LSP
+Plug 'prabirshrestha/vim-lsp'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+
 " Linting
 if v:version >= 800
     Plug 'w0rp/ale'
@@ -55,8 +65,6 @@ else
     Plug 'scrooloose/syntastic'
 endif
 
-Plug 'rust-lang/rust.vim'
-
 " File system explorer
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -64,6 +72,17 @@ map <C-n> :NERDTreeToggle<CR>
 
 " Python
 Plug 'plytophogy/vim-virtualenv'
+
+" Rust
+Plug 'rust-lang/rust.vim'
+let g:rustfmt_autosave = 1
+if executable('rls')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'rls',
+        \ 'cmd': {server_info->['rustup', 'run', 'nightly', 'rls']},
+        \ 'whitelist': ['rust'],
+        \ })
+endif
 
 call plug#end()
 
