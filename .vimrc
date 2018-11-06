@@ -62,6 +62,9 @@ Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 map <C-n> :NERDTreeToggle<CR>
 
+" Python
+Plug 'plytophogy/vim-virtualenv'
+
 call plug#end()
 
 
