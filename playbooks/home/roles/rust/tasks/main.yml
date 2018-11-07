@@ -39,6 +39,6 @@
     - rust-src
 
 - name: Install programs from crates.io
-  command: '{{ cargo_path }} install {{ item }}'
+  command: '{{ cargo_path }} install --force {{ item }}'
   with_items:
     - shellharden
