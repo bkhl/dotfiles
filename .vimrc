@@ -70,6 +70,9 @@ Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 map <C-n> :NERDTreeToggle<CR>
 
+" Ion
+Plug 'vmchale/ion'
+
 " Python
 Plug 'plytophogy/vim-virtualenv'
 
