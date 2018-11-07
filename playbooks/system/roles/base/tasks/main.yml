@@ -115,6 +115,11 @@
     repo: deb http://ppa.launchpad.net/swi-prolog/devel/ubuntu bionic main
     filename: swi-prolog
 
+- name: Ion Shell repository enabled
+  apt_repository:
+    repo: ppa:mmstick76/ion-shell
+    filename: ion-shell
+
 - name: Update APT cache
   apt:
     update_cache: yes
@@ -178,6 +183,7 @@
     # Handy terminal tools
     - curl
     - httpie
+    - ion-shell
     - jq
     - libimage-exiftool-perl
     - mmv
