@@ -20,7 +20,7 @@
 
 - name: Store whether libssl-dev is installed
   set_fact:
-    libssl_dev_present: "{{ (libssl_dev_check.stdout | trim) == 'installed' | bool }}"
+    libssl_dev_present: "{{ (libssl_dev_check.stdout | trim) == 'installed' }}"
 
 - name: Create Python environment directory
   file: name='{{ python_directory }}' state=directory
@@ -48,12 +48,10 @@
     - pre-commit
     - python-language-server
 
-- name: Install Python 3 packages that require libssl-dev
+- name: Install Ansible
   when: libssl_dev_present
   pip:
     executable: pip3
     extra_args: --user
-    name: '{{ item }}'
+    name: ansible
     state: latest
-  with_items:
-    - ansible
