@@ -21,7 +21,7 @@
     id: 9534C9C4130B4DC9927992BF4F30B6B4C07CB649
     state: present
 
-- name: Google Chrome repo enabled
+- name: Google Chrome APT repository enabled
   apt_repository:
     repo: deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main
     filename: google-chrome
@@ -33,7 +33,7 @@
     id: F60A017E3CA5558FAF2439556B4A0000A4EBB320
     state: present
 
-- name: Skype repo enabled
+- name: Skype APT repository enabled
   apt_repository:
     repo: deb [arch=amd64] https://repo.skype.com/deb stable main
     filename: skype-stable
@@ -44,7 +44,7 @@
     keyserver: keyserver.ubuntu.com
     id: 9454C19A66B920C83DDF696E07C8CCAFCE49F8C5
 
-- name: TelRed repo enabled
+- name: TelRed APT repository enabled
   apt_repository:
     repo: deb https://tel.red/repos/ubuntu bionic non-free
     filename: telred
@@ -56,7 +56,7 @@
     id: D980A17457F6FB06
     state: present
 
-- name: Signal repo enabled
+- name: Signal APT repository enabled
   apt_repository:
     repo: deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main
     filename: signal
@@ -67,7 +67,7 @@
     keyserver: keyserver.ubuntu.com
     id: 0EDF8453E8783FF786AF6DED2D2F9F912F2229FF
 
-- name: Pick repo enabled
+- name: Pick APT repository enabled
   apt_repository:
     repo: deb http://ppa.launchpad.net/sil/pick/ubuntu xenial main
     filename: pick
@@ -77,7 +77,7 @@
     keyserver: keyserver.ubuntu.com
     id: C5E224500C1289C0
 
-- name: Teamviewer repo enabled
+- name: Teamviewer APT repository enabled
   apt_repository:
     repo: '{{ item }}'
     filename: teamviewer
@@ -85,12 +85,12 @@
     - deb http://linux.teamviewer.com/deb stable main
     - deb http://linux.teamviewer.com/deb preview main
 
-- name: docker-gc repo enabled
+- name: docker-gc APT repository enabled
   apt_repository:
     repo: ppa:nschloe/docker-gc-nightly
     filename: docker-gc
 
-- name: Picard repo enabled
+- name: Picard APT repository enabled
   apt_repository:
     repo: ppa:musicbrainz-developers/stable
     filename: musicbrainz
@@ -100,7 +100,7 @@
     id: E481C081DB2A84F7
     url: https://download.opensuse.org/repositories/home:ColinDuquesnoy/xUbuntu_18.04/Release.key
 
-- name: MellowPlayer repo enabled
+- name: MellowPlayer APT repository enabled
   apt_repository:
     repo: deb http://download.opensuse.org/repositories/home:/ColinDuquesnoy/xUbuntu_18.04/ /
     filename: mellowplayer
@@ -110,12 +110,12 @@
     keyserver: keyserver.ubuntu.com
     id: EF8406856DBFCA18
 
-- name: SWI Prolog repo enabled
+- name: SWI Prolog APT repository enabled
   apt_repository:
     repo: deb http://ppa.launchpad.net/swi-prolog/devel/ubuntu bionic main
     filename: swi-prolog
 
-- name: Ion Shell repository enabled
+- name: Ion Shell APT repository enabled
   apt_repository:
     repo: ppa:mmstick76/ion-shell
     filename: ion-shell
