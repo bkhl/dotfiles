@@ -37,3 +37,8 @@
     - rls-preview
     - rust-analysis
     - rust-src
+
+- name: Install programs from crates.io
+  command: '{{ cargo_path }} install {{ item }}'
+  with_items:
+    - shellharden

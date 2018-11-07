@@ -1,1 +1,2 @@
 rustup_path: '{{ ansible_env.HOME }}/opt/cargo/bin/rustup'
+cargo_path: '{{ ansible_env.HOME }}/opt/cargo/bin/cargo'
