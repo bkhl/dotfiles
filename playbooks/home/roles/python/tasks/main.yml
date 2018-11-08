@@ -42,6 +42,7 @@
       - black
       - csvkit
       - isort
+      - pipenv
       - pre-commit
       - python-language-server
     state: latest
