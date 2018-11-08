@@ -38,15 +38,14 @@
   pip:
     executable: pip3
     extra_args: --user
-    name: '{{ item }}'
+    name:
+      - black
+      - csvkit
+      - isort
+      - pipenv
+      - pre-commit
+      - python-language-server
     state: latest
-  with_items:
-    - black
-    - csvkit
-    - isort
-    - pipenv
-    - pre-commit
-    - python-language-server
 
 - name: Install Ansible
   when: libssl_dev_present
