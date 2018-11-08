@@ -54,23 +54,3 @@
     extra_args: --user
     name: ansible
     state: latest
-
-- name: Check for Poetry
-  stat:
-    path: '{{ poetry_path }}'
-  register: poetry_check
-
-- when: poetry_check.stat.executable is not defined or not poetry_check.stat.executable
-  block:
-    - name: Poetry installer downloaded
-      get_url:
-        url: https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py
-        dest: /tmp/get-poetry.py
-        checksum: sha256:f03921551eef01651c6f0dc88c9c84c3d4b5c1e9835affbf87aebacf7b0386f1
-
-    - name: Poetry installed
-      command: python3 /tmp/get-poetry.py --yes
-
-- name: Poetry updated
-  when: poetry_check.stat.executable is defined and poetry_check.stat.executable
-  command: poetry self:update
