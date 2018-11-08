@@ -49,6 +49,7 @@ export SDKMAN_DIR="$HOME/opt/sdkman"
 
 # Python
 export PYTHONUSERBASE="$HOME/opt/python"
+export PATH="$HOME/.poetry/bin${PATH:+:$PATH}"
 
 # Rust
 export CARGO_HOME="$HOME/opt/cargo"
