@@ -10,22 +10,20 @@
 
 - name: Unused packages removed
   apt:
-    name: '{{ item }}'
     state: absent
-  with_items:
-    - gedit
-    - nano
+    name:
+      - gedit
+      - nano
 
 - name: TLP packages installed
   apt:
-    name: '{{ item }}'
     state: latest
-  with_items:
-    - tlp
-    - tlp-rdw
-    - tp-smapi-dkms
-    - acpi-call-dkms
-    - intel-microcode
+    name:
+      - tlp
+      - tlp-rdw
+      - tp-smapi-dkms
+      - acpi-call-dkms
+      - intel-microcode
 
 - name: TLP service started
   service:

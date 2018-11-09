@@ -132,135 +132,134 @@
 
 - name: Packages added
   apt:
-    name: '{{ item }}'
     state: latest
-  with_items:
-    # Applications
-    - anki
-    - audacity
-    - calibre
-    - dbeaver-ce
-    - evolution
-    - evolution-ews
-    - google-chrome-stable
-    - gthumb
-    - hexchat
-    - mellowplayer
-    - mplayer
-    - mpv
-    - picard
-    - quodlibet
-    - remmina
-    - signal-desktop
-    - simplescreenrecorder
-    - sky
-    - skypeforlinux
-    - teamviewer
-    - usb-creator-gtk
-    - vim-gtk3
-    - virtualbox
-    - virtualbox-ext-pack
-    - virtualbox-qt
+    name:
+      # Applications
+      - anki
+      - audacity
+      - calibre
+      - dbeaver-ce
+      - evolution
+      - evolution-ews
+      - google-chrome-stable
+      - gthumb
+      - hexchat
+      - mellowplayer
+      - mplayer
+      - mpv
+      - picard
+      - quodlibet
+      - remmina
+      - signal-desktop
+      - simplescreenrecorder
+      - sky
+      - skypeforlinux
+      - teamviewer
+      - usb-creator-gtk
+      - vim-gtk3
+      - virtualbox
+      - virtualbox-ext-pack
+      - virtualbox-qt
 
-    # Handy GUI tools
-    - gnome-clocks
-    - pick-colour-picker
-    - xclip
+      # Handy GUI tools
+      - gnome-clocks
+      - pick-colour-picker
+      - xclip
 
-    # Games
-    - wesnoth
+      # Games
+      - wesnoth
 
-    # Appearance
-    - fonts-noto
-    - fonts-noto-color-emoji
-    - gnome-tweak-tool
+      # Appearance
+      - fonts-noto
+      - fonts-noto-color-emoji
+      - gnome-tweak-tool
 
-    # My languages
-    - firefox-locale-en
-    - firefox-locale-sv
-    - firefox-locale-th
-    - language-pack-gnome-en
-    - language-pack-gnome-sv
-    - language-pack-gnome-th
-    - wamerican
-    - wbritish
-    - wswedish
+      # My languages
+      - firefox-locale-en
+      - firefox-locale-sv
+      - firefox-locale-th
+      - language-pack-gnome-en
+      - language-pack-gnome-sv
+      - language-pack-gnome-th
+      - wamerican
+      - wbritish
+      - wswedish
 
-    # Handy terminal tools
-    - curl
-    - httpie
-    - ion-shell
-    - jq
-    - libimage-exiftool-perl
-    - mmv
-    - moreutils
-    - mosh
-    - pandoc
-    - rar
-    - unrar
-    - unzip
-    - tmux
-    - woof
-    - xmlstarlet
-    - zip
-    - zsync
+      # Handy terminal tools
+      - curl
+      - httpie
+      - ion-shell
+      - jq
+      - libimage-exiftool-perl
+      - mmv
+      - moreutils
+      - mosh
+      - pandoc
+      - rar
+      - unrar
+      - unzip
+      - tmux
+      - woof
+      - xmlstarlet
+      - zip
+      - zsync
 
-    # Development tools
-    - bats
-    - build-essential
-    - bzr
-    - debhelper
-    - devscripts
-    - dh-make
-    - docker-compose
-    - docker-gc
-    - docker.io
-    - git
-    - graphviz
-    - libperl-critic-perl
-    - nodejs
-    - npm
-    - python-minimal
-    - python-pip
-    - python3-minimal
-    - python3-pip
-    - shellcheck
-    - swi-prolog
-    - sqlite3
-    - subversion
-    - tidy
-    - vagrant
+      # Development tools
+      - bats
+      - build-essential
+      - bzr
+      - debhelper
+      - devscripts
+      - dh-make
+      - docker-compose
+      - docker-gc
+      - docker.io
+      - git
+      - graphviz
+      - libperl-critic-perl
+      - nodejs
+      - npm
+      - python-minimal
+      - python-pip
+      - python3-minimal
+      - python3-pip
+      - shellcheck
+      - swi-prolog
+      - sqlite3
+      - subversion
+      - tidy
+      - vagrant
 
-    # Network tools
-    - autossh
-    - dnsmasq
-    - net-tools
-    - network-manager-openconnect-gnome
-    - network-manager-openvpn-gnome
-    - network-manager-vpnc-gnome
-    - resolvconf
-    - traceroute
-    - whois
+      # Network tools
+      - autossh
+      - dnsmasq
+      - net-tools
+      - network-manager-openconnect-gnome
+      - network-manager-openvpn-gnome
+      - network-manager-vpnc-gnome
+      - resolvconf
+      - traceroute
+      - whois
 
-    # Printing
-    - python3-smbc
-    - smbclient
+      # Printing
+      - python3-smbc
+      - smbclient
 
-    # System tools
-    - chrony
-    - duply
-    - krb5-user
-    - ubuntu-restricted-addons
+      # System tools
+      - chrony
+      - duply
+      - krb5-user
+      - ubuntu-restricted-addons
 
-    # Ansible dependency
-    - libssl-dev
+      # Ansible dependency
+      - libssl-dev
 
-    # Erlang dependencies
-    - autoconf
-    - libncurses5-dev
+      # Erlang dependencies
+      - autoconf
+      - libncurses5-dev
 
-    # Useful for scripts that need secrets
-    - libsecret-tools
+      # Useful for scripts that need secrets
+      - libsecret-tools
 
 - name: User added to additional groups
   user:
