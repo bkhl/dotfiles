@@ -120,6 +120,11 @@
     repo: ppa:mmstick76/ion-shell
     filename: ion-shell
 
+- name: DBeaver APT repository enabled
+  apt_repository:
+    repo: ppa:serge-rider/dbeaver-ce
+    filename: dbeaver
+
 - name: Update APT cache
   apt:
     update_cache: yes
@@ -134,6 +139,7 @@
     - anki
     - audacity
     - calibre
+    - dbeaver-ce
     - evolution
     - evolution-ews
     - google-chrome-stable
