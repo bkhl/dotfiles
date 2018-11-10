@@ -1,3 +1,4 @@
+---
 - name: Get Python environment directory
   set_fact:
     python_directory: '{{ ansible_env.HOME }}/opt/python'
@@ -15,7 +16,7 @@
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
   command: dpkg-query --show --showformat='${db:Status-Status}\n' libssl-dev
   changed_when: false
-  ignore_errors: yes
+  ignore_errors: true
   register: libssl_dev_check
 
 - name: Store whether libssl-dev is installed
@@ -45,6 +46,7 @@
       - pipenv
       - pre-commit
       - python-language-server
+      - yamllint
     state: latest
 
 - name: Install Ansible
