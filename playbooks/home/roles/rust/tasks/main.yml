@@ -41,4 +41,5 @@
 - name: Install programs from crates.io
   command: '{{ cargo_path }} install --force {{ item }}'
   with_items:
+    - cargo-deb
     - shellharden
