@@ -237,6 +237,7 @@
       - network-manager-openconnect-gnome
       - network-manager-openvpn-gnome
       - network-manager-vpnc-gnome
+      - nmap
       - resolvconf
       - traceroute
       - whois
