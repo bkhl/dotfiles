@@ -254,7 +254,7 @@
       - ubuntu-restricted-addons
 
       # Ansible dependency
-      - libssl-dev
+      - libssl1.0-dev
 
       # Erlang dependencies
       - autoconf
