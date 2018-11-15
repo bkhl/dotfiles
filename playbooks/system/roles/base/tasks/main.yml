@@ -1,3 +1,4 @@
+---
 - name: Ubuntu repositories enabled
   apt_repository:
     repo: '{{ item }}'
@@ -52,7 +53,7 @@
 
 - name: Signal APT key added
   apt_key:
-    url:  https://updates.signal.org/desktop/apt/keys.asc
+    url: https://updates.signal.org/desktop/apt/keys.asc
     id: D980A17457F6FB06
     state: present
 
@@ -127,7 +128,7 @@
 
 - name: Update APT cache
   apt:
-    update_cache: yes
+    update_cache: true
   changed_when: false
 
 - name: Packages added
@@ -265,9 +266,9 @@
 
 - name: User added to additional groups
   user:
-     name: "{{ lookup('env','USER') }}"
-     groups: docker,vboxusers
-     append: yes
+    name: "{{ lookup('env','USER') }}"
+    groups: docker,vboxusers
+    append: true
 
 - name: Firefox set as default browser
   alternatives:
@@ -280,10 +281,10 @@
     regexp: '^{{ item.key }}='
     line: '{{ item.key }}="{{ item.value }}"'
   with_items:
-    - { key: 'XKBLAYOUT', value: 'us' }
-    - { key: 'XKBVARIANT', value: 'altgr-intl' }
-    - { key: 'XKBOPTIONS', value: 'compose:caps' }
-    - { key: 'BACKSPACE', value: 'guess'}
+    - {key: 'XKBLAYOUT', value: 'us'}
+    - {key: 'XKBVARIANT', value: 'altgr-intl'}
+    - {key: 'XKBOPTIONS', value: 'compose:caps'}
+    - {key: 'BACKSPACE', value: 'guess'}
 
 - name: Change GNOME Shell font
   patch:
