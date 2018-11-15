@@ -14,7 +14,7 @@
 
 - name: Check for libssl-dev
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
-  command: dpkg-query --show --showformat='${db:Status-Status}\n' libssl-dev
+  command: dpkg-query --show --showformat='${db:Status-Status}\n' libssl1.0-dev
   changed_when: false
   ignore_errors: true
   register: libssl_dev_check
