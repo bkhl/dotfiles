@@ -10,7 +10,7 @@
       get_url:
         url: https://get.sdkman.io/
         dest: /tmp/get-sdkman.sh
-        checksum: sha256:18c2813712380304beb282427fa976f27da7c4a72bee524fbc05a02bd9677a15
+        checksum: sha256:42bcab3b32668f77041b10516954be20513e37d81aa65a02d060161dc7874b89
 
     - name: Install SDKMAN
       command: bash /tmp/get-sdkman.sh
