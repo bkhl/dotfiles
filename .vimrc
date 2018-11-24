@@ -63,7 +63,7 @@ else
 endif
 
 " Ion
-Plug 'vmchale/ion'
+Plug 'vmchale/ion-vim'
 
 " Python
 let g:ale_fixers.python = [ 'isort', 'black' ]
