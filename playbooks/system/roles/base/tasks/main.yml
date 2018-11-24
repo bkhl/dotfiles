@@ -126,6 +126,16 @@
     repo: ppa:serge-rider/dbeaver-ce
     filename: dbeaver
 
+- name: Vagrant APT key added
+  apt_key:
+    keyserver: keyserver.ubuntu.com
+    id: CE3F3DE92099F7A4
+
+- name: Vagrant APT repository enabled
+  apt_repository:
+    repo: deb https://vagrant-deb.linestarve.com/ any main
+    filename: vagrant
+
 - name: Update APT cache
   apt:
     update_cache: true
