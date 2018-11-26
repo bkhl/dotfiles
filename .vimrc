@@ -1,123 +1,9 @@
 """"
-" Keyboard map leader
-
-let mapleader = " "
-
-""""
-" Plugins
-
-silent! call plug#begin('~/.vim/plugged')
-
-" Navigate and manage surrounding character pairs
-Plug 'tpope/vim-surround'
-
-" Automatically close character pairs
-Plug 'Townk/vim-autoclose'
-
-" Improved % pair matching
-Plug 'vim-scripts/matchit.zip'
-
-" Comment/uncomment
-Plug 'tpope/vim-commentary'
-
-" Show VCS changes in sign column
-if v:version > 704 || (v:version == 704 && has('patch1967'))
-    Plug 'mhinz/vim-signify'
-    let g:signify_realtime = 1
-    let g:signify_vcs_list = [ 'git', 'bzr', 'hg', 'svn' ]
-endif
-
-" Show buffers in command bar
-Plug 'bling/vim-bufferline'
-
-" File system explorer
-Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-map <C-n> :NERDTreeToggle<CR>
-
-" Multiple language syntax support
-Plug 'sheerun/vim-polyglot'
-
-" async job control
-Plug 'prabirshrestha/async.vim'
-
-" async completion
-Plug 'prabirshrestha/asyncomplete.vim'
-
-" LSP
-Plug 'prabirshrestha/vim-lsp'
-Plug 'prabirshrestha/asyncomplete-lsp.vim'
-
-" Linting
-if v:version >= 800
-    Plug 'w0rp/ale'
-
-    let g:ale_fixers = {}
-
-    nmap <silent> <leader>f <Plug>(ale_first)
-    nmap <silent> <leader>n <Plug>(ale_next_wrap)
-    nmap <silent> <leader>p <Plug>(ale_previous_wrap)
-    nmap <silent> <leader>o <Plug>(ale_fix)
-else
-    Plug 'scrooloose/syntastic'
-endif
-
-" Ion
-Plug 'vmchale/ion-vim'
-
-" Python
-let g:ale_fixers.python = [ 'isort', 'black' ]
-Plug 'plytophogy/vim-virtualenv'
-if executable('pyls')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'pyls',
-        \ 'cmd': {server_info->['pyls']},
-        \ 'whitelist': ['python'],
-        \ })
-endif
-
-" Rust
-Plug 'rust-lang/rust.vim'
-let g:rustfmt_autosave = 1
-let g:ale_fixers.rust = [ 'rustfmt' ]
-if executable('rls')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'rls',
-        \ 'cmd': {server_info->['rustup', 'run', 'nightly', 'rls']},
-        \ 'whitelist': ['rust'],
-        \ })
-endif
-
-call plug#end()
-
-
-""""
 " Appearance
 
-" Allow color schemes to do bright colors without forcing bold.
-if &t_Co == 8 && $TERM !~# '^linux'
-  set t_Co=16
-endif
-
 " Colour scheme
-if has("gui_running")
-    colorscheme koehler
-else
-    colorscheme default
-endif
+colorscheme slate
 set background=dark
-
-" Disable menu bar
-set guioptions-=m
-
-" Disable scroll bar
-set guioptions-=r
-
-" Disable toolbar
-set guioptions-=T
-
-" Set GUI font
-set guifont=Monospace\ 11
 
 " Line numbering
 set number
@@ -151,6 +37,9 @@ set listchars=trail:-,tab:>-,extends:>,precedes:<,nbsp:+
 
 """"
 " Behaviour
+
+" Map leader
+let mapleader = " "
 
 " Backup and swap file directories
 set backupdir=~/.vimtmp,.
@@ -193,11 +82,6 @@ endif
 
 " Enhanced command-line completion
 set wildmenu
-
-" Use UTF-8 for Latin-1 files in GUI
-if &encoding ==# 'latin1' && has('gui_running')
-  set encoding=utf-8
-endif
 
 " Delete comment character when joining commented lines
 if v:version > 703 || v:version == 703 && has("patch541")
