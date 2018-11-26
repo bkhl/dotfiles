@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=tmux
+Comment=Terminal multiplexer
+Keywords=shell;prompt;command;commandline;cmd;
+TryExec=gnome-terminal
+Exec=gnome-terminal -e tmux
+Icon=utilities-terminal
+Type=Application
+Categories=GNOME;GTK;System;TerminalEmulator;
+StartupNotify=true
