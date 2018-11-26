@@ -52,7 +52,6 @@ set hidden
 set modeline
 
 " Indentation settings
-"
 if has('autocmd')
   filetype plugin indent on
 endif
