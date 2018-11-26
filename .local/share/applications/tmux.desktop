@@ -2,9 +2,9 @@
 Name=tmux
 Comment=Terminal multiplexer
 Keywords=shell;prompt;command;commandline;cmd;
-TryExec=gnome-terminal
-Exec=gnome-terminal -e tmux
+TryExec=x-terminal-emulator
+Exec=x-terminal-emulator -e tmux
 Icon=utilities-terminal
 Type=Application
-Categories=GNOME;GTK;System;TerminalEmulator;
+Categories=System;TerminalEmulator;
 StartupNotify=true
