@@ -48,33 +48,6 @@ _update_prompt() {
 }
 PROMPT_COMMAND=_update_prompt
 
-# Window title
-_update_title () {
-    if [ "$BASH_COMMAND" == '_update_prompt' ]; then
-        local t="$USER@$HOSTNAME:$(dirs +0)"
-    elif [ "$1" ]; then
-        local t="$*"
-    else
-        local t="$BASH_COMMAND"
-    fi
-    printf "\e]0;%s\007" "$t"
-}
-trap _update_title DEBUG
-
-_foreground() {
-    case "$1" in
-        [0-9]*([0-9]))
-            local p=$(jobs -l | grep -e "^\[$1\]" | cut -d' ' -f3);;
-        +|-)
-            local p=$(jobs -l | grep -e "^\[[[:digit:]]\+\]$1" | cut -d' ' -f3);;
-        *)
-            local p=$(jobs -l | grep -e "^\[[[:digit:]]\+\]+" | cut -d' ' -f3);;
-    esac
-    _update_title $(tr '\000' ' ' < /proc/$p/cmdline)
-    command fg $1
-}
-alias fg=_foreground
-
 # asdf
 if [[ -e "${ASDF_DIR}/asdf.sh" && -e "${ASDF_DIR}/completions/asdf.bash" ]]; then
     source "${ASDF_DIR}/asdf.sh"
