@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# rscreen DESTINATION [SESSION]
+# rsess DESTINATION [SESSION]
 #
 # Copy config files to the directory $HOME/{SESSION} at the remote host given
 # by DESTINATION. Then login to the remote host with the the session directory
