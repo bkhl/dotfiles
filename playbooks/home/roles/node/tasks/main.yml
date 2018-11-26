@@ -1,7 +1,0 @@
-- name: Install NPM packages
-  npm:
-    name: '{{ item }}'
-    global: yes
-  with_items:
-    - browser-sync
-

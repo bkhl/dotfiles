@@ -233,8 +233,6 @@
       - git
       - graphviz
       - libperl-critic-perl
-      - nodejs
-      - npm
       - python-minimal
       - python-pip
       - python3-minimal
