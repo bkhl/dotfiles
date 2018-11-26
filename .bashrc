@@ -38,16 +38,6 @@ alias grep='grep --color=auto'
 alias ls='ls --color=auto --classify'
 alias sudo='sudo '
 
-if [[ "$TERM" =~ ^xterm(-256color)?$ ]] && command -V gvim > /dev/null 2>&1; then
-    function vim {
-        if [[ -z "$(gvim --serverlist)" ]]; then
-            gvim "$@"
-        else
-            gvim --remote "$@"
-        fi
-    }
-fi
-
 # Prompt
 _update_prompt() {
     local r=$?

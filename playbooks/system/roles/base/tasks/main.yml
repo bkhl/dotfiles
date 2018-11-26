@@ -136,6 +136,11 @@
     repo: deb https://vagrant-deb.linestarve.com/ any main
     filename: vagrant
 
+- name: Neovim APT repository enabled
+  apt_repository:
+    repo: ppa:neovim-ppa/stable
+    filename: neovim
+
 - name: Update APT cache
   apt:
     update_cache: true
@@ -159,6 +164,7 @@
       - mellowplayer
       - mplayer
       - mpv
+      - neovim
       - picard
       - quodlibet
       - remmina
@@ -168,7 +174,6 @@
       - skypeforlinux
       - teamviewer
       - usb-creator-gtk
-      - vim-gtk3
       - virtualbox
       - virtualbox-ext-pack
       - virtualbox-qt
