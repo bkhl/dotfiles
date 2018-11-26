@@ -102,6 +102,15 @@ set sessionoptions-=options
 " Break undo before C-u in insert mode
 inoremap <C-U> <C-G>u<C-U>
 
+" netrw
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+let g:netrw_winsize = 25
+autocmd FileType netrw nnoremap <silent> q :bd<CR>
+nnoremap <silent> <C-n> :Vexplore<CR>
+
 
 """"
 " Custom commands
