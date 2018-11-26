@@ -1,10 +1,10 @@
-#!/bin/sh
+#!/bin/bash
 
 # rsess DESTINATION [SESSION]
 #
 # Copy config files to the directory $HOME/{SESSION} at the remote host given
 # by DESTINATION. Then login to the remote host with the the session directory
-# set as $HOME, and start or reconnect to a screen session on the remote host
+# set as $HOME, and start or reconnect to a tmux session on the remote host
 # using the same session name.
 #
 # DESTINATION is an ssh target of the form # [user@]hostname
@@ -17,20 +17,20 @@ set -x
 DESTINATION="${1}"
 SESSION="${2:-${USER}}"
 local_tmp="$(mktemp --tmpdir --directory home.XXXXXXXX)"
-remote_home="$(ssh ${DESTINATION} printenv HOME)/${USER}"
+remote_home="$(ssh "${DESTINATION}" printenv HOME)/${USER}"
 
 chmod 755 "${local_tmp}"
 
-for f in .bash_profile .bashrc .gitconfig .hgrc .inputrc .profile .screenrc .tmux.conf .vimrc; do
+for f in .bash_profile .bashrc .gitconfig .hgrc .inputrc .profile .tmux.conf .vimrc bin/tmux; do
     mkdir -p "${local_tmp}/$(dirname ${f})"
     ln -sT "${HOME}/${f}" "${local_tmp}/${f}"
 done
 
 bin="${local_tmp}/bin"
-mkdir "${bin}"
+mkdir -p "${bin}"
 
-my_screen="${bin}/my-screen"
-cat << HERE > "${my_screen}"
+my_tmux="${bin}/my-tmux"
+cat << HERE > "${my_tmux}"
 #!/bin/sh
 export REAL_HOME="\${HOME}"
 export HOME="${remote_home}"
@@ -38,14 +38,14 @@ if [ ! -e "\${HOME}/.ssh" ]; then
     ln -sT "\${REAL_HOME}/.ssh" "\${HOME}/.ssh"
 fi
 cd "\${HOME}"
-exec screen -DR "${SESSION}"
+exec bin/tmux new-session -A -s "${SESSION}"
 HERE
-chmod +x "${my_screen}"
+chmod +x "${my_tmux}"
 
 rsync --archive --copy-links "${local_tmp}/" "${DESTINATION}:${remote_home}"
 rm --recursive --force "${local_tmp}"
 
-remote_command="${remote_home}/bin/my-screen"
+remote_command="${remote_home}/bin/my-tmux"
 if mosh "${DESTINATION}" "${remote_command}"; then
     exit
 else
