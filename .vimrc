@@ -2,7 +2,6 @@
 " Appearance
 
 " Colour scheme
-colorscheme slate
 set background=dark
 
 " Line numbering
