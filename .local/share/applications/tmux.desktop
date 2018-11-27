@@ -2,8 +2,8 @@
 Name=tmux
 Comment=Terminal multiplexer
 Keywords=shell;prompt;command;commandline;cmd;
-TryExec=x-terminal-emulator
-Exec=x-terminal-emulator -e tmux new-session -A -s main
+TryExec=gnome-terminal
+Exec=gnome-terminal --window-with-profile=tmux
 Icon=utilities-terminal
 Type=Application
 Categories=System;TerminalEmulator;
