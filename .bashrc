@@ -4,7 +4,7 @@ if [[ -n "${REAL_HOME}" ]] && [[ -e "${REAL_HOME}/.bashrc" ]]; then
 fi
 
 # History
-HISTCONTROL=erasedups:ignorespace
+HISTCONTROL=erasedups:ignoreboth
 HISTFILESIZE=16384
 HISTSIZE=8192
 shopt -s histappend
@@ -38,7 +38,7 @@ alias grep='grep --color=auto'
 alias ls='ls --color=auto --classify'
 alias sudo='sudo '
 
-# Prompt
+# Prompt command
 _update_prompt() {
     local r=$?
     PS1='\u@\h:\w\$ '
@@ -46,7 +46,20 @@ _update_prompt() {
         PS1="?:${r} ${PS1}"
     fi
 }
-PROMPT_COMMAND=_update_prompt
+
+_update_history() {
+    history -n
+    history -w
+    history -c
+    history -r
+}
+
+_prompt_command() {
+    _update_prompt
+    _update_history
+}
+
+PROMPT_COMMAND=_prompt_command
 
 # asdf
 if [[ -e "${ASDF_DIR}/asdf.sh" && -e "${ASDF_DIR}/completions/asdf.bash" ]]; then
