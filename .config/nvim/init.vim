@@ -18,8 +18,6 @@ Plug 'tpope/vim-commentary'
 
 " Show VCS changes in sign column
 Plug 'mhinz/vim-signify'
-let g:signify_realtime = 1
-let g:signify_vcs_list = [ 'git', 'bzr', 'hg', 'svn' ]
 
 " Show buffers in command bar
 Plug 'bling/vim-bufferline'
@@ -31,5 +29,9 @@ Plug 'sheerun/vim-polyglot'
 Plug 'vmchale/ion-vim'
 
 call plug#end()
+
+" vim-signify
+let g:signify_realtime = 1
+let g:signify_vcs_list = [ 'git', 'bzr', 'hg', 'svn' ]
 
 " vim:set ft=vim et sw=2:
