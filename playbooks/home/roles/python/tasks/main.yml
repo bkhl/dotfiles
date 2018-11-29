@@ -43,6 +43,7 @@
       - black
       - csvkit
       - isort
+      - neovim-remote
       - pipenv
       - pre-commit
       - python-language-server
