@@ -42,11 +42,11 @@
     name:
       - black
       - csvkit
+      - flake8
       - isort
       - neovim-remote
       - pipenv
       - pre-commit
-      - python-language-server
       - yamllint
     state: latest
 

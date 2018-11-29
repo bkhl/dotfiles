@@ -110,6 +110,11 @@ let g:netrw_winsize = 25
 autocmd FileType netrw nnoremap <silent> q :bd<CR>
 nnoremap <silent> <C-n> :Vexplore<CR>
 
+" QuickFix
+nnoremap <silent> <leader>f :lfirst<CR>
+nnoremap <silent> <leader>n :lnext<CR>
+nnoremap <silent> <leader>p :lprevious<CR>
+
 
 """"
 " Custom commands
