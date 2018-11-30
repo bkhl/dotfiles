@@ -16,7 +16,7 @@ set statusline=%n\ %f\ %h%w%m%r\ %=%(%l,%c%V\ %=\ %L%)"""
 
 " Syntax highlighting
 if has('syntax') && !exists('g:syntax_on')
-  syntax enable
+    syntax enable
 endif
 
 " Show cursor coordinates
@@ -52,7 +52,7 @@ set modeline
 
 " Indentation settings
 if has('autocmd')
-  filetype plugin indent on
+    filetype plugin indent on
 endif
 set autoindent
 set backspace=indent,eol,start
@@ -75,7 +75,7 @@ set nrformats-=octal
 set incsearch
 " Use <C-L> to clear the highlighting of :set hlsearch.
 if maparg('<C-L>', 'n') ==# ''
-  nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
+    nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 endif
 
 " Enhanced command-line completion
@@ -83,7 +83,7 @@ set wildmenu
 
 " Delete comment character when joining commented lines
 if v:version > 703 || v:version == 703 && has("patch541")
-  set formatoptions+=j
+    set formatoptions+=j
 endif
 
 " Automatically reload file if edited outside of Vim
