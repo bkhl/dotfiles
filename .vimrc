@@ -131,6 +131,3 @@ autocmd FileType make setlocal noexpandtab
 
 " JSON
 autocmd FileType json setlocal shiftwidth=2 tabstop=2
-
-
-" vim:set ft=vim et sw=2:
