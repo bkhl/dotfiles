@@ -1,24 +1,24 @@
-[submodule ".vim/pack/bkhl/vim-surround"]
+[submodule ".vim/pack/plugins/start/vim-surround"]
 	path = .vim/pack/plugins/start/surround
 	url = https://github.com/tpope/vim-surround.git
-[submodule ".vim/pack/bkhl/vim-autoclose"]
+[submodule ".vim/pack/plugins/start/vim-autoclose"]
 	path = .vim/pack/plugins/start/autoclose
 	url = https://github.com/Townk/vim-autoclose.git
-[submodule ".vim/pack/bkhl/vim-commentary"]
+[submodule ".vim/pack/plugins/start/vim-commentary"]
 	path = .vim/pack/plugins/start/commentary
 	url = https://github.com/tpope/vim-commentary.git
-[submodule ".vim/pack/bkhl/vim-signify"]
+[submodule ".vim/pack/plugins/start/vim-signify"]
 	path = .vim/pack/plugins/start/signify
 	url = https://github.com/mhinz/vim-signify.git
-[submodule ".vim/pack/bkhl/vim-bufferline"]
+[submodule ".vim/pack/plugins/start/vim-bufferline"]
 	path = .vim/pack/plugins/start/bufferline
 	url = https://github.com/bling/vim-bufferline.git
-[submodule ".vim/pack/bkhl/vim-polyglot"]
+[submodule ".vim/pack/plugins/start/vim-polyglot"]
 	path = .vim/pack/plugins/start/polyglot
 	url = https://github.com/sheerun/vim-polyglot.git
-[submodule ".vim/pack/bkhl/neomake"]
+[submodule ".vim/pack/plugins/start/neomake"]
 	path = .vim/pack/plugins/start/neomake
 	url = https://github.com/neomake/neomake.git
-[submodule ".vim/pack/bkhl/vim-virtualenv"]
+[submodule ".vim/pack/plugins/start/vim-virtualenv"]
 	path = .vim/pack/plugins/start/virtualenv
 	url = https://github.com/plytophogy/vim-virtualenv.git
