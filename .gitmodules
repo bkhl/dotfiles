@@ -25,3 +25,6 @@
 [submodule ".vim/pack/plugins/start/vinegar"]
 	path = .vim/pack/plugins/start/vinegar
 	url = https://github.com/tpope/vim-vinegar.git
+[submodule ".vim/pack/plugins/start/jedi"]
+	path = .vim/pack/plugins/start/jedi
+	url = https://github.com/davidhalter/jedi-vim.git

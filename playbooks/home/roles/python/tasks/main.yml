@@ -44,6 +44,7 @@
       - csvkit
       - flake8
       - isort
+      - neovim
       - neovim-remote
       - pipenv
       - pre-commit
