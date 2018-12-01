@@ -28,3 +28,6 @@
 [submodule ".vim/pack/plugins/start/jedi"]
 	path = .vim/pack/plugins/start/jedi
 	url = https://github.com/davidhalter/jedi-vim.git
+[submodule ".vim/pack/plugins/start/localvimrc"]
+	path = .vim/pack/plugins/start/localvimrc
+	url = https://github.com/embear/vim-localvimrc.git
