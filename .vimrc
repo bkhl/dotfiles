@@ -3,6 +3,7 @@
 
 " Colour scheme
 set background=dark
+colorscheme slate
 
 " Line numbering
 set number
