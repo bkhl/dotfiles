@@ -22,3 +22,6 @@
 [submodule ".vim/pack/plugins/start/vim-virtualenv"]
 	path = .vim/pack/plugins/start/virtualenv
 	url = https://github.com/plytophogy/vim-virtualenv.git
+[submodule ".vim/pack/plugins/start/vinegar"]
+	path = .vim/pack/plugins/start/vinegar
+	url = https://github.com/tpope/vim-vinegar.git
