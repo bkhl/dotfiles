@@ -31,6 +31,3 @@
 [submodule ".vim/pack/plugins/start/localvimrc"]
 	path = .vim/pack/plugins/start/localvimrc
 	url = https://github.com/embear/vim-localvimrc.git
-[submodule ".vim/pack/plugins/start/test"]
-	path = .vim/pack/plugins/start/test
-	url = https://github.com/janko-m/vim-test.git
