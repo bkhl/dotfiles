@@ -71,9 +71,6 @@ exec bin/tmux new-session -A -s "{self.session}"
 
         ((autossh < sys.stdin) > sys.stdout)("-t", destination, remote_my_tmux)
 
-    def cleanup(self, retcode):
-        delete(self.temp_dir)
-
 
 def parse_destination(destination):
     parts = destination.split("@")
