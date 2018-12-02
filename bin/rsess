@@ -14,6 +14,10 @@ class RSess(cli.Application):
         ["-s", "--session"], default=getpass.getuser(), help="session name"
     )
 
+    force_mosh = cli.Flag(
+        ["-m", "--force-mosh"], help="try to use Mosh even if it has previously failed"
+    )
+
     def main(self, destination):
         remote_user, remote_host = parse_destination(destination)
 
@@ -62,9 +66,11 @@ exec bin/tmux new-session -A -s "{self.session}"
         remote_my_tmux = remote_home / "bin" / my_tmux.name
         remote_mosh_unsuccessful = remote_home / ".mosh_unsuccessful"
 
-        if not remote_mosh_unsuccessful.exists():
+        if self.force_mosh or not remote_mosh_unsuccessful.exists():
             try:
                 ((mosh < sys.stdin) > sys.stdout)(destination, remote_my_tmux)
+                if self.force_mosh:
+                    delete(remote_mosh_unsuccessful)
                 return
             except ProcessExecutionError:
                 remote_mosh_unsuccessful.touch()
