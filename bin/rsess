@@ -1,53 +1,92 @@
-#!/bin/bash
+#!/usr/bin/env python3
 
-# rsess DESTINATION [SESSION]
-#
-# Copy config files to the directory $HOME/{SESSION} at the remote host given
-# by DESTINATION. Then login to the remote host with the the session directory
-# set as $HOME, and start or reconnect to a tmux session on the remote host
-# using the same session name.
-#
-# DESTINATION is an ssh target of the form # [user@]hostname
-#
-# SESSION is an optional argument. If not given, defaults to local username.
+import getpass
+import sys
+import tempfile
 
-set -e
-set -x
+from plumbum import ProcessExecutionError, SshMachine, cli, local
+from plumbum.cmd import autossh, mosh, rsync
+from plumbum.path.utils import delete
 
-DESTINATION="${1}"
-SESSION="${2:-${USER}}"
-local_tmp="$(mktemp --tmpdir --directory home.XXXXXXXX)"
-remote_home="$(ssh "${DESTINATION}" printenv HOME)/${USER}"
 
-chmod 755 "${local_tmp}"
+class RSess(cli.Application):
+    session = cli.SwitchAttr(
+        ["-s", "--session"], default=getpass.getuser(), help="session name"
+    )
 
-for f in .bash_profile .bashrc .gitconfig .hgrc .inputrc .profile .tmux.conf .vimrc bin/tmux; do
-    mkdir -p "${local_tmp}/$(dirname ${f})"
-    ln -sT "${HOME}/${f}" "${local_tmp}/${f}"
-done
+    def main(self, destination):
+        remote_user, remote_host = parse_destination(destination)
 
-bin="${local_tmp}/bin"
-mkdir -p "${bin}"
+        local_temp = local.path(tempfile.mkdtemp(prefix="home."))
+        local_temp.chmod(0o755)
+        self.local_temp = local_temp
 
-my_tmux="${bin}/my-tmux"
-cat << HERE > "${my_tmux}"
-#!/bin/sh
-export REAL_HOME="\${HOME}"
-export HOME="${remote_home}"
-if [ ! -e "\${HOME}/.ssh" ]; then
-    ln -sT "\${REAL_HOME}/.ssh" "\${HOME}/.ssh"
+        local_temp_bin_dir = local_temp / "bin"
+        local_temp_bin_dir.mkdir()
+        local_temp_bin_dir.chmod(0o755)
+
+        for filename in [
+            ".bash_profile",
+            ".bashrc",
+            ".gitconfig",
+            ".inputrc",
+            ".profile",
+            ".tmux.conf",
+            ".vimrc",
+            "bin/tmux",
+        ]:
+            (local.env.home / filename).symlink(local_temp / filename)
+
+        remote = SshMachine(remote_host, user=remote_user)
+        remote_home = remote.env.home / self.session
+
+        script = f"""#!/bin/sh
+export REAL_HOME="${{HOME}}"
+export HOME="{remote_home}"
+if [ ! -e "${{HOME}}/.ssh" ]; then
+    ln -sT "${{REAL_HOME}}/.ssh" "${{HOME}}/.ssh"
 fi
-cd "\${HOME}"
-exec bin/tmux new-session -A -s "${SESSION}"
-HERE
-chmod +x "${my_tmux}"
+cd "${{HOME}}"
+exec bin/tmux new-session -A -s "{self.session}"
+"""
+        my_tmux = local_temp_bin_dir / "my-tmux"
+        my_tmux.write(script)
+        my_tmux.chmod(0o755)
 
-rsync --archive --copy-links "${local_tmp}/" "${DESTINATION}:${remote_home}"
-rm --recursive --force "${local_tmp}"
+        rsync(
+            "--archive",
+            "--copy-links",
+            f"{local_temp}/",
+            f"{destination}:{remote_home}",
+        )
 
-remote_command="${remote_home}/bin/my-tmux"
-if mosh "${DESTINATION}" "${remote_command}"; then
-    exit
-else
-    autossh -t "${DESTINATION}" "${remote_command}" 
-fi
+        delete(self.local_temp)
+
+        remote_my_tmux = remote_home / "bin" / my_tmux.name
+        remote_mosh_unsuccessful = remote_home / ".mosh_unsuccessful"
+
+        if not remote_mosh_unsuccessful.exists():
+            try:
+                ((mosh < sys.stdin) > sys.stdout)(destination, remote_my_tmux)
+                return
+            except ProcessExecutionError:
+                remote_mosh_unsuccessful.touch()
+
+        ((autossh < sys.stdin) > sys.stdout)("-t", destination, remote_my_tmux)
+
+    def cleanup(self, retcode):
+        delete(self.local_temp)
+
+
+def parse_destination(destination):
+    parts = destination.split("@")
+    if len(parts) == 1:
+        return None, parts[0]
+    elif len(parts) == 2:
+        return parts[0], parts[1]
+    else:
+        raise ValueError("invalid destination format")
+
+
+if __name__ == "__main__":
+    RSess.run()

@@ -46,6 +46,7 @@
       - isort
       - neovim
       - neovim-remote
+      - plumbum
       - pipenv
       - pre-commit
       - yamllint
