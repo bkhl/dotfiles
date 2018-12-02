@@ -17,13 +17,13 @@ class RSess(cli.Application):
     def main(self, destination):
         remote_user, remote_host = parse_destination(destination)
 
-        local_temp = local.path(tempfile.mkdtemp(prefix="home."))
-        local_temp.chmod(0o755)
-        self.local_temp = local_temp
+        temp_dir = local.path(tempfile.mkdtemp(prefix="home."))
+        temp_dir.chmod(0o755)
+        self.temp_dir = temp_dir
 
-        local_temp_bin_dir = local_temp / "bin"
-        local_temp_bin_dir.mkdir()
-        local_temp_bin_dir.chmod(0o755)
+        temp_bin_dir = temp_dir / "bin"
+        temp_bin_dir.mkdir()
+        temp_bin_dir.chmod(0o755)
 
         for filename in [
             ".bash_profile",
@@ -35,7 +35,7 @@ class RSess(cli.Application):
             ".vimrc",
             "bin/tmux",
         ]:
-            (local.env.home / filename).symlink(local_temp / filename)
+            (local.env.home / filename).symlink(temp_dir / filename)
 
         remote = SshMachine(remote_host, user=remote_user)
         remote_home = remote.env.home / self.session
@@ -49,18 +49,15 @@ fi
 cd "${{HOME}}"
 exec bin/tmux new-session -A -s "{self.session}"
 """
-        my_tmux = local_temp_bin_dir / "my-tmux"
+        my_tmux = temp_bin_dir / "my-tmux"
         my_tmux.write(script)
         my_tmux.chmod(0o755)
 
         rsync(
-            "--archive",
-            "--copy-links",
-            f"{local_temp}/",
-            f"{destination}:{remote_home}",
+            "--archive", "--copy-links", f"{temp_dir}/", f"{destination}:{remote_home}"
         )
 
-        delete(self.local_temp)
+        delete(self.temp_dir)
 
         remote_my_tmux = remote_home / "bin" / my_tmux.name
         remote_mosh_unsuccessful = remote_home / ".mosh_unsuccessful"
@@ -75,7 +72,7 @@ exec bin/tmux new-session -A -s "{self.session}"
         ((autossh < sys.stdin) > sys.stdout)("-t", destination, remote_my_tmux)
 
     def cleanup(self, retcode):
-        delete(self.local_temp)
+        delete(self.temp_dir)
 
 
 def parse_destination(destination):
