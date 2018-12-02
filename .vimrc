@@ -106,6 +106,8 @@ nnoremap <silent> <leader>f :lfirst<CR>
 nnoremap <silent> <leader>n :lnext<CR>
 nnoremap <silent> <leader>p :lprevious<CR>
 
+" Save file
+nnoremap <silent> <leader>s :update<CR>
 
 """"
 " Custom commands

@@ -31,3 +31,6 @@
 [submodule ".vim/pack/plugins/start/localvimrc"]
 	path = .vim/pack/plugins/start/localvimrc
 	url = https://github.com/embear/vim-localvimrc.git
+[submodule ".vim/pack/plugins/start/black"]
+	path = .vim/pack/plugins/start/black
+	url = https://github.com/ambv/black.git
