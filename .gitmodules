@@ -31,3 +31,6 @@
 [submodule ".vim/pack/plugins/start/black"]
 	path = .vim/pack/plugins/start/black
 	url = https://github.com/ambv/black.git
+[submodule ".vim/pack/plugins/start/repeat"]
+	path = .vim/pack/plugins/start/repeat
+	url = https://github.com/tpope/vim-repeat.git
