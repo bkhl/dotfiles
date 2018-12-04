@@ -37,3 +37,6 @@
 [submodule ".vim/pack/plugins/start/isort"]
 	path = .vim/pack/plugins/start/isort
 	url = https://github.com/fisadev/vim-isort.git
+[submodule ".vim/pack/plugins/start/onedark"]
+	path = .vim/pack/plugins/start/onedark
+	url = https://github.com/joshdick/onedark.vim.git

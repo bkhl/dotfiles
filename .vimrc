@@ -3,6 +3,9 @@
 
 " Colour scheme
 set background=dark
+if (has("termguicolors"))
+    set termguicolors
+endif
 
 " Line numbering
 set number
