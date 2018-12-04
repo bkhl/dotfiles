@@ -34,3 +34,6 @@
 [submodule ".vim/pack/plugins/start/repeat"]
 	path = .vim/pack/plugins/start/repeat
 	url = https://github.com/tpope/vim-repeat.git
+[submodule ".vim/pack/plugins/start/isort"]
+	path = .vim/pack/plugins/start/isort
+	url = https://github.com/fisadev/vim-isort.git

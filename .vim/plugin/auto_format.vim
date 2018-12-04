@@ -1,6 +1,6 @@
 function! AutoFormat()
     if &ft == 'python'
-        silent execute '%!isort -'
+        execute ':Isort'
         execute ':Black'
     endif
 endfunction
