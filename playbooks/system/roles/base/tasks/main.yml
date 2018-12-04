@@ -40,17 +40,6 @@
     filename: skype-stable
     state: present
 
-- name: TelRed APT key added
-  apt_key:
-    keyserver: keyserver.ubuntu.com
-    id: 9454C19A66B920C83DDF696E07C8CCAFCE49F8C5
-
-- name: TelRed APT repository enabled
-  apt_repository:
-    repo: deb https://tel.red/repos/ubuntu bionic non-free
-    filename: telred
-    state: present
-
 - name: Signal APT key added
   apt_key:
     url: https://updates.signal.org/desktop/apt/keys.asc
@@ -170,7 +159,6 @@
       - remmina
       - signal-desktop
       - simplescreenrecorder
-      - sky
       - skypeforlinux
       - teamviewer
       - usb-creator-gtk
