@@ -40,3 +40,15 @@
 [submodule ".vim/pack/plugins/start/onedark"]
 	path = .vim/pack/plugins/start/onedark
 	url = https://github.com/joshdick/onedark.vim.git
+[submodule ".vim/pack/plugins/start/lsp"]
+	path = .vim/pack/plugins/start/lsp
+	url = https://github.com/prabirshrestha/vim-lsp.git
+[submodule ".vim/pack/plugins/start/async"]
+	path = .vim/pack/plugins/start/async
+	url = https://github.com/prabirshrestha/async.vim.git
+[submodule ".vim/pack/plugins/start/asyncomplete"]
+	path = .vim/pack/plugins/start/asyncomplete
+	url = https://github.com/prabirshrestha/asyncomplete.vim.git
+[submodule ".vim/pack/plugins/start/asyncomplete-lsp"]
+	path = .vim/pack/plugins/start/asyncomplete-lsp
+	url = https://github.com/prabirshrestha/asyncomplete-lsp.vim.git
