@@ -15,7 +15,7 @@ endif
 
 " Status line
 set laststatus=2
-set statusline=%n\ %f\ %y\ %([%{&fileformat}\ %{&fileencoding?&fileencoding:&encoding}]%)\ %h%w%m%r%=%l,%c%V\ %L
+set statusline=%n\ %f\ %y\ %([%{&fileencoding?&fileencoding:&encoding}\ %{&fileformat}]%)\ %h%w%m%r%=%l,%c%V\ %L
 
 " Syntax highlighting
 if has('syntax') && !exists('g:syntax_on')
