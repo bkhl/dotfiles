@@ -115,13 +115,3 @@ nnoremap <silent> <leader>s :update<CR>
 
 " Save file as root
 command! W :execute ':silent w !sudo tee % > /dev/null' | :edit!
-
-
-""""
-" File type specific settings
-
-" Makefile
-autocmd FileType make setlocal noexpandtab
-
-" JSON
-autocmd FileType json setlocal shiftwidth=2 tabstop=2
