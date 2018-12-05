@@ -22,9 +22,6 @@ if has('syntax') && !exists('g:syntax_on')
     syntax enable
 endif
 
-" Show cursor coordinates
-set ruler
-
 " Scroll before cursor reaches top/bottom of screen
 set scrolloff=5
 set sidescrolloff=5
@@ -115,3 +112,4 @@ nnoremap <silent> <leader>s :update<CR>
 
 " Save file as root
 command! W :execute ':silent w !sudo tee % > /dev/null' | :edit!
+
