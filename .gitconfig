@@ -3,3 +3,10 @@
 	name = Björn Lindström
 [push]
 	default = simple
+[alias]
+	switch = !legit switch
+	sync = !legit sync
+	publish = !legit publish
+	unpublish = !legit unpublish
+	undo = !legit undo
+	branches = !legit branches

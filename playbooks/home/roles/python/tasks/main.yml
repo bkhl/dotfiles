@@ -44,6 +44,7 @@
       - csvkit
       - flake8
       - isort
+      - legit
       - neovim
       - neovim-remote
       - plumbum
