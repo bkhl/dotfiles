@@ -1,4 +1,5 @@
 [flake8]
 
-# Set max line length to match black defaults.
+# Some changes to match Black defaults.
 max-line-length = 88
+ignore = E203
