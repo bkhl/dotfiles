@@ -1,7 +1,7 @@
 function! AutoFormat()
     if &ft == 'python'
-        execute ':Isort'
-        execute ':Black'
+        silent execute ':Isort'
+        silent execute ':Black'
     endif
 endfunction
 
