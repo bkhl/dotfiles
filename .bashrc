@@ -35,8 +35,13 @@ alias du='du -h'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias grep='grep --color=auto'
-alias ls='ls --color=auto --classify'
 alias sudo='sudo '
+
+if hash exa 2> /dev/null; then
+    alias ls='exa --classify --git'
+else
+    alias ls='ls --color=auto --classify'
+fi
 
 # Prompt command
 _update_prompt() {
