@@ -1,4 +1,5 @@
 [flake8]
 
-# Changed to match Black defaults.
+# Settings to match Black defaults.
 max-line-length = 88
+ignore = W503
