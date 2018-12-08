@@ -40,4 +40,5 @@
     creates: '{{ rust_cargo_root }}/bin/{{ item }}'
   with_items:
     - cargo-deb
+    - exa
     - shellharden
