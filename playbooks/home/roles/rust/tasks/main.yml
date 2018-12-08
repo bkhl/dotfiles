@@ -36,6 +36,8 @@
 
 - name: Install programs from crates.io
   command: '{{ rust_cargo_path }} install {{ item }}'
+  args:
+    creates: '{{ rust_cargo_root }}/bin/{{ item }}'
   with_items:
     - cargo-deb
     - shellharden
