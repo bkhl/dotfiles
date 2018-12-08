@@ -1,5 +1,5 @@
 - name: Check for rustup
-  stat: path={{ rustup_path }}
+  stat: path={{ rust_rustup_path }}
   register: rustup_stat
 
 - name: Install rustup
@@ -16,17 +16,17 @@
 
 - name: Update rustup
   when: rustup_stat.stat.executable is defined and rustup_stat.stat.executable
-  command: '{{ rustup_path }} update'
+  command: '{{ rust_rustup_path }} update'
 
 - name: Toolchains installed
-  command: '{{ rustup_path }} toolchain install {{ item }}'
+  command: '{{ rust_rustup_path }} toolchain install {{ item }}'
   with_items:
     - stable
     - beta
     - nightly
 
 - name: stable components installed
-  command: '{{ rustup_path }} component add {{ item }} --toolchain=stable'
+  command: '{{ rust_rustup_path }} component add {{ item }} --toolchain=stable'
   with_items:
     - clippy-preview
     - rustfmt-preview
@@ -35,7 +35,7 @@
     - rust-src
 
 - name: Install programs from crates.io
-  command: '{{ cargo_path }} install --force {{ item }}'
+  command: '{{ rust_cargo_path }} install {{ item }}'
   with_items:
     - cargo-deb
     - shellharden
