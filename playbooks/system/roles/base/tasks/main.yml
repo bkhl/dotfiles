@@ -281,6 +281,13 @@
       # Useful for scripts that need secrets
       - libsecret-tools
 
+- name: Packages removed
+  apt:
+    state: absent
+    name:
+      - evolution
+      - gedit
+
 - name: User added to additional groups
   user:
     name: "{{ lookup('env','USER') }}"
