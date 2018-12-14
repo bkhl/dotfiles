@@ -1,0 +1,2 @@
+---
+st_source_path: '{{ ansible_env.HOME }}/src/st'

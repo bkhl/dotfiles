@@ -1,8 +1,7 @@
 [Desktop Entry]
-Name=tmux
+Name=st
 Keywords=shell;prompt;command;commandline;cmd;
-TryExec=st
-Exec=st tmux new -A -s main
+Exec=st
 Icon=utilities-terminal
 Type=Application
 Categories=System;TerminalEmulator;
