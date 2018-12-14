@@ -1,9 +1,9 @@
 [Desktop Entry]
 Name=st
 Keywords=shell;prompt;command;commandline;cmd;
-Exec=st
+Exec=st -c st-256color -n st-256color
 Icon=utilities-terminal
 Type=Application
 Categories=System;TerminalEmulator;
-StartupWMClass=xterm-256color
+StartupWMClass=st-256color
 StartupNotify=false
