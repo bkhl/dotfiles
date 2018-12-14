@@ -115,7 +115,7 @@ static const char *colorname[] = {
 
   /* special colors */
   [256] = "#000000", /* background */
-  [257] = "#babdb6", /* foreground */
+  [257] = "#34e235", /* foreground */
 };
 
 /*
@@ -124,8 +124,8 @@ static const char *colorname[] = {
  */
 unsigned int defaultfg = 7;
 unsigned int defaultbg = 256;
-unsigned int defaultcs = 11;
-unsigned int defaultrcs = 7;
+unsigned int defaultcs = 257;
+unsigned int defaultrcs = 257;
 
 /*
  * Colors used, when the specific fg == defaultfg. So in reverse mode this
