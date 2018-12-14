@@ -112,4 +112,3 @@ nnoremap <silent> <leader>s :update<CR>
 
 " Save file as root
 command! W :execute ':silent w !sudo tee % > /dev/null' | :edit!
-
