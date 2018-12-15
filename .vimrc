@@ -76,6 +76,7 @@ set nrformats-=octal
 
 " Incremental search
 set incsearch
+set hlsearch
 " Clear the highlighting of :set hlsearch.
 nmap <silent> <esc><esc> :nohlsearch<CR>
 
