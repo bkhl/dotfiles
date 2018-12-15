@@ -110,6 +110,9 @@ set sessionoptions-=options
 " Break undo before C-u in insert mode
 inoremap <C-U> <C-G>u<C-U>
 
+" Leave insert mode with C-l
+inoremap <C-L> <Esc>
+
 " QuickFix
 nnoremap <silent> <leader>f :lfirst<CR>
 nnoremap <silent> <leader>n :lnext<CR>
