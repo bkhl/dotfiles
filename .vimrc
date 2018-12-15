@@ -1,7 +1,6 @@
 """"
 " Appearance
 
-
 " Colour scheme
 set background=dark
 if &term == "screen-256color"
