@@ -1,9 +1,12 @@
 """"
 " Appearance
 
+
 " Colour scheme
 set background=dark
-if (has("termguicolors"))
+if &term == "screen-256color"
+    let &t_8f = "\<Esc>[38:2:%lu:%lu:%lum"
+    let &t_8b = "\<Esc>[48:2:%lu:%lu:%lum"
     set termguicolors
 endif
 

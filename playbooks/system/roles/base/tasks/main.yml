@@ -136,11 +136,6 @@
     repo: deb https://vagrant-deb.linestarve.com/ any main
     filename: vagrant
 
-- name: Neovim APT repository enabled
-  apt_repository:
-    repo: ppa:neovim-ppa/stable
-    filename: neovim
-
 - name: Wesnoth APT repository enabled
   apt_repository:
     repo: ppa:vincent-c/wesnoth
@@ -167,7 +162,6 @@
       - mellowplayer
       - mplayer
       - mpv
-      - neovim
       - picard
       - quodlibet
       - remmina
@@ -178,6 +172,7 @@
       - teamviewer
       - thonny
       - usb-creator-gtk
+      - vim
       - virtualbox
       - virtualbox-ext-pack
       - virtualbox-qt
