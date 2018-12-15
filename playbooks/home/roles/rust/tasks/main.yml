@@ -35,11 +35,11 @@
     - rust-src
 
 - name: Install programs from crates.io
-  command: '{{ rust_cargo_path }} install {{ item }}'
+  command: '{{ rust_cargo_path }} install {{ item.package }}'
   args:
-    creates: '{{ rust_cargo_root }}/bin/{{ item }}'
+    creates: '{{ rust_cargo_root }}/bin/{{ item.command }}'
   with_items:
-    - cargo-deb
-    - fd-find
-    - exa
-    - shellharden
+    - {package: cargo-deb, command: cargo-deb}
+    - {package: fd-find, command: fd}
+    - {package: exa, command: exa}
+    - {package: shellharden, command: shellharden}
