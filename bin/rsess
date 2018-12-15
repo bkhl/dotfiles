@@ -33,7 +33,7 @@ class RSess(cli.Application):
             ".profile",
             ".tmux.conf",
             ".vimrc",
-            "opt/static/bin/tmux",
+            "bin/tmux",
         ]:
             temp_path = temp_dir / filename
             for parent in reversed(temp_path.parents):
