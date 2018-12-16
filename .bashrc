@@ -44,6 +44,10 @@ else
     alias ls='ls --color=auto --classify'
 fi
 
+if [[ -n $DISPLAY ]] && hash xsel 2> /dev/null; then
+    alias clip='xsel --clipboard'
+fi
+
 # Prompt command
 _update_prompt() {
     local r=$?
