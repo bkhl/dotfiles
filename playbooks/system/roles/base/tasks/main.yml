@@ -180,7 +180,7 @@
       # Handy GUI tools
       - gnome-clocks
       - pick-colour-picker
-      - xclip
+      - xsel
 
       # Games
       - wesnoth
