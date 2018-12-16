@@ -47,6 +47,7 @@ export SDKMAN_DIR="$HOME/opt/sdkman"
 
 # Python
 export PYTHONUSERBASE="$HOME/opt/python"
+export PIPENV_IGNORE_VIRTUALENVS=2 # Don't warn when falling back to already activated virtual environment.
 
 # Rust
 export CARGO_HOME="$HOME/opt/cargo"
