@@ -30,7 +30,7 @@ done
 
 # Application preferences
 export EDITOR=vim
-export PAGER='less -r'
+export PAGER='less -R'
 
 # Username for prod &c.
 export ARBZRUSER=bnl
