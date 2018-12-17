@@ -2,7 +2,6 @@
 " Appearance
 
 " Terminal settings
-set background=dark
 if &term == "screen-256color"
     " Disable flow control.
     silent !stty -ixon
@@ -19,6 +18,14 @@ if &term == "screen-256color"
     set termguicolors
 endif
 
+" Background colour
+set background=dark
+
+" Syntax highlighting
+if has('syntax') && !exists('g:syntax_on')
+    syntax on
+endif
+
 " Line numbering
 set number
 if exists('+relativenumber')
@@ -28,11 +35,6 @@ endif
 " Status line
 set laststatus=2
 set statusline=%n\ %f\ %y\ %([%{&fileencoding?&fileencoding:&encoding}\ %{&fileformat}]%)\ %h%w%m%r%=%l,%c%V\ %L
-
-" Syntax highlighting
-if has('syntax') && !exists('g:syntax_on')
-    syntax enable
-endif
 
 " Scroll before cursor reaches top/bottom of screen
 set scrolloff=5
