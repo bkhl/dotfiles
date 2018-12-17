@@ -252,6 +252,7 @@
       - network-manager-vpnc-gnome
       - nmap
       - resolvconf
+      - socat
       - traceroute
       - whois
 
