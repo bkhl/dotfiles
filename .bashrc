@@ -44,7 +44,7 @@ HISTCONTROL=erasedups:ignoreboth
 # Don't record some commands
 HISTIGNORE="&:[ ]*:exit:ls:bg:fg:history:clear"
 
-# Use standard ISO 8601 timestamp
+# Readable time format
 HISTTIMEFORMAT='%F %T '
 
 
