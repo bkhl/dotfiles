@@ -172,7 +172,7 @@
       - teamviewer
       - thonny
       - usb-creator-gtk
-      - vim
+      - vim-gtk3
       - virtualbox
       - virtualbox-ext-pack
       - virtualbox-qt
@@ -293,10 +293,21 @@
     groups: docker,vboxusers
     append: true
 
-- name: Firefox set as default browser
+- name: Default applications set
   alternatives:
-    name: x-www-browser
-    path: /usr/bin/firefox
+    name: '{{ item.name }}'
+    path: '{{ item.path }}'
+  with_items:
+    - {name: x-www-browser, path: /usr/bin/firefox}
+    - {name: vi, path: /usr/bin/vim.gtk3}
+    - {name: view, path: /usr/bin/vim.gtk3}
+    - {name: ex, path: /usr/bin/vim.gtk3}
+    - {name: editor, path: /usr/bin/vim.gtk3}
+    - {name: rvim, path: /usr/bin/vim.gtk3}
+    - {name: rview, path: /usr/bin/vim.gtk3}
+    - {name: vimdiff, path: /usr/bin/vim.gtk3}
+    - {name: vim, path: /usr/bin/vim.gtk3}
+
 
 - name: Global keyboard defaults set
   lineinfile:
