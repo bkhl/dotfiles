@@ -28,9 +28,9 @@
 - name: stable components installed
   command: '{{ rust_rustup_path }} component add {{ item }} --toolchain=stable'
   with_items:
-    - clippy-preview
-    - rustfmt-preview
-    - rls-preview
+    - clippy
+    - rustfmt
+    - rls
     - rust-analysis
     - rust-src
 
