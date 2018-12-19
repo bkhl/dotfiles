@@ -16,135 +16,29 @@
     - 'deb http://security.ubuntu.com/ubuntu {{ ansible_distribution_release }}-security multiverse'
     - 'deb http://archive.canonical.com/ubuntu {{ ansible_distribution_release }} partner'
 
-- name: Google Chrome APT key added
+- name: Additional repo keys added by URL
   apt_key:
-    url: https://dl-ssl.google.com/linux/linux_signing_key.pub
-    id: 9534C9C4130B4DC9927992BF4F30B6B4C07CB649
+    url: '{{ item.apt_key.url }}'
+    id: '{{ item.apt_key.id }}'
     state: present
+  with_items: '{{ base_repos }}'
+  when: item.apt_key is defined and item.apt_key.url is defined
 
-- name: Google Chrome APT repository enabled
-  apt_repository:
-    repo: deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main
-    filename: google-chrome
-    state: present
-
-- name: Skype APT key added
+- name: Additional repo keys added from keyserver
   apt_key:
-    url: https://repo.skype.com/data/SKYPE-GPG-KEY
-    id: F60A017E3CA5558FAF2439556B4A0000A4EBB320
-    state: present
-
-- name: Skype APT repository enabled
-  apt_repository:
-    repo: deb [arch=amd64] https://repo.skype.com/deb stable main
-    filename: skype-stable
-    state: present
-
-- name: TelRed APT key added
-  apt_key:
+    id: '{{ item.apt_key.id }}'
     keyserver: keyserver.ubuntu.com
-    id: 9454C19A66B920C83DDF696E07C8CCAFCE49F8C5
-
-- name: TelRed APT repository enabled
-  apt_repository:
-    repo: deb https://tel.red/repos/ubuntu bionic non-free
-    filename: telred
     state: present
+  with_items: '{{ base_repos }}'
+  when: item.apt_key is defined and item.apt_key.url is not defined
 
-- name: Signal APT key added
-  apt_key:
-    url: https://updates.signal.org/desktop/apt/keys.asc
-    id: D980A17457F6FB06
+- name: Additional repositories enabled
+  tags: [test]
+  apt_repository:
+    repo: '{{ item.apt_repository.repo }}'
+    filename: '{{ item.apt_repository.filename }}'
     state: present
-
-- name: Signal APT repository enabled
-  apt_repository:
-    repo: deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main
-    filename: signal
-    state: present
-
-- name: Pick APT key added
-  apt_key:
-    keyserver: keyserver.ubuntu.com
-    id: 0EDF8453E8783FF786AF6DED2D2F9F912F2229FF
-
-- name: Pick APT repository enabled
-  apt_repository:
-    repo: deb http://ppa.launchpad.net/sil/pick/ubuntu xenial main
-    filename: pick
-
-- name: Teamviewer APT key added
-  apt_key:
-    keyserver: keyserver.ubuntu.com
-    id: C5E224500C1289C0
-
-- name: Teamviewer APT repository enabled
-  apt_repository:
-    repo: '{{ item }}'
-    filename: teamviewer
-  with_items:
-    - deb http://linux.teamviewer.com/deb stable main
-    - deb http://linux.teamviewer.com/deb preview main
-
-- name: docker-gc APT repository enabled
-  apt_repository:
-    repo: ppa:nschloe/docker-gc-nightly
-    filename: docker-gc
-
-- name: Picard APT repository enabled
-  apt_repository:
-    repo: ppa:musicbrainz-developers/stable
-    filename: musicbrainz
-
-- name: MellowPlayer APT key added
-  apt_key:
-    id: E481C081DB2A84F7
-    url: https://download.opensuse.org/repositories/home:ColinDuquesnoy/xUbuntu_18.04/Release.key
-
-- name: MellowPlayer APT repository enabled
-  apt_repository:
-    repo: deb http://download.opensuse.org/repositories/home:/ColinDuquesnoy/xUbuntu_18.04/ /
-    filename: mellowplayer
-
-- name: SWI Prolog APT key added
-  apt_key:
-    keyserver: keyserver.ubuntu.com
-    id: EF8406856DBFCA18
-
-- name: SWI Prolog APT repository enabled
-  apt_repository:
-    repo: deb http://ppa.launchpad.net/swi-prolog/devel/ubuntu bionic main
-    filename: swi-prolog
-
-- name: Ion Shell APT repository enabled
-  apt_repository:
-    repo: ppa:mmstick76/ion-shell
-    filename: ion-shell
-
-- name: DBeaver APT repository enabled
-  apt_repository:
-    repo: ppa:serge-rider/dbeaver-ce
-    filename: dbeaver
-
-- name: Vagrant APT key added
-  apt_key:
-    keyserver: keyserver.ubuntu.com
-    id: CE3F3DE92099F7A4
-
-- name: Vagrant APT repository enabled
-  apt_repository:
-    repo: deb https://vagrant-deb.linestarve.com/ any main
-    filename: vagrant
-
-- name: Wesnoth APT repository enabled
-  apt_repository:
-    repo: ppa:vincent-c/wesnoth
-    filename: wesnoth
-
-- name: Vim APT repository enabled
-  apt_repository:
-    repo: ppa:jonathonf/vim
-    filename: vim
+  with_items: '{{ base_repos }}'
 
 - name: Update APT cache
   apt:
@@ -154,143 +48,12 @@
 - name: Packages added
   apt:
     state: latest
-    name:
-      # Applications
-      - anki
-      - audacity
-      - calibre
-      - dbeaver-ce
-      - google-chrome-stable
-      - gthumb
-      - hexchat
-      - mdp
-      - mellowplayer
-      - mplayer
-      - mpv
-      - picard
-      - quodlibet
-      - remmina
-      - signal-desktop
-      - simplescreenrecorder
-      - sky
-      - skypeforlinux
-      - teamviewer
-      - thonny
-      - usb-creator-gtk
-      - vim-gtk3
-      - virtualbox
-      - virtualbox-ext-pack
-      - virtualbox-qt
-
-      # Handy GUI tools
-      - gnome-clocks
-      - pick-colour-picker
-      - xsel
-
-      # Games
-      - wesnoth
-
-      # Appearance
-      - fonts-noto
-      - fonts-noto-color-emoji
-      - gnome-tweak-tool
-
-      # My languages
-      - firefox-locale-en
-      - firefox-locale-sv
-      - firefox-locale-th
-      - language-pack-gnome-en
-      - language-pack-gnome-sv
-      - language-pack-gnome-th
-      - wamerican
-      - wbritish
-      - wswedish
-
-      # Handy terminal tools
-      - curl
-      - httpie
-      - ion-shell
-      - jq
-      - libimage-exiftool-perl
-      - mmv
-      - moreutils
-      - mosh
-      - pandoc
-      - rar
-      - unrar
-      - unzip
-      - woof
-      - xmlstarlet
-      - zip
-      - zsync
-
-      # Development tools
-      - bats
-      - build-essential
-      - bzr
-      - debhelper
-      - devscripts
-      - dh-make
-      - docker-compose
-      - docker-gc
-      - docker.io
-      - git
-      - graphviz
-      - libperl-critic-perl
-      - python-minimal
-      - python-pip
-      - python3-minimal
-      - python3-pip
-      - shellcheck
-      - swi-prolog
-      - sqlite3
-      - subversion
-      - tidy
-      - vagrant
-
-      # Network tools
-      - autossh
-      - dnsmasq
-      - net-tools
-      - network-manager-openconnect-gnome
-      - network-manager-openvpn-gnome
-      - network-manager-vpnc-gnome
-      - nmap
-      - resolvconf
-      - socat
-      - traceroute
-      - whois
-
-      # Printing
-      - python3-smbc
-      - smbclient
-
-      # System tools
-      - chrony
-      - duply
-      - krb5-user
-      - ubuntu-restricted-addons
-
-      # Ansible dependency
-      - libssl1.0-dev
-
-      # Erlang dependencies
-      - autoconf
-      - libncurses5-dev
-
-      # st dependencies
-      - libx11-dev
-      - libxft-dev
-
-      # Useful for scripts that need secrets
-      - libsecret-tools
+    name: '{{ base_packages_install }}'
 
 - name: Packages removed
   apt:
     state: absent
-    name:
-      - evolution
-      - gedit
+    name: '{{ base_packages_uninstall }}'
 
 - name: User added to additional groups
   user:
