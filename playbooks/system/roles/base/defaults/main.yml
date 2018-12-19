@@ -81,11 +81,6 @@ base_repos:
       repo: ppa:mmstick76/ion-shell
       filename: ion-shell
 
-  - name: DBeaver
-    apt_repository:
-      repo: ppa:serge-rider/dbeaver-ce
-      filename: dbeaver
-
   - name: Vagrant
     apt_key:
       id: CE3F3DE92099F7A4
@@ -108,7 +103,6 @@ base_packages_install:
   - anki
   - audacity
   - calibre
-  - dbeaver-ce
   - google-chrome-stable
   - gthumb
   - hexchat
