@@ -132,8 +132,8 @@ _update_prompt() {
 }
 
 _prompt_command() {
-    history -a
     _update_prompt
+    history -a
 }
 
 PROMPT_COMMAND=_prompt_command
