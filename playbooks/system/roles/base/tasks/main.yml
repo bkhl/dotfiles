@@ -141,6 +141,11 @@
     repo: ppa:vincent-c/wesnoth
     filename: wesnoth
 
+- name: Vim APT repository enabled
+  apt_repository:
+    repo: ppa:jonathonf/vim
+    filename: vim
+
 - name: Update APT cache
   apt:
     update_cache: true
