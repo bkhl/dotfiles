@@ -122,7 +122,6 @@ fi
 # Prompt update command
 #
 
-# Prompt command
 _update_prompt() {
     local r=$?
     PS1='\u@\h:\w\$ '
