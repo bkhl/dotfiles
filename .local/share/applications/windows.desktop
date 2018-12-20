@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Windows
+TryExec=windows
+Exec=windows
+Icon=windows
+Terminal=false
+Type=Application
+StartupWMClass=Windows
