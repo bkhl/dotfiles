@@ -33,7 +33,6 @@
   when: item.apt_key is defined and item.apt_key.url is not defined
 
 - name: Additional repositories enabled
-  tags: [test]
   apt_repository:
     repo: '{{ item.apt_repository.repo }}'
     filename: '{{ item.apt_repository.filename }}'
