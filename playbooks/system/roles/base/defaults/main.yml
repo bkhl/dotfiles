@@ -98,6 +98,15 @@ base_repos:
       repo: ppa:jonathonf/vim
       filename: vim
 
+  - name: Virtualbox
+    apt_key:
+      id: A2F683C52980AECF
+      url: https://www.virtualbox.org/download/oracle_vbox_2016.asc
+    apt_repository:
+      repo: 'deb https://download.virtualbox.org/virtualbox/debian {{ ansible_distribution_release }} contrib'
+      filename: virtualbox
+
+
 base_packages_install:
   # Applications
   - anki
@@ -121,9 +130,7 @@ base_packages_install:
   - thonny
   - usb-creator-gtk
   - vim-gtk3
-  - virtualbox
-  - virtualbox-ext-pack
-  - virtualbox-qt
+  - virtualbox-6.0
 
   # Handy GUI tools
   - gnome-clocks
