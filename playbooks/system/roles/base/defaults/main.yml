@@ -106,7 +106,6 @@ base_repos:
       repo: 'deb https://download.virtualbox.org/virtualbox/debian {{ ansible_distribution_release }} contrib'
       filename: virtualbox
 
-
 base_packages_install:
   # Applications
   - anki
@@ -238,4 +237,3 @@ base_packages_install:
 base_packages_uninstall:
   - evolution
   - gedit
-
