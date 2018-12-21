@@ -103,7 +103,7 @@ base_repos:
       id: A2F683C52980AECF
       url: https://www.virtualbox.org/download/oracle_vbox_2016.asc
     apt_repository:
-      repo: 'deb https://download.virtualbox.org/virtualbox/debian {{ ansible_distribution_release }} contrib'
+      repo: 'deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian {{ ansible_distribution_release }} contrib'
       filename: virtualbox
 
 base_packages_install:
