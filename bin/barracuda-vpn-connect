@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# To store username/password:
+#
+# $ secret-tool store --label "Barracuda VPN" barracuda-vpn username
+# $ secret-tool store --label "Barracuda VPN" barracuda-vpn password
+
+barracudavpn \
+    --start \
+    --login "$(secret-tool lookup barracuda-vpn username)" \
+    --serverpwd "$(secret-tool lookup barracuda-vpn password)"
