@@ -169,6 +169,7 @@ base_packages_install:
   - rar
   - unrar
   - unzip
+  - wkhtmltopdf
   - woof
   - xmlstarlet
   - zip
