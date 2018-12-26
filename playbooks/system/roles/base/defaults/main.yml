@@ -134,7 +134,6 @@ base_packages_install:
   # Handy GUI tools
   - gnome-clocks
   - pick-colour-picker
-  - wmctrl
   - xsel
 
   # Games
