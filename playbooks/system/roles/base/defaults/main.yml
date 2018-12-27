@@ -76,11 +76,6 @@ base_repos:
       repo: 'deb http://ppa.launchpad.net/swi-prolog/devel/ubuntu {{ ansible_distribution_release }} main'
       filename: swi-prolog
 
-  - name: Ion Shell
-    apt_repository:
-      repo: ppa:mmstick76/ion-shell
-      filename: ion-shell
-
   - name: Vagrant
     apt_key:
       id: CE3F3DE92099F7A4
@@ -158,7 +153,6 @@ base_packages_install:
   # Handy terminal tools
   - curl
   - httpie
-  - ion-shell
   - jq
   - libimage-exiftool-perl
   - mmv
