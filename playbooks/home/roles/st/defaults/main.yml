@@ -1,2 +1,2 @@
 ---
-st_source_path: '{{ ansible_env.HOME }}/src/st'
+st_source_path: '{{ ansible_env.HOME }}/.local/src/st'
