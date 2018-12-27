@@ -120,6 +120,13 @@ fi
 
 
 ####
+# Directory aliases
+#
+
+playbooks="$HOME/.local/share/playbooks"
+
+
+####
 # Prompt update command
 #
 
