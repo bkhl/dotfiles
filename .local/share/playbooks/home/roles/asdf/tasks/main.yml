@@ -1,7 +1,7 @@
 - name: asdf checked out
   git:
     repo: https://github.com/asdf-vm/asdf.git
-    dest: '{{ ansible_env.HOME }}/opt/asdf'
+    dest: '{{ asdf_directory }}'
     update: no
 
 - name: asdf at latest stable version

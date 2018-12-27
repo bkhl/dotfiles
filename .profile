@@ -21,8 +21,11 @@ export LC_TIME=sv_SE.UTF-8
 # Disable accessability bridge
 export NO_AT_BRIDGE=1
 
+# Custom locations
+export USER_OPT_DIR="$HOME/.local/opt"
+
 # Path
-for d in $HOME/.local/bin $HOME/opt/*/bin $HOME/opt/asdf/shims; do
+for d in $HOME/.local/bin $USER_OPT_DIR/*/bin $USER_OPT_DIR/asdf/shims; do
     if [ -d "$d" ]; then
         PATH="$d${PATH:+:$PATH}"
     fi
@@ -36,18 +39,18 @@ export PAGER='less -R'
 export ARBZRUSER=bnl
 
 # asdf
-export ASDF_DIR="$HOME/opt/asdf"
+export ASDF_DIR="$USER_OPT_DIR/asdf"
 export ASDF_DATA_DIR="$ASDF_DIR"
 
 # Go
-export GOPATH="$HOME/opt/go"
+export GOPATH="$USER_OPT_DIR/go"
 
 # Java
-export SDKMAN_DIR="$HOME/opt/sdkman"
+export SDKMAN_DIR="$USER_OPT_DIR/sdkman"
 
 # Python
-export PYTHONUSERBASE="$HOME/opt/python"
+export PYTHONUSERBASE="$USER_OPT_DIR/python"
 export PIPENV_IGNORE_VIRTUALENVS=2 # Don't warn when falling back to already activated virtual environment.
 
 # Rust
-export CARGO_HOME="$HOME/opt/cargo"
+export CARGO_HOME="$USER_OPT_DIR/cargo"

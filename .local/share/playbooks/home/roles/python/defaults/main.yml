@@ -1,0 +1,2 @@
+---
+python_directory: '{{ user_opt_directory }}/python'

@@ -1,8 +1,4 @@
 ---
-- name: Get Python environment directory
-  set_fact:
-    python_directory: '{{ ansible_env.HOME }}/opt/python'
-
 - name: Get Ansible path
   command: which ansible
   changed_when: false

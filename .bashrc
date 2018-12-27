@@ -157,8 +157,8 @@ if [[ -e "${ASDF_DIR}/asdf.sh" && -e "${ASDF_DIR}/completions/asdf.bash" ]]; the
 fi
 
 # Java
-if [[ -e "${HOME}/opt/sdkman/bin/sdkman-init.sh" ]]; then
-    source "${HOME}/opt/sdkman/bin/sdkman-init.sh"
+if [[ -e "${SDKMAN_DIR}/bin/sdkman-init.sh" ]]; then
+    source "${SDKMAN_DIR}/bin/sdkman-init.sh"
 fi
 
 # vi: ts=4 et

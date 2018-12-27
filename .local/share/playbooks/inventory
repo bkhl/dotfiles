@@ -1,1 +1,8 @@
-localhost ansible_connection=local
+---
+all:
+  hosts:
+    localhost:
+      ansible_connection: local
+  vars:
+    user_opt_directory: '{{ ansible_env.HOME }}/.local/opt'
+    user_bin_directory: '{{ user_opt_directory }}/bin'

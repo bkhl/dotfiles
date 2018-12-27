@@ -1,6 +1,6 @@
 - name: Check for Exercism CLI client
   stat:
-    path: '{{ ansible_env.HOME }}/.local/bin/exercism'
+    path: '{{ user_bin_directory }}/exercism'
   register: exercism_check
 
 - when: exercism_check.stat.executable is not defined or not exercism_check.stat.executable
@@ -11,15 +11,21 @@
         dest: /tmp/exercism-linux-64bit.tgz
         checksum: sha256:d32a63542ca3588faeaa02f6f2a28c50a6eec50354d2838cd82470d262dff020
 
+    - name: Target directory exists
+      file:
+        path: '{{ user_bin_directory }}'
+        state: directory
+        mode: 0755
+
     - name: Unpack exercism
       unarchive:
         src: /tmp/exercism-linux-64bit.tgz
-        dest: '{{ ansible_env.HOME }}/.local/bin/'
+        dest: '{{ user_bin_directory }}/'
         exclude: 'shell'
 
     - name: Exercism CLI client is executable file
       file:
-        path: '{{ ansible_env.HOME }}/.local/bin/exercism'
+        path: '{{ user_bin_directory }}/exercism'
         state: file
         mode: 0755
 
@@ -29,5 +35,9 @@
   changed_when: false
 
 - name: Exercism directory set
-  command: exercism configure --workspace={{ ansible_env.HOME }}/Development/exercism
-  when: exercism_config.stdout is not match('^Workspace:.*' + ansible_env.HOME + '/Development/exercism')
+  command: >
+    exercism configure
+    --workspace={{ ansible_env.HOME }}/Development/exercism
+  when: >
+    exercism_config.stderr is not
+    search('Workspace:.*' + ansible_env.HOME + '/Development/exercism')

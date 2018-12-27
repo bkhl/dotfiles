@@ -1,2 +1,3 @@
 ---
-asdf_command: '{{ ansible_env.HOME }}/opt/asdf/bin/asdf'
+asdf_directory: '{{ user_opt_directory }}/asdf'
+asdf_command: '{{ asdf_directory }}/bin/asdf'
