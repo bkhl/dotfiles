@@ -34,5 +34,5 @@
 - name: st copied to destination
   copy:
     src: '{{ st_source_path }}/st'
-    dest: '{{ ansible_env.HOME }}/bin/st'
+    dest: '{{ ansible_env.HOME }}/.local/bin/st'
     mode: u=rwx,g=rx,o=rx

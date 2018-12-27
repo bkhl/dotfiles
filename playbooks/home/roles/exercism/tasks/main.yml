@@ -1,6 +1,6 @@
 - name: Check for Exercism CLI client
   stat:
-    path: '{{ ansible_env.HOME }}/bin/exercism'
+    path: '{{ ansible_env.HOME }}/.local/bin/exercism'
   register: exercism_check
 
 - when: exercism_check.stat.executable is not defined or not exercism_check.stat.executable
@@ -14,12 +14,12 @@
     - name: Unpack exercism
       unarchive:
         src: /tmp/exercism-linux-64bit.tgz
-        dest: '{{ ansible_env.HOME }}/bin/'
+        dest: '{{ ansible_env.HOME }}/.local/bin/'
         exclude: 'shell'
 
     - name: Exercism CLI client is executable file
       file:
-        path: '{{ ansible_env.HOME }}/bin/exercism'
+        path: '{{ ansible_env.HOME }}/.local/bin/exercism'
         state: file
         mode: 0755
 
