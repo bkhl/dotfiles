@@ -16,7 +16,7 @@
 - name: Monospace font set
   dconf:
     key: /org/gnome/desktop/interface/monospace-font-name
-    value: "'Courier Prime Code 11'"
+    value: "'Noto Sans Mono 11'"
 
 - name: Clipboard GNOME Shell extension checked out
   git:
