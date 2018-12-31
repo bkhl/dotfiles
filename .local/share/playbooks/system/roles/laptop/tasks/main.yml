@@ -53,3 +53,20 @@
 - name: Regenerate initramfs image
   command: update-initramfs -u
   when: modprobe_config.changed
+
+- name: photos from auberon in fstab
+  lineinfile:
+    path: /etc/fstab
+    regexp: '^auberon.dreaming:/volume1/photo\b'
+    line: >-
+      auberon.dreaming:/volume1/photo
+      /auberon/photo
+      nfs
+      noauto,x-systemd.automount,x-systemd.device-timeout=10,timeo=14,x-systemd.idle-timeout=1min
+      0 0
+
+- name: remote-fs service restarted
+  systemd:
+    name: remote-fs.target
+    state: restarted
+    daemon_reload: yes
