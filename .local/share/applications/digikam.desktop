@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=digiKam
+TryExec=digikam
+Exec=digikam
+Icon=digikam
+Type=Application
