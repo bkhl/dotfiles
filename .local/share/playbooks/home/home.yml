@@ -8,3 +8,4 @@
     - elixir
     - sdkman
     - st
+    - {name: digikam, tags: [test]}
