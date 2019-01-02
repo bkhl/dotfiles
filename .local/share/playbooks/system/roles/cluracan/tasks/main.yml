@@ -1,0 +1,6 @@
+---
+- name: Unused packages removed
+  apt:
+    state: absent
+    name:
+      - gedit

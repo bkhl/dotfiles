@@ -39,13 +39,15 @@
     state: present
   with_items: '{{ base_repos }}'
 
-- name: Update APT cache
+- name: Update APT cache and perform safe upgrade
   apt:
     update_cache: true
+    upgrade: safe
   changed_when: false
 
 - name: Packages added
   apt:
+    update_cache: true
     state: latest
     name: '{{ base_packages_install }}'
 

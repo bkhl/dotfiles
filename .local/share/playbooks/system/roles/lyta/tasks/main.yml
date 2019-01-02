@@ -1,0 +1,6 @@
+---
+- name: Packages installed
+  apt:
+    state: latest
+    name:
+      - libreoffice

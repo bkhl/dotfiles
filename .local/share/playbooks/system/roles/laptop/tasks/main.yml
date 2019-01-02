@@ -1,29 +1,16 @@
+---
 - name: TLP repo enabled
   apt_repository:
     repo: 'ppa:linrunner/tlp'
     filename: tlp
 
-- name: Update APT cache
-  apt:
-    update_cache: yes
-  changed_when: false
-
-- name: Unused packages removed
-  apt:
-    state: absent
-    name:
-      - gedit
-      - nano
-
 - name: TLP packages installed
   apt:
+    update_cache: yes
     state: latest
     name:
       - tlp
       - tlp-rdw
-      - tp-smapi-dkms
-      - acpi-call-dkms
-      - intel-microcode
 
 - name: TLP service started
   service:
@@ -43,16 +30,6 @@
     regexp: '^DEVICES_TO_ENABLE_ON_STARTUP='
     line: 'DEVICES_TO_ENABLE_ON_STARTUP="bluetooth wifi"'
     insertafter: '^#DEVICES_TO_ENABLE_ON_STARTUP='
-
-- name: Configure modprobe for ThinkPad
-  register: modprobe_config
-  copy:
-    src: thinkpad.conf
-    dest: /etc/modprobe.d/thinkpad.conf
-
-- name: Regenerate initramfs image
-  command: update-initramfs -u
-  when: modprobe_config.changed
 
 - name: photos from auberon in fstab
   lineinfile:

@@ -231,4 +231,4 @@ base_packages_install:
 
 base_packages_uninstall:
   - evolution
-  - gedit
+  - nano
