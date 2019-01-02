@@ -31,7 +31,7 @@
     line: 'DEVICES_TO_ENABLE_ON_STARTUP="bluetooth wifi"'
     insertafter: '^#DEVICES_TO_ENABLE_ON_STARTUP='
 
-- name: photos from auberon in fstab
+- name: NFS shares from auberon in fstab
   lineinfile:
     path: /etc/fstab
     regexp: '^auberon.dreaming:/volume1/{{ item }}\b'
