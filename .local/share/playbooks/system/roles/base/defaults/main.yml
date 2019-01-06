@@ -101,6 +101,11 @@ base_repos:
       repo: 'deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian {{ ansible_distribution_release }} contrib'
       filename: virtualbox
 
+  - name: Nextcloud
+    apt_repository:
+      repo: ppa:nextcloud-devs/client
+      filename: nextcloud
+
 base_packages_install:
   # Applications
   - anki
@@ -113,6 +118,7 @@ base_packages_install:
   - mellowplayer
   - mplayer
   - mpv
+  - nextcloud-client
   - picard
   - quodlibet
   - remmina
