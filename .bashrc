@@ -124,6 +124,7 @@ fi
 #
 
 playbooks="$HOME/.local/share/playbooks"
+hcoop='/afs/hcoop.net/user/b/bk/bkhl'
 
 
 ####
