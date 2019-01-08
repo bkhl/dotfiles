@@ -166,6 +166,7 @@ base_packages_install:
   - mosh
   - pandoc
   - rar
+  - shntool
   - unrar
   - unzip
   - vorbis-tools
