@@ -168,6 +168,7 @@ base_packages_install:
   - rar
   - unrar
   - unzip
+  - vorbis-tools
   - wkhtmltopdf
   - woof
   - xmlstarlet
