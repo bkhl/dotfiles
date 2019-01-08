@@ -158,6 +158,7 @@ base_packages_install:
 
   # Handy terminal tools
   - curl
+  - flac
   - httpie
   - jq
   - libimage-exiftool-perl
