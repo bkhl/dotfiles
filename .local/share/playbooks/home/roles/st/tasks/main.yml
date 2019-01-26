@@ -11,13 +11,12 @@
     chdir: '{{ st_source_path }}'
 
 - name: Patch fetched
-  get_url:
-    url: https://st.suckless.org/patches/boxdraw/st-boxdraw-2018-11-01-30ec9a3.patch
-    dest: /tmp/st-boxdraw-2018-11-01-30ec9a3.patch
-    checksum: sha256:8d9082636898151554df8d4fb3be077dca147ac172aa016e6509b3a78bd126c8
+  copy:
+    src: boxdraw.patch
+    dest: /tmp/boxdraw.patch
 
 - name: Patch applied
-  command: git apply /tmp/st-boxdraw-2018-11-01-30ec9a3.patch
+  command: git apply /tmp/boxdraw.patch
   args:
     chdir: '{{ st_source_path }}'
 
