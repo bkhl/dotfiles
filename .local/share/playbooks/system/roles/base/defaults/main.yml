@@ -120,6 +120,7 @@ base_packages_install:
   - mpv
   - nextcloud-client
   - picard
+  - rhythmbox
   - remmina
   - signal-desktop
   - simplescreenrecorder
