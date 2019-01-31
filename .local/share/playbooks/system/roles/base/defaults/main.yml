@@ -111,7 +111,6 @@ base_packages_install:
   - anki
   - audacity
   - calibre
-  - clementine
   - google-chrome-stable
   - gthumb
   - hexchat
