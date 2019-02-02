@@ -105,7 +105,6 @@ alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias grep='grep --color=auto'
 alias sudo='sudo '
-alias fd='fd --no-ignore-vcs'
 alias dgit='git --git-dir "$HOME/.config/dotfiles" --work-tree="$HOME"'
 alias t=ttdl
 
