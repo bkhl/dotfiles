@@ -44,3 +44,4 @@
     - {package: fd-find, command: fd}
     - {package: ripgrep, command: rg}
     - {package: shellharden, command: shellharden}
+    - {package: ttdl, command: ttdl}
