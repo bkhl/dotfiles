@@ -1,10 +1,6 @@
 [Desktop Entry]
 Name=tmux
-Keywords=shell;prompt;command;commandline;cmd;
-TryExec=st
-Exec=st tmux new -A -s main
+TryExec=gnome-terminal
+Exec=gnome-terminal --profile=tmux
 Icon=utilities-terminal
 Type=Application
-Categories=System;TerminalEmulator;
-StartupWMClass=xterm-256color
-StartupNotify=false
