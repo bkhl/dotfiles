@@ -1,6 +1,0 @@
-[Desktop Entry]
-Name=tmux
-TryExec=gnome-terminal
-Exec=gnome-terminal --profile=tmux
-Icon=utilities-terminal
-Type=Application

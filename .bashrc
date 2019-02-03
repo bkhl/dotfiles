@@ -114,8 +114,9 @@ else
     alias ls='ls --color=auto --classify'
 fi
 
-if [[ -n $DISPLAY ]] && hash xsel 2> /dev/null; then
-    alias clip='xsel --clipboard'
+if [[ -n $DISPLAY ]] && hash xclip 2> /dev/null; then
+    alias clp='xclip -selection clipboard'
+    alias pst='xclip -selection clipboard -o'
 fi
 
 

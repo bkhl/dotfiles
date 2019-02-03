@@ -51,6 +51,12 @@
     state: latest
     name: '{{ base_packages_install }}'
 
+- name: Install packages from .deb files
+  apt:
+    deb: '{{ item }}'
+  with_items:
+    - 'https://github.com/jwilm/alacritty/releases/download/v0.2.7/Alacritty-v0.2.7_amd64.deb'
+
 - name: Packages removed
   apt:
     state: absent
