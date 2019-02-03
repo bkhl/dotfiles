@@ -81,7 +81,7 @@ dynamic_title: true
 cursor:
   style: Block
   unfocused_hollow: true
-live_config_reload: true
+live_config_reload: false
 enable_experimental_conpty_backend: false
 alt_send_esc: true
 key_bindings:
