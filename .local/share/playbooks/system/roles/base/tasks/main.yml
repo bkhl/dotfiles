@@ -73,6 +73,7 @@
     name: '{{ item.name }}'
     path: '{{ item.path }}'
   with_items:
+    - {name: x-terminal-emulator, path: /usr/bin/alacritty}
     - {name: x-www-browser, path: /usr/bin/firefox}
     - {name: vi, path: /usr/bin/vim.gtk3}
     - {name: view, path: /usr/bin/vim.gtk3}
