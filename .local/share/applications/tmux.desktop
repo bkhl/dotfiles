@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=tmux
+Type=Application
+TryExec=tmux
+Exec=x-terminal-emulator -e tmux new -A -s main
+Icon=utilities-terminal
+Categories=System;TerminalEmulator;
