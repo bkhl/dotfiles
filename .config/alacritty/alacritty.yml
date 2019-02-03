@@ -28,7 +28,8 @@ font:
   size: 10.0
   offset:
     x: 0
-    y: 0
+    # Reduced line spacing to match Proggy box drawing character heights.
+    y: -4
   glyph_offset:
     x: 0
     y: 0
