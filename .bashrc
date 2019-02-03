@@ -106,7 +106,6 @@ alias fgrep='fgrep --color=auto'
 alias grep='grep --color=auto'
 alias sudo='sudo '
 alias dgit='git --git-dir "$HOME/.config/dotfiles" --work-tree="$HOME"'
-alias t=ttdl
 
 if hash exa 2> /dev/null; then
     alias ls='exa --classify --git'
