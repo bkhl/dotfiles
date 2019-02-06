@@ -2,6 +2,6 @@
 Name=tmux
 Type=Application
 TryExec=tmux
-Exec=x-terminal-emulator -e tmux new -A -s main
+Exec=gnome-terminal --profile=tmux
 Icon=utilities-terminal
 Categories=System;TerminalEmulator;
