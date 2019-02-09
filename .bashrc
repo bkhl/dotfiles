@@ -105,7 +105,6 @@ alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias grep='grep --color=auto'
 alias sudo='sudo '
-alias fd='fd --no-ignore-vcs'
 alias dgit='git --git-dir "$HOME/.config/dotfiles" --work-tree="$HOME"'
 
 if hash exa 2> /dev/null; then
@@ -114,8 +113,9 @@ else
     alias ls='ls --color=auto --classify'
 fi
 
-if [[ -n $DISPLAY ]] && hash xsel 2> /dev/null; then
-    alias clip='xsel --clipboard'
+if [[ -n $DISPLAY ]] && hash xclip 2> /dev/null; then
+    alias clp='xclip -selection clipboard'
+    alias pst='xclip -selection clipboard -o'
 fi
 
 
@@ -124,6 +124,7 @@ fi
 #
 
 playbooks="$HOME/.local/share/playbooks"
+hcoop='/afs/hcoop.net/user/b/bk/bkhl'
 
 
 ####

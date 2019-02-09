@@ -10,12 +10,14 @@ if &term == "screen-256color"
     let &t_8f = "\<Esc>[38:2:%lu:%lu:%lum"
     let &t_8b = "\<Esc>[48:2:%lu:%lu:%lum"
 
+    set termguicolors
+endif
+
+if &term == "screen-256color" || &term == "xterm-256color"
     " Escape sequences for changing cursor shape.
     let &t_SI = "\<Esc>[5 q"
     let &t_SR = "\<Esc>[3 q"
     let &t_EI = "\<Esc>[1 q"
-
-    set termguicolors
 endif
 
 " Background colour

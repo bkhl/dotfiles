@@ -101,6 +101,16 @@ base_repos:
       repo: 'deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian {{ ansible_distribution_release }} contrib'
       filename: virtualbox
 
+  - name: Nextcloud
+    apt_repository:
+      repo: ppa:nextcloud-devs/client
+      filename: nextcloud
+
+  - name: Sayonara
+    apt_repository:
+      repo: ppa:lucioc/sayonara
+      filename: sayonara
+
 base_packages_install:
   # Applications
   - anki
@@ -113,9 +123,10 @@ base_packages_install:
   - mellowplayer
   - mplayer
   - mpv
+  - nextcloud-client
   - picard
-  - quodlibet
   - remmina
+  - sayonara
   - signal-desktop
   - simplescreenrecorder
   - sky
@@ -128,15 +139,14 @@ base_packages_install:
 
   # Handy GUI tools
   - gnome-clocks
+  - gnome-terminal
   - pick-colour-picker
-  - xsel
+  - xclip
 
   # Games
   - wesnoth
 
   # Appearance
-  - fonts-noto
-  - fonts-noto-color-emoji
   - gnome-tweak-tool
 
   # My languages
@@ -152,6 +162,7 @@ base_packages_install:
 
   # Handy terminal tools
   - curl
+  - flac
   - httpie
   - jq
   - libimage-exiftool-perl
@@ -160,8 +171,10 @@ base_packages_install:
   - mosh
   - pandoc
   - rar
+  - shntool
   - unrar
   - unzip
+  - vorbis-tools
   - wkhtmltopdf
   - woof
   - xmlstarlet
@@ -229,6 +242,9 @@ base_packages_install:
 
   # Useful for scripts that need secrets
   - libsecret-tools
+
+  # Preferred tool by Ansible, for APT upgrades
+  - aptitude
 
 base_packages_uninstall:
   - evolution
