@@ -119,6 +119,7 @@ base_packages_install:
   - google-chrome-stable
   - gthumb
   - hexchat
+  - libreoffice
   - mdp
   - mellowplayer
   - mplayer
