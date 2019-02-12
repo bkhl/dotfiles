@@ -16,7 +16,7 @@
 - name: Monospace font set
   dconf:
     key: /org/gnome/desktop/interface/monospace-font-name
-    value: "'ProggyVector 11'"
+    value: "'Hack 11'"
 
 - name: Clipboard GNOME Shell extension checked out
   git:

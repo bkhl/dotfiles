@@ -139,6 +139,7 @@ base_packages_install:
   - wesnoth
 
   # Appearance
+  - fonts-hack
   - gnome-tweak-tool
 
   # My languages
