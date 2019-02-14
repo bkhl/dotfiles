@@ -178,6 +178,7 @@ base_packages_install:
   - bats
   - build-essential
   - bzr
+  - cmake
   - debhelper
   - devscripts
   - dh-make
