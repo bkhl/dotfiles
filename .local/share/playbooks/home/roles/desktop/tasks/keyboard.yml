@@ -17,7 +17,6 @@
     - { action: 'toggle-fullscreen', key: '<Super>f' }
 
 - name: Disable screenshot on Print Screen key without modifier
-  tags: [test]
   dconf:
     key: '/org/gnome/settings-daemon/plugins/media-keys/screenshot'
     value: "''"
