@@ -33,7 +33,7 @@ class RSess(cli.Application):
             ".profile",
             ".tmux.conf",
             ".vimrc",
-            ".local/bin/tmux",
+            ".local/bin/tmux-2.6",
         ]:
             temp_path = temp_dir / filename
             for parent in reversed(temp_path.parents):
@@ -52,7 +52,7 @@ if [ ! -e "${{HOME}}/.ssh" ]; then
     ln -sT "${{REAL_HOME}}/.ssh" "${{HOME}}/.ssh"
 fi
 cd "${{HOME}}"
-exec .local/bin/tmux new-session -A -s "{self.session}"
+exec .local/bin/tmux-2.6 new-session -A -s "{self.session}"
 """
         temp_bin_dir = temp_dir / "bin"
         if not temp_bin_dir.exists():
