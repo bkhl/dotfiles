@@ -52,7 +52,7 @@ if [ ! -e "${{HOME}}/.ssh" ]; then
     ln -sT "${{REAL_HOME}}/.ssh" "${{HOME}}/.ssh"
 fi
 cd "${{HOME}}"
-exec bin/tmux new-session -A -s "{self.session}"
+exec .local/bin/tmux new-session -A -s "{self.session}"
 """
         temp_bin_dir = temp_dir / "bin"
         if not temp_bin_dir.exists():
@@ -77,7 +77,7 @@ exec bin/tmux new-session -A -s "{self.session}"
                 ((mosh < sys.stdin) > sys.stdout)(destination, remote_my_tmux)
                 if self.force_mosh:
                     delete(remote_mosh_unsuccessful)
-                return
+                    return
             except ProcessExecutionError:
                 remote_mosh_unsuccessful.touch()
 
