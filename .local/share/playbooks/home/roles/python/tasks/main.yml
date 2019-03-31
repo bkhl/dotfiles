@@ -41,9 +41,10 @@
       - flake8
       - isort
       - legit
-      - plumbum
       - pipenv
+      - plumbum
       - pre-commit
+      - pylint
       - yamllint
     state: latest
 
