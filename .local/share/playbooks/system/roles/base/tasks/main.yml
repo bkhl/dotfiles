@@ -104,7 +104,6 @@
     - {key: 'BACKSPACE', value: 'guess'}
 
 - name: Change GNOME Shell font
-  tags: [test]
   patch:
     src: gnome_shell_font.diff
     basedir: /usr/share/gnome-shell/theme
