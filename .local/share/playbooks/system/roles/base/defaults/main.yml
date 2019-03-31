@@ -137,7 +137,8 @@ base_packages_install:
   - wesnoth
 
   # Appearance
-  - fonts-hack
+  - fonts-noto
+  - fonts-noto-color-emoji
   - gnome-tweak-tool
 
   # My languages

@@ -1,0 +1,11 @@
+--- ubuntu.css.orig	2018-10-27 12:48:10.160910268 +0700
++++ ubuntu.css	2018-10-27 12:48:39.118212705 +0700
+@@ -1908,7 +1908,7 @@
+ 
+ /* default ubuntu font */
+ stage {
+-  font-family: Ubuntu, Cantarell, Sans-Serif;
++  font-family: Noto Sans, Ubuntu, Cantarell, Sans-Serif;
+ }
+ 
+ /* switch colors */
