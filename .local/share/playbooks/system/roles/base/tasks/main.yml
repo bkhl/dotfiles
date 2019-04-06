@@ -51,6 +51,10 @@
     state: latest
     name: '{{ base_packages_install }}'
 
+- name: Install Alacritty
+  apt:
+    deb: 'https://github.com/jwilm/alacritty/releases/download/v0.3.0-rc3/Alacritty-v0.3.0-rc3_amd64.deb'
+
 - name: Download QTodoTxt
   get_url:
     url: 'https://github.com/QTodoTxt/QTodoTxt/releases/download/v1.6.1/qtodotxt_1.6.1_all_deb.zip'
