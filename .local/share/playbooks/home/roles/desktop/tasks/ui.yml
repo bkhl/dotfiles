@@ -1,7 +1,7 @@
 - name: Window title font set
   dconf:
     key: /org/gnome/desktop/wm/preferences/titlebar-font
-    value: "'Noto Sans Bold 11'"
+    value: "'Ubuntu Bold 11'"
 
 - name: Interface font set
   dconf:
@@ -16,7 +16,7 @@
 - name: Monospace font set
   dconf:
     key: /org/gnome/desktop/interface/monospace-font-name
-    value: "'Noto Sans Mono 11'"
+    value: "'Proggy Vector 11'"
 
 - name: Clipboard GNOME Shell extension checked out
   git:
