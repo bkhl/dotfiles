@@ -4,3 +4,4 @@
     state: absent
     name:
       - gedit
+      - gnome-terminal

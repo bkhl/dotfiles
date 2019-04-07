@@ -129,7 +129,6 @@ base_packages_install:
 
   # Handy GUI tools
   - gnome-clocks
-  - gnome-terminal
   - pick-colour-picker
   - xclip
 

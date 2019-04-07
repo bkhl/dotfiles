@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=tmux
 Type=Application
-TryExec=tmux
-Exec=gnome-terminal --profile=tmux
-Icon=utilities-terminal
+Exec=alacritty --class tmux --command tmux new -A -s main
+Icon=tmux
 Categories=System;TerminalEmulator;
+StartupWMClass=tmux
