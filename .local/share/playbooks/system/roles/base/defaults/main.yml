@@ -103,6 +103,11 @@ base_repos:
       repo: ppa:lucioc/sayonara
       filename: sayonara
 
+  - name: Zeal
+    apt_repository:
+      repo: ppa:zeal-developers/ppa
+      filename: zeal
+
 base_packages_install:
   # Applications
   - anki
@@ -126,6 +131,7 @@ base_packages_install:
   - usb-creator-gtk
   - vim-gtk3
   - virtualbox-6.0
+  - zeal
 
   # Handy GUI tools
   - gnome-clocks
