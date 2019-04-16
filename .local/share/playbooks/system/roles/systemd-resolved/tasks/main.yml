@@ -1,0 +1,15 @@
+- name: systemd-resolved stub listener disabled
+  lineinfile:
+    path: /etc/systemd/resolved.conf
+    regexp: '^DNSStubListener='
+    line: 'DNSStubListener=yes'
+
+- name: systemd-resolved restarted
+  service:
+    name: systemd-resolved
+    state: restarted
+
+- name: dnsmasq stopped
+  service:
+    name: dnsmasq
+    state: stopped
