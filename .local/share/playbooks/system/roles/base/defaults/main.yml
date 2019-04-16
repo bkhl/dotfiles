@@ -108,6 +108,14 @@ base_repos:
       repo: ppa:zeal-developers/ppa
       filename: zeal
 
+  - name: Ring
+    apt_key:
+      id: A295D773307D25A33AE72F2F64CD5FA175348F84
+    apt_repository:
+      repo: 'deb https://dl.jami.net/ring-nightly/ubuntu_{{ ansible_distribution_version }}/ ring main'
+      filename: ring
+
+
 base_packages_install:
   # Applications
   - anki
@@ -121,6 +129,7 @@ base_packages_install:
   - nextcloud-client
   - picard
   - remmina
+  - ring
   - sayonara
   - signal-desktop
   - simplescreenrecorder
