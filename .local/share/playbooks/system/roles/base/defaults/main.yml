@@ -118,6 +118,7 @@ base_packages_install:
   - hexchat
   - libreoffice
   - mdp
+  - mpv
   - nextcloud-client
   - picard
   - remmina
