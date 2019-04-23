@@ -113,6 +113,7 @@ base_packages_install:
   - anki
   - audacity
   - calibre
+  - gnome-terminal
   - google-chrome-stable
   - gthumb
   - hexchat
