@@ -144,9 +144,9 @@ base_packages_install:
   - wesnoth
 
   # Appearance
-  - fonts-dejavu
   - fonts-noto
   - fonts-noto-color-emoji
+  - fonts-noto-mono
   - gnome-tweak-tool
 
   # My languages
