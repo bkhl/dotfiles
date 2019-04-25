@@ -89,7 +89,6 @@
     - {name: view, path: /usr/bin/vim.gtk3}
     - {name: vim, path: /usr/bin/vim.gtk3}
     - {name: vimdiff, path: /usr/bin/vim.gtk3}
-    - {name: x-terminal-emulator, path: /usr/bin/alacritty}
     - {name: x-www-browser, path: /usr/bin/firefox}
 
 
