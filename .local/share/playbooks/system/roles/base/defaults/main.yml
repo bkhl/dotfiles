@@ -98,11 +98,6 @@ base_repos:
       repo: ppa:nextcloud-devs/client
       filename: nextcloud
 
-  - name: Sayonara
-    apt_repository:
-      repo: ppa:lucioc/sayonara
-      filename: sayonara
-
   - name: Zeal
     apt_repository:
       repo: ppa:zeal-developers/ppa
@@ -123,7 +118,6 @@ base_packages_install:
   - nextcloud-client
   - picard
   - remmina
-  - sayonara
   - signal-desktop
   - simplescreenrecorder
   - sky
