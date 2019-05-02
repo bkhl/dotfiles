@@ -31,27 +31,26 @@
     - absent
     - directory
 
-- name: Install Python 3 packages
+- name: Install pipx
   pip:
     executable: pip3
     extra_args: --user
-    name:
-      - black
-      - csvkit
-      - flake8
-      - isort
-      - legit
-      - pipenv
-      - plumbum
-      - pre-commit
-      - pylint
-      - yamllint
+    name: pipx
     state: latest
 
+- name: Install Python executables
+  command: 'pipx install {{ item }}'
+  with_items:
+    - black
+    - csvkit
+    - flake8
+    - isort
+    - legit
+    - pipenv
+    - pre-commit
+    - pylint
+    - yamllint
+
 - name: Install Ansible
+  command: pipx install ansible
   when: libssl_dev_present
-  pip:
-    executable: pip3
-    extra_args: --user
-    name: ansible
-    state: latest
