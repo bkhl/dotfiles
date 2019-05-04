@@ -1,0 +1,15 @@
+{
+    "editor.fontFamily": "'monospace'",
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    "editor.renderWhitespace": "boundary",
+    "files.eol": "\n",
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "python.formatting.blackPath": "/home/bkhl/.local/bin/black",
+    "python.formatting.provider": "black",
+    "python.sortImports.path": "/home/bkhl/.local/bin/isort",
+    "window.zoomLevel": 0,
+    "workbench.colorTheme": "Plastic",
+    "workbench.enableExperiments": false
+}
