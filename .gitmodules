@@ -13,15 +13,9 @@
 [submodule ".vim/pack/plugins/start/vim-polyglot"]
 	path = .vim/pack/plugins/start/polyglot
 	url = https://github.com/sheerun/vim-polyglot.git
-[submodule ".vim/pack/plugins/start/vim-virtualenv"]
-	path = .vim/pack/plugins/start/virtualenv
-	url = https://github.com/plytophogy/vim-virtualenv.git
 [submodule ".vim/pack/plugins/start/vinegar"]
 	path = .vim/pack/plugins/start/vinegar
 	url = https://github.com/tpope/vim-vinegar.git
-[submodule ".vim/pack/plugins/start/localvimrc"]
-	path = .vim/pack/plugins/start/localvimrc
-	url = https://github.com/embear/vim-localvimrc.git
 [submodule ".vim/pack/plugins/start/repeat"]
 	path = .vim/pack/plugins/start/repeat
 	url = https://github.com/tpope/vim-repeat.git
