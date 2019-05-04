@@ -43,12 +43,10 @@
   with_items:
     - black
     - csvkit
-    - flake8
     - isort
     - legit
     - pipenv
     - pre-commit
-    - pylint
     - yamllint
 
 - name: Install Ansible
