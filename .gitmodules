@@ -28,9 +28,6 @@
 [submodule ".vim/pack/plugins/start/ale"]
 	path = .vim/pack/plugins/start/ale
 	url = https://github.com/w0rp/ale.git
-[submodule ".vim/pack/plugins/start/fugitive"]
-	path = .vim/pack/plugins/start/fugitive
-	url = https://github.com/tpope/vim-fugitive.git
 [submodule ".vim/pack/plugins/start/todo.txt"]
 	path = .vim/pack/plugins/start/todo.txt
 	url = git://github.com/freitass/todo.txt-vim.git
