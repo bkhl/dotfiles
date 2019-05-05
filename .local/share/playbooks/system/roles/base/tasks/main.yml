@@ -51,20 +51,6 @@
     state: latest
     name: '{{ base_packages_install }}'
 
-- name: Download QTodoTxt
-  get_url:
-    url: 'https://github.com/QTodoTxt/QTodoTxt/releases/download/v1.6.1/qtodotxt_1.6.1_all_deb.zip'
-    dest: '/tmp/qtodotxt_1.6.1_all_deb.zip'
-    checksum: 'sha256:bc35711bc7299bb4afcbcf74a6c219222cf9ec14ee8c1c4ebd287ffe4fba9b70'
-
-- name: Unarchive QTodoTxt
-  unarchive:
-    src: '/tmp/qtodotxt_1.6.1_all_deb.zip'
-    dest: '/tmp/'
-
-- name: Install QTodoTxt
-  apt: deb='/tmp/qtodotxt_1.6.1_all.deb'
-
 - name: Packages removed
   apt:
     state: absent
