@@ -117,6 +117,7 @@ base_packages_install:
   - audacity
   - calibre
   - gnome-terminal
+  - gnome-todo
   - google-chrome-stable
   - gthumb
   - hexchat
