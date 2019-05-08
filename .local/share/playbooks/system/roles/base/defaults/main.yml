@@ -111,11 +111,6 @@ base_repos:
       repo: 'deb https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/repos/debs/ vscodium main'
       filename: vscodium
 
-  - name: Lutris
-    apt_repository:
-      repo: ppa:lutris-team/lutris
-      filename: lutris
-
 base_packages_install:
   # Applications
   - anki
@@ -148,13 +143,6 @@ base_packages_install:
   - gnome-clocks
   - pick-colour-picker
   - xclip
-
-  # Games
-  - lutris
-
-  # Lutris depdendencies
-  - mesa-vulkan-drivers
-  - mesa-vulkan-drivers:i386
 
   # Appearance
   - fonts-noto
