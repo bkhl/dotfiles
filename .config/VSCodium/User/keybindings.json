@@ -1,0 +1,9 @@
+// Place your key bindings in this file to override the defaults
+[
+    {
+        "label": "Run Test Task",
+        "key": "ctrl+shift-t",
+        "command": "workbench.action.tasks.runTask",
+        "args": "test"
+    }
+]
