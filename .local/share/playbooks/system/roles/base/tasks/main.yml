@@ -95,6 +95,10 @@
     dest: /etc/rc.local
     mode: u+rwx,g+rx,o+rx
 
+- name: Install Pandoc
+  apt:
+    deb: 'https://github.com/jgm/pandoc/releases/download/2.7.2/pandoc-2.7.2-1-amd64.deb'
+
 - name: Get VirtualBox version
   command: vboxmanage --version
   register: vboxmanage_version_result

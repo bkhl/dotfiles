@@ -170,7 +170,6 @@ base_packages_install:
   - mmv
   - moreutils
   - mosh
-  - pandoc
   - rar
   - screen
   - shntool
