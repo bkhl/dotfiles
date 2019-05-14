@@ -140,6 +140,7 @@ base_packages_install:
   - zeal
 
   # Handy GUI tools
+  - gparted
   - gnome-clocks
   - pick-colour-picker
   - xclip
