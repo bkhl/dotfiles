@@ -75,11 +75,6 @@ base_repos:
       repo: deb https://vagrant-deb.linestarve.com/ any main
       filename: vagrant
 
-  - name: Wesnoth
-    apt_repository:
-      repo: ppa:vincent-c/wesnoth
-      filename: wesnoth
-
   - name: Vim
     apt_repository:
       repo: ppa:jonathonf/vim
