@@ -47,6 +47,8 @@
     - legit
     - pipenv
     - pre-commit
+    - pylint
+    - pytest
     - yamllint
 
 - name: Install Ansible
