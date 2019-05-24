@@ -8,7 +8,7 @@
 - name: Window manager keyboard shortcuts set
   dconf:
     key: '/org/gnome/desktop/wm/keybindings/{{ item.action }}'
-    value: "['{{ item.key }}']"
+    value: "\"['{{ item.key }}']\""
   with_items:
     - { action: 'switch-applications', key: '<Super>Tab' }
     - { action: 'switch-applications-backward', key: '<Shift><Super>Tab' }
