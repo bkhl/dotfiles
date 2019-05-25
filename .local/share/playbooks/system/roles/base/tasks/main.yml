@@ -83,6 +83,10 @@
     - {name: vimdiff, path: /usr/bin/vim.gtk3}
     - {name: x-www-browser, path: /usr/bin/firefox}
 
+- name: Fix Bash completion for tar
+  patch:
+    src: bash-completion-tar.diff
+    basedir: /usr/share/bash-completion/completions
 
 - name: Global keyboard defaults set
   lineinfile:
