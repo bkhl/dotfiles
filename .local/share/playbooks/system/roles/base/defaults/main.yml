@@ -196,7 +196,6 @@ base_packages_install:
   - python-pip
   - python3-minimal
   - python3-pip
-  - shellcheck
   - swi-prolog
   - sqlite3
   - subversion
