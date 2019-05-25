@@ -15,5 +15,10 @@
     "workbench.colorTheme": "Plastic",
     "workbench.enableExperiments": false,
     "workbench.settings.enableNaturalLanguageSearch": false,
+    "git.autofetch": true,
+    "git.confirmSync": false,
+    "rust.clippy_preference": "on",
+    "workbench.activityBar.visible": true,
+    "window.titleBarStyle": "custom",
     "workbench.startupEditor": "none"
 }
