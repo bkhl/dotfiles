@@ -106,11 +106,17 @@ base_repos:
       repo: 'deb https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/repos/debs/ vscodium main'
       filename: vscodium
 
+  - name: Geary
+    apt_repository:
+      repo: ppa:geary-team/releases
+      filename: geary
+
 base_packages_install:
   # Applications
   - anki
   - audacity
   - calibre
+  - geary
   - gnome-terminal
   - gnome-todo
   - google-chrome-stable
