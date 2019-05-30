@@ -12,7 +12,6 @@
     "python.sortImports.path": "/home/bkhl/.local/bin/isort",
     "telemetry.enableCrashReporter": false,
     "vim.leader": "<space>",
-    "workbench.colorTheme": "Plastic",
     "workbench.enableExperiments": false,
     "workbench.settings.enableNaturalLanguageSearch": false,
     "git.autofetch": true,
@@ -20,5 +19,6 @@
     "rust.clippy_preference": "on",
     "workbench.activityBar.visible": true,
     "window.titleBarStyle": "custom",
-    "workbench.startupEditor": "none"
+    "workbench.startupEditor": "none",
+    "workbench.colorTheme": "One Dark Pro Vivid"
 }
