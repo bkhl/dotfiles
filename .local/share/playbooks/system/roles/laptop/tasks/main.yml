@@ -1,57 +1,57 @@
 ---
 - name: TLP repo enabled
   apt_repository:
-    repo: 'ppa:linrunner/tlp'
-    filename: tlp
+      repo: "ppa:linrunner/tlp"
+      filename: tlp
 
 - name: TLP packages installed
   apt:
-    update_cache: yes
-    state: latest
-    name:
-      - tlp
-      - tlp-rdw
+      update_cache: yes
+      state: latest
+      name:
+          - tlp
+          - tlp-rdw
 
 - name: TLP service started
   service:
-    name: tlp
-    state: started
+      name: tlp
+      state: started
 
 - name: Disable WWAN on startup
   lineinfile:
-    path: /etc/default/tlp
-    regexp: '^DEVICES_TO_DISABLE_ON_STARTUP='
-    line: 'DEVICES_TO_DISABLE_ON_STARTUP="wwan"'
-    insertafter: '^#DEVICES_TO_DISABLE_ON_STARTUP='
+      path: /etc/default/tlp
+      regexp: "^DEVICES_TO_DISABLE_ON_STARTUP="
+      line: 'DEVICES_TO_DISABLE_ON_STARTUP="wwan"'
+      insertafter: "^#DEVICES_TO_DISABLE_ON_STARTUP="
 
 - name: Enable Bluetooth and Wi-Fi on startup
   lineinfile:
-    path: /etc/default/tlp
-    regexp: '^DEVICES_TO_ENABLE_ON_STARTUP='
-    line: 'DEVICES_TO_ENABLE_ON_STARTUP="bluetooth wifi"'
-    insertafter: '^#DEVICES_TO_ENABLE_ON_STARTUP='
+      path: /etc/default/tlp
+      regexp: "^DEVICES_TO_ENABLE_ON_STARTUP="
+      line: 'DEVICES_TO_ENABLE_ON_STARTUP="bluetooth wifi"'
+      insertafter: "^#DEVICES_TO_ENABLE_ON_STARTUP="
 
 - name: NFS shares from auberon in fstab
   lineinfile:
-    path: /etc/fstab
-    regexp: '^auberon.dreaming:/volume1/{{ item }}\b'
-    line: >-
-      auberon.dreaming:/volume1/{{ item }}
-      /auberon/{{ item }}
-      nfs
-      noauto,x-systemd.automount,x-systemd.device-timeout=10,timeo=14,x-systemd.idle-timeout=1min
-      0 0
+      path: /etc/fstab
+      regexp: '^auberon.dreaming:/volume1/{{ item }}\b'
+      line: >-
+          auberon.dreaming:/volume1/{{ item }}
+          /auberon/{{ item }}
+          nfs
+          noauto,x-systemd.automount,x-systemd.device-timeout=10,timeo=14,x-systemd.idle-timeout=1min
+          0 0
   with_items:
-    - bkhl
-    - books
-    - downloads
-    - music
-    - photo
-    - tang
-    - video
+      - bkhl
+      - books
+      - downloads
+      - music
+      - photo
+      - tang
+      - video
 
 - name: remote-fs service restarted
   systemd:
-    name: remote-fs.target
-    state: restarted
-    daemon_reload: yes
+      name: remote-fs.target
+      state: restarted
+      daemon_reload: yes

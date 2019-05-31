@@ -1,32 +1,32 @@
 - name: systemd-resolved stub listener disabled
   lineinfile:
-    path: /etc/systemd/resolved.conf
-    regexp: '^DNSStubListener='
-    line: 'DNSStubListener=no'
+      path: /etc/systemd/resolved.conf
+      regexp: "^DNSStubListener="
+      line: "DNSStubListener=no"
 
 - name: systemd-resolved restarted
   service:
-    name: systemd-resolved
-    state: restarted
+      name: systemd-resolved
+      state: restarted
 
 - name: dnsmasq configured
   copy:
-    src: dnsmasq.conf
-    dest: /etc/dnsmasq.conf
-    mode: u+rw,g+r,o+r
+      src: dnsmasq.conf
+      dest: /etc/dnsmasq.conf
+      mode: u+rw,g+r,o+r
 
 - name: dnsmasq restarted
   service:
-    name: dnsmasq
-    state: restarted
+      name: dnsmasq
+      state: restarted
 
 - name: resolvconf configured
   copy:
-    src: resolv.conf.base
-    dest: /etc/resolvconf/resolv.conf.d/base
-    mode: u+rw,g+r,o+r
+      src: resolv.conf.base
+      dest: /etc/resolvconf/resolv.conf.d/base
+      mode: u+rw,g+r,o+r
 
 - name: resolvconf restarted
   service:
-    name: resolvconf
-    state: restarted
+      name: resolvconf
+      state: restarted

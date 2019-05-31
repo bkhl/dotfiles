@@ -16,17 +16,17 @@
 
 - name: Update rustup
   when: rustup_stat.stat.executable is defined and rustup_stat.stat.executable
-  command: '{{ rust_rustup_path }} update'
+  command: "{{ rust_rustup_path }} update"
 
 - name: Toolchains installed
-  command: '{{ rust_rustup_path }} toolchain install {{ item }}'
+  command: "{{ rust_rustup_path }} toolchain install {{ item }}"
   with_items:
     - stable
     - beta
     - nightly
 
 - name: stable components installed
-  command: '{{ rust_rustup_path }} component add {{ item }} --toolchain=stable'
+  command: "{{ rust_rustup_path }} component add {{ item }} --toolchain=stable"
   with_items:
     - clippy
     - rustfmt
@@ -35,12 +35,12 @@
     - rust-src
 
 - name: Install programs from crates.io
-  command: '{{ rust_cargo_path }} install {{ item.package }}'
+  command: "{{ rust_cargo_path }} install {{ item.package }}"
   args:
-    creates: '{{ rust_cargo_root }}/bin/{{ item.command }}'
+    creates: "{{ rust_cargo_root }}/bin/{{ item.command }}"
   with_items:
-    - {package: cargo-deb, command: cargo-deb}
-    - {package: exa, command: exa}
-    - {package: fd-find, command: fd}
-    - {package: ripgrep, command: rg}
-    - {package: shellharden, command: shellharden}
+    - { package: cargo-deb, command: cargo-deb }
+    - { package: exa, command: exa }
+    - { package: fd-find, command: fd }
+    - { package: ripgrep, command: rg }
+    - { package: shellharden, command: shellharden }

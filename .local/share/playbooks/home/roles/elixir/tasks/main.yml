@@ -1,18 +1,18 @@
 - name: Check if Elixir plugin installed
-  command: '{{ asdf_command }} list elixir'
+  command: "{{ asdf_command }} list elixir"
   register: elixir_check
   ignore_errors: true
 
 - name: Elixir plugin installed
   when: elixir_check.rc != 0
-  command: '{{ asdf_command }} plugin-add elixir'
+  command: "{{ asdf_command }} plugin-add elixir"
 
 - name: Elixir plugin up to date
   when: elixir_check.rc == 0
-  command: '{{ asdf_command }} plugin-update elixir'
+  command: "{{ asdf_command }} plugin-update elixir"
 
 - name: Elixir 1.6.5 installed
-  command: '{{ asdf_command }} install elixir 1.6.5'
+  command: "{{ asdf_command }} install elixir 1.6.5"
 
 - name: Elixir 1.6.5 activated
-  command: '{{ asdf_command }} global elixir 1.6.5'
+  command: "{{ asdf_command }} global elixir 1.6.5"

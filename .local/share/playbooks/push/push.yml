@@ -1,5 +1,5 @@
 - hosts: all
   roles:
-    - proxy_start
-    - git_repository
-    - proxy_stop
+      - proxy_start
+      - git_repository
+      - proxy_stop

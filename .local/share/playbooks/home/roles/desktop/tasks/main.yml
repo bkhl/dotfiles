@@ -1,7 +1,7 @@
 - import_tasks: keyboard.yml
   tags:
-    - keyboard
+      - keyboard
 
 - import_tasks: ui.yml
   tags:
-    - ui
+      - ui

@@ -1,2 +1,2 @@
 ---
-python_directory: '{{ user_opt_directory }}/python'
+python_directory: "{{ user_opt_directory }}/python"

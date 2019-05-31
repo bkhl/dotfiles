@@ -1,10 +1,10 @@
 - hosts: all
   roles:
-    - desktop
-    - exercism
-    - python
-    - rust
-    - erlang
-    - elixir
-    - sdkman
-    - digikam
+      - desktop
+      - exercism
+      - python
+      - rust
+      - erlang
+      - elixir
+      - sdkman
+      - digikam

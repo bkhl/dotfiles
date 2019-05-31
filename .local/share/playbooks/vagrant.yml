@@ -25,4 +25,4 @@
         state: present
         key: "{{ lookup('file', item.path) }}"
       with_items:
-        - '{{ ssh_public_keys.files }}'
+        - "{{ ssh_public_keys.files }}"

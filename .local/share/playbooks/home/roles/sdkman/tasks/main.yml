@@ -1,6 +1,6 @@
 - name: Check if SDKMAN is installed
   stat:
-    path: '{{ sdkman_init }}'
+    path: "{{ sdkman_init }}"
   register: sdkman_init_check
 
 - name: Install SDKMAN
@@ -25,4 +25,4 @@
   shell: source {{ sdkman_init }}  && sdk install {{ item }}
   args:
     executable: /bin/bash
-  with_items: '{{ sdkman_packages }}'
+  with_items: "{{ sdkman_packages }}"

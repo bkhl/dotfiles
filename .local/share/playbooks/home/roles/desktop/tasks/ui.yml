@@ -21,7 +21,7 @@
 - name: Clipboard GNOME Shell extension checked out
   git:
     repo: https://github.com/Tudmotu/gnome-shell-extension-clipboard-indicator.git
-    dest: '{{ ansible_env.HOME }}/.local/share/gnome-shell/extensions/clipboard-indicator@tudmotu.com'
+    dest: "{{ ansible_env.HOME }}/.local/share/gnome-shell/extensions/clipboard-indicator@tudmotu.com"
 
 - name: Clipboard GNOME Shell extension enabled
   command: gnome-shell-extension-tool --enable-extension=clipboard-indicator@tudmotu.com
@@ -45,12 +45,12 @@
 - name: Auto-hide dock
   dconf:
     key: /org/gnome/shell/extensions/dash-to-dock/dock-fixed
-    value: 'false'
+    value: "false"
 
 - name: Display date in top bar
   dconf:
     key: /org/gnome/desktop/interface/clock-show-date
-    value: 'true'
+    value: "true"
 
 - name: Enable world clocks
   dconf:

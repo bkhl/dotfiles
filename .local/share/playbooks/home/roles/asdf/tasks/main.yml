@@ -1,8 +1,8 @@
 - name: asdf checked out
   git:
-    repo: https://github.com/asdf-vm/asdf.git
-    dest: '{{ asdf_directory }}'
-    update: no
+      repo: https://github.com/asdf-vm/asdf.git
+      dest: "{{ asdf_directory }}"
+      update: no
 
 - name: asdf at latest stable version
   command: "{{ asdf_command }} update"

@@ -1,22 +1,22 @@
 - name: Python 2 psutil installed
   pip:
-    executable: pip2
-    extra_args: --user
-    name: psutil
-    state: present
+      executable: pip2
+      extra_args: --user
+      name: psutil
+      state: present
 
 - name: Window manager keyboard shortcuts set
   dconf:
-    key: '/org/gnome/desktop/wm/keybindings/{{ item.action }}'
-    value: "\"['{{ item.key }}']\""
+      key: "/org/gnome/desktop/wm/keybindings/{{ item.action }}"
+      value: '"[''{{ item.key }}'']"'
   with_items:
-    - { action: 'switch-applications', key: '<Super>Tab' }
-    - { action: 'switch-applications-backward', key: '<Shift><Super>Tab' }
-    - { action: 'switch-group', key: '<Super>grave' }
-    - { action: 'switch-group-backward', key: '<Shift><Super>grave' }
-    - { action: 'toggle-fullscreen', key: '<Super>f' }
+      - { action: "switch-applications", key: "<Super>Tab" }
+      - { action: "switch-applications-backward", key: "<Shift><Super>Tab" }
+      - { action: "switch-group", key: "<Super>grave" }
+      - { action: "switch-group-backward", key: "<Shift><Super>grave" }
+      - { action: "toggle-fullscreen", key: "<Super>f" }
 
 - name: Disable screenshot on Print Screen key without modifier
   dconf:
-    key: '/org/gnome/settings-daemon/plugins/media-keys/screenshot'
-    value: "''"
+      key: "/org/gnome/settings-daemon/plugins/media-keys/screenshot"
+      value: "''"

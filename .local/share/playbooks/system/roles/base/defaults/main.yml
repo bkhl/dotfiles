@@ -20,7 +20,7 @@ base_repos:
     apt_key:
       id: 9454C19A66B920C83DDF696E07C8CCAFCE49F8C5
     apt_repository:
-      repo: 'deb https://tel.red/repos/ubuntu {{ ansible_distribution_release }} non-free'
+      repo: "deb https://tel.red/repos/ubuntu {{ ansible_distribution_release }} non-free"
       filename: telred
 
   - name: Signal
@@ -65,7 +65,7 @@ base_repos:
     apt_key:
       id: EF8406856DBFCA18
     apt_repository:
-      repo: 'deb http://ppa.launchpad.net/swi-prolog/devel/ubuntu {{ ansible_distribution_release }} main'
+      repo: "deb http://ppa.launchpad.net/swi-prolog/devel/ubuntu {{ ansible_distribution_release }} main"
       filename: swi-prolog
 
   - name: Vagrant
@@ -85,7 +85,7 @@ base_repos:
       id: A2F683C52980AECF
       url: https://www.virtualbox.org/download/oracle_vbox_2016.asc
     apt_repository:
-      repo: 'deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian {{ ansible_distribution_release }} contrib'
+      repo: "deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian {{ ansible_distribution_release }} contrib"
       filename: virtualbox
 
   - name: Nextcloud
@@ -103,7 +103,7 @@ base_repos:
       id: 54678CF75A278D9C
       url: https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg
     apt_repository:
-      repo: 'deb https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/repos/debs/ vscodium main'
+      repo: "deb https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/repos/debs/ vscodium main"
       filename: vscodium
 
 base_packages_install:

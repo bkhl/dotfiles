@@ -1,6 +1,6 @@
 - name: Check for Exercism CLI client
   stat:
-    path: '{{ user_bin_directory }}/exercism'
+    path: "{{ user_bin_directory }}/exercism"
   register: exercism_check
 
 - when: exercism_check.stat.executable is not defined or not exercism_check.stat.executable
@@ -13,19 +13,19 @@
 
     - name: Target directory exists
       file:
-        path: '{{ user_bin_directory }}'
+        path: "{{ user_bin_directory }}"
         state: directory
         mode: 0755
 
     - name: Unpack exercism
       unarchive:
         src: /tmp/exercism-linux-64bit.tgz
-        dest: '{{ user_bin_directory }}/'
-        exclude: 'shell'
+        dest: "{{ user_bin_directory }}/"
+        exclude: "shell"
 
     - name: Exercism CLI client is executable file
       file:
-        path: '{{ user_bin_directory }}/exercism'
+        path: "{{ user_bin_directory }}/exercism"
         state: file
         mode: 0755
 

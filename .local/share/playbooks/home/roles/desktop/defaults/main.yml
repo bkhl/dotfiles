@@ -1,5 +1,5 @@
 ---
-fonts_directory: '{{ ansible_env.HOME }}/.local/share/fonts'
+fonts_directory: "{{ ansible_env.HOME }}/.local/share/fonts"
 fonts_families:
   - Athiti
   - Chonburi

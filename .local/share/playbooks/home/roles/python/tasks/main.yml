@@ -6,7 +6,7 @@
 
 - name: Store Ansible path
   set_fact:
-    ansible_path: '{{ ansible_path_which_result.stdout | trim }}'
+        ansible_path: "{{ ansible_path_which_result.stdout | trim }}"
 
 - name: Check for libssl-dev
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
@@ -17,37 +17,35 @@
 
 - name: Store whether libssl-dev is installed
   set_fact:
-    libssl_dev_present: "{{ (libssl_dev_check.stdout | trim) == 'installed' }}"
+        libssl_dev_present: "{{ (libssl_dev_check.stdout | trim) == 'installed' | bool }}"
 
 - name: Create Python environment directory
   file: name='{{ python_directory }}' state=directory
 
 - name: Clear out Python environment directory
   when: not ansible_path.startswith(python_directory)
-  file:
-    state: '{{ item }}'
-    path: '{{ python_directory }}'
+  file: state={{ item }} path={{ python_directory }}
   with_items:
-    - absent
-    - directory
+        - absent
+        - directory
 
 - name: Install pipx
   pip:
-    executable: pip3
-    extra_args: --user
-    name: pipx
-    state: latest
+        executable: pip3
+        extra_args: --user
+        name: pipx
+        state: latest
 
 - name: Install Python executables
-  command: 'pipx install {{ item }}'
+  command: "pipx install {{ item }}"
   with_items:
-    - black
-    - csvkit
-    - isort
-    - legit
-    - pipenv
-    - pre-commit
-    - yamllint
+        - black
+        - csvkit
+        - isort
+        - legit
+        - pipenv
+        - pre-commit
+        - yamllint
 
 - name: Install Ansible
   command: pipx install ansible
