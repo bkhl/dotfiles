@@ -231,10 +231,6 @@ base_packages_install:
   - autoconf
   - libncurses5-dev
 
-  # st dependencies
-  - libx11-dev
-  - libxft-dev
-
   # Useful for scripts that need secrets
   - libsecret-tools
 
