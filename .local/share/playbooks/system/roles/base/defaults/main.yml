@@ -141,6 +141,9 @@ base_packages_install:
   - pick-colour-picker
   - xclip
 
+  # Appearance
+  - fonts-noto-color-emoji
+
   # My languages
   - firefox-locale-en
   - firefox-locale-sv
