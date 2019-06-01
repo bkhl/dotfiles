@@ -19,9 +19,6 @@
 [submodule ".vim/pack/plugins/start/repeat"]
 	path = .vim/pack/plugins/start/repeat
 	url = https://github.com/tpope/vim-repeat.git
-[submodule ".vim/pack/plugins/start/onedark"]
-	path = .vim/pack/plugins/start/onedark
-	url = https://github.com/joshdick/onedark.vim.git
 [submodule ".vim/pack/plugins/start/tabular"]
 	path = .vim/pack/plugins/start/tabular
 	url = https://github.com/godlygeek/tabular.git
