@@ -6,17 +6,17 @@
 - name: Interface font set
   dconf:
     key: /org/gnome/desktop/interface/font-name
-    value: "'Noto Sans 11'"
+    value: "'Ubuntu 11'"
 
 - name: Document font set
   dconf:
     key: /org/gnome/desktop/interface/document-font-name
-    value: "'Noto Sans 11'"
+    value: "'FreeSans 11'"
 
 - name: Monospace font set
   dconf:
     key: /org/gnome/desktop/interface/monospace-font-name
-    value: "'Noto Sans Mono 11'"
+    value: "'Courier Prime Code 11'"
 
 - name: Clipboard GNOME Shell extension checked out
   git:
