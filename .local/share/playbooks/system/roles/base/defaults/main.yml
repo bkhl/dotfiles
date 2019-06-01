@@ -111,8 +111,9 @@ base_packages_install:
   - anki
   - audacity
   - calibre
+  - evolution
+  - evolution-ews
   - gnome-terminal
-  - gnome-todo
   - google-chrome-stable
   - gthumb
   - hexchat
@@ -238,5 +239,4 @@ base_packages_install:
   - aptitude
 
 base_packages_uninstall:
-  - evolution
   - nano
