@@ -140,12 +140,6 @@ base_packages_install:
   - pick-colour-picker
   - xclip
 
-  # Appearance
-  - fonts-noto
-  - fonts-noto-color-emoji
-  - fonts-noto-mono
-  - gnome-tweak-tool
-
   # My languages
   - firefox-locale-en
   - firefox-locale-sv
