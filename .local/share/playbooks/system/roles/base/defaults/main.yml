@@ -128,7 +128,6 @@ base_packages_install:
   - sky
   - skypeforlinux
   - teamviewer
-  - thonny
   - usb-creator-gtk
   - vim-gtk3
   - virtualbox-6.0
