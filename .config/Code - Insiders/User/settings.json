@@ -9,7 +9,6 @@
     "python.formatting.blackPath": "/home/bkhl/.local/bin/black",
     "python.formatting.provider": "black",
     "python.sortImports.path": "/home/bkhl/.local/bin/isort",
-    "telemetry.enableCrashReporter": false,
     "vim.leader": "<space>",
     "workbench.enableExperiments": false,
     "workbench.settings.enableNaturalLanguageSearch": false,
@@ -21,5 +20,7 @@
     "yaml.format.enable": true,
     "workbench.colorTheme": "Default Light+",
     "workbench.iconTheme": "vs-minimal",
-    "editor.fontFamily": "'monospace'"
+    "editor.fontFamily": "'monospace'",
+    "telemetry.enableCrashReporter": false,
+    "telemetry.enableTelemetry": false
 }

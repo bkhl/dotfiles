@@ -98,19 +98,20 @@ base_repos:
       repo: ppa:zeal-developers/ppa
       filename: zeal
 
-  - name: VSCodium
+  - name: VS Code
     apt_key:
-      id: 54678CF75A278D9C
-      url: https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg
+      id: EB3E94ADBE1229CF
+      url: https://packages.microsoft.com/keys/microsoft.asc
     apt_repository:
-      repo: "deb https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/repos/debs/ vscodium main"
-      filename: vscodium
+      repo: "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
+      filename: vscode
 
 base_packages_install:
   # Applications
   - anki
   - audacity
   - calibre
+  - code-insiders
   - evolution
   - evolution-ews
   - gnome-terminal
@@ -131,7 +132,6 @@ base_packages_install:
   - usb-creator-gtk
   - vim-gtk3
   - virtualbox-6.0
-  - vscodium
   - zeal
 
   # Handy GUI tools
