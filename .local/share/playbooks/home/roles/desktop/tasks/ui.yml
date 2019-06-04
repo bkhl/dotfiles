@@ -1,22 +1,22 @@
 - name: Window title font set
   dconf:
     key: /org/gnome/desktop/wm/preferences/titlebar-font
-    value: "'Ubuntu Bold 11'"
+    value: "'Sans Bold 11'"
 
 - name: Interface font set
   dconf:
     key: /org/gnome/desktop/interface/font-name
-    value: "'Ubuntu 11'"
+    value: "'Fira Sans 11'"
 
 - name: Document font set
   dconf:
     key: /org/gnome/desktop/interface/document-font-name
-    value: "'FreeSans 11'"
+    value: "'Fira Sans 11'"
 
 - name: Monospace font set
   dconf:
     key: /org/gnome/desktop/interface/monospace-font-name
-    value: "'Courier Prime Code 11'"
+    value: "'Fira Code 11'"
 
 - name: Clipboard GNOME Shell extension checked out
   git:

@@ -141,6 +141,7 @@ base_packages_install:
   - xclip
 
   # Appearance
+  - fonts-liberation2
   - fonts-noto-color-emoji
 
   # My languages
