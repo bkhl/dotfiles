@@ -5,7 +5,7 @@
  /* default ubuntu font */
  stage {
 -  font-family: Ubuntu, Cantarell, Sans-Serif;
-+  font-family: FiraGO, Ubuntu, Cantarell, Sans-Serif;
++  font-family: "Noto Sans", Ubuntu, Cantarell, Sans-Serif;
  }
  
  /* switch colors */

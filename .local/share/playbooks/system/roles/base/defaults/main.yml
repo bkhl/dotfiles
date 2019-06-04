@@ -141,8 +141,9 @@ base_packages_install:
   - xclip
 
   # Appearance
-  - fonts-liberation2
+  - fonts-noto
   - fonts-noto-color-emoji
+  - fonts-tlwg-loma
 
   # My languages
   - firefox-locale-en
