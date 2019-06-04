@@ -22,5 +22,6 @@
     "workbench.iconTheme": "vs-minimal",
     "editor.fontFamily": "'monospace'",
     "telemetry.enableCrashReporter": false,
-    "telemetry.enableTelemetry": false
+    "telemetry.enableTelemetry": false,
+    "remote.SSH.configFile": "/home/bkhl/.ssh/config.d/vscode"
 }
