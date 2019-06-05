@@ -217,6 +217,7 @@ base_packages_install:
   - containerd.io
   - docker-ce
   - docker-ce-cli
+  - golang-docker-credential-helpers
 
   # Network tools
   - autossh
