@@ -116,6 +116,7 @@ base_packages_install:
   - anki
   - audacity
   - calibre
+  - chromium-browser
   - evolution
   - evolution-ews
   - gnome-terminal
