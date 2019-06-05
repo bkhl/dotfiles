@@ -62,11 +62,6 @@
     name: shellcheck
     state: present
 
-- name: Install Teams for Linux
-  snap:
-    name: teams-for-linux
-    state: present
-
 - name: User added to additional groups
   user:
     name: "{{ lookup('env','USER') }}"
