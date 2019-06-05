@@ -203,6 +203,7 @@ base_packages_install:
   - git
   - graphviz
   - libperl-critic-perl
+  - mercurial
   - python-minimal
   - python-pip
   - python3-minimal
