@@ -127,7 +127,6 @@ base_packages_install:
   - chromium-browser
   - evolution
   - evolution-ews
-  - gnome-terminal
   - google-chrome-stable
   - gthumb
   - hexchat
