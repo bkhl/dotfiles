@@ -62,6 +62,10 @@
     name: shellcheck
     state: present
 
+- name: Install Alacritty
+  apt:
+    deb: 'https://github.com/jwilm/alacritty/releases/download/v0.3.2/Alacritty-v0.3.2-ubuntu_18_04_amd64.deb'
+
 - name: User added to additional groups
   user:
     name: "{{ lookup('env','USER') }}"
@@ -81,6 +85,7 @@
     - { name: view, path: /usr/bin/vim.gtk3 }
     - { name: vim, path: /usr/bin/vim.gtk3 }
     - { name: vimdiff, path: /usr/bin/vim.gtk3 }
+    - { name: x-terminal-emulator, path: /usr/bin/alacritty }
     - { name: x-www-browser, path: /usr/bin/firefox }
 
 - name: Fix Bash completion for tar

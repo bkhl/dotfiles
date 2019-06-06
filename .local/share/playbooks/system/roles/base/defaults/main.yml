@@ -262,4 +262,5 @@ base_packages_install:
   - aptitude
 
 base_packages_uninstall:
+  - gnome-terminal
   - nano
