@@ -46,6 +46,7 @@
     - legit
     - pipenv
     - pre-commit
+    - visidata
     - yamllint
 
 - name: Install Ansible
