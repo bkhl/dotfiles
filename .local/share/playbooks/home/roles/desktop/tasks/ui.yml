@@ -6,17 +6,17 @@
 - name: Interface font set
   dconf:
     key: /org/gnome/desktop/interface/font-name
-    value: "'DejaVu Sans 11'"
+    value: "'Ubuntu 11'"
 
 - name: Document font set
   dconf:
     key: /org/gnome/desktop/interface/document-font-name
-    value: "'DejaVu Sans 11'"
+    value: "'DejaVu Sans 10'"
 
 - name: Monospace font set
   dconf:
     key: /org/gnome/desktop/interface/monospace-font-name
-    value: "'DejaVu Sans Mono 11'"
+    value: "'DejaVu Sans Mono 10'"
 
 - name: Clipboard GNOME Shell extension checked out
   git:
