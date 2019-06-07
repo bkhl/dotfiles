@@ -19,7 +19,6 @@
     "workbench.activityBar.visible": true,
     "workbench.startupEditor": "none",
     "yaml.format.enable": true,
-    "workbench.colorTheme": "Default Light+",
-    "workbench.iconTheme": "vs-minimal",
-    "editor.fontFamily": "'monospace'"
+    "editor.fontFamily": "'monospace'",
+    "workbench.colorTheme": "One Dark Pro Vivid"
 }
