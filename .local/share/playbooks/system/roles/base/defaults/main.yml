@@ -155,7 +155,7 @@ base_packages_install:
   - xclip
 
   # Appearance
-  - fonts-noto
+  - fonts-dejavu
   - fonts-noto-color-emoji
   - fonts-tlwg-loma
 
