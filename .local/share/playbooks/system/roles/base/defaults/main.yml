@@ -172,6 +172,7 @@ base_packages_install:
 
   # Handy terminal tools
   - curl
+  - dos2unix
   - flac
   - httpie
   - jq
