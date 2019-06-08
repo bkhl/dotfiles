@@ -19,6 +19,5 @@
     "workbench.activityBar.visible": true,
     "workbench.startupEditor": "none",
     "yaml.format.enable": true,
-    "editor.fontFamily": "'monospace'",
-    "workbench.colorTheme": "Bluloco Dark Italic"
+    "editor.fontFamily": "'monospace'"
 }
