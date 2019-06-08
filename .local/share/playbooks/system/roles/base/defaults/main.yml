@@ -106,11 +106,6 @@ base_repos:
       repo: "deb https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/repos/debs/ vscodium main"
       filename: vscodium
 
-  - name: ICE
-    apt_repository:
-      repo: ppa:peppermintos/ice-dev
-      filename: ice
-
   - name: Docker
     apt_key:
        id: 8D81803C0EBFCD88
@@ -150,7 +145,6 @@ base_packages_install:
   # Handy GUI tools
   - gparted
   - gnome-clocks
-  - ice
   - pick-colour-picker
   - xclip
 
