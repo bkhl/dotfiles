@@ -145,6 +145,7 @@ base_packages_install:
   # Handy GUI tools
   - gparted
   - gnome-clocks
+  - gnome-terminal
   - pick-colour-picker
   - xclip
 
@@ -256,5 +257,4 @@ base_packages_install:
   - aptitude
 
 base_packages_uninstall:
-  - gnome-terminal
   - nano
