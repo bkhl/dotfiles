@@ -3,10 +3,6 @@ if [[ -n "${REAL_HOME}" ]] && [[ -e "${REAL_HOME}/.bashrc" ]]; then
     HOME="${REAL_HOME}" source "${REAL_HOME}/.bashrc"
 fi
 
-# Prevent file overwrite on stdout redirection
-# Use `>|` to force redirection to an existing file
-set -o noclobber
-
 # Update window size after every command.
 shopt -s checkwinsize
 
