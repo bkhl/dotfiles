@@ -1,0 +1,39 @@
+---
+- name: Upgrade Stack
+  command: "stack upgrade"
+  register: haskell_stack_upgrade_result
+  changed_when: '"New stack executable available at " + haskell_stack_path in haskell_stack_upgrade_result.stderr_lines'
+  ignore_errors: true
+
+- name: Download and install Stack
+  when: haskell_stack_upgrade_result.failed == true
+  block:
+    - name: Create temporary download file
+      tempfile:
+        state: file
+        suffix: ".tar.gz"
+      register: haskell_stack_archive
+
+    - name: Download Stack
+      get_url:
+        url: "{{ haskell_stack_download_url }}"
+        dest: "{{ haskell_stack_archive.path }}"
+        checksum: "sha1:379006b3c09950bb8574fb70b653aa4c9a0ebfc7"
+
+    - name: Extract Stack
+      unarchive:
+        src: "{{ haskell_stack_archive.path }}"
+        dest: "{{ haskell_stack_bin_dir }}"
+        extra_opts:
+          - "{{ haskell_stack_archive_bin_path }}"
+          - "--strip-components=1"
+
+    - name: Remove download
+      file:
+        path: "{{ haskell_stack_archive.path }}"
+        state: absent
+
+    - name: Upgrade Stack
+      command: "stack upgrade"
+      register: haskell_stack_upgrade_result
+      changed_when: '"New stack executable available at " + haskell_stack_path in haskell_stack_upgrade_result.stderr_lines'
