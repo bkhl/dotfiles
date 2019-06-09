@@ -1,8 +1,8 @@
 ---
 - name: Upgrade Stack
-  command: "stack upgrade"
+  command: "{{ haskell_stack_bin_path }} upgrade"
   register: haskell_stack_upgrade_result
-  changed_when: '"New stack executable available at " + haskell_stack_path in haskell_stack_upgrade_result.stderr_lines'
+  changed_when: '"New stack executable available at " + haskell_stack_bin_path in haskell_stack_upgrade_result.stderr_lines'
   ignore_errors: true
 
 - name: Download and install Stack
@@ -34,6 +34,20 @@
         state: absent
 
     - name: Upgrade Stack
-      command: "stack upgrade"
+      command: "{{ haskell_stack_bin_path }} upgrade"
       register: haskell_stack_upgrade_result
-      changed_when: '"New stack executable available at " + haskell_stack_path in haskell_stack_upgrade_result.stderr_lines'
+      changed_when: '"New stack executable available at " + haskell_stack_bin_path in haskell_stack_upgrade_result.stderr_lines'
+
+- name: Set Stack installation prefix
+  copy:
+    content: "{{ haskell_stack_config | to_nice_yaml }}"
+    dest: "{{ haskell_stack_config_file }}"
+
+- name: Install hledger
+  command: "{{ haskell_stack_bin_path }} install --resolver=nightly-2019-03-21 {{ item }}"
+  args:
+    creates: "{{ haskell_stack_bin_path }}/{{ item }}"
+  with_items:
+    - hledger
+    - hledger-web
+    - hledger-ui

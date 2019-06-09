@@ -2,5 +2,8 @@
 haskell_stack_version: "1.9.3"
 haskell_stack_download_url: "https://github.com/commercialhaskell/stack/releases/download/v{{ haskell_stack_version }}/stack-{{ haskell_stack_version }}-linux-x86_64-static.tar.gz"
 haskell_stack_archive_bin_path: "stack-{{ haskell_stack_version }}-linux-x86_64-static/stack"
-haskell_stack_bin_dir: "{{ ansible_env.HOME }}/.local/bin/"
-haskell_stack_path: "{{ haskell_stack_bin_dir }}/stack"
+haskell_stack_bin_dir: "{{ ansible_env.HOME }}/.local/opt/stack/bin"
+haskell_stack_bin_path: "{{ haskell_stack_bin_dir }}/stack"
+haskell_stack_config_file: "{{ ansible_env.HOME }}/.stack/config.yaml"
+haskell_stack_config:
+  local-bin-path: "{{ haskell_stack_bin_dir }}"
