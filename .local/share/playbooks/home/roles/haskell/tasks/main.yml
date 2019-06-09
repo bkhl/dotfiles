@@ -46,7 +46,7 @@
 - name: Install hledger
   command: "{{ haskell_stack_bin_path }} install --resolver=nightly-2019-03-21 {{ item }}"
   args:
-    creates: "{{ haskell_stack_bin_path }}/{{ item }}"
+    creates: "{{ haskell_stack_bin_dir }}/{{ item }}"
   with_items:
     - hledger
     - hledger-web
