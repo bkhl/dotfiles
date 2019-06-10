@@ -40,6 +40,7 @@
     creates: "{{ rust_cargo_root }}/bin/{{ item.command }}"
   with_items:
     - { package: cargo-deb, command: cargo-deb }
+    - { package: dua-cli, command: dua }
     - { package: exa, command: exa }
     - { package: fd-find, command: fd }
     - { package: ripgrep, command: rg }
