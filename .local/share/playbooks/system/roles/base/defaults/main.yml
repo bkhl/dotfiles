@@ -176,7 +176,6 @@ base_packages_install:
   - moreutils
   - mosh
   - rar
-  - screen
   - shntool
   - unrar
   - unzip
