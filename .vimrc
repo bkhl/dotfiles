@@ -7,17 +7,21 @@ if &term == "screen-256color"
     silent !stty -ixon
 
     " See :help xterm-true-color
-    let &t_8f = "\<Esc>[38:2:%lu:%lu:%lum"
-    let &t_8b = "\<Esc>[48:2:%lu:%lu:%lum"
+    if exists('&t_8f') && exists('&t_8b')
+        let &t_8f = "\<Esc>[38:2:%lu:%lu:%lum"
+        let &t_8b = "\<Esc>[48:2:%lu:%lu:%lum"
+    endif
 
     set termguicolors
 endif
 
 if &term == "screen-256color" || &term == "xterm-256color"
     " Escape sequences for changing cursor shape.
-    let &t_SI = "\<Esc>[5 q"
-    let &t_SR = "\<Esc>[3 q"
-    let &t_EI = "\<Esc>[1 q"
+    if exists('&t_SI') && exists('&t_SR') && exists('&t_EI')
+        let &t_SI = "\<Esc>[5 q"
+        let &t_SR = "\<Esc>[3 q"
+        let &t_EI = "\<Esc>[1 q"
+    endif
 endif
 
 " Background colour
