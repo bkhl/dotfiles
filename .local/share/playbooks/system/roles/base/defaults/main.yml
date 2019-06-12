@@ -199,6 +199,7 @@ base_packages_install:
   - graphviz
   - libperl-critic-perl
   - mercurial
+  - pkg-config
   - python-minimal
   - python-pip
   - python3-minimal
@@ -208,6 +209,10 @@ base_packages_install:
   - subversion
   - tidy
   - vagrant
+
+  # tmux build dependencies
+  - pkg-config
+  - libevent-dev
 
   # Docker
   - containerd.io

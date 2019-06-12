@@ -1,0 +1,4 @@
+---
+tmux_src_directory: '{{ ansible_env.HOME }}/.local/src/tmux'
+tmux_install_prefix: '{{ ansible_env.HOME }}/.local/opt/tmux'
+tmux_version: '2.9'
