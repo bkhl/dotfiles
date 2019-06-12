@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=tmux
+Type=Application
+Exec=gnome-terminal --window-with-profile=tmux
+Icon=tmux
+Categories=System;TerminalEmulator;
