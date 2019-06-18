@@ -1,13 +1,5 @@
 ---
 base_repos:
-  - name: Google Chrome
-    apt_key:
-      url: https://dl-ssl.google.com/linux/linux_signing_key.pub
-      id: 9534C9C4130B4DC9927992BF4F30B6B4C07CB649
-    apt_repository:
-      repo: deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main
-      filename: google-chrome
-
   - name: Skype
     apt_key:
       url: https://repo.skype.com/data/SKYPE-GPG-KEY
@@ -122,7 +114,6 @@ base_packages_install:
   - chromium-browser
   - evolution
   - evolution-ews
-  - google-chrome-stable
   - gthumb
   - hexchat
   - libreoffice
