@@ -31,8 +31,9 @@ class RSess(cli.Application):
             ".gitconfig",
             ".inputrc",
             ".profile",
-            ".screenrc",
+            ".tmux.conf",
             ".vimrc",
+            ".local/bin/tmux",
         ]:
             temp_path = temp_dir / filename
             for parent in reversed(temp_path.parents):
@@ -51,16 +52,16 @@ if [ ! -e "${{HOME}}/.ssh" ]; then
     ln -sT "${{REAL_HOME}}/.ssh" "${{HOME}}/.ssh"
 fi
 cd "${{HOME}}"
-exec screen -DR "{self.session}"
+exec "${{HOME}}/.local/bin/tmux" new -A -s "{self.session}"
 """
         temp_bin_dir = temp_dir / "bin"
         if not temp_bin_dir.exists():
             temp_bin_dir.mkdir()
             temp_bin_dir.chmod(0o755)
 
-        my_scree = temp_bin_dir / "my-screen"
-        my_scree.write(script)
-        my_scree.chmod(0o755)
+        my_tmux = temp_bin_dir / "my-tmux"
+        my_tmux.write(script)
+        my_tmux.chmod(0o755)
 
         rsync(
             "--archive", "--copy-links", f"{temp_dir}/", f"{destination}:{remote_home}"
@@ -68,19 +69,19 @@ exec screen -DR "{self.session}"
 
         delete(self.temp_dir)
 
-        remote_my_screen = remote_home / "bin" / my_scree.name
+        remote_my_tmux = remote_home / "bin" / my_tmux.name
         remote_mosh_unsuccessful = remote_home / ".mosh_unsuccessful"
 
         if self.force_mosh or not remote_mosh_unsuccessful.exists():
             try:
-                ((mosh < sys.stdin) > sys.stdout)(destination, remote_my_screen)
+                ((mosh < sys.stdin) > sys.stdout)(destination, remote_my_tmux)
                 if self.force_mosh:
                     delete(remote_mosh_unsuccessful)
                     return
             except ProcessExecutionError:
                 remote_mosh_unsuccessful.touch()
 
-        ((autossh < sys.stdin) > sys.stdout)("-t", destination, remote_my_screen)
+        ((autossh < sys.stdin) > sys.stdout)("-t", destination, remote_my_tmux)
 
 
 def parse_destination(destination):
