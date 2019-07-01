@@ -28,3 +28,6 @@
 [submodule ".vim/pack/plugins/start/onedark"]
 	path = .vim/pack/plugins/start/onedark
 	url = https://github.com/joshdick/onedark.vim.git
+[submodule ".vim/pack/plugins/start/virtualenv"]
+	path = .vim/pack/plugins/start/virtualenv
+	url = https://github.com/plytophogy/vim-virtualenv
