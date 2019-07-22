@@ -45,9 +45,6 @@ export ASDF_DATA_DIR="$ASDF_DIR"
 # Go
 export GOPATH="$USER_OPT_DIR/go"
 
-# Java
-export SDKMAN_DIR="$USER_OPT_DIR/sdkman"
-
 # Python
 export PYTHONUSERBASE="$USER_OPT_DIR/python"
 export PIPENV_IGNORE_VIRTUALENVS=2 # Don't warn when falling back to already activated virtual environment.

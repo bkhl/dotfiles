@@ -1,6 +1,0 @@
----
-sdkman_init: "{{ user_opt_directory }}/sdkman/bin/sdkman-init.sh"
-sdkman_packages:
-  - java
-  - maven
-  - gradle
