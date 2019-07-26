@@ -104,8 +104,6 @@ base_packages_install:
   - audacity
   - calibre
   - chromium-browser
-  - evolution
-  - evolution-ews
   - gthumb
   - hexchat
   - libreoffice
