@@ -240,5 +240,8 @@ base_packages_install:
   # Preferred tool by Ansible, for APT upgrades
   - aptitude
 
+  # To mount Sony RX100 VI
+  - exfat-fuse
+
 base_packages_uninstall:
   - nano
