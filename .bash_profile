@@ -15,3 +15,6 @@ if [[ -n "$BASH" ]]; then
           *) return ;;
     esac
 fi
+
+# Load Pyenv
+eval "$(pyenv init -)"

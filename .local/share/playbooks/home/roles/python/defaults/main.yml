@@ -1,2 +1,5 @@
 ---
-python_directory: "{{ user_opt_directory }}/python"
+python_pip_directory: "{{ user_opt_directory }}/pip"
+python_pyenv_directory: "{{ user_opt_directory }}/pyenv"
+python_pyenv_executable: "{{ python_pyenv_directory }}/bin/pyenv"
+python_pyenv_global_version: "3.7.4"

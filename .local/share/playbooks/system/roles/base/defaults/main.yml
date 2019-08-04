@@ -179,10 +179,6 @@ base_packages_install:
   - libperl-critic-perl
   - mercurial
   - pkg-config
-  - python-minimal
-  - python-pip
-  - python3-minimal
-  - python3-pip
   - swi-prolog
   - sqlite3
   - subversion
@@ -192,6 +188,12 @@ base_packages_install:
   # tmux build dependencies
   - pkg-config
   - libevent-dev
+
+  # Python 3 build dependencies
+  - libffi-dev
+
+  # Dependency for home/roles/desktop
+  - python-psutil
 
   # Docker
   - containerd.io

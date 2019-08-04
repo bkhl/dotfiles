@@ -46,8 +46,7 @@ export ASDF_DATA_DIR="$ASDF_DIR"
 export GOPATH="$USER_OPT_DIR/go"
 
 # Python
-export PYTHONUSERBASE="$USER_OPT_DIR/python"
-export PIPENV_IGNORE_VIRTUALENVS=2 # Don't warn when falling back to already activated virtual environment.
+export PYENV_ROOT="$USER_OPT_DIR/pyenv"
 
 # Rust
 export CARGO_HOME="$USER_OPT_DIR/cargo"

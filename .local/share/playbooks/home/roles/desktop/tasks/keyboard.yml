@@ -1,10 +1,3 @@
-- name: Python 2 psutil installed
-  pip:
-      executable: pip2
-      extra_args: --user
-      name: psutil
-      state: present
-
 - name: Window manager keyboard shortcuts set
   dconf:
       key: "/org/gnome/desktop/wm/keybindings/{{ item.action }}"
