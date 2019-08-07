@@ -4,3 +4,8 @@
     state: absent
     name:
       - gedit
+
+- name: Change GNOME Shell font
+  patch:
+    src: gnome_shell_font.diff
+    basedir: /usr/share/gnome-shell/theme

@@ -1,22 +1,22 @@
 - name: Window title font set
   dconf:
     key: /org/gnome/desktop/wm/preferences/titlebar-font
-    value: "'Ubuntu Bold 11'"
+    value: "'B612 Bold 10'"
 
 - name: Interface font set
   dconf:
     key: /org/gnome/desktop/interface/font-name
-    value: "'Ubuntu 11'"
+    value: "'B612 10'"
 
 - name: Document font set
   dconf:
     key: /org/gnome/desktop/interface/document-font-name
-    value: "'DejaVu Sans 10'"
+    value: "'B612 9'"
 
 - name: Monospace font set
   dconf:
     key: /org/gnome/desktop/interface/monospace-font-name
-    value: "'DejaVu Sans Mono 10'"
+    value: "'B612 Mono 9'"
 
 - name: Clipboard GNOME Shell extension checked out
   git:
