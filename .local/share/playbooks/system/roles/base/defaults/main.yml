@@ -53,13 +53,6 @@ base_repos:
       repo: ppa:musicbrainz-developers/stable
       filename: musicbrainz
 
-  - name: SWI Prolog
-    apt_key:
-      id: EF8406856DBFCA18
-    apt_repository:
-      repo: "deb http://ppa.launchpad.net/swi-prolog/devel/ubuntu {{ ansible_distribution_release }} main"
-      filename: swi-prolog
-
   - name: Vagrant
     apt_key:
       id: CE3F3DE92099F7A4
@@ -235,6 +228,13 @@ base_packages_install:
   # Erlang dependencies
   - autoconf
   - libncurses5-dev
+
+  # SWI Prolog dependencies
+  - libarchive-dev
+  - libedit-dev
+  - libgmp-dev
+  - libncursesw5-dev
+  - libreadline-dev
 
   # Useful for scripts that need secrets
   - libsecret-tools

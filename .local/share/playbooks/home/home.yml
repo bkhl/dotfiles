@@ -6,5 +6,6 @@
       - rust
       - erlang
       - elixir
+      - swiprolog
       - haskell
       - digikam
