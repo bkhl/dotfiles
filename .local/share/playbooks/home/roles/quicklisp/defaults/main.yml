@@ -1,0 +1,3 @@
+---
+quicklisp_directory: "{{ ansible_env.HOME }}/.local/share/quicklisp"
+quicklisp_installer_filename: "/tmp/quicklisp.lisp"

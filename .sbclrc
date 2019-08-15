@@ -1,0 +1,6 @@
+;; Load Quicklisp (https://www.quicklisp.org/)
+#-quicklisp
+(let ((quicklisp-init (merge-pathnames ".local/share/quicklisp/setup.lisp"
+                                       (user-homedir-pathname))))
+  (when (probe-file quicklisp-init)
+    (load quicklisp-init)))
