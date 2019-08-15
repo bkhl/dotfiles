@@ -178,6 +178,11 @@ base_packages_install:
   - tidy
   - vagrant
 
+  # Common Lisp
+  - sbcl
+  - sbcl-doc
+  - sbcl-source
+
   # tmux build dependencies
   - pkg-config
   - libevent-dev
