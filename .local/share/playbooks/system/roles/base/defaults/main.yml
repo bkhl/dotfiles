@@ -91,6 +91,13 @@ base_repos:
       repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
       filename: docker
 
+  - name: D
+    apt_key:
+      id: EBCF975E5BA24D5E
+    apt_repository:
+      repo: "deb https://netcologne.dl.sourceforge.net/project/d-apt/ d-apt main"
+      filename: d
+
 base_packages_install:
   # Applications
   - anki
@@ -233,6 +240,14 @@ base_packages_install:
   # Erlang dependencies
   - autoconf
   - libncurses5-dev
+
+  # D
+  - dmd-compiler
+  - dmd-doc
+  - dmd-tools
+  - libgtkd3-dev
+  - libgtkd3-doc
+  - dub
 
   # SWI Prolog dependencies
   - libarchive-dev
