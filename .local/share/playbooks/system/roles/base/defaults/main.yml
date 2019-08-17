@@ -91,6 +91,11 @@ base_repos:
       repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
       filename: docker
 
+  - name: Vala
+    apt_repository:
+      repo: ppa:vala-team/ppa
+      filename: vala
+
 base_packages_install:
   # Applications
   - anki
@@ -177,6 +182,7 @@ base_packages_install:
   - subversion
   - tidy
   - vagrant
+  - valac
 
   # Common Lisp
   - sbcl
