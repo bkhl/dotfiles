@@ -248,7 +248,6 @@ base_packages_install:
   - libgtkd3-dev
   - libgtkd3-doc
   - dub
-  - uncrustify
 
   # SWI Prolog dependencies
   - libarchive-dev
