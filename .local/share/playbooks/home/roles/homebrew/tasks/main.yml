@@ -1,0 +1,37 @@
+- name: Check if Homebrew is installed
+  stat:
+    path: "{{ homebrew_command }}"
+  register: homebrew_stat
+
+- name: Install Homebrew
+  when: not homebrew_stat.stat.exists
+  block:
+    - name: Create temporary file
+      tempfile:
+        state: file
+        suffix: ".tar.gz"
+      register: homebrew_archive
+
+    - name: Get installer
+      get_url:
+        url: "https://github.com/Linuxbrew/brew/tarball/master"
+        dest: "{{ homebrew_archive.path }}"
+        checksum: sha256:e6f4902d9f57a824ac4d25723ea1648b860a1db80763db17088462208821c0b8
+
+    - name: Create Homebrew directory
+      file:
+        path: "{{ homebrew_directory }}"
+        state: directory
+
+    - name: Extract Homebrew
+      unarchive:
+        src: "{{ homebrew_archive.path }}"
+        dest: "{{ homebrew_directory }}"
+        extra_opts:
+          - "--strip-components=1"
+
+- name: Update Homebrew
+  command: "{{ homebrew_command }} update"
+  register: result
+  changed_when: >
+    result.rc == 0 and result.stdout != 'Already up-to-date.'

@@ -45,6 +45,9 @@ export ASDF_DATA_DIR="$ASDF_DIR"
 # Go
 export GOPATH="$USER_OPT_DIR/go"
 
+# Homebrew
+export HOMEBREW_PREFIX="$USER_OPT_DIR/homebrew"
+
 # Python
 export PYENV_ROOT="$USER_OPT_DIR/pyenv"
 

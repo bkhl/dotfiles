@@ -1,0 +1,3 @@
+---
+homebrew_directory: "{{ user_opt_directory }}/homebrew"
+homebrew_command: "{{ homebrew_directory }}/bin/brew"
