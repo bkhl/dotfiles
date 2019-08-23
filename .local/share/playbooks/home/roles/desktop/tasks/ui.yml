@@ -16,7 +16,7 @@
 - name: Monospace font set
   dconf:
     key: /org/gnome/desktop/interface/monospace-font-name
-    value: "'DejaVu Sans Mono 10'"
+    value: "'Fairfax HD 12'"
 
 - name: Clipboard GNOME Shell extension checked out
   git:
