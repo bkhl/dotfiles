@@ -237,10 +237,6 @@ base_packages_install:
   # Ansible dependency
   - libssl1.0-dev
 
-  # Erlang dependencies
-  - autoconf
-  - libncurses5-dev
-
   # D
   - dmd-compiler
   - dmd-doc
@@ -249,12 +245,8 @@ base_packages_install:
   - libgtkd3-doc
   - dub
 
-  # SWI Prolog dependencies
-  - libarchive-dev
-  - libedit-dev
-  - libgmp-dev
-  - libncursesw5-dev
-  - libreadline-dev
+  # SWI Prolog
+  - swi-prolog
 
   # Useful for scripts that need secrets
   - libsecret-tools
