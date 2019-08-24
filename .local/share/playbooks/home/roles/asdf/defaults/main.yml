@@ -1,3 +1,0 @@
----
-asdf_directory: "{{ user_opt_directory }}/asdf"
-asdf_command: "{{ asdf_directory }}/bin/asdf"
