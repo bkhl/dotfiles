@@ -38,13 +38,6 @@ export PAGER='less -R'
 # Username for prod &c.
 export ARBZRUSER=bnl
 
-# asdf
-export ASDF_DIR="$USER_OPT_DIR/asdf"
-export ASDF_DATA_DIR="$ASDF_DIR"
-
-# Go
-export GOPATH="$USER_OPT_DIR/go"
-
 # Python
 export PYENV_ROOT="$USER_OPT_DIR/pyenv"
 
