@@ -1,0 +1,37 @@
+- name: Check for rustup
+  stat: path={{ rust_rustup_path }}
+  register: rustup_stat
+
+- name: Install rustup
+  when: >
+    rustup_stat.stat.executable is not defined
+    or not rustup_stat.stat.executable
+  block:
+    - name: Get rustup installation script
+      get_url:
+        url: https://static.rust-lang.org/rustup/rustup-init.sh
+        checksum: sha256:9bbf4987fc0b46658249c176004271bebc3126530cb2aff347776a9549a48321
+        dest: /tmp/rustup-init.sh
+
+    - name: Run rustup installation
+      command: sh /tmp/rustup-init.sh --no-modify-path -y
+
+- name: Update rustup
+  when: rustup_stat.stat.executable is defined and rustup_stat.stat.executable
+  command: "{{ rust_rustup_path }} update"
+
+- name: Toolchains installed
+  command: "{{ rust_rustup_path }} toolchain install {{ item }}"
+  with_items:
+    - stable
+    - beta
+    - nightly
+
+- name: stable components installed
+  command: "{{ rust_rustup_path }} component add {{ item }} --toolchain=stable"
+  with_items:
+    - clippy
+    - rustfmt
+    - rls
+    - rust-analysis
+    - rust-src

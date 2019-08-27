@@ -1,0 +1,9 @@
+- name: Fetch dfmt
+  command: dub fetch dfmt
+  register: d_dfmt_result
+  changed_when: >
+    not d_dfmt_result.stdout.startswith('Please note that you need to use')
+
+- name: Build dfmt
+  when: d_dfmt_result.changed
+  command: dub build --force dfmt
