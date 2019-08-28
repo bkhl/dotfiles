@@ -1,8 +1,6 @@
-try
-    colorscheme jellybeans
-catch /^Vim\%((\a\+)\)\=:E185/  
+if &runtimepath !~? "jellybeans"
     finish
-endtry
+endif
 
 let g:jellybeans_overrides = {
 \    'background': { 'ctermbg': 'none', '256ctermbg': 'none' },
@@ -11,3 +9,5 @@ let g:jellybeans_overrides = {
 if has('termguicolors') && &termguicolors
     let g:jellybeans_overrides['background']['guibg'] = 'none'
 endif
+
+colorscheme jellybeans
