@@ -25,12 +25,12 @@
 [submodule ".vim/pack/plugins/start/ale"]
 	path = .vim/pack/plugins/start/ale
 	url = https://github.com/bkhl/ale.git
-[submodule ".vim/pack/plugins/start/onedark"]
-	path = .vim/pack/plugins/start/onedark
-	url = https://github.com/joshdick/onedark.vim.git
 [submodule ".vim/pack/plugins/start/virtualenv"]
 	path = .vim/pack/plugins/start/virtualenv
 	url = https://github.com/plytophogy/vim-virtualenv
 [submodule ".vim/pack/plugins/start/slimv"]
 	path = .vim/pack/plugins/start/slimv
 	url = https://github.com/kovisoft/slimv
+[submodule ".vim/pack/plugins/start/jellybeans"]
+	path = .vim/pack/plugins/start/jellybeans
+	url = https://github.com/nanotech/jellybeans.vim.git
