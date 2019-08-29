@@ -98,6 +98,11 @@ base_repos:
       repo: "deb https://netcologne.dl.sourceforge.net/project/d-apt/ d-apt main"
       filename: d
 
+  - name: Racket
+    apt_repository:
+      repo: ppa:plt/racket
+      filename: racket
+
 base_packages_install:
   # Applications
   - anki
@@ -247,6 +252,9 @@ base_packages_install:
 
   # SWI Prolog
   - swi-prolog
+
+  # Racket
+  - racket
 
   # Useful for scripts that need secrets
   - libsecret-tools
