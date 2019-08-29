@@ -12,7 +12,9 @@ if &term == "screen-256color"
         let &t_8b = "\<Esc>[48:2:%lu:%lu:%lum"
     endif
 
-    set termguicolors
+    if has('termguicolors')
+        set termguicolors
+    endif
 endif
 
 if &term == "screen-256color" || &term == "xterm-256color"
