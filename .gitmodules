@@ -34,6 +34,3 @@
 [submodule ".vim/pack/plugins/start/racket"]
 	path = .vim/pack/plugins/start/racket
 	url = https://github.com/wlangstroth/vim-racket
-[submodule ".vim/pack/plugins/start/paredit"]
-	path = .vim/pack/plugins/start/paredit
-	url = https://github.com/vim-scripts/paredit.vim
