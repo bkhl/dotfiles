@@ -31,6 +31,6 @@
 [submodule ".vim/pack/plugins/start/jellybeans"]
 	path = .vim/pack/plugins/start/jellybeans
 	url = https://github.com/nanotech/jellybeans.vim.git
-[submodule ".vim/pack/plugins/start/racket"]
-	path = .vim/pack/plugins/start/racket
-	url = https://github.com/wlangstroth/vim-racket
+[submodule ".vim/pack/plugins/start/slimv"]
+	path = .vim/pack/plugins/start/slimv
+	url = https://github.com/kovisoft/slimv
