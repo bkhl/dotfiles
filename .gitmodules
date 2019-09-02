@@ -34,3 +34,6 @@
 [submodule ".vim/pack/plugins/start/slimv"]
 	path = .vim/pack/plugins/start/slimv
 	url = https://github.com/kovisoft/slimv
+[submodule ".vim/pack/plugins/start/racket"]
+	path = .vim/pack/plugins/start/racket
+	url = https://github.com/wlangstroth/vim-racket
