@@ -8,13 +8,6 @@ base_repos:
       repo: deb [arch=amd64] https://repo.skype.com/deb stable main
       filename: skype-stable
 
-  - name: TelRed
-    apt_key:
-      id: 9454C19A66B920C83DDF696E07C8CCAFCE49F8C5
-    apt_repository:
-      repo: "deb https://tel.red/repos/ubuntu {{ ansible_distribution_release }} non-free"
-      filename: telred
-
   - name: Signal
     apt_key:
       url: https://updates.signal.org/desktop/apt/keys.asc
@@ -120,7 +113,6 @@ base_packages_install:
   - remmina
   - signal-desktop
   - simplescreenrecorder
-  - sky
   - skypeforlinux
   - teamviewer
   - usb-creator-gtk
