@@ -249,6 +249,10 @@ base_packages_install:
   # Racket
   - racket
 
+  # Perl
+  - perl
+  - libtest2-suite-perl
+
   # Useful for scripts that need secrets
   - libsecret-tools
 
