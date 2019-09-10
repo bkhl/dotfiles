@@ -103,6 +103,7 @@ base_packages_install:
   - audacity
   - calibre
   - chromium-browser
+  - firefox
   - gthumb
   - hexchat
   - libreoffice
