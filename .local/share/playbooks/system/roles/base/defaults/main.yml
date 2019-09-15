@@ -195,6 +195,7 @@ base_packages_install:
 
   # Python 3 build dependencies
   - libffi-dev
+  - libbz2-dev
 
   # Dependency for home/roles/desktop
   - python-psutil
