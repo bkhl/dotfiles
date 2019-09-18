@@ -231,6 +231,7 @@ base_packages_install:
   # System tools
   - chrony
   - duply
+  - flatpak
   - krb5-user
   - ubuntu-restricted-addons
 
