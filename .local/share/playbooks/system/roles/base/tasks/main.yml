@@ -132,11 +132,3 @@
       command: "vboxmanage extpack install --replace /tmp/Oracle_VM_VirtualBox_Extension_Pack-{{ virtualbox_version}}.vbox-extpack"
       args:
         stdin: y
-
-- name: Install Flatpak Ambience theme
-  flatpak:
-    name: org.gtk.Gtk3theme.Ambiance
-
-- name: Install GNOME Builder
-  flatpak:
-    name: 'https://flathub.org/repo/appstream/org.gnome.Builder.flatpakref'
