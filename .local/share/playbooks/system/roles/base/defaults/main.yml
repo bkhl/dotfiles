@@ -221,6 +221,7 @@ base_packages_install:
   - nmap
   - resolvconf
   - socat
+  - sshpass
   - traceroute
   - whois
 
