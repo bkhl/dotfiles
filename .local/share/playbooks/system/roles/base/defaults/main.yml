@@ -194,6 +194,7 @@ base_packages_install:
   - libevent-dev
 
   # Python 3 build dependencies
+  - zlib1g-dev
   - libffi-dev
   - libbz2-dev
 
