@@ -56,12 +56,6 @@
     state: absent
     name: "{{ base_packages_uninstall }}"
 
-- name: Install shellcheck
-  snap:
-    channel: edge
-    name: shellcheck
-    state: present
-
 - name: User added to additional groups
   user:
     name: "{{ lookup('env','USER') }}"

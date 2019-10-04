@@ -51,3 +51,11 @@
     - hledger
     - hledger-web
     - hledger-ui
+
+
+- name: Install ShellCheck
+  command: "{{ haskell_stack_bin_path }} install {{ item }}"
+  args:
+    creates: "{{ haskell_stack_bin_dir }}/{{ item }}"
+  with_items:
+    - ShellCheck
