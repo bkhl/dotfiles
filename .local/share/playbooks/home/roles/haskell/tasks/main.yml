@@ -54,8 +54,6 @@
 
 
 - name: Install ShellCheck
-  command: "{{ haskell_stack_bin_path }} install {{ item }}"
+  command: "{{ haskell_stack_bin_path }} install ShellCheck"
   args:
-    creates: "{{ haskell_stack_bin_dir }}/{{ item }}"
-  with_items:
-    - ShellCheck
+    creates: "{{ haskell_stack_bin_dir }}/shellcheck"
