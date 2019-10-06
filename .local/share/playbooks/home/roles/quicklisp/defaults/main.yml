@@ -1,3 +1,0 @@
----
-quicklisp_directory: "{{ user_opt_directory }}/quicklisp"
-quicklisp_installer_filename: "/tmp/quicklisp.lisp"
