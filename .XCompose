@@ -1,2 +1,5 @@
 <Multi_key> <b> : "฿" Thai_baht # THAI CURRENCY SYMBOL BAHT
 <Multi_key> <s> <n> <o> : "☃" # SNOWMAN
+<Multi_key> <colon> <parenright> : "🙂" # SLIGHTLY SMILING FACE
+<Multi_key> <colon> <parenleft> : "🙁" # SLIGHTLY FROWNING FACE
+<Multi_key> <semicolon> <parenright> : "😉" # WINKING FACE
