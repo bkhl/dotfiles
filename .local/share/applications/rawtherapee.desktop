@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=RawTherapee
+TryExec=rawtherapee
+Exec=rawtherapee
+Icon=rawtherapee
+Type=Application
