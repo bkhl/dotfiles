@@ -3,6 +3,10 @@ all:
   hosts:
     localhost:
       ansible_connection: local
+    cluracan:
+      ansible_connection: local
+    lyta:
+      ansible_connection: local
   vars:
     user_opt_directory: '{{ ansible_env.HOME }}/.local/opt'
     user_bin_directory: '{{ ansible_env.HOME }}/.local/bin'

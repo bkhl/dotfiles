@@ -1,4 +1,9 @@
 ---
+- name: "Check that hostname matches inventory hostname."
+  assert:
+    that:
+      - ansible_hostname == inventory_hostname
+
 - name: Ubuntu repositories enabled
   apt_repository:
     repo: "{{ item }}"
