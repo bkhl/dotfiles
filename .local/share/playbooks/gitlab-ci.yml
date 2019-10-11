@@ -1,0 +1,63 @@
+variables:
+  CI_REGISTRY_IMAGE_BASE: base
+  CI_REGISTRY_IMAGE_SYSTEM: system
+  CI_DOCKER_FILE: .local/share/playbooks/Dockerfile
+
+stages:
+  - prepare
+  - build:system
+  - build:home
+  - test
+
+prepare:base:
+  stage: prepare
+  image: docker:stable
+  services:
+    - docker:dind
+  before_script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+  script:
+    - >-
+      docker pull $CI_REGISTRY/$CI_PROJECT_PATH/$CI_REGISTRY_IMAGE_BASE:latest
+      || true
+    - >-
+      docker build
+      --file $CI_DOCKER_FILE
+      --cache-from $CI_REGISTRY_IMAGE_BASE:latest
+      --tag $CI_REGISTRY/$CI_PROJECT_PATH/$CI_REGISTRY_IMAGE_BASE:$CI_COMMIT_SHA
+      --tag $CI_REGISTRY/$CI_PROJECT_PATH/$CI_REGISTRY_IMAGE_BASE:latest .
+    - >-
+      docker push
+      $CI_REGISTRY/$CI_PROJECT_PATH/$CI_REGISTRY_IMAGE_BASE:$CI_COMMIT_SHA
+    - >-
+      docker push $CI_REGISTRY/$CI_PROJECT_PATH/$CI_REGISTRY_IMAGE_BASE:latest
+  only:
+    changes:
+      - .local/share/playbooks/gitlab-ci.yml
+      - .local/share/playbooks/Dockerfile
+
+build:system:lyta:
+  stage: build:system
+  image: $CI_REGISTRY/$CI_PROJECT_PATH/$CI_REGISTRY_IMAGE_BASE:latest
+  script:
+    - >-
+      ansible-playbook
+      -i .local/share/playbooks/inventory
+      .local/share/playbooks/system/lyta.yml
+  only:
+    changes:
+      - .local/share/playbooks/gitlab-ci.yml
+      - .local/share/playbooks/system/**/*
+
+build:system:cluracan:
+  stage: build:system
+  image: $CI_REGISTRY/$CI_PROJECT_PATH/$CI_REGISTRY_IMAGE_BASE:latest
+  script:
+    - >-
+      ansible-playbook
+      -i .local/share/playbooks/inventory
+      .local/share/playbooks/system/cluracan.yml
+  only:
+    changes:
+      - .local/share/playbooks/gitlab-ci.yml
+      - .local/share/playbooks/system/**/*
