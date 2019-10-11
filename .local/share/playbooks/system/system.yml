@@ -1,7 +1,0 @@
-- hosts: all
-  become: true
-  roles:
-    - role: lyta
-      when: ansible_hostname == 'lyta'
-    - role: cluracan
-      when: ansible_hostname == 'cluracan'
