@@ -1,20 +1,34 @@
-- hosts: localhost
+---
+
+# Check that playbook is called in a valid way, and setup some global variables.
+- hosts: all
+  roles:
+    - prerequisites
+
+# Run one of the host specific plays.
+
+- hosts: test
   become: true
   roles:
-    - base
     - bkhl
     - tang
 
 - hosts: cluracan
   become: true
   roles:
-    - base
-    - bkhl
     - thinkpad_x250
+    - bkhl
+    - dnsmasq
 
 - hosts: lyta
   become: true
   roles:
-    - base
-    - tang
     - elitebook_8470w
+    - tang
+    - systemd-resolved
+
+# Final cleanup step.
+- hosts: all
+  become: true
+  roles:
+    - cleanup

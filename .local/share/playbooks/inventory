@@ -1,7 +1,7 @@
 ---
 all:
   hosts:
-    localhost:
+    test:
       ansible_connection: local
     cluracan:
       ansible_connection: local

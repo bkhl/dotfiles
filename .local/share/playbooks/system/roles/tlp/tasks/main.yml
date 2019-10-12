@@ -1,0 +1,29 @@
+---
+
+- name: TLP repo enabled
+  register: result
+  retries: 10
+  until: not result.failed
+  apt_repository:
+    repo: "ppa:linrunner/tlp"
+    filename: tlp
+
+- name: Add filename to managed config files list
+  set_fact:
+    base_apt_config_files: "{{ base_apt_config_files + ['tlp'] }}"
+
+- name: TLP packages installed
+  register: result
+  retries: 10
+  until: not result.failed
+  apt:
+    update_cache: yes
+    state: latest
+    name:
+      - tlp
+      - tlp-rdw
+
+- name: TLP service started
+  service:
+    name: tlp
+    state: started

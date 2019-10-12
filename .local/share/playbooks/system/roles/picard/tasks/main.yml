@@ -1,0 +1,19 @@
+---
+
+- name: Add PPA
+  apt_repository:
+    repo: ppa:musicbrainz-developers/stable
+    filename: picard
+
+- name: Add filename to managed config files list
+  set_fact:
+    base_apt_config_files: "{{ base_apt_config_files + ['picard'] }}"
+
+- name: Install Picard
+  register: result
+  retries: 10
+  until: not result.failed
+  apt:
+    update_cache: true
+    state: latest
+    name: picard
