@@ -44,7 +44,7 @@ build:system:
       ansible-playbook
       -i .local/share/playbooks/inventory
       .local/share/playbooks/system/system.yml
-      -l localhost
+      -l test
   only:
     changes:
       - .local/share/playbooks/gitlab-ci.yml

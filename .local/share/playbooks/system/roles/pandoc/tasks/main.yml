@@ -1,0 +1,13 @@
+---
+
+- name: Check installed Pandoc version
+  command: dpkg-query --show --showformat='${Version}' pandoc
+  register: dpkg_query
+  ignore_errors: true
+  changed_when: false
+
+- name: Install Pandoc
+  when: dpkg_query.rc != 0 or dpkg_query.stdout != '2.7.3-1'
+  apt:
+    deb: "https://github.com/jgm/pandoc/releases/download/2.7.3/pandoc-2.7.3-1-amd64.deb"
+

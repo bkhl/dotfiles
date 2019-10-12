@@ -1,0 +1,18 @@
+- name: Add Zeal PPA
+  apt_repository:
+    repo: ppa:zeal-developers/ppa
+    filename: zeal
+
+- name: Add filename to managed config files list
+  set_fact:
+    base_apt_config_files: "{{ base_apt_config_files + ['zeal'] }}"
+
+- name: Install Zeal
+  register: result
+  retries: 10
+  until: not result.failed
+  apt:
+    update_cache: true
+    state: latest
+    name: zeal
+

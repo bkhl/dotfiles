@@ -1,3 +1,16 @@
+---
+
+- name: Packages added
+  register: result
+  retries: 10
+  until: not result.failed
+  apt:
+    update_cache: true
+    state: latest
+    name:
+      - resolvconf
+      - dnsmasq
+
 - name: systemd-resolved stub listener disabled
   lineinfile:
       path: /etc/systemd/resolved.conf

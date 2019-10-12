@@ -1,0 +1,14 @@
+---
+
+- name: "Check that limit is defined."
+  assert:
+    that: ansible_limit is defined
+
+- name: "Check that hostname matches inventory hostname."
+  assert:
+    that:
+      - inventory_hostname in (ansible_hostname, "test")
+
+- name: Start list of APT sources files to keep.
+  set_fact:
+    base_apt_config_files: []
