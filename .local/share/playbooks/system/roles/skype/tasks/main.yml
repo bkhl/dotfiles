@@ -15,12 +15,12 @@
   until: not result.failed
   apt_repository:
     repo: deb [arch=amd64] https://repo.skype.com/deb stable main
-    filename: skype
+    filename: skype-stable
 
 - name: Add filenames to managed config files list
   set_fact:
     base_apt_config_files: >
-      {{ base_apt_config_files + ['skype'] }}
+      {{ base_apt_config_files + ['skype-stable'] }}
 
 - name: Install Skype
   register: result
