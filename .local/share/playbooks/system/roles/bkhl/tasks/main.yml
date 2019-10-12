@@ -1,0 +1,137 @@
+---
+- name: "Check that limit is defined."
+  assert:
+    that: ansible_limit is defined
+
+- name: "Check that hostname matches inventory hostname."
+  assert:
+    that:
+      - inventory_hostname in (ansible_hostname, "localhost")
+
+- name: Ubuntu repositories enabled
+  apt_repository:
+    repo: "{{ item }}"
+    state: present
+  with_items:
+    - "deb http://th.archive.ubuntu.com/ubuntu/ {{ ansible_distribution_release }} main restricted"
+    - "deb http://th.archive.ubuntu.com/ubuntu/ {{ ansible_distribution_release }}-updates main restricted"
+    - "deb http://th.archive.ubuntu.com/ubuntu/ {{ ansible_distribution_release }} universe"
+    - "deb http://th.archive.ubuntu.com/ubuntu/ {{ ansible_distribution_release }}-updates universe"
+    - "deb http://th.archive.ubuntu.com/ubuntu/ {{ ansible_distribution_release }} multiverse"
+    - "deb http://th.archive.ubuntu.com/ubuntu/ {{ ansible_distribution_release }}-updates multiverse"
+    - "deb http://th.archive.ubuntu.com/ubuntu/ {{ ansible_distribution_release }}-backports main restricted universe multiverse"
+    - "deb http://security.ubuntu.com/ubuntu {{ ansible_distribution_release }}-security main restricted"
+    - "deb http://security.ubuntu.com/ubuntu {{ ansible_distribution_release }}-security universe"
+    - "deb http://security.ubuntu.com/ubuntu {{ ansible_distribution_release }}-security multiverse"
+    - "deb http://archive.canonical.com/ubuntu {{ ansible_distribution_release }} partner"
+
+- name: Additional repo keys added by URL
+  apt_key:
+    url: "{{ item.apt_key.url }}"
+    id: "{{ item.apt_key.id }}"
+    state: present
+  with_items: "{{ base_repos }}"
+  when: item.apt_key is defined and item.apt_key.url is defined
+
+- name: Additional repo keys added from keyserver
+  apt_key:
+    id: "{{ item.apt_key.id }}"
+    keyserver: keyserver.ubuntu.com
+    state: present
+  with_items: "{{ base_repos }}"
+  when: item.apt_key is defined and item.apt_key.url is not defined
+
+- name: Additional repositories enabled
+  apt_repository:
+    repo: "{{ item.apt_repository.repo }}"
+    filename: "{{ item.apt_repository.filename }}"
+    state: present
+  with_items: "{{ base_repos }}"
+
+- name: Update APT cache and perform safe upgrade
+  apt:
+    update_cache: true
+    upgrade: safe
+  changed_when: false
+
+- name: Packages added
+  apt:
+    update_cache: true
+    state: latest
+    name: "{{ base_packages_install }}"
+
+- name: Packages removed
+  apt:
+    state: absent
+    name: "{{ base_packages_uninstall }}"
+
+- name: User added to additional groups
+  user:
+    name: "{{ lookup('env','USER') }}"
+    groups: docker,vboxusers
+    append: true
+
+- name: Default applications set
+  alternatives:
+    name: "{{ item.name }}"
+    path: "{{ item.path }}"
+  with_items:
+    - { name: editor, path: /usr/bin/vim.gtk3 }
+    - { name: ex, path: /usr/bin/vim.gtk3 }
+    - { name: rview, path: /usr/bin/vim.gtk3 }
+    - { name: rvim, path: /usr/bin/vim.gtk3 }
+    - { name: vi, path: /usr/bin/vim.gtk3 }
+    - { name: view, path: /usr/bin/vim.gtk3 }
+    - { name: vim, path: /usr/bin/vim.gtk3 }
+    - { name: vimdiff, path: /usr/bin/vim.gtk3 }
+    - { name: x-www-browser, path: /usr/bin/firefox }
+
+- name: Fix Bash completion for tar
+  patch:
+    src: bash-completion-tar.diff
+    basedir: /usr/share/bash-completion/completions
+
+- name: Global keyboard defaults set
+  lineinfile:
+    path: /etc/default/keyboard
+    regexp: "^{{ item.key }}="
+    line: '{{ item.key }}="{{ item.value }}"'
+  with_items:
+    - { key: "XKBLAYOUT", value: "us" }
+    - { key: "XKBVARIANT", value: "altgr-intl" }
+    - { key: "XKBOPTIONS", value: "compose:caps" }
+    - { key: "BACKSPACE", value: "guess" }
+
+- name: Teamviewer service disabled on startup
+  copy:
+    src: rc.local
+    dest: /etc/rc.local
+    mode: u+rwx,g+rx,o+rx
+
+- name: Install Pandoc
+  apt:
+    deb: "https://github.com/jgm/pandoc/releases/download/2.7.2/pandoc-2.7.2-1-amd64.deb"
+
+- name: Get VirtualBox version
+  command: vboxmanage --version
+  register: vboxmanage_version_result
+
+- name: Store VirtualBox version
+  set_fact: virtualbox_version={{ vboxmanage_version_result.stdout | regex_replace('r.*$') }}
+
+- name: Check if current version of extension pack is installed
+  shell: "vboxmanage list extpacks | grep '^Version: *{{ virtualbox_version | replace('.', '\\.') }}$'"
+  ignore_errors: True
+  register: vboxmanage_list_expacks_grep_result
+
+- when: vboxmanage_list_expacks_grep_result.rc == 1
+  block:
+    - name: Download VirtualBox extension Pack
+      get_url:
+        url: "http://download.virtualbox.org/virtualbox/{{ virtualbox_version }}/Oracle_VM_VirtualBox_Extension_Pack-{{ virtualbox_version}}.vbox-extpack"
+        dest: "/tmp/Oracle_VM_VirtualBox_Extension_Pack-{{ virtualbox_version }}.vbox-extpack"
+
+    - name: Install VirtualBox extension Pack
+      command: "vboxmanage extpack install --replace /tmp/Oracle_VM_VirtualBox_Extension_Pack-{{ virtualbox_version}}.vbox-extpack"
+      args:
+        stdin: y

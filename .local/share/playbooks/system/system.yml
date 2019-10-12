@@ -1,0 +1,20 @@
+- hosts: localhost
+  become: true
+  roles:
+    - base
+    - bkhl
+    - tang
+
+- hosts: cluracan
+  become: true
+  roles:
+    - base
+    - bkhl
+    - thinkpad_x250
+
+- hosts: lyta
+  become: true
+  roles:
+    - base
+    - tang
+    - elitebook_8470w

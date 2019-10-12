@@ -36,27 +36,15 @@ prepare:base:
       - .local/share/playbooks/gitlab-ci.yml
       - .local/share/playbooks/Dockerfile
 
-build:system:lyta:
+build:system:
   stage: build:system
   image: $CI_REGISTRY/$CI_PROJECT_PATH/$CI_REGISTRY_IMAGE_BASE:latest
   script:
     - >-
       ansible-playbook
       -i .local/share/playbooks/inventory
-      .local/share/playbooks/system/lyta.yml
-  only:
-    changes:
-      - .local/share/playbooks/gitlab-ci.yml
-      - .local/share/playbooks/system/**/*
-
-build:system:cluracan:
-  stage: build:system
-  image: $CI_REGISTRY/$CI_PROJECT_PATH/$CI_REGISTRY_IMAGE_BASE:latest
-  script:
-    - >-
-      ansible-playbook
-      -i .local/share/playbooks/inventory
-      .local/share/playbooks/system/cluracan.yml
+      .local/share/playbooks/system/system.yml
+      -l localhost
   only:
     changes:
       - .local/share/playbooks/gitlab-ci.yml
