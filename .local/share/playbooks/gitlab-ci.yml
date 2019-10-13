@@ -18,19 +18,25 @@ prepare:base:
     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
   script:
     - >-
-      docker pull $CI_REGISTRY/$CI_PROJECT_PATH/$CI_REGISTRY_IMAGE_BASE:latest
+      docker
+      pull $CI_REGISTRY/$CI_PROJECT_PATH/$CI_REGISTRY_IMAGE_BASE:master
+      || true
+    - >-
+      docker
+      pull $CI_REGISTRY/$CI_PROJECT_PATH/$CI_REGISTRY_IMAGE_BASE:$CI_COMMIT_REF_NAME
       || true
     - >-
       docker build
       --file $CI_DOCKER_FILE_BASE
-      --cache-from $CI_REGISTRY_IMAGE_BASE:latest
+      --cache-from $CI_REGISTRY_IMAGE_BASE:$CI_COMMIT_REF_NAME
       --tag $CI_REGISTRY/$CI_PROJECT_PATH/$CI_REGISTRY_IMAGE_BASE:$CI_COMMIT_SHA
-      --tag $CI_REGISTRY/$CI_PROJECT_PATH/$CI_REGISTRY_IMAGE_BASE:latest .
+      --tag $CI_REGISTRY/$CI_PROJECT_PATH/$CI_REGISTRY_IMAGE_BASE:$CI_COMMIT_REF_NAME .
     - >-
-      docker push
-      $CI_REGISTRY/$CI_PROJECT_PATH/$CI_REGISTRY_IMAGE_BASE:$CI_COMMIT_SHA
+      docker
+      push $CI_REGISTRY/$CI_PROJECT_PATH/$CI_REGISTRY_IMAGE_BASE:$CI_COMMIT_SHA
     - >-
-      docker push $CI_REGISTRY/$CI_PROJECT_PATH/$CI_REGISTRY_IMAGE_BASE:latest
+      docker
+      push $CI_REGISTRY/$CI_PROJECT_PATH/$CI_REGISTRY_IMAGE_BASE:$CI_COMMIT_REF_NAME
   only:
     changes:
       - .local/share/playbooks/gitlab-ci.yml
@@ -47,24 +53,31 @@ build:system:
     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
   script:
     - >-
-      docker pull $CI_REGISTRY/$CI_PROJECT_PATH/$CI_REGISTRY_IMAGE_SYSTEM:latest
+      docker
+      pull $CI_REGISTRY/$CI_PROJECT_PATH/$CI_REGISTRY_IMAGE_SYSTEM:master
+      || true
+    - >-
+      docker
+      pull $CI_REGISTRY/$CI_PROJECT_PATH/$CI_REGISTRY_IMAGE_SYSTEM:$CI_COMMIT_REF_NAME
       || true
     - >-
       docker build
       --build-arg
-      image=$CI_REGISTRY/$CI_PROJECT_PATH/$CI_REGISTRY_IMAGE_BASE:latest
+      image=$CI_REGISTRY/$CI_PROJECT_PATH/$CI_REGISTRY_IMAGE_BASE:$CI_COMMIT_REF_NAME
       --build-arg
       project_dir=$CI_PROJECT_DIR
       --file $CI_DOCKER_FILE_SYSTEM
-      --cache-from $CI_REGISTRY_IMAGE_SYSTEM:latest
+      --cache-from $CI_REGISTRY_IMAGE_SYSTEM:$CI_COMMIT_REF_NAME
       --tag
       $CI_REGISTRY/$CI_PROJECT_PATH/$CI_REGISTRY_IMAGE_SYSTEM:$CI_COMMIT_SHA
-      --tag $CI_REGISTRY/$CI_PROJECT_PATH/$CI_REGISTRY_IMAGE_SYSTEM:latest .
+      --tag $CI_REGISTRY/$CI_PROJECT_PATH/$CI_REGISTRY_IMAGE_SYSTEM:$CI_COMMIT_REF_NAME
+      .
     - >-
-      docker push
-      $CI_REGISTRY/$CI_PROJECT_PATH/$CI_REGISTRY_IMAGE_SYSTEM:$CI_COMMIT_SHA
+      docker
+      push $CI_REGISTRY/$CI_PROJECT_PATH/$CI_REGISTRY_IMAGE_SYSTEM:$CI_COMMIT_SHA
     - >-
-      docker push $CI_REGISTRY/$CI_PROJECT_PATH/$CI_REGISTRY_IMAGE_SYSTEM:latest
+      docker
+      push $CI_REGISTRY/$CI_PROJECT_PATH/$CI_REGISTRY_IMAGE_SYSTEM:$CI_COMMIT_REF_NAME
   only:
     changes:
       - .local/share/playbooks/gitlab-ci.yml
