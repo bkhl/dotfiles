@@ -4,14 +4,13 @@
   find:
     paths: /etc/apt/sources.list.d
     file_type: file
+    patterns: "*.list"
     recurse: no
   register: apt_sources
 
 - name: Remove unknown APT source files
   file:
-    path: "{{ item.path }}"
+    path: "{{ item }}"
     state: absent
-  with_items: "{{ apt_sources.files }}"
-  when: >
-    item.path.endswith('.list')
-    and (item.path | basename | splitext)[0] not in base_apt_config_files
+  with_items: "{{ apt_sources.files | map(attribute='path') | list }}"
+  when: (item | basename | splitext)[0] not in base_apt_config_files
