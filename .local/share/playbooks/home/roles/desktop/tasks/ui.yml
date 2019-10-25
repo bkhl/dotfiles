@@ -21,21 +21,27 @@
 - name: Clipboard GNOME Shell extension checked out
   git:
     repo: https://github.com/Tudmotu/gnome-shell-extension-clipboard-indicator.git
-    dest: "{{ ansible_env.HOME }}/.local/share/gnome-shell/extensions/clipboard-indicator@tudmotu.com"
+    dest: "{{ ansible_env.HOME }}\
+           /.local/share/gnome-shell/extensions/clipboard-indicator@tudmotu.com"
 
 - name: Clipboard GNOME Shell extension enabled
   command: gnome-shell-extension-tool --enable-extension=clipboard-indicator@tudmotu.com
   register: clipboard_enabled_result
   changed_when: >
-    clipboard_enabled_result.stderr != "'clipboard-indicator@tudmotu.com' is already enabled."
+    clipboard_enabled_result.rc == 0
   failed_when: >
     clipboard_enabled_result.rc != 0
-    and clipboard_enabled_result.stderr != "'clipboard-indicator@tudmotu.com' is already enabled."
+    and not (
+      clipboard_enabled_result.stderr is defined
+      and clipboard_enabled_result.stderr
+        == "'clipboard-indicator@tudmotu.com' is already enabled."
+    )
 
 - name: Clipboard GNOME Shell extension reloaded
   command: gnome-shell-extension-tool --reload-extension=clipboard-indicator@tudmotu.com
   when: >
-    clipboard_enabled_result.stderr != "'clipboard-indicator@tudmotu.com' is already enabled."
+    'DBUS_SESSION_BUS_ADDRESS' in ansible_env
+    and clipboard_enabled_result.changed
 
 - name: Show dock at bottom of screen
   dconf:

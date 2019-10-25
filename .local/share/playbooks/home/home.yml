@@ -1,9 +1,15 @@
+---
+
 - hosts: all
   roles:
-      - desktop
-      - exercism
-      - python
-      - haskell
-      - digikam
-      - rawtherapee
-      - rust
+    - prerequisites
+
+- hosts: all
+  roles:
+    - desktop
+    - exercism
+    - python
+    - haskell
+    - digikam
+    - rawtherapee
+    - rust

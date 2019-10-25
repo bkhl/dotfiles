@@ -1,3 +1,2 @@
-rust_cargo_root: "{{ user_opt_directory }}/cargo/"
-rust_rustup_path: "{{ rust_cargo_root }}/bin/rustup"
-rust_cargo_path: "{{ rust_cargo_root }}//bin/cargo"
+cargo_root: "{{ user_opt_directory }}/cargo"
+rustup_path: "{{ cargo_root }}/bin/rustup"

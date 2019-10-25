@@ -38,6 +38,9 @@ export PAGER='less -R'
 # Username for prod &c.
 export ARBZRUSER=bnl
 
+# Haskell
+export STACK_ROOT="$USER_OPT_DIR/stack"
+
 # Python
 export PYENV_ROOT="$USER_OPT_DIR/pyenv"
 

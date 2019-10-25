@@ -71,10 +71,26 @@
     mode: 0644
 
 - name: Packages removed
+  register: result
+  retries: 10
+  until: not result.failed
   apt:
     state: absent
     name:
+      - cheese
+      - deja-dup
+      - gnome-initial-setup
+      - gnome-mahjongg
+      - gnome-mines
+      - gnome-sudoku
+      - gnome-todo
       - nano
+      - rhythmbox
+      - shotwell
+      - thunderbird
+      - thunderbird-gnome-support
+      - totem
+      - ubuntu-web-launchers
 
 - name: Update APT cache and perform safe upgrade
   register: result
@@ -85,31 +101,39 @@
     upgrade: safe
   changed_when: false
 
+- name: Install ubuntu-desktop without recommended packages
+  register: result
+  retries: 10
+  until: not result.failed
+  apt:
+    install_recommends: false
+    state: latest
+    name: ubuntu-desktop
+ 
 - name: Packages added
   register: result
   retries: 10
   until: not result.failed
   apt:
-    update_cache: true
     state: latest
     name:
-      # Applications
+      # Desktop environment
+      - gnome-clocks
+      - xclip
+
+      # GUI applications
       - anki
       - audacity
       - chromium-browser
       - firefox
+      - gnome-terminal
+      - gparted
       - gthumb
       - libreoffice
       - mdp
       - mpv
       - simplescreenrecorder
       - usb-creator-gtk
-
-      # Handy GUI tools
-      - gparted
-      - gnome-clocks
-      - gnome-terminal
-      - xclip
 
       # Appearance
       - fonts-dejavu
@@ -127,7 +151,8 @@
       - wbritish
       - wswedish
 
-      # Handy terminal tools
+      # Terminal tools
+      - bash
       - bash-completion
       - curl
       - dos2unix
@@ -140,6 +165,7 @@
       - mosh
       - rar
       - shntool
+      - sudo
       - unrar
       - unzip
       - vorbis-tools
@@ -207,6 +233,10 @@
 
       # Ansible dependency
       - libssl1.0-dev
+
+      # hledger dependencies
+      - libgmp-dev
+      - libtinfo-dev
 
       # Perl
       - perl

@@ -1,0 +1,5 @@
+---
+exercism_bin_path: "{{ user_bin_directory }}/exercism"
+exercism_workspace: "{{ ansible_env.HOME }}/Development/exercism"
+exercism_config_dir: "{{ ansible_env.HOME }}/.config/exercism"
+exercism_config_file: "{{ exercism_config_dir }}/user.json"

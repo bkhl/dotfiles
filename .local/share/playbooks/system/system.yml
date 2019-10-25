@@ -10,8 +10,8 @@
 - hosts: test
   become: true
   roles:
-    - bkhl
-    - tang
+    - base
+    - users
 
 - hosts: cluracan
   become: true
