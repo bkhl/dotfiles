@@ -3,3 +3,5 @@
 <Multi_key> <colon> <parenright> : "🙂" # SLIGHTLY SMILING FACE
 <Multi_key> <colon> <parenleft> : "🙁" # SLIGHTLY FROWNING FACE
 <Multi_key> <semicolon> <parenright> : "😉" # WINKING FACE
+<Multi_key> <L> : "Λ" # GREEK CAPITAL LETTER LAMDA
+<Multi_key> <l> : "λ" # GREEK SMALL LETTER LAMDA
