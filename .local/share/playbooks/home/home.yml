@@ -7,9 +7,10 @@
 - hosts: all
   roles:
     - desktop
-    - exercism
-    - python
-    - haskell
     - digikam
+    - exercism
+    - godot
+    - haskell
+    - python
     - rawtherapee
     - rust
