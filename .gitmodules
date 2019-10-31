@@ -34,3 +34,6 @@
 [submodule ".vim/pack/plugins/start/racket"]
 	path = .vim/pack/plugins/start/racket
 	url = https://github.com/wlangstroth/vim-racket
+[submodule ".vim/pack/plugins/start/gdscript3"]
+	path = .vim/pack/plugins/start/gdscript3
+	url = https://github.com/calviken/vim-gdscript3.git
