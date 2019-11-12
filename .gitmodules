@@ -37,3 +37,6 @@
 [submodule ".vim/pack/plugins/start/gdscript3"]
 	path = .vim/pack/plugins/start/gdscript3
 	url = https://github.com/calviken/vim-gdscript3.git
+[submodule ".vim/pack/plugins/start/vimwiki"]
+	path = .vim/pack/plugins/start/vimwiki
+	url = https://github.com/vimwiki/vimwiki.git
