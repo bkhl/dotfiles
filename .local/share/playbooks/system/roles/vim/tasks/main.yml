@@ -21,11 +21,11 @@
     name: "{{ item.name }}"
     path: "{{ item.path }}"
   with_items:
-    - { name: editor, path: /usr/libexec/vim/vim.gtk3 }
-    - { name: ex, path: /usr/libexec/vim/vim.gtk3 }
-    - { name: rview, path: /usr/libexec/vim/vim.gtk3 }
-    - { name: rvim, path: /usr/libexec/vim/vim.gtk3 }
-    - { name: vi, path: /usr/libexec/vim/vim.gtk3 }
-    - { name: view, path: /usr/libexec/vim/vim.gtk3 }
-    - { name: vim, path: /usr/libexec/vim/vim.gtk3 }
-    - { name: vimdiff, path: /usr/libexec/vim/vim.gtk3 }
+    - { name: editor, path: /usr/bin/vim.gtk3 }
+    - { name: ex, path: /usr/bin/vim.gtk3 }
+    - { name: rview, path: /usr/bin/vim.gtk3 }
+    - { name: rvim, path: /usr/bin/vim.gtk3 }
+    - { name: vi, path: /usr/bin/vim.gtk3 }
+    - { name: view, path: /usr/bin/vim.gtk3 }
+    - { name: vim, path: /usr/bin/vim.gtk3 }
+    - { name: vimdiff, path: /usr/bin/vim.gtk3 }
