@@ -9,6 +9,7 @@
     state: latest
     name:
       - calibre
+      - chromium-browser
       - hexchat
       - remmina
       - swi-prolog
