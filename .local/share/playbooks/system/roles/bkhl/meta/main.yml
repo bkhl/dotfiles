@@ -13,3 +13,4 @@ dependencies:
   - role: picard
   - role: vagrant
   - role: racket
+  - role: chrome
