@@ -27,7 +27,7 @@ if &term == "screen-256color" || &term == "xterm-256color"
 endif
 
 " Background colour
-set background=dark
+set background=light
 
 " Syntax highlighting
 if has('syntax') && !exists('g:syntax_on')
