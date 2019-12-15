@@ -32,7 +32,7 @@
   apt:
     update_cache: true
     state: latest
-    name: virtualbox-6.0
+    name: virtualbox-6.1
 
 - name: Users added to VirtualBox group
   user:
