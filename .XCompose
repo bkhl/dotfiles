@@ -1,7 +1,8 @@
-<Multi_key> <b> : "฿" Thai_baht # THAI CURRENCY SYMBOL BAHT
+<Multi_key> <b> <equal> : "฿" # THAI CURRENCY SYMBOL BAHT
+<Multi_key> <equal> <b> : "฿" # THAI CURRENCY SYMBOL BAHT
 <Multi_key> <s> <n> <o> : "☃" # SNOWMAN
 <Multi_key> <colon> <parenright> : "🙂" # SLIGHTLY SMILING FACE
 <Multi_key> <colon> <parenleft> : "🙁" # SLIGHTLY FROWNING FACE
 <Multi_key> <semicolon> <parenright> : "😉" # WINKING FACE
-<Multi_key> <L> : "Λ" # GREEK CAPITAL LETTER LAMDA
-<Multi_key> <l> : "λ" # GREEK SMALL LETTER LAMDA
+<Multi_key> <L> <L> : "Λ" # GREEK CAPITAL LETTER LAMDA
+<Multi_key> <l> <l> : "λ" # GREEK SMALL LETTER LAMDA
