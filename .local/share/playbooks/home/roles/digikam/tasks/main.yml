@@ -1,9 +1,0 @@
----
-- name: digiKam downloaded
-  get_url:
-    url: >
-      https://download.kde.org/stable/digikam/6.4.0/digikam-6.4.0-x86-64.appimage
-    dest: "{{ user_bin_directory }}/digikam"
-    mode: 0755
-    checksum: >
-      sha256:231f9a902edbc7f35c4bb46583fbbeaeb960300f7585a74d82982caf5ddf68df

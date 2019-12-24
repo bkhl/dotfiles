@@ -1,8 +1,0 @@
-ARG image
-FROM ${image}
-
-ARG project_dir
-ADD . ${project_dir}
-WORKDIR ${project_dir}/.local/share/playbooks
-
-RUN ansible-playbook --inventory=inventory --limit=test system/system.yml

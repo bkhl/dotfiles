@@ -1,8 +1,0 @@
----
-dependencies:
-  - role: base
-  - role: virtualbox
-  - role: pick
-  - role: nextcloud
-  - role: skype
-  - role: signal

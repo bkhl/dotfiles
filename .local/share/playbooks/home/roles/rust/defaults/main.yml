@@ -1,2 +1,0 @@
-cargo_root: "{{ user_opt_directory }}/cargo"
-rustup_path: "{{ cargo_root }}/bin/rustup"

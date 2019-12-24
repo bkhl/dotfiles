@@ -1,5 +1,0 @@
-#!/bin/sh -e
-
-if [ -x "$(command -v teamviewer)" ]; then
-    teamviewer --daemon disable
-fi

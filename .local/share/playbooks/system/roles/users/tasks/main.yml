@@ -1,8 +1,0 @@
----
-
-- name: Add test user
-  user:
-    name: test
-    shell: /bin/bash
-    uid: 1025
-    create_home: true

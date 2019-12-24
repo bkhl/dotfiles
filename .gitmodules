@@ -37,6 +37,3 @@
 [submodule ".vim/pack/plugins/start/vimwiki"]
 	path = .vim/pack/plugins/start/vimwiki
 	url = https://github.com/vimwiki/vimwiki.git
-[submodule ".vim/pack/plugins/start/shirotelin"]
-	path = .vim/pack/plugins/start/shirotelin
-	url = https://github.com/yasukotelin/shirotelin.git

@@ -1,6 +1,6 @@
-# Load regular user bashrc, when logging in with rscreen
-if [[ -n "${REAL_HOME}" ]] && [[ -e "${REAL_HOME}/.bashrc" ]]; then
-    HOME="${REAL_HOME}" source "${REAL_HOME}/.bashrc"
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+	source /etc/bashrc
 fi
 
 # Update window size after every command.
@@ -111,14 +111,6 @@ fi
 
 
 ####
-# Directory aliases
-#
-
-playbooks="$HOME/.local/share/playbooks"
-hcoop='/afs/hcoop.net/user/b/bk/bkhl'
-
-
-####
 # Prompt update command
 #
 
@@ -137,15 +129,5 @@ _prompt_command() {
 
 PROMPT_COMMAND=_prompt_command
 
-
-####
-# Package manager loading.
-#
-
-# asdf
-if [[ -e "${ASDF_DIR}/asdf.sh" && -e "${ASDF_DIR}/completions/asdf.bash" ]]; then
-    source "${ASDF_DIR}/asdf.sh"
-    source "${ASDF_DIR}/completions/asdf.bash"
-fi
 
 # vi: ts=4 et

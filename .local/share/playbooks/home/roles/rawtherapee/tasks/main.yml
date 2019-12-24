@@ -1,9 +1,0 @@
----
-- name: RawTherapee downloaded
-  get_url:
-    url: >
-      https://rawtherapee.com/shared/builds/linux/RawTherapee-releases-5.7-20190910.AppImage
-    dest: "{{ user_bin_directory }}/rawtherapee"
-    mode: 0755
-    checksum: >
-      sha256:eeec643a007c1e7964bf6941a86af456f8eefd40522b1c00932ba61264b2954e

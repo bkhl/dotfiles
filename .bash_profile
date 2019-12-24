@@ -1,8 +1,3 @@
-# Load regular user bash_profile, when logging in with rscreen
-if [[ -n "${REAL_HOME}" && -e "${REAL_HOME}/.bash_profile" ]]; then
-    HOME="${REAL_HOME}" source "${REAL_HOME}/.bash_profile"
-fi
-
 # Read ~/.profile
 if [[ -e "$HOME/.profile" ]]; then
     source "$HOME/.profile"
@@ -15,6 +10,3 @@ if [[ -n "$BASH" ]]; then
           *) return ;;
     esac
 fi
-
-# Load Pyenv
-eval "$(pyenv init -)"
