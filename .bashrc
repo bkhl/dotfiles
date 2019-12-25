@@ -1,6 +1,6 @@
 # Source global definitions
 if [ -f /etc/bashrc ]; then
-	source /etc/bashrc
+    source /etc/bashrc
 fi
 
 # Update window size after every command.
