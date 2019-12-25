@@ -114,11 +114,17 @@ fi
 # Prompt update command
 #
 
+_prompt_template='\u@\h:\w\$ '
+
+if [ -n "$TOOLBOX_ENV" ]; then
+    _prompt_template="\[\033[1;34m\]⬤ \[\033[0m\]$_prompt_template"
+fi
+
 _update_prompt() {
     local r=$?
-    PS1='\u@\h:\w\$ '
+    PS1="$_prompt_template"
     if [[ $r != 0 ]]; then
-        PS1="?:${r} ${PS1}"
+        PS1="\[\033[1;31m\]?:${r}\[\033[0m\] ${PS1}"
     fi
 }
 
