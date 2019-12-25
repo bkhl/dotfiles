@@ -128,8 +128,13 @@ _update_prompt() {
     fi
 }
 
+if [[ -n $PROMPT_COMMAND ]]; then
+    __global_prompt_command="$PROMPT_COMMAND"
+fi
+
 _prompt_command() {
     _update_prompt
+    [[ -n $__global_prompt_command ]] && "$__global_prompt_command"
     history -a
 }
 
