@@ -16,9 +16,6 @@ if ((BASH_VERSINFO[0] >= 4)); then
     shopt -s globstar
 fi
 
-# Case-insensitive globbing (used in pathname expansion)
-shopt -s nocaseglob;
-
 
 ####
 # History
