@@ -113,7 +113,7 @@ fi
 
 _prompt_template='\u@\h:\w\$ '
 
-if [ -n "$TOOLBOX_ENV" ]; then
+if [[ -n $TOOLBOX_ENV ]]; then
     _prompt_template="\[\033[1;34m\]⬤ \[\033[0m\]$_prompt_template"
 fi
 
