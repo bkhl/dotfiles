@@ -120,7 +120,7 @@ if [ -n "$TOOLBOX_ENV" ]; then
     _prompt_template="\[\033[1;34m\]⬤ \[\033[0m\]$_prompt_template"
 fi
 
-_update_prompt() {
+__update_prompt() {
     local r=$?
     PS1="$_prompt_template"
     if [[ $r != 0 ]]; then
@@ -128,17 +128,18 @@ _update_prompt() {
     fi
 }
 
-if [[ -n $PROMPT_COMMAND ]]; then
-    __global_prompt_command="$PROMPT_COMMAND"
+if (( ${VTE_VERSION:-0} < 3405 )) \
+    || ! declare -f __vte_promt_command > /dev/null; then
+    __vte_prompt_command() { :; }
 fi
 
-_prompt_command() {
-    _update_prompt
-    [[ -n $__global_prompt_command ]] && "$__global_prompt_command"
+__prompt_command() {
+    __update_prompt
+    __vte_prompt_command
     history -a
 }
 
-PROMPT_COMMAND=_prompt_command
+PROMPT_COMMAND=__prompt_command
 
 
 # vi: ts=4 et
