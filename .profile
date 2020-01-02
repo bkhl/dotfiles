@@ -55,3 +55,6 @@ fi
 # Application preferences
 export EDITOR=vim
 export PAGER='less -R'
+
+# Python
+export PIPENV_VENV_IN_PROJECT=1
