@@ -31,6 +31,9 @@ if has('syntax') && !exists('g:syntax_on')
     syntax on
 endif
 
+" Assume dark background
+set background=dark
+
 " Line numbering
 set number
 if exists('+relativenumber')
