@@ -25,9 +25,6 @@
 [submodule ".vim/pack/plugins/start/ale"]
 	path = .vim/pack/plugins/start/ale
 	url = https://github.com/dense-analysis/ale.git
-[submodule ".vim/pack/plugins/start/virtualenv"]
-	path = .vim/pack/plugins/start/virtualenv
-	url = https://github.com/plytophogy/vim-virtualenv
 [submodule ".vim/pack/plugins/start/racket"]
 	path = .vim/pack/plugins/start/racket
 	url = https://github.com/wlangstroth/vim-racket
