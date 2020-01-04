@@ -3,12 +3,15 @@
 # Start Toolbox session for a project.
 
 DIRECTORY_NAME="$(readlink -f "${1:-.}")"
+echo "Directory: $DIRECTORY_NAME"
+
 PROJECT_NAME="$(basename "$DIRECTORY_NAME")"
+echo "Project name: $PROJECT_NAME"
+
+SESSION_NAME="${PROJECT_NAME//\./-}"
+echo "Session name: $PROJECT_NAME"
 
 cd "$DIRECTORY_NAME" || exit
-
-echo "Directory: $DIRECTORY_NAME"
-echo "Project name: $PROJECT_NAME"
 
 if [[ -f "$DIRECTORY_NAME/Pipfile" ]]; then
     echo "Found Pipfile, launching in Pipenv."
@@ -17,11 +20,15 @@ else
     PIPENV_COMMAND=
 fi
 
+# Detach any tmux clients. This is a work-around until we can be sure we have
+# https://github.com/tmux/tmux/pull/1773
+toolbox run --container elektrubadur.se tmux detach-client > /dev/null
+
 exec nohup gnome-terminal \
     --profile tmux \
     --title "$PROJECT_NAME" \
     -- \
     toolbox run --container "$PROJECT_NAME" \
     $PIPENV_COMMAND \
-    tmux new -A -s "${PROJECT_NAME//\./-}" \
+    tmux new -A -s "$SESSION_NAME" \
     &> /dev/null
