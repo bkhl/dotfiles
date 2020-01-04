@@ -9,7 +9,7 @@ PROJECT_NAME="$(basename "$DIRECTORY_NAME")"
 echo "Project name: $PROJECT_NAME"
 
 SESSION_NAME="${PROJECT_NAME//\./-}"
-echo "Session name: $PROJECT_NAME"
+echo "Session name: $SESSION_NAME"
 
 cd "$DIRECTORY_NAME" || exit
 
