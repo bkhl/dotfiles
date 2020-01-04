@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# Start Toolbox session for a project.
+
+DIRECTORY_NAME="$(readlink -f "${1:-.}")"
+PROJECT_NAME="$(basename "$DIRECTORY_NAME")"
+
+cd "$DIRECTORY_NAME" || exit
+
+echo "Directory: $DIRECTORY_NAME"
+echo "Project name: $PROJECT_NAME"
+
+if [[ -f "$DIRECTORY_NAME/Pipfile" ]]; then
+    echo "Found Pipfile, launching in Pipenv."
+    PIPENV_COMMAND="env PIPENV_VENV_IN_PROJECT=1 pipenv run"
+else
+    PIPENV_COMMAND=
+fi
+
+exec nohup gnome-terminal \
+    --profile tmux \
+    --title "$PROJECT_NAME" \
+    -- \
+    toolbox run --container "$PROJECT_NAME" \
+    $PIPENV_COMMAND \
+    tmux new -A -s "${PROJECT_NAME//\./-}" \
+    &> /dev/null
