@@ -22,7 +22,7 @@ fi
 
 # Detach any tmux clients. This is a work-around until we can be sure we have
 # https://github.com/tmux/tmux/pull/1773
-toolbox run --container elektrubadur.se tmux detach-client > /dev/null
+toolbox run --container "$PROJECT_NAME" tmux detach-client > /dev/null
 
 exec nohup gnome-terminal \
     --profile tmux \
