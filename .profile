@@ -46,5 +46,11 @@ done
 export EDITOR=vim
 export PAGER='less -R'
 
+# Set TOOLBOX_PROJECT if it looks like we are in a toolbox, but the
+# project name is not set already.
+if [ -z "$TOOLBOX_PROJECT" ] && [ -f /run/.toolboxenv ]; then
+    export TOOLBOX_PROJECT=toolbox
+fi
+
 # Python
 export PIPENV_VENV_IN_PROJECT=1

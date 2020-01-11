@@ -2,16 +2,16 @@
 
 # Start Toolbox session for a project.
 
-DIRECTORY_NAME="$(readlink -f "${1:-.}")"
-PROJECT_NAME="$(basename "$DIRECTORY_NAME")"
+TOOLBOX_DIR="$(readlink -f "${1:-.}")"
+TOOLBOX_PROJECT="$(basename "$TOOLBOX_DIR")"
 
-cd "$DIRECTORY_NAME"
+cd "$TOOLBOX_DIR"
 
 [[ -f .env ]] && source .env
 
 exec nohup gnome-terminal \
     --profile tmux \
-    --title "$PROJECT_NAME" \
+    --title "$TOOLBOX_PROJECT" \
     -- \
-    toolbox enter --container "$PROJECT_NAME" \
+    toolbox enter --container "$TOOLBOX_PROJECT" \
     &> /dev/null

@@ -113,8 +113,10 @@ fi
 
 _prompt_template='\u@\h:\w\$ '
 
-if [[ -n $TOOLBOX_ENV ]]; then
-    _prompt_template="\[\033[1;34m\]⬤ \[\033[0m\]$_prompt_template"
+if [[ -n $TOOLBOX_PROJECT ]]; then
+    _prompt_template="\u@\[\033[1;34m\]$TOOLBOX_PROJECT\[\033[0m\]:\w\$ "
+else
+    _prompt_template="\u@\h:\w\$ "
 fi
 
 __update_prompt() {
