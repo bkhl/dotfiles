@@ -42,11 +42,6 @@ for d in $HOME/.local/bin; do
     fi
 done
 
-# Set TOOLBOX_ENV if it looks like we are in a toolbox.
-if [ -f /run/.containerenv ] && [ -f /run/.toolboxenv ]; then
-    export TOOLBOX_ENV=1
-fi
-
 # Application preferences
 export EDITOR=vim
 export PAGER='less -R'
