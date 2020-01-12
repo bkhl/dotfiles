@@ -34,6 +34,6 @@
 [submodule ".vim/pack/plugins/start/vimwiki"]
 	path = .vim/pack/plugins/start/vimwiki
 	url = https://github.com/vimwiki/vimwiki.git
-[submodule ".vim/pack/plugins/start/papercolor"]
-	path = .vim/pack/plugins/start/papercolor
-	url = https://github.com/NLKNguyen/papercolor-theme.git
+[submodule ".vim/pack/plugins/start/jellybeans"]
+	path = .vim/pack/plugins/start/jellybeans
+	url = https://github.com/nanotech/jellybeans.vim.git
