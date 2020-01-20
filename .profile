@@ -1,8 +1,6 @@
 # Locale
 if LC_ALL=C locale -a | grep -q '^en_US.utf8$'; then
     export LANG=en_US.utf8
-elif LC_ALL=C locale -a | grep -q '^C.utf8$'; then
-    export LANG=C.utf8
 else
     export LANG=C
 fi
