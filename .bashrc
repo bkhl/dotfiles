@@ -128,7 +128,7 @@ __update_prompt() {
 }
 
 if (( ${VTE_VERSION:-0} < 3405 )) \
-    || ! declare -f __vte_promt_command > /dev/null; then
+    || ! declare -f __vte_prompt_command > /dev/null; then
     __vte_prompt_command() { :; }
 fi
 
