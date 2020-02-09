@@ -37,3 +37,6 @@
 [submodule ".vim/pack/plugins/start/jellybeans"]
 	path = .vim/pack/plugins/start/jellybeans
 	url = https://github.com/nanotech/jellybeans.vim.git
+[submodule ".vim/pack/plugins/start/editorconfig"]
+	path = .vim/pack/plugins/start/editorconfig
+	url = https://github.com/editorconfig/editorconfig-vim.git
