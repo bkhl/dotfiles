@@ -51,6 +51,3 @@ export PAGER='less -R'
 if [ -z "$TOOLBOX_PROJECT" ] && [ -f /run/.toolboxenv ]; then
     export TOOLBOX_PROJECT=toolbox
 fi
-
-# Python
-export PIPENV_VENV_IN_PROJECT=1
