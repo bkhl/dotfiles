@@ -1,7 +1,11 @@
 [user]
 	email = bkhl@elektrubadur.se
 	name = Björn Lindström
+[includeIf "gitdir:~/dayjob/"]
+    path = .gitconfig.d/dayjob
 [push]
 	default = simple
 [alias]
 	st = status
+[trim]
+	detach = false
