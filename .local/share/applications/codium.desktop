@@ -2,7 +2,7 @@
 Name=VSCodium
 Comment=Code Editing. Redefined.
 GenericName=Text Editor
-Exec=/var/home/bkhl/.local/libexec/codium/codium --no-sandbox --unity-launch %F
+Exec=/var/home/bkhl/.local/libexec/codium/codium --enable-proposed-api ms-vscode-remote.remote-containers --no-sandbox --unity-launch %F
 Icon=vscodium
 Type=Application
 StartupNotify=false
@@ -14,5 +14,5 @@ Keywords=vscode;
 
 [Desktop Action new-empty-window]
 Name=New Empty Window
-Exec=/var/home/bkhl/.local/libexec/codium/codium --no-sandbox --new-window %F
+Exec=/var/home/bkhl/.local/libexec/codium/codium --enable-proposed-api ms-vscode-remote.remote-containers --no-sandbox --new-window %F
 Icon=vscodium
