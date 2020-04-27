@@ -9,3 +9,5 @@
 	st = status
 [trim]
 	detach = false
+[fetch]
+	parallel = 10
