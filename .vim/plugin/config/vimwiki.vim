@@ -44,3 +44,9 @@ function! SetWikiHeader()
         call append(0, "# " . l:filename)
     endif
 endfunction
+
+" Keyboard mappings
+
+" Changed to remove conflict with Vinegar
+nmap =- <Plug>VimwikiRemoveHeaderLevel
+nmap =+ <Plug>VimwikiAddHeaderLevel
