@@ -2,11 +2,20 @@ if &runtimepath !~? "vimwiki"
   finish
 endif
 
+function s:GetWikiConfig(path)
+    return {
+                \"path": a:path,
+                \"syntax": "markdown",
+                \"ext": ".md",
+                \"diary_rel_path": "Diary/",
+                \"diary_index": "Diary",
+                \"auto_diary_index": 1,
+                \"auto_tags": 1,
+                \}
+endfunction
+
 " My main wiki.
-let g:vimwiki_list = [{
-            \"path": "~/Documents/Notes/",
-            \"syntax": "markdown", "ext": ".md"
-            \}]
+let g:vimwiki_list = [s:GetWikiConfig("~/Documents/Notes/"), s:GetWikiConfig("~/Documents/Notes/Work")]
 
 " Disable creation of temporary wikis.
 let g:vimwiki_global_ext = 0
@@ -15,23 +24,23 @@ let g:vimwiki_global_ext = 0
 "
 " This helps interoparability with Nextcloud Notes, which assumes that the
 " first line of the file matches the filename.
-function SetWikiHeader()
-    let first_line = getline(1)
-    let filename = expand("%:t:r")
+function! SetWikiHeader()
+    let l:first_line = getline(1)
+    let l:filename = expand("%:t:r")
 
-    if "# " . filename == first_line
+    if "# " . l:filename == l:first_line
         " First line is already correct.
         :
-    elseif first_line =~ '^#*\s*\V' . escape(filename, '\') . '\m\s*$'
+    elseif l:first_line =~ '^#*\s*\V' . escape(l:filename, '\') . '\m\s*$'
         " First line matches filename but has wrong header format. Reformat to
         " have proper format.
-        call setline(1, "# " . filename)
+        call setline(1, "# " . l:filename)
     else
         " First line not matching filename at all. Prepend lines with filename
         " as a header.
-        if first_line != ""
+        if l:first_line != ""
             call append(0, "")
         endif
-        call append(0, "# " . filename)
+        call append(0, "# " . l:filename)
     endif
 endfunction
