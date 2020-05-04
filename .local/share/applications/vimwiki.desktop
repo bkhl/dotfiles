@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Vimwiki
+GenericName=Wiki
+TryExec=gvim
+Exec=gvim --class vimwiki -c VimwikiIndex
+Terminal=false
+Type=Application
+Keywords=Text;editor;wiki
+Icon=vimwiki
+Categories=Utility;TextEditor;Wiki
+StartupNotify=true
+StartupWMClass=vimwiki
