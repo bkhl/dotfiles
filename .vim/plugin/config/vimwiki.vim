@@ -7,6 +7,7 @@ function s:GetWikiConfig(path)
                 \"path": a:path,
                 \"syntax": "markdown",
                 \"ext": ".md",
+                \"index": "Index",
                 \"diary_rel_path": "Diary/",
                 \"diary_index": "Diary",
                 \"auto_diary_index": 1,
