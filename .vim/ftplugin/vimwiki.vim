@@ -1,3 +1,6 @@
+" Wrap lines between words.
+set linebreak
+
 " If this is a new diary file, apply the template.
 if !filereadable(expand("%")) && IsWikiDiaryFile()
     call ApplyWikiDiaryTemplate()
