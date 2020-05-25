@@ -34,6 +34,6 @@
 [submodule ".vim/pack/plugins/start/editorconfig"]
 	path = .vim/pack/plugins/start/editorconfig
 	url = https://github.com/editorconfig/editorconfig-vim.git
-[submodule ".vim/pack/plugins/start/papercolor"]
-	path = .vim/pack/plugins/start/papercolor
-	url = https://github.com/NLKNguyen/papercolor-theme.git
+[submodule ".vim/pack/plugins/start/seoul256"]
+	path = .vim/pack/plugins/start/seoul256
+	url = https://github.com/junegunn/seoul256.vim.git
