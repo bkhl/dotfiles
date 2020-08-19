@@ -4,7 +4,7 @@
 [includeIf "gitdir:~/Work/"]
     path = .gitconfig.d/work
 [push]
-	default = simple
+	default = current
 [alias]
 	st = status
 [trim]
