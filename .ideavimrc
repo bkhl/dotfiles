@@ -1,3 +1,0 @@
-source ~/.vimrc
-
-nnoremap <silent> <leader>s :write<CR>
