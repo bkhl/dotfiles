@@ -146,8 +146,6 @@ Load =git-timemachine=, for browsing the history of a file.
 
 * Programming
 
-Load LSP mode.
-
 Set default indentation level to 4.
 
 #+begin_src emacs-lisp
