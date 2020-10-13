@@ -22,8 +22,6 @@ It can be used for example like this:
   export EDITOR="emacs -nw -q --eval '(setq bkhl/minimal t)' --load ~/.emacs.d/init.el"
 #+end_src
 
-Further down, to make a package load even when =bkhl/minimal= is set, we have to use =:demand=
-
 * Configure =use-package= macro
 
 Make sure that =use-package= will install packages if they are not already available.
@@ -39,9 +37,10 @@ Always compile packages, and use the newest version available.
 
 #+begin_src emacs-lisp
   (use-package auto-compile
-    :config
-    (auto-compile-on-load-mode)
-    (setq load-prefer-newer t))
+	:unless bkhl/minimal
+	:config
+	(auto-compile-on-load-mode)
+	(setq load-prefer-newer t))
 #+end_src
 
 * Use =sensible-defaults.el=
@@ -120,8 +119,7 @@ Disable warning bell, both the default audio one and the visual one otherwise en
    (setq ring-bell-function 'ignore)
 #+end_src
 
-* Editing
-** Version control
+* Version control
 
 Load =magit=, for working with Git.
 
@@ -140,8 +138,9 @@ Load =magit=, for working with Git.
 Load =git-timemachine=, for browsing the history of a file.
 
 #+begin_src emacs-lisp
-  (use-package git-timemachine
-    :after magit)
+	(use-package git-timemachine
+	  :after magit
+	  :hook magit)
 #+end_src
 
 * Programming
@@ -185,10 +184,16 @@ Automatically scroll to new output in the =*compilation*= buffer.
 ** Languages
 *** Rust
 
+Use =rustic= for Rust editing.
+
  #+begin_src emacs-lisp
-	  (use-package rustic
-		:after (lsp-mode company))
+   (use-package rustic
+	 :after (lsp-mode company)
+	 :config
+	 (setq rustic-format-trigger 'on-save))
  #+end_src
+
+Auto-format Rust code on save.
 
 * Other editing modes
 ** Org
