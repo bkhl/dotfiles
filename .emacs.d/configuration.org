@@ -245,3 +245,19 @@ Show compact ellipsis.
 #+begin_src emacs-lisp
   (setq org-ellipsis "…")
 #+end_src
+*** Agendas
+
+#+begin_src emacs-lisp
+  (setq org-agenda-files '("~/Documents/Notes/"))
+#+end_src
+
+*** Capturing templates
+
+#+begin_src emacs-lisp
+  (setq bkhl/org-agenda-directory "~/Documents/Notes/")
+  (setq org-capture-templates
+		`(("i" "inbox" entry (file ,(concat bkhl/org-agenda-directory "Inbox.org"))
+		   "* TODO %?")))
+
+  (global-set-key (kbd "C-c c") 'org-capture)
+#+end_src
