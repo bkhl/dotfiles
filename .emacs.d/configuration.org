@@ -262,7 +262,7 @@ Show compact ellipsis.
 
 #+begin_src emacs-lisp
   (setq org-agenda-files (mapcar (lambda (d) (concat bkhl/org-agenda-directory d))
-                                 '("Personal/Planner/" "Work/Planner/")))
+                                 '("Planner/" "Work/Planner/")))
 #+end_src
 
 ** Capturing
