@@ -219,6 +219,12 @@ Disable the extra indentation in src blocks.
 (setq org-edit-src-content-indentation 0)
 #+end_src
 
+This prevents accidental editing in invisible regions.
+
+#+begin_src emacs-lisp
+(setq org-catch-invisible-edits 'error)
+#+end_src
+
 Shortcut for inserting a block of Elisp.
 
 #+begin_src emacs-lisp
