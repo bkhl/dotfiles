@@ -43,7 +43,7 @@ for d in $HOME/.local/bin; do
 done
 
 # Application preferences
-export EDITOR="emacs -nw -q --eval '(setq bkhl/minimal t)' --load ~/.emacs.d/init.el"
+export EDITOR='emacs -nw'
 export PAGER='less -R'
 
 # Set TOOLBOX_PROJECT if it looks like we are in a toolbox, but the
