@@ -14,4 +14,15 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
+;; Load org-mode.
+(use-package org)
+
+;; Confirm that org-mode has been updated. This is a lazy solution until I can
+;; work out how to check what the most recent version in the org-mode ELPA
+;; repository is.
+(when (version-list-<= (mapcar (lambda (s) (string-to-number s))
+                               (split-string org-version "\\."))
+                       '(9 3))
+  (error "Installed version of org too old. Update manually using list-packages."))
+
 (org-babel-load-file "~/.emacs.d/configuration.org")
