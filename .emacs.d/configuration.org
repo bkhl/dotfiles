@@ -11,15 +11,15 @@ This variable can be set to inhibit loading some packages that are not needed
 for quick editing.
 
 #+begin_src emacs-lisp
-  (defcustom  bkhl/minimal nil
-    "Set to indicate that we should avoid loading too many packages on startup."
-    :type 'boolean)
+(defcustom  bkhl/minimal nil
+  "Set to indicate that we should avoid loading too many packages on startup."
+  :type 'boolean)
 #+end_src
 
 It can be used for example like this:
 
 #+begin_src bash
-  export EDITOR="emacs -nw -q --eval '(setq bkhl/minimal t)' --load ~/.emacs.d/init.el"
+export EDITOR="emacs -nw -q --eval '(setq bkhl/minimal t)' --load ~/.emacs.d/init.el"
 #+end_src
 
 * Configure =use-package= macro
@@ -27,20 +27,20 @@ It can be used for example like this:
 Make sure that =use-package= will install packages if they are not already available.
 
 #+begin_src emacs-lisp
-  (require 'use-package-ensure)
-  (if bkhl/minimal
-      (setq use-package-always-defer t)
-    (setq use-package-always-ensure t))
+(require 'use-package-ensure)
+(if bkhl/minimal
+    (setq use-package-always-defer t)
+  (setq use-package-always-ensure t))
 #+end_src
 
 Always compile packages, and use the newest version available.
 
 #+begin_src emacs-lisp
-  (use-package auto-compile
-	:unless bkhl/minimal
-	:config
-	(auto-compile-on-load-mode)
-	(setq load-prefer-newer t))
+(use-package auto-compile
+  :unless bkhl/minimal
+  :config
+  (auto-compile-on-load-mode)
+  (setq load-prefer-newer t))
 #+end_src
 
 * Use =sensible-defaults.el=
@@ -48,27 +48,27 @@ Always compile packages, and use the newest version available.
 Use [[https://github.com/hrs/sensible-defaults.el][sensible-defaults.el]] for some basic settings.
 
 #+begin_src emacs-lisp
-  (load-file "~/.emacs.d/sensible-defaults.el/sensible-defaults.el")
-  (sensible-defaults/use-all-settings)
-  (sensible-defaults/use-all-keybindings)
-  (sensible-defaults/backup-to-temp-directory)
+(load-file "~/.emacs.d/sensible-defaults.el/sensible-defaults.el")
+(sensible-defaults/use-all-settings)
+(sensible-defaults/use-all-keybindings)
+(sensible-defaults/backup-to-temp-directory)
 #+end_src
 
 * Set personal information
 #+begin_src emacs-lisp
-  (setq user-full-name "Björn Lindström"
-	user-mail-address "bkhl@elektrubadur.se"
-	calendar-latitude 13.76
-	calendar-longitude 100.54
-	calendar-location-name "Bangkok")
+(setq user-full-name "Björn Lindström"
+  user-mail-address "bkhl@elektrubadur.se"
+  calendar-latitude 13.76
+  calendar-longitude 100.54
+  calendar-location-name "Bangkok")
 #+end_src
 * UI
 ** Load Modus Operandi theme
 
 #+begin_src emacs-lisp
-  (use-package modus-operandi-theme
-	:config
-	(load-theme 'modus-operandi t))
+(use-package modus-operandi-theme
+  :config
+  (load-theme 'modus-operandi t))
 #+end_src
 
 ** Configure window appearance
@@ -76,39 +76,39 @@ Use [[https://github.com/hrs/sensible-defaults.el][sensible-defaults.el]] for so
 Disable the tool bar and menu bar.
 
 #+begin_src emacs-lisp
-  (menu-bar-mode 0)
-  (tool-bar-mode 0)
+(menu-bar-mode 0)
+(tool-bar-mode 0)
 #+end_src
 
 ** Hide minor modes with =minions=
 
 #+begin_src emacs-lisp
-	(use-package minions
-	  :config
-	  (setq minions-mode-line-lighter ""
-			minions-mode-line-delimiters '("" . ""))
-	  (minions-mode 1))
+(use-package minions
+  :config
+  (setq minions-mode-line-lighter ""
+		minions-mode-line-delimiters '("" . ""))
+  (minions-mode 1))
 #+end_src
 
 ** Fonts
 
 #+begin_src emacs-lisp
-  (set-face-attribute 'default nil :family "Julia Mono" :height 110)
-  (set-face-attribute 'variable-pitch nil :family "DejaVu Serif" :height 1.1)
-  (set-face-attribute 'fixed-pitch nil :family "Julia Mono" :height 1.0)
+(set-face-attribute 'default nil :family "Julia Mono" :height 110)
+(set-face-attribute 'variable-pitch nil :family "DejaVu Serif" :height 1.1)
+(set-face-attribute 'fixed-pitch nil :family "Julia Mono" :height 1.0)
 #+end_src
 
 ** Start with an empty scratch buffer.
 
 #+begin_src emacs-lisp
-  (setq inhibit-startup-screen t)
-  (setq initial-scratch-message "")
+(setq inhibit-startup-screen t)
+(setq initial-scratch-message "")
 #+end_src
 
 ** Render =lambda= as =λ=.
 
 #+begin_src emacs-lisp
-  (global-prettify-symbols-mode t)
+(global-prettify-symbols-mode t)
 #+end_src
 
 ** Disable bell
@@ -116,7 +116,7 @@ Disable the tool bar and menu bar.
 Disable warning bell, both the default audio one and the visual one otherwise enabled by =sensible-defaults.el=.
 
  #+begin_src emacs-lisp
-   (setq ring-bell-function 'ignore)
+ (setq ring-bell-function 'ignore)
 #+end_src
 
 * Text editing
@@ -124,13 +124,13 @@ Disable warning bell, both the default audio one and the visual one otherwise en
 Disable indentation using tabs.
 
 #+begin_src emacs-lisp
-  (setq-default indent-tabs-mode nil)
+(setq-default indent-tabs-mode nil)
 #+end_src
 
 Set default indentation level to 4.
 
 #+begin_src emacs-lisp
-  (setq-default tab-width 4)
+(setq-default tab-width 4)
 #+end_src
 
 * Programming
@@ -138,30 +138,30 @@ Set default indentation level to 4.
 Treat words in camel case symbols as separate when editing.
 
 #+begin_src emacs-lisp
-  (use-package subword
-	:config
-	(global-subword-mode 1))
+(use-package subword
+  :config
+  (global-subword-mode 1))
 #+end_src
 
 Automatically scroll to new output in the =*compilation*= buffer.
 
 #+begin_src emacs-lisp
-  (setq compilation-scroll-output t)
+(setq compilation-scroll-output t)
 #+end_src
 
 ** Multi-purpose programming packages
 *** Language Server Protocol with =lsp-mode=
 #+begin_src emacs-lisp
-  (use-package lsp-mode)
+(use-package lsp-mode)
 #+end_src
 
 *** Completion with =company=
 
 #+begin_src emacs-lisp
-  (use-package company
-    :config
-    (add-hook 'after-init-hook 'global-company-mode)
-    (global-set-key (kbd "M-/") 'company-complete-common))
+(use-package company
+  :config
+  (add-hook 'after-init-hook 'global-company-mode)
+  (global-set-key (kbd "M-/") 'company-complete-common))
 #+end_src
 
 ** Programming languages
@@ -170,10 +170,10 @@ Automatically scroll to new output in the =*compilation*= buffer.
 Use =rustic= for Rust editing.
 
  #+begin_src emacs-lisp
-   (use-package rustic
-     :after (lsp-mode company)
-     :config
-     (setq rustic-format-trigger 'on-save))
+ (use-package rustic
+   :after (lsp-mode company)
+   :config
+   (setq rustic-format-trigger 'on-save))
  #+end_src
 
 Auto-format Rust code on save.
@@ -183,23 +183,23 @@ Auto-format Rust code on save.
 Load =magit=, for working with Git.
 
 #+begin_src emacs-lisp
-    (use-package magit
-      :bind
-      ("C-x g" . magit-status)
+(use-package magit
+  :bind
+  ("C-x g" . magit-status)
 
-      :config
-      (use-package with-editor)
+  :config
+  (use-package with-editor)
 
-      (setq magit-push-always-verify nil
-      git-commit-summary-max-length 50))
+  (setq magit-push-always-verify nil
+  git-commit-summary-max-length 50))
 #+end_src
 
 Load =git-timemachine=, for browsing the history of a file.
 
 #+begin_src emacs-lisp
-    (use-package git-timemachine
-      :after magit
-      :hook magit)
+(use-package git-timemachine
+  :after magit
+  :hook magit)
 #+end_src
 
 * Org
@@ -207,7 +207,7 @@ Load =git-timemachine=, for browsing the history of a file.
 Store the base directory for my notes for use later.
 
 #+begin_src emacs-lisp
-  (setq bkhl/org-agenda-directory "~/Documents/Notes/")
+(setq bkhl/org-agenda-directory "~/Documents/Notes/")
 #+end_src
 
 ** Make initial scratch buffer use =org-mode=
@@ -218,23 +218,30 @@ Store the base directory for my notes for use later.
 
 ** Editing
 
-Make indentation in code blocks work according to mode for the language in the block.
+Edit src blocks in current window.
 
 #+begin_src emacs-lisp
-  (setq org-src-tab-acts-natively t)
+(setq org-src-window-setup 'current-window)
 #+end_src
 
-When editing a code snippet, use the current window.
+Make indentation and fonts in code blocks work according to mode for the language in the block.
 
 #+begin_src emacs-lisp
-  (setq org-src-window-setup 'current-window)
+(setq org-src-tab-acts-natively t
+      org-src-fontify-natively t)
+#+end_src
+
+Disable the extra indentation in src blocks.
+
+#+begin_src emacs-lisp
+(setq org-edit-src-content-indentation 0)
 #+end_src
 
 Shortcut for inserting a block of Elisp.
 
 #+begin_src emacs-lisp
-  (add-to-list 'org-structure-template-alist
-       '("el" . "src emacs-lisp"))
+(add-to-list 'org-structure-template-alist
+     '("el" . "src emacs-lisp"))
 #+end_src
 
 ** Display
@@ -242,27 +249,28 @@ Shortcut for inserting a block of Elisp.
 Use variable fonts in =org-mode= buffers.
 
 #+begin_src emacs-lisp
-  (add-hook 'org-mode-hook 'variable-pitch-mode)
+(add-hook 'org-mode-hook 'variable-pitch-mode)
 #+end_src
 
 Display bullets instead of asterisks.
 
 #+begin_src emacs-lisp
-  (use-package org-bullets
-    :init
-    (add-hook 'org-mode-hook 'org-bullets-mode))
+(use-package org-bullets
+  :init
+  (add-hook 'org-mode-hook 'org-bullets-mode))
 #+end_src
 
 Show compact ellipsis.
 
 #+begin_src emacs-lisp
-  (setq org-ellipsis "…")
+(setq org-ellipsis "…")
 #+end_src
+
 ** Agendas
 
 #+begin_src emacs-lisp
-  (setq org-agenda-files (mapcar (lambda (d) (concat bkhl/org-agenda-directory d))
-                                 '("Planner/" "Work/Planner/")))
+(setq org-agenda-files (mapcar (lambda (d) (concat bkhl/org-agenda-directory d))
+                               '("Planner/" "Work/Planner/")))
 #+end_src
 
 ** Capturing
@@ -270,13 +278,13 @@ Show compact ellipsis.
 Add templates for use by =org-capture=
 
 #+begin_src emacs-lisp
-  (setq org-capture-templates
-        `(("i" "inbox" entry (file ,(concat bkhl/org-agenda-directory "Inbox.org"))
-           "* TODO %?")))
+(setq org-capture-templates
+      `(("i" "inbox" entry (file ,(concat bkhl/org-agenda-directory "Inbox.org"))
+         "* TODO %?")))
 #+end_src
 
 Bind =C-c c= to =org-capture= to quickly add notes.
 
 #+begin_src emacs-lisp
-  (global-set-key (kbd "C-c c") 'org-capture)
+(global-set-key (kbd "C-c c") 'org-capture)
 #+end_src
