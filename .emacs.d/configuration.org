@@ -20,15 +20,6 @@ This is my Emacs configuration. Inspirations include:
       calendar-location-name "Bangkok")
 #+end_src
 
-* Configure =auto-compile=
-
-This mode will check for outdated =.elc= files when Emacs Lisp files are loaded,
-and recompile them if necessary
-
-#+begin_src emacs-lisp
-
-#+end_src
-
 * Use =sensible-defaults.el=
 
 Use [[https://github.com/hrs/sensible-defaults.el][sensible-defaults.el]] for some basic settings.
@@ -224,7 +215,7 @@ Git version control
 (use-package helm-ls-git)
 #+end_src
 
-* Org
+* =org-mode= planning and note-taking
 ** =TODO= keywords
 
 Customizing =TODO= keywords adding my own state =READ=, which is for things to
@@ -332,4 +323,26 @@ Bind =C-c c= to =org-capture= to quickly add notes.
 
 #+begin_src emacs-lisp
 (bind-key "C-c c" 'org-capture)
+#+end_src
+
+** Use =deft= to search in and handle notes
+
+Configure =deft=, a plugin to create and search in notes.
+
+#+begin_src emacs-lisp
+(use-package deft
+  :config
+  (setq deft-directory bkhl/org-directory
+        deft-archive-directory (concat deft-directory "/Archive")
+        deft-default-extension "org"))
+#+end_src
+
+Also load =zetteldeft=, an extension to =deft= that manages links between notes
+in the spirit of Zettelkasten.
+
+#+begin_src emacs-lisp
+(use-package zetteldeft
+  :after deft
+  :config
+  (zetteldeft-set-classic-keybindings))
 #+end_src
