@@ -107,6 +107,16 @@ Disable warning bell, both the default audio one and the visual one otherwise en
 (setq ring-bell-function 'ignore)
 #+end_src
 
+* Basic keybindings
+
+** Disable =C-z=
+
+Disabling =C-z=, which normally minimizes the window, which is rather distracting.
+
+#+begin_src emacs-lisp
+(global-unset-key (kbd "C-z"))
+#+end_src
+
 * General text editing
 ** Disable indentation using tabs.
 
