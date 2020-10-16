@@ -19,6 +19,9 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
+;; Make use-package error if a declared package is missing.
+(setq use-package-always-ensure t)
+
 ;; Enable auto-compile.
 (use-package auto-compile
   :config
