@@ -40,14 +40,6 @@ Use [[https://github.com/hrs/sensible-defaults.el][sensible-defaults.el]] for so
 #+end_src
 
 * UI
-** Load Modus Operandi theme
-
-#+begin_src emacs-lisp
-(use-package modus-operandi-theme
-  :config
-  (load-theme 'modus-operandi t))
-#+end_src
-
 ** Configure window appearance
 
 Disable the tool bar and menu bar.
@@ -55,6 +47,26 @@ Disable the tool bar and menu bar.
 #+begin_src emacs-lisp
 (menu-bar-mode 0)
 (tool-bar-mode 0)
+#+end_src
+
+** Load Modus Operandi theme
+
+#+begin_src emacs-lisp
+(use-package modus-operandi-theme
+  :config
+  (setq modus-operandi-theme-faint-syntax t
+        modus-operandi-theme-org-blocks 'greyscale
+        modus-operandi-theme-scale-headings t
+        modus-operandi-theme-links 'neutral-underline)
+  (load-theme 'modus-operandi t))
+#+end_src
+
+** Fonts
+
+#+begin_src emacs-lisp
+(set-face-attribute 'default nil :family "Julia Mono" :height 110)
+(set-face-attribute 'variable-pitch nil :family "DejaVu Serif" :height 1.1)
+(set-face-attribute 'fixed-pitch nil :family "Julia Mono" :height 1.0)
 #+end_src
 
 ** Hide minor modes with =minions=
@@ -67,12 +79,10 @@ Disable the tool bar and menu bar.
   (minions-mode 1))
 #+end_src
 
-** Fonts
+** Highlight current line
 
 #+begin_src emacs-lisp
-(set-face-attribute 'default nil :family "Julia Mono" :height 110)
-(set-face-attribute 'variable-pitch nil :family "DejaVu Serif" :height 1.1)
-(set-face-attribute 'fixed-pitch nil :family "Julia Mono" :height 1.0)
+(hl-line-mode 1)
 #+end_src
 
 ** Start with an empty scratch buffer.
@@ -85,7 +95,7 @@ Disable the tool bar and menu bar.
 ** Render =lambda= as =λ=.
 
 #+begin_src emacs-lisp
-(global-prettify-symbols-mode t)
+(global-prettify-symbols-mode 1)
 #+end_src
 
 ** Disable bell
@@ -96,15 +106,14 @@ Disable warning bell, both the default audio one and the visual one otherwise en
 (setq ring-bell-function 'ignore)
 #+end_src
 
-* Text editing
-
-Disable indentation using tabs.
+* General text editing
+** Disable indentation using tabs.
 
 #+begin_src emacs-lisp
 (setq-default indent-tabs-mode nil)
 #+end_src
 
-Set default indentation level to 4.
+** Set default indentation level to 4.
 
 #+begin_src emacs-lisp
 (setq-default tab-width 4)
