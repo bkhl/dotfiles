@@ -199,11 +199,19 @@ Load =git-timemachine=, for browsing the history of a file.
 #+end_src
 
 * Org
+** Directories
 
-Store the base directory for my notes for use later.
+Set a custom variable for the notes directory, so that it can be referred to
+later.
 
 #+begin_src emacs-lisp
-(setq bkhl/org-agenda-directory "~/Documents/Notes/")
+(setq bkhl/org-directory "~/Documents/Notes/")
+#+end_src
+
+Search all files in the notes directory when creating agendas.
+
+#+begin_src emacs-lisp
+(setq org-agenda-files 'bkhl/org-directory)
 #+end_src
 
 ** Make initial scratch buffer use =org-mode=
@@ -268,17 +276,10 @@ Display bullets instead of asterisks.
   (add-hook 'org-mode-hook 'org-superstar-mode))
 #+end_src
 
-Use the Thai ellipsis character , ไปยาลน้อย.
+Use the Thai ellipsis character, ไปยาลน้อย.
 
 #+begin_src emacs-lisp
 (setq org-ellipsis " ฯ")
-#+end_src
-
-** Agendas
-
-#+begin_src emacs-lisp
-(setq org-agenda-files (mapcar (lambda (d) (concat bkhl/org-agenda-directory d))
-                               '("Planner/" "Work/Planner/")))
 #+end_src
 
 ** Capturing
@@ -287,7 +288,7 @@ Add templates for use by =org-capture=
 
 #+begin_src emacs-lisp
 (setq org-capture-templates
-      `(("i" "inbox" entry (file ,(concat bkhl/org-agenda-directory "Inbox.org"))
+      `(("i" "inbox" entry (file ,(concat bkhl/org-directory "Inbox.org"))
          "* TODO %?")))
 #+end_src
 
