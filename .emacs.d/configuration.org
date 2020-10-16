@@ -40,7 +40,7 @@ Use [[https://github.com/hrs/sensible-defaults.el][sensible-defaults.el]] for so
 (sensible-defaults/backup-to-temp-directory)
 #+end_src
 
-* UI
+* Look and feel
 ** Configure window appearance
 
 Disable the tool bar and menu bar.
@@ -48,6 +48,7 @@ Disable the tool bar and menu bar.
 #+begin_src emacs-lisp
 (menu-bar-mode 0)
 (tool-bar-mode 0)
+(scroll-bar-mode 0)
 #+end_src
 
 ** Load Modus Operandi theme
@@ -70,6 +71,18 @@ Disable the tool bar and menu bar.
 (set-face-attribute 'fixed-pitch nil :family "Julia Mono" :height 1.0)
 #+end_src
 
+** Highlight current line
+
+#+begin_src emacs-lisp
+(hl-line-mode 1)
+#+end_src
+
+** Render =lambda= as =λ=
+
+#+begin_src emacs-lisp
+(global-prettify-symbols-mode 1)
+#+end_src
+
 ** Hide minor modes with =minions=
 
 #+begin_src emacs-lisp
@@ -80,10 +93,21 @@ Disable the tool bar and menu bar.
   (minions-mode 1))
 #+end_src
 
-** Highlight current line
+** Disable bell
+
+Disable warning bell, both the default audio one and the visual one otherwise enabled by =sensible-defaults.el=.
 
 #+begin_src emacs-lisp
-(hl-line-mode 1)
+(setq ring-bell-function 'ignore)
+#+end_src
+
+* Key bindings and navigation
+** Disable =C-z=
+
+Disabling =C-z=, which normally minimizes the window, which is rather distracting.
+
+#+begin_src emacs-lisp
+(unbind-key "C-z")
 #+end_src
 
 ** Start with an empty scratch buffer.
@@ -93,27 +117,19 @@ Disable the tool bar and menu bar.
 (setq initial-scratch-message "")
 #+end_src
 
-** Render =lambda= as =λ=.
+** Selection and completion with =helm=
+
+Helm is an incremental completion and selection narrowing framework, primarily
+useful for locating files.
 
 #+begin_src emacs-lisp
-(global-prettify-symbols-mode 1)
-#+end_src
-
-** Disable bell
-
-Disable warning bell, both the default audio one and the visual one otherwise enabled by =sensible-defaults.el=.
-
-#+begin_src emacs-lisp
-(setq ring-bell-function 'ignore)
-#+end_src
-
-* Basic keybindings
-** Disable =C-z=
-
-Disabling =C-z=, which normally minimizes the window, which is rather distracting.
-
-#+begin_src emacs-lisp
-(global-unset-key (kbd "C-z"))
+(use-package helm
+  :config
+  (helm-mode 1)
+  :bind
+  ("M-x" . helm-M-x)
+  ("C-x C-f" . helm-find-files)
+  ("C-x C-d" . helm-browse-project))
 #+end_src
 
 * General text editing
@@ -157,7 +173,7 @@ Automatically scroll to new output in the =*compilation*= buffer.
 (use-package company
   :config
   (add-hook 'after-init-hook 'global-company-mode)
-  (global-set-key (kbd "M-/") 'company-complete-common))
+  (bind-key "M-/" 'company-complete-common))
 #+end_src
 
 ** Programming languages
@@ -175,6 +191,7 @@ Use =rustic= for Rust editing.
 Auto-format Rust code on save.
 
 * Version control
+** =magit= Git integration
 
 Load =magit=, for working with Git.
 
@@ -190,7 +207,7 @@ Load =magit=, for working with Git.
         git-commit-summary-max-length 50))
 #+end_src
 
-Load =git-timemachine=, for browsing the history of a file.
+** =git-timemachine= for browsing file history
 
 #+begin_src emacs-lisp
 (use-package git-timemachine
@@ -198,7 +215,26 @@ Load =git-timemachine=, for browsing the history of a file.
   :hook magit)
 #+end_src
 
+** Git listing plugin for Helm
+
+Add this plugin for Git, which allows =helm-browse-project= to list files under
+Git version control
+
+#+begin_src emacs-lisp
+(use-package helm-ls-git)
+#+end_src
+
 * Org
+** =TODO= keywords
+
+Customizing =TODO= keywords adding my own state =READ=, which is for things to
+read and possibly make notes on or file.
+
+#+begin_src emacs-lisp
+(setq org-todo-keywords
+      '((sequence "TODO(t)" "READ(r)" "|" "DONE(d)")))
+#+end_src
+
 ** Directories
 
 Set a custom variable for the notes directory, so that it can be referred to
@@ -288,12 +324,12 @@ Add templates for use by =org-capture=
 
 #+begin_src emacs-lisp
 (setq org-capture-templates
-      `(("i" "inbox" entry (file ,(concat bkhl/org-directory "Inbox.org"))
+      `(("i" "inbox" entry (file ,(concat bkhl/org-directory "Planner/Inbox.org"))
          "* TODO %?")))
 #+end_src
 
 Bind =C-c c= to =org-capture= to quickly add notes.
 
 #+begin_src emacs-lisp
-(global-set-key (kbd "C-c c") 'org-capture)
+(bind-key "C-c c" 'org-capture)
 #+end_src
