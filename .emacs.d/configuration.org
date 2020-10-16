@@ -108,7 +108,6 @@ Disable warning bell, both the default audio one and the visual one otherwise en
 #+end_src
 
 * Basic keybindings
-
 ** Disable =C-z=
 
 Disabling =C-z=, which normally minimizes the window, which is rather distracting.
@@ -269,7 +268,7 @@ Display bullets instead of asterisks.
   (add-hook 'org-mode-hook 'org-superstar-mode))
 #+end_src
 
-Show compact ellipsis.
+Use the Thai ellipsis character , ไปยาลน้อย.
 
 #+begin_src emacs-lisp
 (setq org-ellipsis " ฯ")
