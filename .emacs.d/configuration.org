@@ -244,9 +244,9 @@ Use variable fonts in =org-mode= buffers.
 Display bullets instead of asterisks.
 
 #+begin_src emacs-lisp
-(use-package org-bullets
+(use-package org-superstar
   :init
-  (add-hook 'org-mode-hook 'org-bullets-mode))
+  (add-hook 'org-mode-hook 'org-superstar-mode))
 #+end_src
 
 Show compact ellipsis.
