@@ -1,3 +1,8 @@
+;; The main Emacs configuration file
+;;
+;; This has only sets up essential configuration for the package system and
+;; org-mode, then loads the configuration.org file.
+
 ;; Save custom values in separate file.
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file :noerror)
@@ -13,6 +18,12 @@
 (when (not (package-installed-p 'use-package))
   (package-refresh-contents)
   (package-install 'use-package))
+
+;; Enable auto-compile.
+(use-package auto-compile
+  :config
+  (auto-compile-on-load-mode)
+  (setq load-prefer-newer t))
 
 ;; Load org-mode.
 (use-package org)
