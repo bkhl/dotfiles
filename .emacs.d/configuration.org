@@ -1,6 +1,7 @@
 #+TITLE: Emacs Configuration
 #+AUTHOR: Björn Lindström
 #+EMAIL: bkhl@elektrubadur.se
+#+STARTUP: content
 
 This is my Emacs configuration. The idea to use =org-mode= for this and a lot of
 initial configuration comes from [[https://github.com/hrs/dotfiles/blob/main/emacs/dot-emacs.d/configuration.org][Harry R. Schwart's Emacs configuration]].
