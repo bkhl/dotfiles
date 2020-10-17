@@ -1,7 +1,7 @@
 #+TITLE: Emacs Configuration
 #+AUTHOR: Björn Lindström
 #+EMAIL: bkhl@elektrubadur.se
-#+STARTUP: content
+#+STARTUP: overview
 
 * Introduction
 
@@ -123,6 +123,16 @@ useful for locating files.
   ("C-x C-d" . helm-browse-project))
 #+end_src
 
+** Use =avy= to move within visible text
+
+#+begin_src emacs-lisp
+(use-package avy
+  :config
+  (avy-setup-default)
+  :bind
+  ("C-c C-j" . avy-resume))
+#+end_src
+
 * General text editing
 ** Disable indentation using tabs.
 
@@ -130,7 +140,7 @@ useful for locating files.
 (setq-default indent-tabs-mode nil)
 #+end_src
 
-** Set default indentation level to 4.
+** Set default indentation width to 4.
 
 #+begin_src emacs-lisp
 (setq-default tab-width 4)
@@ -238,7 +248,7 @@ later.
 Search all files in the notes directory when creating agendas.
 
 #+begin_src emacs-lisp
-(setq org-agenda-files 'bkhl/org-directory)
+(setq org-agenda-files `(,bkhl/org-directory))
 #+end_src
 
 ** Make initial scratch buffer use =org-mode=
@@ -315,7 +325,7 @@ Add templates for use by =org-capture=
 
 #+begin_src emacs-lisp
 (setq org-capture-templates
-      `(("i" "inbox" entry (file ,(concat bkhl/org-directory "Planner/Inbox.org"))
+      `(("i" "inbox" entry (file ,(concat bkhl/org-directory "Inbox.org"))
          "* TODO %?")))
 #+end_src
 
@@ -323,6 +333,16 @@ Bind =C-c c= to =org-capture= to quickly add notes.
 
 #+begin_src emacs-lisp
 (bind-key "C-c c" 'org-capture)
+#+end_src
+** Refiling
+
+This allows refiling within the current buffer, or any agenda files.
+
+#+begin_src emacs-lisp
+(setq org-refile-targets '((nil :maxlevel . 9)
+                           (org-agenda-files :maxlevel . 9))
+      org-outline-path-complete-in-steps nil
+      org-refile-use-outline-path 'file)
 #+end_src
 
 ** Use =deft= to search in and handle notes
@@ -333,16 +353,33 @@ Configure =deft=, a plugin to create and search in notes.
 (use-package deft
   :config
   (setq deft-directory bkhl/org-directory
-        deft-archive-directory (concat deft-directory "/Archive")
+        deft-archive-directory "Archive/"
         deft-default-extension "org"))
 #+end_src
 
 Also load =zetteldeft=, an extension to =deft= that manages links between notes
-in the spirit of Zettelkasten.
+in the spirit of Zettelkasten. The custom function =bkhl/zetteldeft-generate-id=
+is for generating note IDs. This uses the traditional format with date and time
+in minutes, but increases the number to the next free value if necessary. The
+format won't be correct on the minute, and may end up generating invalid dates,
+but I don't think that's important.
 
 #+begin_src emacs-lisp
+(defun bkhl/zetteldeft-generate-id (title &optional filename)
+  "Generate Zettel IDs that are always unique."
+  (cl-labels
+      ((find-first-free (id)
+                        (if (zetteldeft--id-available-p id)
+                            id
+                          (find-first-free
+                           (number-to-string
+                            (+ 1 (string-to-number id)))))))
+    (find-first-free (format-time-string "%Y%m%d%H%M"))))
+
 (use-package zetteldeft
   :after deft
   :config
-  (zetteldeft-set-classic-keybindings))
+  (zetteldeft-set-classic-keybindings)
+  (setq zetteldeft-custom-id-function #'bkhl/zetteldeft-generate-zetteldeft
+        id-id-regex "[0-9]\\{12\\}"))
 #+end_src
