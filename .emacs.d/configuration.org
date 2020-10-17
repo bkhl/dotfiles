@@ -116,6 +116,7 @@ Ivy.
 
 #+begin_src emacs-lisp
 (use-package ivy
+  :demand t
   :custom
   (ivy-initial-inputs-alist nil)
   :config
