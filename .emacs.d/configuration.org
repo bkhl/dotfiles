@@ -108,27 +108,30 @@ Disabling =C-z=, which normally minimizes the window, which is rather distractin
 (setq initial-scratch-message "")
 #+end_src
 
-** Selection and completion with =helm=
+** Use =ivy= and =counsel= for completion and searching
 
-Helm is an incremental completion and selection narrowing framework, primarily
-useful for locating files.
+Ivy is a generic completion and selection framework. This also replaces the
+standard binding =C-s= to search within a file with =swiper=, which comes with
+Ivy.
 
 #+begin_src emacs-lisp
-(use-package helm
+(use-package ivy
+  :custom
+  (ivy-initial-inputs-alist nil)
   :config
-  (helm-mode 1)
+  (ivy-mode 1)
   :bind
-  ("M-x" . helm-M-x)
-  ("C-x C-f" . helm-find-files)
-  ("C-x C-d" . helm-browse-project))
+  ("C-s" . swiper))
 #+end_src
 
-** Use =avy= to move within visible text
+Councel adds replacement for additional Emacs commands based on Ivy.
 
 #+begin_src emacs-lisp
-(use-package avy
+(use-package counsel
   :config
-  (avy-setup-default))
+  (counsel-mode 1)
+  :bind
+  ("C-c g" . counsel-git))
 #+end_src
 
 * General text editing
@@ -212,15 +215,6 @@ Load =magit=, for working with Git.
 (use-package git-timemachine
   :after magit
   :hook magit)
-#+end_src
-
-** Git listing plugin for Helm
-
-Add this plugin for Git, which allows =helm-browse-project= to list files under
-Git version control
-
-#+begin_src emacs-lisp
-(use-package helm-ls-git)
 #+end_src
 
 * =org-mode= planning and note-taking
@@ -345,39 +339,15 @@ This allows refiling within the current buffer, or any agenda files.
 
 ** Use =deft= to search in and handle notes
 
-Configure =deft=, a plugin to create and search in notes.
+Configure =deft=, a plugin to create and search in notes. The call to
+=deft-cache-initialize= is there because you can otherwise get errors trying to
+create a new note with =zetteldeft= before deft has been used.
 
 #+begin_src emacs-lisp
 (use-package deft
-  :config
-  (setq deft-directory bkhl/org-directory
-        deft-archive-directory "Archive/"
-        deft-default-extension "org"))
-#+end_src
-
-Also load =zetteldeft=, an extension to =deft= that manages links between notes
-in the spirit of Zettelkasten. The custom function =bkhl/zetteldeft-generate-id=
-is for generating note IDs. This uses the traditional format with date and time
-in minutes, but increases the number to the next free value if necessary. The
-format won't be correct on the minute, and may end up generating invalid dates,
-but I don't think that's important.
-
-#+begin_src emacs-lisp
-(defun bkhl/zetteldeft-generate-id (title &optional filename)
-  "Generate Zettel IDs that are always unique."
-  (cl-labels
-      ((find-first-free (id)
-                        (if (zetteldeft--id-available-p id)
-                            id
-                          (find-first-free
-                           (number-to-string
-                            (+ 1 (string-to-number id)))))))
-    (find-first-free (format-time-string "%Y%m%d%H%M"))))
-
-(use-package zetteldeft
-  :after deft
-  :config
-  (zetteldeft-set-classic-keybindings)
-  (setq zetteldeft-custom-id-function #'bkhl/zetteldeft-generate-id
-        id-id-regex "[0-9]\\{12\\}"))
+  :after org
+  :custom
+  (deft-directory bkhl/org-directory)
+  (deft-archive-directory "Archive/")
+  (deft-default-extension "org"))
 #+end_src
