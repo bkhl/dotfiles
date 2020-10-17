@@ -378,6 +378,6 @@ but I don't think that's important.
   :after deft
   :config
   (zetteldeft-set-classic-keybindings)
-  (setq zetteldeft-custom-id-function #'bkhl/zetteldeft-generate-zetteldeft
+  (setq zetteldeft-custom-id-function #'bkhl/zetteldeft-generate-id
         id-id-regex "[0-9]\\{12\\}"))
 #+end_src
