@@ -339,9 +339,7 @@ This allows refiling within the current buffer, or any agenda files.
 
 ** Use =deft= to search in and handle notes
 
-Configure =deft=, a plugin to create and search in notes. The call to
-=deft-cache-initialize= is there because you can otherwise get errors trying to
-create a new note with =zetteldeft= before deft has been used.
+Configure =deft=, a plugin to create and search in notes.
 
 #+begin_src emacs-lisp
 (use-package deft
