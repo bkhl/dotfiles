@@ -128,9 +128,7 @@ useful for locating files.
 #+begin_src emacs-lisp
 (use-package avy
   :config
-  (avy-setup-default)
-  :bind
-  ("C-c C-j" . avy-resume))
+  (avy-setup-default))
 #+end_src
 
 * General text editing
