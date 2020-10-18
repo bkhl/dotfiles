@@ -91,7 +91,14 @@ Disable warning bell, both the default audio one and the visual one otherwise en
   (message "Emacs init time: %s" (emacs-init-time)))
 #+end_src
 
-* Help use =emacsclient= as =$EDITOR=
+* =emacsclient= configuration
+** Raise new =emacsclient= frames when created
+
+#+begin_src emacs-lisp
+(add-hook 'server-switch-hook #'raise-frame)
+#+end_src
+
+** Help use =emacsclient= as =$EDITOR=
 
 This library adds ability for =emacsclient= used as =$EDITOR= in child processes
 to more reliably pick the parent Emacs process as the server.
