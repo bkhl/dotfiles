@@ -36,11 +36,13 @@ Use [[https://github.com/hrs/sensible-defaults.el][sensible-defaults.el]] for so
 
 #+begin_src emacs-lisp
 (use-package modus-operandi-theme
+  :custom
+  (modus-operandi-theme-faint-syntax t)
+  (modus-operandi-theme-org-blocks 'greyscale)
+  (modus-operandi-theme-scale-headings t)
+  (modus-operandi-theme-links 'neutral-underline)
+  (modus-operandi-theme-diffs 'desaturated)
   :config
-  (setq modus-operandi-theme-faint-syntax t
-        modus-operandi-theme-org-blocks 'greyscale
-        modus-operandi-theme-scale-headings t
-        modus-operandi-theme-links 'neutral-underline)
   (load-theme 'modus-operandi t))
 #+end_src
 
