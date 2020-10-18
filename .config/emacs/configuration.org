@@ -138,6 +138,15 @@ Councel adds replacement for additional Emacs commands based on Ivy.
 (setq-default tab-width 4)
 #+end_src
 
+** Show character name in character description
+
+When using =C-x == to look up the character under the point, also show Unicode
+character name.
+
+#+begin_src emacs-lisp
+(setq what-cursor-show-names t)
+#+end_src
+
 * Programming
 
 Treat words in camel case symbols as separate when editing.
