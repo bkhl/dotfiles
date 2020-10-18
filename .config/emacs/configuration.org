@@ -32,16 +32,6 @@ Use [[https://github.com/hrs/sensible-defaults.el][sensible-defaults.el]] for so
 #+end_src
 
 * Look and feel
-** Configure window appearance
-
-Disable the tool bar and menu bar.
-
-#+begin_src emacs-lisp
-(menu-bar-mode 0)
-(tool-bar-mode 0)
-(scroll-bar-mode 0)
-#+end_src
-
 ** Load Modus Operandi theme
 
 #+begin_src emacs-lisp
