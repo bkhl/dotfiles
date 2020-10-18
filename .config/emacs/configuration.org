@@ -95,8 +95,11 @@ Disable warning bell, both the default audio one and the visual one otherwise en
 ** Raise new =emacsclient= frames when created
 
 #+begin_src emacs-lisp
-(add-hook 'server-switch-hook
-          (lambda () (select-frame-set-input-focus (selected-frame))))
+(cl-flet ((focus-frame ()
+                       (select-frame-set-input-focus (selected-frame))))
+
+      (add-hook 'server-switch-hook #focus-frame)
+      (add-hook 'server-after-make-frame-hook #focus-frame))
 #+end_src
 
 ** Help use =emacsclient= as =$EDITOR=
