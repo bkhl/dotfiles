@@ -11,4 +11,4 @@ column="$3"
 exec emacsclient \
      --create-frame \
      --alternate-editor= \
-     --eval "(progn (find-file \"$filename\") (goto-line $line) (move-to-column $column) (select-frame-set-input-focus (selected-frame)))
+     --eval "(progn (find-file \"$filename\") (goto-line $line) (move-to-column $column))"
