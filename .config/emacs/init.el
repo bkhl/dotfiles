@@ -8,7 +8,7 @@
       (gc-cons-threshold 100000000))
 
   ;; Save custom values in separate file.
-  (setq custom-file "~/.emacs.d/custom.el")
+  (setq custom-file (concat user-emacs-directory "custom.el"))
   (load custom-file :noerror)
 
   ;; Set up package.el.
@@ -43,6 +43,6 @@
                          '(9 3))
     (error "Installed version of org too old. Update manually using list-packages."))
 
-  (org-babel-load-file "~/.emacs.d/configuration.org")
+  (org-babel-load-file (concat user-emacs-directory "configuration.org"))
 
   (message "Init time: %s" (emacs-init-time)))

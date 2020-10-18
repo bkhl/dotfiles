@@ -38,5 +38,5 @@
 	path = .vim/pack/plugins/start/papercolor
 	url = https://github.com/NLKNguyen/papercolor-theme.git
 [submodule ".emacs.d/sensible-defaults.el"]
-	path = .emacs.d/sensible-defaults.el
+	path = .config/emacs/sensible-defaults.el
 	url = https://github.com/hrs/sensible-defaults.el.git
