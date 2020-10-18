@@ -235,13 +235,14 @@ Auto-format Rust code on save.
 * Other file formats
 ** hledger
 
-#+begin_export emacs-lisp
-(use-package
+#+begin_src emacs-lisp
+(use-package ledger-mode
+  :mode "\\.journal\\'"
   :config
   (setq ledger-mode-should-check-version nil
         ledger-report-links-in-register nil
         ledger-binary-path "hledger"))
-#+end_export
+#+end_src
 
 * Version control
 ** Magit Git integration
