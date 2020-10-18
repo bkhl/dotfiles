@@ -84,6 +84,13 @@ Disable warning bell, both the default audio one and the visual one otherwise en
 (setq ring-bell-function 'ignore)
 #+end_src
 
+** Show loading time on startup
+
+#+begin_src emacs-lisp
+(defun display-startup-echo-area-message ()
+  (message "Emacs init time: %s" (emacs-init-time)))
+#+end_src
+
 * Help use =emacsclient= as =$EDITOR=
 
 This library adds ability for =emacsclient= used as =$EDITOR= in child processes

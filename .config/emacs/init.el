@@ -42,6 +42,4 @@
                          '(9 3))
     (error "Installed version of org too old. Update manually using list-packages."))
 
-  (org-babel-load-file (concat user-emacs-directory "configuration.org"))
-
-  (message "Init time: %s" (emacs-init-time)))
+  (org-babel-load-file (concat user-emacs-directory "configuration.org")))

@@ -42,8 +42,13 @@ for d in $HOME/.local/bin; do
     fi
 done
 
-# Application preferences
+# Enable using emacsclient as editor of other commands.  Setting
+# ALTERNATE_EDITOR like this makes emacsclient start a server in the background
+# and try to reconnect, if it can't find one.
 export EDITOR='emacsclient -nw'
+export ALTERNATE_EDITOR=""
+
+# Use less with -R (show ANSI colour)
 export PAGER='less -R'
 
 # Set TOOLBOX_PROJECT if it looks like we are in a toolbox, but the
