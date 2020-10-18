@@ -193,7 +193,7 @@ Use =rustic= for Rust editing.
 Auto-format Rust code on save.
 
 * Version control
-** =magit= Git integration
+** Magit Git integration
 
 Load =magit=, for working with Git.
 
@@ -215,6 +215,12 @@ Load =magit=, for working with Git.
 (use-package git-timemachine
   :after magit
   :hook magit)
+#+end_src
+
+** Make =vc-diff= imitate the diff format of Magit
+
+#+begin_src emacs-lisp
+(setq diff-font-lock-prettify t)
 #+end_src
 
 * =org-mode= planning and note-taking
