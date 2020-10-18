@@ -362,16 +362,3 @@ This allows refiling within the current buffer, or any agenda files.
       org-outline-path-complete-in-steps nil
       org-refile-use-outline-path 'file)
 #+end_src
-
-** Use =deft= to search in and handle notes
-
-Configure =deft=, a plugin to create and search in notes.
-
-#+begin_src emacs-lisp
-(use-package deft
-  :after org
-  :custom
-  (deft-directory bkhl/org-directory)
-  (deft-archive-directory "Archive/")
-  (deft-default-extension "org"))
-#+end_src
