@@ -98,8 +98,8 @@ Disable warning bell, both the default audio one and the visual one otherwise en
 (cl-flet ((focus-frame ()
                        (select-frame-set-input-focus (selected-frame))))
 
-      (add-hook 'server-switch-hook #focus-frame)
-      (add-hook 'server-after-make-frame-hook #focus-frame))
+      (add-hook 'server-switch-hook #'focus-frame)
+      (add-hook 'server-after-make-frame-hook #'focus-frame))
 #+end_src
 
 ** Help use =emacsclient= as =$EDITOR=
@@ -231,6 +231,17 @@ Use =rustic= for Rust editing.
 #+end_src
 
 Auto-format Rust code on save.
+
+* Other file formats
+** hledger
+
+#+begin_export emacs-lisp
+(use-package
+  :config
+  (setq ledger-mode-should-check-version nil
+        ledger-report-links-in-register nil
+        ledger-binary-path "hledger"))
+#+end_export
 
 * Version control
 ** Magit Git integration
