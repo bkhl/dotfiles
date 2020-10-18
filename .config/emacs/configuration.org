@@ -96,8 +96,8 @@ Disabling =C-z=, which normally minimizes the window, which is rather distractin
 ** Start with an empty scratch buffer.
 
 #+begin_src emacs-lisp
-(setq inhibit-startup-screen t)
-(setq initial-scratch-message "")
+(setq inhibit-startup-screen t
+      initial-scratch-message "")
 #+end_src
 
 ** Use =ivy= and =counsel= for completion and searching
@@ -188,8 +188,8 @@ Use =rustic= for Rust editing.
 #+begin_src emacs-lisp
 (use-package rustic
   :after (lsp-mode company)
-  :config
-  (setq rustic-format-trigger 'on-save))
+  :custom
+  (rustic-format-trigger 'on-save))
 #+end_src
 
 Auto-format Rust code on save.
@@ -204,11 +204,11 @@ Load =magit=, for working with Git.
   :bind
   ("C-x g" . magit-status)
 
+  :custom
+  (magit-push-always-verify nil)
+  (git-commit-summary-max-length 50)
   :config
-  (use-package with-editor)
-
-  (setq magit-push-always-verify nil
-        git-commit-summary-max-length 50))
+  (use-package with-editor))
 #+end_src
 
 ** =git-timemachine= for browsing file history
