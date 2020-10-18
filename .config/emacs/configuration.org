@@ -84,6 +84,26 @@ Disable warning bell, both the default audio one and the visual one otherwise en
 (setq ring-bell-function 'ignore)
 #+end_src
 
+* Help use =emacsclient= as =$EDITOR=
+
+This library adds ability for =emacsclient= used as =$EDITOR= in child processes
+to more reliably pick the parent Emacs process as the server.
+
+It also adds a way for remote processes to communicate via input/output instead
+of a socket.
+
+#+begin_src emacs-lisp
+(use-package with-editor)
+#+end_src
+
+This enables use of the library in Emacs terminals/shells.
+
+#+begin_src emacs-lisp
+(add-hook 'shell-mode-hook  'with-editor-export-editor)
+(add-hook 'term-exec-hook   'with-editor-export-editor)
+(add-hook 'eshell-mode-hook 'with-editor-export-editor)
+#+end_src
+
 * Key bindings and navigation
 ** Disable =C-z=
 
@@ -206,9 +226,7 @@ Load =magit=, for working with Git.
 
   :custom
   (magit-push-always-verify nil)
-  (git-commit-summary-max-length 50)
-  :config
-  (use-package with-editor))
+  (git-commit-summary-max-length 50))
 #+end_src
 
 ** =git-timemachine= for browsing file history
