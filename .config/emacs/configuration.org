@@ -91,6 +91,24 @@ Disable warning bell, both the default audio one and the visual one otherwise en
   (message "Emacs init time: %s" (emacs-init-time)))
 #+end_src
 
+** Set window title
+
+Set window title including current buffer or filename, and either the hostname
+if the server name is "server", or otherwise the server name. This is in order
+to show in which [[https://github.com/containers/toolbox][Toolbox]] container an Emacs server is running.
+
+Also show in the window title if the current buffer has been modified.
+
+#+begin_src emacs-lisp
+(setq frame-title-format
+      '((:eval (if (string= server-name "server")
+                   system-name
+                 server-name))
+        " — "
+        "%b"
+        (:eval (if (buffer-modified-p) " •"))))
+#+end_src
+
 * =emacsclient= configuration
 ** Raise new =emacsclient= frames when created
 

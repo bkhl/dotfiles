@@ -45,7 +45,7 @@ done
 # Enable using emacsclient as editor of other commands.  Setting
 # ALTERNATE_EDITOR like this makes emacsclient start a server in the background
 # and try to reconnect, if it can't find one.
-export EDITOR='emacsclient --tty'
+export EDITOR="emacsclient --socket '${TOOLBOX_PROJECT:-server}' --create-frame"
 export ALTERNATE_EDITOR=""
 
 # Use less with -R (show ANSI colour)
