@@ -103,7 +103,7 @@ Also show in the window title if the current buffer has been modified.
 (setq frame-title-format
       '(
         "%b"
-        (:eval (if (buffer-modified-p) " ◯ " " ⬤ "))
+        (:eval (if (buffer-modified-p) " ⁓ " " — "))
         (:eval (if (string= server-name "server")
                    (system-name)
                  server-name))))
