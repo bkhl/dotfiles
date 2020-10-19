@@ -102,7 +102,7 @@ Also show in the window title if the current buffer has been modified.
 #+begin_src emacs-lisp
 (setq frame-title-format
       '((:eval (if (string= server-name "server")
-                   system-name
+                   (system-name)
                  server-name))
         " — "
         "%b"
