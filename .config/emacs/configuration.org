@@ -101,9 +101,9 @@ Also show in the window title if the current buffer has been modified.
 
 #+begin_src emacs-lisp
 (setq frame-title-format
-      '((:eval (if (buffer-modified-p) "• "))
+      '(
         "%b"
-        " — "
+        (:eval (if (buffer-modified-p) " ◯ " " ⬤ "))
         (:eval (if (string= server-name "server")
                    (system-name)
                  server-name))))
