@@ -205,14 +205,71 @@ character name.
 (setq what-cursor-show-names t)
 #+end_src
 
+* Project management and version control
+** Projectile project management
+
+Load the Projectile project management package.
+
+#+begin_src emacs-lisp
+(use-package projectile
+  :ensure t
+  :config
+  (projectile-mode 1)
+  (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
+#+end_src
+
+Load the =counsel-projectile= plugin for improved completion in Projectile.
+
+#+begin_src emacs-lisp
+(use-package counsel-projectile
+  :after projectile
+  :ensure t
+  :config
+  (counsel-projectile-mode))
+#+end_src
+
+This allows setting a value in a =.dir-locals.el= to make Projectile list only
+files that are tracked in the Git repository.
+
+#+begin_src emacs-lisp
+(add-to-list 'safe-local-variable-values\
+             '(projectile-git-command . "git ls-files -zc --exclude-standard"))
+#+end_src
+
+** Magit Git integration
+
+Load =magit=, for working with Git.
+
+#+begin_src emacs-lisp
+(use-package magit
+  :bind
+  ("C-x g" . magit-status)
+
+  :custom
+  (magit-push-always-verify nil)
+  (git-commit-summary-max-length 50))
+#+end_src
+
+** =git-timemachine= for browsing file history
+
+#+begin_src emacs-lisp
+(use-package git-timemachine
+  :after magit
+  :hook magit)
+#+end_src
+
+** Make =vc-diff= imitate the diff format of Magit
+
+#+begin_src emacs-lisp
+(setq diff-font-lock-prettify t)
+#+end_src
+
 * Programming
 
 Treat words in camel case symbols as separate when editing.
 
 #+begin_src emacs-lisp
-(use-package subword
-  :config
-  (global-subword-mode 1))
+(global-subword-mode 1)
 #+end_src
 
 Automatically scroll to new output in the =*compilation*= buffer.
@@ -265,36 +322,13 @@ Auto-format Rust code on save.
         ledger-default-date-format ledger-iso-date-format))
 #+end_src
 
-* Version control
-** Magit Git integration
-
-Load =magit=, for working with Git.
-
-#+begin_src emacs-lisp
-(use-package magit
-  :bind
-  ("C-x g" . magit-status)
-
-  :custom
-  (magit-push-always-verify nil)
-  (git-commit-summary-max-length 50))
-#+end_src
-
-** =git-timemachine= for browsing file history
-
-#+begin_src emacs-lisp
-(use-package git-timemachine
-  :after magit
-  :hook magit)
-#+end_src
-
-** Make =vc-diff= imitate the diff format of Magit
-
-#+begin_src emacs-lisp
-(setq diff-font-lock-prettify t)
-#+end_src
-
 * =org-mode= planning and note-taking
+** Key bindings
+
+#+begin_src emacs-lisp
+(bind-key "C-c a" 'org-agenda)
+#+end_src
+
 ** =TODO= keywords
 
 Customizing =TODO= keywords adding my own state =READ=, which is for things to
