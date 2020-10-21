@@ -368,12 +368,6 @@ Edit src blocks in current window.
 (setq org-src-window-setup 'current-window)
 #+end_src
 
-Enable =org-indent= mode, which makes org-mode indent sections visually, but not in the saved files.
-
-#+begin_src emacs-lisp
-(setq org-startup-indented t)
-#+end_src
-
 Make indentation and fonts in code blocks work according to mode for the language in the block.
 
 #+begin_src emacs-lisp
@@ -401,6 +395,18 @@ Shortcut for inserting a block of Elisp.
 #+end_src
 
 ** Display
+
+Enable =org-indent= mode, which makes org-mode indent sections visually, but not in the saved files.
+
+#+begin_src emacs-lisp
+(setq org-startup-indented t)
+#+end_src
+
+Word wrap in =org-mode= buffers.
+
+#+begin_src emacs-lisp
+(add-hook 'org-mode-hook #'visual-line-mode)
+#+end_src
 
 Use variable fonts in =org-mode= buffers.
 
