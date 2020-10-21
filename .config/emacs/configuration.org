@@ -413,6 +413,12 @@ Display bullets instead of asterisks.
   (add-hook 'org-mode-hook 'org-superstar-mode))
 #+end_src
 
+Hide the characters surrounding emphasized phrases
+
+#+begin_src emacs-lisp
+(setq org-hide-emphasis-markers t)
+#+end_src
+
 Use the Thai ellipsis character, ไปยาลน้อย.
 
 #+begin_src emacs-lisp
