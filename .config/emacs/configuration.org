@@ -399,12 +399,6 @@ Enable =org-indent= mode, which makes org-mode indent sections visually, but not
 (setq org-startup-indented t)
 #+end_src
 
-Word wrap in =org-mode= buffers.
-
-#+begin_src emacs-lisp
-(add-hook 'org-mode-hook #'visual-line-mode)
-#+end_src
-
 Use variable fonts in =org-mode= buffers.
 
 #+begin_src emacs-lisp
