@@ -232,7 +232,7 @@ This allows setting a value in a =.dir-locals.el= to make Projectile list only
 files that are tracked in the Git repository.
 
 #+begin_src emacs-lisp
-(add-to-list 'safe-local-variable-values\
+(add-to-list 'safe-local-variable-values
              '(projectile-git-command . "git ls-files -zc --exclude-standard"))
 #+end_src
 
