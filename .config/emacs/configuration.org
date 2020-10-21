@@ -434,6 +434,7 @@ Bind =C-c c= to =org-capture= to quickly add notes.
 #+begin_src emacs-lisp
 (bind-key "C-c c" 'org-capture)
 #+end_src
+
 *** Refiling
 
 This allows refiling within the current buffer, or any agenda files.
@@ -444,6 +445,7 @@ This allows refiling within the current buffer, or any agenda files.
       org-outline-path-complete-in-steps nil
       org-refile-use-outline-path 'file)
 #+end_src
+
 ** Prose writing environment with Olivetti
 
 A minor mode that automatically adjusts margins &c. for prose writing.
