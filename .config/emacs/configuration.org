@@ -153,6 +153,13 @@ Disabling =C-z=, which normally minimizes the window, which is rather distractin
 #+begin_src emacs-lisp
 (unbind-key "C-z")
 #+end_src
+** Switching windows
+
+Make =M-o= switch to other window, as this is quite a common operation.
+
+#+begin_src emacs-lisp
+(bind-key "M-o" 'other-window)
+#+end_src
 
 ** Start with an empty scratch buffer.
 
