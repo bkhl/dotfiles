@@ -25,7 +25,9 @@ This is my Emacs configuration. Inspirations include:
 Use [[https://github.com/hrs/sensible-defaults.el][sensible-defaults.el]] for some basic settings.
 
 #+begin_src emacs-lisp
-(load-file (concat user-emacs-directory "sensible-defaults.el/sensible-defaults.el"))
+(load-file
+ (concat user-emacs-directory
+         "sensible-defaults.el/sensible-defaults.el"))
 (sensible-defaults/use-all-settings)
 (sensible-defaults/use-all-keybindings)
 (sensible-defaults/backup-to-temp-directory)
@@ -54,7 +56,7 @@ Use [[https://github.com/hrs/sensible-defaults.el][sensible-defaults.el]] for so
 (set-face-attribute 'variable-pitch
                     nil :family "Vollkorn" :height 1.1)
 (set-face-attribute 'fixed-pitch
-                    nil :family "Julia Mono")
+                    nil :family "Julia Mono" :height 1.0)
 #+end_src
 
 ** Highlight current line
