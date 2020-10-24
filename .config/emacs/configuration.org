@@ -146,6 +146,12 @@ This enables use of the library in Emacs terminals/shells.
 #+end_src
 
 * Key bindings and navigation
+** Load Hydra key binding library
+
+#+begin_src emacs-lisp
+(use-package hydra)
+#+end_src
+
 ** Disable =C-z=
 
 Disabling =C-z=, which normally minimizes the window, which is rather distracting.
@@ -153,12 +159,41 @@ Disabling =C-z=, which normally minimizes the window, which is rather distractin
 #+begin_src emacs-lisp
 (unbind-key "C-z")
 #+end_src
-** Switching windows
 
-Make =M-o= switch to other window, as this is quite a common operation.
+** Managing windows
+
+Use  =M-o= to enable a Hydra for moving between or manipulating windows.
 
 #+begin_src emacs-lisp
-(bind-key "M-o" 'other-window)
+(defhydra bkhl/hydra-other-window
+  (global-map "M-o" :foreign-keys nil)
+
+  "Switch between windows"
+
+  ("M-o" other-window)
+
+  ("<left>" windmove-left)
+  ("b" windmove-left)
+
+  ("<right>" windmove-right)
+  ("f" windmove-right)
+
+  ("<up>" windmove-up)
+  ("p" windmove-up)
+
+  ("<down>" windmove-down)
+  ("n" windmove-down)
+
+  ("k" delete-window "delete window" :color blue)
+  ("0" delete-window :color blue)
+
+  ("h" split-window-below "split horizontal" :color blue)
+  ("2" split-window-below :color blue)
+
+  ("v" split-window-right "split vertical" :color blue)
+  ("3" split-window-right :color blue)
+
+  ("1" delete-other-window :color blue))
 #+end_src
 
 ** Start with an empty scratch buffer.
@@ -333,6 +368,8 @@ Auto-format Rust code on save.
 As an exception to the rule in this file, =org-mode= is not called with =use-package=, because it has so much configuration that it warrants splitting it into sections, and it has implicitly been loaded before running this file, given that this configuration itself is written in =org-mode=.
 
 *** Key bindings
+
+Keybinding to open an agenda view.
 
 #+begin_src emacs-lisp
 (bind-key "C-c a" 'org-agenda)
