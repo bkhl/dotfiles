@@ -313,7 +313,11 @@ Load =diff-hl= which shows uncommited changes in the left-hand fringe.
 (use-package diff-hl
   :config
   (global-diff-hl-mode 1)
-  (diff-hl-flydiff-mode 1))
+  (diff-hl-flydiff-mode 1)
+  (add-hook 'magit-pre-refresh-hook
+            'diff-hl-magit-pre-refresh)
+  (add-hook 'magit-post-refresh-hook
+            'diff-hl-magit-post-refresh))
 #+end_src
 
 ** =git-timemachine= for browsing file history
