@@ -305,12 +305,15 @@ Load =magit=, for working with Git.
   (git-commit-summary-max-length 50))
 #+end_src
 
-** Show uncommitted changes in fringe
+** Show uncommited changes in fringe
+
+Load =diff-hl= which shows uncommited changes in the left-hand fringe.
 
 #+begin_src emacs-lisp
 (use-package diff-hl
   :config
-  (global-diff-hl-mode 1))
+  (global-diff-hl-mode 1)
+  (diff-hl-flydiff-mode 1))
 #+end_src
 
 ** =git-timemachine= for browsing file history
