@@ -170,7 +170,7 @@ Use  =M-o= to enable a Hydra for moving between or manipulating windows.
 
   "Switch between windows"
 
-  ("M-o" other-window)
+  ("M-o" other-window "other window")
 
   ("<left>" windmove-left)
   ("b" windmove-left)
@@ -187,13 +187,13 @@ Use  =M-o= to enable a Hydra for moving between or manipulating windows.
   ("k" delete-window "delete window" :color blue)
   ("0" delete-window :color blue)
 
+  ("1" delete-other-window "delete other window" :color blue)
+
   ("h" split-window-below "split horizontal" :color blue)
   ("2" split-window-below :color blue)
 
   ("v" split-window-right "split vertical" :color blue)
-  ("3" split-window-right :color blue)
-
-  ("1" delete-other-window :color blue))
+  ("3" split-window-right :color blue))
 #+end_src
 
 ** Start with an empty scratch buffer.
