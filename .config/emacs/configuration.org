@@ -519,6 +519,15 @@ This allows refiling within the current buffer, or any agenda files.
       org-refile-use-outline-path 'file)
 #+end_src
 
+*** Agendas
+
+Hide done tasks from the agenda.
+
+#+begin_src emacs-lisp
+(setq org-agenda-skip-scheduled-if-done t
+      org-agenda-skip-deadline-if-done t)
+#+end_src
+
 ** Prose writing environment with Olivetti
 
 A minor mode that automatically adjusts margins &c. for prose writing.
