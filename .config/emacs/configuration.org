@@ -21,17 +21,6 @@ This is my Emacs configuration. Inspirations include:
       calendar-location-name "Bangkok")
 #+end_src
 
-* Use =sensible-defaults.el=
-
-Use [[https://github.com/hrs/sensible-defaults.el][sensible-defaults.el]] for some basic settings.
-
-#+begin_src emacs-lisp
-(load-file
- (concat user-emacs-directory
-         "sensible-defaults.el/sensible-defaults.el"))
-(sensible-defaults/bind-commenting-and-uncommenting)
-#+end_src
-
 * Look and feel
 ** Load Modus Operandi theme
 
@@ -463,6 +452,24 @@ Load =diff-hl= which shows uncommited changes in the left-hand fringe.
 
 #+begin_src emacs-lisp
 (add-hook 'prog-mode-hook 'subword-mode)
+#+end_src
+
+** Add keybinding to comment/uncomment line or region
+
+#+begin_src emacs-lisp
+(defun bkhl/comment-or-uncomment-region-or-line ()
+  "Comments or uncomments the region or the current line if
+there's no active region."
+  (interactive)
+  (let (beg end)
+    (if (region-active-p)
+        (setq beg (region-beginning) end (region-end))
+      (setq beg (line-beginning-position) end (line-end-position)))
+    (comment-or-uncomment-region beg end)))
+
+
+(global-set-key (kbd "M-;")
+                'bkhl/comment-or-uncomment-region-or-line)
 #+end_src
 
 ** Automatically scroll to new output in the =*compilation*= buffer.
