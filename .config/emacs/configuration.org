@@ -37,7 +37,6 @@ Use [[https://github.com/hrs/sensible-defaults.el][sensible-defaults.el]] for so
 (sensible-defaults/ensure-that-files-end-with-newline)
 (sensible-defaults/make-dired-file-sizes-human-readable)
 (sensible-defaults/offer-to-create-parent-directories-on-save)
-(sensible-defaults/open-files-from-home-directory)
 (sensible-defaults/overwrite-selected-text)
 (sensible-defaults/quiet-startup)
 (sensible-defaults/refresh-buffers-when-files-change)
@@ -164,6 +163,21 @@ This enables use of the library in Emacs terminals/shells.
 #+end_src
 
 * Key bindings and navigation
+** Start with an empty scratch buffer.
+
+#+begin_src emacs-lisp
+(setq inhibit-startup-screen t
+      initial-scratch-message "")
+#+end_src
+
+** Start opening files from home directory
+
+Unless overridden by a buffer, when prompting to open a file, start in the home directory.
+
+#+begin_src emacs-lisp
+(setq default-directory "~/")
+#+end_src
+
 ** Load Hydra key binding library
 
 #+begin_src emacs-lisp
@@ -218,13 +232,6 @@ Package containing the =transpose-frame= command and some others to rearrange wi
 
 #+begin_src emacs-lisp
 (use-package transpose-frame)
-#+end_src
-
-** Start with an empty scratch buffer.
-
-#+begin_src emacs-lisp
-(setq inhibit-startup-screen t
-      initial-scratch-message "")
 #+end_src
 
 ** Use =ivy= and =counsel= for completion and searching
