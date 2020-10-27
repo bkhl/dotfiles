@@ -32,9 +32,7 @@ Use [[https://github.com/hrs/sensible-defaults.el][sensible-defaults.el]] for so
 (sensible-defaults/bind-commenting-and-uncommenting)
 (sensible-defaults/bind-keys-to-change-text-size)
 (sensible-defaults/confirm-closing-emacs)
-(sensible-defaults/ensure-that-files-end-with-newline)
 (sensible-defaults/offer-to-create-parent-directories-on-save)
-(sensible-defaults/shorten-yes-or-no)
 (sensible-defaults/treat-camelcase-as-separate-words)
 (sensible-defaults/yank-to-point-on-mouse-click)
 #+end_src
@@ -128,6 +126,12 @@ Also show in the window title if the current buffer has been modified.
 (show-paren-mode t)
 (setq show-paren-delay 0.0)
 #+end_src
+
+** Make yes/no prompts shorter
+
+#+begin_export latex
+(fset 'yes-or-no-p 'y-or-n-p)
+#+end_export
 
 * =emacsclient= configuration
 ** Raise new =emacsclient= frames when created
