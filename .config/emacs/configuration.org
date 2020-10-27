@@ -29,7 +29,6 @@ Use [[https://github.com/hrs/sensible-defaults.el][sensible-defaults.el]] for so
 (load-file
  (concat user-emacs-directory
          "sensible-defaults.el/sensible-defaults.el"))
-(sensible-defaults/always-highlight-code)
 (sensible-defaults/apply-changes-to-highlighted-region)
 (sensible-defaults/automatically-follow-symlinks)
 (sensible-defaults/backup-to-temp-directory)
@@ -71,6 +70,12 @@ Use [[https://github.com/hrs/sensible-defaults.el][sensible-defaults.el]] for so
   (load-theme 'modus-operandi t))
 #+end_src
 
+** Enable syntax highlighting everywhere
+
+#+begin_src emacs-lisp
+(global-font-lock-mode t)
+#+end_src
+
 ** Fonts
 
 #+begin_src emacs-lisp
@@ -82,13 +87,9 @@ Use [[https://github.com/hrs/sensible-defaults.el][sensible-defaults.el]] for so
                     nil :family "Julia Mono" :height 1.0)
 #+end_src
 
-** Highlight current line
+** Render some keywords as symbols
 
-#+begin_src emacs-lisp
-(hl-line-mode 1)
-#+end_src
-
-** Render =lambda= as =λ=
+This primarily makes =lambda= get rendered as =λ= in Emacs Lisp, but can also be enabled in other modes.
 
 #+begin_src emacs-lisp
 (global-prettify-symbols-mode 1)
