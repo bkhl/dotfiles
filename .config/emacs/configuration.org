@@ -30,7 +30,6 @@ Use [[https://github.com/hrs/sensible-defaults.el][sensible-defaults.el]] for so
  (concat user-emacs-directory
          "sensible-defaults.el/sensible-defaults.el"))
 (sensible-defaults/bind-commenting-and-uncommenting)
-(sensible-defaults/bind-home-and-end-keys)
 (sensible-defaults/bind-keys-to-change-text-size)
 (sensible-defaults/confirm-closing-emacs)
 (sensible-defaults/delete-trailing-whitespace)
@@ -189,6 +188,13 @@ Disabling =C-z=, which normally minimizes the window, which is rather distractin
 
 #+begin_src emacs-lisp
 (unbind-key "C-z")
+#+end_src
+
+** Bind Home/End to move to start/end of line
+
+#+begin_src emacs-lisp
+(global-set-key (kbd "<home>") 'move-beginning-of-line)
+(global-set-key (kbd "<end>") 'move-end-of-line)
 #+end_src
 
 ** Managing windows
