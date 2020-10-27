@@ -38,7 +38,6 @@ Use [[https://github.com/hrs/sensible-defaults.el][sensible-defaults.el]] for so
 (sensible-defaults/make-dired-file-sizes-human-readable)
 (sensible-defaults/offer-to-create-parent-directories-on-save)
 (sensible-defaults/overwrite-selected-text)
-(sensible-defaults/quiet-startup)
 (sensible-defaults/refresh-buffers-when-files-change)
 (sensible-defaults/set-default-line-length-to 80)
 (sensible-defaults/shorten-yes-or-no)
@@ -167,7 +166,7 @@ This enables use of the library in Emacs terminals/shells.
 
 #+begin_src emacs-lisp
 (setq inhibit-startup-screen t
-      initial-scratch-message "")
+      initial-scratch-message nil)
 #+end_src
 
 ** Start opening files from home directory
