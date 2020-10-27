@@ -7,7 +7,7 @@
 
 This is my Emacs configuration. Inspirations include:
 
--Harry R. Schwart's [[https://github.com/hrs/dotfiles/blob/main/emacs/dot-emacs.d/configuration.org][Emacs configuration]] and [[https://github.com/hrs/sensible-defaults.el][sensible-defaults.el]].
+- Harry R. Schwart's [[https://github.com/hrs/dotfiles/blob/main/emacs/dot-emacs.d/configuration.org][Emacs configuration]] and [[https://github.com/hrs/sensible-defaults.el][sensible-defaults.el]].
 - [[https://emacscast.org/][EmacsCast]].
 - Protesilaos Stavrou's  [[https://protesilaos.com/codelog/][blog]] and [[https://www.youtube.com/channel/UC0uTPqBCFIpZxlz_Lv1tk_g][videos]].
 
@@ -30,7 +30,6 @@ Use [[https://github.com/hrs/sensible-defaults.el][sensible-defaults.el]] for so
  (concat user-emacs-directory
          "sensible-defaults.el/sensible-defaults.el"))
 (sensible-defaults/bind-commenting-and-uncommenting)
-(sensible-defaults/bind-keys-to-change-text-size)
 #+end_src
 
 * Look and feel
@@ -139,6 +138,20 @@ Also show in the window title if the current buffer has been modified.
 
 #+begin_src emacs-lisp
 (setq mouse-yank-at-point t)
+#+end_src
+
+** Bind some keys to resize font size
+
+#+begin_src emacs-lisp
+(defun bkhl/reset-text-size ()
+  (interactive)
+  (text-scale-set 0))
+
+(define-key global-map (kbd "C-)") 'bkhl/reset-text-size)
+(define-key global-map (kbd "C-+") 'text-scale-increase)
+(define-key global-map (kbd "C-=") 'text-scale-increase)
+(define-key global-map (kbd "C-_") 'text-scale-decrease)
+(define-key global-map (kbd "C--") 'text-scale-decrease)
 #+end_src
 
 * =emacsclient= configuration
