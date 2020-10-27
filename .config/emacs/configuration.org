@@ -37,7 +37,6 @@ Use [[https://github.com/hrs/sensible-defaults.el][sensible-defaults.el]] for so
 (sensible-defaults/make-dired-file-sizes-human-readable)
 (sensible-defaults/offer-to-create-parent-directories-on-save)
 (sensible-defaults/overwrite-selected-text)
-(sensible-defaults/set-default-line-length-to 80)
 (sensible-defaults/shorten-yes-or-no)
 (sensible-defaults/single-space-after-periods)
 (sensible-defaults/treat-camelcase-as-separate-words)
@@ -301,6 +300,12 @@ Highlight the region when the mark is active, and make editing commands apply to
 
 #+begin_src emacs-lisp
 (setq-default indent-tabs-mode nil)
+#+end_src
+
+** Set default line length to 80
+
+#+begin_src emacs-lisp
+(setq-default fill-column 80)
 #+end_src
 
 ** Set default indentation width to 4.
