@@ -34,7 +34,6 @@ Use [[https://github.com/hrs/sensible-defaults.el][sensible-defaults.el]] for so
 (sensible-defaults/confirm-closing-emacs)
 (sensible-defaults/delete-trailing-whitespace)
 (sensible-defaults/ensure-that-files-end-with-newline)
-(sensible-defaults/make-dired-file-sizes-human-readable)
 (sensible-defaults/offer-to-create-parent-directories-on-save)
 (sensible-defaults/shorten-yes-or-no)
 (sensible-defaults/single-space-after-periods)
@@ -614,7 +613,7 @@ Hide done tasks from the agenda.
       org-agenda-skip-deadline-if-done t)
 #+end_src
 
-* Other file formats
+* File formats
 ** hledger
 
 #+begin_src emacs-lisp
@@ -627,4 +626,13 @@ Hide done tasks from the agenda.
         ledger-report-links-in-register nil
         ledger-binary-path "hledger"
         ledger-default-date-format ledger-iso-date-format))
+#+end_src
+
+* Other modes
+** dired
+
+Make file sizes shown in dired human readable.
+
+#+begin_src emacs-lisp
+(setq-default dired-listing-switches "-alh")
 #+end_src
