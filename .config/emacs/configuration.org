@@ -31,7 +31,6 @@ Use [[https://github.com/hrs/sensible-defaults.el][sensible-defaults.el]] for so
          "sensible-defaults.el/sensible-defaults.el"))
 (sensible-defaults/bind-commenting-and-uncommenting)
 (sensible-defaults/bind-keys-to-change-text-size)
-(sensible-defaults/offer-to-create-parent-directories-on-save)
 (sensible-defaults/treat-camelcase-as-separate-words)
 (sensible-defaults/yank-to-point-on-mouse-click)
 #+end_src
@@ -302,6 +301,20 @@ When files are saved, delete trailing whitespace and ensure that the file ends w
 #+begin_src emacs-lisp
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 (setq require-final-newline t)
+#+end_src
+
+** Offer to create parent directories on save
+
+When saving a file to a directory that doesn't exist, offer to create it.
+
+#+begin_src emacs-lisp
+(add-hook 'before-save-hook
+          (lambda ()
+            (when buffer-file-name
+              (let ((dir (file-name-directory buffer-file-name)))
+                (when (and (not (file-exists-p dir))
+                           (y-or-n-p (format "Directory %s does not exist. Create it?" dir)))
+                  (make-directory dir t))))))
 #+end_src
 
 * General text editing
