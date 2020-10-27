@@ -37,7 +37,6 @@ Use [[https://github.com/hrs/sensible-defaults.el][sensible-defaults.el]] for so
 (sensible-defaults/ensure-that-files-end-with-newline)
 (sensible-defaults/make-dired-file-sizes-human-readable)
 (sensible-defaults/offer-to-create-parent-directories-on-save)
-(sensible-defaults/open-clicked-files-in-same-frame-on-mac)
 (sensible-defaults/open-files-from-home-directory)
 (sensible-defaults/overwrite-selected-text)
 (sensible-defaults/quiet-startup)
