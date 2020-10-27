@@ -3,9 +3,15 @@
 ;; This has only sets up essential configuration for the package system and
 ;; org-mode, then loads the configuration.org file.
 
-;; Some settings to reduce the startup-time.
-(let ((file-name-handler-alist nil)
-      (gc-cons-threshold 100000000))
+;; Increase number of bytes of consing between garbage collections. This appears
+;; to increase performance at the cost of some memory increase. This is done
+;; first to decrease start-up time.
+(setq gc-cons-threshold 20000000)
+
+;; During loading of init file, disable checking filenames against the list of
+;; filetype handlers. This speeds up startup, as otherwise this list would be
+;; checked for every loaded .el and .elc file.
+(let ((file-name-handler-alist nil))
 
   ;; Save custom values in separate file.
   (setq custom-file (concat user-emacs-directory "custom.el"))
