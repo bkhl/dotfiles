@@ -39,7 +39,6 @@ Use [[https://github.com/hrs/sensible-defaults.el][sensible-defaults.el]] for so
 (sensible-defaults/overwrite-selected-text)
 (sensible-defaults/set-default-line-length-to 80)
 (sensible-defaults/shorten-yes-or-no)
-(sensible-defaults/show-matching-parens)
 (sensible-defaults/single-space-after-periods)
 (sensible-defaults/treat-camelcase-as-separate-words)
 (sensible-defaults/yank-to-point-on-mouse-click)
@@ -126,6 +125,13 @@ Also show in the window title if the current buffer has been modified.
         (:eval (if (string= server-name "server")
                    (system-name)
                  server-name))))
+#+end_src
+
+** Highlight matching pairs of parentheses.
+
+#+begin_src emacs-lisp
+(show-paren-mode t)
+(setq show-paren-delay 0.0)
 #+end_src
 
 * =emacsclient= configuration
