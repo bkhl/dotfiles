@@ -36,7 +36,6 @@ Use [[https://github.com/hrs/sensible-defaults.el][sensible-defaults.el]] for so
 (sensible-defaults/ensure-that-files-end-with-newline)
 (sensible-defaults/make-dired-file-sizes-human-readable)
 (sensible-defaults/offer-to-create-parent-directories-on-save)
-(sensible-defaults/overwrite-selected-text)
 (sensible-defaults/shorten-yes-or-no)
 (sensible-defaults/single-space-after-periods)
 (sensible-defaults/treat-camelcase-as-separate-words)
@@ -290,10 +289,16 @@ If a file changes, automatically refresh buffers containing the file, so that it
 * General text editing
 ** Highlight selected region and apply changes to it
 
-Highlight the region when the mark is active, and make editing commands apply to the selected region.
+Highlight the region when the mark is active.
 
 #+begin_src emacs-lisp
 (transient-mark-mode t)
+#+end_src
+
+Set it so that if a selection is active, typed text will replace the selection.
+
+#+begin_src emacs-lisp
+(delete-selection-mode t)
 #+end_src
 
 ** Disable indentation using tabs.
