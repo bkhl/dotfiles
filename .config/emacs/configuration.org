@@ -267,6 +267,7 @@ Councel adds replacement for additional Emacs commands based on Ivy.
 #+end_src
 
 * File handling
+** Store backups in tmp directory
 
 Store backups and autosaves in =temporary-file-directory=. This risks losing some data on a system crash, but I am not very concerned about that as generally my important files are in some kind of version control.
 
@@ -277,11 +278,15 @@ Store backups and autosaves in =temporary-file-directory=. This risks losing som
       `((".*" ,temporary-file-directory t)))
 #+end_src
 
+** Automatically sync updated files
+
 If a file changes, automatically refresh buffers containing the file, so that it doesn't get out of sync.
 
 #+begin_src emacs-lisp
 (global-auto-revert-mode t)
 #+end_src
+
+** Trim trailing spaces and enforce final newline
 
 When files are saved, delete trailing whitespace and ensure that the file ends with a newline.
 
