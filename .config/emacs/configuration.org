@@ -31,7 +31,6 @@ Use [[https://github.com/hrs/sensible-defaults.el][sensible-defaults.el]] for so
          "sensible-defaults.el/sensible-defaults.el"))
 (sensible-defaults/bind-commenting-and-uncommenting)
 (sensible-defaults/bind-keys-to-change-text-size)
-(sensible-defaults/confirm-closing-emacs)
 (sensible-defaults/offer-to-create-parent-directories-on-save)
 (sensible-defaults/treat-camelcase-as-separate-words)
 (sensible-defaults/yank-to-point-on-mouse-click)
@@ -132,6 +131,12 @@ Also show in the window title if the current buffer has been modified.
 #+begin_export latex
 (fset 'yes-or-no-p 'y-or-n-p)
 #+end_export
+
+** Prompt before closing Emacs
+
+#+begin_src emacs-lisp
+(setq confirm-kill-emacs 'y-or-n-p)
+#+end_src
 
 * =emacsclient= configuration
 ** Raise new =emacsclient= frames when created
