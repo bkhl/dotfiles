@@ -36,7 +36,6 @@ Use [[https://github.com/hrs/sensible-defaults.el][sensible-defaults.el]] for so
 (sensible-defaults/ensure-that-files-end-with-newline)
 (sensible-defaults/offer-to-create-parent-directories-on-save)
 (sensible-defaults/shorten-yes-or-no)
-(sensible-defaults/single-space-after-periods)
 (sensible-defaults/treat-camelcase-as-separate-words)
 (sensible-defaults/yank-to-point-on-mouse-click)
 #+end_src
@@ -453,6 +452,12 @@ Use =rustic= for Rust editing.
 Auto-format Rust code on save.
 
 * Writing
+** Use single space to delimit sentences
+
+#+begin_src emacs-lisp
+(setq sentence-end-double-space nil)
+#+end_src
+
 ** Prose writing environment with Olivetti
 
 A minor mode that automatically adjusts margins &c. for prose writing.
