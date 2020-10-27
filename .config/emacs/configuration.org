@@ -32,7 +32,6 @@ Use [[https://github.com/hrs/sensible-defaults.el][sensible-defaults.el]] for so
 (sensible-defaults/bind-commenting-and-uncommenting)
 (sensible-defaults/bind-keys-to-change-text-size)
 (sensible-defaults/confirm-closing-emacs)
-(sensible-defaults/delete-trailing-whitespace)
 (sensible-defaults/ensure-that-files-end-with-newline)
 (sensible-defaults/offer-to-create-parent-directories-on-save)
 (sensible-defaults/shorten-yes-or-no)
@@ -282,6 +281,12 @@ If a file changes, automatically refresh buffers containing the file, so that it
 
 #+begin_src emacs-lisp
 (global-auto-revert-mode t)
+#+end_src
+
+Delete trailing whitespace when a buffer is saved.
+
+#+begin_src emacs-lisp
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
 #+end_src
 
 * General text editing
