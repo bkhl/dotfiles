@@ -31,7 +31,6 @@ Use [[https://github.com/hrs/sensible-defaults.el][sensible-defaults.el]] for so
          "sensible-defaults.el/sensible-defaults.el"))
 (sensible-defaults/bind-commenting-and-uncommenting)
 (sensible-defaults/bind-keys-to-change-text-size)
-(sensible-defaults/yank-to-point-on-mouse-click)
 #+end_src
 
 * Look and feel
@@ -134,6 +133,12 @@ Also show in the window title if the current buffer has been modified.
 
 #+begin_src emacs-lisp
 (setq confirm-kill-emacs 'y-or-n-p)
+#+end_src
+
+** Make middle-clicking mouse yank at point
+
+#+begin_src emacs-lisp
+(setq mouse-yank-at-point t)
 #+end_src
 
 * =emacsclient= configuration
