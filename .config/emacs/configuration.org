@@ -37,7 +37,6 @@ Use [[https://github.com/hrs/sensible-defaults.el][sensible-defaults.el]] for so
 (sensible-defaults/make-dired-file-sizes-human-readable)
 (sensible-defaults/offer-to-create-parent-directories-on-save)
 (sensible-defaults/overwrite-selected-text)
-(sensible-defaults/refresh-buffers-when-files-change)
 (sensible-defaults/set-default-line-length-to 80)
 (sensible-defaults/shorten-yes-or-no)
 (sensible-defaults/show-matching-parens)
@@ -266,7 +265,7 @@ Councel adds replacement for additional Emacs commands based on Ivy.
   ("C-c g" . counsel-git))
 #+end_src
 
-* Save backups in temporary directory
+* File handling
 
 Store backups and autosaves in =temporary-file-directory=. This risks losing some data on a system crash, but I am not very concerned about that as generally my important files are in some kind of version control.
 
@@ -275,6 +274,12 @@ Store backups and autosaves in =temporary-file-directory=. This risks losing som
       `((".*" . ,temporary-file-directory)))
 (setq auto-save-file-name-transforms
       `((".*" ,temporary-file-directory t)))
+#+end_src
+
+If a file changes, automatically refresh buffers containing the file, so that it doesn't get out of sync.
+
+#+begin_src emacs-lisp
+(global-auto-revert-mode t)
 #+end_src
 
 * General text editing
