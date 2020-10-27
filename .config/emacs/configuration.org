@@ -283,10 +283,11 @@ If a file changes, automatically refresh buffers containing the file, so that it
 (global-auto-revert-mode t)
 #+end_src
 
-Delete trailing whitespace when a buffer is saved.
+When files are saved, delete trailing whitespace and ensure that the file ends with a newline.
 
 #+begin_src emacs-lisp
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
+(setq require-final-newline t)
 #+end_src
 
 * General text editing
