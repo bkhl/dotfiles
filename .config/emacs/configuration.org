@@ -36,7 +36,6 @@ Use [[https://github.com/hrs/sensible-defaults.el][sensible-defaults.el]] for so
 (sensible-defaults/delete-trailing-whitespace)
 (sensible-defaults/ensure-that-files-end-with-newline)
 (sensible-defaults/flash-screen-instead-of-ringing-bell)
-(sensible-defaults/increase-gc-threshold)
 (sensible-defaults/make-dired-file-sizes-human-readable)
 (sensible-defaults/offer-to-create-parent-directories-on-save)
 (sensible-defaults/open-clicked-files-in-same-frame-on-mac)
