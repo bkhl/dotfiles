@@ -29,7 +29,6 @@ Use [[https://github.com/hrs/sensible-defaults.el][sensible-defaults.el]] for so
 (load-file
  (concat user-emacs-directory
          "sensible-defaults.el/sensible-defaults.el"))
-(sensible-defaults/apply-changes-to-highlighted-region)
 (sensible-defaults/automatically-follow-symlinks)
 (sensible-defaults/backup-to-temp-directory)
 (sensible-defaults/bind-commenting-and-uncommenting)
@@ -255,6 +254,14 @@ Councel adds replacement for additional Emacs commands based on Ivy.
 #+end_src
 
 * General text editing
+** Highlight selected region and apply changes to it
+
+Highlight the region when the mark is active, and make editing commands apply to the selected region.
+
+#+begin_src emacs-lisp
+(transient-mark-mode t)
+#+end_src
+
 ** Disable indentation using tabs.
 
 #+begin_src emacs-lisp
