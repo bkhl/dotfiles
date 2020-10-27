@@ -7,8 +7,9 @@
 
 This is my Emacs configuration. Inspirations include:
 
-- [[https://github.com/hrs/dotfiles/blob/main/emacs/dot-emacs.d/configuration.org][Harry R. Schwart's Emacs configuration]]
-- [[https://emacscast.org/][EmacsCast]]
+-Harry R. Schwart's [[https://github.com/hrs/dotfiles/blob/main/emacs/dot-emacs.d/configuration.org][Emacs configuration]] and [[https://github.com/hrs/sensible-defaults.el][sensible-defaults.el]].
+- [[https://emacscast.org/][EmacsCast]].
+- Protesilaos Stavrou's  [[https://protesilaos.com/codelog/][blog]] and [[https://www.youtube.com/channel/UC0uTPqBCFIpZxlz_Lv1tk_g][videos]].
 
 * Set personal information
 
@@ -28,9 +29,31 @@ Use [[https://github.com/hrs/sensible-defaults.el][sensible-defaults.el]] for so
 (load-file
  (concat user-emacs-directory
          "sensible-defaults.el/sensible-defaults.el"))
-(sensible-defaults/use-all-settings)
-(sensible-defaults/use-all-keybindings)
+(sensible-defaults/always-highlight-code)
+(sensible-defaults/apply-changes-to-highlighted-region)
+(sensible-defaults/automatically-follow-symlinks)
 (sensible-defaults/backup-to-temp-directory)
+(sensible-defaults/bind-commenting-and-uncommenting)
+(sensible-defaults/bind-home-and-end-keys)
+(sensible-defaults/bind-keys-to-change-text-size)
+(sensible-defaults/confirm-closing-emacs)
+(sensible-defaults/delete-trailing-whitespace)
+(sensible-defaults/ensure-that-files-end-with-newline)
+(sensible-defaults/flash-screen-instead-of-ringing-bell)
+(sensible-defaults/increase-gc-threshold)
+(sensible-defaults/make-dired-file-sizes-human-readable)
+(sensible-defaults/offer-to-create-parent-directories-on-save)
+(sensible-defaults/open-clicked-files-in-same-frame-on-mac)
+(sensible-defaults/open-files-from-home-directory)
+(sensible-defaults/overwrite-selected-text)
+(sensible-defaults/quiet-startup)
+(sensible-defaults/refresh-buffers-when-files-change)
+(sensible-defaults/set-default-line-length-to 80)
+(sensible-defaults/shorten-yes-or-no)
+(sensible-defaults/show-matching-parens)
+(sensible-defaults/single-space-after-periods)
+(sensible-defaults/treat-camelcase-as-separate-words)
+(sensible-defaults/yank-to-point-on-mouse-click)
 #+end_src
 
 * Look and feel
