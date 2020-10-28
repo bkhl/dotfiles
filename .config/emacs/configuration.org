@@ -247,12 +247,6 @@ Use  =M-o= to enable a Hydra for moving between or manipulating windows.
   ("3" split-window-right :color blue))
 #+end_src
 
-Package containing the =transpose-frame= command and some others to rearrange windows in a frame.
-
-#+begin_src emacs-lisp
-(use-package transpose-frame)
-#+end_src
-
 ** Use =ivy= and =counsel= for completion and searching
 
 Ivy is a generic completion and selection framework. This also replaces the
