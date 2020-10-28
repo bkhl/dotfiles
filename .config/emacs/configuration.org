@@ -216,12 +216,10 @@ Disabling =C-z=, which normally minimizes the window, which is rather distractin
 Use  =M-o= to enable a Hydra for moving between or manipulating windows.
 
 #+begin_src emacs-lisp
-(defhydra bkhl/hydra-other-window
-  (global-map "M-o" :foreign-keys nil)
+(defhydra bkhl/hydra-other-window ()
+  "Window"
 
-  "Switch between windows"
-
-  ("M-o" other-window "other window")
+  ("M-o" other-window)
 
   ("<left>" windmove-left)
   ("b" windmove-left)
@@ -235,16 +233,18 @@ Use  =M-o= to enable a Hydra for moving between or manipulating windows.
   ("<down>" windmove-down)
   ("n" windmove-down)
 
-  ("k" delete-window "delete window" :color blue)
+  ("k" delete-window :color blue)
   ("0" delete-window :color blue)
 
-  ("1" delete-other-window "delete other window" :color blue)
+  ("1" delete-other-window :color blue)
 
-  ("h" split-window-below "split horizontal" :color blue)
+  ("h" split-window-below :color blue)
   ("2" split-window-below :color blue)
 
-  ("v" split-window-right "split vertical" :color blue)
+  ("v" split-window-right :color blue)
   ("3" split-window-right :color blue))
+
+(bind-key "M-o" #'bkhl/hydra-other-window/body)
 #+end_src
 
 ** Use =ivy= and =counsel= for completion and searching
