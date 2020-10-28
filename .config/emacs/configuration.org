@@ -61,7 +61,9 @@ This primarily makes =lambda= get rendered as =λ= in Emacs Lisp, but can also b
 (global-prettify-symbols-mode 1)
 #+end_src
 
-** Hide minor modes with =minions=
+** Customize mode line
+
+Hide minor modes from mode line with Minions.
 
 #+begin_src emacs-lisp
 (use-package minions
@@ -69,6 +71,14 @@ This primarily makes =lambda= get rendered as =λ= in Emacs Lisp, but can also b
   (setq minions-mode-line-lighter ""
 		minions-mode-line-delimiters '("" . ""))
   (minions-mode 1))
+#+end_src
+
+Enable smart-mode-line
+
+#+begin_src emacs-lisp
+(use-package smart-mode-line
+  :config
+  (sml/setup))
 #+end_src
 
 ** Disable bell
