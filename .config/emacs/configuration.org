@@ -113,7 +113,7 @@ Also show in the window title if the current buffer has been modified.
 
 ** Make yes/no prompts shorter
 
-#+begin_export latex
+#+begin_export emacs-lisp
 (fset 'yes-or-no-p 'y-or-n-p)
 #+end_export
 
