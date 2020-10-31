@@ -503,6 +503,8 @@ Load =lsp-mode= itself.
   (lsp-modeline-code-action-fallback-icon "‡"))
 #+end_src
 
+Use =lsp-ivy= for navigation to symbols within a workspace.
+
 #+begin_src emacs-lisp
 (use-package lsp-ivy
   :after lsp-mode
