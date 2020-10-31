@@ -484,8 +484,11 @@ there's no active region."
 
 ** Multi-purpose programming packages
 *** Language Server Protocol with =lsp-mode=
+
 #+begin_src emacs-lisp
-(use-package lsp-mode)
+(use-package lsp-mode
+  :custom
+  (lsp-modeline-code-action-fallback-icon "‡"))
 #+end_src
 
 *** Completion with =company=
