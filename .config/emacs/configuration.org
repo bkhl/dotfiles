@@ -495,10 +495,19 @@ there's no active region."
 ** Multi-purpose programming packages
 *** Language Server Protocol with =lsp-mode=
 
+Load =lsp-mode= itself.
+
 #+begin_src emacs-lisp
 (use-package lsp-mode
   :custom
   (lsp-modeline-code-action-fallback-icon "‡"))
+#+end_src
+
+#+begin_src emacs-lisp
+(use-package lsp-ivy
+  :after lsp-mode
+  :bind
+  ("C-c s" . lsp-ivy-workspace-symbol))
 #+end_src
 
 *** Completion with =company=
