@@ -729,6 +729,12 @@ Hide done tasks from the agenda.
         ledger-default-date-format ledger-iso-date-format))
 #+end_src
 
+** YAML
+
+#+begin_src emacs-lisp
+(use-package yaml-mode)
+#+end_src
+
 * Other modes
 ** dired
 
