@@ -541,11 +541,7 @@ Use the =custom-box= plugin to =company= to get icons in the selection box.
 Enable =lsp-mode= for Python buffers.
 
 #+begin_src emacs-lisp
-  (use-package python
-    :hook
-    ((python-mode . lsp)))
-
-  (use-package lsp-ui)
+(use-package lsp-ui)
 #+end_src
 
 Package for activating Python virtual environments.
