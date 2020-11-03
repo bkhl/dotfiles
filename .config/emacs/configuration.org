@@ -167,11 +167,10 @@ Also show in the window title if the current buffer has been modified.
 ** Raise new =emacsclient= frames when created
 
 #+begin_src emacs-lisp
-(cl-flet ((focus-frame ()
-                       (select-frame-set-input-focus (selected-frame))))
-
-      (add-hook 'server-switch-hook #'focus-frame)
-      (add-hook 'server-after-make-frame-hook #'focus-frame))
+  (defun bkhl/focus-frame ()
+    (select-frame-set-input-focus (selected-frame)))
+  (add-hook 'server-switch-hook 'bkhl/focus-frame)
+  (add-hook 'server-after-make-frame-hook 'bkhl/focus-frame)
 #+end_src
 
 ** Help use =emacsclient= as =$EDITOR=
@@ -328,13 +327,13 @@ When files are saved, delete trailing whitespace and ensure that the file ends w
 When saving a file to a directory that doesn't exist, offer to create it.
 
 #+begin_src emacs-lisp
-(add-hook 'before-save-hook
-          (lambda ()
-            (when buffer-file-name
-              (let ((dir (file-name-directory buffer-file-name)))
-                (when (and (not (file-exists-p dir))
-                           (y-or-n-p (format "Directory %s does not exist. Create it?" dir)))
-                  (make-directory dir t))))))
+  (defun bkhl/ask-create-directory ()
+    (when buffer-file-name
+      (let ((dir (file-name-directory buffer-file-name)))
+        (when (and (not (file-exists-p dir))
+                   (y-or-n-p (format "Directory %s does not exist. Create it?" dir)))
+          (make-directory dir t)))))
+  (add-hook 'before-save-hook 'bkhl/ask-create-directory)
 #+end_src
 
 * General text editing
@@ -539,6 +538,16 @@ Use the =custom-box= plugin to =company= to get icons in the selection box.
 ** Programming languages
 *** Python
 
+Enable =lsp-mode= for Python buffers.
+
+#+begin_src emacs-lisp
+  (use-package python
+    :hook
+    ((python-mode . lsp)))
+
+  (use-package lsp-ui)
+#+end_src
+
 Package for activating Python virtual environments.
 
 #+begin_src emacs-lisp
@@ -575,9 +584,9 @@ Enable some programming ligatures in Rust buffers.
 A minor mode that automatically adjusts margins &c. for prose writing.
 
 #+begin_src emacs-lisp
-(use-package olivetti
-  :config
-  (add-hook 'org-mode-hook '(lambda () (olivetti-mode 1))))
+  (use-package olivetti
+    :config
+    (add-hook 'org-mode-hook 'olivetti-mode))
 #+end_src
 
 * =org-mode= planning and note-taking
