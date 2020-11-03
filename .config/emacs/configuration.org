@@ -551,7 +551,17 @@ Enable =lsp-mode= for Python buffers.
 Package for activating Python virtual environments.
 
 #+begin_src emacs-lisp
-(use-package pyvenv)
+(use-package pyvenv
+  :config
+  (add-hook 'pyvenv-post-activate-hooks 'lsp))
+#+end_src
+
+Automatically set virtual environment for Poetry projects.
+
+#+begin_src emacs-lisp
+(use-package poetry
+  :config
+  (poetry-tracking-mode))
 #+end_src
 
 *** Rust
