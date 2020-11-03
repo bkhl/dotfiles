@@ -537,6 +537,14 @@ Use the =custom-box= plugin to =company= to get icons in the selection box.
 #+end_src
 
 ** Programming languages
+*** Python
+
+Package for activating Python virtual environments.
+
+#+begin_src emacs-lisp
+(use-package pyvenv)
+#+end_src
+
 *** Rust
 
 Use =rustic= for Rust editing.
