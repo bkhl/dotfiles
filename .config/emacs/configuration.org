@@ -461,6 +461,14 @@ Load =diff-hl= which shows uncommited changes in the left-hand fringe.
 (setq diff-font-lock-prettify t)
 #+end_src
 
+** Ally remembering risky local variables
+
+This overrides the Emacs settings that enforces having to accept local variables matching certain patterns every time they are used.
+
+#+begin_src emacs-lisp
+(advice-add 'risky-local-variable-p :override #'ignore)
+#+end_src
+
 * Programming
 ** In programming modes, treat words in camel case symbols as separate.
 
