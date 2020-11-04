@@ -508,6 +508,9 @@ Load =lsp-mode= itself.
 (use-package lsp-mode
   :custom
   (lsp-modeline-code-action-fallback-icon "‡"))
+
+(use-package lsp-ui
+  :after lsp)
 #+end_src
 
 Use =lsp-ivy= for navigation to symbols within a workspace.
@@ -541,21 +544,21 @@ Use the =custom-box= plugin to =company= to get icons in the selection box.
 Enable =lsp-mode= for Python buffers.
 
 #+begin_src emacs-lisp
-(use-package lsp-ui)
+(add-hook 'python-mode-hook 'lsp-deferred)
 #+end_src
 
 Package for activating Python virtual environments.
 
 #+begin_src emacs-lisp
-(use-package pyvenv
-  :config
-  (add-hook 'pyvenv-post-activate-hooks 'lsp))
+(use-package pyvenv)
 #+end_src
 
 Automatically set virtual environment for Poetry projects.
 
 #+begin_src emacs-lisp
 (use-package poetry
+  :custom
+  (poetry-tracking-strategy 'switch-buffer)
   :config
   (poetry-tracking-mode))
 #+end_src
