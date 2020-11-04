@@ -547,20 +547,11 @@ Enable =lsp-mode= for Python buffers.
 (add-hook 'python-mode-hook 'lsp-deferred)
 #+end_src
 
-Package for activating Python virtual environments.
+Packages for activating Python virtual environments.
 
 #+begin_src emacs-lisp
 (use-package pyvenv)
-#+end_src
-
-Automatically set virtual environment for Poetry projects.
-
-#+begin_src emacs-lisp
-(use-package poetry
-  :custom
-  (poetry-tracking-strategy 'switch-buffer)
-  :config
-  (poetry-tracking-mode))
+(use-package poetry)
 #+end_src
 
 *** Rust
