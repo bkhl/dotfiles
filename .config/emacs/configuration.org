@@ -554,13 +554,25 @@ Packages for activating Python virtual environments.
 (use-package poetry)
 #+end_src
 
-Define a formatter that uses Black for Python formatting, and add a keybinding for it.
+Define formatters for isort and Black, and define a shortcut for them.
 
 #+begin_src emacs-lisp
-(reformatter-define python-format
-  :program "black" :args '("-"))
+(reformatter-define python-black-format
+  :program "black" :args '("-q" "-"))
 
-(bind-key "C-c f" 'python-format-buffer)
+(reformatter-define python-isort-format
+  :program "isort" :args '("-q" "-"))
+
+(defun bkhl/python-format-buffer ()
+  (python-isort-format-buffer)
+  (python-black-format-buffer))
+
+(with-eval-after-load 'python
+  (bind-key "C-c f" (lambda ()
+                      (interactive)
+                      (python-isort-format-buffer)
+                      (python-black-format-buffer))
+            python-mode-map))
 #+end_src
 
 *** Rust
