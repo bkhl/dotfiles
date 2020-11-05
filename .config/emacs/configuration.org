@@ -554,6 +554,15 @@ Packages for activating Python virtual environments.
 (use-package poetry)
 #+end_src
 
+Define a formatter that uses Black for Python formatting, and add a keybinding for it.
+
+#+begin_src emacs-lisp
+(reformatter-define python-format
+  :program "black" :args '("-"))
+
+(bind-key "C-c f" 'python-format-buffer)
+#+end_src
+
 *** Rust
 
 Use =rustic= for Rust editing.
@@ -599,6 +608,12 @@ Keybinding to open an agenda view.
 
 #+begin_src emacs-lisp
 (bind-key "C-c a" 'org-agenda)
+#+end_src
+
+Use =councel= for setting tags.
+
+#+begin_src emacs-lisp
+(bind-key "C-c C-q" 'counsel-org-tag org-mode-map)
 #+end_src
 
 ** =TODO= keywords
