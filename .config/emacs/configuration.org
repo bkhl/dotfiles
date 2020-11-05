@@ -531,11 +531,12 @@ Use =lsp-ivy= for navigation to symbols within a workspace.
   (bind-key "M-/" 'company-complete-common))
 #+end_src
 
-Use the =custom-box= plugin to =company= to get icons in the selection box.
+Use the =company-posframe= plugin to show the =company= menus in a separate frame, not affected by e.g. variable pitch mode.
 
 #+begin_src emacs-lisp
-(use-package company-box
-  :hook (company-mode . company-box-mode))
+(use-package company-posframe
+  :custom (company-posframe-show-indicator nil)
+  :hook (company-mode . company-posframe-mode))
 #+end_src
 
 ** Programming languages
