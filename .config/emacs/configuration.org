@@ -386,6 +386,13 @@ Enable =electric-pair-mode=, which enables automatic insert of matching characte
 (electric-pair-mode 1)
 #+end_src
 
+** Enable =yasnippet=
+
+#+begin_src emacs-lisp
+(use-package yasnippet
+  :ensure t)
+#+end_src
+
 * Project management and version control
 ** Projectile project management
 
@@ -506,6 +513,7 @@ Load =lsp-mode= itself.
 
 #+begin_src emacs-lisp
 (use-package lsp-mode
+  :after yasnippet
   :init (setq lsp-keymap-prefix "C-c l")
   :custom (lsp-modeline-code-action-fallback-icon "‡"))
 
@@ -542,17 +550,10 @@ Use the =company-posframe= plugin to show the =company= menus in a separate fram
 ** Programming languages
 *** Python
 
-Enable =lsp-mode= for Python buffers.
-
-#+begin_src emacs-lisp
-(add-hook 'python-mode-hook 'lsp-deferred)
-#+end_src
-
 Packages for activating Python virtual environments.
 
 #+begin_src emacs-lisp
 (use-package pyvenv)
-(use-package poetry)
 #+end_src
 
 Define formatters for isort and Black, and define a shortcut for them.
