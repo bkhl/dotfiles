@@ -506,8 +506,8 @@ Load =lsp-mode= itself.
 
 #+begin_src emacs-lisp
 (use-package lsp-mode
-  :custom
-  (lsp-modeline-code-action-fallback-icon "‡"))
+  :init (setq lsp-keymap-prefix "C-c l")
+  :custom (lsp-modeline-code-action-fallback-icon "‡"))
 
 (use-package lsp-ui
   :after lsp)
