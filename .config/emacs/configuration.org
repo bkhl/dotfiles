@@ -389,8 +389,7 @@ Enable =electric-pair-mode=, which enables automatic insert of matching characte
 ** Enable =yasnippet=
 
 #+begin_src emacs-lisp
-(use-package yasnippet
-  :ensure t)
+(use-package yasnippet)
 #+end_src
 
 * Project management and version control
@@ -400,7 +399,6 @@ Load the Projectile project management package.
 
 #+begin_src emacs-lisp
 (use-package projectile
-  :ensure t
   :config
   (projectile-mode 1)
   (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
@@ -411,7 +409,6 @@ Load the =counsel-projectile= plugin for improved completion in Projectile.
 #+begin_src emacs-lisp
 (use-package counsel-projectile
   :after projectile
-  :ensure t
   :config
   (counsel-projectile-mode))
 #+end_src
@@ -513,7 +510,7 @@ Load =lsp-mode= itself.
 
 #+begin_src emacs-lisp
 (use-package lsp-mode
-  :after yasnippet
+  :ensure yasnippet
   :init (setq lsp-keymap-prefix "C-c l")
   :custom (lsp-modeline-code-action-fallback-icon "‡"))
 
