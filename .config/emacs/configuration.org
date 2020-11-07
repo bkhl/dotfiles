@@ -545,6 +545,13 @@ Use the =company-posframe= plugin to show the =company= menus in a separate fram
 #+end_src
 
 ** Programming languages
+*** Docker
+
+#+begin_src emacs-lisp
+(use-package dockerfile-mode
+  :mode ("\\'Dockerfile\\.?" . dockerfile-mode))
+#+end_src
+
 *** Python
 
 Packages for activating Python virtual environments.
