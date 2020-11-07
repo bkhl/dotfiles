@@ -38,5 +38,5 @@
 	path = .vim/pack/plugins/start/papercolor
 	url = https://github.com/NLKNguyen/papercolor-theme.git
 [submodule ".config/emacs/ligature.el"]
-	path = .config/emacs/ligature.el
+	path = .emacs.d/ligature.el
 	url = https://github.com/mickeynp/ligature.el.git
