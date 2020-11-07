@@ -563,22 +563,24 @@ Packages for activating Python virtual environments.
 Define formatters for isort and Black, and define a shortcut for them.
 
 #+begin_src emacs-lisp
-(reformatter-define python-black-format
-  :program "black" :args '("-q" "-"))
+  (use-package reformatter
+    :config
+    (reformatter-define python-black-format
+      :program "black" :args '("-q" "-"))
 
-(reformatter-define python-isort-format
-  :program "isort" :args '("-q" "-"))
+    (reformatter-define python-isort-format
+      :program "isort" :args '("-q" "-"))
 
-(defun bkhl/python-format-buffer ()
-  (python-isort-format-buffer)
-  (python-black-format-buffer))
+    (defun bkhl/python-format-buffer ()
+      (python-isort-format-buffer)
+      (python-black-format-buffer))
 
-(with-eval-after-load 'python
-  (bind-key "C-c f" (lambda ()
-                      (interactive)
-                      (python-isort-format-buffer)
-                      (python-black-format-buffer))
-            python-mode-map))
+    (with-eval-after-load 'python
+      (bind-key "C-c f" (lambda ()
+                          (interactive)
+                          (python-isort-format-buffer)
+                          (python-black-format-buffer))
+                python-mode-map)))
 #+end_src
 
 *** Rust
