@@ -1,42 +1,6 @@
-[submodule ".vim/pack/plugins/start/vim-surround"]
-	path = .vim/pack/plugins/start/surround
-	url = https://github.com/tpope/vim-surround.git
-[submodule ".vim/pack/plugins/start/vim-commentary"]
-	path = .vim/pack/plugins/start/commentary
-	url = https://github.com/tpope/vim-commentary.git
-[submodule ".vim/pack/plugins/start/vim-signify"]
-	path = .vim/pack/plugins/start/signify
-	url = https://github.com/mhinz/vim-signify.git
-[submodule ".vim/pack/plugins/start/vim-bufferline"]
-	path = .vim/pack/plugins/start/bufferline
-	url = https://github.com/bling/vim-bufferline.git
-[submodule ".vim/pack/plugins/start/vim-polyglot"]
-	path = .vim/pack/plugins/start/polyglot
-	url = https://github.com/sheerun/vim-polyglot.git
-[submodule ".vim/pack/plugins/start/vinegar"]
-	path = .vim/pack/plugins/start/vinegar
-	url = https://github.com/tpope/vim-vinegar.git
-[submodule ".vim/pack/plugins/start/repeat"]
-	path = .vim/pack/plugins/start/repeat
-	url = https://github.com/tpope/vim-repeat.git
-[submodule ".vim/pack/plugins/start/tabular"]
-	path = .vim/pack/plugins/start/tabular
-	url = https://github.com/godlygeek/tabular.git
-[submodule ".vim/pack/plugins/start/ale"]
-	path = .vim/pack/plugins/start/ale
-	url = https://github.com/dense-analysis/ale.git
 [submodule ".vim/pack/plugins/start/racket"]
 	path = .vim/pack/plugins/start/racket
 	url = https://github.com/wlangstroth/vim-racket
-[submodule ".vim/pack/plugins/start/gdscript3"]
-	path = .vim/pack/plugins/start/gdscript3
-	url = https://github.com/calviken/vim-gdscript3.git
-[submodule ".vim/pack/plugins/start/editorconfig"]
-	path = .vim/pack/plugins/start/editorconfig
-	url = https://github.com/editorconfig/editorconfig-vim.git
-[submodule ".vim/pack/plugins/start/papercolor"]
-	path = .vim/pack/plugins/start/papercolor
-	url = https://github.com/NLKNguyen/papercolor-theme.git
 [submodule ".config/emacs/ligature.el"]
 	path = .emacs.d/ligature.el
 	url = https://github.com/mickeynp/ligature.el.git
