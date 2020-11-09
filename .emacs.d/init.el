@@ -8,6 +8,9 @@
 ;; first to decrease start-up time.
 (setq gc-cons-threshold 20000000)
 
+(if emacs-version< "26.3"
+  (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3"))xs
+
 ;; During loading of init file, disable checking filenames against the list of
 ;; filetype handlers. This speeds up startup, as otherwise this list would be
 ;; checked for every loaded .el and .elc file.
@@ -22,6 +25,7 @@
   (setq package-archives '(("melpa" . "https://melpa.org/packages/")
                            ("gnu" . "http://elpa.gnu.org/packages/")
                            ("org" . "http://orgmode.org/elpa/")))
+  (package-initialize)
 
   ;; Ensure that use-package is installed.
   (when (not (package-installed-p 'use-package))
