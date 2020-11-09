@@ -394,7 +394,8 @@ Enable =electric-pair-mode=, which enables automatic insert of matching characte
 ** Enable =yasnippet=
 
 #+begin_src emacs-lisp
-(use-package yasnippet)
+(use-package yasnippet
+  :ensure t)
 #+end_src
 
 * Project management and version control
@@ -514,8 +515,8 @@ there's no active region."
 Load =lsp-mode= itself.
 
 #+begin_src emacs-lisp
-(use-package lsp-mode
-  :ensure yasnippet
+(use-package lsp
+  :ensure lsp-mode
   :init (setq lsp-keymap-prefix "C-c l")
   :custom (lsp-modeline-code-action-fallback-icon "‡"))
 
