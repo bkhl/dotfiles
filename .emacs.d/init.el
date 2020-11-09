@@ -3,6 +3,10 @@
 ;; This has only sets up essential configuration for the package system and
 ;; org-mode, then loads the configuration.org file.
 
+;; Load early-init.el if we are on an Emacs version that didn't already load it.
+(if (version< emacs-version "27")
+    (load-file (concat user-emacs-directory "early-init.el")))
+
 ;; Increase number of bytes of consing between garbage collections. This appears
 ;; to increase performance at the cost of some memory increase. This is done
 ;; first to decrease start-up time.
