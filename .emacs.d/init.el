@@ -8,8 +8,8 @@
 ;; first to decrease start-up time.
 (setq gc-cons-threshold 20000000)
 
-(if emacs-version< "26.3"
-  (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3"))xs
+(if (version< emacs-version "26.3")
+  (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3"))
 
 ;; During loading of init file, disable checking filenames against the list of
 ;; filetype handlers. This speeds up startup, as otherwise this list would be
