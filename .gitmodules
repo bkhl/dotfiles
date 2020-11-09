@@ -1,6 +1,3 @@
 [submodule ".vim/pack/plugins/start/racket"]
 	path = .vim/pack/plugins/start/racket
 	url = https://github.com/wlangstroth/vim-racket
-[submodule ".config/emacs/ligature.el"]
-	path = .emacs.d/ligature.el
-	url = https://github.com/mickeynp/ligature.el.git

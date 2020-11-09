@@ -26,7 +26,6 @@ This is my Emacs configuration. Inspirations include:
 
 #+begin_src emacs-lisp
 (use-package modus-operandi-theme
-  :ensure t
   :custom
   (modus-operandi-theme-faint-syntax t)
   (modus-operandi-theme-org-blocks 'greyscale)
@@ -59,9 +58,8 @@ Set global fonts.
 Enable =ligature.el=, to enable use of ligatures in some programming modes.
 
 #+begin_src emacs-lisp
-(load-file
- (concat user-emacs-directory
-         "ligature.el/ligature.el"))
+(use-package ligature
+  :straight `(el-patch :type git :host github :repo "mickeynp/ligature.el"))
 #+end_src
 
 ** Render some keywords as symbols
@@ -78,7 +76,6 @@ Hide minor modes from mode line with Minions.
 
 #+begin_src emacs-lisp
 (use-package minions
-  :ensure t
   :config
   (setq minions-mode-line-lighter ""
 		minions-mode-line-delimiters '("" . ""))
@@ -89,7 +86,6 @@ Enable smart-mode-line
 
 #+begin_src emacs-lisp
 (use-package smart-mode-line
-  :ensure t
   :config
   (sml/setup))
 #+end_src
@@ -185,8 +181,7 @@ It also adds a way for remote processes to communicate via input/output instead
 of a socket.
 
 #+begin_src emacs-lisp
-(use-package with-editor
-  :ensure t)
+(use-package with-editor)
 #+end_src
 
 This enables use of the library in Emacs terminals/shells.
@@ -216,8 +211,7 @@ Unless overridden by a buffer, when prompting to open a file, start in the home 
 ** Load Hydra key binding library
 
 #+begin_src emacs-lisp
-(use-package hydra
-  :ensure t)
+(use-package hydra)
 #+end_src
 
 ** Disable =C-z=
@@ -394,8 +388,7 @@ Enable =electric-pair-mode=, which enables automatic insert of matching characte
 ** Enable =yasnippet=
 
 #+begin_src emacs-lisp
-(use-package yasnippet
-  :ensure t)
+(use-package yasnippet)
 #+end_src
 
 * Project management and version control
@@ -515,8 +508,7 @@ there's no active region."
 Load =lsp-mode= itself.
 
 #+begin_src emacs-lisp
-(use-package lsp
-  :ensure lsp-mode
+(use-package lsp-mode
   :init (setq lsp-keymap-prefix "C-c l")
   :custom (lsp-modeline-code-action-fallback-icon "‡"))
 
