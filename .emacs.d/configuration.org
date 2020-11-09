@@ -26,6 +26,7 @@ This is my Emacs configuration. Inspirations include:
 
 #+begin_src emacs-lisp
 (use-package modus-operandi-theme
+  :ensure t
   :custom
   (modus-operandi-theme-faint-syntax t)
   (modus-operandi-theme-org-blocks 'greyscale)
@@ -77,6 +78,7 @@ Hide minor modes from mode line with Minions.
 
 #+begin_src emacs-lisp
 (use-package minions
+  :ensure t
   :config
   (setq minions-mode-line-lighter ""
 		minions-mode-line-delimiters '("" . ""))
@@ -87,6 +89,7 @@ Enable smart-mode-line
 
 #+begin_src emacs-lisp
 (use-package smart-mode-line
+  :ensure t
   :config
   (sml/setup))
 #+end_src
@@ -182,7 +185,8 @@ It also adds a way for remote processes to communicate via input/output instead
 of a socket.
 
 #+begin_src emacs-lisp
-(use-package with-editor)
+(use-package with-editor
+  :ensure t)
 #+end_src
 
 This enables use of the library in Emacs terminals/shells.
@@ -212,7 +216,8 @@ Unless overridden by a buffer, when prompting to open a file, start in the home 
 ** Load Hydra key binding library
 
 #+begin_src emacs-lisp
-(use-package hydra)
+(use-package hydra
+  :ensure t)
 #+end_src
 
 ** Disable =C-z=
