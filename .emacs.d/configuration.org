@@ -496,10 +496,20 @@ there's no active region."
 #+end_src
 
 ** Multi-purpose programming packages
-*** Check code on the fly with =flycheck=
+*** Check code on the fly with Flycheck
+
+Enable =flycheck-mode= globally.
 
 #+begin_src emacs-lisp
-(use-package flycheck)
+(use-package flycheck
+  :init (global-flycheck-mode))
+#+end_src
+
+Plugin to show Flycheck errors in a tool tip.
+
+#+begin_src emacs-lisp
+(use-package flycheck-pos-tip
+  :hook (flycheck-mode . flycheck-pos-tip-mode))
 #+end_src
 
 *** Language Server Protocol with =lsp-mode=
@@ -555,33 +565,66 @@ Use the =company-posframe= plugin to show the =company= menus in a separate fram
 
 *** Python
 
-Packages for activating Python virtual environments.
+Use Python 3 as default Python interpreter. This is for environments that does not have a =python= command, or that points it to Python 2.
+
+#+begin_src emacs-lisp
+(setq python-shell-interpreter "python3"
+      python-shell-interpreter-args "-i")
+#+end_src
+
+Package for activating Python virtual environments.
 
 #+begin_src emacs-lisp
 (use-package pyvenv)
 #+end_src
 
-Define formatters for isort and Black, and define a shortcut for them.
+Elpy, package with IDE-like features for Python. I've found so far that this is faster and more reliable than =lsp-mode= for Python.
 
 #+begin_src emacs-lisp
-  (use-package reformatter
-    :config
-    (reformatter-define python-black-format
-      :program "black" :args '("-q" "-"))
+(use-package elpy
+  :defer t
+  :custom (elpy-rpc-python-command "python3")
+  :init (advice-add 'python-mode :before 'elpy-enable))
+#+end_src
 
-    (reformatter-define python-isort-format
-      :program "isort" :args '("-q" "-"))
+Helper function to set =flycheck= executables to match the current virtual environment.
 
-    (defun bkhl/python-format-buffer ()
-      (python-isort-format-buffer)
-      (python-black-format-buffer))
+#+begin_src emacs-lisp
+(defun bkhl/flycheck-python-set-executables ()
+  "Use some commands from virtual environments in flycheck."
+  (let ((exec-path (python-shell-calculate-exec-path)))
+    (setq-local flycheck-python-pylint-executable
+                (executable-find "pylint"))))
 
-    (with-eval-after-load 'python
-      (bind-key "C-c f" (lambda ()
-                          (interactive)
-                          (python-isort-format-buffer)
-                          (python-black-format-buffer))
-                python-mode-map)))
+(defun bkhl/flycheck-python-set-executables-add-hook ()
+  (add-hook 'flycheck-before-syntax-check-hook
+            #'bkhl/flycheck-python-set-executables 'local))
+
+(add-hook 'python-mode-hook
+          'bkhl/flycheck-python-set-executables-add-hook)
+#+end_src
+
+Add formatters for Python.
+
+ #+begin_src emacs-lisp
+ (use-package reformatter
+   :config
+   (reformatter-define python-black-format
+                       :program "black" :args '("-q" "-"))
+
+   (reformatter-define python-isort-format
+                       :program "isort" :args '("-q" "-"))
+
+   (defun bkhl/python-format-buffer ()
+     (python-isort-format-buffer)
+     (python-black-format-buffer))
+
+   (with-eval-after-load 'python
+     (bind-key "C-c f" (lambda ()
+                         (interactive)
+                         (python-isort-format-buffer)
+                         (python-black-format-buffer))
+               python-mode-map)))
 #+end_src
 
 *** Rust
