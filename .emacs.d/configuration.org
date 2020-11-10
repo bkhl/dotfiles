@@ -496,6 +496,12 @@ there's no active region."
 #+end_src
 
 ** Multi-purpose programming packages
+*** Check code on the fly with =flycheck=
+
+#+begin_src emacs-lisp
+(use-package flycheck)
+#+end_src
+
 *** Language Server Protocol with =lsp-mode=
 
 Load =lsp-mode= itself.
@@ -503,10 +509,14 @@ Load =lsp-mode= itself.
 #+begin_src emacs-lisp
 (use-package lsp-mode
   :init (setq lsp-keymap-prefix "C-c l")
+  :after flycheck
   :custom (lsp-modeline-code-action-fallback-icon "‡"))
+#+end_src
 
+
+#+begin_src emacs-lisp
 (use-package lsp-ui
-  :after lsp)
+  :after lsp-mode)
 #+end_src
 
 Use =lsp-ivy= for navigation to symbols within a workspace.
