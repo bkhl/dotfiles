@@ -10,7 +10,7 @@
  ("emacsmirror-mirror" . "83bfe8b5f9bcd3653dbea383776183c6d36841ac")
  ("epl" . "78ab7a85c08222cd15582a298a364774e3282ce6")
  ("f.el" . "1814209e2ff43cf2e6d38c4cd476218915f550fb")
- ("flycheck" . "79c9245ee0bd1722d41c865fef69aa2b1ac08fde")
+ ("flycheck" . "5164c765b7e35b3c6b65eeb9ab899fb0377305ea")
  ("flycheck-pos-tip" . "dc57beac0e59669926ad720c7af38b27c3a30467")
  ("git-timemachine" . "8d675750e921a047707fcdc36d84f8439b19a907")
  ("gnu-elpa-mirror" . "6a1561f5e75ff52398db79d231eca3ea29e1b67c")
