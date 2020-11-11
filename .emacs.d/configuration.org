@@ -55,6 +55,15 @@ Set global fonts.
                     nil :family "Julia Mono" :height 1.0)
 #+end_src
 
+Enable =ligature.el=, to enable use of ligatures in some programming modes.
+
+#+begin_src emacs-lisp
+(use-package ligature
+  :straight (ligature :type git
+                      :host github
+                      :repo "mickeynp/ligature.el"))
+#+end_src
+
 ** Render some keywords as symbols
 
 This primarily makes =lambda= get rendered as =λ= in Emacs Lisp, but can also be enabled in other modes.
@@ -502,9 +511,9 @@ Enable =flycheck-mode= globally.
 
 #+begin_src emacs-lisp
 (use-package flycheck
-  :straight `(el-patch :type git
-                       :host github
-                       :repo "bkhl/flycheck")
+  :straight (flycheck :type git
+                      :host github
+                      :repo "bkhl/flycheck")
   :init (global-flycheck-mode))
 #+end_src
 
@@ -639,6 +648,13 @@ Use =rustic= for Rust editing.
   :after (lsp-mode company)
   :custom
   (rustic-format-trigger 'on-save))
+#+end_src
+
+Enable some programming ligatures in Rust buffers.
+
+#+begin_src emacs-lisp
+(ligature-set-ligatures '(rustic-mode) '("->" "=>" "::"))
+(add-hook 'rustic-mode-hook 'ligature-mode)
 #+end_src
 
 * Writing
