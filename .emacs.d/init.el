@@ -27,9 +27,6 @@
   ;; Hook straight.el into use-package
   (setq straight-use-package-by-default t)
 
-  ;; Make straight.el do shallow checkouts.
-  (setq straight-vc-git-default-clone-depth 1)
-
   ;; Bootstrap straight.el
   (defvar bootstrap-version)
   (let ((bootstrap-file
