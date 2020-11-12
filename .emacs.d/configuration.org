@@ -174,26 +174,6 @@ Also show in the window title if the current buffer has been modified.
   (add-hook 'server-after-make-frame-hook 'bkhl/focus-frame)
 #+end_src
 
-** Help use =emacsclient= as =$EDITOR=
-
-This library adds ability for =emacsclient= used as =$EDITOR= in child processes
-to more reliably pick the parent Emacs process as the server.
-
-It also adds a way for remote processes to communicate via input/output instead
-of a socket.
-
-#+begin_src emacs-lisp
-(use-package with-editor)
-#+end_src
-
-This enables use of the library in Emacs terminals/shells.
-
-#+begin_src emacs-lisp
-(add-hook 'shell-mode-hook  'with-editor-export-editor)
-(add-hook 'term-exec-hook   'with-editor-export-editor)
-(add-hook 'eshell-mode-hook 'with-editor-export-editor)
-#+end_src
-
 * Key bindings and navigation
 ** Start with an empty scratch buffer.
 
