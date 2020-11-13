@@ -249,9 +249,16 @@ Use  =M-o= to enable a Hydra for moving between or manipulating windows.
 
 ** Selectrum for incremental narrowing commands
 
+[[https://github.com/raxod502/selectrum][Selectrum]] is a library for incremental narrowing, and [[https://github.com/raxod502/prescient.el][Prescient]] adds more intelligent sorting of results to it.
+
 #+begin_src emacs-lisp
 (use-package selectrum
   :config (selectrum-mode))
+
+(use-package selectrum-prescient
+  :config
+  (selectrum-prescient-mode)
+  (prescient-persist-mode))
 #+end_src
 
 ** CTRLF for search within buffer
