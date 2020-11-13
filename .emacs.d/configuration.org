@@ -247,31 +247,18 @@ Use  =M-o= to enable a Hydra for moving between or manipulating windows.
 (bind-key "M-o" #'bkhl/hydra-other-window/body)
 #+end_src
 
-** Use =ivy= and =counsel= for completion and searching
-
-Ivy is a generic completion and selection framework. This also replaces the
-standard binding =C-s= to search within a file with =swiper=, which comes with
-Ivy.
+** Selectrum for incremental narrowing commands
 
 #+begin_src emacs-lisp
-(use-package ivy
-  :demand t
-  :custom
-  (ivy-initial-inputs-alist nil)
-  :config
-  (ivy-mode 1)
-  :bind
-  ("C-s" . swiper))
+(use-package selectrum
+  :config (selectrum-mode))
 #+end_src
 
-Councel adds replacement for additional Emacs commands based on Ivy.
+** CTRLF for search within buffer
 
 #+begin_src emacs-lisp
-(use-package counsel
-  :config
-  (counsel-mode 1)
-  :bind
-  ("C-c g" . counsel-git))
+(use-package ctrlf
+  :config (ctrlf-mode))
 #+end_src
 
 * File handling
@@ -383,15 +370,6 @@ Load the Projectile project management package.
   :config
   (projectile-mode 1)
   (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
-#+end_src
-
-Load the =counsel-projectile= plugin for improved completion in Projectile.
-
-#+begin_src emacs-lisp
-(use-package counsel-projectile
-  :after projectile
-  :config
-  (counsel-projectile-mode))
 #+end_src
 
 This allows setting a value in a =.dir-locals.el= to make Projectile list only
@@ -519,15 +497,6 @@ Load =lsp-mode= itself.
 #+begin_src emacs-lisp
 (use-package lsp-ui
   :after lsp-mode)
-#+end_src
-
-Use =lsp-ivy= for navigation to symbols within a workspace.
-
-#+begin_src emacs-lisp
-(use-package lsp-ivy
-  :after lsp-mode
-  :bind
-  ("C-c s" . lsp-ivy-workspace-symbol))
 #+end_src
 
 *** Completion with =company=
@@ -664,12 +633,6 @@ Keybinding to open an agenda view.
 
 #+begin_src emacs-lisp
 (bind-key "C-c a" 'org-agenda)
-#+end_src
-
-Use =councel= for setting tags.
-
-#+begin_src emacs-lisp
-(bind-key "C-c C-q" 'counsel-org-tag org-mode-map)
 #+end_src
 
 ** =TODO= keywords
