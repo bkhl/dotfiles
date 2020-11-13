@@ -32,6 +32,7 @@
  ("pkg-info" . "76ba7415480687d05a4353b27fea2ae02b8d9d61")
  ("pos-tip" . "179cc126b363f72ca12fab1e0dc462ce0ee79742")
  ("posframe" . "395aca928b00c8f76aaeb65a85481c99e88c6873")
+ ("prescient.el" . "41443e1c9f794b569dafdad4c0b64a608df64b99")
  ("projectile" . "d1daf274e8ca2eb0f20475b8f314bb955167c6a1")
  ("pyvenv" . "861998b6d157ae73b829f02a5a6c8a9118310831")
  ("reformatter.el" . "45c0add95025f53ca644a6c8b9afa05b2da3c474")

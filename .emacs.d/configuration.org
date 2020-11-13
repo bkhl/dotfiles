@@ -523,6 +523,13 @@ Use the =company-posframe= plugin to show the =company= menus in a separate fram
   :hook (company-mode . company-posframe-mode))
 #+end_src
 
+Use [[https://github.com/raxod502/prescient.el][Prescient]] to sort alternatives in Company.
+
+#+begin_src emacs-lisp
+(use-package company-prescient
+  :config (company-prescient-mode))
+#+end_src
+
 ** Programming languages
 *** Docker
 
