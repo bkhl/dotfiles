@@ -367,6 +367,15 @@ Enable =electric-pair-mode=, which enables automatic insert of matching characte
 (use-package yasnippet)
 #+end_src
 
+** Operate on the current line if no region is active
+
+This module allows a number of functions to operate on the current line if no region is selected.
+
+#+begin_src emacs-lisp
+(use-package whole-line-or-region
+  :config (whole-line-or-region-global-mode))
+#+end_src
+
 * Project management and version control
 ** Projectile project management
 
