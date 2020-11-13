@@ -22,7 +22,7 @@
  ("lsp-ivy" . "e3c675b2484dd45e88f0f79e56972244b2c5fcb2")
  ("lsp-mode" . "936dd86142c43e01f38d8b6aaf920b32a8ea2be4")
  ("lsp-ui" . "b1693d610c4d2c44305eba2719e8d4097fdcdcb8")
- ("magit" . "d2a55e22a078ce88f3c1533297f5c16cf57f6b31")
+ ("magit" . "8ba17a5df9c23e61beef3b4d4616e1f0b0c5f871")
  ("markdown-mode" . "cf6403186119cd3d25adc702845f969071060e20")
  ("melpa" . "6fd01687e84065e33885927055c5c1e05da61955")
  ("minions" . "36d39bd25ae58d1359d17f99142520339bea5974")
