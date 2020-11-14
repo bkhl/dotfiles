@@ -268,6 +268,15 @@ Use  =M-o= to enable a Hydra for moving between or manipulating windows.
   :config (ctrlf-mode))
 #+end_src
 
+** Use =C-S-f= to expand region
+
+This package allows first selecting the word the current pointer is on, and then by repeating the key press grow the selection to the next larger structure.
+
+#+begin_src emacs-lisp
+(use-package expand-region
+  :bind ("C-S-w" . er/expand-region))
+#+end_src
+
 * File handling
 ** Store backups in tmp directory
 
