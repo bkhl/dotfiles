@@ -990,7 +990,7 @@ Install =org-super-agenda= for improved agenda interface, and categorize tasks r
 
 I use recurring tasks for habits rather than the habit feature, because [[http://www.orgzly.com/][Orgzly]] currently only supports the former feature, so that's why I use a tag for those here.
 
-#+begin_export emacs-lisp
+#+begin_src emacs-lisp
 (use-package org-super-agenda
   :custom (org-super-agenda-groups
            '((:name "Schedule"
@@ -1006,7 +1006,7 @@ I use recurring tasks for habits rather than the habit feature, because [[http:/
              (:name "Other"
               :todo ("TODO" "READ"))))
   :config (org-super-agenda-mode))
-#+end_export
+#+end_src
 
 Search all files in the notes directory when creating agendas.
 
