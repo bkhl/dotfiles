@@ -822,7 +822,7 @@ Enable ligatures in Python buffers.
                           "**=" "&="  "|="  "^="
                           ">>=" "<<=" "=="  "!="
                           ">="  "<="  "<<"  ">>"
-                          "#!"  "__"))
+                          "#!"  "__"  "->"))
 (add-hook 'python-mode-hook 'ligature-mode)
 #+end_src
 
