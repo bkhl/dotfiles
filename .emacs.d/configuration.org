@@ -263,9 +263,20 @@ Use  =M-o= to enable a Hydra for moving between or manipulating windows.
 
 ** CTRLF for search within buffer
 
+This packages replaces the standard =isearch-forward= with a search function based on Selectrum.
+
+Using an advice to use an "unbranded" prompt.
+
 #+begin_src emacs-lisp
+(defun bkhl/ctrlf-prompt (prompt)
+  (if (string-prefix-p "CTRLF " prompt)
+      (concat "Search " (substring prompt 6))
+              prompt))
+
 (use-package ctrlf
-  :config (ctrlf-mode))
+  :config
+  (advice-add 'ctrlf--prompt :filter-return #'bkhl/ctrlf-prompt)
+  (ctrlf-mode))
 #+end_src
 
 ** Use =C-S-f= to expand region
