@@ -624,13 +624,12 @@ Enable ligatures in Python buffers.
 
 #+begin_src emacs-lisp
 (ligature-set-ligatures '(python-mode)
-                        '("**"  "//"  "+=" "-="
-                          "*="  "/="  "%=" "//="
-                          "**=" "&="  "|=" "^="
-                          ">>=" "<<=" "==" "!="
-                          ">="  "<="  "<<" ">>"
-                          "#!" "##" "###" "####"
-                          "__"))
+                        '("**"  "//"  "+="  "-="
+                          "*="  "/="  "%="  "//="
+                          "**=" "&="  "|="  "^="
+                          ">>=" "<<=" "=="  "!="
+                          ">="  "<="  "<<"  ">>"
+                          "#!"  "__"))
 (add-hook 'python-mode-hook 'ligature-mode)
 #+end_src
 
@@ -649,12 +648,13 @@ Enable some programming ligatures in Rust buffers.
 
 #+begin_src emacs-lisp
 (ligature-set-ligatures '(rustic-mode)
-                        '("->" "=>" "::" "!=" "%="
-                          "%=" "&&" "*=" "+=" "-="
-                          ".." "..=" "..." "/=" "<<"
-                          "<<=" "<=" "==" "=>" ">="
-                          ">>" ">>=" "^=" "|=" "||"
-                          "#[" "##" "###" "####"))
+                        '("->"  "=>"  "::"  "!="
+                          "%="  "%="  "&&"  "*="
+                          "+="  "-="  ".."  "..="
+                          "..." "/="  "<<"  "<<="
+                          "<="  "=="  "=>"  ">="
+                          ">>"  ">>=" "^="  "|="
+                          "||"  "#["))
 (add-hook 'rustic-mode-hook 'ligature-mode)
 #+end_src
 
