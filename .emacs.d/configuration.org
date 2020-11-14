@@ -271,7 +271,7 @@ Using an advice to use an "unbranded" prompt.
 (defun bkhl/ctrlf-prompt (prompt)
   (if (string-prefix-p "CTRLF " prompt)
       (concat "Search " (substring prompt 6))
-              prompt))
+    prompt))
 
 (use-package ctrlf
   :config
