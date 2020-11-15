@@ -559,6 +559,15 @@ Use [[https://github.com/raxod502/prescient.el][Prescient]] to sort alternatives
 #+end_src
 
 ** Programming languages
+*** Bash and Bourne Shell
+
+#+begin_src emacs-lisp
+(ligature-set-ligatures '(sh-mode)
+                        '("#!"  "<"   "<="  ">"
+                          ">="  "=="  "!="))
+(add-hook 'sh-mode-hook 'ligature-mode)
+#+end_src
+
 *** Docker
 
 #+begin_src emacs-lisp
