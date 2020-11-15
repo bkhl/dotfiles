@@ -109,20 +109,19 @@ Disable warning bell, both the default audio one and the visual one otherwise en
 
 ** Set window title
 
-Set window title including current buffer or filename, and either the hostname
-if the server name is "server", or otherwise the server name. This is in order
-to show in which [[https://github.com/containers/toolbox][Toolbox]] container an Emacs server is running.
+Set window title including current buffer or filename, and a project from [[https://gitlab.com/bkhl/etui][Etui]] or [[https://gitlab.com/bkhl/toolboxes/-/blob/latest/scripts/toolbox-project][toolbox-project]].
 
-Also show in the window title if the current buffer has been modified.
+Also use a straight or squiggly line to show if the buffer has modifications.
 
 #+begin_src emacs-lisp
 (setq frame-title-format
       '(
         "%b"
         (:eval (if (buffer-modified-p) " ⁓ " " — "))
-        (:eval (if (string= server-name "server")
-                   (system-name)
-                 server-name))))
+        (:eval (or
+                (getenv "ETUI_PROJECT")
+                (getenv "TOOLBOX_PROJECT")
+                (system-name)))))
 #+end_src
 
 ** Highlight matching pairs of parentheses.

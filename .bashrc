@@ -114,8 +114,8 @@ fi
 
 _prompt_template='\u@\h:\w\$ '
 
-if [[ -n $TOOLBOX_PROJECT ]]; then
-    _prompt_template="\u@\[\033[1;34m\]$TOOLBOX_PROJECT\[\033[0m\]:\w\$ "
+if [[ -n $ETUI_PROJECT ]] || [[ -n $TOOLBOX_PROJECT ]]; then
+    _prompt_template="\u@\[\033[1;34m\]${ETUI_PROJECT:-$TOOLBOX_PROJECT}\[\033[0m\]:\w\$ "
 else
     _prompt_template="\u@\h:\w\$ "
 fi
