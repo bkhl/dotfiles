@@ -47,12 +47,15 @@ This is my Emacs configuration. Inspirations include:
 Set global fonts.
 
 #+begin_src emacs-lisp
-(set-face-attribute 'default
-                    nil :family "DejaVu Sans Mono" :height 110)
-(set-face-attribute 'variable-pitch
-                    nil :family "DejaVu Serif" :height 1.1)
-(set-face-attribute 'fixed-pitch
-                    nil :family "DejaVu Sans Mono" :height 1.0)
+(set-face-attribute 'default nil
+                    :family "DejaVu Sans Mono"
+                    :height 110)
+(set-face-attribute 'variable-pitch nil
+                    :family "DejaVu Serif"
+                    :height 1.1)
+(set-face-attribute 'fixed-pitch nil
+                    :family "DejaVu Sans Mono"
+                    :height 1.0)
 #+end_src
 
 ** Render some keywords as symbols
