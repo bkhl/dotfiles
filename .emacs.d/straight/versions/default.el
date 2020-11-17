@@ -19,6 +19,7 @@
  ("hydra" . "2d553787aca1aceb3e6927e426200e9bb9f056f1")
  ("ledger-mode" . "805507fd6c14839be4efc7aee2017f9c03e36834")
  ("let-alist" . "b299c78897cc307f9d5521927376fbd06a26f123")
+ ("ligature.el" . "afd733582ceaabd2f6b2a09a9eec6ab847a2460f")
  ("lsp-mode" . "af1ad22443797d4504dd1f4dd0f375aa397e40cc")
  ("lsp-ui" . "b1693d610c4d2c44305eba2719e8d4097fdcdcb8")
  ("magit" . "4b9c2d26a6aef09a9f3c35e364dacd3739562963")
