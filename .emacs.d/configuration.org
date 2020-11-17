@@ -925,12 +925,6 @@ Hide the characters surrounding emphasized phrases
 (setq org-hide-emphasis-markers t)
 #+end_src
 
-Use the Thai ellipsis character, ไปยาลน้อย.
-
-#+begin_src emacs-lisp
-(setq org-ellipsis " ฯ")
-#+end_src
-
 ** Capturing
 
 Add templates for use by =org-capture=
