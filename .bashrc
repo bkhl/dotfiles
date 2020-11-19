@@ -140,6 +140,3 @@ __prompt_command() {
 }
 
 PROMPT_COMMAND=__prompt_command
-
-
-# vi: ts=4 et
