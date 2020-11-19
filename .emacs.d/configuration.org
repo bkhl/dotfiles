@@ -44,7 +44,11 @@ This is my Emacs configuration. Inspirations include:
 
 ** Fonts
 
-Set global fonts.
+Setting fonts. I primarily use the =variable-pitch= and =fixed-pitch= faces in =org-mode=.
+
+Apart from the =default= face, they are set as relative values, so that =text-scale-increase= and =text-scale-decrease= will work as expected.
+
+Note that typically, =variable-pitch= is set relative to =default=, and =fixed-pitch= relative to =variable-pitch=. Consequently, to make the fixed pitch font have the same size in =variable-pitch= buffers, the height of =fixed-pitch= need to be set to a value that inverses the relative height of the =variable-pitch= face. The easiest way to achieve that is to make them be inverse fractions.
 
 #+begin_src emacs-lisp
 (set-face-attribute 'default nil
@@ -53,10 +57,10 @@ Set global fonts.
                     :weight 'light)
 (set-face-attribute 'variable-pitch nil
                     :family "Vollkorn"
-                    :height 1.1)
+                    :height (/ 12.0 11.0))
 (set-face-attribute 'fixed-pitch nil
                     :family "JetBrains Mono"
-                    :height 1.0)
+                    :height (/ 11.0 12.0))
 #+end_src
 
 Enable =ligature.el=, to enable use of ligatures in some programming modes.
@@ -1049,7 +1053,6 @@ Hide done tasks from the agenda.
 (setq org-agenda-skip-scheduled-if-done t
       org-agenda-skip-deadline-if-done t)
 #+end_src
-
 * File formats
 ** hledger
 
