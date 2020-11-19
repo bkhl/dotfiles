@@ -49,7 +49,8 @@ Set global fonts.
 #+begin_src emacs-lisp
 (set-face-attribute 'default nil
                     :family "JetBrains Mono"
-                    :height 110)
+                    :height 110
+                    :weight 'light)
 (set-face-attribute 'variable-pitch nil
                     :family "Vollkorn"
                     :height 1.1)
