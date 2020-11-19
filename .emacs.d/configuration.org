@@ -974,6 +974,12 @@ Hide the characters surrounding emphasized phrases
 (setq org-hide-emphasis-markers t)
 #+end_src
 
+Use real ellipsis character for collapsed subtrees, and prefix it with a space.
+
+#+begin_src emacs-lisp
+(setq org-ellipsis " …")
+#+end_src
+
 ** Capturing
 
 Add templates for use by =org-capture=
