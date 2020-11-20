@@ -21,6 +21,17 @@ This is my Emacs configuration. Inspirations include:
       calendar-location-name "Bangkok")
 #+end_src
 
+* Load private information
+
+If there is a =private.el= in the Emacs configuration directory, load it.
+
+#+begin_src emacs-lisp
+(let ((private-file (concat user-emacs-directory
+                            "private.el")))
+  (when (file-exists-p private-file)
+    (load-file private-file)))
+#+end_src
+
 * Look and feel
 ** Load Modus Operandi theme
 
@@ -1098,4 +1109,25 @@ Make file sizes shown in dired human readable.
 
 #+begin_src emacs-lisp
 (setq-default dired-listing-switches "-alh")
+#+end_src
+
+* Internet Relay Chat
+
+Set up the Circe IRC client.
+
+#+begin_src emacs-lisp
+(use-package circe
+  :custom
+  (circe-network-defaults nil)
+  (circe-network-options
+   `(("Freenode"
+      :host "irc.elektrubadur.se"
+      :port 50080
+      :tls t
+      :user "bkhl/Freenode"
+      :pass ,bkhl/freenode-password)))
+  :config
+  (circe-lagmon-mode)
+  (enable-circe-color-nicks)
+  (enable-lui-track))
 #+end_src
