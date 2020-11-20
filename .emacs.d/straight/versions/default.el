@@ -1,4 +1,5 @@
 (("Highlight-Indentation-for-Emacs" . "4fc4e346c17e4e975a8c8ece3d4e7240357e2869")
+ ("circe" . "d4fb57ada83c3ff94234baee1115e81d3ff7bff3")
  ("company-mode" . "dd925936f7c0bf00319c81e8caea1b3db63bb8b5")
  ("company-posframe" . "4bfb8bccef4b64479f4147de6bf6fbd05df2a67e")
  ("ctrlf" . "5acefdc9a6f8e35febf6f71b6a34a0d4fc499269")
