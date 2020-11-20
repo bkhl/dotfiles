@@ -99,8 +99,8 @@ Hide minor modes from mode line with Minions.
 (use-package minions
   :config
   (setq minions-mode-line-lighter ""
-		minions-mode-line-delimiters '("" . ""))
-  (minions-mode 1))
+        minions-mode-line-delimiters '("" . ""))
+  (minions-mode))
 #+end_src
 
 Enable smart-mode-line
@@ -1102,6 +1102,7 @@ Set up the Circe IRC client.
 #+begin_src emacs-lisp
 (use-package circe
   :custom
+  (tracking-position 'end)
   (circe-network-defaults nil)
   (circe-network-options
    `(("Freenode"
