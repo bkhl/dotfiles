@@ -171,14 +171,31 @@ Also use a straight or squiggly line to show if the buffer has modifications.
 (define-key global-map (kbd "C--") 'text-scale-decrease)
 #+end_src
 
-* =emacsclient= configuration
-** Raise new =emacsclient= frames when created
+* Servers for integrations with other programs
+** Server for the =emacsclient= command
+
+Raise new =emacsclient= frames when created
 
 #+begin_src emacs-lisp
   (defun bkhl/focus-frame ()
     (select-frame-set-input-focus (selected-frame)))
   (add-hook 'server-switch-hook 'bkhl/focus-frame)
   (add-hook 'server-after-make-frame-hook 'bkhl/focus-frame)
+#+end_src
+
+** =edit-server= for editing text from other applications
+
+This is primarily for allowing connections from the [[https://github.com/stsquad/emacs_chrome][Edit with Emacs]] extension in Chromium.
+
+#+begin_src emacs-lisp
+(use-package edit-server
+  :custom
+  (edit-server-new-frame-alist
+   '((window-system . x)))
+  :config
+  (when (and (not (file-exists-p "/var/run/.containerenv"))
+             (daemonp))
+    (edit-server-start t)))
 #+end_src
 
 * Key bindings and navigation
