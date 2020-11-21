@@ -1072,8 +1072,13 @@ Set up the Circe IRC client.
       :user "bkhl/Freenode"
       :pass bkhl/circe-get-password)))
   :config
-  (defalias 'irc 'circe)
   (circe-lagmon-mode)
   (enable-circe-color-nicks)
   (enable-lui-track))
+
+(defun bkhl/irc ()
+  (interactive)
+  (circe "Freenode"))
+
+(defalias 'irc 'bkhl/irc)
 #+end_src
