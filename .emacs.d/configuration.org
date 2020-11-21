@@ -55,11 +55,11 @@ If there is a =private.el= in the Emacs configuration directory, load it.
 
 ** Fonts
 
-Setting fonts. I primarily use the =variable-pitch= and =fixed-pitch= faces in =org-mode=.
+Setting fonts. I primarily use the ~variable-pitch~ and ~fixed-pitch~ faces in ~org-mode~.
 
-Apart from the =default= face, they are set as relative values, so that =text-scale-increase= and =text-scale-decrease= will work as expected.
+Apart from the ~default~ face, they are set as relative values, so that ~text-scale-increase~ and ~text-scale-decrease~ will work as expected.
 
-Note that typically, =variable-pitch= is set relative to =default=, and =fixed-pitch= relative to =variable-pitch=. Consequently, to make the fixed pitch font have the same size in =variable-pitch= buffers, the height of =fixed-pitch= need to be set to a value that inverses the relative height of the =variable-pitch= face. The easiest way to achieve that is to make them be inverse fractions.
+Note that typically, ~variable-pitch~ is set relative to ~default~, and ~fixed-pitch~ relative to ~variable-pitch~. Consequently, to make the fixed pitch font have the same size in ~variable-pitch~ buffers, the height of ~fixed-pitch~ need to be set to a value that inverses the relative height of the ~variable-pitch~ face. The easiest way to achieve that is to make them be inverse fractions.
 
 #+begin_src emacs-lisp
 (set-face-attribute 'default nil
@@ -172,9 +172,9 @@ Also use a straight or squiggly line to show if the buffer has modifications.
 (define-key global-map (kbd "C--") 'text-scale-decrease)
 #+end_src
 
-* Configure =emacsclient= bevaviour
+* Configure ~emacsclient~ bevaviour
 
-Raise new =emacsclient= frames when created
+Raise new ~emacsclient~ frames when created
 
 #+begin_src emacs-lisp
   (defun bkhl/focus-frame ()
@@ -272,7 +272,7 @@ Use  =M-o= to enable a Hydra for moving between or manipulating windows.
 
 ** CTRLF for search within buffer
 
-This packages replaces the standard =isearch-forward= with a search function based on Selectrum.
+This packages replaces the standard ~isearch-forward~ with a search function based on Selectrum.
 
 Using an advice to use an "unbranded" prompt.
 
@@ -300,7 +300,7 @@ This package allows first selecting the word the current pointer is on, and then
 * File handling
 ** Store backups in tmp directory
 
-Store backups and autosaves in =temporary-file-directory=. This risks losing some data on a system crash, but I am not very concerned about that as generally my important files are in some kind of version control.
+Store backups and autosaves in ~temporary-file-directory~. This risks losing some data on a system crash, but I am not very concerned about that as generally my important files are in some kind of version control.
 
 #+begin_src emacs-lisp
 (setq backup-directory-alist
@@ -384,13 +384,13 @@ character name.
 
 ** Automatically pair matching characters like parenthesis
 
-Enable =electric-pair-mode=, which enables automatic insert of matching characters for example for parentheses.
+Enable ~electric-pair-mode~, which enables automatic insert of matching characters for example for parentheses.
 
 #+begin_src emacs-lisp
 (electric-pair-mode 1)
 #+end_src
 
-** Enable =yasnippet=
+** Enable ~yasnippet~
 
 #+begin_src emacs-lisp
 (use-package yasnippet)
@@ -427,7 +427,7 @@ files that are tracked in the Git repository.
 
 ** Magit Git integration
 
-Load =magit=, for working with Git.
+Load ~magit~, for working with Git.
 
 #+begin_src emacs-lisp
 (use-package magit
@@ -441,7 +441,7 @@ Load =magit=, for working with Git.
 
 ** Show uncommited changes in fringe
 
-Load =diff-hl= which shows uncommited changes in the left-hand fringe.
+Load ~diff-hl~ which shows uncommited changes in the left-hand fringe.
 
 #+begin_src emacs-lisp
 (use-package diff-hl
@@ -454,7 +454,7 @@ Load =diff-hl= which shows uncommited changes in the left-hand fringe.
             'diff-hl-magit-post-refresh))
 #+end_src
 
-** =git-timemachine= for browsing file history
+** ~git-timemachine~ for browsing file history
 
 #+begin_src emacs-lisp
 (use-package git-timemachine
@@ -462,7 +462,7 @@ Load =diff-hl= which shows uncommited changes in the left-hand fringe.
   :hook magit)
 #+end_src
 
-** Make =vc-diff= imitate the diff format of Magit
+** Make ~vc-diff~ imitate the diff format of Magit
 
 #+begin_src emacs-lisp
 (setq diff-font-lock-prettify t)
@@ -510,7 +510,7 @@ there's no active region."
 ** Multi-purpose programming packages
 *** Check code on the fly with Flycheck
 
-Enable =flycheck-mode= globally.
+Enable ~flycheck-mode~ globally.
 
 #+begin_src emacs-lisp
 (use-package flycheck
@@ -527,9 +527,9 @@ Plugin to show Flycheck errors in a tool tip.
   :hook (flycheck-mode . flycheck-pos-tip-mode))
 #+end_src
 
-*** Language Server Protocol with =lsp-mode=
+*** Language Server Protocol with ~lsp-mode~
 
-Load =lsp-mode= itself.
+Load ~lsp-mode~ itself.
 
 #+begin_src emacs-lisp
 (use-package lsp-mode
@@ -544,7 +544,7 @@ Load =lsp-mode= itself.
   :after lsp-mode)
 #+end_src
 
-*** Completion with =company=
+*** Completion with ~company~
 
 #+begin_src emacs-lisp
 (use-package company
@@ -553,7 +553,7 @@ Load =lsp-mode= itself.
   (bind-key "M-/" 'company-complete-common))
 #+end_src
 
-Use the =company-posframe= plugin to show the =company= menus in a separate frame, not affected by e.g. variable pitch mode.
+Use the ~company-posframe~ plugin to show the ~company~ menus in a separate frame, not affected by e.g. variable pitch mode.
 
 #+begin_src emacs-lisp
 (use-package company-posframe
@@ -760,7 +760,7 @@ Fix indentation of quoted lists. Copied from [[https://www.reddit.com/r/emacs/co
 
 *** Python
 
-Use Python 3 as default Python interpreter. This is for environments that does not have a =python= command, or that points it to Python 2.
+Use Python 3 as default Python interpreter. This is for environments that does not have a ~python~ command, or that points it to Python 2.
 
 #+begin_src emacs-lisp
 (setq python-shell-interpreter "python3"
@@ -773,7 +773,7 @@ Package for activating Python virtual environments.
 (use-package pyvenv)
 #+end_src
 
-Elpy, package with IDE-like features for Python. I've found so far that this is faster and more reliable than =lsp-mode= for Python.
+Elpy, package with IDE-like features for Python. I've found so far that this is faster and more reliable than ~lsp-mode~ for Python.
 
 #+begin_src emacs-lisp
 (use-package elpy
@@ -782,7 +782,7 @@ Elpy, package with IDE-like features for Python. I've found so far that this is 
   :init (advice-add 'python-mode :before 'elpy-enable))
 #+end_src
 
-Helper function to set =flycheck= executables to match the current virtual environment.
+Helper function to set ~flycheck~ executables to match the current virtual environment.
 
 #+begin_src emacs-lisp
 (defun bkhl/flycheck-python-set-executables ()
@@ -824,7 +824,7 @@ Add formatters for Python.
 
 *** Rust
 
-Use =rustic= for Rust editing.
+Use ~rustic~ for Rust editing.
 
 #+begin_src emacs-lisp
 (use-package rustic
@@ -850,9 +850,9 @@ A minor mode that automatically adjusts margins &c. for prose writing.
     (add-hook 'org-mode-hook 'olivetti-mode))
 #+end_src
 
-* =org-mode= planning and note-taking
+* ~org-mode~ planning and note-taking
 
-As an exception to the rule in this file, =org-mode= is not called with =use-package=, because it has so much configuration that it warrants splitting it into sections, and it has implicitly been loaded before running this file, given that this configuration itself is written in =org-mode=.
+As an exception to the rule in this file, ~org-mode~ is not called with ~use-package~, because it has so much configuration that it warrants splitting it into sections, and it has implicitly been loaded before running this file, given that this configuration itself is written in ~org-mode~.
 
 ** =TODO= keywords
 
@@ -876,7 +876,7 @@ later.
 (setq bkhl/org-directory "~/Documents/Notes/")
 #+end_src
 
-** Make initial scratch buffer use =org-mode=
+** Make initial scratch buffer use ~org-mode~
 
 #+begin_src emacs-lisp
 (setq initial-major-mode 'org-mode)
@@ -918,13 +918,13 @@ Shortcut for inserting a block of Elisp.
 
 ** Display
 
-Enable =org-indent= mode, which makes org-mode indent sections visually, but not in the saved files.
+Enable ~org-indent~ mode, which makes org-mode indent sections visually, but not in the saved files.
 
 #+begin_src emacs-lisp
 (setq org-startup-indented t)
 #+end_src
 
-Use variable fonts in =org-mode= buffers.
+Use variable fonts in ~org-mode~ buffers.
 
 #+begin_src emacs-lisp
 (add-hook 'org-mode-hook 'variable-pitch-mode)
@@ -952,7 +952,7 @@ Use real ellipsis character for collapsed subtrees, and prefix it with a space.
 
 ** Capturing
 
-Add templates for use by =org-capture=
+Add templates for use by ~org-capture~
 
 #+begin_src emacs-lisp
 (setq org-capture-templates
@@ -960,7 +960,7 @@ Add templates for use by =org-capture=
          "* TODO %?")))
 #+end_src
 
-Bind =C-c c= to =org-capture= to quickly add notes.
+Bind =C-c c= to ~org-capture~ to quickly add notes.
 
 #+begin_src emacs-lisp
 (bind-key "C-c c" 'org-capture)
@@ -979,7 +979,7 @@ This allows refiling within the current buffer, or any agenda files.
 
 ** Agendas
 
-Install =org-super-agenda= for improved agenda interface, and categorize tasks roughly by urgency.
+Install ~org-super-agenda~ for improved agenda interface, and categorize tasks roughly by urgency.
 
 I use recurring tasks for habits rather than the habit feature, because [[http://www.orgzly.com/][Orgzly]] currently only supports the former feature, so that's why I use a tag for those here.
 
