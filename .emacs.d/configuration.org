@@ -21,15 +21,18 @@ This is my Emacs configuration. Inspirations include:
       calendar-location-name "Bangkok")
 #+end_src
 
-* Load private information
+* General helper functions
 
-If there is a =private.el= in the Emacs configuration directory, load it.
+** Get secret from keyring
+
+Use ~secret-tool~ to get a password or similar from the user keyring.
+
+To store a secret, use a command like ~secret-tool store --label=Foo foo password~. It can then be used here using ~(bkhl/get-secret "foo" "password")~.
 
 #+begin_src emacs-lisp
-(let ((private-file (concat user-emacs-directory
-                            "private.el")))
-  (when (file-exists-p private-file)
-    (load-file private-file)))
+(defun bkhl/get-secret (attribute value)
+  (shell-command-to-string
+   (format "secret-tool lookup '%s' '%s'" attribute value)))
 #+end_src
 
 * Look and feel
@@ -1054,18 +1057,22 @@ Make file sizes shown in dired human readable.
 Set up the Circe IRC client.
 
 #+begin_src emacs-lisp
+(defun bkhl/circe-get-password (host)
+  (bkhl/get-secret host "password"))
+
 (use-package circe
   :custom
   (tracking-position 'end)
   (circe-network-defaults nil)
   (circe-network-options
-   `(("Freenode"
+   '(("Freenode"
       :host "irc.elektrubadur.se"
       :port 50080
       :tls t
       :user "bkhl/Freenode"
-      :pass ,bkhl/freenode-password)))
+      :pass bkhl/circe-get-password)))
   :config
+  (defalias 'irc 'circe)
   (circe-lagmon-mode)
   (enable-circe-color-nicks)
   (enable-lui-track))
