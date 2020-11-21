@@ -63,24 +63,14 @@ Note that typically, =variable-pitch= is set relative to =default=, and =fixed-p
 
 #+begin_src emacs-lisp
 (set-face-attribute 'default nil
-                    :family "JetBrains Mono"
-                    :height 110
-                    :weight 'light)
+                    :family "DejaVu Sans Mono"
+                    :height 110)
 (set-face-attribute 'variable-pitch nil
                     :family "Vollkorn"
                     :height (/ 12.0 11.0))
 (set-face-attribute 'fixed-pitch nil
-                    :family "JetBrains Mono"
+                    :family "DejaVu Sans Mono"
                     :height (/ 11.0 12.0))
-#+end_src
-
-Enable =ligature.el=, to enable use of ligatures in some programming modes.
-
-#+begin_src emacs-lisp
-(use-package ligature
-  :straight (ligature :type git
-                      :host github
-                      :repo "mickeynp/ligature.el"))
 #+end_src
 
 ** Render some keywords as symbols
@@ -579,15 +569,6 @@ Use [[https://github.com/raxod502/prescient.el][Prescient]] to sort alternatives
 #+end_src
 
 ** Programming languages
-*** Bash and Bourne Shell
-
-#+begin_src emacs-lisp
-(ligature-set-ligatures '(sh-mode)
-                        '("#!"  "<"   "<="  ">"
-                          ">="  "=="  "!="))
-(add-hook 'sh-mode-hook 'ligature-mode)
-#+end_src
-
 *** Docker
 
 #+begin_src emacs-lisp
@@ -841,19 +822,6 @@ Add formatters for Python.
                python-mode-map)))
 #+end_src
 
-Enable some ligatures in Python buffers.
-
-#+begin_src emacs-lisp
-(ligature-set-ligatures '(python-mode)
-                        '("**"  "//"  "+="  "-="
-                          "*="  "/="  "%="  "//="
-                          "**=" "&="  "|="  "^="
-                          ">>=" "<<=" "=="  "!="
-                          ">="  "<="  "<<"  ">>"
-                          "#!"  "__"  "->"))
-(add-hook 'python-mode-hook 'ligature-mode)
-#+end_src
-
 *** Rust
 
 Use =rustic= for Rust editing.
@@ -863,20 +831,6 @@ Use =rustic= for Rust editing.
   :after (lsp-mode company)
   :custom
   (rustic-format-trigger 'on-save))
-#+end_src
-
-Enable some ligatures in Rust buffers.
-
-#+begin_src emacs-lisp
-(ligature-set-ligatures '(rustic-mode)
-                        '("->"  "=>"  "::"  "!="
-                          "%="  "%="  "&&"  "*="
-                          "+="  "-="  ".."  "..="
-                          "..." "/="  "<<"  "<<="
-                          "<="  "=="  "=>"  ">="
-                          ">>"  ">>=" "^="  "|="
-                          "||"  "#["))
-(add-hook 'rustic-mode-hook 'ligature-mode)
 #+end_src
 
 * Writing
