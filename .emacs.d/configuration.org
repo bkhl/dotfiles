@@ -66,14 +66,12 @@ Note that typically, ~variable-pitch~ is set relative to ~default~, and ~fixed-p
 
 #+begin_src emacs-lisp
 (set-face-attribute 'default nil
-                    :family "Julia Mono"
-                    :height 110)
+                    :height 110
+                    :family "Noto Sans Mono")
 (set-face-attribute 'variable-pitch nil
-                    :family "Vollkorn"
-                    :height (/ 12.0 11.0))
+                    :family "Noto Serif")
 (set-face-attribute 'fixed-pitch nil
-                    :family "Julia Mono"
-                    :height (/ 11.0 12.0))
+                    :family "Noto Sans Mono")
 #+end_src
 
 ** Render some keywords as symbols
