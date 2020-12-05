@@ -451,7 +451,8 @@ Function to do automatic commit on save in certain repos. Mostly for use in ~org
   (magit-call-git "add" buffer-file-name)
   (magit-call-git "commit" "-m"
                   (format "Automatic commit on save of %s"
-                          buffer-file-name)))
+                          buffer-file-name))
+  (magit-refresh))
 #+end_src
 
 ** Show uncommited changes in fringe
