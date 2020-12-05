@@ -437,6 +437,9 @@ Load ~magit~, for working with Git.
   :bind
   ("C-x g" . magit-status)
 
+  :commands
+  magit-call-git
+
   :custom
   (magit-push-always-verify nil)
   (git-commit-summary-max-length 50))
@@ -444,16 +447,27 @@ Load ~magit~, for working with Git.
 
 ** Automatic commit on save
 
-Function to do automatic commit on save in certain repos. Mostly for use in ~org-mode~.
+Function to do automatic commit on save in certain repos. This is for use with for example ~org-mode~, to enable finding things after accidental changes.
 
 #+begin_src emacs-lisp
 (defun bkhl/magic-commit-current-buffer()
   (magit-call-git "add" buffer-file-name)
-  (magit-call-git "commit" "-m"
+  (magit-call-git "commit"
+                  "--allow-empty"
+                  "-m"
                   (format "Automatic commit on save of %s"
                           buffer-file-name))
   (magit-refresh))
 #+end_src
+
+To use this as an ~after-save-hook~ in a project, create a ~.dir-locals.el~ with something like this:
+
+#+begin_example
+((org-mode . ((eval . (add-hook
+                       'after-save-hook
+                       #'bkhl/magic-commit-current-buffer
+                       nil t)))))
+#+end_example
 
 ** Show uncommited changes in fringe
 
