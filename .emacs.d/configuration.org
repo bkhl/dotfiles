@@ -453,7 +453,6 @@ Function to do automatic commit on save in certain repos. This is for use with f
 (defun bkhl/magic-commit-current-buffer()
   (magit-call-git "add" buffer-file-name)
   (magit-call-git "commit"
-                  "--allow-empty"
                   "-m"
                   (format "Automatic commit on save of %s"
                           buffer-file-name))
