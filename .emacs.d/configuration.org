@@ -442,6 +442,18 @@ Load ~magit~, for working with Git.
   (git-commit-summary-max-length 50))
 #+end_src
 
+** Automatic commit on save
+
+Function to do automatic commit on save in certain repos. Mostly for use in ~org-mode~.
+
+#+begin_src emacs-lisp
+(defun bkhl/magic-commit-current-buffer()
+  (magit-call-git "add" buffer-file-name)
+  (magit-call-git "commit" "-m"
+                  (format "Automatic commit on save of %s"
+                          buffer-file-name)))
+#+end_src
+
 ** Show uncommited changes in fringe
 
 Load ~diff-hl~ which shows uncommited changes in the left-hand fringe.
