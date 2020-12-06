@@ -39,13 +39,13 @@ To store a secret, use a command like ~secret-tool store --label=Foo foo passwor
 ** Load Modus Operandi theme
 
 #+begin_src emacs-lisp
-(use-package modus-operandi-theme
+(use-package modus-themes
   :custom
-  (modus-operandi-theme-faint-syntax t)
-  (modus-operandi-theme-org-blocks 'greyscale)
-  (modus-operandi-theme-scale-headings t)
-  (modus-operandi-theme-links 'neutral-underline)
-  (modus-operandi-theme-diffs 'desaturated)
+  (modus-themes-syntax 'faint)
+  (modus-themes-org-blocks 'greyscale)
+  (modus-themes-scale-headings t)
+  (modus-themes-links 'neutral-underline)
+  (modus-themes-diffs 'desaturated)
   :config
   (load-theme 'modus-operandi t))
 #+end_src
