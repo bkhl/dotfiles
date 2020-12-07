@@ -70,10 +70,10 @@ Note that typically, ~variable-pitch~ is set relative to ~default~, and ~fixed-p
                     :height 110)
 (set-face-attribute 'variable-pitch nil
                     :family "Vollkorn"
-                    :height (/ 13.0 11.0))
+                    :height (/ 12.0 11.0))
 (set-face-attribute 'fixed-pitch nil
                     :family "Hack"
-                    :height (/ 11.0 13.0))
+                    :height (/ 11.0 12.0))
 #+end_src
 
 ** Render some keywords as symbols
