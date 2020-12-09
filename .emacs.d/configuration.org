@@ -1096,10 +1096,34 @@ Set up the Circe IRC client.
   (circe-lagmon-mode)
   (enable-circe-color-nicks)
   (enable-lui-track))
+#+end_src
 
+Function to allow connecting to IRC with =M-x irc=.
+
+#+begin_src emacs-lisp
 (defun bkhl/irc ()
   (interactive)
   (circe "Freenode"))
 
 (defalias 'irc 'bkhl/irc)
+#+end_src
+
+Some extra commands to interact with the [[https://wiki.znc.in/][ZNC]] IRC bouncer.
+
+#+begin_src emacs-lisp
+(defun circe-command-ZNC (command)
+  "Send a command to ZNC through the special '*status' user."
+  (circe-command-MSG "*status" command))
+
+(defun circe-command-DETACH (channel)
+  "Disconnect the client from a channel but stay connected in the bouncer."
+  (circe-command-QUOTE (format "detach %s" channel)))
+
+(defun circe-command-STICK (channel)
+  "Stay connected to channel using ZNC stickychan module."
+  (circe-command-MSG "*stickychan" (format "stick %s" channel)))
+
+(defun circe-command-UNSTICK (channel)
+  "Remove channel from list of channels to stay connected to using ZNC stickychan module."
+  (circe-command-MSG "*stickychan" (format "unstick %s" channel)))
 #+end_src
