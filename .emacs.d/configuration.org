@@ -70,6 +70,29 @@ Setting fonts. I primarily use the ~variable-pitch~ and ~fixed-pitch~ faces in ~
                     :family "Iosevka Custom")
 #+end_src
 
+Enable symbol fonts in order of preference, according to which are available. ☃
+
+This is run as a hook after the first frame is created, as this will otherwise not work when Emacs is started in daemon mode, or by ~emacsclient~.
+
+#+begin_src emacs-lisp
+(defun bkhl/set-symbol-fonts-aux (fonts append)
+  (when fonts
+    (let ((font (car fonts))
+          (fonts (cdr fonts)))
+      (if (find-font (font-spec :name font))
+          (progn
+            (set-fontset-font
+             t 'symbol font nil (if append 'append nil))
+            (bkhl/set-symbol-fonts-aux fonts t))
+        (bkhl/set-symbol-fonts-aux fonts append)))))
+
+(defun bkhl/set-symbol-fonts ()
+  (bkhl/set-symbol-fonts-aux '("Noto Color Emoji" "Symbola") nil)
+  (remove-hook 'focus-in-hook #'bkhl/set-symbol-fonts))
+
+(add-hook 'focus-in-hook #'bkhl/set-symbol-fonts)
+#+end_src
+
 ** Render some keywords as symbols
 
 This primarily makes =lambda= get rendered as =λ= in Emacs Lisp, but can also be enabled in other modes.
