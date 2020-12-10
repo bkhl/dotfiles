@@ -1111,19 +1111,31 @@ Function to allow connecting to IRC with =M-x irc=.
 Some extra commands to interact with the [[https://wiki.znc.in/][ZNC]] IRC bouncer.
 
 #+begin_src emacs-lisp
+(defun bkhl/circe-chat-target-or (channel)
+  (if (string-empty-p channel) circe-chat-target channel))
+
 (defun circe-command-ZNC (command)
   "Send a command to ZNC through the special '*status' user."
+  (interactive "sZNC command: ")
   (circe-command-MSG "*status" command))
 
 (defun circe-command-DETACH (channel)
   "Disconnect the client from a channel but stay connected in the bouncer."
-  (circe-command-QUOTE (format "detach %s" channel)))
+  (interactive "sChannel: ")
+  (circe-command-QUOTE
+   (format "DETACH %s" (bkhl/circe-chat-target-or channel))))
 
 (defun circe-command-STICK (channel)
   "Stay connected to channel using ZNC stickychan module."
-  (circe-command-MSG "*stickychan" (format "stick %s" channel)))
+  (interactive "sChannel: ")
+  (circe-command-MSG
+   "*stickychan"
+   (format "STICK %s" (bkhl/circe-chat-target-or channel))))
 
 (defun circe-command-UNSTICK (channel)
   "Remove channel from list of channels to stay connected to using ZNC stickychan module."
-  (circe-command-MSG "*stickychan" (format "unstick %s" channel)))
+  (interactive "sChannel: ")
+  (circe-command-MSG
+   "*stickychan"
+   (format "UNSTICK %s" (bkhl/circe-chat-target-or channel))))
 #+end_src
