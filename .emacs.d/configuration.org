@@ -1167,7 +1167,10 @@ Some extra commands to interact with the [[https://wiki.znc.in/][ZNC]] IRC bounc
   (let ((lines (or lines 50)))
     (circe-command-MSG
      "*backlog"
-     (format "%s %s" circe-chat-target lines))))
+     (format "%s %s"
+             circe-chat-target
+             (max (- (string-to-number lines) 1)
+                  1)))))
 #+end_src
 
 Work-around for the fact that the ZNC backlog module sometimes sends empty lines that need to be ignored.
