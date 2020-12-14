@@ -1161,4 +1161,20 @@ Some extra commands to interact with the [[https://wiki.znc.in/][ZNC]] IRC bounc
   (circe-command-MSG
    "*stickychan"
    (format "UNSTICK %s" (bkhl/circe-chat-target-or channel))))
+
+(defun circe-command-BACKLOG (&optional lines)
+  "Request backlog for current channel."
+  (let ((lines (or lines 50)))
+    (circe-command-MSG
+     "*backlog"
+     (format "%s %s" circe-chat-target lines))))
+#+end_src
+
+Work-around for the fact that the ZNC backlog module sometimes sends empty lines that need to be ignored.
+
+#+begin_src emacs-lisp
+(defun bkhl/irc-line-empty-p (proc line)
+  (string-empty-p line))
+
+(advice-add 'irc--handle-line :before-until #'bkhl/irc-line-empty-p)
 #+end_src
