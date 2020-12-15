@@ -62,12 +62,12 @@ Setting fonts. I primarily use the ~variable-pitch~ and ~fixed-pitch~ faces in ~
 
 #+begin_src emacs-lisp
 (set-face-attribute 'default nil
-                    :family "Iosevka Custom"
+                    :family "Iosevka BKHL Default"
                     :height 120)
 (set-face-attribute 'variable-pitch nil
                     :family "Vollkorn")
 (set-face-attribute 'fixed-pitch nil
-                    :family "Iosevka Custom")
+                    :family "Iosevka BKHL Default")
 #+end_src
 
 Enable symbol fonts in order of preference, according to which are available. ☃
