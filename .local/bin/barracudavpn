@@ -1,12 +1,5 @@
 #!/bin/bash
 
-# Script to more convieniently start/top BarracudaVPN.
-#
-# To store username/password:
-#
-# $ secret-tool store --label "Barracuda VPN" barracuda-vpn username
-# $ secret-tool store --label "Barracuda VPN" barracuda-vpn password
-
 BARRACUDAVPN_CONFIG_DIR="$HOME/.local/share/barracudavpn"
 BARRACUDAVPN="$BARRACUDAVPN_CONFIG_DIR/barracudavpn"
 
@@ -14,35 +7,4 @@ if [[ $TERM == xterm-256color ]]; then
     TERM=xterm
 fi
 
-main() {
-    while getopts "cd" opt; do
-        case "$opt" in
-        c)
-            connect
-            return 0
-            ;;
-        d)
-            disconnect
-            return 0
-            ;;
-        esac
-    done
-
-    "$BARRACUDAVPN" --config "$BARRACUDAVPN_CONFIG_DIR"
-}
-
-connect() {
-    "$BARRACUDAVPN" \
-        --config "$BARRACUDAVPN_CONFIG_DIR" \
-        --start \
-        --login "$(secret-tool lookup barracuda-vpn username)" \
-        --serverpwd "$(secret-tool lookup barracuda-vpn password)"
-}
-
-disconnect() {
-    "$BARRACUDAVPN" \
-        --config "$BARRACUDAVPN_CONFIG_DIR" \
-        --stop
-}
-
-main "$@"
+"$BARRACUDAVPN" --config "$BARRACUDAVPN_CONFIG_DIR"
