@@ -12,7 +12,7 @@
  ("epl" . "78ab7a85c08222cd15582a298a364774e3282ce6")
  ("expand-region.el" . "ea6b4cbb9985ddae532bd2faf9bb00570c9f2781")
  ("f.el" . "1814209e2ff43cf2e6d38c4cd476218915f550fb")
- ("flycheck" . "5164c765b7e35b3c6b65eeb9ab899fb0377305ea")
+ ("flycheck" . "143c5709384b3444a503d3f8fe638f044400b3f9")
  ("flycheck-pos-tip" . "dc57beac0e59669926ad720c7af38b27c3a30467")
  ("git-timemachine" . "8d675750e921a047707fcdc36d84f8439b19a907")
  ("gnu-elpa-mirror" . "fcb3cf5ba5f16885f7851885c954222aee6f03ab")
