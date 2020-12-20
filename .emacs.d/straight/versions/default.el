@@ -5,6 +5,7 @@
  ("ctrlf" . "5acefdc9a6f8e35febf6f71b6a34a0d4fc499269")
  ("dash.el" . "7629dae97d6648ef560569067801a3b91028c1c0")
  ("diff-hl" . "328e23e73edf69cf8cff420ad4ccb15b827e2b7a")
+ ("docker-tramp.el" . "8e2b671eff7a81af43b76d9dfcf94ddaa8333a23")
  ("dockerfile-mode" . "6a56c1cc1713b501040b08fdbf0c4159a4fe95f9")
  ("elpy" . "4032c7251eb2d74ec8a301a3988b62b7a0f00932")
  ("emacs-async" . "14f48de586b0977e3470f053b810d77b07ea427a")

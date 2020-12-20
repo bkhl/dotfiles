@@ -350,6 +350,22 @@ When saving a file to a directory that doesn't exist, offer to create it.
   (add-hook 'before-save-hook 'bkhl/ask-create-directory)
 #+end_src
 
+* Managing containers
+** Dockerfile format
+
+#+begin_src emacs-lisp
+(use-package dockerfile-mode
+  :mode ("\\'Dockerfile\\.?" . dockerfile-mode))
+#+end_src
+
+** Connect by Tramp to Podman
+
+#+begin_src emacs-lisp
+(use-package docker-tramp
+  :custom
+  (docker-tramp-docker-executable "podman"))
+#+end_src
+
 * General text editing
 ** Highlight selected region and apply changes to it
 
@@ -605,13 +621,6 @@ Use [[https://github.com/raxod502/prescient.el][Prescient]] to sort alternatives
 #+end_src
 
 ** Programming languages
-*** Docker
-
-#+begin_src emacs-lisp
-(use-package dockerfile-mode
-  :mode ("\\'Dockerfile\\.?" . dockerfile-mode))
-#+end_src
-
 *** Emacs Lisp
 
 Fix indentation of quoted lists. Copied from [[https://www.reddit.com/r/emacs/comments/d7x7x8/finally_fixing_indentation_of_quoted_lists/][this Reddit post]].
