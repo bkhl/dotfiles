@@ -1011,8 +1011,24 @@ Add templates for use by ~org-capture~
 
 #+begin_src emacs-lisp
 (setq org-capture-templates
-      `(("i" "inbox" entry (file ,(concat bkhl/org-directory "Inbox.org"))
-         "* TODO %?")))
+      `(("i"
+         "inbox"
+         entry
+         (file ,(concat bkhl/org-directory "Inbox.org"))
+         "* TODO %?")
+        ("c"
+         "contact"
+         entry
+         (file ,(concat bkhl/org-directory "Contacts.org"))
+         "* %(org-contacts-template-name)
+:PROPERTIES:
+:EMAIL: %(org-contacts-template-email)
+:PHONE:
+:NICKNAME:
+:NOTE:
+:ADDRESS:
+:BIRTHDAY:
+:END:")))
 #+end_src
 
 Bind =C-c c= to ~org-capture~ to quickly add notes.
