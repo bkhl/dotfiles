@@ -63,7 +63,7 @@ Setting fonts. I primarily use the ~variable-pitch~ and ~fixed-pitch~ faces in ~
 #+begin_src emacs-lisp
 (set-face-attribute 'default nil
                     :family "Iosevka BKHL Default"
-                    :height 120)
+                    :height 130)
 (set-face-attribute 'variable-pitch nil
                     :family "Vollkorn")
 (set-face-attribute 'fixed-pitch nil
