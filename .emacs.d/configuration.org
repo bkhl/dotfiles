@@ -568,7 +568,9 @@ Enable ~flycheck-mode~ globally.
 (use-package flycheck
   :straight (flycheck :type git
                       :host github
-                      :repo "bkhl/flycheck")
+                      :repo "flycheck/flycheck"
+                      :fork (:host github
+                             :repo "bkhl/flycheck"))
   :init (global-flycheck-mode))
 #+end_src
 
