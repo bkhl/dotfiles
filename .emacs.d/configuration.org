@@ -75,12 +75,12 @@ Enable Emoji font if available. ☃
 This is run as a hook after the first frame is created, as this will otherwise not work when Emacs is started in daemon mode, or by ~emacsclient~.
 
 #+begin_src emacs-lisp
-(defun bkhl/set-symbol-font ()
-  (when (find-font (font-spec :name "Noto Color Emoji"))
-    (set-fontset-font t 'symbol "Noto Color Emoji"))
-  (remove-hook 'focus-in-hook #'bkhl/set-symbol-fonts))
+(defun bkhl/set-fontset-fonts ()
+  (set-fontset-font t 'symbol "Noto Color Emoji")
+  (set-fontset-font t #x0e3f "Iosevka BKHL Default")
+  (remove-hook 'focus-in-hook #'bkhl/set-fontset-fonts))
 
-(add-hook 'focus-in-hook #'bkhl/set-symbol-font)
+(add-hook 'focus-in-hook #'bkhl/set-fontset-fonts)
 #+end_src
 
 ** Render some keywords as symbols
