@@ -60,14 +60,20 @@ To store a secret, use a command like ~secret-tool store --label=Foo foo passwor
 
 Setting fonts. I primarily use the ~variable-pitch~ and ~fixed-pitch~ faces in ~org-mode~.
 
+Apart from the ~default~ face, they are set as relative values, so that ~text-scale-increase~ and ~text-scale-decrease~ will work as expected.
+
+Note that typically, ~variable-pitch~ is set relative to ~default~, and ~fixed-pitch~ relative to ~variable-pitch~. Consequently, to make the fixed pitch font have the same size in ~variable-pitch~ buffers, the height of ~fixed-pitch~ need to be set to a value that inverses the relative height of the ~variable-pitch~ face.
+
 #+begin_src emacs-lisp
 (set-face-attribute 'default nil
                     :family "Iosevka BKHL Default"
                     :height 130)
 (set-face-attribute 'variable-pitch nil
-                    :family "Vollkorn")
+                    :family "EB Garamond"
+                    :height 1.2)
 (set-face-attribute 'fixed-pitch nil
-                    :family "Iosevka BKHL Default")
+                    :family "Iosevka BKHL Default"
+                    :height (/ 1.0 1.2))
 #+end_src
 
 Enable Emoji font if available. ☃
