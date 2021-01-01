@@ -77,7 +77,7 @@ This is run as a hook after the first frame is created, as this will otherwise n
 #+begin_src emacs-lisp
 (defun bkhl/set-fontset-fonts ()
   (set-fontset-font t 'symbol "Noto Color Emoji")
-  (set-fontset-font t #x0e3f "Iosevka BKHL Default")
+  (set-fontset-font t ?฿ "Iosevka BKHL Default")
   (remove-hook 'focus-in-hook #'bkhl/set-fontset-fonts))
 
 (add-hook 'focus-in-hook #'bkhl/set-fontset-fonts)
