@@ -1069,7 +1069,7 @@ I use recurring tasks for habits rather than the habit feature, because [[http:/
               :deadline future)
              (:name "Habits"
               :tag ("habit"))
-             (:name "Other"
+             (:name "Tasks"
               :todo ("TODO" "READ"))))
   :config (org-super-agenda-mode))
 #+end_src
