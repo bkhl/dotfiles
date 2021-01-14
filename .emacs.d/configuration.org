@@ -209,12 +209,6 @@ Unless overridden by a buffer, when prompting to open a file, start in the home 
 (setq default-directory "~/")
 #+end_src
 
-** Load Hydra key binding library
-
-#+begin_src emacs-lisp
-(use-package hydra)
-#+end_src
-
 ** Disable =C-z=
 
 Disabling =C-z=, which normally minimizes the window, which is rather distracting.
@@ -228,42 +222,6 @@ Disabling =C-z=, which normally minimizes the window, which is rather distractin
 #+begin_src emacs-lisp
 (global-set-key (kbd "<home>") 'move-beginning-of-line)
 (global-set-key (kbd "<end>") 'move-end-of-line)
-#+end_src
-
-** Managing windows
-
-Use  =M-o= to enable a Hydra for moving between or manipulating windows.
-
-#+begin_src emacs-lisp
-(defhydra bkhl/hydra-other-window ()
-  "Window"
-
-  ("M-o" other-window)
-
-  ("<left>" windmove-left)
-  ("b" windmove-left)
-
-  ("<right>" windmove-right)
-  ("f" windmove-right)
-
-  ("<up>" windmove-up)
-  ("p" windmove-up)
-
-  ("<down>" windmove-down)
-  ("n" windmove-down)
-
-  ("k" delete-window :color blue)
-  ("0" delete-window :color blue)
-
-  ("1" delete-other-window :color blue)
-
-  ("h" split-window-below :color blue)
-  ("2" split-window-below :color blue)
-
-  ("v" split-window-right :color blue)
-  ("3" split-window-right :color blue))
-
-(bind-key "M-o" #'bkhl/hydra-other-window/body)
 #+end_src
 
 ** Selectrum for incremental narrowing commands
