@@ -862,9 +862,7 @@ Use ~rustic~ for Rust editing.
 A minor mode that automatically adjusts margins &c. for prose writing.
 
 #+begin_src emacs-lisp
-  (use-package olivetti
-    :config
-    (add-hook 'org-mode-hook 'olivetti-mode))
+(use-package olivetti)
 #+end_src
 
 * ~org-mode~ planning and note-taking
@@ -965,6 +963,13 @@ Use real ellipsis character for collapsed subtrees, and prefix it with a space.
 
 #+begin_src emacs-lisp
 (setq org-ellipsis " …")
+#+end_src
+
+Use Olivetti mode by default in Org, and make tags align to the default width of Olivetti.
+
+#+begin_src emacs-lisp
+(add-hook 'org-mode-hook 'olivetti-mode)
+(setq org-tags-column -70)
 #+end_src
 
 ** Capturing
