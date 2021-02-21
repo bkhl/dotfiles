@@ -962,7 +962,7 @@ Hide the characters surrounding emphasized phrases
 Use real ellipsis character for collapsed subtrees, and prefix it with a space.
 
 #+begin_src emacs-lisp
-(setq org-ellipsis " …")
+(setq org-ellipsis "…")
 #+end_src
 
 Use Olivetti mode by default in Org, and make tags align to the default width of Olivetti.
