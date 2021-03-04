@@ -1057,6 +1057,26 @@ Hide done tasks from the agenda.
 (setq org-agenda-skip-scheduled-if-done t
       org-agenda-skip-deadline-if-done t)
 #+end_src
+
+** Presentations
+
+#+begin_src emacs-lisp
+(use-package org-present
+  :config
+  (defun bkhl/org-present-settings ()
+    (org-present-big)
+    (org-display-inline-images)
+    (org-present-hide-cursor)
+    (org-present-read-only))
+  (add-hook 'org-present-mode-hook 'bkhl/org-present-settings)
+  (defun bkhl/org-present-settings-reset ()
+    (org-present-small)
+    (org-remove-inline-images)
+    (org-present-show-cursor)
+    (org-present-read-write))
+  (add-hook 'org-present-mode-quit-hook 'bkhl/org-present-settings-reset))
+#+end_src
+
 * File formats
 ** hledger
 
