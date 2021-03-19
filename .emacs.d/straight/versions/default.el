@@ -30,6 +30,7 @@
  ("modus-themes" . "2a7228e09402f2f69aabf4fd8f367e5f6e8248b3")
  ("olivetti" . "b76a020aedb57a6a7d0ae61cde13434f5c802a44")
  ("org" . "5b5c420da5298f6526b77c409a5ef67e63741bad")
+ ("org-present" . "9709ca2d04a59959354222ac4d3f8b750785739a")
  ("org-super-agenda" . "f5e80e4d0da6b2eeda9ba21e021838fa6a495376")
  ("org-superstar-mode" . "7f83636db215bf5a10edbfdf11d12a132864a914")
  ("pkg-info" . "76ba7415480687d05a4353b27fea2ae02b8d9d61")
