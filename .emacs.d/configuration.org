@@ -520,42 +520,14 @@ there's no active region."
 #+end_src
 
 ** Multi-purpose programming packages
-*** Check code on the fly with Flycheck
-
-Enable ~flycheck-mode~ globally.
+*** Language Server Protocol with ~eglot~
 
 #+begin_src emacs-lisp
-(use-package flycheck
-  :straight (flycheck :type git
-                      :host github
-                      :repo "flycheck/flycheck"
-                      :fork (:host github
-                             :repo "bkhl/flycheck"))
-  :init (global-flycheck-mode))
-#+end_src
-
-Plugin to show Flycheck errors in a tool tip.
-
-#+begin_src emacs-lisp
-(use-package flycheck-pos-tip
-  :hook (flycheck-mode . flycheck-pos-tip-mode))
-#+end_src
-
-*** Language Server Protocol with ~lsp-mode~
-
-Load ~lsp-mode~ itself.
-
-#+begin_src emacs-lisp
-(use-package lsp-mode
-  :init (setq lsp-keymap-prefix "C-c l")
-  :after flycheck
-  :custom (lsp-modeline-code-action-fallback-icon "‡"))
-#+end_src
-
-
-#+begin_src emacs-lisp
-(use-package lsp-ui
-  :after lsp-mode)
+(use-package eglot
+  :commands (eglot eglot-ensure)
+  :config
+  (bind-key "C-c l f" 'eglot-format eglot-mode-map)
+  (bind-key "C-c l r" 'eglot-rename eglot-mode-map))
 #+end_src
 
 *** Completion with ~company~
@@ -782,72 +754,6 @@ Package for activating Python virtual environments.
 
 #+begin_src emacs-lisp
 (use-package pyvenv)
-#+end_src
-
-**** Elpy for Python IDE functionality
-
-Elpy, package with IDE-like features for Python. I've found so far that this is faster and more reliable than ~lsp-mode~ for Python.
-
-#+begin_src emacs-lisp
-(use-package elpy
-  :defer t
-  :custom (elpy-rpc-python-command "python3")
-  :init (advice-add 'python-mode :before 'elpy-enable))
-#+end_src
-
-**** Flycheck fixes
-
-Helper function to set ~flycheck~ executables to match the current virtual environment.
-
-#+begin_src emacs-lisp
-(defun bkhl/flycheck-python-set-executables ()
-  "Use some commands from virtual environments in flycheck."
-  (let ((exec-path (python-shell-calculate-exec-path)))
-    (setq-local flycheck-python-pylint-executable
-                (executable-find python-shell-interpreter))))
-
-(defun bkhl/flycheck-python-set-executables-add-hook ()
-  (add-hook 'flycheck-before-syntax-check-hook
-            #'bkhl/flycheck-python-set-executables 'local))
-
-(add-hook 'python-mode-hook
-          'bkhl/flycheck-python-set-executables-add-hook)
-#+end_src
-
-**** Formatting
-
-Add formatters for Python.
-
- #+begin_src emacs-lisp
- (use-package reformatter
-   :config
-   (reformatter-define python-black-format
-                       :program "black" :args '("-q" "-"))
-
-   (reformatter-define python-isort-format
-                       :program "isort" :args '("-q" "-"))
-
-   (defun bkhl/python-format-buffer ()
-     (python-isort-format-buffer)
-     (python-black-format-buffer))
-
-   (with-eval-after-load 'python
-     (bind-key "C-c f" (lambda ()
-                         (interactive)
-                         (python-isort-format-buffer)
-                         (python-black-format-buffer))
-               python-mode-map)))
-#+end_src
-
-*** Rust
-
-Use ~rustic~ for Rust editing.
-
-#+begin_src emacs-lisp
-(use-package rustic
-  :after (lsp-mode company)
-  :custom
-  (rustic-format-trigger 'on-save))
 #+end_src
 
 * Writing
