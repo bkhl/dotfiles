@@ -170,18 +170,16 @@ Also use a straight or squiggly line to show if the buffer has modifications.
 (setq mouse-yank-at-point t)
 #+end_src
 
-** Bind some keys to resize font size
+** Key bindings to change global font scale
 
 #+begin_src emacs-lisp
-(defun bkhl/reset-text-size ()
-  (interactive)
-  (text-scale-set 0))
-
-(define-key global-map (kbd "C-)") 'bkhl/reset-text-size)
-(define-key global-map (kbd "C-+") 'text-scale-increase)
-(define-key global-map (kbd "C-=") 'text-scale-increase)
-(define-key global-map (kbd "C-_") 'text-scale-decrease)
-(define-key global-map (kbd "C--") 'text-scale-decrease)
+(use-package default-text-scale
+  :bind
+  (("C-)" . default-text-scale-reset)
+   ("C-+" . default-text-scale-increase)
+   ("C-=" . default-text-scale-increase)
+   ("C-_" . default-text-scale-decrease)
+   ("C--" . default-text-scale-decrease)))
 #+end_src
 
 * Configure ~emacsclient~ bevaviour
