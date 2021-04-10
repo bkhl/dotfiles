@@ -39,6 +39,7 @@
  ("smart-mode-line" . "999be065b195f2eddb4e1b629f99038d832d44b7")
  ("straight.el" . "e1390a933b6f5a15079d6dec91eac97a17aad10c")
  ("transient" . "cc16a5eaa73617a281b0bbf71b24432c38994e30")
+ ("trimspace-mode" . "c36754009b13153c4c7a7687c270a1e82b35222e")
  ("ts.el" . "b7ca357a0ed57694e0b25ec1b1ca12e24a4ce541")
  ("use-package" . "a7422fb8ab1baee19adb2717b5b47b9c3812a84c")
  ("whole-line-or-region" . "3c1a55103e52c7a3010ee0043af22484d23a441e")

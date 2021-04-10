@@ -287,11 +287,14 @@ If a file changes, automatically refresh buffers containing the file, so that it
 
 ** Trim trailing spaces and enforce final newline
 
-When files are saved, delete trailing whitespace and ensure that the file ends with a newline.
+~trimspace-mode~ sets things up so that when a file is opened, it enables deleting trailing whitespace and newlines before saving the file, unless the file when first opened already has traling whitespace of each type.
 
 #+begin_src emacs-lisp
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
-(setq require-final-newline t)
+(use-package trimspace-mode
+  :straight (:type git :host gitlab :repo "bkhl/trimspace-mode")
+  :hook
+  (prog-mode . trimspace-mode-unless-trailing-whitespace)
+  (text-mode . trimspace-mode-unless-trailing-whitespace))
 #+end_src
 
 ** Offer to create parent directories on save
