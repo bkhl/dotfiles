@@ -263,6 +263,12 @@ This package allows first selecting the word the current pointer is on, and then
   :bind ("C-S-w" . er/expand-region))
 #+end_src
 
+** Allow undo of window layout changes
+
+#+begin_src emacs-lisp
+(winner-mode 1)
+#+end_src
+
 * File handling
 ** Store backups in tmp directory
 
