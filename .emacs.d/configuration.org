@@ -113,6 +113,13 @@ Enable smart-mode-line
   (sml/setup))
 #+end_src
 
+Show line and column number in mode line.
+
+#+begin_src emacs-lisp
+(line-number-mode 1)
+(column-number-mode 1)
+#+end_src
+
 ** Disable bell
 
 Disable warning bell, both the default audio one and the visual one otherwise enabled by =sensible-defaults.el=.
