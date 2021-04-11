@@ -519,6 +519,16 @@ there's no active region."
 #+end_src
 
 ** Multi-purpose programming packages
+*** Diagnostics with ~flymake~
+
+#+begin_src emacs-lisp
+(use-package flymake
+  :bind
+  (:map flymake-mode-map
+   ("M-n" . flymake-goto-next-error)
+   ("M-p" . flymake-goto-prev-error)))
+#+end_src
+
 *** Language Server Protocol with ~eglot~
 
 #+begin_src emacs-lisp
