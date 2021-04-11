@@ -848,6 +848,11 @@ Hide done tasks from the agenda.
         ledger-binary-path "hledger"
         ledger-default-date-format ledger-iso-date-format))
 #+end_src
+** Markdown
+
+#+begin_src emacs-lisp
+(use-package markdown-mode)
+#+end_src
 
 ** YAML
 
