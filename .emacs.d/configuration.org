@@ -11,7 +11,7 @@ This is my Emacs configuration. Inspirations include:
 - [[https://emacscast.org/][EmacsCast]].
 - Protesilaos Stavrou's  [[https://protesilaos.com/codelog/][blog]] and [[https://www.youtube.com/channel/UC0uTPqBCFIpZxlz_Lv1tk_g][videos]].
 
-  Here is [[https://www.emacswiki.org/emacs/bkhl][my home page on EmacsWiki]].
+Here is [[https://www.emacswiki.org/emacs/bkhl][my home page on EmacsWiki]].
 
 * Set personal information
 
@@ -37,7 +37,7 @@ To store a secret, use a command like ~secret-tool store --label=Foo foo passwor
    (format "secret-tool lookup '%s' '%s'" attribute value)))
 #+end_src
 
-* Look and feel
+* User interface
 ** Load Modus Operandi theme
 
 #+begin_src emacs-lisp
@@ -187,6 +187,12 @@ Also use a straight or squiggly line to show if the buffer has modifications.
   (("C-)" . default-text-scale-reset)
    ("C-+" . default-text-scale-increase)
    ("C-_" . default-text-scale-decrease)))
+#+end_src
+
+** Set preferred dateformat
+
+#+begin_src emacs-lisp
+(calendar-set-date-style 'iso)
 #+end_src
 
 * Configure ~emacsclient~ bevaviour
