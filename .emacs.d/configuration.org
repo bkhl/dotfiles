@@ -82,9 +82,11 @@ This is run as a hook after the first frame is created, as this will otherwise n
 (defun bkhl/set-fontset-fonts ()
   (set-fontset-font t 'symbol "Noto Color Emoji")
   (set-fontset-font t ?฿ "Iosevka BKHL Default")
-  (remove-hook 'focus-in-hook #'bkhl/set-fontset-fonts))
+  (remove-hook 'server-after-make-frame-hook
+               #'bkhl/set-fontset-fonts))
 
-(add-hook 'focus-in-hook #'bkhl/set-fontset-fonts)
+(add-hook 'server-after-make-frame-hook
+          #'bkhl/set-fontset-fonts)
 #+end_src
 
 ** Render some keywords as symbols
@@ -197,7 +199,7 @@ Also use a straight or squiggly line to show if the buffer has modifications.
 
 * Configure ~emacsclient~ bevaviour
 
-Raise new ~emacsclient~ frames when created
+Give new ~emacsclient~ frames focus when created
 
 #+begin_src emacs-lisp
   (defun bkhl/focus-frame ()
