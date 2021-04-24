@@ -1,0 +1,3 @@
+* Iosevka
+
+This is a custom build of the [[https://typeof.net/Iosevka/][Iosevka]] font according to the settings in [[file:private-build-plans.toml][private-build-plans.toml]].
