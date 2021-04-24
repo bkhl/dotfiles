@@ -1,6 +1,6 @@
 [buildPlans.iosevka-bkhl-default]
 family = "Iosevka BKHL Default"
-spacing = "default"
+spacing = "normal"
 serifs = "slab"
 no-ligation = true
 no-cv-ss = true
@@ -20,7 +20,7 @@ one = "base-long-top-serif"
 dollar = "open"
 
 percent = "rings-continuous-slash"
-asterisk = "low"
+asterisk = "penta-low"
 paragraph-sign = "low"
 ampersand = "upper-open"
 
@@ -46,6 +46,6 @@ one = "base-long-top-serif"
 dollar = "open"
 
 percent = "rings-continuous-slash"
-asterisk = "low"
+asterisk = "penta-low"
 paragraph-sign = "low"
 ampersand = "upper-open"
