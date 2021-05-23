@@ -1,5 +1,4 @@
-(("circe" . "e67e2d1149ebf3e79cd2162e78802af3ed5f82da")
- ("company-mode" . "4286972775832e29434becc6c72e767319139a1c")
+(("company-mode" . "4286972775832e29434becc6c72e767319139a1c")
  ("company-posframe" . "c7a820a35ff132aaec53c81e05afc829de39eb68")
  ("ctrlf" . "dbe83710d06bc39315f1455f6f21479f3747c0aa")
  ("dash.el" . "b9286a84975874b10493f1cb4ea051c501f51273")
