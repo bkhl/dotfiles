@@ -9,6 +9,7 @@
  ("eglot" . "fc221c8b8af33363a6a8d1e07950dc01555f6c9b")
  ("el-get" . "84dd1837f9ac80a329ab0c2de6859777f445f8ff")
  ("eldoc" . "a8068079578b8a8bfffa046bd79f2005813161fe")
+ ("emacs-gdscript-mode" . "b7bfa6a3b294039f5093f85e4ff809ff05333abd")
  ("emacs-kv" . "721148475bce38a70e0b678ba8aa923652e8900e")
  ("emacsmirror-mirror" . "1c24bceb43e0e475656be908133a8eb6df3bf973")
  ("epl" . "78ab7a85c08222cd15582a298a364774e3282ce6")

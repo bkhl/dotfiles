@@ -573,6 +573,16 @@ Use [[https://github.com/raxod502/prescient.el][Prescient]] to sort alternatives
 #+end_src
 
 ** Programming languages
+*** GDScript
+
+#+begin_src emacs-lisp
+(use-package gdscript-mode
+  :straight (gdscript-mode
+             :type git
+             :host github
+             :repo "godotengine/emacs-gdscript-mode"))
+#+end_src
+
 *** Python
 **** Default intepreter
 
