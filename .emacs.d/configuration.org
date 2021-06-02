@@ -400,25 +400,6 @@ This module allows a number of functions to operate on the current line if no re
 #+end_src
 
 * Project management and version control
-** Projectile project management
-
-Load the Projectile project management package.
-
-#+begin_src emacs-lisp
-(use-package projectile
-  :config
-  (projectile-mode 1)
-  (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
-#+end_src
-
-This allows setting a value in a =.dir-locals.el= to make Projectile list only
-files that are tracked in the Git repository.
-
-#+begin_src emacs-lisp
-(add-to-list 'safe-local-variable-values
-             '(projectile-git-command . "git ls-files -zc --exclude-standard"))
-#+end_src
-
 ** Magit Git integration
 
 Load ~magit~, for working with Git.
@@ -488,7 +469,7 @@ Load ~diff-hl~ which shows uncommited changes in the left-hand fringe.
 (setq diff-font-lock-prettify t)
 #+end_src
 
-** Ally remembering risky local variables
+** Allow remembering risky local variables
 
 This overrides the Emacs settings that enforces having to accept local variables matching certain patterns every time they are used.
 
