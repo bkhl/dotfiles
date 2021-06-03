@@ -326,12 +326,20 @@ When saving a file to a directory that doesn't exist, offer to create it.
   :mode ("\\'Dockerfile\\.?" . dockerfile-mode))
 #+end_src
 
+** Connect by Tramp to Docker
+
+#+begin_src emacs-lisp
+(use-package docker-tramp)
+#+end_src
+
 ** Connect by Tramp to Podman
 
 #+begin_src emacs-lisp
-(use-package docker-tramp
-  :custom
-  (docker-tramp-docker-executable "podman"))
+(use-package podman-tramp
+  :straight (podman-tramp
+             :type git
+             :host gitlab
+             :repo "bkhl/podman-tramp.el"))
 #+end_src
 
 * General text editing
