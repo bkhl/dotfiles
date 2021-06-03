@@ -8,6 +8,7 @@
  ("dockerfile-mode" . "ad06a41259ff2961d603bf23a3a8fbd22dde2161")
  ("eglot" . "e498cb171bb07ec36880a2494aafc8acb1cc34ca")
  ("el-get" . "d76ac84ae9670de7bf7725b362cafe86688771f9")
+ ("el2org" . "7db77fdd73f378d4e60e34c11bbdf00677adc32c")
  ("eldoc" . "24ab6e066c7a7536dc4346dc9e6090636ef58f0e")
  ("emacs-gdscript-mode" . "b7bfa6a3b294039f5093f85e4ff809ff05333abd")
  ("emacs-kv" . "721148475bce38a70e0b678ba8aa923652e8900e")

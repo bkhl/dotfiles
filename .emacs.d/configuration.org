@@ -554,6 +554,17 @@ Use [[https://github.com/raxod502/prescient.el][Prescient]] to sort alternatives
 #+end_src
 
 ** Programming languages
+*** Emacs Lisp
+
+=el2org= can convert Elisp comments to an Org file.
+
+#+begin_src emacs-lisp
+(use-package el2org
+  :custom
+  (el2org-default-backend 'org)
+  (el2org-add-notification nil))
+#+end_src
+
 *** GDScript
 
 #+begin_src emacs-lisp
@@ -563,7 +574,6 @@ Use [[https://github.com/raxod502/prescient.el][Prescient]] to sort alternatives
              :host github
              :repo "godotengine/emacs-gdscript-mode"))
 #+end_src
-
 *** Python
 **** Default intepreter
 
