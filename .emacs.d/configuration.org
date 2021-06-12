@@ -183,6 +183,12 @@ Also use a straight or squiggly line to show if the buffer has modifications.
 (calendar-set-date-style 'iso)
 #+end_src
 
+** Highlight current line
+
+#+begin_src emacs-lisp
+(global-hl-line-mode)
+#+end_src
+
 * Configure ~emacsclient~ bevaviour
 
 Give new ~emacsclient~ frames focus when created
