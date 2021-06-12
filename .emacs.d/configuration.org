@@ -138,7 +138,6 @@ Also use a straight or squiggly line to show if the buffer has modifications.
         (:eval (if (buffer-modified-p) " ⁓ " " — "))
         (:eval (or
                 (getenv "ETUI_PROJECT")
-                (getenv "TOOLBOX_PROJECT")
                 (system-name)))))
 #+end_src
 
