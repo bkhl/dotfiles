@@ -244,6 +244,14 @@ Disabling =C-z=, which normally minimizes the window, which is rather distractin
   (prescient-persist-mode))
 #+end_src
 
+** Marginalia for adding information to minibuffer  completions
+
+#+begin_src emacs-lisp
+(use-package marginalia
+  :init
+  (marginalia-mode))
+#+end_src
+
 ** CTRLF for search within buffer
 
 This packages replaces the standard ~isearch-forward~ with a search function based on Selectrum.

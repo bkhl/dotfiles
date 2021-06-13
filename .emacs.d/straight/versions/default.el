@@ -22,6 +22,7 @@
  ("jsonrpc" . "dbfa30971026dacd9389f4312b0dd7a12fef0d87")
  ("ledger-mode" . "19b84dc7664ea069e1a9fd446daf699574c44986")
  ("magit" . "71f57c5582448be81b02ba53750dd2ea39ed0eaf")
+ ("marginalia" . "4c6272ffc4836de052c8b06f681b0e700cb01602")
  ("markdown-mode" . "58f2d22526ac1e4abd4ee1afff8624d2dd3123d3")
  ("melpa" . "870901c45fb35384953568a972aa36ad445e1ad9")
  ("minions" . "aed285155dc8f073d766e752520ec599e77ce8b7")
