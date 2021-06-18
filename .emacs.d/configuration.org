@@ -749,34 +749,42 @@ Use Olivetti mode by default in Org, and make tags align to the default width of
 
 ** Capturing
 
-Add templates for use by ~org-capture~
+Bind =C-c c= to ~org-capture~ to quickly add notes.
 
 #+begin_src emacs-lisp
-(setq org-capture-templates
-      `(("i"
-         "inbox"
-         entry
-         (file ,(concat bkhl/org-directory "Inbox.org"))
-         "* TODO %?")
-        ("c"
-         "contact"
-         entry
-         (file ,(concat bkhl/org-directory "Contacts.org"))
-         "* %(org-contacts-template-name)
+(bind-key "C-c c" 'org-capture)
+#+end_src
+
+*** Templates
+**** Add task to inbox
+
+#+begin_src emacs-lisp
+(add-to-list 'org-capture-templates
+             `("i"
+               "inbox"
+               entry
+               (file ,(concat bkhl/org-directory "Inbox.org"))
+               "* TODO %?"))
+
+#+end_src
+
+**** Add contact
+
+#+begin_src emacs-lisp
+(add-to-list 'org-capture-templates
+             `("c"
+               "contact"
+               entry
+               (file ,(concat bkhl/org-directory "Contacts.org"))
+               "* %?
 :PROPERTIES:
-:EMAIL: %(org-contacts-template-email)
+:EMAIL:
 :PHONE:
 :NICKNAME:
 :NOTE:
 :ADDRESS:
 :BIRTHDAY:
-:END:")))
-#+end_src
-
-Bind =C-c c= to ~org-capture~ to quickly add notes.
-
-#+begin_src emacs-lisp
-(bind-key "C-c c" 'org-capture)
+:END:"))
 #+end_src
 
 ** Refiling
