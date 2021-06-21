@@ -65,14 +65,13 @@ Enable Emoji font if available. ☃
 This is run as a hook after the first frame is created, as this will otherwise not work when Emacs is started in daemon mode, or by ~emacsclient~.
 
 #+begin_src emacs-lisp
-(defun bkhl/set-fontset-fonts ()
-  (set-fontset-font t 'symbol "Noto Color Emoji")
-  (set-fontset-font t ?฿ "Iosevka BKHL Default")
-  (remove-hook 'server-after-make-frame-hook
-               #'bkhl/set-fontset-fonts))
-
-(add-hook 'server-after-make-frame-hook
-          #'bkhl/set-fontset-fonts)
+(add-hook
+ 'server-after-make-frame-hook
+ (defun bkhl/set-fontset-fonts ()
+   (set-fontset-font t 'symbol "Noto Color Emoji")
+   (set-fontset-font t ?฿ "Iosevka BKHL Default")
+   (remove-hook 'server-after-make-frame-hook
+                'bkhl/set-fontset-fonts)))
 #+end_src
 
 ** Render some keywords as symbols
@@ -322,13 +321,19 @@ If a file changes, automatically refresh buffers containing the file, so that it
 When saving a file to a directory that doesn't exist, offer to create it.
 
 #+begin_src emacs-lisp
-  (defun bkhl/ask-create-directory ()
-    (when buffer-file-name
-      (let ((dir (file-name-directory buffer-file-name)))
-        (when (and (not (file-exists-p dir))
-                   (y-or-n-p (format "Directory %s does not exist. Create it?" dir)))
-          (make-directory dir t)))))
-  (add-hook 'before-save-hook 'bkhl/ask-create-directory)
+(add-hook
+ 'before-save-hook
+ (defun bkhl/ask-create-directory ()
+   (when buffer-file-name
+     (let ((dir (file-name-directory buffer-file-name)))
+       (when
+           (and
+            (not (file-exists-p dir))
+            (y-or-n-p
+             (format
+              "Directory %s does not exist. Create it?"
+              dir)))
+         (make-directory dir t))))))
 #+end_src
 
 * Managing containers
@@ -457,7 +462,7 @@ To use this as an ~after-save-hook~ in a project, create a ~.dir-locals.el~ with
 #+begin_example
 ((org-mode . ((eval . (add-hook
                        'after-save-hook
-                       #'bkhl/magic-commit-current-buffer
+                       'bkhl/magic-commit-current-buffer
                        nil t)))))
 #+end_example
 
@@ -838,18 +843,20 @@ Hide done tasks from the agenda.
 #+begin_src emacs-lisp
 (use-package org-present
   :config
-  (defun bkhl/org-present-settings ()
-    (org-present-big)
-    (org-display-inline-images)
-    (org-present-hide-cursor)
-    (org-present-read-only))
-  (add-hook 'org-present-mode-hook 'bkhl/org-present-settings)
-  (defun bkhl/org-present-settings-reset ()
-    (org-present-small)
-    (org-remove-inline-images)
-    (org-present-show-cursor)
-    (org-present-read-write))
-  (add-hook 'org-present-mode-quit-hook 'bkhl/org-present-settings-reset))
+  (add-hook
+   'org-present-mode-hook
+   (defun bkhl/org-present-settings ()
+     (org-present-big)
+     (org-display-inline-images)
+     (org-present-hide-cursor)
+     (org-present-read-only)))
+  (add-hook
+   'org-present-mode-quit-hook
+   (defun bkhl/org-present-settings-reset ()
+     (org-present-small)
+     (org-remove-inline-images)
+     (org-present-show-cursor)
+     (org-present-read-write))))
 #+end_src
 
 * File formats
