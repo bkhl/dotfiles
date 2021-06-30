@@ -759,12 +759,27 @@ Add templates for use by ~org-capture~
 #+begin_src emacs-lisp
 (setq org-capture-templates
       `(("i"
-         "inbox"
+         "Inbox"
          entry
          (file ,(concat bkhl/org-directory "Inbox.org"))
          "* TODO %?")
+        ("j" "Journal")
+        ("jp"
+         "Personal journal entry"
+         entry
+         (file+olp+datetree
+          ,(concat bkhl/org-directory "Notes.org") "Journal")
+         "* %u"
+         :empty-lines 1)
+        ("jw"
+         "Work journal entry"
+         entry
+         (file+olp+datetree
+          ,(concat bkhl/org-directory "Work.org") "Journal")
+         "* %u"
+         :empty-lines 1)
         ("c"
-         "contact"
+         "Contact"
          entry
          (file ,(concat bkhl/org-directory "Contacts.org"))
          "* %(org-contacts-template-name)
