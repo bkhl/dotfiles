@@ -752,6 +752,12 @@ Use Olivetti mode by default in Org, and make tags align to the default width of
 (setq org-tags-column -70)
 #+end_src
 
+** Keybindings
+
+#+begin_src emacs-lisp
+(bind-key "C-c l" 'org-store-link)
+#+end_src
+
 ** Capturing
 
 Add templates for use by ~org-capture~
