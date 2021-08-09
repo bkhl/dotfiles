@@ -336,30 +336,6 @@ When saving a file to a directory that doesn't exist, offer to create it.
          (make-directory dir t))))))
 #+end_src
 
-* Managing containers
-** Dockerfile format
-
-#+begin_src emacs-lisp
-(use-package dockerfile-mode
-  :mode ("\\'Dockerfile\\.?" . dockerfile-mode))
-#+end_src
-
-** Connect by Tramp to Docker
-
-#+begin_src emacs-lisp
-(use-package docker-tramp)
-#+end_src
-
-** Connect by Tramp to Podman
-
-#+begin_src emacs-lisp
-(use-package podman-tramp
-  :straight (podman-tramp
-             :type git
-             :host gitlab
-             :repo "bkhl/podman-tramp.el"))
-#+end_src
-
 * General text editing
 ** Highlight selected region and apply changes to it
 
@@ -580,6 +556,13 @@ Use [[https://github.com/raxod502/prescient.el][Prescient]] to sort alternatives
 #+end_src
 
 ** Programming languages
+*** Dockerfile
+
+#+begin_src emacs-lisp
+(use-package dockerfile-mode
+  :mode ("\\'Dockerfile\\.?" . dockerfile-mode))
+#+end_src
+
 *** Emacs Lisp
 
 =el2org= can convert Elisp comments to an Org file.
