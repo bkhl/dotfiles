@@ -50,3 +50,9 @@ export ALTERNATE_EDITOR=""
 
 # Use less with -R (show ANSI colour)
 export PAGER='less -R'
+
+# For desktop systems with Podman, use the user Podman socket for Docker/Podman
+# API communication.
+if command -v podman &> /dev/null && command -v xdg-user-dir &> /dev/null; then
+    export DOCKER_HOST="unix://$(xdg-user-dir RUNTIME)/podman/podman.sock"
+fi
