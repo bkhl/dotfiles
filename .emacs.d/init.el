@@ -13,16 +13,16 @@
 ;; checked for every loaded .el and .elc file.
 (let ((file-name-handler-alist nil))
   ;; Load early-init.el if we are on an Emacs version that didn't already load it.
-  (if (version< emacs-version "27")
-      (load-file (concat user-emacs-directory "early-init.el")))
+  (when (version< emacs-version "27")
+    (load-file (concat user-emacs-directory "early-init.el")))
 
   ;; Save custom values in separate file.
   (setq custom-file (concat user-emacs-directory "custom.el"))
   (load custom-file :noerror)
 
   ;; Work around HTTPS issues on older versions of Emacs.
-  (if (version< emacs-version "26.3")
-      (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3"))
+  (when (version< emacs-version "26.3")
+    (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3"))
 
   ;; Hook straight.el into use-package
   (setq straight-use-package-by-default t)

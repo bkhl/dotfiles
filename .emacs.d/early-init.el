@@ -3,3 +3,7 @@
 (menu-bar-mode 0)
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
+
+;; Recommended when using straight.el
+(when (version< "26" emacs-version)
+  (setq package-enable-at-startup nil))
