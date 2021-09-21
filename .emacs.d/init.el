@@ -27,9 +27,6 @@
   ;; Hook straight.el into use-package
   (setq straight-use-package-by-default t)
 
-  ;; Make straight.el use SSH to fetch repos by default.
-  (setq straight-vc-git-default-protocol 'ssh)
-
   ;; Bootstrap straight.el
   (defvar bootstrap-version)
   (let ((bootstrap-file
