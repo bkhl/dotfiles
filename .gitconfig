@@ -1,8 +1,8 @@
 [user]
 	email = bkhl@elektrubadur.se
 	name = Björn Lindström
-[includeIf "gitdir:~/Work/"]
-    path = .gitconfig.d/work
+[include]
+    path = .gitconfig.local
 [push]
 	default = current
 [alias]
