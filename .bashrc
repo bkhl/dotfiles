@@ -99,7 +99,7 @@ alias fgrep='fgrep --color=auto'
 alias grep='grep --color=auto'
 alias ls='ls --color=auto --classify'
 alias sudo='sudo '
-alias dgit='git --git-dir "$HOME/.config/dotfiles" --work-tree="$HOME"'
+alias dgit='git --git-dir "$HOME/.config/dotfiles.git" --work-tree="$HOME"'
 alias emacs="emacsclient --alternate-editor="
 
 if [[ -n $DISPLAY ]] && hash xclip 2> /dev/null; then
