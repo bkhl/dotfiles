@@ -479,6 +479,16 @@ This overrides the Emacs settings that enforces having to accept local variables
 (advice-add 'risky-local-variable-p :override #'ignore)
 #+end_src
 
+* Remote editing with TRAMP
+
+** Use remote =$PATH=
+
+Use the ~$PATH~ in the remote shell. This requires that Tramp can use call ~sh -l~, which has not been a problem for me so far.
+
+#+begin_src emacs-lisp
+(add-to-list 'tramp-remote-path 'tramp-own-remote-path)
+#+end_src
+
 * Programming
 ** In programming modes, treat words in camel case symbols as separate.
 
