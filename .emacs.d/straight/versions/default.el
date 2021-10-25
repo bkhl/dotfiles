@@ -35,7 +35,6 @@
  ("posframe" . "efb01fb89c8245820a13f70848f4175580668068")
  ("prescient.el" . "027c2137a8d9e01a1d4c7b5e5d98da017dd2d48e")
  ("project" . "a546cce47c434b0b4bf24bf1d5ed6e4623492072")
- ("pyvenv" . "31ea715f2164dd611e7fc77b26390ef3ca93509b")
  ("rich-minority" . "a03e693f6f9232cf75363aaaf1cb041f21675c19")
  ("s.el" . "08661efb075d1c6b4fa812184c1e5e90c08795a9")
  ("selectrum" . "97693d0aea2c548197e9d1de3bdedf8e703775a4")

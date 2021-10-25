@@ -593,6 +593,7 @@ Use [[https://github.com/raxod502/prescient.el][Prescient]] to sort alternatives
              :host github
              :repo "godotengine/emacs-gdscript-mode"))
 #+end_src
+
 *** Python
 **** Default intepreter
 
@@ -601,14 +602,6 @@ Use Python 3 as default Python interpreter. This is for environments that does n
 #+begin_src emacs-lisp
 (setq python-shell-interpreter "python"
       python-shell-interpreter-args "-i")
-#+end_src
-
-**** Activate virtual environments
-
-Package for activating Python virtual environments.
-
-#+begin_src emacs-lisp
-(use-package pyvenv)
 #+end_src
 
 * Writing
