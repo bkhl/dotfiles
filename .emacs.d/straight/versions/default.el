@@ -40,6 +40,7 @@
  ("selectrum" . "97693d0aea2c548197e9d1de3bdedf8e703775a4")
  ("smart-mode-line" . "abcb0ab6f7110a03d6c7428bae67cf8731496433")
  ("straight.el" . "af5437f2afd00936c883124d6d3098721c2d306c")
+ ("tramp" . "f163daf126905e6ac765833b0f7d4f3dfcd51119")
  ("transient" . "9e60c46f0728beca42e368d55de03e9c7ec62ddc")
  ("trimspace-mode" . "299ae9149257db15a792298c3a3f70d8d15c26dc")
  ("ts.el" . "3fee71ceefac71ba55eb34829d7e94bb3df37cee")

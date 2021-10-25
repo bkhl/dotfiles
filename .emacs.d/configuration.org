@@ -341,11 +341,11 @@ When saving a file to a directory that doesn't exist, offer to create it.
 
 * Remote editing with TRAMP
 
-Using the built-in Tramp until there is a solution to [[https://github.com/raxod502/straight.el/issues/236][raxod502/straight.el/issues/236]].
+The custom ~:pre-build~ commnad is a workaround for  [[https://github.com/raxod502/straight.el/issues/236][raxod502/straight.el/issues/236]].
 
 #+begin_src emacs-lisp
 (use-package tramp
-  :straight nil
+  :straight (tramp :build t :pre-build (("make" "autoloads")))
   :config (add-to-list 'tramp-remote-path 'tramp-own-remote-path))
 #+end_src
 
