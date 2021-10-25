@@ -336,6 +336,16 @@ When saving a file to a directory that doesn't exist, offer to create it.
          (make-directory dir t))))))
 #+end_src
 
+* Remote editing with TRAMP
+
+Using the built-in Tramp until there is a solution to [[https://github.com/raxod502/straight.el/issues/236][raxod502/straight.el/issues/236]].
+
+#+begin_src emacs-lisp
+(use-package tramp
+  :straight nil
+  :config (add-to-list 'tramp-remote-path 'tramp-own-remote-path))
+#+end_src
+
 * General text editing
 ** Highlight selected region and apply changes to it
 
@@ -477,16 +487,6 @@ This overrides the Emacs settings that enforces having to accept local variables
 
 #+begin_src emacs-lisp
 (advice-add 'risky-local-variable-p :override #'ignore)
-#+end_src
-
-* Remote editing with TRAMP
-
-** Use remote =$PATH=
-
-Use the ~$PATH~ in the remote shell. This requires that Tramp can use call ~sh -l~, which has not been a problem for me so far.
-
-#+begin_src emacs-lisp
-(add-to-list 'tramp-remote-path 'tramp-own-remote-path)
 #+end_src
 
 * Programming
