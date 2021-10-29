@@ -170,18 +170,29 @@ Also use a straight or squiggly line to show if the buffer has modifications.
 ** Key bindings to change global font scale
 
 #+begin_src emacs-lisp
-(use-package default-text-scale
-  :bind
-  (("C-)" . (lambda ()
-              (interactive)
-              (setq default-text-scale--complement 0)
-              (set-face-attribute 'default
-                                  nil
-                                  :height bkhl/default-text-height)
-              (message "Default font size is now %d"
-                       (face-attribute 'default :height))))
-   ("C-+" . default-text-scale-increase)
-   ("C-_" . default-text-scale-decrease)))
+(defvar bkhl/current-text-height bkhl/default-text-height)
+
+(defun bkhl/revert-text-height ()
+  (interactive)
+  (set-face-attribute 'default nil :height bkhl/default-text-height)
+  (setq bkhl/current-text-height (face-attribute 'default :height))
+  (message "Font size reverted to %d" bkhl/current-text-height))
+
+(defun bkhl/increase-text-height ()
+  (interactive)
+  (set-face-attribute 'default nil :height (+ bkhl/current-text-height 10))
+  (setq bkhl/current-text-height (face-attribute 'default :height))
+  (message "Font size increased to %d" bkhl/current-text-height))
+
+(defun bkhl/decrease-text-height ()
+  (interactive)
+  (set-face-attribute 'default nil :height (- bkhl/current-text-height 10))
+  (setq bkhl/current-text-height (face-attribute 'default :height))
+  (message "Font size decreased to %d" bkhl/current-text-height))
+
+(bind-key "C-)" #'bkhl/revert-text-height)
+(bind-key "C-+" #'bkhl/increase-text-height)
+(bind-key "C-_" #'bkhl/decrease-text-height)
 #+end_src
 
 ** Set preferred dateformat

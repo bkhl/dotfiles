@@ -2,7 +2,6 @@
  ("company-posframe" . "c7a820a35ff132aaec53c81e05afc829de39eb68")
  ("ctrlf" . "e915c5920cd3e39f481a6ce024073dd28cc9f743")
  ("dash.el" . "da167c51e9fd167a48d06c7c0ee8e3ac7abd9718")
- ("default-text-scale" . "bfc0987c37e93742255d3b23d86c17096fda8e7e")
  ("diff-hl" . "f20b438559b2c40b305cf0feb05fe21cff40d536")
  ("dockerfile-mode" . "5db94549ce8b000ae35adf511c820ad228178052")
  ("eglot" . "9665359bb6bfb6a96b0c3b307d4abea9fcbff7a5")
