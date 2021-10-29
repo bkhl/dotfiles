@@ -49,9 +49,11 @@ Here is [[https://www.emacswiki.org/emacs/bkhl][my home page on EmacsWiki]].
 Setting fonts. I primarily use the ~variable-pitch~ and ~fixed-pitch~ faces in ~org-mode~.
 
 #+begin_src emacs-lisp
+(defvar bkhl/default-text-height 130)
+
 (set-face-attribute 'default nil
                     :family "Iosevka BKHL Default"
-                    :height 130)
+                    :height bkhl/default-text-height)
 (set-face-attribute 'variable-pitch nil
                     :family "Crimson Pro"
                     :height (/ 1.4 1.3))
@@ -170,7 +172,14 @@ Also use a straight or squiggly line to show if the buffer has modifications.
 #+begin_src emacs-lisp
 (use-package default-text-scale
   :bind
-  (("C-)" . default-text-scale-reset)
+  (("C-)" . (lambda ()
+              (interactive)
+              (setq default-text-scale--complement 0)
+              (set-face-attribute 'default
+                                  nil
+                                  :height bkhl/default-text-height)
+              (message "Default font size is now %d"
+                       (face-attribute 'default :height))))
    ("C-+" . default-text-scale-increase)
    ("C-_" . default-text-scale-decrease)))
 #+end_src
