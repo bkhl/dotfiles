@@ -346,6 +346,7 @@ The custom ~:pre-build~ commnad is a workaround for  [[https://github.com/raxod5
 #+begin_src emacs-lisp
 (use-package tramp
   :straight (tramp :build t :pre-build (("make" "autoloads")))
+  :custom (enable-remote-dir-locals t)
   :config (add-to-list 'tramp-remote-path 'tramp-own-remote-path))
 #+end_src
 
