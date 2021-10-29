@@ -17,10 +17,7 @@ Here is [[https://www.emacswiki.org/emacs/bkhl][my home page on EmacsWiki]].
 
 #+begin_src emacs-lisp
 (setq user-full-name "Björn Lindström"
-      user-mail-address "bkhl@elektrubadur.se"
-      calendar-latitude 13.76
-      calendar-longitude 100.54
-      calendar-location-name "Bangkok")
+      user-mail-address "bkhl@elektrubadur.se")
 #+end_src
 
 * User interface
