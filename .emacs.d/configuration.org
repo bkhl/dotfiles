@@ -616,16 +616,6 @@ Use [[https://github.com/raxod502/prescient.el][Prescient]] to sort alternatives
              :repo "godotengine/emacs-gdscript-mode"))
 #+end_src
 
-*** Python
-**** Default intepreter
-
-Use Python 3 as default Python interpreter. This is for environments that does not have a ~python~ command, or that points it to Python 2.
-
-#+begin_src emacs-lisp
-(setq python-shell-interpreter "python"
-      python-shell-interpreter-args "-i")
-#+end_src
-
 * Writing
 ** Use single space to delimit sentences
 
