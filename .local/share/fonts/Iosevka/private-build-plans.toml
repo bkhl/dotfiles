@@ -19,7 +19,8 @@ one = "base-long-top-serif"
 
 dollar = "open"
 
-at = "fourfold-tall"
+at = "threefold-tall"
+number-sign = "upright-tall"
 percent = "rings-continuous-slash"
 asterisk = "penta-low"
 paragraph-sign = "low"
@@ -46,7 +47,8 @@ one = "base-long-top-serif"
 
 dollar = "open"
 
-at = "fourfold-tall"
+at = "threefold-tall"
+number-sign = "upright-tall"
 percent = "rings-continuous-slash"
 asterisk = "penta-low"
 paragraph-sign = "low"
