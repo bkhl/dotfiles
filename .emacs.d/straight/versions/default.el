@@ -7,7 +7,7 @@
  ("eglot" . "9665359bb6bfb6a96b0c3b307d4abea9fcbff7a5")
  ("el-get" . "960f3fb962c35d3196bab20b2a3f6d6228119277")
  ("el2org" . "7db77fdd73f378d4e60e34c11bbdf00677adc32c")
- ("eldoc" . "036b9478ca77b29733fa4405c89dae28d0894818")
+ ("eldoc" . "f03074fbaa99d5bcd3375c75231c8caa5ce6ff51")
  ("emacs-gdscript-mode" . "4badcf6a0c951daba4d7259db3913b78254c0423")
  ("emacs-kv" . "721148475bce38a70e0b678ba8aa923652e8900e")
  ("emacsmirror-mirror" . "b267ef5d8e5e395162f29801d92b04ba347e9824")
