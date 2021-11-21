@@ -56,10 +56,10 @@ Setting fonts. I primarily use the ~variable-pitch~ and ~fixed-pitch~ faces in ~
                     :height bkhl/default-text-height)
 (set-face-attribute 'variable-pitch nil
                     :family "Crimson Pro"
-                    :height (/ 1.4 1.3))
+                    :height (/ 1.5 1.3))
 (set-face-attribute 'fixed-pitch nil
                     :family "Iosevka BKHL Default"
-                    :height (/ 1.3 1.4))
+                    :height (/ 1.3 1.5))
 #+end_src
 
 Enable Emoji font if available. ☃
@@ -648,6 +648,13 @@ A minor mode that automatically adjusts margins &c. for prose writing.
 #+end_src
 
 * Reading
+** Info manual reader
+
+#+begin_src emacs-lisp
+(add-hook 'Info-mode-hook 'olivetti-mode)
+(add-hook 'Info-mode-hook 'variable-pitch-mode)
+#+end_src
+
 ** EPUB reader
 
 #+begin_src emacs-lisp
