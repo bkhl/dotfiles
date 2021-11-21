@@ -678,7 +678,7 @@ read and possibly make notes on or file.
 #+begin_src emacs-lisp
 (setq org-todo-keywords
       '((sequence
-         "TODO(t)" "READ(r)"
+         "TODO(t)" "INPROGRESS(i)"
          "|"
          "DONE(d)" "CANCELLED(c)")))
 #+end_src
