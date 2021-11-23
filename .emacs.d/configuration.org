@@ -339,6 +339,13 @@ This binds ~M-y~ (when not preceeded by ~C-y~) to a mode for viewing and selecti
   :config (winner-mode))
 #+end_src
 
+** Use ~which-key~ to show key binding hints
+
+#+begin_src emacs-lisp
+(use-package which-key
+  :config (which-key-mode))
+#+end_src
+
 * File/buffer handling
 ** Start with an empty scratch buffer.
 
