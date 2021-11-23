@@ -8,6 +8,7 @@
 This is my Emacs configuration. Inspirations include:
 
 - Harry R. Schwart's [[https://github.com/hrs/dotfiles/blob/main/emacs/dot-emacs.d/configuration.org][Emacs configuration]] and [[https://github.com/hrs/sensible-defaults.el][sensible-defaults.el]].
+- Phil Hagelberg's [[https://git.sr.ht/~technomancy/better-defaults][better-defaults.el]].
 - [[https://emacscast.org/][EmacsCast]].
 - Protesilaos Stavrou's  [[https://protesilaos.com/codelog/][blog]] and [[https://www.youtube.com/channel/UC0uTPqBCFIpZxlz_Lv1tk_g][videos]].
 
@@ -203,6 +204,18 @@ Set window title including current buffer or filename, along with system name. U
 (global-hl-line-mode)
 #+end_src
 
+** Flash frame on errors
+
+#+begin_src emacs-lisp
+(setq visible-bell t)
+#+end_src
+
+** Make ediff use existing frame instead of creating new one
+
+#+begin_src emacs-lisp
+(setq ediff-window-setup-function 'ediff-setup-windows-plain)
+#+end_src
+
 * Configure ~emacsclient~ bevaviour
 
 Give new ~emacsclient~ frames focus when created
@@ -215,21 +228,6 @@ Give new ~emacsclient~ frames focus when created
 #+end_src
 
 * Key bindings and navigation
-** Start with an empty scratch buffer.
-
-#+begin_src emacs-lisp
-(setq inhibit-startup-screen t
-      initial-scratch-message nil)
-#+end_src
-
-** Start opening files from home directory
-
-Unless overridden by a buffer, when prompting to open a file, start in the home directory.
-
-#+begin_src emacs-lisp
-(setq default-directory "~/")
-#+end_src
-
 ** Disable =C-z=
 
 Disabling =C-z=, which normally minimizes the window, which is rather distracting.
@@ -294,13 +292,68 @@ This package allows first selecting the word the current pointer is on, and then
   :bind ("C-S-w" . er/expand-region))
 #+end_src
 
+** Change behaviour of ~M-z~ for zapping to character
+
+Make ~M-z~ kill characters up to the character /before/ the next occurrence of the selected character, instead of including it, which is generally more useful.
+
+#+begin_src emacs-lisp
+(use-package misc
+  :straight nil
+  :commands zap-up-to-char
+  :bind ("M-z" . zap-up-to-char))
+#+end_src
+
+** Preserve ~M-x~ command history between sessions
+
+#+begin_src emacs-lisp
+(use-package savehist
+  :custom (savehist-mode 1))
+#+end_src
+
+** Make ~apropos~ search more extensively
+
+#+begin_src emacs-lisp
+(setq setqapropos-do-all t)
+#+end_src
+
+* File/buffer handling
+** Start with an empty scratch buffer.
+
+#+begin_src emacs-lisp
+(setq inhibit-startup-screen t
+      initial-scratch-message nil)
+#+end_src
+
+** Use saved point position in previously opened files
+
+#+begin_src emacs-lisp
+(use-package saveplace
+  :custom (save-place-mode 1))
+#+end_src
+
+** Use directory name in buffer names for files with same name
+
+#+begin_src emacs-lisp
+(use-package uniquify
+  :straight nil
+  :custom (uniquify-buffer-name-style 'forward))
+#+end_src
+
+** Start opening files from home directory
+
+Unless overridden by a buffer, when prompting to open a file, start in the home directory.
+
+#+begin_src emacs-lisp
+(setq default-directory "~/")
+#+end_src
+
 ** Allow undo of window layout changes
 
 #+begin_src emacs-lisp
-(winner-mode 1)
+(use-package winner
+  :custom (winner-mode 1))
 #+end_src
 
-* File handling
 ** Store backups in tmp directory
 
 Store backups and autosaves in ~temporary-file-directory~. This risks losing some data on a system crash, but I am not very concerned about that as generally my important files are in some kind of version control.
@@ -426,6 +479,14 @@ This module allows a number of functions to operate on the current line if no re
 #+begin_src emacs-lisp
 (use-package whole-line-or-region
   :config (whole-line-or-region-global-mode))
+#+end_src
+
+** Save existing clipboard text into kill ring before replacing it
+
+Prevents killing text in Emacs from irrevocably deleting things from the system clipboard.
+
+#+begin_src emacs-lisp
+(setq save-interprogram-paste-before-kill t)
 #+end_src
 
 * Project management and version control
