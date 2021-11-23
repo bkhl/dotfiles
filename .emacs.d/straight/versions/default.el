@@ -13,7 +13,7 @@
  ("emacsmirror-mirror" . "371e4a010f15781875e7ca04ee916a5d62825215")
  ("esxml" . "701ccc285f3748d94c12f85636fecaa88858c178")
  ("expand-region.el" . "95a773bd8f557cbd43d3b2dab2fa4417ec5927ab")
- ("flymake" . "c88d1f3402d402db769ae11b689a69af0d263797")
+ ("flymake" . "166b6cd4c38a062bee6f397144ef7a9370376639")
  ("git-timemachine" . "3381797bcbf906b18dff654a2361032d2d01b4a3")
  ("gnu-elpa-mirror" . "7eed1d93d45b909e587f73fb55f42bf190b2bffa")
  ("ht.el" . "c4c1be487d6ecb353d07881526db05d7fc90ea87")
