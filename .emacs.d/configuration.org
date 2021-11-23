@@ -227,6 +227,81 @@ Give new ~emacsclient~ frames focus when created
   (add-hook 'server-after-make-frame-hook 'bkhl/focus-frame)
 #+end_src
 
+* File/buffer handling
+** Start with an empty scratch buffer.
+
+#+begin_src emacs-lisp
+(setq inhibit-startup-screen t
+      initial-scratch-message nil)
+#+end_src
+
+** Use directory name in buffer names for files with same name
+
+#+begin_src emacs-lisp
+(use-package uniquify
+  :straight nil
+  :custom (uniquify-buffer-name-style 'forward))
+#+end_src
+
+** Start opening files from home directory
+
+Unless overridden by a buffer, when prompting to open a file, start in the home directory.
+
+#+begin_src emacs-lisp
+(setq default-directory "~/")
+#+end_src
+
+** Store backups in tmp directory
+
+Store backups and autosaves in ~temporary-file-directory~. This risks losing some data on a system crash, but I am not very concerned about that as generally my important files are in some kind of version control.
+
+#+begin_src emacs-lisp
+(setq backup-directory-alist
+      `((".*" . ,temporary-file-directory)))
+(setq auto-save-file-name-transforms
+      `((".*" ,temporary-file-directory t)))
+#+end_src
+
+** Automatically sync updated files
+
+If a file changes, automatically refresh buffers containing the file, so that it doesn't get out of sync.
+
+#+begin_src emacs-lisp
+(global-auto-revert-mode t)
+#+end_src
+
+** Trim trailing spaces and enforce final newline
+
+~trimspace-mode~ sets things up so that when a file is opened, it enables deleting trailing whitespace and newlines before saving the file, unless the file when first opened already has traling whitespace of each type.
+
+#+begin_src emacs-lisp
+(use-package trimspace-mode
+  :straight (:type git :host gitlab :repo "bkhl/trimspace-mode")
+  :hook
+  (prog-mode . trimspace-mode-unless-trailing-whitespace)
+  (text-mode . trimspace-mode-unless-trailing-whitespace))
+#+end_src
+
+** Offer to create parent directories on save
+
+When saving a file to a directory that doesn't exist, offer to create it.
+
+#+begin_src emacs-lisp
+(add-hook
+ 'before-save-hook
+ (defun bkhl/ask-create-directory ()
+   (when buffer-file-name
+     (let ((dir (file-name-directory buffer-file-name)))
+       (when
+           (and
+            (not (file-exists-p dir))
+            (y-or-n-p
+             (format
+              "Directory %s does not exist. Create it?"
+              dir)))
+         (make-directory dir t))))))
+#+end_src
+
 * Key bindings and navigation
 ** Disable =C-z=
 
@@ -346,79 +421,18 @@ This binds ~M-y~ (when not preceeded by ~C-y~) to a mode for viewing and selecti
   :config (which-key-mode))
 #+end_src
 
-* File/buffer handling
-** Start with an empty scratch buffer.
+** Directional navigation between windows
+
+Enable navigation between windows with ~S-<direction>~, adding some configuration to make this conflict less with ~org-mode~.
 
 #+begin_src emacs-lisp
-(setq inhibit-startup-screen t
-      initial-scratch-message nil)
-#+end_src
-
-** Use directory name in buffer names for files with same name
-
-#+begin_src emacs-lisp
-(use-package uniquify
-  :straight nil
-  :custom (uniquify-buffer-name-style 'forward))
-#+end_src
-
-** Start opening files from home directory
-
-Unless overridden by a buffer, when prompting to open a file, start in the home directory.
-
-#+begin_src emacs-lisp
-(setq default-directory "~/")
-#+end_src
-
-** Store backups in tmp directory
-
-Store backups and autosaves in ~temporary-file-directory~. This risks losing some data on a system crash, but I am not very concerned about that as generally my important files are in some kind of version control.
-
-#+begin_src emacs-lisp
-(setq backup-directory-alist
-      `((".*" . ,temporary-file-directory)))
-(setq auto-save-file-name-transforms
-      `((".*" ,temporary-file-directory t)))
-#+end_src
-
-** Automatically sync updated files
-
-If a file changes, automatically refresh buffers containing the file, so that it doesn't get out of sync.
-
-#+begin_src emacs-lisp
-(global-auto-revert-mode t)
-#+end_src
-
-** Trim trailing spaces and enforce final newline
-
-~trimspace-mode~ sets things up so that when a file is opened, it enables deleting trailing whitespace and newlines before saving the file, unless the file when first opened already has traling whitespace of each type.
-
-#+begin_src emacs-lisp
-(use-package trimspace-mode
-  :straight (:type git :host gitlab :repo "bkhl/trimspace-mode")
-  :hook
-  (prog-mode . trimspace-mode-unless-trailing-whitespace)
-  (text-mode . trimspace-mode-unless-trailing-whitespace))
-#+end_src
-
-** Offer to create parent directories on save
-
-When saving a file to a directory that doesn't exist, offer to create it.
-
-#+begin_src emacs-lisp
-(add-hook
- 'before-save-hook
- (defun bkhl/ask-create-directory ()
-   (when buffer-file-name
-     (let ((dir (file-name-directory buffer-file-name)))
-       (when
-           (and
-            (not (file-exists-p dir))
-            (y-or-n-p
-             (format
-              "Directory %s does not exist. Create it?"
-              dir)))
-         (make-directory dir t))))))
+(use-package windmove
+  :config
+  (windmove-default-keybindings)
+  (add-hook 'org-shiftup-final-hook 'windmove-up)
+  (add-hook 'org-shiftleft-final-hook 'windmove-left)
+  (add-hook 'org-shiftdown-final-hook 'windmove-down)
+  (add-hook 'org-shiftright-final-hook 'windmove-right))
 #+end_src
 
 * Remote editing with TRAMP
