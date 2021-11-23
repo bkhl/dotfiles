@@ -82,7 +82,7 @@ This is run as a hook after the first frame is created, as this will otherwise n
 This primarily makes =lambda= get rendered as =λ= in Emacs Lisp, but can also be enabled in other modes.
 
 #+begin_src emacs-lisp
-(global-prettify-symbols-mode 1)
+(global-prettify-symbols-mode)
 #+end_src
 
 ** Customize mode line
@@ -108,8 +108,8 @@ Enable smart-mode-line
 Show line and column number in mode line.
 
 #+begin_src emacs-lisp
-(line-number-mode 1)
-(column-number-mode 1)
+(line-number-mode)
+(column-number-mode)
 #+end_src
 
 ** Disable bell
@@ -307,7 +307,7 @@ Make ~M-z~ kill characters up to the character /before/ the next occurrence of t
 
 #+begin_src emacs-lisp
 (use-package savehist
-  :custom (savehist-mode 1))
+  :custom (savehist-mode))
 #+end_src
 
 ** Make ~apropos~ search more extensively
@@ -325,19 +325,26 @@ This binds ~M-y~ (when not preceeded by ~C-y~) to a mode for viewing and selecti
   :config (browse-kill-ring-default-keybindings))
 #+end_src
 
+** Use saved point position in previously opened files
+
+#+begin_src emacs-lisp
+(use-package saveplace
+  :config (save-place-mode))
+#+end_src
+
+** Allow undo of window layout changes
+
+#+begin_src emacs-lisp
+(use-package winner
+  :config (winner-mode))
+#+end_src
+
 * File/buffer handling
 ** Start with an empty scratch buffer.
 
 #+begin_src emacs-lisp
 (setq inhibit-startup-screen t
       initial-scratch-message nil)
-#+end_src
-
-** Use saved point position in previously opened files
-
-#+begin_src emacs-lisp
-(use-package saveplace
-  :config (save-place-mode 1))
 #+end_src
 
 ** Use directory name in buffer names for files with same name
@@ -354,13 +361,6 @@ Unless overridden by a buffer, when prompting to open a file, start in the home 
 
 #+begin_src emacs-lisp
 (setq default-directory "~/")
-#+end_src
-
-** Allow undo of window layout changes
-
-#+begin_src emacs-lisp
-(use-package winner
-  :config (winner-mode 1))
 #+end_src
 
 ** Store backups in tmp directory
@@ -472,7 +472,7 @@ character name.
 Enable ~electric-pair-mode~, which enables automatic insert of matching characters for example for parentheses.
 
 #+begin_src emacs-lisp
-(electric-pair-mode 1)
+(electric-pair-mode)
 #+end_src
 
 ** Enable ~yasnippet~
@@ -546,8 +546,8 @@ Load ~diff-hl~ which shows uncommited changes in the left-hand fringe.
 #+begin_src emacs-lisp
 (use-package diff-hl
   :config
-  (global-diff-hl-mode 1)
-  (diff-hl-flydiff-mode 1)
+  (global-diff-hl-mode)
+  (diff-hl-flydiff-mode)
   (add-hook 'magit-pre-refresh-hook
             'diff-hl-magit-pre-refresh)
   (add-hook 'magit-post-refresh-hook
