@@ -421,7 +421,13 @@ This binds ~M-y~ (when not preceeded by ~C-y~) to a mode for viewing and selecti
   :config (which-key-mode))
 #+end_src
 
-** Directional navigation between windows
+** Navigation between windows
+
+Bind ~M-o~ (by default bound to a rarely used command) to ~other-window~.
+
+#+begin_src emacs-lisp
+(bind-key "M-o" 'other-window)
+#+end_src
 
 Enable navigation between windows with ~S-<direction>~, adding some configuration to make this conflict less with ~org-mode~.
 
