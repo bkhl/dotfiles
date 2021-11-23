@@ -767,19 +767,6 @@ A minor mode that automatically adjusts margins &c. for prose writing.
 
 As an exception to the rule in this file, ~org-mode~ is not called with ~use-package~, because it has so much configuration that it warrants splitting it into sections, and it has implicitly been loaded before running this file, given that this configuration itself is written in ~org-mode~.
 
-** =TODO= keywords
-
-Customizing =TODO= keywords adding my own state =READ=, which is for things to
-read and possibly make notes on or file.
-
-#+begin_src emacs-lisp
-(setq org-todo-keywords
-      '((sequence
-         "TODO(t)"
-         "|"
-         "DONE(d)" "CANCELLED(c)")))
-#+end_src
-
 ** Directories
 
 Set a custom variable for the notes directory, so that it can be referred to
