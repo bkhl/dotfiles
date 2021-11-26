@@ -1,7 +1,6 @@
 (("browse-kill-ring" . "c7a188a6148f6391b6926d25b9cf191d4a8b3f42")
  ("company-mode" . "6abb232acde15e1a7bf402a57f7bb982edf2de7d")
  ("company-posframe" . "e104c0d0ee8db4a5fc852b3fc951e52989ee8755")
- ("ctrlf" . "e915c5920cd3e39f481a6ce024073dd28cc9f743")
  ("dash.el" . "da167c51e9fd167a48d06c7c0ee8e3ac7abd9718")
  ("diff-hl" . "6fa3af0843093f44e028584a93eef091ec7e79d2")
  ("dockerfile-mode" . "5db94549ce8b000ae35adf511c820ad228178052")

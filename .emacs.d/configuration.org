@@ -340,24 +340,6 @@ Disabling =C-z=, which normally minimizes the window, which is rather distractin
   (marginalia-mode))
 #+end_src
 
-** CTRLF for search within buffer
-
-This packages replaces the standard ~isearch-forward~ with a search function based on Selectrum.
-
-Using an advice to use an "unbranded" prompt.
-
-#+begin_src emacs-lisp
-(defun bkhl/ctrlf-prompt (prompt)
-  (if (string-prefix-p "CTRLF " prompt)
-      (concat "Search " (substring prompt 6))
-    prompt))
-
-(use-package ctrlf
-  :config
-  (advice-add 'ctrlf--prompt :filter-return #'bkhl/ctrlf-prompt)
-  (ctrlf-mode))
-#+end_src
-
 ** Use =C-S-f= to expand region
 
 This package allows first selecting the word the current pointer is on, and then by repeating the key press grow the selection to the next larger structure.
