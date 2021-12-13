@@ -87,14 +87,14 @@ This primarily makes =lambda= get rendered as =λ= in Emacs Lisp, but can also b
 
 ** Customize mode line
 
-Hide minor modes from mode line with Minions.
+Load [[https://github.com/myrjola/diminish.el][Diminish]], which allows hiding some mode line displays from the mode line.
+
+For most modes this is configured later on via the ~:diminish~ argument to  ~use-package~.
 
 #+begin_src emacs-lisp
-(use-package minions
+(use-package diminish
   :config
-  (setq minions-mode-line-lighter ""
-        minions-mode-line-delimiters '("" . ""))
-  (minions-mode))
+  (diminish 'buffer-face-mode))
 #+end_src
 
 Enable smart-mode-line
@@ -428,6 +428,7 @@ This binds ~M-y~ (when not preceeded by ~C-y~) to a mode for viewing and selecti
 
 #+begin_src emacs-lisp
 (use-package which-key
+  :diminish which-key-mode
   :config (which-key-mode))
 #+end_src
 
@@ -524,6 +525,7 @@ This module allows a number of functions to operate on the current line if no re
 
 #+begin_src emacs-lisp
 (use-package whole-line-or-region
+  :diminish whole-line-or-region-local-mode
   :config (whole-line-or-region-global-mode))
 #+end_src
 
@@ -690,6 +692,7 @@ This enables the [[https://github.com/joaotavora/eglot][Eglot]] LSP client. This
 
 #+begin_src emacs-lisp
 (use-package company
+  :diminish company-mode
   :config
   (add-hook 'after-init-hook 'global-company-mode)
   (bind-key "M-/" 'company-complete-common))
@@ -699,6 +702,7 @@ Use the ~company-posframe~ plugin to show the ~company~ menus in a separate fram
 
 #+begin_src emacs-lisp
 (use-package company-posframe
+  :diminish company-posframe-mode
   :custom (company-posframe-show-indicator nil)
   :hook (company-mode . company-posframe-mode))
 #+end_src
@@ -751,7 +755,8 @@ Use [[https://github.com/raxod502/prescient.el][Prescient]] to sort alternatives
 A minor mode that automatically adjusts margins &c. for prose writing.
 
 #+begin_src emacs-lisp
-(use-package olivetti)
+(use-package olivetti
+  :diminish olivetti-mode)
 #+end_src
 
 * Reading
