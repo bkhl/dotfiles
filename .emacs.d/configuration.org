@@ -111,7 +111,7 @@ This primarily makes =lambda= get rendered as =λ= in Emacs Lisp, but can also b
 
 ** Disable bell
 
-Disable warning bell, both the default audio one and the visual one otherwise enabled by =sensible-defaults.el=.
+Disable warning bell, both the default audio one and the visual one.
 
 #+begin_src emacs-lisp
 (setq ring-bell-function 'ignore)
@@ -199,12 +199,6 @@ Set window title including current buffer or filename, along with system name. U
 
 #+begin_src emacs-lisp
 (global-hl-line-mode)
-#+end_src
-
-** Flash frame on errors
-
-#+begin_src emacs-lisp
-(setq visible-bell t)
 #+end_src
 
 ** Make ediff use existing frame instead of creating new one
