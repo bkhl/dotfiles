@@ -45,6 +45,31 @@ Here is [[https://www.emacswiki.org/emacs/bkhl][my home page on EmacsWiki]].
 (global-font-lock-mode t)
 #+end_src
 
+** Customize mode line
+
+Load [[https://github.com/myrjola/diminish.el][Diminish]], which allows hiding some mode line displays from the mode line.
+
+In this configuration, this  is enabled via the ~:diminish~ argument to  ~use-package~.
+
+#+begin_src emacs-lisp
+(use-package diminish)
+#+end_src
+
+Enable smart-mode-line
+
+#+begin_src emacs-lisp
+(use-package smart-mode-line
+  :config
+  (sml/setup))
+#+end_src
+
+Show line and column number in mode line.
+
+#+begin_src emacs-lisp
+(line-number-mode)
+(column-number-mode)
+#+end_src
+
 ** Fonts
 
 Setting fonts. I primarily use the ~variable-pitch~ and ~fixed-pitch~ faces in ~org-mode~.
@@ -77,39 +102,19 @@ This is run as a hook after the first frame is created, as this will otherwise n
                 'bkhl/set-fontset-fonts)))
 #+end_src
 
+Hide the ~buffer-face-mode~ ligher.
+
+#+begin_src emacs-lisp
+(use-package face-remap
+  :diminish buffer-face-mode)
+#+end_src
+
 ** Render some keywords as symbols
 
 This primarily makes =lambda= get rendered as =λ= in Emacs Lisp, but can also be enabled in other modes.
 
 #+begin_src emacs-lisp
 (global-prettify-symbols-mode)
-#+end_src
-
-** Customize mode line
-
-Load [[https://github.com/myrjola/diminish.el][Diminish]], which allows hiding some mode line displays from the mode line.
-
-For most modes this is configured later on via the ~:diminish~ argument to  ~use-package~.
-
-#+begin_src emacs-lisp
-(use-package diminish
-  :config
-  (diminish 'buffer-face-mode))
-#+end_src
-
-Enable smart-mode-line
-
-#+begin_src emacs-lisp
-(use-package smart-mode-line
-  :config
-  (sml/setup))
-#+end_src
-
-Show line and column number in mode line.
-
-#+begin_src emacs-lisp
-(line-number-mode)
-(column-number-mode)
 #+end_src
 
 ** Disable bell
