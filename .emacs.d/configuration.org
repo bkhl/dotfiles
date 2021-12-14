@@ -45,31 +45,6 @@ Here is [[https://www.emacswiki.org/emacs/bkhl][my home page on EmacsWiki]].
 (global-font-lock-mode t)
 #+end_src
 
-** Customize mode line
-
-Load [[https://github.com/myrjola/diminish.el][Diminish]], which allows hiding some mode line displays from the mode line.
-
-In this configuration, this  is enabled via the ~:diminish~ argument to  ~use-package~.
-
-#+begin_src emacs-lisp
-(use-package diminish)
-#+end_src
-
-Enable smart-mode-line
-
-#+begin_src emacs-lisp
-(use-package smart-mode-line
-  :config
-  (sml/setup))
-#+end_src
-
-Show line and column number in mode line.
-
-#+begin_src emacs-lisp
-(line-number-mode)
-(column-number-mode)
-#+end_src
-
 ** Fonts
 
 Setting fonts. I primarily use the ~variable-pitch~ and ~fixed-pitch~ faces in ~org-mode~.
@@ -107,6 +82,23 @@ Hide the ~buffer-face-mode~ ligher.
 #+begin_src emacs-lisp
 (use-package face-remap
   :diminish buffer-face-mode)
+#+end_src
+
+** Customize mode line
+
+Enable smart-mode-line
+
+#+begin_src emacs-lisp
+(use-package smart-mode-line
+  :config
+  (sml/setup))
+#+end_src
+
+Show line and column number in mode line.
+
+#+begin_src emacs-lisp
+(line-number-mode)
+(column-number-mode)
 #+end_src
 
 ** Render some keywords as symbols
