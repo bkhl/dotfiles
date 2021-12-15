@@ -47,5 +47,8 @@
   ;; Load org-mode.
   (use-package org)
 
+  ;; Load Diminish, to enable :diminish keyword to use-package.
+  (use-package diminish)
+
   ;; Load the remainder of the configuration from an org-mode file.
   (org-babel-load-file (concat user-emacs-directory "configuration.org")))

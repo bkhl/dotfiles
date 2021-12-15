@@ -715,13 +715,6 @@ Use [[https://github.com/raxod502/prescient.el][Prescient]] to sort alternatives
 
 *** Emacs Lisp
 
-Hide ElDoc mode lighter
-
-#+begin_src emacs-lisp
-(use-package eldoc
-  :diminish)
-#+end_src
-
 =el2org= can convert Elisp comments to an Org file.
 
 #+begin_src emacs-lisp
@@ -729,6 +722,13 @@ Hide ElDoc mode lighter
   :custom
   (el2org-default-backend 'org)
   (el2org-add-notification nil))
+#+end_src
+
+Hide lighter for ElDoc mode.
+
+#+begin_src emacs-lisp
+(use-package eldoc
+  :diminish)
 #+end_src
 
 *** GDScript
