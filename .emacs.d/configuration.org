@@ -66,6 +66,14 @@ The ~use-package~ macro is used to configure most packages later on in this file
 (require 'use-package)
 #+end_src
 
+** Load Diminish
+
+The Diminish package allows hiding some lighters from the mode line with the ~:diminish~ keyword for ~use-package~.
+
+#+begin_src emacs-lisp
+(use-package diminish)
+#+end_src
+
 * Set personal information
 
 #+begin_src emacs-lisp
@@ -75,12 +83,6 @@ The ~use-package~ macro is used to configure most packages later on in this file
 
 * User interface
 ** Customize mode line
-
-The Diminish package allows hiding some lighters from the mode line with the ~:diminish~ keyword for ~use-package~.
-
-#+begin_src emacs-lisp
-(use-package diminish)
-#+end_src
 
 Show line and column number in mode line
 
