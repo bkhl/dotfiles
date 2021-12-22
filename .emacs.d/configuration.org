@@ -283,6 +283,13 @@ When saving a file to a directory that doesn't exist, offer to create it.
          (make-directory dir t))))))
 #+end_src
 
+** dired
+
+Make file sizes shown in dired human readable.
+
+#+begin_src emacs-lisp
+(setq-default dired-listing-switches "-alh")
+#+end_src
 * Key bindings and navigation
 ** Disable =C-z=
 
@@ -977,13 +984,4 @@ Hide done tasks from the agenda.
 
 #+begin_src emacs-lisp
 (use-package yaml-mode)
-#+end_src
-
-* File management
-** dired
-
-Make file sizes shown in dired human readable.
-
-#+begin_src emacs-lisp
-(setq-default dired-listing-switches "-alh")
 #+end_src
