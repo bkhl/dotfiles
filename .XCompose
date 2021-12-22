@@ -1,3 +1,7 @@
+# This is necessary to add your own Compose sequences
+# in addition to the builtin sequences of GTK.
+include "%L"
+
 <Multi_key> <b> <equal> : "฿" # THAI CURRENCY SYMBOL BAHT
 <Multi_key> <equal> <b> : "฿" # THAI CURRENCY SYMBOL BAHT
 <Multi_key> <s> <n> <o> : "☃" # SNOWMAN
