@@ -24,31 +24,19 @@
   (when (version< emacs-version "26.3")
     (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3"))
 
-  ;; Hook straight.el into use-package
-  (setq straight-use-package-by-default t)
+  ;; Add load path for custom packages
+  (let ((default-directory  "~/.emacs.d/site-lisp/"))
+    (setq load-path
+          (append
+           (let ((load-path  (copy-sequence load-path)))
+             (normal-top-level-add-subdirs-to-load-path))
+           load-path)))
 
-  ;; Bootstrap straight.el
-  (defvar bootstrap-version)
-  (let ((bootstrap-file
-         (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
-        (bootstrap-version 5))
-    (unless (file-exists-p bootstrap-file)
-      (with-current-buffer
-          (url-retrieve-synchronously
-           "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
-           'silent 'inhibit-cookies)
-        (goto-char (point-max))
-        (eval-print-last-sexp)))
-    (load bootstrap-file nil 'nomessage))
-
-  ;; Install use-package.
-  (straight-use-package 'use-package)
+  ;; Load use-package.
+  (require 'use-package)
 
   ;; Load org-mode.
   (use-package org)
-
-  ;; Load Diminish, to enable :diminish keyword to use-package.
-  (use-package diminish)
 
   ;; Load the remainder of the configuration from an org-mode file.
   (org-babel-load-file (concat user-emacs-directory "configuration.org")))

@@ -22,6 +22,21 @@ Here is [[https://www.emacswiki.org/emacs/bkhl][my home page on EmacsWiki]].
 #+end_src
 
 * User interface
+** Customize mode line
+
+The Diminish package allows hiding some lighters from the mode line with the ~:diminish~ keyword for ~use-package~.
+
+#+begin_src emacs-lisp
+(use-package diminish)
+#+end_src
+
+Show line and column number in mode line
+
+#+begin_src emacs-lisp
+(line-number-mode)
+(column-number-mode)
+#+end_src
+
 ** Load Modus Operandi theme
 
 #+begin_src emacs-lisp
@@ -82,13 +97,6 @@ Hide the ~buffer-face-mode~ ligher.
 #+begin_src emacs-lisp
 (use-package face-remap
   :diminish buffer-face-mode)
-#+end_src
-
-** Customize mode line
-
-#+begin_src emacs-lisp
-(line-number-mode)
-(column-number-mode)
 #+end_src
 
 ** Render some keywords as symbols
@@ -220,7 +228,6 @@ Give new ~emacsclient~ frames focus when created
 
 #+begin_src emacs-lisp
 (use-package uniquify
-  :straight nil
   :custom (uniquify-buffer-name-style 'forward))
 #+end_src
 
@@ -257,7 +264,6 @@ If a file changes, automatically refresh buffers containing the file, so that it
 
 #+begin_src emacs-lisp
 (use-package trimspace-mode
-  :straight (:type git :host gitlab :repo "bkhl/trimspace-mode")
   :hook
   (prog-mode . trimspace-mode-unless-trailing-whitespace)
   (text-mode . trimspace-mode-unless-trailing-whitespace))
@@ -351,7 +357,7 @@ Hide commands in M-x which do not work in the current mode. Vertico commands are
 
 #+begin_src emacs-lisp
 (use-package marginalia
-  :init
+  :config
   (marginalia-mode))
 #+end_src
 
@@ -361,7 +367,6 @@ Make ~M-z~ kill characters up to the character /before/ the next occurrence of t
 
 #+begin_src emacs-lisp
 (use-package misc
-  :straight nil
   :commands zap-up-to-char
   :bind ("M-z" . zap-up-to-char))
 #+end_src
@@ -424,11 +429,8 @@ Enable navigation between windows with ~S-<direction>~, adding some configuratio
 
 * Remote editing with TRAMP
 
-The custom ~:pre-build~ command is a workaround for  [[https://github.com/raxod502/straight.el/issues/236][raxod502/straight.el/issues/236]].
-
 #+begin_src emacs-lisp
 (use-package tramp
-  :straight (tramp :build t :pre-build (("make" "autoloads")))
   :custom (enable-remote-dir-locals t)
   :config (add-to-list 'tramp-remote-path 'tramp-own-remote-path))
 #+end_src
@@ -550,11 +552,14 @@ Load ~diff-hl~ which shows uncommited changes in the left-hand fringe.
 (use-package diff-hl
   :config
   (global-diff-hl-mode)
-  (diff-hl-flydiff-mode)
   (add-hook 'magit-pre-refresh-hook
             'diff-hl-magit-pre-refresh)
   (add-hook 'magit-post-refresh-hook
             'diff-hl-magit-post-refresh))
+
+(use-package diff-hl-flydiff
+  :config
+  (diff-hl-flydiff-mode))
 #+end_src
 
 ** ~git-timemachine~ for browsing file history
@@ -688,30 +693,11 @@ Use [[https://github.com/raxod502/prescient.el][Prescient]] to sort alternatives
 
 *** Emacs Lisp
 
-=el2org= can convert Elisp comments to an Org file.
-
-#+begin_src emacs-lisp
-(use-package el2org
-  :custom
-  (el2org-default-backend 'org)
-  (el2org-add-notification nil))
-#+end_src
-
 Hide lighter for ElDoc mode.
 
 #+begin_src emacs-lisp
 (use-package eldoc
   :diminish)
-#+end_src
-
-*** GDScript
-
-#+begin_src emacs-lisp
-(use-package gdscript-mode
-  :straight (gdscript-mode
-             :type git
-             :host github
-             :repo "godotengine/emacs-gdscript-mode"))
 #+end_src
 
 * Writing

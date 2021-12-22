@@ -1,0 +1,75 @@
+[submodule "/var/home/bkhl/.emacs.d/site-lisp/use-package"]
+	path = /var/home/bkhl/.emacs.d/site-lisp/use-package
+	url = https://github.com/jwiegley/use-package.git
+[submodule "/var/home/bkhl/.emacs.d/site-lisp/modus-themes"]
+	path = /var/home/bkhl/.emacs.d/site-lisp/modus-themes
+	url = https://gitlab.com/protesilaos/modus-themes.git
+[submodule "/var/home/bkhl/.emacs.d/site-lisp/vertico"]
+	path = /var/home/bkhl/.emacs.d/site-lisp/vertico
+	url = https://github.com/minad/vertico.git
+[submodule ".emacs.d/site-lisp/orderless"]
+	path = .emacs.d/site-lisp/orderless
+	url = https://github.com/oantolin/orderless.git
+[submodule "/var/home/bkhl/.emacs.d/site-lisp/trimspace-mode"]
+	path = /var/home/bkhl/.emacs.d/site-lisp/trimspace-mode
+	url = https://gitlab.com/bkhl/trimspace-mode.git
+[submodule ".emacs.d/site-lisp/olivetti"]
+	path = .emacs.d/site-lisp/olivetti
+	url = https://github.com/rnkn/olivetti.git
+[submodule ".emacs.d/site-lisp/org-superstar-mode"]
+	path = .emacs.d/site-lisp/org-superstar-mode
+	url = https://github.com/integral-dw/org-superstar-mode.git
+[submodule ".emacs.d/site-lisp/marginalia"]
+	path = .emacs.d/site-lisp/marginalia
+	url = https://github.com/minad/marginalia.git
+[submodule ".emacs.d/site-lisp/emacs-which-key"]
+	path = .emacs.d/site-lisp/emacs-which-key
+	url = https://github.com/justbur/emacs-which-key.git
+[submodule ".emacs.d/site-lisp/whole-line-or-region"]
+	path = .emacs.d/site-lisp/whole-line-or-region
+	url = https://github.com/purcell/whole-line-or-region.git
+[submodule ".emacs.d/site-lisp/diff-hl"]
+	path = .emacs.d/site-lisp/diff-hl
+	url = https://github.com/dgutov/diff-hl.git
+[submodule ".emacs.d/site-lisp/company-mode"]
+	path = .emacs.d/site-lisp/company-mode
+	url = https://github.com/company-mode/company-mode.git
+[submodule ".emacs.d/site-lisp/company-posframe"]
+	path = .emacs.d/site-lisp/company-posframe
+	url = https://github.com/tumashu/company-posframe.git
+[submodule ".emacs.d/site-lisp/posframe"]
+	path = .emacs.d/site-lisp/posframe
+	url = https://github.com/tumashu/posframe.git
+[submodule ".emacs.d/site-lisp/prescient"]
+	path = .emacs.d/site-lisp/prescient
+	url = https://github.com/raxod502/prescient.el.git
+[submodule ".emacs.d/site-lisp/org-present"]
+	path = .emacs.d/site-lisp/org-present
+	url = https://github.com/rlister/org-present.git
+[submodule ".emacs.d/site-lisp/markdown-mode"]
+	path = .emacs.d/site-lisp/markdown-mode
+	url = https://github.com/jrblevin/markdown-mode.git
+[submodule ".emacs.d/site-lisp/yaml-mode"]
+	path = .emacs.d/site-lisp/yaml-mode
+	url = https://github.com/yoshiki/yaml-mode.git
+[submodule ".emacs.d/site-lisp/org-super-agenda"]
+	path = .emacs.d/site-lisp/org-super-agenda
+	url = https://github.com/alphapapa/org-super-agenda.git
+[submodule ".emacs.d/site-lisp/dash"]
+	path = .emacs.d/site-lisp/dash
+	url = https://github.com/magnars/dash.el.git
+[submodule ".emacs.d/site-lisp/s"]
+	path = .emacs.d/site-lisp/s
+	url = https://github.com/magnars/s.el.git
+[submodule ".emacs.d/site-lisp/ht"]
+	path = .emacs.d/site-lisp/ht
+	url = https://github.com/Wilfred/ht.el.git
+[submodule ".emacs.d/site-lisp/ts"]
+	path = .emacs.d/site-lisp/ts
+	url = https://github.com/alphapapa/ts.el.git
+[submodule ".emacs.d/site-lisp/eglot"]
+	path = .emacs.d/site-lisp/eglot
+	url = https://github.com/joaotavora/eglot.git
+[submodule ".emacs.d/site-lisp/diminish"]
+	path = .emacs.d/site-lisp/diminish
+	url = https://github.com/myrjola/diminish.el.git
