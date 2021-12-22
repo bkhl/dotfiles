@@ -82,3 +82,9 @@
 [submodule ".emacs.d/site-lisp/with-editor"]
 	path = .emacs.d/site-lisp/with-editor
 	url = https://github.com/magit/with-editor.git
+[submodule ".emacs.d/site-lisp/dockerfile-mode"]
+	path = .emacs.d/site-lisp/dockerfile-mode
+	url = https://github.com/spotify/dockerfile-mode.git
+[submodule ".emacs.d/site-lisp/ledger-mode"]
+	path = .emacs.d/site-lisp/ledger-mode
+	url = https://github.com/ledger/ledger-mode.git
