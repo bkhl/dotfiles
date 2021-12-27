@@ -1,17 +1,17 @@
-[submodule "/var/home/bkhl/.emacs.d/site-lisp/use-package"]
-	path = /var/home/bkhl/.emacs.d/site-lisp/use-package
+[submodule ".emacs.d/site-lisp/use-package"]
+	path = .emacs.d/site-lisp/use-package
 	url = https://github.com/jwiegley/use-package.git
-[submodule "/var/home/bkhl/.emacs.d/site-lisp/modus-themes"]
-	path = /var/home/bkhl/.emacs.d/site-lisp/modus-themes
+[submodule ".emacs.d/site-lisp/modus-themes"]
+	path = .emacs.d/site-lisp/modus-themes
 	url = https://gitlab.com/protesilaos/modus-themes.git
-[submodule "/var/home/bkhl/.emacs.d/site-lisp/vertico"]
-	path = /var/home/bkhl/.emacs.d/site-lisp/vertico
+[submodule ".emacs.d/site-lisp/vertico"]
+	path = .emacs.d/site-lisp/vertico
 	url = https://github.com/minad/vertico.git
 [submodule ".emacs.d/site-lisp/orderless"]
 	path = .emacs.d/site-lisp/orderless
 	url = https://github.com/oantolin/orderless.git
-[submodule "/var/home/bkhl/.emacs.d/site-lisp/trimspace-mode"]
-	path = /var/home/bkhl/.emacs.d/site-lisp/trimspace-mode
+[submodule ".emacs.d/site-lisp/trimspace-mode"]
+	path = .emacs.d/site-lisp/trimspace-mode
 	url = https://gitlab.com/bkhl/trimspace-mode.git
 [submodule ".emacs.d/site-lisp/olivetti"]
 	path = .emacs.d/site-lisp/olivetti
