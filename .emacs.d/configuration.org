@@ -754,6 +754,20 @@ Hide lighter for ElDoc mode.
   :diminish)
 #+end_src
 
+*** Perl
+
+In Perl mode, show the double colon operator as ~∷~ (proportion sign), but center it on top of two space characters, to make it same width as the original character.
+
+The hook will only run on graphics displays, because the composed symbol will not work correctly in a terminal. This isn't fool-proof, but works well enough for me as I mostly edit Perl code in a graphical frame.
+
+#+begin_src emacs-lisp
+(add-hook 'perl-mode-hook
+          (defun bkhl/add-perl-prettify-symbols ()
+            (when (display-graphic-p)
+              (push '("::" . (?\s (Br . Bl) ?\s (Bc . Bc) ?∷))
+                    prettify-symbols-alist))))
+#+end_src
+
 * Writing
 ** Use single space to delimit sentences
 
