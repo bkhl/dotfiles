@@ -91,3 +91,9 @@
 [submodule ".emacs.d/site-lisp/git-timemachine"]
 	path = .emacs.d/site-lisp/git-timemachine
 	url = https://github.com/emacsmirror/git-timemachine.git
+[submodule ".emacs.d/site-lisp/esxml"]
+	path = .emacs.d/site-lisp/esxml
+	url = https://github.com/tali713/esxml.git
+[submodule ".emacs.d/site-lisp/nov"]
+	path = .emacs.d/site-lisp/nov
+	url = https://depp.brause.cc/nov.el.git

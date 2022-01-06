@@ -792,6 +792,17 @@ A minor mode that automatically adjusts margins &c. for prose writing.
 (add-hook 'Info-mode-hook 'variable-pitch-mode)
 #+end_src
 
+** EPUB reader
+
+#+begin_src emacs-lisp
+(use-package nov
+  :custom
+  (nov-text-width t)
+  :config
+  (add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
+  (add-hook 'nov-mode-hook 'olivetti-mode))
+#+end_src
+
 * ~org-mode~ planning and note-taking
 
 As an exception to the rule in this file, ~org-mode~ is not called with ~use-package~, because it has so much configuration that it warrants splitting it into sections, and it has implicitly been loaded before running this file, given that this configuration itself is written in ~org-mode~.
