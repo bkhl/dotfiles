@@ -119,17 +119,25 @@ Show line and column number in mode line
 Setting fonts. I primarily use the ~variable-pitch~ and ~fixed-pitch~ faces in ~org-mode~.
 
 #+begin_src emacs-lisp
+(defvar bkhl/fixed-pitch-font-family "Iosevka BKHL Default")
+(defvar bkhl/fixed-pitch-font-size 1.3)
+
+(defvar bkhl/variable-pitch-font-family "Crimson Pro")
+(defvar bkhl/variable-pitch-font-size 1.5)
+
 (defvar bkhl/default-text-height 130)
 
 (set-face-attribute 'default nil
-                    :family "Iosevka BKHL Default"
+                    :family bkhl/fixed-pitch-font-family
                     :height bkhl/default-text-height)
 (set-face-attribute 'variable-pitch nil
-                    :family "Crimson Pro"
-                    :height (/ 1.5 1.3))
+                    :family bkhl/variable-pitch-font-family
+                    :height (/ bkhl/variable-pitch-font-size
+                               bkhl/fixed-pitch-font-size))
 (set-face-attribute 'fixed-pitch nil
-                    :family "Iosevka BKHL Default"
-                    :height (/ 1.3 1.5))
+                    :family bkhl/fixed-pitch-font-family
+                    :height (/ bkhl/fixed-pitch-font-size
+                               bkhl/variable-pitch-font-size))
 #+end_src
 
 Enable Emoji font if available. ☃
@@ -874,8 +882,10 @@ Display bullets instead of asterisks.
 
 #+begin_src emacs-lisp
 (use-package org-superstar
-  :init
-  (add-hook 'org-mode-hook 'org-superstar-mode))
+  :hook (org-mode . org-superstar-mode)
+  :config
+  (set-face-attribute 'org-superstar-header-bullet nil
+                      :family bkhl/fixed-pitch-font-family))
 #+end_src
 
 Hide the characters surrounding emphasized phrases
