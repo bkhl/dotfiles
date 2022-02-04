@@ -119,25 +119,16 @@ Show line and column number in mode line
 Setting fonts. I primarily use the ~variable-pitch~ and ~fixed-pitch~ faces in ~org-mode~.
 
 #+begin_src emacs-lisp
-(defvar bkhl/fixed-pitch-font-family "Iosevka BKHL Default")
-(defvar bkhl/fixed-pitch-font-size 1.3)
-
-(defvar bkhl/variable-pitch-font-family "Crimson Pro")
-(defvar bkhl/variable-pitch-font-size 1.5)
-
-(defvar bkhl/default-text-height 130)
+(setq bkhl/fixed-pitch-font-family "Iosevka BKHL Default"
+      bkhl/variable-pitch-font-family "Charis SIL"
+      bkhl/default-text-height 130)
 
 (set-face-attribute 'default nil
-                    :family bkhl/fixed-pitch-font-family
-                    :height bkhl/default-text-height)
+                    :family bkhl/fixed-pitch-font-family)
 (set-face-attribute 'variable-pitch nil
-                    :family bkhl/variable-pitch-font-family
-                    :height (/ bkhl/variable-pitch-font-size
-                               bkhl/fixed-pitch-font-size))
+                    :family bkhl/variable-pitch-font-family)
 (set-face-attribute 'fixed-pitch nil
-                    :family bkhl/fixed-pitch-font-family
-                    :height (/ bkhl/fixed-pitch-font-size
-                               bkhl/variable-pitch-font-size))
+                    :family bkhl/fixed-pitch-font-family)
 #+end_src
 
 Enable Emoji font if available. ☃
@@ -149,7 +140,6 @@ This is run as a hook after the first frame is created, as this will otherwise n
  'server-after-make-frame-hook
  (defun bkhl/set-fontset-fonts ()
    (set-fontset-font t 'symbol "Noto Color Emoji")
-   (set-fontset-font t ?฿ "Iosevka BKHL Default")
    (remove-hook 'server-after-make-frame-hook
                 'bkhl/set-fontset-fonts)))
 #+end_src
@@ -224,7 +214,7 @@ Set window title including current buffer or filename, along with system name. U
 ** Key bindings to change global font scale
 
 #+begin_src emacs-lisp
-(defvar bkhl/current-text-height bkhl/default-text-height)
+(setq bkhl/current-text-height bkhl/default-text-height)
 
 (defun bkhl/revert-text-height ()
   (interactive)
@@ -884,8 +874,11 @@ Display bullets instead of asterisks.
 (use-package org-superstar
   :hook (org-mode . org-superstar-mode)
   :config
-  (set-face-attribute 'org-superstar-header-bullet nil
-                      :family bkhl/fixed-pitch-font-family))
+  (dolist (face '(org-superstar-leading
+                  org-superstar-header-bullet
+                  org-superstar-item
+                  org-superstar-first))
+    (set-face-attribute face nil :family bkhl/fixed-pitch-font-family)))
 #+end_src
 
 Hide the characters surrounding emphasized phrases
