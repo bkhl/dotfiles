@@ -6,6 +6,8 @@ no-ligation = true
 no-cv-ss = true
 
 [buildPlans.iosevka-bkhl-default.variants.design]
+capital-q = "open-swash"
+
 g = "double-storey"
 m = "short-leg"
 y = "cursive"
@@ -19,7 +21,7 @@ one = "base-long-top-serif"
 
 dollar = "open"
 
-at = "threefold-tall"
+at = "fourfold-solid-inner-tall"
 number-sign = "upright-tall"
 percent = "rings-continuous-slash"
 asterisk = "penta-low"
@@ -34,6 +36,8 @@ no-ligation = true
 no-cv-ss = true
 
 [buildPlans.iosevka-bkhl-fixed.variants.design]
+capital-q = "open-swash"
+
 g = "double-storey"
 m = "short-leg"
 y = "cursive"
@@ -47,7 +51,7 @@ one = "base-long-top-serif"
 
 dollar = "open"
 
-at = "threefold-tall"
+at = "fourfold-solid-inner-tall"
 number-sign = "upright-tall"
 percent = "rings-continuous-slash"
 asterisk = "penta-low"
