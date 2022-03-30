@@ -98,9 +98,9 @@ Show line and column number in mode line
   :custom
   (modus-themes-bold-constructs t)
   (modus-themes-italic-constructs t)
-  (modus-themes-syntax 'faint)
+  (modus-themes-syntax '(faint))
   (modus-themes-mixed-fonts t)
-  (modus-themes-links 'neutral-underline)
+  (modus-themes-links '(neutral-underline))
   (modus-themes-diffs 'desaturated)
   (modus-themes-org-blocks 'gray-background)
   (modus-themes-scale-headings t)
