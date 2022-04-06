@@ -754,6 +754,14 @@ Hide lighter for ElDoc mode.
 
 *** Perl
 
+Perl indentation preferences.
+
+#+begin_src emacs-lisp
+(use-package perl-mode
+  :custom
+  (perl-indent-parens-as-block t))
+#+end_src
+
 In Perl mode, show the double colon operator as ~∷~ (proportion sign), but center it on top of two space characters, to make it same width as the original character.
 
 The hook will only run on graphics displays, because the composed symbol will not work correctly in a terminal. This isn't fool-proof, but works well enough for me as I mostly edit Perl code in a graphical frame.
