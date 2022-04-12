@@ -97,3 +97,6 @@
 [submodule ".emacs.d/site-lisp/nov"]
 	path = .emacs.d/site-lisp/nov
 	url = https://depp.brause.cc/nov.el.git
+[submodule ".emacs.d/site-lisp/lin"]
+	path = .emacs.d/site-lisp/lin
+	url = git@gitlab.com:protesilaos/lin.git

@@ -247,8 +247,22 @@ Set window title including current buffer or filename, along with system name. U
 
 ** Highlight current line
 
+Enable higlight of current line in selected modes.
+
 #+begin_src emacs-lisp
-(global-hl-line-mode)
+(use-package lin
+  :custom
+  (lin-face 'lin-yellow)
+  (lin-mode-hooks
+   '(dired-mode-hook
+     git-rebase-mode-hook
+     log-view-mode-hook
+     magit-log-mode-hook
+     occur-mode-hook
+     org-agenda-mode-hook
+     tabulated-list-mode-hook))
+  :config
+  (lin-global-mode))
 #+end_src
 
 ** Make ediff use existing frame instead of creating new one
