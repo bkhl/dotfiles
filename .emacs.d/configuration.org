@@ -1051,19 +1051,6 @@ Hide done tasks from the agenda.
 #+end_src
 
 * File formats
-** hledger
-
-#+begin_src emacs-lisp
-(use-package ledger-mode
-  :mode "\\.journal\\'"
-  :custom
-  (ledger-post-auto-align nil)
-  :config
-  (setq ledger-mode-should-check-version nil
-        ledger-report-links-in-register nil
-        ledger-binary-path "hledger"
-        ledger-default-date-format ledger-iso-date-format))
-#+end_src
 ** Markdown
 
 #+begin_src emacs-lisp

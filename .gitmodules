@@ -85,9 +85,6 @@
 [submodule ".emacs.d/site-lisp/dockerfile-mode"]
 	path = .emacs.d/site-lisp/dockerfile-mode
 	url = https://github.com/spotify/dockerfile-mode.git
-[submodule ".emacs.d/site-lisp/ledger-mode"]
-	path = .emacs.d/site-lisp/ledger-mode
-	url = https://github.com/ledger/ledger-mode.git
 [submodule ".emacs.d/site-lisp/git-timemachine"]
 	path = .emacs.d/site-lisp/git-timemachine
 	url = https://github.com/emacsmirror/git-timemachine.git
