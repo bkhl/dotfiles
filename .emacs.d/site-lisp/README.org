@@ -1,5 +1,0 @@
-Notes on the Emacs packages included here.
-
-* [[./project/][project]]
-
-This is ~project.el~ from core Emacs, pulled from Emacs 28 to enable the version of Eglot included here to work. Should be removed after I upgrade
