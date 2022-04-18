@@ -754,10 +754,9 @@ The ~use-package~ and ~bind-key~ macros provided with this package makes it easi
 The Diminish package allows hiding some lighters from the mode line with the ~:diminish~ keyword for ~use-package~. Here I also hide a couple of built-in minor modes.
 
 #+begin_src emacs-lisp
-(use-package diminish
-  :config
-  (diminish 'buffer-face-mode)
-  (diminish 'eldoc-mode))
+(require 'diminish)
+(eval-after-load 'face-remap '(diminish 'buffer-face-mode))
+(eval-after-load 'eldoc '(diminish 'eldoc-mdoe))
 #+end_src
 
 ** Dependencies
