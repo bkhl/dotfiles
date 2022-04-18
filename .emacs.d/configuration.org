@@ -767,17 +767,9 @@ This is a list of add-on packages that are dependencies of other packages furthe
 
 - [[#magit][magit]]
 
-*** [[file:site-lisp/ht][ht]]
-
-- [[#org-super-agenda][org-super-agenda]]
-
 *** [[file:site-lisp/posframe][posframe]]
 
 - [[#company-posframe][company-posframe]]
-
-*** [[file:site-lisp/s][s]]
-
-- [[#org-super-agenda][org-super-agenda]]
 
 *** [[file:site-lisp/transient][transient]]
 
@@ -789,10 +781,6 @@ This is a list of add-on packages that are dependencies of other packages furthe
 - [[#eglot][eglot]]
 
 Because ~eglot~ uses some things not availble in ~project.el~ in Emacs 27, I override it with a version of the package from Emacs 28. After switching to Emacs 28 I should be able to remove this dependency.
-
-*** [[file:site-lisp/ts][ts]]
-
-- [[#org-super-agenda][org-super-agenda]]
 
 *** [[file:site-lisp/with-editor][with-editor]]
 
@@ -1142,33 +1130,6 @@ Display bullet symbols instead of the asterisks that start Org file subtrees.
                   org-superstar-item
                   org-superstar-first))
     (set-face-attribute face nil :family bkhl/fixed-pitch-font-family)))
-#+end_src
-
-*** [[file:site-lisp/org-super-agenda][org-super-agenda]] Org agenda improvements
-:PROPERTIES:
-:CUSTOM_ID: org-super-agenda
-:END:
-
-Install ~org-super-agenda~ for improved agenda interface, and categorize tasks roughly by urgency.
-
-I use recurring tasks for habits rather than the habit feature, because [[http://www.orgzly.com/][Orgzly]] currently only supports the former feature, so that's why I use a tag for those here.
-
-#+begin_src emacs-lisp
-(use-package org-super-agenda
-  :custom (org-super-agenda-groups
-           '((:name "Schedule"
-              :time-grid t)
-             (:name "Due today"
-              :deadline today)
-             (:name "Overdue"
-              :deadline past)
-             (:name "Due soon"
-              :deadline future)
-             (:name "Habits"
-              :tag ("habit"))
-             (:name "Tasks"
-              :todo ("TODO" "READ"))))
-  :config (org-super-agenda-mode))
 #+end_src
 
 *** [[file:site-lisp/org-present][org-present]] presentation mode for Org files

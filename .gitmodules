@@ -49,21 +49,9 @@
 [submodule ".emacs.d/site-lisp/yaml-mode"]
 	path = .emacs.d/site-lisp/yaml-mode
 	url = https://github.com/yoshiki/yaml-mode.git
-[submodule ".emacs.d/site-lisp/org-super-agenda"]
-	path = .emacs.d/site-lisp/org-super-agenda
-	url = https://github.com/alphapapa/org-super-agenda.git
 [submodule ".emacs.d/site-lisp/dash"]
 	path = .emacs.d/site-lisp/dash
 	url = https://github.com/magnars/dash.el.git
-[submodule ".emacs.d/site-lisp/s"]
-	path = .emacs.d/site-lisp/s
-	url = https://github.com/magnars/s.el.git
-[submodule ".emacs.d/site-lisp/ht"]
-	path = .emacs.d/site-lisp/ht
-	url = https://github.com/Wilfred/ht.el.git
-[submodule ".emacs.d/site-lisp/ts"]
-	path = .emacs.d/site-lisp/ts
-	url = https://github.com/alphapapa/ts.el.git
 [submodule ".emacs.d/site-lisp/eglot"]
 	path = .emacs.d/site-lisp/eglot
 	url = https://github.com/joaotavora/eglot.git
