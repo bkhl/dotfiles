@@ -486,10 +486,6 @@ Make file sizes shown in dired human readable.
 :CUSTOM_ID: tramp
 :END:
 
-#+begin_src emacs-lisp
-(require 'tramp)
-#+end_src
-
 Ensure that Tramp uses path of remote shell on remote hosts.
 
 #+begin_src emacs-lisp
