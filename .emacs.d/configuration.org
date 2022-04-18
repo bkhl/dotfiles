@@ -196,10 +196,10 @@ Set window title including current buffer or filename, along with system name. U
 Give new ~emacsclient~ frames focus when created.
 
 #+begin_src emacs-lisp
-  (defun bkhl/focus-frame ()
-    (select-frame-set-input-focus (selected-frame)))
-  (add-hook 'server-switch-hook 'bkhl/focus-frame)
-  (add-hook 'server-after-make-frame-hook 'bkhl/focus-frame)
+(defun bkhl/focus-frame ()
+  (select-frame-set-input-focus (selected-frame)))
+(add-hook 'server-switch-hook 'bkhl/focus-frame)
+(add-hook 'server-after-make-frame-hook 'bkhl/focus-frame)
 #+end_src
 
 *** Allow undo of window layout changes
