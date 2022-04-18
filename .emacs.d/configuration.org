@@ -270,14 +270,6 @@ Bind ~M-o~ (by default bound to a rarely used command) to ~other-window~.
 (setq uniquify-buffer-name-style 'forward)
 #+end_src
 
-*** Automatically sync updated files
-
-If a file changes, automatically refresh buffers containing the file, so that it doesn't get out of sync.
-
-#+begin_src emacs-lisp
-(global-auto-revert-mode t)
-#+end_src
-
 *** Allow remembering risky local variables
 
 This overrides the Emacs settings that enforces having to accept local variables matching certain patterns every time they are used.
@@ -330,6 +322,14 @@ When saving a file to a directory that doesn't exist, offer to create it.
               "Directory %s does not exist. Create it?"
               dir)))
          (make-directory dir t))))))
+#+end_src
+
+*** Automatically sync updated files
+
+If a file changes, automatically refresh buffers containing the file, so that it doesn't get out of sync.
+
+#+begin_src emacs-lisp
+(global-auto-revert-mode t)
 #+end_src
 
 ** Text editing
