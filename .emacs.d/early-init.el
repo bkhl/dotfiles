@@ -8,7 +8,3 @@
 ;; Prevent stale Elisp bytecode file from shadowing more up-to-date source
 ;; files.
 (setq load-prefer-newer t)
-
-;; Recommended when using straight.el
-(when (version< "26" emacs-version)
-  (setq package-enable-at-startup nil))
