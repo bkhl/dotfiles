@@ -73,9 +73,6 @@ This makes the Emacs customization interface store values in a separate file, in
 #+end_src
 
 * Basic configuration
-:PROPERTIES:
-:CUSTOM_ID: basic-configuration
-:END:
 
 Configuration of built-in Emacs behaviour. This includes variables defined in the Emacs core, and also in some very core modules, like for example ~fundamental-mode~, ~text-mode~, ~prog-mode~, ~simple~ and ~files~.
 
@@ -464,16 +461,10 @@ there's no active region."
 #+end_src
 
 * Built-in packages
-:PROPERTIES:
-:CUSTOM_ID: built-in-packages
-:END:
 
 Configuration of packages that are bundled with Emacs.
 
 ** ~dired~
-:PROPERTIES:
-:CUSTOM_ID: dired
-:END:
 
 Make file sizes shown in dired human readable.
 
@@ -482,9 +473,6 @@ Make file sizes shown in dired human readable.
 #+end_src
 
 ** ~tramp~ remote editing
-:PROPERTIES:
-:CUSTOM_ID: tramp
-:END:
 
 Ensure that Tramp uses path of remote shell on remote hosts.
 
@@ -495,9 +483,6 @@ Ensure that Tramp uses path of remote shell on remote hosts.
 #+end_src
 
 ** ~org-mode~ planning and note-taking
-:PROPERTIES:
-:CUSTOM_ID: org-mode
-:END:
 *** Default ~org-mode~ directory
 
 Set a custom variable for the notes directory, so that it can be referred to
@@ -679,9 +664,6 @@ Hide done tasks from the agenda.
 
 ** Programming
 *** ~flymake~
-:PROPERTIES:
-:CUSTOM_ID: flymake
-:END:
 
 Package for showing diagnostics from linters and similar interactively.
 
@@ -705,9 +687,6 @@ Perl indentation preferences.
 
 ** Project management and version control
 *** ~vc-diff~
-:PROPERTIES:
-:CUSTOM_ID: vc-diff
-:END:
 
 Make ~vc-diff~ imitate the diff format of Magit.
 
@@ -716,9 +695,6 @@ Make ~vc-diff~ imitate the diff format of Magit.
 #+end_src
 
 *** ~ediff~
-:PROPERTIES:
-:CUSTOM_ID: ediff
-:END:
 
 Make ediff use existing frame instead of creating new one
 
@@ -727,9 +703,6 @@ Make ediff use existing frame instead of creating new one
 #+end_src
 
 * Add-on packages
-:PROPERTIES:
-:CUSTOM_ID: add-on-packages
-:END:
 
 Configuration of add-on packages.
 
@@ -784,9 +757,6 @@ Because ~eglot~ uses some things not availble in ~project.el~ in Emacs 27, I ove
 
 ** Interface
 *** [[file:site-lisp/modus-themes][modus-themes]] accessible themes
-:PROPERTIES:
-:CUSTOM_ID: modus-themes
-:END:
 
 #+begin_src emacs-lisp
 (use-package modus-themes
@@ -804,9 +774,6 @@ Because ~eglot~ uses some things not availble in ~project.el~ in Emacs 27, I ove
 #+end_src
 
 *** [[file:site-lisp/lin][lin]] mode for highlight of current line.
-:PROPERTIES:
-:CUSTOM_ID: whole-line-or-region
-:END:
 
 Enable higlight of current line in selected modes.
 
@@ -827,9 +794,6 @@ Enable higlight of current line in selected modes.
 #+end_src
 
 *** [[file:site-lisp/vertico][vertico]] interactive completion
-:PROPERTIES:
-:CUSTOM_ID: vertico
-:END:
 
 [[https://github.com/minad/vertico][Vertico]] is a library for completion, which connects to existing Emacs functionality to improve completion in the minibuffer.
 
@@ -861,9 +825,6 @@ Hide commands in M-x which do not work in the current mode. Vertico commands are
 #+end_src
 
 *** [[file:site-lisp/orderless][orderless]] completion style
-:PROPERTIES:
-:CUSTOM_ID: orderless
-:END:
 
 [[https://github.com/oantolin/orderless][Orderless]] provides a completion style that allows typing components of a canditate out of order.
 
@@ -877,9 +838,6 @@ Hide commands in M-x which do not work in the current mode. Vertico commands are
 
 ** Documentation and help
 *** [[file:site-lisp/which-key][which-key]] to show key binding hints in ~M-x~ prompt
-:PROPERTIES:
-:CUSTOM_ID: which-key
-:END:
 
 #+begin_src emacs-lisp
 (use-package which-key
@@ -888,9 +846,6 @@ Hide commands in M-x which do not work in the current mode. Vertico commands are
 #+end_src
 
 *** [[file:site-lisp/marginalia][marginalia]] for adding information to minibuffer completions
-:PROPERTIES:
-:CUSTOM_ID: marginalia
-:END:
 
 #+begin_src emacs-lisp
 (use-package marginalia
@@ -900,9 +855,6 @@ Hide commands in M-x which do not work in the current mode. Vertico commands are
 
 ** Text editing
 *** [[file:site-lisp/trimspace-mode][trimspace-mode]] for trimming trailing spaces and newlines
-:PROPERTIES:
-:CUSTOM_ID: trimspace-mode
-:END:
 
 ~trimspace-mode~ sets things up so that when a file is opened, it enables deleting trailing whitespace and newlines before saving the file, unless the file when first opened already has traling whitespace of each type.
 
@@ -914,9 +866,6 @@ Hide commands in M-x which do not work in the current mode. Vertico commands are
 #+end_src
 
 *** [[file:site-lisp/olivetti][olivetti]] to adjust margins of text
-:PROPERTIES:
-:CUSTOM_ID: olivetti
-:END:
 
 A minor mode that automatically adjusts margins &c. for reading and writing prose.
 
@@ -929,9 +878,6 @@ A minor mode that automatically adjusts margins &c. for reading and writing pros
 #+end_src
 
 *** [[file:site-lisp/whole-line-or-region][whole-line-or-region]]
-:PROPERTIES:
-:CUSTOM_ID: whole-line-or-region
-:END:
 
 This module allows a number of functions to operate on the current line if no region is selected.
 
@@ -977,9 +923,6 @@ This enables the [[https://github.com/joaotavora/eglot][Eglot]] LSP client. This
 #+end_example
 
 *** [[file:site-lisp/company-mode][company-mode]] for completion while editing
-:PROPERTIES:
-:CUSTOM_ID: company-mode
-:END:
 
 #+begin_src emacs-lisp
 (use-package company
@@ -1049,9 +992,6 @@ To use this as an ~after-save-hook~ in a project, create a ~.dir-locals.el~ with
 #+end_example
 
 *** [[file:site-lisp/diff-hl][diff-hl]] to show uncommited changes in gutter
-:PROPERTIES:
-:CUSTOM_ID: diff-hl
-:END:
 
 Shows changes that are not committed to the version control system for the file open in a buffer in the gutter.
 
@@ -1082,9 +1022,6 @@ Shows changes that are not committed to the version control system for the file 
 
 ** File formats
 *** [[file:site-lisp/dockerfile-mode][dockerfile-mode]] for Dockerfile/Containerfile support
-:PROPERTIES:
-:CUSTOM_ID: dockerfile-mode
-:END:
 
 #+begin_src emacs-lisp
 (use-package dockerfile-mode
@@ -1092,18 +1029,12 @@ Shows changes that are not committed to the version control system for the file 
 #+end_src
 
 *** [[file:site-lisp/markdown-mode][markdown-mode]] for Markdown support
-:PROPERTIES:
-:CUSTOM_ID: markdown-mode
-:END:
 
 #+begin_src emacs-lisp
 (use-package markdown-mode)
 #+end_src
 
 *** [[file:site-lisp/yaml-mode][yaml-mode]] for YAML support
-:PROPERTIES:
-:CUSTOM_ID: yaml-mode
-:END:
 
 #+begin_src emacs-lisp
 (use-package yaml-mode)
@@ -1111,9 +1042,6 @@ Shows changes that are not committed to the version control system for the file 
 
 ** ~org-mode~ extensions
 *** [[file:site-lisp/org-superstar-mode][org-superstar-mode]] to show Org sections as bullets
-:PROPERTIES:
-:CUSTOM_ID: org-superstar-mode
-:END:
 
 Display bullet symbols instead of the asterisks that start Org file subtrees.
 
@@ -1129,9 +1057,6 @@ Display bullet symbols instead of the asterisks that start Org file subtrees.
 #+end_src
 
 *** [[file:site-lisp/org-present][org-present]] presentation mode for Org files
-:PROPERTIES:
-:CUSTOM_ID: org-present
-:END:
 
 #+begin_src emacs-lisp
 (use-package org-present
