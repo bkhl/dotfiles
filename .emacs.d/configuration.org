@@ -947,6 +947,7 @@ Use the ~company-posframe~ plugin to show the ~company~ menus in a separate fram
   :hook
   (company-mode . company-posframe-mode))
 #+end_src
+
 ** Project management and version control
 *** [[file:site-lisp/magit][magit]] Git integration
 :PROPERTIES:
