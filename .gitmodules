@@ -76,3 +76,9 @@
 [submodule ".emacs.d/site-lisp/lin"]
 	path = .emacs.d/site-lisp/lin
 	url = https://git.sr.ht/~protesilaos/lin
+[submodule ".emacs.d/site-lisp/nov"]
+	path = .emacs.d/site-lisp/nov
+	url = https://depp.brause.cc/nov.el.git
+[submodule ".emacs.d/site-lisp/esxml"]
+	path = .emacs.d/site-lisp/esxml
+	url = https://github.com/tali713/esxml.git

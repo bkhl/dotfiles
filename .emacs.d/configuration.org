@@ -735,21 +735,26 @@ This is a list of add-on packages that are dependencies of other packages furthe
 *** [[file:site-lisp/dash][dash]]
 
 - [[#magit][magit]]
+- [[#nov][nov]]
+
+*** [[file:site-lisp/esxml][esxml]]
+
+- [[#nov][nov]]
 
 *** [[file:site-lisp/posframe][posframe]]
 
 - [[#company-posframe][company-posframe]]
-
-*** [[file:site-lisp/transient][transient]]
-
-- [[#magit][magit]]
-- [[#git-timemachine][git-timemachine]]
 
 *** [[file:site-lisp/project][project]]
 
 - [[#eglot][eglot]]
 
 Because ~eglot~ uses some things not availble in ~project.el~ in Emacs 27, I override it with a version of the package from Emacs 28. After switching to Emacs 28 I should be able to remove this dependency.
+
+*** [[file:site-lisp/transient][transient]]
+
+- [[#magit][magit]]
+- [[#git-timemachine][git-timemachine]]
 
 *** [[file:site-lisp/with-editor][with-editor]]
 
@@ -1033,6 +1038,22 @@ Shows changes that are not committed to the version control system for the file 
 
 #+begin_src emacs-lisp
 (use-package markdown-mode)
+#+end_src
+
+*** [[file:site-lisp/nov][nov]] for Epub reading
+:PROPERTIES:
+:CUSTOM_ID: nov
+:END:
+
+#+begin_src emacs-lisp
+(use-package nov
+  :commands nov-mode
+  :custom
+  (nov-text-width t)
+  :init
+  (add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
+  :config
+  (add-hook 'nov-mode-hook 'olivetti-mode))
 #+end_src
 
 *** [[file:site-lisp/yaml-mode][yaml-mode]] for YAML support
