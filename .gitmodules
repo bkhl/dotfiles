@@ -82,3 +82,6 @@
 [submodule ".emacs.d/site-lisp/esxml"]
 	path = .emacs.d/site-lisp/esxml
 	url = https://github.com/tali713/esxml.git
+[submodule ".emacs.d/site-lisp/compat"]
+	path = .emacs.d/site-lisp/compat
+	url = https://git.sr.ht/~pkal/compat

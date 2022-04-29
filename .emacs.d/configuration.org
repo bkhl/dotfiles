@@ -710,6 +710,10 @@ The Diminish package allows hiding some lighters from the mode line with the ~:d
 
 This is a list of add-on packages that are dependencies of other packages further down, with the packages they are used in listed below each one.
 
+*** [[file:site-lisp/compat][compat]]
+
+- [[#magit][magit]]
+
 *** [[file:site-lisp/dash][dash]]
 
 - [[#magit][magit]]
