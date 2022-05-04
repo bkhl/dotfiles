@@ -790,14 +790,6 @@ Hide commands in M-x which do not work in the current mode. Vertico commands are
 #+end_src
 
 ** Documentation and help
-*** [[file:site-lisp/which-key][which-key]] to show key binding hints in ~M-x~ prompt
-
-#+begin_src emacs-lisp
-(use-package which-key
-  :diminish
-  :config (which-key-mode))
-#+end_src
-
 *** [[file:site-lisp/marginalia][marginalia]] for adding information to minibuffer completions
 
 #+begin_src emacs-lisp

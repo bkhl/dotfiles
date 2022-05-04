@@ -22,9 +22,6 @@
 [submodule ".emacs.d/site-lisp/marginalia"]
 	path = .emacs.d/site-lisp/marginalia
 	url = https://github.com/minad/marginalia.git
-[submodule ".emacs.d/site-lisp/emacs-which-key"]
-	path = .emacs.d/site-lisp/which-key
-	url = https://github.com/justbur/emacs-which-key.git
 [submodule ".emacs.d/site-lisp/whole-line-or-region"]
 	path = .emacs.d/site-lisp/whole-line-or-region
 	url = https://github.com/purcell/whole-line-or-region.git
