@@ -20,17 +20,6 @@ Here is [[https://www.emacswiki.org/emacs/bkhl][my home page on EmacsWiki]].
 
 Some initial setup that is required to run before other things, some of them sensitive to execution order.
 
-** ~early-init.el~
-
-This file is normally loaded before the package system and GUI is loaded, so I have some configuration there, for example of the GUI to avoid the flickering from disabling toolbar &c. after it has already started showing.
-
-Older versions of Emacs didn't have that file, so if we have a version older than 27 it's loaded here instead.
-
-#+begin_src emacs-lisp
-(when (version< emacs-version "27")
-  (load-file (concat user-emacs-directory "early-init.el")))
-#+end_src
-
 ** Keep customizations in separate file
 
 This makes the Emacs customization interface store values in a separate file, instead of in ~init.el~.
@@ -38,13 +27,6 @@ This makes the Emacs customization interface store values in a separate file, in
 #+begin_src emacs-lisp
 (setq custom-file (concat user-emacs-directory "custom.el"))
 (load custom-file :noerror)
-#+end_src
-
-** Work around HTTPS issues on older versions of Emacs.
-
-#+begin_src emacs-lisp
-  (when (version< emacs-version "26.3")
-    (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3"))
 #+end_src
 
 ** Add load path for custom packages
