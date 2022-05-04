@@ -728,12 +728,6 @@ This is a list of add-on packages that are dependencies of other packages furthe
 
 - [[#company-posframe][company-posframe]]
 
-*** [[file:site-lisp/project][project]]
-
-- [[#eglot][eglot]]
-
-Because ~eglot~ uses some things not availble in ~project.el~ in Emacs 27, I override it with a version of the package from Emacs 28. After switching to Emacs 28 I should be able to remove this dependency.
-
 *** [[file:site-lisp/transient][transient]]
 
 - [[#magit][magit]]
