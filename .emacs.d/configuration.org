@@ -170,17 +170,6 @@ Set window title including current buffer or filename, along with system name. U
 (calendar-set-date-style 'iso)
 #+end_src
 
-*** Give ~emacsclient~ frames focus
-
-Give new ~emacsclient~ frames focus when created.
-
-#+begin_src emacs-lisp
-(defun bkhl/focus-frame ()
-  (select-frame-set-input-focus (selected-frame)))
-(add-hook 'server-switch-hook 'bkhl/focus-frame)
-(add-hook 'server-after-make-frame-hook 'bkhl/focus-frame)
-#+end_src
-
 *** Allow undo of window layout changes
 
 #+begin_src emacs-lisp
