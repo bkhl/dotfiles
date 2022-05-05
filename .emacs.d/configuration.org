@@ -75,6 +75,7 @@ Setting fonts. I primarily use the ~variable-pitch~ and ~fixed-pitch~ faces in ~
 #+begin_src emacs-lisp
 (setq bkhl/fixed-pitch-font-family "Iosevka BKHL Default"
       bkhl/variable-pitch-font-family "Charis SIL"
+      bkhl/emoji-font-family "Noto Color Emoji"
       bkhl/default-text-height 130)
 
 (set-face-attribute 'default nil
@@ -93,7 +94,8 @@ This is run as a hook after the first frame is created, as this will otherwise n
 (add-hook
  'server-after-make-frame-hook
  (defun bkhl/set-fontset-fonts ()
-   (set-fontset-font t 'symbol "Noto Color Emoji")
+   (set-fontset-font t '(#x2600 . #x26ff) bkhl/emoji-font-family)
+   (set-fontset-font t 'emoji bkhl/emoji-font-family)
    (remove-hook 'server-after-make-frame-hook
                 'bkhl/set-fontset-fonts)))
 #+end_src
