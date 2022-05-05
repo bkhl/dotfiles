@@ -612,6 +612,21 @@ Hide done tasks from the agenda.
 #+end_src
 
 ** Interface
+*** ~modus-themes~ accessible theme
+
+#+begin_src emacs-lisp
+(setq modus-themes-bold-constructs t
+      modus-themes-italic-constructs t
+      modus-themes-syntax '(faint)
+      modus-themes-mixed-fonts t
+      modus-themes-links '(neutral-underline)
+      modus-themes-diffs 'desaturated
+      modus-themes-org-blocks 'gray-background
+      modus-themes-scale-headings t)
+
+(load-theme 'modus-operandi t)
+#+end_src
+
 *** ~fido~ incremental minibuffer completion
 
 Enables ~icomplete-mode~ with some settings that make it work more like Ido. This will show available completions in the minibuffer, for example for the ~M-x~ prompt, and norrow down alternatives as you type.
@@ -718,23 +733,6 @@ This is a list of add-on packages that are dependencies of other packages furthe
 - [[#magit][magit]]
 
 ** Interface
-*** [[file:site-lisp/modus-themes][modus-themes]] accessible themes
-
-#+begin_src emacs-lisp
-(use-package modus-themes
-  :custom
-  (modus-themes-bold-constructs t)
-  (modus-themes-italic-constructs t)
-  (modus-themes-syntax '(faint))
-  (modus-themes-mixed-fonts t)
-  (modus-themes-links '(neutral-underline))
-  (modus-themes-diffs 'desaturated)
-  (modus-themes-org-blocks 'gray-background)
-  (modus-themes-scale-headings t)
-  :config
-  (load-theme 'modus-operandi t))
-#+end_src
-
 *** [[file:site-lisp/lin][lin]] mode for highlight of current line.
 
 Enable higlight of current line in selected modes.
