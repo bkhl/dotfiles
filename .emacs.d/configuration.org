@@ -435,6 +435,70 @@ there's no active region."
 
 Configuration of packages that are bundled with Emacs.
 
+** Interface
+*** ~modus-themes~ accessible theme
+
+#+begin_src emacs-lisp
+(setq modus-themes-bold-constructs t
+      modus-themes-italic-constructs t
+      modus-themes-syntax '(faint)
+      modus-themes-mixed-fonts t
+      modus-themes-links '(neutral-underline)
+      modus-themes-diffs 'desaturated
+      modus-themes-org-blocks 'gray-background
+      modus-themes-scale-headings t)
+
+(load-theme 'modus-operandi t)
+#+end_src
+
+*** ~fido~ incremental minibuffer completion
+
+Enables ~icomplete-mode~ with some settings that make it work more like Ido. This will show available completions in the minibuffer, for example for the ~M-x~ prompt, and norrow down alternatives as you type.
+
+#+begin_src emacs-lisp
+(fido-vertical-mode)
+#+end_src
+
+** Project management and version control
+*** ~vc-diff~
+
+Make ~vc-diff~ imitate the diff format of Magit.
+
+#+begin_src emacs-lisp
+(setq diff-font-lock-prettify t)
+#+end_src
+
+*** ~ediff~
+
+Make ediff use existing frame instead of creating new one
+
+#+begin_src emacs-lisp
+(setq ediff-window-setup-function 'ediff-setup-windows-plain)
+#+end_src
+
+** Programming
+*** ~flymake~
+
+Package for showing diagnostics from linters and similar interactively.
+
+#+begin_src emacs-lisp
+(autoload #'flymake-goto-next-error "flymake" nil t)
+(autoload #'flymake-goto-prev-error "flymake" nil t)
+
+(eval-after-load 'flymake
+  '(progn
+     (define-key flymake-mode-map (kbd "M-n") 'flymake-goto-next-error)
+     (define-key flymake-mode-map (kbd "M-p") 'flymake-goto-prev-error)))
+#+end_src
+
+*** ~perl-mode~
+
+Perl indentation preferences.
+
+#+begin_src emacs-lisp
+(setq perl-indent-parens-as-block t)
+#+end_src
+
 ** ~dired~
 
 Make file sizes shown in dired human readable.
@@ -609,70 +673,6 @@ Hide done tasks from the agenda.
 #+begin_src emacs-lisp
 (setq org-agenda-skip-scheduled-if-done t
       org-agenda-skip-deadline-if-done t)
-#+end_src
-
-** Interface
-*** ~modus-themes~ accessible theme
-
-#+begin_src emacs-lisp
-(setq modus-themes-bold-constructs t
-      modus-themes-italic-constructs t
-      modus-themes-syntax '(faint)
-      modus-themes-mixed-fonts t
-      modus-themes-links '(neutral-underline)
-      modus-themes-diffs 'desaturated
-      modus-themes-org-blocks 'gray-background
-      modus-themes-scale-headings t)
-
-(load-theme 'modus-operandi t)
-#+end_src
-
-*** ~fido~ incremental minibuffer completion
-
-Enables ~icomplete-mode~ with some settings that make it work more like Ido. This will show available completions in the minibuffer, for example for the ~M-x~ prompt, and norrow down alternatives as you type.
-
-#+begin_src emacs-lisp
-(fido-vertical-mode)
-#+end_src
-
-** Programming
-*** ~flymake~
-
-Package for showing diagnostics from linters and similar interactively.
-
-#+begin_src emacs-lisp
-(autoload #'flymake-goto-next-error "flymake" nil t)
-(autoload #'flymake-goto-prev-error "flymake" nil t)
-
-(eval-after-load 'flymake
-  '(progn
-     (define-key flymake-mode-map (kbd "M-n") 'flymake-goto-next-error)
-     (define-key flymake-mode-map (kbd "M-p") 'flymake-goto-prev-error)))
-#+end_src
-
-*** ~perl-mode~
-
-Perl indentation preferences.
-
-#+begin_src emacs-lisp
-(setq perl-indent-parens-as-block t)
-#+end_src
-
-** Project management and version control
-*** ~vc-diff~
-
-Make ~vc-diff~ imitate the diff format of Magit.
-
-#+begin_src emacs-lisp
-(setq diff-font-lock-prettify t)
-#+end_src
-
-*** ~ediff~
-
-Make ediff use existing frame instead of creating new one
-
-#+begin_src emacs-lisp
-(setq ediff-window-setup-function 'ediff-setup-windows-plain)
 #+end_src
 
 * Add-on packages
