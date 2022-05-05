@@ -202,6 +202,15 @@ Give new ~emacsclient~ frames focus when created.
 (save-place-mode)
 #+end_src
 
+*** Scrolling behaviour when moving cursor
+
+When the cursor moves close to the edge of the screen, scroll only one line at time, but try to keep 5 rows within view.
+
+#+begin_src emacs-lisp
+(setq scroll-conservatively 101
+      scroll-margin 5)
+#+end_src
+
 ** Documentation and help
 *** Make ~apropos~ search more extensively
 
