@@ -13,9 +13,6 @@
 [submodule ".emacs.d/site-lisp/org-superstar-mode"]
 	path = .emacs.d/site-lisp/org-superstar-mode
 	url = https://github.com/integral-dw/org-superstar-mode.git
-[submodule ".emacs.d/site-lisp/marginalia"]
-	path = .emacs.d/site-lisp/marginalia
-	url = https://github.com/minad/marginalia.git
 [submodule ".emacs.d/site-lisp/whole-line-or-region"]
 	path = .emacs.d/site-lisp/whole-line-or-region
 	url = https://github.com/purcell/whole-line-or-region.git

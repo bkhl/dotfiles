@@ -211,6 +211,14 @@ When the cursor moves close to the edge of the screen, scroll only one line at t
       scroll-margin 5)
 #+end_src
 
+*** Show completion details
+
+Show brief descriptions for completions in the minibuffer for some commands like ~describe-*~ &c.
+
+#+begin_src emacs-lisp
+(setq completions-detailed t)
+#+end_src
+
 ** Documentation and help
 *** Make ~apropos~ search more extensively
 
@@ -794,14 +802,6 @@ The hook to override ~completion-styles~ is set like this in order to run after 
 #+end_src
 
 ** Documentation and help
-*** [[file:site-lisp/marginalia][marginalia]] for adding information to minibuffer completions
-
-#+begin_src emacs-lisp
-(use-package marginalia
-  :config
-  (marginalia-mode))
-#+end_src
-
 ** Text editing
 *** [[file:site-lisp/trimspace-mode][trimspace-mode]] for trimming trailing spaces and newlines
 
