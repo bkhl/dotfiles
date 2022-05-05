@@ -36,7 +36,7 @@ fi
 
 
 # Path
-for d in $HOME/.local/bin; do
+for d in $HOME/.local/bin $HOME/.local/opt/*/bin; do
     if [ -d "$d" ]; then
         PATH="$d${PATH:+:$PATH}"
     fi
