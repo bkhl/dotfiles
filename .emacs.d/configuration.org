@@ -135,7 +135,7 @@ Give new ~emacsclient~ frames focus when created.
 *** Make yes/no prompts shorter
 
 #+begin_src emacs-lisp
-(fset 'yes-or-no-p 'y-or-n-p)
+(setq use-short-answers t)
 #+end_src
 
 *** Prompt before closing Emacs
