@@ -823,7 +823,8 @@ A minor mode that automatically adjusts margins &c. for reading and writing pros
   :diminish
   :hook
   (Info-mode . olivetti-mode)
-  (org-mode . olivetti-mode))
+  (org-mode . olivetti-mode)
+  (ewww . olivetti-mode))
 #+end_src
 
 *** [[file:site-lisp/whole-line-or-region][whole-line-or-region]]
