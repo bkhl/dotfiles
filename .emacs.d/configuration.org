@@ -219,6 +219,14 @@ Show brief descriptions for completions in the minibuffer for some commands like
 (setq completions-detailed t)
 #+end_src
 
+*** Highlight error messages
+
+In ~next-error~ buffers, highligt the currently visited error.
+
+#+begin_src emacs-lisp
+(setq next-error-message-highlight t)
+#+end_src
+
 ** Documentation and help
 *** Make ~apropos~ search more extensively
 
