@@ -132,6 +132,12 @@ Give new ~emacsclient~ frames focus when created.
 (add-hook 'server-after-make-frame-hook 'bkhl/focus-frame)
 #+end_src
 
+*** Disable message on new ~emacsclient~ frames
+
+#+begin_src emacs-lisp
+(setq server-client-instructions nil)
+#+end_src
+
 *** Make yes/no prompts shorter
 
 #+begin_src emacs-lisp
