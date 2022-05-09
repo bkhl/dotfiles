@@ -246,6 +246,12 @@ In ~next-error~ buffers, highligt the currently visited error.
 (setq help-enable-symbol-autoload t)
 #+end_src
 
+*** Show outlines in bindings description
+
+#+begin_src emacs-lisp
+(setq describe-bindings-outline t)
+#+end_src
+
 ** Key bindings
 *** Disable ~C-z~
 
