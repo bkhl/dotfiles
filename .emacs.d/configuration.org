@@ -351,6 +351,14 @@ If a file changes, automatically refresh buffers containing the file, so that it
 (global-auto-revert-mode t)
 #+end_src
 
+*** Disable Emacs lock files
+
+Disable use of those lock files with a ~.#~ prefix that Emacs by default creates. Since my ways of using Emacs rarely involves multiple Emacs instances opening the same file, they cause me more problems than they solve.
+
+#+begin_src emacs-lisp
+(setq create-lockfiles nil)
+#+end_src
+
 ** Text editing
 *** Bind Home/End to move to start/end of line
 
