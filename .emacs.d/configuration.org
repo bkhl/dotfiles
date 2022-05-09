@@ -720,7 +720,7 @@ Configuration of add-on packages.
 
 ** Initialization
 
-~use-package~ and ~diminish~ provide functionality used to configure the add-on packages below.
+~use-package~ is used to configure the add-on packages below.
 
 *** [[file:site-lisp/use-package][use-package]]
 
@@ -728,17 +728,6 @@ The ~use-package~ and ~bind-key~ macros provided with this package makes it easi
 
 #+begin_src emacs-lisp
 (require 'use-package)
-#+end_src
-
-*** [[file:site-lisp/diminish][diminish]]
-
-The Diminish package allows hiding some lighters from the mode line with the ~:diminish~ keyword for ~use-package~. Here I also hide a couple of built-in minor modes.
-
-#+begin_src emacs-lisp
-(require 'diminish)
-(eval-after-load 'face-remap '(diminish 'buffer-face-mode))
-(eval-after-load 'eldoc '(diminish 'eldoc-mode))
-(eval-after-load 'org-indent '(diminish 'org-indent-mode))
 #+end_src
 
 ** Dependencies
@@ -772,6 +761,16 @@ This is a list of add-on packages that are dependencies of other packages furthe
 - [[#magit][magit]]
 
 ** Interface
+*** [[file:site-lisp/minions][minions]] mode line minor mode listing improvments
+
+#+begin_src emacs-lisp
+(use-package minions
+  :custom
+  (minions-prominent-modes '(trimspace-mode))
+  :config
+  (minions-mode))
+#+end_src
+
 *** [[file:site-lisp/lin][lin]] mode for highlight of current line.
 
 Enable higlight of current line in selected modes.
@@ -828,7 +827,6 @@ A minor mode that automatically adjusts margins &c. for reading and writing pros
 
 #+begin_src emacs-lisp
 (use-package olivetti
-  :diminish
   :hook
   (Info-mode . olivetti-mode)
   (org-mode . olivetti-mode)
@@ -841,7 +839,6 @@ This module allows a number of functions to operate on the current line if no re
 
 #+begin_src emacs-lisp
 (use-package whole-line-or-region
-  :diminish whole-line-or-region-local-mode
   :config (whole-line-or-region-global-mode))
 #+end_src
 
@@ -884,7 +881,6 @@ This enables the [[https://github.com/joaotavora/eglot][Eglot]] LSP client. This
 
 #+begin_src emacs-lisp
 (use-package company
-  :diminish
   :config
   (add-hook 'after-init-hook 'global-company-mode)
   (bind-key "M-/" 'company-complete-common))
@@ -899,7 +895,6 @@ Use the ~company-posframe~ plugin to show the ~company~ menus in a separate fram
 
 #+begin_src emacs-lisp
 (use-package company-posframe
-  :diminish
   :custom
   (company-posframe-show-indicator nil)
   :hook
