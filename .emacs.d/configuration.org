@@ -240,6 +240,12 @@ In ~next-error~ buffers, highligt the currently visited error.
 (add-hook 'Info-mode-hook 'variable-pitch-mode)
 #+end_src
 
+*** Autoload if documentation is missing from autoload objects
+
+#+begin_src emacs-lisp
+(setq help-enable-symbol-autoload t)
+#+end_src
+
 ** Key bindings
 *** Disable ~C-z~
 
