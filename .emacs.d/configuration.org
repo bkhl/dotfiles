@@ -761,7 +761,9 @@ This is a list of add-on packages that are dependencies of other packages furthe
 - [[#magit][magit]]
 
 ** Interface
-*** [[file:site-lisp/minions][minions]] mode line minor mode listing improvments
+*** [[file:site-lisp/minions][minions]] mode line minor mode listing improvements
+
+Hides minor modes in a popup menu to preserve space and make the mode line less noisy.
 
 #+begin_src emacs-lisp
 (use-package minions
