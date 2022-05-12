@@ -1050,7 +1050,7 @@ Display bullet symbols instead of the asterisks that start Org file subtrees.
                   org-superstar-header-bullet
                   org-superstar-item
                   org-superstar-first))
-    (set-face-attribute face nil :family bkhl/fixed-pitch-font-family)))
+    (set-face-attribute face nil :family bkhl/emoji-font-family)))
 #+end_src
 
 *** [[file:site-lisp/org-present][org-present]] presentation mode for Org files
