@@ -1047,7 +1047,10 @@ Display bullet symbols instead of the asterisks that start Org file subtrees.
   :hook (org-mode . org-superstar-mode)
   :custom
   (org-superstar-special-todo-items t)
-  (org-superstar-headline-bullets-list (?◉ ?🞛 ?○ ?▷))
+  (org-superstar-headline-bullets-list '(?◉
+                                         ?🞛
+                                         ?○
+                                         ?▷))
   (org-superstar-item-bullet-alist '((?* . ?•)
                                      (?+ . ?‣)
                                      (?- . ?⁃)))
