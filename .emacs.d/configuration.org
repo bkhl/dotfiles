@@ -1084,7 +1084,10 @@ Display bullet symbols instead of the asterisks that start Org file subtrees.
      (org-display-inline-images)
      (org-present-hide-cursor)
      (org-present-read-only)
-     (hide-mode-line-mode)))
+     (hide-mode-line-mode)
+     (when (not (memq (frame-parameter nil 'fullscreen)
+                      '(fullscreen fullboth)))
+       (toggle-frame-fullscreen))))
   (add-hook
    'org-present-mode-quit-hook
    (defun bkhl/org-present-reset ()
@@ -1092,5 +1095,8 @@ Display bullet symbols instead of the asterisks that start Org file subtrees.
      (org-remove-inline-images)
      (org-present-show-cursor)
      (org-present-read-write)
-     (hide-mode-line-mode -1))))
+     (hide-mode-line-mode -1)
+     (when (memq (frame-parameter nil 'fullscreen)
+                 '(fullscreen fullboth))
+       (toggle-frame-fullscreen)))))
 #+end_src
