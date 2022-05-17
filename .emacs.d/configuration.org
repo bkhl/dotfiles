@@ -1052,7 +1052,8 @@ Display bullet symbols instead of the asterisks that start Org file subtrees.
                                      (?+ . ?‣)
                                      (?- . ?⁃)))
   (org-superstar-todo-bullet-alist '(("TODO" . ?☐)
-                                     ("DONE" . ?☑)))
+                                     ("DONE" . ?☑)
+                                     ("CANCELLED" . ?☒)))
   :config
   (dolist (face '(org-superstar-leading
                   org-superstar-header-bullet
