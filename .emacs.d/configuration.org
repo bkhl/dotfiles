@@ -836,6 +836,13 @@ The hook to override ~completion-styles~ is set like this in order to run after 
             1))
 #+end_src
 
+*** [[file:site-lisp/hide-mode-line][hide-mode-line]] to hide mode line when desired
+
+#+begin_src emacs-lisp
+(use-package hide-mode-line
+  :commands hide-mode-line-mode)
+#+end_src
+
 ** Documentation and help
 ** Text editing
 *** [[file:site-lisp/trimspace-mode][trimspace-mode]] for trimming trailing spaces and newlines
@@ -1072,16 +1079,18 @@ Display bullet symbols instead of the asterisks that start Org file subtrees.
   :config
   (add-hook
    'org-present-mode-hook
-   (defun bkhl/org-present-settings ()
+   (defun bkhl/org-present-start ()
      (org-present-big)
      (org-display-inline-images)
      (org-present-hide-cursor)
-     (org-present-read-only)))
+     (org-present-read-only)
+     (hide-mode-line-mode)))
   (add-hook
    'org-present-mode-quit-hook
-   (defun bkhl/org-present-settings-reset ()
+   (defun bkhl/org-present-reset ()
      (org-present-small)
      (org-remove-inline-images)
      (org-present-show-cursor)
-     (org-present-read-write))))
+     (org-present-read-write)
+     (hide-mode-line-mode -1))))
 #+end_src

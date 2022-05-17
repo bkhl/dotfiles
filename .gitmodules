@@ -73,3 +73,6 @@
 [submodule ".emacs.d/site-lisp/minions"]
 	path = .emacs.d/site-lisp/minions
 	url = https://github.com/tarsius/minions.git
+[submodule ".emacs.d/site-lisp/hide-mode-line"]
+	path = .emacs.d/site-lisp/hide-mode-line
+	url = https://github.com/hlissner/emacs-hide-mode-line.git
