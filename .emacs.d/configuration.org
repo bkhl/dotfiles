@@ -121,6 +121,14 @@ Set window title including current buffer or filename, along with system name. U
         (:eval (system-name))))
 #+end_src
 
+*** Enable restoring exact window size
+
+Setting this variable allows resizing window by pixels, rather than rounding to an exact number of lines or columns. This is needed to be able to restore back from fullscreen to original frame size in Gnome.
+
+#+begin_src emacs-lisp
+(setq frame-resize-pixelwise t)
+#+end_src
+
 *** Give ~emacsclient~ frames focus
 
 Give new ~emacsclient~ frames focus when created.
@@ -1075,28 +1083,31 @@ Display bullet symbols instead of the asterisks that start Org file subtrees.
 *** [[file:site-lisp/org-present][org-present]] presentation mode for Org files
 
 #+begin_src emacs-lisp
+(defun bkhl/set-fullscreen (fullscreen)
+  "If fullscreen is non-nil, set fullscreen mode if not already enabled. If it is nil, leave fullscreen if it is enabled."
+  (when (xor fullscreen
+             (memq (frame-parameter nil 'fullscreen)
+                   '(fullscreen fullboth)))
+    (toggle-frame-fullscreen)))
+
 (use-package org-present
+  :custom
+  (org-present-text-scale 7)
   :config
-  (add-hook
-   'org-present-mode-hook
-   (defun bkhl/org-present-start ()
-     (org-present-big)
-     (org-display-inline-images)
-     (org-present-hide-cursor)
-     (org-present-read-only)
-     (hide-mode-line-mode)
-     (when (not (memq (frame-parameter nil 'fullscreen)
-                      '(fullscreen fullboth)))
-       (toggle-frame-fullscreen))))
-  (add-hook
-   'org-present-mode-quit-hook
-   (defun bkhl/org-present-reset ()
-     (org-present-small)
-     (org-remove-inline-images)
-     (org-present-show-cursor)
-     (org-present-read-write)
-     (hide-mode-line-mode -1)
-     (when (memq (frame-parameter nil 'fullscreen)
-                 '(fullscreen fullboth))
-       (toggle-frame-fullscreen)))))
+  (add-hook 'org-present-mode-hook
+            (defun bkhl/org-present-start ()
+              (org-present-big)
+              (org-display-inline-images)
+              (org-present-hide-cursor)
+              (org-present-read-only)
+              (hide-mode-line-mode)
+              (bkhl/set-fullscreen t)))
+  (add-hook 'org-present-mode-quit-hook
+            (defun bkhl/org-present-reset ()
+              (org-present-small)
+              (org-remove-inline-images)
+              (org-present-show-cursor)
+              (org-present-read-write)
+              (hide-mode-line-mode -1)
+              (bkhl/set-fullscreen nil))))
 #+end_src
