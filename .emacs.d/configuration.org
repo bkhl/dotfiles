@@ -564,12 +564,22 @@ Package for showing diagnostics from linters and similar interactively.
      (define-key flymake-mode-map (kbd "M-p") 'flymake-goto-prev-error)))
 #+end_src
 
-*** ~perl-mode~
+*** Languages
+**** Perl
 
 Perl indentation preferences.
 
 #+begin_src emacs-lisp
 (setq perl-indent-parens-as-block t)
+#+end_src
+
+**** C
+
+#+begin_src emacs-lisp
+(add-hook 'c-mode-hook
+          (defun bkhl/c-mode-setup ()
+            (setq-local c-default-style "linux")
+            (setq-local c-basic-offset 4)))
 #+end_src
 
 ** ~dired~
@@ -839,7 +849,7 @@ The hook to override ~completion-styles~ is set like this in order to run after 
   (completion-category-overrides '((file (styles partial-completion))))
   :config
   (add-hook 'minibuffer-setup-hook
-            (defun bkhl/minibuffer-setup-hook ()
+            (defun bkhl/minibuffer-setup ()
               (setq-local completion-styles '(orderless basic)))
             1))
 #+end_src
