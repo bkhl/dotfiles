@@ -76,3 +76,6 @@
 [submodule ".emacs.d/site-lisp/hide-mode-line"]
 	path = .emacs.d/site-lisp/hide-mode-line
 	url = https://github.com/hlissner/emacs-hide-mode-line.git
+[submodule ".emacs.d/site-lisp/edit-server"]
+	path = .emacs.d/site-lisp/edit-server
+	url = https://github.com/stsquad/emacs_chrome.git

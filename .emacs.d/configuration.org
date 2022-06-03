@@ -861,6 +861,18 @@ The hook to override ~completion-styles~ is set like this in order to run after 
   :commands hide-mode-line-mode)
 #+end_src
 
+*** [[file:site-lisp/edit-server][edit-server]] to edit Firefox text areas
+
+This module provides the server allowing the [[https://addons.mozilla.org/en-US/firefox/addon/edit-with-emacs1/][Edit with Emacs]] Firefox add-on to open Emacs buffers where you can edit the content of text areas.
+
+#+begin_src emacs-lisp
+(use-package edit-server
+  :custom
+  (edit-server-new-frame nil)
+  :config
+  (edit-server-start))
+#+end_src
+
 ** Documentation and help
 ** Text editing
 *** [[file:site-lisp/trimspace-mode][trimspace-mode]] for trimming trailing spaces and newlines
