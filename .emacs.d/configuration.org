@@ -870,7 +870,9 @@ This module provides the server allowing the [[https://addons.mozilla.org/en-US/
   :custom
   (edit-server-new-frame nil)
   :config
-  (edit-server-start))
+  (when (and (daemonp)
+             (not (process-status "edit-server")))
+    (edit-server-start)))
 #+end_src
 
 ** Documentation and help
