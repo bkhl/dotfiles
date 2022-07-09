@@ -711,13 +711,7 @@ Add templates for use by ~org-capture~.
          "Inbox"
          entry
          (file ,(concat org-directory "Inbox.org"))
-         "* TODO %?")
-        ("j"
-         "Journal"
-         entry
-         (file+olp+datetree
-          ,(concat org-directory "Journal.org"))
-         "* TODO Replace with template")))
+         "* TODO %?")))
 #+end_src
 
 Bind ~C-c c~ to ~org-capture~ to quickly add notes.
