@@ -752,6 +752,13 @@ Hide done tasks from the agenda.
       org-agenda-skip-deadline-if-done t)
 #+end_src
 
+Hide already scheduled tasks from the agenda.
+
+#+begin_src emacs-lisp
+(setq org-agenda-todo-ignore-scheduled 'all)
+#+end_src
+
+
 * Add-on packages
 
 Configuration of add-on packages.
