@@ -452,6 +452,13 @@ Prevents killing text in Emacs from irrevocably deleting things from the system 
 (setq save-interprogram-paste-before-kill t)
 #+end_src
 
+*** Enable ~downcase-region~ and ~upcase-region~
+
+#+begin_src emacs-lisp
+(put 'downcase-region 'disabled nil)
+(put 'upcase-region 'disabled nil)
+#+end_src
+
 ** Programming
 *** Enable syntax highlighting everywhere
 
