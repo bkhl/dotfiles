@@ -57,7 +57,7 @@
 	url = https://github.com/spotify/dockerfile-mode.git
 [submodule ".emacs.d/site-lisp/git-timemachine"]
 	path = .emacs.d/site-lisp/git-timemachine
-	url = https://github.com/emacsmirror/git-timemachine.git
+	url = https://codeberg.org/pidu/git-timemachine.git
 [submodule ".emacs.d/site-lisp/lin"]
 	path = .emacs.d/site-lisp/lin
 	url = https://git.sr.ht/~protesilaos/lin
