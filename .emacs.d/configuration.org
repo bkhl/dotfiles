@@ -832,15 +832,6 @@ Enable higlight of current line in selected modes.
 (use-package lin
   :custom
   (lin-face 'lin-yellow)
-  (lin-mode-hooks
-   '(dired-mode-hook
-     git-rebase-mode-hook
-     log-view-mode-hook
-     magit-log-mode-hook
-     occur-mode-hook
-     org-agenda-mode-hook
-     tabulated-list-mode-hook))
-  :config
   (lin-global-mode))
 #+end_src
 
