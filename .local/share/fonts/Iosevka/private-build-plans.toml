@@ -1,3 +1,7 @@
+# Command to build fonts:
+#
+# podman run -it -v "${PWD}:/build" -e FONT_VERSION=16.2.0 avivace/iosevka-build contents::iosevka-bkhl-default contents::iosevka-bkhl-fixed
+
 [buildPlans.iosevka-bkhl-default]
 family = "Iosevka BKHL Default"
 spacing = "normal"
@@ -35,25 +39,5 @@ serifs = "slab"
 no-ligation = true
 no-cv-ss = true
 
-[buildPlans.iosevka-bkhl-fixed.variants.design]
-capital-q = "open-swash"
-
-g = "double-storey"
-m = "short-leg"
-y = "cursive"
-
-eszet = "longs-s-lig"
-
-lower-lambda = "curly-turn"
-
-zero = "reverse-slashed"
-one = "base-long-top-serif"
-
-dollar = "open"
-
-at = "fourfold-solid-inner-tall"
-number-sign = "upright-tall"
-percent = "rings-continuous-slash"
-asterisk = "penta-low"
-pilcrow = "low"
-ampersand = "upper-open"
+[buildPlans.iosevka-bkhl-fixed.variants]
+inherits = "buildPlans.iosevka-bkhl-default"
