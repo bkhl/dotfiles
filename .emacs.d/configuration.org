@@ -1114,6 +1114,14 @@ Display bullet symbols instead of the asterisks that start Org file subtrees.
   :custom
   (org-present-text-scale 7)
   :config
+  (defun bkhl/org-present-edit ()
+    (interactive)
+    (org-present-show-cursor)
+    (org-present-read-write))
+  (defun bkhl/org-present-read-only ()
+    (interactive)
+    (org-present-hide-cursor)
+    (org-present-read-only))
   (add-hook 'org-present-mode-hook
             (defun bkhl/org-present-start ()
               (org-present-big)
@@ -1129,5 +1137,8 @@ Display bullet symbols instead of the asterisks that start Org file subtrees.
               (org-present-show-cursor)
               (org-present-read-write)
               (hide-mode-line-mode -1)
-              (bkhl/set-fullscreen nil))))
+              (bkhl/set-fullscreen nil)))
+  :bind (:map org-present-mode-keymap
+              ("C-c C-e" . bkhl/org-present-edit)
+              ("C-c C-r" . bkhl/org-present-read-only)))
 #+end_src
