@@ -1140,5 +1140,6 @@ Display bullet symbols instead of the asterisks that start Org file subtrees.
               (bkhl/set-fullscreen nil)))
   :bind (:map org-present-mode-keymap
               ("C-c C-e" . bkhl/org-present-edit)
-              ("C-c C-r" . bkhl/org-present-read-only)))
+              ("C-c C-r" . bkhl/org-present-read-only))
+  :commands org-present)
 #+end_src
