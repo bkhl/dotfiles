@@ -79,3 +79,6 @@
 [submodule ".emacs.d/site-lisp/edit-server"]
 	path = .emacs.d/site-lisp/edit-server
 	url = https://github.com/stsquad/emacs_chrome.git
+[submodule ".emacs.d/site-lisp/just-mode"]
+	path = .emacs.d/site-lisp/just-mode
+	url = https://github.com/leon-barrett/just-mode.el.git
