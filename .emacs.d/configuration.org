@@ -54,11 +54,9 @@ This makes the Emacs customization interface store values in a separate file, in
       user-mail-address "bkhl@elektrubadur.se")
 #+end_src
 
-* Basic configuration
+* Built-in functionality
 
-Configuration of built-in Emacs behaviour. This includes variables defined in the Emacs core, and also in some very core modules, like for example ~fundamental-mode~, ~text-mode~, ~prog-mode~, ~simple~ and ~files~.
-
-In other words, this section only has configuration of things that are in all likelyhood always loaded, and are central to how Emacs works.
+Configuration of built-in Emacs behaviour and packages bundled with Emacs.
 
 ** Interface
 *** Show line and column number in mode line
@@ -99,6 +97,21 @@ This is run as a hook after the first frame is created, as this will otherwise n
    (set-fontset-font t 'emoji bkhl/emoji-font-family)
    (remove-hook 'server-after-make-frame-hook
                 'bkhl/set-fontset-fonts)))
+#+end_src
+
+*** Enable ~modus-operandi~ theme
+
+#+begin_src emacs-lisp
+(setq modus-themes-bold-constructs t
+      modus-themes-italic-constructs t
+      modus-themes-syntax '(faint)
+      modus-themes-mixed-fonts t
+      modus-themes-links '(neutral-underline)
+      modus-themes-diffs 'desaturated
+      modus-themes-org-blocks 'gray-background
+      modus-themes-scale-headings t)
+
+(load-theme 'modus-operandi t)
 #+end_src
 
 *** Disable bell
@@ -144,12 +157,6 @@ Give new ~emacsclient~ frames focus when created.
 
 #+begin_src emacs-lisp
 (setq server-client-instructions nil)
-#+end_src
-
-*** Make yes/no prompts shorter
-
-#+begin_src emacs-lisp
-(setq use-short-answers t)
 #+end_src
 
 *** Prompt before closing Emacs
@@ -225,7 +232,16 @@ When the cursor moves close to the edge of the screen, scroll only one line at t
       scroll-margin 5)
 #+end_src
 
-*** Show completion details
+*** Highlight error messages
+
+In ~next-error~ buffers, highligt the currently visited error.
+
+#+begin_src emacs-lisp
+(setq next-error-message-highlight t)
+#+end_src
+
+*** Minibuffer
+**** Show completion details
 
 Show brief descriptions for completions in the minibuffer for some commands like ~describe-*~ &c.
 
@@ -233,12 +249,18 @@ Show brief descriptions for completions in the minibuffer for some commands like
 (setq completions-detailed t)
 #+end_src
 
-*** Highlight error messages
+**** ~fido~ incremental minibuffer completion
 
-In ~next-error~ buffers, highligt the currently visited error.
+Enables ~icomplete-mode~ with some settings that make it work more like Ido. This will show available completions in the minibuffer, for example for the ~M-x~ prompt, and norrow down alternatives as you type.
 
 #+begin_src emacs-lisp
-(setq next-error-message-highlight t)
+(fido-vertical-mode)
+#+end_src
+
+**** Make yes/no prompts shorter
+
+#+begin_src emacs-lisp
+(setq use-short-answers t)
 #+end_src
 
 ** Documentation and help
@@ -371,6 +393,24 @@ Disable use of those lock files with a ~.#~ prefix that Emacs by default creates
 
 #+begin_src emacs-lisp
 (setq create-lockfiles nil)
+#+end_src
+
+*** ~dired~
+
+Make file sizes shown in dired human readable.
+
+#+begin_src emacs-lisp
+(setq dired-listing-switches "-alh")
+#+end_src
+
+*** ~tramp~ remote editing
+
+Ensure that Tramp uses path of remote shell on remote hosts.
+
+#+begin_src emacs-lisp
+(eval-after-load 'tramp
+  '(add-to-list 'tramp-remote-path
+             'tramp-own-remote-path))
 #+end_src
 
 ** Text editing
@@ -511,52 +551,6 @@ there's no active region."
 (setq compilation-scroll-output t)
 #+end_src
 
-* Built-in packages
-
-Configuration of packages that are bundled with Emacs.
-
-** Interface
-*** ~modus-themes~ accessible theme
-
-#+begin_src emacs-lisp
-(setq modus-themes-bold-constructs t
-      modus-themes-italic-constructs t
-      modus-themes-syntax '(faint)
-      modus-themes-mixed-fonts t
-      modus-themes-links '(neutral-underline)
-      modus-themes-diffs 'desaturated
-      modus-themes-org-blocks 'gray-background
-      modus-themes-scale-headings t)
-
-(load-theme 'modus-operandi t)
-#+end_src
-
-*** ~fido~ incremental minibuffer completion
-
-Enables ~icomplete-mode~ with some settings that make it work more like Ido. This will show available completions in the minibuffer, for example for the ~M-x~ prompt, and norrow down alternatives as you type.
-
-#+begin_src emacs-lisp
-(fido-vertical-mode)
-#+end_src
-
-** Project management and version control
-*** ~vc-diff~
-
-Make ~vc-diff~ imitate the diff format of Magit.
-
-#+begin_src emacs-lisp
-(setq diff-font-lock-prettify t)
-#+end_src
-
-*** ~ediff~
-
-Make ediff use existing frame instead of creating new one
-
-#+begin_src emacs-lisp
-(setq ediff-window-setup-function 'ediff-setup-windows-plain)
-#+end_src
-
-** Programming
 *** ~flymake~
 
 Package for showing diagnostics from linters and similar interactively.
@@ -589,22 +583,21 @@ Perl indentation preferences.
             (setq-local c-basic-offset 4)))
 #+end_src
 
-** ~dired~
+** Project management and version control
+*** ~vc-diff~
 
-Make file sizes shown in dired human readable.
+Make ~vc-diff~ imitate the diff format of Magit.
 
 #+begin_src emacs-lisp
-(setq dired-listing-switches "-alh")
+(setq diff-font-lock-prettify t)
 #+end_src
 
-** ~tramp~ remote editing
+*** ~ediff~
 
-Ensure that Tramp uses path of remote shell on remote hosts.
+Make ediff use existing frame instead of creating new one
 
 #+begin_src emacs-lisp
-(eval-after-load 'tramp
-  '(add-to-list 'tramp-remote-path
-             'tramp-own-remote-path))
+(setq ediff-window-setup-function 'ediff-setup-windows-plain)
 #+end_src
 
 ** ~org-mode~ planning and note-taking
