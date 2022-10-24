@@ -1,0 +1,48 @@
+#+TITLE: Configuration files
+
+* Installation
+
+At some point I should make a script to deploy this configuration, but for now I just perform the below steps.
+
+Create a ~.git~ file in the home directory that points to where our Git directory will be. Technically we could just have a directory here, but this way, if there's an issue, you can remove this file and instead use a command like this to act on it.
+
+#+begin_example
+echo 'gitdir: .config/dotfiles.git' > ~/.git
+#+end_example
+
+One option if you can't have a ~.git~ in the home directory because of conflicts with some other tool, like an IDE detecting your home directory as the project directory because there is a Git repository there, you can make an alias to this instead.
+
+#+begin_src emacs-lisp
+git --git-dir "$HOME/.config/dotfiles.git" --work-tree="$HOME" […]
+#+end_src
+
+Clone as a bare repository (I haven't yet found a way to clone into a directory with a custom name without using ~--bare~).
+
+#+begin_example
+git clone --bare git@gitlab.com:bkhl/dotfiles.git ~/.config/dotfiles.git
+#+end_example
+
+Set the worktree location and remove the ~bare~ flag.
+
+#+begin_example
+git config -f ~/.config/dotfiles.git/config core.worktree ~
+git config -f ~/.config/dotfiles.git/config --unset core.bare
+#+end_example
+
+Make ~status~ ignore untracked files. This way you won't get a huge list of your regular files in the status commands.
+
+#+begin_example
+git config -f ~/.config/dotfiles.git/config status.showUntrackedFiles no
+#+end_example
+
+Do a reset to ~HEAD~ to remove the cruft that will get in there from changing the worktree location without updating the Git state.
+
+#+begin_example
+git reset HEAD
+#+end_example
+
+Initialize the submodules.
+
+#+begin_example
+git submodule update --init
+#+end_example
