@@ -400,7 +400,7 @@ Disable use of those lock files with a ~.#~ prefix that Emacs by default creates
 Make file sizes shown in dired human readable.
 
 #+begin_src emacs-lisp
-(setq dired-listing-switches "-alh")
+(setq dired-listing-switches "-l --all --human-readable --group-directories-first")
 #+end_src
 
 *** ~tramp~ remote editing
