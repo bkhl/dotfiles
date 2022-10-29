@@ -1,3 +1,8 @@
+;; Increase number of bytes of consing between garbage collections. This appears
+;; to increase performance at the cost of some memory increase. This is done
+;; first to decrease start-up time.
+(setq gc-cons-threshold 20000000)
+
 ;; Disable implied resizing of frames when display settings change. This speeds
 ;; up startup by skipping frame resizing when e.g. font settings change.
 (setq frame-inhibit-implied-resize t)
