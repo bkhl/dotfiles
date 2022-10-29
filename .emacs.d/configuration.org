@@ -29,17 +29,6 @@ This makes the Emacs customization interface store values in a separate file, in
 (load custom-file :noerror)
 #+end_src
 
-** Add load path for custom packages
-
-#+begin_src emacs-lisp
-(let ((default-directory  "~/.emacs.d/site-lisp/"))
-  (setq load-path
-        (append
-         (let ((load-path  (copy-sequence load-path)))
-           (normal-top-level-add-subdirs-to-load-path))
-         load-path)))
-#+end_src
-
 ** Show init time on startup
 
 #+begin_src emacs-lisp
@@ -749,7 +738,18 @@ Configuration of add-on packages.
 
 ** Initialization
 
-~use-package~ is used to configure the add-on packages below.
+Set ~load-path~ and load ~use-package~ package, used to configure the other add-on packages below.
+
+*** Add load path for custom packages
+
+#+begin_src emacs-lisp
+(let ((default-directory  "~/.emacs.d/site-lisp/"))
+  (setq load-path
+        (append
+         (let ((load-path  (copy-sequence load-path)))
+           (normal-top-level-add-subdirs-to-load-path))
+         load-path)))
+#+end_src
 
 *** [[file:site-lisp/use-package][use-package]]
 
