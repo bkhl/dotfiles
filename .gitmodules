@@ -82,3 +82,6 @@
 [submodule ".emacs.d/site-lisp/just-mode"]
 	path = .emacs.d/site-lisp/just-mode
 	url = https://github.com/leon-barrett/just-mode.el.git
+[submodule ".emacs.d/site-lisp/modus-themes"]
+	path = .emacs.d/site-lisp/modus-themes
+	url = https://git.sr.ht/~protesilaos/modus-themes

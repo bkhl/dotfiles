@@ -99,21 +99,6 @@ This is run as a hook after the first frame is created, as this will otherwise n
                 'bkhl/set-fontset-fonts)))
 #+end_src
 
-*** Enable ~modus-operandi~ theme
-
-#+begin_src emacs-lisp
-(setq modus-themes-bold-constructs t
-      modus-themes-italic-constructs t
-      modus-themes-syntax '(faint)
-      modus-themes-mixed-fonts t
-      modus-themes-links '(neutral-underline)
-      modus-themes-diffs 'desaturated
-      modus-themes-org-blocks 'gray-background
-      modus-themes-scale-headings t)
-
-(load-theme 'modus-operandi t)
-#+end_src
-
 *** Disable bell
 
 Disable warning bell, both the default audio one and the visual one.
@@ -805,6 +790,22 @@ This is a list of add-on packages that are dependencies of other packages furthe
 - [[#magit][magit]]
 
 ** Interface
+*** [[file:site-lisp/modus-themes][modus-themes]] accessible themes
+
+#+begin_src emacs-lisp
+(use-package modus-themes
+  :custom
+  (modus-themes-bold-constructs t)
+  (modus-themes-italic-constructs t)
+  (modus-themes-syntax '(faint green-strings))
+  (modus-themes-mixed-fonts t)
+  (modus-themes-links '(faint neutral-underline italic))
+  (modus-themes-diffs 'desaturated)
+  (modus-themes-org-blocks 'gray-background)
+  :config
+  (load-theme 'modus-operandi t))
+#+end_src
+
 *** [[file:site-lisp/minions][minions]] mode line minor mode listing improvements
 
 Hides minor modes in a popup menu to preserve space and make the mode line less noisy.
