@@ -99,7 +99,7 @@ alias fgrep='fgrep --color=auto'
 alias grep='grep --color=auto'
 alias ls='ls --color=auto --classify --group-directories-first'
 alias sudo='sudo '
-alias emacs="emacsclient --alternate-editor="
+alias emacs="emacsclient --alternate-editor= --no-wait"
 
 if [[ -n $DISPLAY ]] && hash xclip 2> /dev/null; then
     alias clp='xclip -selection clipboard'
