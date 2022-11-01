@@ -7,7 +7,7 @@
 
 This is my Emacs configuration. Inspirations include:
 
-- Harry R. Schwart's [[https://github.com/hrs/dotfiles/blob/main/emacs/dot-emacs.d/configuration.org][Emacs configuration]] and [[https://github.com/hrs/sensible-defaults.el][sensible-defaults.el]].
+- Harry R. Schwartz' [[https://github.com/hrs/dotfiles/blob/main/emacs/.config/emacs/configuration.org][Emacs configuration]] and [[https://github.com/hrs/sensible-defaults.el][sensible-defaults.el]].
 - Phil Hagelberg's [[https://git.sr.ht/~technomancy/better-defaults][better-defaults.el]].
 - [[https://emacscast.org/][EmacsCast]].
 - Protesilaos Stavrou's [[https://protesilaos.com/codelog/][blog]] and [[https://www.youtube.com/channel/UC0uTPqBCFIpZxlz_Lv1tk_g][videos]].
