@@ -7,8 +7,6 @@
 	default = current
 [alias]
 	st = status
-[trim]
-	detach = false
 [fetch]
 	parallel = 10
 [pull]
