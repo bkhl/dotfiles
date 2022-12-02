@@ -975,9 +975,7 @@ Use the ~company-posframe~ plugin to show the ~company~ menus in a separate fram
   :mode ("\\.fnl\\'" . fennel-mode)
   :init
   (defun bkhl/add-fennel-prettify-symbols ()
-    (setq prettify-symbols-alist
-          '(("lambda" . ?λ)
-            ("fn" . ?𝑓))))
+    (setq prettify-symbols-alist '(("lambda" . ?λ))))
   :hook (fennel-mode . bkhl/add-fennel-prettify-symbols))
 #+end_src
 
