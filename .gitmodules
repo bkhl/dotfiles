@@ -19,15 +19,6 @@
 [submodule ".emacs.d/site-lisp/diff-hl"]
 	path = .emacs.d/site-lisp/diff-hl
 	url = https://github.com/dgutov/diff-hl.git
-[submodule ".emacs.d/site-lisp/company-mode"]
-	path = .emacs.d/site-lisp/company-mode
-	url = https://github.com/company-mode/company-mode.git
-[submodule ".emacs.d/site-lisp/company-posframe"]
-	path = .emacs.d/site-lisp/company-posframe
-	url = https://github.com/tumashu/company-posframe.git
-[submodule ".emacs.d/site-lisp/posframe"]
-	path = .emacs.d/site-lisp/posframe
-	url = https://github.com/tumashu/posframe.git
 [submodule ".emacs.d/site-lisp/org-present"]
 	path = .emacs.d/site-lisp/org-present
 	url = https://github.com/rlister/org-present.git
@@ -88,3 +79,9 @@
 [submodule ".emacs.d/site-lisp/fennel-mode"]
 	path = .emacs.d/site-lisp/fennel-mode
 	url = https://git.sr.ht/~technomancy/fennel-mode
+[submodule ".emacs.d/site-lisp/corfu"]
+	path = .emacs.d/site-lisp/corfu
+	url = https://github.com/minad/corfu.git
+[submodule ".emacs.d/site-lisp/cape"]
+	path = .emacs.d/site-lisp/cape
+	url = https://github.com/minad/cape.git

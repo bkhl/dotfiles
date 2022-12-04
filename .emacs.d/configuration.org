@@ -782,10 +782,6 @@ This is a list of add-on packages that are dependencies of other packages furthe
 
 - [[#nov][nov]]
 
-*** [[file:site-lisp/posframe][posframe]]
-
-- [[#company-posframe][company-posframe]]
-
 *** [[file:site-lisp/transient][transient]]
 
 - [[#magit][magit]]
@@ -844,12 +840,9 @@ The hook to override ~completion-styles~ is set like this in order to run after 
 #+begin_src emacs-lisp
 (use-package orderless
   :custom
-  (completion-category-overrides '((file (styles partial-completion))))
-  :config
-  (add-hook 'minibuffer-setup-hook
-            (defun bkhl/minibuffer-setup ()
-              (setq-local completion-styles '(orderless basic)))
-            1))
+  (completition-styles '(orderless basic))
+  (completion-category-defaults nil)
+  (completion-category-overrides '((file (styles partial-completion)))))
 #+end_src
 
 *** [[file:site-lisp/hide-mode-line][hide-mode-line]] to hide mode line when desired
@@ -942,28 +935,39 @@ This enables the [[https://github.com/joaotavora/eglot][Eglot]] LSP client. This
           (eglot-ensure))))))
 #+end_example
 
-*** [[file:site-lisp/company-mode][company-mode]] for completion while editing
+*** [[file:site-lisp/corfu][corfu]] for completion at point
 
 #+begin_src emacs-lisp
-(use-package company
+(use-package corfu
+  :custom
+  (corfu-auto t)
   :config
-  (add-hook 'after-init-hook 'global-company-mode)
-  (bind-key "M-/" 'company-complete-common))
+  (corfu-global-mode))
 #+end_src
 
-**** [[file:site-lisp/company-posframe][company-posframe]]
-:PROPERTIES:
-:CUSTOM_ID: company-posframe
-:END:
-
-Use the ~company-posframe~ plugin to show the ~company~ menus in a separate frame, not affected by e.g. variable pitch mode.
+*** [[file:site-lisp/cape][cape]] completion at point extensions
 
 #+begin_src emacs-lisp
-(use-package company-posframe
-  :custom
-  (company-posframe-show-indicator nil)
-  :hook
-  (company-mode . company-posframe-mode))
+(use-package cape
+  :bind (("C-c p p" . completion-at-point)
+         ("C-c p t" . complete-tag)
+         ("C-c p d" . cape-dabbrev)
+         ("C-c p h" . cape-hist)
+         ("C-c p f" . cape-file)
+         ("C-c p k" . cape-keyword)
+         ("C-c p s" . cape-symbol)
+         ("C-c p a" . cape-abbrev)
+         ("C-c p i" . cape-ispell)
+         ("C-c p l" . cape-line)
+         ("C-c p w" . cape-dict)
+         ("C-c p \\" . cape-tex)
+         ("C-c p _" . cape-tex)
+         ("C-c p ^" . cape-tex)
+         ("C-c p &" . cape-sgml)
+         ("C-c p r" . cape-rfc1345))
+  :init
+  (add-to-list 'completion-at-point-functions #'cape-dabbrev)
+  (add-to-list 'completion-at-point-functions #'cape-file))
 #+end_src
 
 *** Languages
