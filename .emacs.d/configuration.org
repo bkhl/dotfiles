@@ -990,6 +990,15 @@ This enables the [[https://github.com/joaotavora/eglot][Eglot]] LSP client. This
   :hook (fennel-mode . bkhl/add-fennel-prettify-symbols))
 #+end_src
 
+**** [[file:site-lisp/lua-mode][lua-mode]]
+
+#+begin_src emacs-lisp
+(use-package lua-mode
+  :custom
+  (lua-indent-level 2)
+  :mode ("\\.lua\\'" . lua-mode))
+#+end_src
+
 ** Project management and version control
 *** [[file:site-lisp/magit][magit]] Git integration
 :PROPERTIES:
