@@ -970,6 +970,13 @@ This enables the [[https://github.com/joaotavora/eglot][Eglot]] LSP client. This
   (add-to-list 'completion-at-point-functions #'cape-file))
 #+end_src
 
+*** [[file:site-lisp/paredit][paredit]] for parenthetical editing
+
+#+begin_src emacs-lisp
+(use-package paredit
+  :hook (lisp-mode . enable-paredit-mode))
+#+end_src
+
 *** Languages
 
 **** [[file:site-lisp/fennel-mode][fennel-mode]]
