@@ -15,7 +15,7 @@ This is my Emacs configuration. Inspirations include:
 Some interesting properties of this configuration:
 
 - Almost all of the configuration is kept in an Org file.
-- The startup time is quite fast. There are some tweaks in [[file:init.el][init.el]] and [[file:early-init.el][early-init.el]] that makes startup time quite fast, together with prudent use of autoloading, and in general trying to keep the number of add-on packages low.
+- The startup time is quite fast. There are some tweaks in [[file:init.el][init.el]] and [[file:early-init.el][early-init.el]] that makes helps with this, together with prudent use of autoloading, and in general trying to keep the number of add-on packages low.
 - Addon packages are managed manually as Git submodules.
 
 The configuration is organized so that basic configuration of Emacs comes first, then built-in packages that are bundles with Emacs, followed by the add-on packages that are kept in [[file:site-lisp/][~/.emacs.d/site-lisp/]].
