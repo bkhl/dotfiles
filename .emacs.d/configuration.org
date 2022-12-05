@@ -831,6 +831,41 @@ Enable higlight of current line in selected modes.
   (lin-global-mode))
 #+end_src
 
+*** [[file:site-lisp/corfu][corfu]] for completion at point
+
+#+begin_src emacs-lisp
+(use-package corfu
+  :custom
+  (corfu-auto t)
+  :config
+  (corfu-global-mode))
+#+end_src
+
+*** [[file:site-lisp/cape][cape]] completion at point extensions
+
+#+begin_src emacs-lisp
+(use-package cape
+  :bind (("C-c p p" . completion-at-point)
+         ("C-c p t" . complete-tag)
+         ("C-c p d" . cape-dabbrev)
+         ("C-c p h" . cape-hist)
+         ("C-c p f" . cape-file)
+         ("C-c p k" . cape-keyword)
+         ("C-c p s" . cape-symbol)
+         ("C-c p a" . cape-abbrev)
+         ("C-c p i" . cape-ispell)
+         ("C-c p l" . cape-line)
+         ("C-c p w" . cape-dict)
+         ("C-c p \\" . cape-tex)
+         ("C-c p _" . cape-tex)
+         ("C-c p ^" . cape-tex)
+         ("C-c p &" . cape-sgml)
+         ("C-c p r" . cape-rfc1345))
+  :init
+  (add-to-list 'completion-at-point-functions #'cape-dabbrev)
+  (add-to-list 'completion-at-point-functions #'cape-file))
+#+end_src
+
 *** [[file:site-lisp/orderless][orderless]] completion style
 
 [[https://github.com/oantolin/orderless][Orderless]] provides a completion style that allows typing components of a canditate out of order.
@@ -934,41 +969,6 @@ This enables the [[https://github.com/joaotavora/eglot][Eglot]] LSP client. This
           (add-hook 'before-save-hook #'eglot-format-buffer nil t)
           (eglot-ensure))))))
 #+end_example
-
-*** [[file:site-lisp/corfu][corfu]] for completion at point
-
-#+begin_src emacs-lisp
-(use-package corfu
-  :custom
-  (corfu-auto t)
-  :config
-  (corfu-global-mode))
-#+end_src
-
-*** [[file:site-lisp/cape][cape]] completion at point extensions
-
-#+begin_src emacs-lisp
-(use-package cape
-  :bind (("C-c p p" . completion-at-point)
-         ("C-c p t" . complete-tag)
-         ("C-c p d" . cape-dabbrev)
-         ("C-c p h" . cape-hist)
-         ("C-c p f" . cape-file)
-         ("C-c p k" . cape-keyword)
-         ("C-c p s" . cape-symbol)
-         ("C-c p a" . cape-abbrev)
-         ("C-c p i" . cape-ispell)
-         ("C-c p l" . cape-line)
-         ("C-c p w" . cape-dict)
-         ("C-c p \\" . cape-tex)
-         ("C-c p _" . cape-tex)
-         ("C-c p ^" . cape-tex)
-         ("C-c p &" . cape-sgml)
-         ("C-c p r" . cape-rfc1345))
-  :init
-  (add-to-list 'completion-at-point-functions #'cape-dabbrev)
-  (add-to-list 'completion-at-point-functions #'cape-file))
-#+end_src
 
 *** [[file:site-lisp/paredit][paredit]] for parenthetical editing
 
