@@ -1094,8 +1094,7 @@ Shows changes that are not committed to the version control system for the file 
 *** [[file:site-lisp/dockerfile-mode][dockerfile-mode]] for Dockerfile/Containerfile support
 
 #+begin_src emacs-lisp
-(use-package dockerfile-mode
-  :mode "\\(/\\|\\`\\)Dockerfile\\.?")
+(use-package dockerfile-mode)
 #+end_src
 
 *** [[file:site-lisp/just-mode][just-mode]] for Justfile support
