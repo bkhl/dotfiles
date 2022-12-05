@@ -66,16 +66,16 @@ Configuration of built-in Emacs behaviour and packages bundled with Emacs.
 Setting fonts. I primarily use the ~variable-pitch~ and ~fixed-pitch~ faces in ~org-mode~.
 
 #+begin_src emacs-lisp
-(setq bkhl/fixed-pitch-font-family "Iosevka BKHL Default"
-      bkhl/variable-pitch-font-family "Charis SIL"
-      bkhl/default-text-height 130)
+(setq my/fixed-pitch-font-family "Iosevka BKHL Default"
+      my/variable-pitch-font-family "Charis SIL"
+      my/default-text-height 130)
 
 (set-face-attribute 'default nil
-                    :family bkhl/fixed-pitch-font-family)
+                    :family my/fixed-pitch-font-family)
 (set-face-attribute 'variable-pitch nil
-                    :family bkhl/variable-pitch-font-family)
+                    :family my/variable-pitch-font-family)
 (set-face-attribute 'fixed-pitch nil
-                    :family bkhl/fixed-pitch-font-family)
+                    :family my/fixed-pitch-font-family)
 #+end_src
 
 Enable Emoji font if available. ☃
@@ -83,15 +83,15 @@ Enable Emoji font if available. ☃
 This is run as a hook after the first frame is created, as this will otherwise not work when Emacs is started in daemon mode, or by ~emacsclient~.
 
 #+begin_src emacs-lisp
-(setq bkhl/emoji-font-family "Noto Color Emoji")
+(setq my/emoji-font-family "Noto Color Emoji")
 
 (add-hook
  'server-after-make-frame-hook
- (defun bkhl/set-fontset-fonts ()
-   (set-fontset-font t '(#x2600 . #x26ff) bkhl/emoji-font-family)
-   (set-fontset-font t 'emoji bkhl/emoji-font-family)
+ (defun my/set-fontset-fonts ()
+   (set-fontset-font t '(#x2600 . #x26ff) my/emoji-font-family)
+   (set-fontset-font t 'emoji my/emoji-font-family)
    (remove-hook 'server-after-make-frame-hook
-                'bkhl/set-fontset-fonts)))
+                'my/set-fontset-fonts)))
 #+end_src
 
 *** Disable bell
@@ -127,10 +127,10 @@ Setting this variable allows resizing window by pixels, rather than rounding to 
 Give new ~emacsclient~ frames focus when created.
 
 #+begin_src emacs-lisp
-(defun bkhl/focus-frame ()
+(defun my/focus-frame ()
   (select-frame-set-input-focus (selected-frame)))
-(add-hook 'server-switch-hook 'bkhl/focus-frame)
-(add-hook 'server-after-make-frame-hook 'bkhl/focus-frame)
+(add-hook 'server-switch-hook 'my/focus-frame)
+(add-hook 'server-after-make-frame-hook 'my/focus-frame)
 #+end_src
 
 *** Disable message on new ~emacsclient~ frames
@@ -154,29 +154,29 @@ Give new ~emacsclient~ frames focus when created.
 *** Key bindings to change global font scale
 
 #+begin_src emacs-lisp
-(setq bkhl/current-text-height bkhl/default-text-height)
+(setq my/current-text-height my/default-text-height)
 
-(defun bkhl/revert-text-height ()
+(defun my/revert-text-height ()
   (interactive)
-  (set-face-attribute 'default nil :height bkhl/default-text-height)
-  (setq bkhl/current-text-height (face-attribute 'default :height))
-  (message "Font size reverted to %d" bkhl/current-text-height))
+  (set-face-attribute 'default nil :height my/default-text-height)
+  (setq my/current-text-height (face-attribute 'default :height))
+  (message "Font size reverted to %d" my/current-text-height))
 
-(defun bkhl/increase-text-height ()
+(defun my/increase-text-height ()
   (interactive)
-  (set-face-attribute 'default nil :height (+ bkhl/current-text-height 10))
-  (setq bkhl/current-text-height (face-attribute 'default :height))
-  (message "Font size increased to %d" bkhl/current-text-height))
+  (set-face-attribute 'default nil :height (+ my/current-text-height 10))
+  (setq my/current-text-height (face-attribute 'default :height))
+  (message "Font size increased to %d" my/current-text-height))
 
-(defun bkhl/decrease-text-height ()
+(defun my/decrease-text-height ()
   (interactive)
-  (set-face-attribute 'default nil :height (- bkhl/current-text-height 10))
-  (setq bkhl/current-text-height (face-attribute 'default :height))
-  (message "Font size decreased to %d" bkhl/current-text-height))
+  (set-face-attribute 'default nil :height (- my/current-text-height 10))
+  (setq my/current-text-height (face-attribute 'default :height))
+  (message "Font size decreased to %d" my/current-text-height))
 
-(global-set-key (kbd "C-)") #'bkhl/revert-text-height)
-(global-set-key (kbd "C-+") #'bkhl/increase-text-height)
-(global-set-key (kbd "C-_") #'bkhl/decrease-text-height)
+(global-set-key (kbd "C-)") #'my/revert-text-height)
+(global-set-key (kbd "C-+") #'my/increase-text-height)
+(global-set-key (kbd "C-_") #'my/decrease-text-height)
 #+end_src
 
 *** Set preferred dateformat
@@ -346,7 +346,7 @@ When saving a file to a directory that doesn't exist, offer to create it.
 #+begin_src emacs-lisp
 (add-hook
  'before-save-hook
- (defun bkhl/ask-create-directory ()
+ (defun my/ask-create-directory ()
    (when buffer-file-name
      (let ((dir (file-name-directory buffer-file-name)))
        (when
@@ -510,7 +510,7 @@ I use this to make =lambda= get rendered as =λ= in Emacs Lisp, and similar repl
 *** Add key binding to comment/uncomment line or region
 
 #+begin_src emacs-lisp
-(defun bkhl/comment-or-uncomment-region-or-line ()
+(defun my/comment-or-uncomment-region-or-line ()
   "Comments or uncomments the region or the current line if
 there's no active region."
   (interactive)
@@ -522,7 +522,7 @@ there's no active region."
 
 
 (global-set-key (kbd "M-;")
-                #'bkhl/comment-or-uncomment-region-or-line)
+                #'my/comment-or-uncomment-region-or-line)
 #+end_src
 
 *** Automatically scroll to new output in the =*compilation*= buffer.
@@ -558,7 +558,7 @@ Perl indentation preferences.
 
 #+begin_src emacs-lisp
 (add-hook 'c-mode-hook
-          (defun bkhl/c-mode-setup ()
+          (defun my/c-mode-setup ()
             (setq-local c-default-style "linux")
             (setq-local c-basic-offset 4)))
 #+end_src
@@ -879,7 +879,7 @@ The hook to override ~completion-styles~ is set with a ~depth~ argument in order
   (completion-category-defaults nil)
   (completion-category-overrides '((file (styles partial-completion))))
   :config
-  (let ((hook (defun bkhl/minibuffer-setup ()
+  (let ((hook (defun my/minibuffer-setup ()
                 (setq-local completion-styles '(orderless basic)))))
     (remove-hook 'minibuffer-setup-hook hook)
     (add-hook 'minibuffer-setup-hook hook 1)))
@@ -997,9 +997,9 @@ This enables the [[https://github.com/joaotavora/eglot][Eglot]] LSP client. This
 (use-package fennel-mode
   :mode ("\\.fnl\\'" . fennel-mode)
   :init
-  (defun bkhl/add-fennel-prettify-symbols ()
+  (defun my/add-fennel-prettify-symbols ()
     (setq prettify-symbols-alist '(("lambda" . ?λ))))
-  :hook (fennel-mode . bkhl/add-fennel-prettify-symbols))
+  :hook (fennel-mode . my/add-fennel-prettify-symbols))
 #+end_src
 
 **** [[file:site-lisp/lua-mode][lua-mode]]
@@ -1037,7 +1037,7 @@ Load ~magit~, for working with Git.
 Function to do automatic commit on save in certain repos. This is for use with for example ~org-mode~, to enable finding things after accidental changes.
 
 #+begin_src emacs-lisp
-(defun bkhl/magic-commit-current-buffer ()
+(defun my/magic-commit-current-buffer ()
   (magit-call-git "add" buffer-file-name)
   (magit-call-git "commit"
                   "-m"
@@ -1051,7 +1051,7 @@ To use this as an ~after-save-hook~ in a project, create a ~.dir-locals.el~ with
 #+begin_example
 ((org-mode . ((eval . (add-hook
                        'after-save-hook
-                       'bkhl/magic-commit-current-buffer
+                       'my/magic-commit-current-buffer
                        nil t)))))
 #+end_example
 
@@ -1148,13 +1148,13 @@ Display bullet symbols instead of the asterisks that start Org file subtrees.
                   org-superstar-header-bullet
                   org-superstar-item
                   org-superstar-first))
-    (set-face-attribute face nil :family bkhl/fixed-pitch-font-family)))
+    (set-face-attribute face nil :family my/fixed-pitch-font-family)))
 #+end_src
 
 *** [[file:site-lisp/org-present][org-present]] presentation mode for Org files
 
 #+begin_src emacs-lisp
-(defun bkhl/set-fullscreen (fullscreen)
+(defun my/set-fullscreen (fullscreen)
   "If fullscreen is non-nil, set fullscreen mode if not already enabled. If it is nil, leave fullscreen if it is enabled."
   (when (xor fullscreen
              (memq (frame-parameter nil 'fullscreen)
@@ -1165,32 +1165,32 @@ Display bullet symbols instead of the asterisks that start Org file subtrees.
   :custom
   (org-present-text-scale 7)
   :config
-  (defun bkhl/org-present-edit ()
+  (defun my/org-present-edit ()
     (interactive)
     (org-present-show-cursor)
     (org-present-read-write))
-  (defun bkhl/org-present-read-only ()
+  (defun my/org-present-read-only ()
     (interactive)
     (org-present-hide-cursor)
     (org-present-read-only))
   (add-hook 'org-present-mode-hook
-            (defun bkhl/org-present-start ()
+            (defun my/org-present-start ()
               (org-present-big)
               (org-display-inline-images)
               (org-present-hide-cursor)
               (org-present-read-only)
               (hide-mode-line-mode)
-              (bkhl/set-fullscreen t)))
+              (my/set-fullscreen t)))
   (add-hook 'org-present-mode-quit-hook
-            (defun bkhl/org-present-reset ()
+            (defun my/org-present-reset ()
               (org-present-small)
               (org-remove-inline-images)
               (org-present-show-cursor)
               (org-present-read-write)
               (hide-mode-line-mode -1)
-              (bkhl/set-fullscreen nil)))
+              (my/set-fullscreen nil)))
   :bind (:map org-present-mode-keymap
-              ("C-c C-e" . bkhl/org-present-edit)
-              ("C-c C-r" . bkhl/org-present-read-only))
+              ("C-c C-e" . my/org-present-edit)
+              ("C-c C-r" . my/org-present-read-only))
   :commands org-present)
 #+end_src
