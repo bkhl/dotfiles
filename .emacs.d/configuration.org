@@ -870,14 +870,19 @@ Enable higlight of current line in selected modes.
 
 [[https://github.com/oantolin/orderless][Orderless]] provides a completion style that allows typing components of a canditate out of order.
 
-The hook to override ~completion-styles~ is set like this in order to run after the hooks added by ~fido-vertical-mode~.
+The hook to override ~completion-styles~ is set with a ~depth~ argument in order to run after the hooks added by ~fido-vertical-mode~.
 
 #+begin_src emacs-lisp
 (use-package orderless
   :custom
   (completition-styles '(orderless basic))
   (completion-category-defaults nil)
-  (completion-category-overrides '((file (styles partial-completion)))))
+  (completion-category-overrides '((file (styles partial-completion))))
+  :config
+  (let ((hook (defun bkhl/minibuffer-setup ()
+                (setq-local completion-styles '(orderless basic)))))
+    (remove-hook 'minibuffer-setup-hook hook)
+    (add-hook 'minibuffer-setup-hook hook 1)))
 #+end_src
 
 *** [[file:site-lisp/hide-mode-line][hide-mode-line]] to hide mode line when desired
