@@ -328,6 +328,14 @@ Unless overridden by a buffer, when prompting to open a file, start in the home 
 (setq default-directory "~/")
 #+end_src
 
+*** Backup by copying
+
+The default method here can break hardlinks.
+
+#+begin_src emacs-lisp
+(setq backup-by-copying t)
+#+end_src
+
 *** Store backups in tmp directory
 
 Store backups and autosaves in ~temporary-file-directory~. This risks losing some data on a system crash, but I am not very concerned about that as generally my important files are in some kind of version control.
