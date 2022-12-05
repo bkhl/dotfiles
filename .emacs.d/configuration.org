@@ -974,7 +974,14 @@ This enables the [[https://github.com/joaotavora/eglot][Eglot]] LSP client. This
 
 #+begin_src emacs-lisp
 (use-package paredit
-  :hook (lisp-mode . enable-paredit-mode))
+  :hook
+  (lisp-mode . enable-paredit-mode)
+  (emacs-lisp-mode . enable-paredit-mode)
+  (lisp-interaction-mode . enable-paredit-mode)
+  (eval-expression-minibuffer-setup . enable-paredit-mode)
+  (ielm-mode . enable-paredit-mode)
+  (scheme-mode . enable-paredit-mode)
+  (fennel-mode . enable-paredit-mode))
 #+end_src
 
 *** Languages
