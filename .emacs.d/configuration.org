@@ -846,7 +846,7 @@ Enable higlight of current line in selected modes.
   :custom
   (corfu-auto t)
   :config
-  (corfu-global-mode))
+  (global-corfu-mode))
 #+end_src
 
 *** [[file:site-lisp/cape][cape]] completion at point extensions
