@@ -220,24 +220,7 @@ In ~next-error~ buffers, highligt the currently visited error.
 (setq next-error-message-highlight t)
 #+end_src
 
-*** Minibuffer
-**** Show completion details
-
-Show brief descriptions for completions in the minibuffer for some commands like ~describe-*~ &c.
-
-#+begin_src emacs-lisp
-(setq completions-detailed t)
-#+end_src
-
-**** ~fido~ incremental minibuffer completion
-
-Enables ~icomplete-mode~ with some settings that make it work more like Ido. This will show available completions in the minibuffer, for example for the ~M-x~ prompt, and norrow down alternatives as you type.
-
-#+begin_src emacs-lisp
-(fido-vertical-mode)
-#+end_src
-
-**** Make yes/no prompts shorter
+*** Make yes/no prompts shorter
 
 #+begin_src emacs-lisp
 (setq use-short-answers t)
@@ -912,6 +895,26 @@ This module provides the server allowing the [[https://addons.mozilla.org/en-US/
   (when (and (daemonp)
              (not (process-status "edit-server")))
     (edit-server-start)))
+#+end_src
+
+*** Minibuffer
+
+**** [[file:site-lisp/vertico][vertico]] for minibuffer completion
+
+#+begin_src emacs-lisp
+(use-package vertico
+  :custom
+  enable-recursive-minibuffers t
+  :config
+  (vertico-mode 1))
+#+end_src
+
+*** [[file:site-lisp/marginalia][marginalia]] minibuffer annotations
+
+#+begin_src emacs-lisp
+(use-package marginalia
+  :config
+  (marginalia-mode 1))
 #+end_src
 
 ** Documentation and help
