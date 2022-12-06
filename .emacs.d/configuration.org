@@ -1122,7 +1122,8 @@ Shows changes that are not committed to the version control system for the file 
 :END:
 
 #+begin_src emacs-lisp
-(use-package git-timemachine)
+(use-package git-timemachine
+  :commands git-timemachine)
 #+end_src
 
 ** File formats
@@ -1151,7 +1152,6 @@ Shows changes that are not committed to the version control system for the file 
 
 #+begin_src emacs-lisp
 (use-package nov
-  :commands nov-mode
   :custom
   (nov-text-width t)
   :mode ("\\.epub\\'" . nov-mode)
