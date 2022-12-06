@@ -901,15 +901,47 @@ This module provides the server allowing the [[https://addons.mozilla.org/en-US/
 
 **** [[file:site-lisp/vertico][vertico]] for minibuffer completion
 
+This is a library for completion in the minibuffer, which integrates with the emacs ~completing-read~ functionality.
+
 #+begin_src emacs-lisp
 (use-package vertico
-  :custom
-  enable-recursive-minibuffers t
   :config
   (vertico-mode))
 #+end_src
 
-*** [[file:site-lisp/marginalia][marginalia]] minibuffer annotations
+Do not allow the cursor in the minibuffer prompt.
+
+#+begin_src emacs-lisp
+(setq minibuffer-prompt-properties
+      '(read-only t cursor-intangible t face minibuffer-prompt))
+(add-hook 'minibuffer-setup-hook #'cursor-intangible-mode)
+#+end_src
+
+Add prompt indicator to ~completing-read-multiple~.
+
+#+begin_src emacs-lisp
+(defun my/crm-indicator (args)
+  (cons (format "[CRM %s] %s"
+                (replace-regexp-in-string
+                 "\\`\\[.*?]\\*\\|\\[.*?]\\*\\'" ""
+                 crm-separator)
+                (car args))
+        (cdr args)))
+(advice-add #'completing-read-multiple :filter-args #'my/crm-indicator)
+#+end_src
+
+#+begin_src emacs-lisp
+(setq read-extended-command-predicate
+      #'command-completion-default-include-p)
+#+end_src
+
+Allow minibuffer commands while in the minibuffer.
+
+#+begin_src emacs-lisp
+(setq enable-recursive-minibuffers t)
+#+end_src
+
+**** [[file:site-lisp/marginalia][marginalia]] minibuffer annotations
 
 #+begin_src emacs-lisp
 (use-package marginalia
