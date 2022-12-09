@@ -629,6 +629,12 @@ Shortcut for inserting a block of Elisp.
              '("el" . "src emacs-lisp"))
 #+end_src
 
+When trying to edit in an hidden area, expand it before throwing an error.
+
+#+begin_src emacs-lisp
+(setq org-catch-invisible-edits 'show-and-error)
+#+end_src
+
 *** Display
 
 Enable ~org-indent~ mode, which makes org-mode indent sections visually, but not in the saved files.
@@ -643,7 +649,6 @@ Use variable fonts in ~org-mode~ buffers.
 (add-hook 'org-mode-hook 'variable-pitch-mode)
 #+end_src
 
-
 Hide the characters surrounding emphasized phrases
 
 #+begin_src emacs-lisp
@@ -656,13 +661,34 @@ Use real ellipsis character for collapsed subtrees, and prefix it with a space.
 (setq org-ellipsis "…")
 #+end_src
 
-Make tags align to the default width of Olivetti.
+Put tags right after headline. This causes fewer conflicts with add-on packages affecting Org-mode style.
 
 #+begin_src emacs-lisp
-(setq org-tags-column -70)
+(setq org-tags-column 0
+      org-auto-align-tags nil)
+#+end_src
+
+Show Latex-style entities as Unicode characters.
+
+#+begin_src emacs-lisp
+(setq org-pretty-entities t)
 #+end_src
 
 *** Key bindings
+****  Editing of headers
+
+When point is on a headline, make ~C-a~ and ~C-e~ go to beginning/end of headline text.
+
+#+begin_src emacs-lisp
+(setq org-special-ctrl-a/e t)
+#+end_src
+
+Insert new headlines after current subtree.
+
+#+begin_src emacs-lisp
+(setq org-insert-heading-respect-content t)
+#+end_src
+
 **** Global key binding to store links for ~org-mode~
 
 #+begin_src emacs-lisp
@@ -735,6 +761,24 @@ Hide already scheduled tasks from the agenda.
 
 #+begin_src emacs-lisp
 (setq org-agenda-todo-ignore-scheduled 'all)
+#+end_src
+
+Show tags right after headline. Reduces conflicts with packages that affect Org agenda style.
+
+#+begin_src emacs-lisp
+(setq org-agenda-tags-column 0)
+#+end_src
+
+Some agenda visual styling.
+
+#+begin_src emacs-lisp
+(setq org-agenda-block-separator ?-
+      org-agenda-time-grid
+      '((daily today require-timed)
+        (800 1000 1200 1400 1600 1800)
+        " ┄┄┄" "")
+      org-agenda-current-time-string
+      "🠨")
 #+end_src
 
 * Add-on packages
@@ -1185,31 +1229,12 @@ Shows changes that are not committed to the version control system for the file 
 #+end_src
 
 ** ~org-mode~ extensions
-*** [[file:site-lisp/org-superstar-mode][org-superstar-mode]] to show Org sections as bullets
-
-Display bullet symbols instead of the asterisks that start Org file subtrees.
+*** [[file:site-lisp/org-modern][org-modern]] styling for Org mode
 
 #+begin_src emacs-lisp
-(use-package org-superstar
-  :hook (org-mode . org-superstar-mode)
-  :custom
-  (org-superstar-special-todo-items t)
-  (org-superstar-headline-bullets-list '(?◉
-                                         ?🞛
-                                         ?○
-                                         ?▷))
-  (org-superstar-item-bullet-alist '((?* . ?•)
-                                     (?+ . ?‣)
-                                     (?- . ?⁃)))
-  (org-superstar-todo-bullet-alist '(("TODO" . ?☐)
-                                     ("DONE" . ?☑)
-                                     ("CANCELLED" . ?☒)))
+(use-package org-modern
   :config
-  (dolist (face '(org-superstar-leading
-                  org-superstar-header-bullet
-                  org-superstar-item
-                  org-superstar-first))
-    (set-face-attribute face nil :family my/fixed-pitch-font-family)))
+  (global-org-modern-mode))
 #+end_src
 
 *** [[file:site-lisp/org-present][org-present]] presentation mode for Org files

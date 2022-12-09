@@ -97,3 +97,6 @@
 [submodule ".emacs.d/site-lisp/marginalia"]
 	path = .emacs.d/site-lisp/marginalia
 	url = https://github.com/minad/marginalia.git
+[submodule ".emacs.d/site-lisp/org-modern"]
+	path = .emacs.d/site-lisp/org-modern
+	url = https://github.com/minad/org-modern.git
