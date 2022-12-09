@@ -1234,6 +1234,8 @@ Shows changes that are not committed to the version control system for the file 
 #+begin_src emacs-lisp
 (use-package org-modern
   :config
+  (set-face-attribute 'org-modern-symbol nil
+                      :family my/fixed-pitch-font-family)
   (global-org-modern-mode))
 #+end_src
 
