@@ -274,6 +274,14 @@ Bind ~M-o~ (by default bound to a rarely used command) to ~other-window~.
 (windmove-default-keybindings)
 #+end_src
 
+*** Enable repeat maps for repea
+
+This adds ability to repat some common commands by repeating the last key in its binding.
+
+#+begin_src emacs-lisp
+(repeat-mode)
+#+end_src
+
 ** Buffers
 *** Start with an empty scratch buffer.
 
