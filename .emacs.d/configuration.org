@@ -896,6 +896,12 @@ This module provides the server allowing the [[https://addons.mozilla.org/en-US/
     (edit-server-start)))
 #+end_src
 
+*** [[file:site-lisp/sv-kalender][sv-kalender]] Swedish calendar localization
+
+#+begin_src emacs-lisp
+(use-package sv-kalender)
+#+end_src
+
 *** Completion
 
 **** [[file:site-lisp/corfu][corfu]] for completion at point
