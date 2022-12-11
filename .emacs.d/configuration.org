@@ -1131,7 +1131,7 @@ This enables the [[https://github.com/joaotavora/eglot][Eglot]] LSP client. This
 #+begin_src emacs-lisp
 (use-package lua-mode
   :custom
-  (lua-indent-level 2)
+  (lua-indent-level 4)
   :mode ("\\.lua\\'" . lua-mode))
 #+end_src
 
