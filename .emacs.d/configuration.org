@@ -1102,7 +1102,12 @@ This enables the [[https://github.com/joaotavora/eglot][Eglot]] LSP client. This
         (push `(paredit-mode . ,new) minor-mode-overriding-map-alist)))))
 #+end_src
 
-*** Languages
+*** Programming languages and file formats
+**** [[file:site-lisp/dockerfile-mode][dockerfile-mode]] for Dockerfile/Containerfile support
+
+#+begin_src emacs-lisp
+(use-package dockerfile-mode)
+#+end_src
 
 **** [[file:site-lisp/fennel-mode][fennel-mode]]
 
@@ -1115,6 +1120,12 @@ This enables the [[https://github.com/joaotavora/eglot][Eglot]] LSP client. This
   :hook (fennel-mode . my/add-fennel-prettify-symbols))
 #+end_src
 
+**** [[file:site-lisp/just-mode][just-mode]] for Justfile support
+
+#+begin_src emacs-lisp
+(use-package just-mode)
+#+end_src
+
 **** [[file:site-lisp/lua-mode][lua-mode]]
 
 #+begin_src emacs-lisp
@@ -1124,6 +1135,11 @@ This enables the [[https://github.com/joaotavora/eglot][Eglot]] LSP client. This
   :mode ("\\.lua\\'" . lua-mode))
 #+end_src
 
+**** [[file:site-lisp/yaml-mode][yaml-mode]] for YAML support
+
+#+begin_src emacs-lisp
+(use-package yaml-mode)
+#+end_src
 ** Project management and version control
 *** [[file:site-lisp/magit][magit]] Git integration
 :PROPERTIES:
@@ -1196,19 +1212,7 @@ Shows changes that are not committed to the version control system for the file 
   :commands git-timemachine)
 #+end_src
 
-** File formats
-*** [[file:site-lisp/dockerfile-mode][dockerfile-mode]] for Dockerfile/Containerfile support
-
-#+begin_src emacs-lisp
-(use-package dockerfile-mode)
-#+end_src
-
-*** [[file:site-lisp/just-mode][just-mode]] for Justfile support
-
-#+begin_src emacs-lisp
-(use-package just-mode)
-#+end_src
-
+** Reading and writing
 *** [[file:site-lisp/markdown-mode][markdown-mode]] for Markdown support
 
 #+begin_src emacs-lisp
@@ -1229,14 +1233,8 @@ Shows changes that are not committed to the version control system for the file 
   (add-hook 'nov-mode-hook 'olivetti-mode))
 #+end_src
 
-*** [[file:site-lisp/yaml-mode][yaml-mode]] for YAML support
-
-#+begin_src emacs-lisp
-(use-package yaml-mode)
-#+end_src
-
-** ~org-mode~ extensions
-*** [[file:site-lisp/org-modern][org-modern]] styling for Org mode
+*** Org add-ons
+**** [[file:site-lisp/org-modern][org-modern]] styling for Org mode
 
 #+begin_src emacs-lisp
 (use-package org-modern
@@ -1246,7 +1244,7 @@ Shows changes that are not committed to the version control system for the file 
   (global-org-modern-mode))
 #+end_src
 
-*** [[file:site-lisp/org-present][org-present]] presentation mode for Org files
+**** [[file:site-lisp/org-present][org-present]] presentation mode for Org files
 
 #+begin_src emacs-lisp
 (defun my/set-fullscreen (fullscreen)
