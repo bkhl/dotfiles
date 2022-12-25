@@ -100,3 +100,6 @@
 [submodule ".emacs.d/site-lisp/sv-kalender"]
 	path = .emacs.d/site-lisp/sv-kalender
 	url = https://gitlab.com/bkhl/sv-kalender.git
+[submodule ".emacs.d/site-lisp/gdscript-mode"]
+	path = .emacs.d/site-lisp/gdscript-mode
+	url = https://github.com/godotengine/emacs-gdscript-mode.git

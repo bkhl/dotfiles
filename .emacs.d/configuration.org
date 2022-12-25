@@ -1,4 +1,4 @@
-: Emacs Configuration
+#+TITLE: Emacs Configuration
 #+AUTHOR: Björn Lindström
 #+EMAIL: bkhl@elektrubadur.se
 #+STARTUP: overview
@@ -1119,6 +1119,12 @@ This enables the [[https://github.com/joaotavora/eglot][Eglot]] LSP client. This
   :hook (fennel-mode . my/add-fennel-prettify-symbols))
 #+end_src
 
+**** [[file:site-lisp/gdscript-mode][gdscript-mode]] for Godot
+
+#+begin_src emacs-lisp
+(use-package gdscript-mode)
+#+end_src
+
 **** [[file:site-lisp/just-mode][just-mode]] for Justfile support
 
 #+begin_src emacs-lisp
@@ -1139,6 +1145,7 @@ This enables the [[https://github.com/joaotavora/eglot][Eglot]] LSP client. This
 #+begin_src emacs-lisp
 (use-package yaml-mode)
 #+end_src
+
 ** Project management and version control
 *** [[file:site-lisp/magit][magit]] Git integration
 :PROPERTIES:
