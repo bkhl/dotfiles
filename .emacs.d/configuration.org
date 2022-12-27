@@ -1226,7 +1226,8 @@ Shows changes that are not committed to the version control system for the file 
 *** [[file:site-lisp/markdown-mode][markdown-mode]] for Markdown support
 
 #+begin_src emacs-lisp
-(use-package markdown-mode)
+(use-package markdown-mode
+  :mode "\\.md\\'")
 #+end_src
 
 *** [[file:site-lisp/nov][nov]] for Epub reading
