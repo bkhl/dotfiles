@@ -1105,7 +1105,8 @@ This enables the [[https://github.com/joaotavora/eglot][Eglot]] LSP client. This
 **** [[file:site-lisp/dockerfile-mode][dockerfile-mode]] for Dockerfile/Containerfile support
 
 #+begin_src emacs-lisp
-(use-package dockerfile-mode)
+(use-package dockerfile-mode
+  :mode "\\(/\\|\\`\\)\\(Container\\|Docker\\)file\\.?")
 #+end_src
 
 **** [[file:site-lisp/fennel-mode][fennel-mode]]
@@ -1129,7 +1130,8 @@ This enables the [[https://github.com/joaotavora/eglot][Eglot]] LSP client. This
 **** [[file:site-lisp/just-mode][just-mode]] for Justfile support
 
 #+begin_src emacs-lisp
-(use-package just-mode)
+(use-package just-mode
+  :mode "\\(/\\|\\`\\)Justfile\\'")
 #+end_src
 
 **** [[file:site-lisp/lua-mode][lua-mode]]
@@ -1144,7 +1146,8 @@ This enables the [[https://github.com/joaotavora/eglot][Eglot]] LSP client. This
 **** [[file:site-lisp/yaml-mode][yaml-mode]] for YAML support
 
 #+begin_src emacs-lisp
-(use-package yaml-mode)
+(use-package yaml-mode
+  :mode "\\.ya?ml\\'")
 #+end_src
 
 ** Project management and version control
