@@ -1112,7 +1112,7 @@ This enables the [[https://github.com/joaotavora/eglot][Eglot]] LSP client. This
 
 #+begin_src emacs-lisp
 (use-package fennel-mode
-  :mode ("\\.fnl\\'" . fennel-mode)
+  :mode "\\.fnl\\'"
   :init
   (defun my/add-fennel-prettify-symbols ()
     (setq prettify-symbols-alist '(("lambda" . ?λ))))
@@ -1137,7 +1137,7 @@ This enables the [[https://github.com/joaotavora/eglot][Eglot]] LSP client. This
 (use-package lua-mode
   :custom
   (lua-indent-level 4)
-  :mode ("\\.lua\\'" . lua-mode))
+  :mode "\\.lua\\'")
 #+end_src
 
 **** [[file:site-lisp/yaml-mode][yaml-mode]] for YAML support
