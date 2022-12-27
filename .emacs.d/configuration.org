@@ -1122,7 +1122,8 @@ This enables the [[https://github.com/joaotavora/eglot][Eglot]] LSP client. This
 **** [[file:site-lisp/gdscript-mode][gdscript-mode]] for Godot
 
 #+begin_src emacs-lisp
-(use-package gdscript-mode)
+(use-package gdscript-mode
+  :mode "\\.gd\\'")
 #+end_src
 
 **** [[file:site-lisp/just-mode][just-mode]] for Justfile support
