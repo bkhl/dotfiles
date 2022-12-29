@@ -1124,7 +1124,11 @@ This enables the [[https://github.com/joaotavora/eglot][Eglot]] LSP client. This
 
 #+begin_src emacs-lisp
 (use-package gdscript-mode
-  :mode "\\.gd\\'")
+  :mode "\\.gd\\'"
+  :init
+  (defun my/add-gdscript-prettify-symbols ()
+    (setq prettify-symbols-alist '(("->" . ?→))))
+  :hook (gdscript-mode . my/add-gdscript-prettify-symbols))
 #+end_src
 
 **** [[file:site-lisp/just-mode][just-mode]] for Justfile support
