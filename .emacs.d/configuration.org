@@ -563,7 +563,7 @@ Perl indentation preferences.
             (setq-local c-basic-offset 4)))
 #+end_src
 
-** Project management and version control
+** Version control
 *** ~vc-diff~
 
 Make ~vc-diff~ imitate the diff format of Magit.
@@ -1154,7 +1154,7 @@ This enables the [[https://github.com/joaotavora/eglot][Eglot]] LSP client. This
   :mode "\\.ya?ml\\'")
 #+end_src
 
-** Project management and version control
+** Version control
 *** [[file:site-lisp/magit][magit]] Git integration
 :PROPERTIES:
 :CUSTOM_ID: magit
