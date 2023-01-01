@@ -842,14 +842,14 @@ This is a list of add-on packages that are dependencies of other packages furthe
 (use-package modus-themes
   :custom
   (modus-themes-bold-constructs t)
-  (modus-themes-italic-constructs t)
-  (modus-themes-syntax '(faint green-strings))
+  (modus-themes-slanted-constructs t)
   (modus-themes-mixed-fonts t)
-  (modus-themes-links '(faint neutral-underline italic))
-  (modus-themes-diffs 'desaturated)
   (modus-themes-org-blocks 'gray-background)
+  (modus-themes-common-palette-overrides
+   '((fg-link blue-intense)
+     (string green-faint)))
   :config
-  (load-theme 'modus-operandi t))
+    (load-theme 'modus-operandi t))
 #+end_src
 
 *** [[file:site-lisp/minions][minions]] mode line minor mode listing improvements
