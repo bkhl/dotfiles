@@ -849,7 +849,7 @@ This is a list of add-on packages that are dependencies of other packages furthe
    '((fg-link blue-intense)
      (string green-faint)))
   :config
-    (load-theme 'modus-operandi t))
+  (load-theme 'modus-operandi t))
 #+end_src
 
 *** [[file:site-lisp/minions][minions]] mode line minor mode listing improvements
