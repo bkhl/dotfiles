@@ -823,6 +823,27 @@ The ~use-package~ and ~bind-key~ macros provided with this package makes it easi
 (require 'use-package)
 #+end_src
 
+*** Helper function to generate autoloads when needed
+
+Some packages rely on ~package.el~ to generate and register an autoloads file. This function will do that for packages included without a package manager.
+
+Possible improvements:
+
+- Decide based on file timestamps if the autoloads should be regenerated.
+- Convert this into a custom ~use-package~ keyword extension.
+
+#+begin_src emacs-lisp
+(defun my/autoload-package (pkg)
+  "Set up autoloading for package PKG."
+  (let* ((pkg (symbol-name pkg))
+         (pkgdir (expand-file-name (format "%s/%s/%s" user-emacs-directory "site-lisp" pkg)))
+         (autoloads-file (format "%s/%s-autoloads.el" pkgdir pkg)))
+    (unless (file-exists-p autoloads-file)
+      (make-directory-autoloads pkgdir autoloads-file))
+    (add-to-list 'load-path pkgdir)
+    (load autoloads-file pkgdir)))
+#+end_src
+
 ** Dependencies
 
 This is a list of add-on packages that are dependencies of other packages further down, with the packages they are used in listed below each one.
@@ -1036,30 +1057,9 @@ Allow minibuffer commands while in the minibuffer.
 
 **** [[file:site-lisp/consult][consult]] search and navigation commands
 
-Consult expects your package manager to generate some autoloads. Since I don't use one, I set those up here first.
-
 #+begin_src emacs-lisp
-(use-package consult-register
-  :commands (consult-register
-             consult-register-load
-             consult-register-store
-             consult-register-format
-             consult-register-window))
+(my/autoload-package 'consult)
 
-(use-package consult-compile
-  :commands consult-compile-error)
-
-(use-package consult-flymake
-  :commands consult-flymake)
-
-(use-package consult-imenu
-  :commands (consult-imenu
-             consult-imenu-multi))
-#+end_src
-
-Loading the Consult package itself.
-
-#+begin_src emacs-lisp
 (use-package consult
   :bind (;; C-c bindings (mode-specific-map)
          ("C-c h" . consult-history)
