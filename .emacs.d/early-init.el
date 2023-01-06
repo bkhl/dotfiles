@@ -17,3 +17,6 @@
 ;; Prevent stale Elisp bytecode file from shadowing more up-to-date source
 ;; files.
 (setq load-prefer-newer t)
+
+;; Disable package.el, as I don't use it.
+(setq package-enable-at-startup nil)
