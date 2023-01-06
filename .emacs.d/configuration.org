@@ -908,6 +908,18 @@ This module provides the server allowing the [[https://addons.mozilla.org/en-US/
 (use-package sv-kalender)
 #+end_src
 
+*** [[file:site-lisp/olivetti][olivetti]] to adjust margins of text
+
+A minor mode that automatically adjusts margins &c. for reading and writing prose.
+
+#+begin_src emacs-lisp
+(use-package olivetti
+  :hook
+  (Info-mode . olivetti-mode)
+  (org-mode . olivetti-mode)
+  (ewww . olivetti-mode))
+#+end_src
+
 *** Completion
 
 **** [[file:site-lisp/corfu][corfu]] for completion at point
@@ -1024,18 +1036,6 @@ Allow minibuffer commands while in the minibuffer.
   :hook
   (prog-mode . trimspace-mode-unless-trailing-whitespace)
   (text-mode . trimspace-mode-unless-trailing-whitespace))
-#+end_src
-
-*** [[file:site-lisp/olivetti][olivetti]] to adjust margins of text
-
-A minor mode that automatically adjusts margins &c. for reading and writing prose.
-
-#+begin_src emacs-lisp
-(use-package olivetti
-  :hook
-  (Info-mode . olivetti-mode)
-  (org-mode . olivetti-mode)
-  (ewww . olivetti-mode))
 #+end_src
 
 *** [[file:site-lisp/whole-line-or-region][whole-line-or-region]]
