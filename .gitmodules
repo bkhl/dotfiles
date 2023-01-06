@@ -103,6 +103,3 @@
 [submodule ".emacs.d/site-lisp/gdscript-mode"]
 	path = .emacs.d/site-lisp/gdscript-mode
 	url = https://github.com/godotengine/emacs-gdscript-mode.git
-[submodule ".emacs.d/site-lisp/browse-kill-ring"]
-	path = .emacs.d/site-lisp/browse-kill-ring
-	url = https://github.com/browse-kill-ring/browse-kill-ring.git
