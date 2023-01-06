@@ -1034,6 +1034,97 @@ Allow minibuffer commands while in the minibuffer.
   (marginalia-mode))
 #+end_src
 
+**** [[file:site-lisp/consult][consult]] search and navigation commands
+
+Consult expects your package manager to generate some autoloads. Since I don't use one, I set those up here first.
+
+#+begin_src emacs-lisp
+(use-package consult-register
+  :commands (consult-register
+             consult-register-load
+             consult-register-store
+             consult-register-format
+             consult-register-window))
+
+(use-package consult-compile
+  :commands consult-compile-error)
+
+(use-package consult-flymake
+  :commands consult-flymake)
+
+(use-package consult-imenu
+  :commands (consult-imenu
+             consult-imenu-multi))
+#+end_src
+
+Loading the Consult package itself.
+
+#+begin_src emacs-lisp
+(use-package consult
+  :bind (;; C-c bindings (mode-specific-map)
+         ("C-c h" . consult-history)
+         ("C-c m" . consult-mode-command)
+         ("C-c k" . consult-kmacro)
+
+         ;; C-x bindings (ctl-x-map)
+         ("C-x M-:" . consult-complex-command)  ;; replaces nrepeat-complex-command
+         ("C-x b" . consult-buffer)  ;; replaces switch-to-buffer
+         ("C-x 4 b" . consult-buffer-other-window)  ;; replaces switch-to-buffer-other-window
+         ("C-x 5 b" . consult-buffer-other-frame) ;; replaces switch-to-buffer-other-frame
+         ("C-x r b" . consult-bookmark)  ;; replaces bookmark-jump
+         ("C-x p b" . consult-project-buffer)  ;; replaces project-switch-to-buffer
+
+         ;; Custom M-# bindings for fast register access
+         ("M-#" . consult-register-load)
+         ("M-'" . consult-register-store)  ;; replaces abbrev-prefix-mark (unrelated)
+         ("C-M-#" . consult-register)
+
+         ;; Other custom bindings
+         ("M-y" . consult-yank-pop)  ;; replaces yank-pop
+
+         ;; M-g bindings (goto-map)
+         ("M-g e" . consult-compile-error)
+         ("M-g f" . consult-flymake)
+         ("M-g g" . consult-goto-line)  ;; replaces goto-line
+         ("M-g M-g" . consult-goto-line)  ;; replaces goto-line
+         ("M-g o" . consult-outline)
+         ("M-g m" . consult-mark)
+         ("M-g k" . consult-global-mark)
+         ("M-g i" . consult-imenu)
+         ("M-g I" . consult-imenu-multi)
+
+         ;; M-s bindings (search-map)
+         ("M-s d" . consult-find)
+         ("M-s D" . consult-locate)
+         ("M-s g" . consult-grep)
+         ("M-s G" . consult-git-grep)
+         ("M-s l" . consult-line)
+         ("M-s L" . consult-line-multi)
+         ("M-s k" . consult-keep-lines)
+         ("M-s u" . consult-focus-lines)
+
+         ;; Isearch integration
+         ("M-s e" . consult-isearch-history)
+         :map isearch-mode-map
+         ("M-e" . consult-isearch-history)  ;; replaces isearch-edit-string
+         ("M-s e" . consult-isearch-history)  ;; replaces isearch-edit-string
+         ("M-s l" . consult-line)  ;; needed by consult-line to detect isearch
+         ("M-s L" . consult-line-multi)  ;; needed by consult-line to detect isearch
+
+         ;; Minibuffer history
+         :map minibuffer-local-map
+         ("M-s" . consult-history)  ;; replaces next-matching-history-element
+         ("M-r" . consult-history))  ;; replaces previous-matching-history-element
+  :init
+  (setq register-preview-delay 0.5
+        register-preview-function #'consult-register-format)
+  (advice-add #'register-preview :override #'consult-register-window)
+  (setq xref-show-xrefs-function #'consult-xref
+        xref-show-definitions-function #'consult-xref)
+  :config
+  (setq consult-narrow-key "<"))
+#+end_src
+
 ** Text editing
 *** [[file:site-lisp/trimspace-mode][trimspace-mode]] for trimming trailing spaces and newlines
 
