@@ -854,6 +854,7 @@ This is a list of add-on packages that are dependencies of other packages furthe
 
 *** [[file:site-lisp/compat][compat]]
 
+- [[#consult][consult]]
 - [[#magit][magit]]
 
 *** [[file:site-lisp/dash][dash]]
@@ -1061,6 +1062,9 @@ Allow minibuffer commands while in the minibuffer.
 #+end_src
 
 **** [[file:site-lisp/consult][consult]] search and navigation commands
+:PROPERTIES:
+:CUSTOM_ID: consult
+:END:
 
 #+begin_src emacs-lisp
 (my/autoload-package 'consult)
