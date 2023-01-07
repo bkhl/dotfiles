@@ -970,6 +970,8 @@ A minor mode that automatically adjusts margins &c. for reading and writing pros
 **** [[file:site-lisp/cape][cape]] completion at point extensions
 
 #+begin_src emacs-lisp
+(my/autoload-package 'cape)
+
 (use-package cape
   :bind (("C-c p p" . completion-at-point)
          ("C-c p t" . complete-tag)
