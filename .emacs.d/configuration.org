@@ -1092,6 +1092,8 @@ Allow minibuffer commands while in the minibuffer.
          ("M-g g" . consult-goto-line)  ;; replaces `goto-line'
          ("M-g M-g" . consult-goto-line)  ;; replaces `goto-line'
          ("M-g o" . consult-outline)
+         ("M-g a" . consult-org-agenda)
+         ("M-g h" . consult-org-heading)
          ("M-g m" . consult-mark)
          ("M-g k" . consult-global-mark)
          ("M-g i" . consult-imenu)
@@ -1139,6 +1141,7 @@ Embark provides ways to trigger commands based on the entity at point or the reg
   (("C-." . embark-act)
    ("C-;" . embark-dwim)
    ("C-h B" . embark-bindings)) ;; replaces `describe-bindings'
+  :commands embark-prefix-help-command
   :init
   (setq prefix-help-command #'embark-prefix-help-command)
   :config
