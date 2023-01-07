@@ -109,3 +109,6 @@
 [submodule ".emacs.d/site-lisp/auto-compile"]
 	path = .emacs.d/site-lisp/auto-compile
 	url = https://github.com/emacscollective/auto-compile.git
+[submodule ".emacs.d/site-lisp/embark"]
+	path = .emacs.d/site-lisp/embark
+	url = https://github.com/oantolin/embark.git

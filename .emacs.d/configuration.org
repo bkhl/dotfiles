@@ -1071,26 +1071,26 @@ Allow minibuffer commands while in the minibuffer.
          ("C-c k" . consult-kmacro)
 
          ;; C-x bindings (ctl-x-map)
-         ("C-x M-:" . consult-complex-command)  ;; replaces nrepeat-complex-command
-         ("C-x b" . consult-buffer)  ;; replaces switch-to-buffer
-         ("C-x 4 b" . consult-buffer-other-window)  ;; replaces switch-to-buffer-other-window
-         ("C-x 5 b" . consult-buffer-other-frame) ;; replaces switch-to-buffer-other-frame
-         ("C-x r b" . consult-bookmark)  ;; replaces bookmark-jump
-         ("C-x p b" . consult-project-buffer)  ;; replaces project-switch-to-buffer
+         ("C-x M-:" . consult-complex-command)  ;; replaces `nrepeat-complex-command'
+         ("C-x b" . consult-buffer)  ;; replaces `switch-to-buffer'
+         ("C-x 4 b" . consult-buffer-other-window)  ;; replaces `switch-to-buffer-other-window'
+         ("C-x 5 b" . consult-buffer-other-frame) ;; replaces `switch-to-buffer-other-frame'
+         ("C-x r b" . consult-bookmark)  ;; replaces `bookmark-jump'
+         ("C-x p b" . consult-project-buffer)  ;; replaces `project-switch-to-buffer'
 
          ;; Custom M-# bindings for fast register access
          ("M-#" . consult-register-load)
-         ("M-'" . consult-register-store)  ;; replaces abbrev-prefix-mark (unrelated)
+         ("M-'" . consult-register-store)  ;; replaces `abbrev-prefix-mark' (unrelated)
          ("C-M-#" . consult-register)
 
          ;; Other custom bindings
-         ("M-y" . consult-yank-pop)  ;; replaces yank-pop
+         ("M-y" . consult-yank-pop)  ;; replaces `yank-pop'
 
          ;; M-g bindings (goto-map)
          ("M-g e" . consult-compile-error)
          ("M-g f" . consult-flymake)
-         ("M-g g" . consult-goto-line)  ;; replaces goto-line
-         ("M-g M-g" . consult-goto-line)  ;; replaces goto-line
+         ("M-g g" . consult-goto-line)  ;; replaces `goto-line'
+         ("M-g M-g" . consult-goto-line)  ;; replaces `goto-line'
          ("M-g o" . consult-outline)
          ("M-g m" . consult-mark)
          ("M-g k" . consult-global-mark)
@@ -1127,6 +1127,34 @@ Allow minibuffer commands while in the minibuffer.
         xref-show-definitions-function #'consult-xref)
   :config
   (setq consult-narrow-key "<"))
+#+end_src
+
+**** [[file:site-lisp/embark][embark]] mini-buffer actions
+
+Embark provides ways to trigger commands based on the entity at point or the region, inside minibuffers and outside.
+
+#+begin_src emacs-lisp
+(use-package embark
+  :bind
+  (("C-." . embark-act)
+   ("C-;" . embark-dwim)
+   ("C-h B" . embark-bindings)) ;; replaces `describe-bindings'
+  :init
+  (setq prefix-help-command #'embark-prefix-help-command)
+  :config
+  (add-to-list 'display-buffer-alist
+               '("\\`\\*Embark Collect \\(Live\\|Completions\\)\\*"
+                 nil
+                 (window-parameters (mode-line-format . none)))))
+#+end_src
+
+This adds some extra integration between Embark and Consult.
+
+#+begin_src emacs-lisp
+(use-package embark-consult
+  :after consult
+  :hook
+  (embark-collect-mode . consult-preview-at-point-mode))
 #+end_src
 
 ** Text editing
