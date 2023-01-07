@@ -844,6 +844,10 @@ Possible improvements:
     (load autoloads-file pkgdir)))
 #+end_src
 
+*** [[file:site-lisp/auto-compile][auto-compile]] to prevent loading outdated compiled modules
+
+This package needs to be loaded as early as possible, so see [[file:early-init.el][early-init.el]].
+
 ** Dependencies
 
 This is a list of add-on packages that are dependencies of other packages further down, with the packages they are used in listed below each one.

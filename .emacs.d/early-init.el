@@ -1,3 +1,5 @@
+;;; early-init.el -*- no-byte-compile: t -*-
+
 ;; Increase number of bytes of consing between garbage collections. This appears
 ;; to increase performance at the cost of some memory increase. This is done
 ;; first to decrease start-up time.
@@ -17,6 +19,14 @@
 ;; Prevent stale Elisp bytecode file from shadowing more up-to-date source
 ;; files.
 (setq load-prefer-newer t)
+
+;; Enable the auto-compile package.
+(add-to-list 'load-path
+             (expand-file-name (concat user-emacs-directory
+                                       "site-lisp/auto-compile")))
+(require 'auto-compile)
+(auto-compile-on-load-mode)
+(auto-compile-on-save-mode)
 
 ;; Disable package.el, as I don't use it.
 (setq package-enable-at-startup nil)
