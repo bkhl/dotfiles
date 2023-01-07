@@ -885,7 +885,8 @@ This is a list of add-on packages that are dependencies of other packages furthe
   (modus-themes-mixed-fonts t)
   (modus-themes-org-blocks 'gray-background)
   (modus-themes-common-palette-overrides
-   '((fg-link blue-intense)
+   '((builtin rust)
+     (keyword blue)
      (string green-faint)))
   :config
   (load-theme 'modus-operandi t))
