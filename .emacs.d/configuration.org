@@ -824,25 +824,59 @@ This makes the ~:load-package~ keyword in ~use-package~ calls default to a direc
         t))
 #+end_src
 
-*** Helper function to generate autoloads when needed
+**** Add ~:make-autoloads~ keyword extension to generate autoload files
 
-Some packages rely on ~package.el~ to generate and register an autoloads file. This function will do that for packages included without a package manager.
+Some packages rely on ~package.el~ (or equivalent) to generate and register an autoloads file. This custom keyword will do that for packages included without a package manager.
 
-Possible improvements:
+This is the function that actually generates the autoload file (if needed) and loads it.
 
-- Decide based on file timestamps if the autoloads should be regenerated.
-- Convert this into a custom ~use-package~ keyword extension.
+Since ~make-directory-autoloads~ has no logic to work out if the file needs to be regenerated, this function will skip calling it the file exists already, and is newer than all the other ~.el~ files in the directory.
+
+If a package has additional files in subdirectories and such, this function would not handle it, but then neither would ~package-generate-autoloads~, as far as I can tell, so this should work for any packages supported by ~package.el~.
 
 #+begin_src emacs-lisp
-(defun my/autoload-package (pkg)
-  "Set up autoloading for package PKG."
-  (let* ((pkg (symbol-name pkg))
-         (pkgdir (expand-file-name (concat user-emacs-directory "site-lisp/" pkg)))
-         (autoloads-file (format "%s/%s-autoloads.el" pkgdir pkg)))
-    (unless (file-exists-p autoloads-file)
-      (make-directory-autoloads pkgdir autoloads-file))
-    (add-to-list 'load-path pkgdir)
-    (load autoloads-file pkgdir)))
+(defun my/use-package-autoload-package (name package-directory)
+  "Set up autoloading for package NAME in directory PACKAGE-DIRECTORY."
+  (let* ((name (symbol-name name))
+         (auto-file (expand-file-name (format "%s/%s-autoloads.el"
+                                              package-directory
+                                              name))))
+    (when (or (not (file-exists-p auto-file))
+              (let* ((autoloads-attributes (file-attributes auto-file))
+                     (autoloads-age (file-attribute-modification-time autoloads-attributes))
+                     (autoloads-inode-number (file-attribute-inode-number autoloads-attributes)))
+                (seq-find (lambda (attributes)
+                            (time-less-p autoloads-age
+                                         (file-attribute-modification-time attributes)))
+                          (mapcar #'cdr (directory-files-and-attributes package-directory
+                                                                        nil
+                                                                        "\\.el\\'")))))
+      (make-directory-autoloads package-directory auto-file))
+    (load auto-file package-directory)))
+#+end_src
+
+Register the custom keyword. This is added first in the list, so that it will have access to the ~:load-path~ parameter, and so that it will load before ~:defer~ or other keywords that might cause this to run after the package is loaded.
+
+#+begin_src emacs-lisp
+(add-to-list 'use-package-keywords :make-autoloads)
+#+end_src
+
+This makes the keyword take boolean parameters similar to other keywords like ~:defer~.
+
+#+begin_src emacs-lisp
+(defalias 'use-package-normalize/:make-autoloads
+  'use-package-normalize-predicate)
+#+end_src
+
+The handler function is what injects the call to the function to generate the autoloads file when the ~use-package~ macro is expanded.
+
+#+begin_src emacs-lisp
+(defun use-package-handler/:make-autoloads (name _keyword arg rest state)
+  (use-package-concat
+     (mapcar #'(lambda (path)
+                 `(my/use-package-autoload-package ',name ,path))
+             (plist-get rest :load-path))
+     (use-package-process-keywords name rest state)))
 #+end_src
 
 ** Dependencies
@@ -977,9 +1011,8 @@ A minor mode that automatically adjusts margins &c. for reading and writing pros
 **** [[file:site-lisp/cape][cape]] completion at point extensions
 
 #+begin_src emacs-lisp
-(my/autoload-package 'cape)
-
 (use-package cape
+  :make-autoloads
   :bind (("C-c p p" . completion-at-point)
          ("C-c p t" . complete-tag)
          ("C-c p d" . cape-dabbrev)
@@ -1073,9 +1106,8 @@ Allow minibuffer commands while in the minibuffer.
 **** [[file:site-lisp/consult][consult]] search and navigation commands
 
 #+begin_src emacs-lisp
-(my/autoload-package 'consult)
-
 (use-package consult
+  :make-autoloads
   :after compat
   :bind (;; C-c bindings (mode-specific-map)
          ("C-c h" . consult-history)
