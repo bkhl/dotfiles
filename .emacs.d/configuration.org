@@ -845,7 +845,7 @@ This package needs to be loaded as early as possible, so see [[file:early-init.e
 
 ** Dependencies
 
-These are add-on packages that are dependencies of other packages further down, as declared by the ~:requires~ keywords of those other packages.
+These are add-on packages that are dependencies of other packages further down, as declared by the ~:after~ keywords of those other packages.
 
 *** [[file:site-lisp/compat][compat]]
 
