@@ -796,33 +796,6 @@ Configuration of add-on packages.
 
 Set ~load-path~ and load ~use-package~ package, used to configure the other add-on packages below.
 
-*** Add load path for custom packages
-
-Have made my own function here rather than using ~normal-top-level-add-subdirs-to-load-path~, because that function does some caching to avoid recursing into the same directory twice, which is annoying if you want to be able to reload your own config.
-
-#+begin_src emacs-lisp
-(defun my/add-to-load-path (dir)
-  "Recursively add Emacs package found under DIR to `load-path'"
-  (let ((dir (expand-file-name dir)))
-    (when (not (directory-files dir nil "\\`\\.nosearch\\'" t 1))
-      (when (directory-files dir nil "\\.el\\'" t 1)
-        (add-to-list 'load-path dir))
-      (dolist (file
-               (directory-files dir t directory-files-no-dot-files-regexp))
-        (when (file-directory-p file)
-              (my/add-to-load-path file))))))
-
-(my/add-to-load-path "~/.emacs.d/site-lisp")
-#+end_src
-
-*** [[file:site-lisp/use-package][use-package]]
-
-The ~use-package~ and ~bind-key~ macros provided with this package makes it easier to configure add-on packages without generally having to remember how to set up autoloading &c.
-
-#+begin_src emacs-lisp
-(require 'use-package)
-#+end_src
-
 *** Helper function to generate autoloads when needed
 
 Some packages rely on ~package.el~ to generate and register an autoloads file. This function will do that for packages included without a package manager.
@@ -836,12 +809,34 @@ Possible improvements:
 (defun my/autoload-package (pkg)
   "Set up autoloading for package PKG."
   (let* ((pkg (symbol-name pkg))
-         (pkgdir (expand-file-name (format "%s/%s/%s" user-emacs-directory "site-lisp" pkg)))
+         (pkgdir (expand-file-name (concat user-emacs-directory "site-lisp/" pkg)))
          (autoloads-file (format "%s/%s-autoloads.el" pkgdir pkg)))
     (unless (file-exists-p autoloads-file)
       (make-directory-autoloads pkgdir autoloads-file))
     (add-to-list 'load-path pkgdir)
     (load autoloads-file pkgdir)))
+#+end_src
+
+*** [[file:site-lisp/use-package][use-package]]
+
+The ~use-package~ and ~bind-key~ macros provided with this package makes it easier to configure add-on packages without generally having to remember how to set up autoloading &c.
+
+#+begin_src emacs-lisp
+(add-to-list 'load-path
+             (expand-file-name (concat user-emacs-directory
+                                       "site-lisp/use-package")))
+(require 'use-package)
+#+end_src
+
+This makes the ~:load-package~ keyword in ~use-package~ calls default to a directory under ~/.emacs.d/site-lisp/~ named the same as the package to be imported. For packages where for some reason the package name doesn't match the directory name, or that has its Lisp files in a subdirectory, an explicit ~:load-path~ needs to be added.
+
+#+begin_src emacs-lisp
+(setf (alist-get :load-path use-package-defaults)
+      '((lambda (name args)
+          (list (expand-file-name (concat user-emacs-directory
+                                          "site-lisp/"
+                                          (symbol-name name)))))
+        t))
 #+end_src
 
 *** [[file:site-lisp/auto-compile][auto-compile]] to prevent loading outdated compiled modules
@@ -850,30 +845,39 @@ This package needs to be loaded as early as possible, so see [[file:early-init.e
 
 ** Dependencies
 
-This is a list of add-on packages that are dependencies of other packages further down, with the packages they are used in listed below each one.
+These are add-on packages that are dependencies of other packages further down, as declared by the ~:requires~ keywords of those other packages.
 
 *** [[file:site-lisp/compat][compat]]
 
-- [[#consult][consult]]
-- [[#magit][magit]]
+#+begin_src emacs-lisp
+(use-package compat)
+#+end_src
 
 *** [[file:site-lisp/dash][dash]]
 
-- [[#magit][magit]]
-- [[#nov][nov]]
+#+begin_src emacs-lisp
+(use-package dash)
+#+end_src
 
 *** [[file:site-lisp/esxml][esxml]]
 
-- [[#nov][nov]]
+#+begin_src emacs-lisp
+(use-package esxml)
+#+end_src
 
 *** [[file:site-lisp/transient][transient]]
 
-- [[#magit][magit]]
-- [[#git-timemachine][git-timemachine]]
+#+begin_src emacs-lisp
+(use-package transient
+  :load-path "site-lisp/transient/lisp")
+#+end_src
 
 *** [[file:site-lisp/with-editor][with-editor]]
 
-- [[#magit][magit]]
+#+begin_src emacs-lisp
+(use-package with-editor
+  :load-path "site-lisp/with-editor/lisp")
+#+end_src
 
 ** Interface
 *** [[file:site-lisp/modus-themes][modus-themes]] accessible themes
@@ -929,6 +933,7 @@ This module provides the server allowing the [[https://addons.mozilla.org/en-US/
 
 #+begin_src emacs-lisp
 (use-package edit-server
+  :load-path "site-lisp/edit-server/servers"
   :custom
   (edit-server-new-frame nil)
   :config
@@ -1064,14 +1069,12 @@ Allow minibuffer commands while in the minibuffer.
 #+end_src
 
 **** [[file:site-lisp/consult][consult]] search and navigation commands
-:PROPERTIES:
-:CUSTOM_ID: consult
-:END:
 
 #+begin_src emacs-lisp
 (my/autoload-package 'consult)
 
 (use-package consult
+  :after compat
   :bind (;; C-c bindings (mode-specific-map)
          ("C-c h" . consult-history)
          ("C-c m" . consult-mode-command)
@@ -1190,9 +1193,6 @@ This module allows a number of functions to operate on the current line if no re
 
 ** Programming
 *** [[file:site-lisp/eglot][eglot]] for language server protocol support
-:PROPERTIES:
-:CUSTOM_ID: eglot
-:END:
 
 #+begin_src emacs-lisp
 (use-package eglot
@@ -1303,14 +1303,13 @@ This enables the [[https://github.com/joaotavora/eglot][Eglot]] LSP client. This
 
 ** Version control
 *** [[file:site-lisp/magit][magit]] Git integration
-:PROPERTIES:
-:CUSTOM_ID: magit
-:END:
 
 Load ~magit~, for working with Git.
 
 #+begin_src emacs-lisp
 (use-package magit
+  :load-path "site-lisp/magit/lisp"
+  :after (compat dash transient with-editor)
   :bind
   ("C-x g" . magit-status)
 
@@ -1364,12 +1363,10 @@ Shows changes that are not committed to the version control system for the file 
 #+end_src
 
 *** [[file:site-lisp/git-timemachine][git-timemachine]] file history browsing
-:PROPERTIES:
-:CUSTOM_ID: git-timemachine
-:END:
 
 #+begin_src emacs-lisp
 (use-package git-timemachine
+  :after transient
   :commands git-timemachine)
 #+end_src
 
@@ -1382,12 +1379,10 @@ Shows changes that are not committed to the version control system for the file 
 #+end_src
 
 *** [[file:site-lisp/nov][nov]] for Epub reading
-:PROPERTIES:
-:CUSTOM_ID: nov
-:END:
 
 #+begin_src emacs-lisp
 (use-package nov
+  :after (dash esxml)
   :custom
   (nov-text-width t)
   :mode ("\\.epub\\'" . nov-mode)
