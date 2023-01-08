@@ -796,6 +796,34 @@ Configuration of add-on packages.
 
 Set ~load-path~ and load ~use-package~ package, used to configure the other add-on packages below.
 
+*** [[file:site-lisp/auto-compile][auto-compile]] to prevent loading outdated compiled modules
+
+This package needs to be loaded as early as possible, so see [[file:early-init.el][early-init.el]].
+
+*** [[file:site-lisp/use-package][use-package]]
+
+The ~use-package~ and ~bind-key~ macros provided with this package makes it easier to configure add-on packages without generally having to remember how to set up autoloading &c.
+
+#+begin_src emacs-lisp
+(add-to-list 'load-path
+             (expand-file-name (concat user-emacs-directory
+                                       "site-lisp/use-package")))
+(require 'use-package)
+#+end_src
+
+**** Provide default ~:load-path~ pointing to location of submodules
+
+This makes the ~:load-package~ keyword in ~use-package~ calls default to a directory under ~/.emacs.d/site-lisp/~ named the same as the package to be imported. For packages where for some reason the package name doesn't match the directory name, or that has its Lisp files in a subdirectory, an explicit ~:load-path~ needs to be added.
+
+#+begin_src emacs-lisp
+(setf (alist-get :load-path use-package-defaults)
+      '((lambda (name args)
+          (list (expand-file-name (concat user-emacs-directory
+                                          "site-lisp/"
+                                          (symbol-name name)))))
+        t))
+#+end_src
+
 *** Helper function to generate autoloads when needed
 
 Some packages rely on ~package.el~ to generate and register an autoloads file. This function will do that for packages included without a package manager.
@@ -816,32 +844,6 @@ Possible improvements:
     (add-to-list 'load-path pkgdir)
     (load autoloads-file pkgdir)))
 #+end_src
-
-*** [[file:site-lisp/use-package][use-package]]
-
-The ~use-package~ and ~bind-key~ macros provided with this package makes it easier to configure add-on packages without generally having to remember how to set up autoloading &c.
-
-#+begin_src emacs-lisp
-(add-to-list 'load-path
-             (expand-file-name (concat user-emacs-directory
-                                       "site-lisp/use-package")))
-(require 'use-package)
-#+end_src
-
-This makes the ~:load-package~ keyword in ~use-package~ calls default to a directory under ~/.emacs.d/site-lisp/~ named the same as the package to be imported. For packages where for some reason the package name doesn't match the directory name, or that has its Lisp files in a subdirectory, an explicit ~:load-path~ needs to be added.
-
-#+begin_src emacs-lisp
-(setf (alist-get :load-path use-package-defaults)
-      '((lambda (name args)
-          (list (expand-file-name (concat user-emacs-directory
-                                          "site-lisp/"
-                                          (symbol-name name)))))
-        t))
-#+end_src
-
-*** [[file:site-lisp/auto-compile][auto-compile]] to prevent loading outdated compiled modules
-
-This package needs to be loaded as early as possible, so see [[file:early-init.el][early-init.el]].
 
 ** Dependencies
 
