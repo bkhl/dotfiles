@@ -881,34 +881,51 @@ The handler function is what injects the call to the function to generate the au
 
 ** Dependencies
 
-These are add-on packages that are dependencies of other packages further down, as declared by the ~:after~ keywords of those other packages.
+These are add-on packages that are dependencies of other packages further down, as listed under each one.
 
 *** [[file:site-lisp/compat][compat]]
 
+- [[#consult][consult]]
+- [[#magit][magit]]
+
 #+begin_src emacs-lisp
-(use-package compat)
+(use-package compat
+  :defer)
 #+end_src
 
 *** [[file:site-lisp/dash][dash]]
 
+- [[#magit][magit]]
+- [[#nov][nov]]
+
 #+begin_src emacs-lisp
-(use-package dash)
+(use-package dash
+  :defer)
 #+end_src
 
 *** [[file:site-lisp/esxml][esxml]]
 
+- [[#nov][nov]]
+
 #+begin_src emacs-lisp
-(use-package esxml)
+(use-package esxml
+  :defer)
 #+end_src
 
 *** [[file:site-lisp/transient][transient]]
 
+- [[#git-timemachine][git-timemachine]]
+- [[#magit][magit]]
+
 #+begin_src emacs-lisp
 (use-package transient
+  :defer
   :load-path "site-lisp/transient/lisp")
 #+end_src
 
 *** [[file:site-lisp/with-editor][with-editor]]
+
+- [[#magit][magit]]
 
 #+begin_src emacs-lisp
 (use-package with-editor
@@ -1104,11 +1121,13 @@ Allow minibuffer commands while in the minibuffer.
 #+end_src
 
 **** [[file:site-lisp/consult][consult]] search and navigation commands
+:PROPERTIES:
+:CUSTOM_ID: consult
+:END:
 
 #+begin_src emacs-lisp
 (use-package consult
   :make-autoloads
-  :after compat
   :bind (;; C-c bindings (mode-specific-map)
          ("C-c h" . consult-history)
          ("C-c m" . consult-mode-command)
@@ -1337,13 +1356,15 @@ This enables the [[https://github.com/joaotavora/eglot][Eglot]] LSP client. This
 
 ** Version control
 *** [[file:site-lisp/magit][magit]] Git integration
+:PROPERTIES:
+:CUSTOM_ID: magit
+:END:
 
 Load ~magit~, for working with Git.
 
 #+begin_src emacs-lisp
 (use-package magit
   :load-path "site-lisp/magit/lisp"
-  :after (compat dash transient with-editor)
   :bind
   ("C-x g" . magit-status)
 
@@ -1397,10 +1418,12 @@ Shows changes that are not committed to the version control system for the file 
 #+end_src
 
 *** [[file:site-lisp/git-timemachine][git-timemachine]] file history browsing
+:PROPERTIES:
+:CUSTOM_ID: git-timemachine
+:END:
 
 #+begin_src emacs-lisp
 (use-package git-timemachine
-  :after transient
   :commands git-timemachine)
 #+end_src
 
@@ -1413,10 +1436,12 @@ Shows changes that are not committed to the version control system for the file 
 #+end_src
 
 *** [[file:site-lisp/nov][nov]] for Epub reading
+:PROPERTIES:
+:CUSTOM_ID: nov
+:END:
 
 #+begin_src emacs-lisp
 (use-package nov
-  :after (dash esxml)
   :custom
   (nov-text-width t)
   :mode ("\\.epub\\'" . nov-mode)
