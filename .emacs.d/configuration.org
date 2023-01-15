@@ -280,7 +280,7 @@ Bind ~M-o~ (by default bound to a rarely used command) to ~other-window~.
 (windmove-default-keybindings)
 #+end_src
 
-*** Enable repeat maps for repea
+*** Enable repeat maps for commands that have them
 
 This adds ability to repat some common commands by repeating the last key in its binding.
 
