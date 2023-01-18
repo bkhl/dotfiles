@@ -89,6 +89,11 @@ if ! shopt -oq posix; then
 fi
 
 
+if hash glab 2> /dev/null; then
+    eval "$(glab completion -s bash)"
+fi
+
+
 ####
 # Aliases
 #
