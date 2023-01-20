@@ -1331,6 +1331,12 @@ This enables the [[https://github.com/joaotavora/eglot][Eglot]] LSP client. This
   :hook (gdscript-mode . my/add-gdscript-prettify-symbols))
 #+end_src
 
+**** [[file:site-lisp/go-mode][go-mode]]
+
+#+begin_src emacs-lisp
+(use-package go-mode)
+#+end_src
+
 **** [[file:site-lisp/just-mode][just-mode]] for Justfile support
 
 #+begin_src emacs-lisp

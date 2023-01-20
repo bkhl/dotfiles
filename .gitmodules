@@ -112,3 +112,6 @@
 [submodule ".emacs.d/site-lisp/embark"]
 	path = .emacs.d/site-lisp/embark
 	url = https://github.com/oantolin/embark.git
+[submodule ".emacs.d/site-lisp/go-mode"]
+	path = .emacs.d/site-lisp/go-mode
+	url = https://github.com/dominikh/go-mode.el.git
