@@ -1334,7 +1334,11 @@ This enables the [[https://github.com/joaotavora/eglot][Eglot]] LSP client. This
 **** [[file:site-lisp/go-mode][go-mode]]
 
 #+begin_src emacs-lisp
-(use-package go-mode)
+(use-package go-mode
+  :init
+  (defun my/go-mode-add-hook-gofmt ()
+    (add-hook 'after-save-hook 'gofmt nil t))
+  :hook (go-mode . my/go-mode-add-hook-gofmt))
 #+end_src
 
 **** [[file:site-lisp/just-mode][just-mode]] for Justfile support
