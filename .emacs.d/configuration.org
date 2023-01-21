@@ -1241,7 +1241,8 @@ This module allows a number of functions to operate on the current line if no re
 
 #+begin_src emacs-lisp
 (use-package whole-line-or-region
-  :config (whole-line-or-region-global-mode))
+  :config
+  (whole-line-or-region-global-mode))
 #+end_src
 
 ** Programming
