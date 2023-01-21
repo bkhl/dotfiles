@@ -1335,6 +1335,7 @@ This enables the [[https://github.com/joaotavora/eglot][Eglot]] LSP client. This
 
 #+begin_src emacs-lisp
 (use-package go-mode
+  :mode "\\(/\\|\\`\\)go\\.mod\\'\\|\\.go\\'"
   :init
   (defun my/go-mode-add-hook-gofmt ()
     (add-hook 'after-save-hook 'gofmt nil t))
