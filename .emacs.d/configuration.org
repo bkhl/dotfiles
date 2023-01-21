@@ -850,7 +850,7 @@ If a package has additional files in subdirectories and such, this function woul
                                          (file-attribute-modification-time attributes)))
                           (mapcar #'cdr (directory-files-and-attributes package-directory
                                                                         nil
-                                                                        "\\.el\\'")))))
+                                                                        (rx ".el" eos))))))
       (make-directory-autoloads package-directory auto-file))
     (load auto-file package-directory)))
 #+end_src
@@ -1094,7 +1094,13 @@ Add prompt indicator to ~completing-read-multiple~.
 (defun my/crm-indicator (args)
   (cons (format "[CRM %s] %s"
                 (replace-regexp-in-string
-                 "\\`\\[.*?]\\*\\|\\[.*?]\\*\\'" ""
+                 (rx (or (seq bos "["
+                              (*? nonl)
+                              "]*")
+                         (seq "["
+                              (*? nonl)
+                              "]*" eos)))
+                 ""
                  crm-separator)
                 (car args))
         (cdr args)))
@@ -1209,7 +1215,10 @@ Embark provides ways to trigger commands based on the entity at point or the reg
   (setq prefix-help-command #'embark-prefix-help-command)
   :config
   (add-to-list 'display-buffer-alist
-               '("\\`\\*Embark Collect \\(Live\\|Completions\\)\\*"
+               `(,(rx bos
+                      "*Embark Collect "
+                      (or "Live" "Completions")
+                      "*")
                  nil
                  (window-parameters (mode-line-format . none)))))
 #+end_src
@@ -1307,14 +1316,33 @@ This enables the [[https://github.com/joaotavora/eglot][Eglot]] LSP client. This
 
 #+begin_src emacs-lisp
 (use-package dockerfile-mode
-  :mode "\\(/\\|\\`\\)\\(Container\\|Docker\\)file\\.?")
+  :mode (rx (or "/" bos)
+            (or "Container" "Docker") "file"
+            (opt "." (*  (not (any "/"))))
+            eos))
+#+end_src
+
+**** Emacs Lisp
+***** [[file:site-lisp/xr][xr]] reverse rx
+
+Helpful functions for refactoring regular expressions to ~rx~ expressions.
+
+#+begin_src emacs-lisp
+(use-package xr
+  :commands (xr
+             xr-pp
+             xr-lint
+             xr-skip-set
+             xr-skip-set-pp
+             xr-skip-set-lint
+             xr-pp-rx-to-str))
 #+end_src
 
 **** [[file:site-lisp/fennel-mode][fennel-mode]]
 
 #+begin_src emacs-lisp
 (use-package fennel-mode
-  :mode "\\.fnl\\'"
+  :mode (rx ".fnl" eos)
   :init
   (defun my/add-fennel-prettify-symbols ()
     (setq prettify-symbols-alist '(("lambda" . ?λ))))
@@ -1325,7 +1353,7 @@ This enables the [[https://github.com/joaotavora/eglot][Eglot]] LSP client. This
 
 #+begin_src emacs-lisp
 (use-package gdscript-mode
-  :mode "\\.gd\\'"
+  :mode (rx ".gd" eos)
   :init
   (defun my/add-gdscript-prettify-symbols ()
     (setq prettify-symbols-alist '(("->" . ?→))))
@@ -1336,7 +1364,8 @@ This enables the [[https://github.com/joaotavora/eglot][Eglot]] LSP client. This
 
 #+begin_src emacs-lisp
 (use-package go-mode
-  :mode "\\(/\\|\\`\\)go\\.mod\\'\\|\\.go\\'"
+  :mode (rx (or (seq (or bos "/") "go.mod" eos)
+                (seq ".go" eos)))
   :init
   (defun my/go-mode-add-hook-gofmt ()
     (add-hook 'after-save-hook 'gofmt nil t))
@@ -1347,23 +1376,25 @@ This enables the [[https://github.com/joaotavora/eglot][Eglot]] LSP client. This
 
 #+begin_src emacs-lisp
 (use-package just-mode
-  :mode "\\(/\\|\\`\\)Justfile\\'")
+  :mode (rx (or "/" bos)
+            "Justfile"
+            eos))
 #+end_src
 
 **** [[file:site-lisp/lua-mode][lua-mode]]
 
 #+begin_src emacs-lisp
 (use-package lua-mode
+  :mode (rx ".lua" eos)
   :custom
-  (lua-indent-level 4)
-  :mode "\\.lua\\'")
+  (lua-indent-level 4))
 #+end_src
 
 **** [[file:site-lisp/yaml-mode][yaml-mode]] for YAML support
 
 #+begin_src emacs-lisp
 (use-package yaml-mode
-  :mode "\\.ya?ml\\'")
+  :mode (rx ".y" (opt "a") "ml" eos))
 #+end_src
 
 ** Version control
@@ -1444,7 +1475,7 @@ Shows changes that are not committed to the version control system for the file 
 
 #+begin_src emacs-lisp
 (use-package markdown-mode
-  :mode "\\.md\\'")
+  :mode (rx ".md" eos))
 #+end_src
 
 *** [[file:site-lisp/nov][nov]] for Epub reading
@@ -1456,7 +1487,7 @@ Shows changes that are not committed to the version control system for the file 
 (use-package nov
   :custom
   (nov-text-width t)
-  :mode ("\\.epub\\'" . nov-mode)
+  :mode ((rx ".epub" eos) . nov-mode)
   :config
   (add-hook 'nov-mode-hook 'olivetti-mode))
 #+end_src
