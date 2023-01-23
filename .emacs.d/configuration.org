@@ -560,6 +560,15 @@ Perl indentation preferences.
 (setq perl-indent-parens-as-block t)
 #+end_src
 
+Custom prettify symbols for Perl.
+
+#+begin_src emacs-lisp
+(add-hook 'perl-mode-hook
+          (defun my/add-perl-prettify-symbols ()
+            (setq prettify-symbols-alist '(("->" . ?→)
+                                           ("=>" . ?⇒)))))
+#+end_src
+
 **** C
 
 #+begin_src emacs-lisp
