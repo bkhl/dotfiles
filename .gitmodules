@@ -82,9 +82,6 @@
 [submodule ".emacs.d/site-lisp/cape"]
 	path = .emacs.d/site-lisp/cape
 	url = https://github.com/minad/cape.git
-[submodule ".emacs.d/site-lisp/paredit"]
-	path = .emacs.d/site-lisp/paredit
-	url = https://paredit.org/cgit/paredit
 [submodule ".emacs.d/site-lisp/lua-mode"]
 	path = .emacs.d/site-lisp/lua-mode
 	url = https://github.com/immerrr/lua-mode.git
