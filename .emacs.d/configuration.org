@@ -513,6 +513,13 @@ I use this to make =lambda= get rendered as =λ= in Emacs Lisp, and similar repl
 (add-hook 'prog-mode-hook 'subword-mode)
 #+end_src
 
+*** Bind key to trigger compilation/recompilation
+
+#+begin_src emacs-lisp
+(define-key prog-mode-map (kbd "C-c b") #'compile)
+(define-key prog-mode-map (kbd "C-c r") #'recompile)
+#+end_src
+
 *** ~flymake~
 
 Package for showing diagnostics from linters and similar interactively.
