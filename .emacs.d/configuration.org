@@ -513,12 +513,6 @@ I use this to make =lambda= get rendered as =λ= in Emacs Lisp, and similar repl
 (add-hook 'prog-mode-hook 'subword-mode)
 #+end_src
 
-*** Automatically scroll to new output in the =*compilation*= buffer.
-
-#+begin_src emacs-lisp
-(setq compilation-scroll-output t)
-#+end_src
-
 *** ~flymake~
 
 Package for showing diagnostics from linters and similar interactively.
