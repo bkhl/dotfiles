@@ -232,6 +232,12 @@ In ~next-error~ buffers, highligt the currently visited error.
 (setq bookmark-set-fringe-mark nil)
 #+end_src
 
+*** Use bar cursor
+
+#+begin_src emacs-lisp
+(setq-default cursor-type 'bar)
+#+end_src
+
 ** Documentation and help
 *** Make ~apropos~ search more extensively
 
