@@ -968,6 +968,7 @@ Enable higlight of current line in selected modes.
 (use-package lin
   :custom
   (lin-face 'lin-yellow)
+  :config
   (lin-global-mode))
 #+end_src
 
