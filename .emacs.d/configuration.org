@@ -1389,11 +1389,18 @@ Helpful functions for refactoring regular expressions to ~rx~ expressions.
   (lua-indent-level 4))
 #+end_src
 
-**** [[file:site-lisp/yaml-mode][yaml-mode]] for YAML support
+**** YAML
+***** [[file:site-lisp/yaml-mode][yaml-mode]]
 
 #+begin_src emacs-lisp
 (use-package yaml-mode
   :mode (rx ".y" (opt "a") "ml" eos))
+#+end_src
+***** [[file:flymake-yamllint][flymake-yamllint]]
+
+#+begin_src emacs-lisp
+(use-package flymake-yamllint
+  :hook (flymake-mode . flymake-yamllint-setup))
 #+end_src
 
 ** Version control

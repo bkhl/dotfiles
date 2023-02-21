@@ -118,3 +118,6 @@
 [submodule ".emacs.d/site-lisp/xr"]
 	path = .emacs.d/site-lisp/xr
 	url = https://github.com/mattiase/xr.git
+[submodule ".emacs.d/site-lisp/flymake-yamllint"]
+	path = .emacs.d/site-lisp/flymake-yamllint
+	url = https://github.com/shaohme/flymake-yamllint.git
