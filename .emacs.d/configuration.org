@@ -1394,7 +1394,8 @@ Helpful functions for refactoring regular expressions to ~rx~ expressions.
 
 #+begin_src emacs-lisp
 (use-package yaml-mode
-  :mode (rx ".y" (opt "a") "ml" eos))
+  :mode (rx ".y" (opt "a") "ml" eos)
+  :hook (yaml-mode . flymake-mode))
 #+end_src
 ***** [[file:flymake-yamllint][flymake-yamllint]]
 
