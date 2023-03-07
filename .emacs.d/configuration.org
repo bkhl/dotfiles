@@ -584,6 +584,18 @@ Make ediff use existing frame instead of creating new one
 (setq ediff-window-setup-function 'ediff-setup-windows-plain)
 #+end_src
 
+** Project management
+*** Detect [[https://exercism.org/][Exercism]] exercises as projects.
+
+This will make e.g. ~project-compile~ run commands with the appropriate working directory for Exercism excercises.
+
+#+begin_src emacs-lisp
+(add-hook 'project-find-functions
+          (defun my/project-try-exercism (path)
+            (when-let ((root (locate-dominating-file path ".exercism")))
+              (cons 'transient (expand-file-name root)))))
+#+end_src
+
 ** ~org-mode~ planning and note-taking
 *** Default ~org-mode~ directory
 
