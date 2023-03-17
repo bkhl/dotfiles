@@ -13,3 +13,7 @@
 	ff = only
 [init]
 	defaultBranch = main
+[diff "elisp"]
+    xfuncname="^\\((((def\\S+)|use-package)\\s+\\S+)"
+[diff "org"]
+    xfuncname="^\\*+ +(.*)$"
