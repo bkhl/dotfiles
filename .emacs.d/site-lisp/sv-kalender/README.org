@@ -1,0 +1,5 @@
+#+TITLE: sv-kalender
+
+This was originally fetched from http://bigwalter.net/daniel/elisp/sv-kalender.el
+
+As that link was broken, I've also made a copy to https://www.emacswiki.org/emacs/sv-kalender.el
