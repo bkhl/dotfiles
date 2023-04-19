@@ -1528,16 +1528,16 @@ Shows changes that are not committed to the version control system for the file 
             (defun my/org-present-start ()
               (org-present-big)
               (org-display-inline-images)
-              (org-present-hide-cursor)
               (org-present-read-only)
+              (org-present-hide-cursor)
               (hide-mode-line-mode)
               (my/set-fullscreen t)))
   (add-hook 'org-present-mode-quit-hook
             (defun my/org-present-reset ()
               (org-present-small)
               (org-remove-inline-images)
-              (org-present-show-cursor)
               (org-present-read-write)
+              (org-present-show-cursor)
               (hide-mode-line-mode -1)
               (my/set-fullscreen nil)))
   :bind (:map org-present-mode-keymap
