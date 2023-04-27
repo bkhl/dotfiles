@@ -1269,31 +1269,6 @@ This enables the [[https://github.com/joaotavora/eglot][Eglot]] LSP client. This
           (eglot-ensure))))))
 #+end_example
 
-*** [[file:site-lisp/paredit][paredit]] for parenthetical editing
-
-#+begin_src emacs-lisp
-(use-package paredit
-  :hook
-  (paredit-mode . my/set-paredit-command-map)
-  (lisp-mode . enable-paredit-mode)
-  (emacs-lisp-mode . enable-paredit-mode)
-  (lisp-interaction-mode . enable-paredit-mode)
-  (eval-expression-minibuffer-setup . enable-paredit-mode)
-  (ielm-mode . enable-paredit-mode)
-  (scheme-mode . enable-paredit-mode)
-  (fennel-mode . enable-paredit-mode)
-  :config
-  (defun my/set-paredit-command-map ()
-    "unbind paredit bindings that make it less useful in command prompt modes"
-    (when (derived-mode-p 'minibuffer-mode 'comint-mode)
-      (let ((old (cdr (assoc 'paredit-mode minor-mode-map-alist)))
-            (new (make-sparse-keymap)))
-        (set-keymap-parent new old)
-        (define-key new (kbd "RET") nil)
-        (make-local-variable 'minor-mode-overriding-map-alist)
-        (push `(paredit-mode . ,new) minor-mode-overriding-map-alist)))))
-#+end_src
-
 *** Programming languages and file formats
 **** [[file:site-lisp/dockerfile-mode][dockerfile-mode]] for Dockerfile/Containerfile support
 
@@ -1319,17 +1294,6 @@ Helpful functions for refactoring regular expressions to ~rx~ expressions.
              xr-skip-set-pp
              xr-skip-set-lint
              xr-pp-rx-to-str))
-#+end_src
-
-**** [[file:site-lisp/fennel-mode][fennel-mode]]
-
-#+begin_src emacs-lisp
-(use-package fennel-mode
-  :mode (rx ".fnl" eos)
-  :init
-  (defun my/add-fennel-prettify-symbols ()
-    (setq prettify-symbols-alist '(("lambda" . ?λ))))
-  :hook (fennel-mode . my/add-fennel-prettify-symbols))
 #+end_src
 
 **** [[file:site-lisp/gdscript-mode][gdscript-mode]] for Godot
