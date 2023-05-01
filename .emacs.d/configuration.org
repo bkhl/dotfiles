@@ -513,6 +513,15 @@ Package for showing diagnostics from linters and similar interactively.
 #+end_src
 
 *** Languages
+**** C
+
+#+begin_src emacs-lisp
+(add-hook 'c-mode-hook
+          (defun my/c-mode-setup ()
+            (setq-local c-default-style "linux")
+            (setq-local c-basic-offset 4)))
+#+end_src
+
 **** Perl
 
 Perl indentation preferences.
@@ -530,13 +539,13 @@ Custom prettify symbols for Perl.
                                            ("=>" . ?⇒)))))
 #+end_src
 
-**** C
+**** Prolog
 
 #+begin_src emacs-lisp
-(add-hook 'c-mode-hook
-          (defun my/c-mode-setup ()
-            (setq-local c-default-style "linux")
-            (setq-local c-basic-offset 4)))
+(add-hook 'prolog-mode-hook
+          (defun my/add-prolog-prettify-symbols ()
+            (setq prettify-symbols-alist '((":-" . ?←)
+                                           ("->" . ?→)))))
 #+end_src
 
 ** Version control
