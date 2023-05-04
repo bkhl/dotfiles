@@ -478,13 +478,6 @@ I use this to make =lambda= get rendered as =λ= in Emacs Lisp, and similar repl
 (global-prettify-symbols-mode)
 #+end_src
 
-*** Highlight matching pairs of parentheses.
-
-#+begin_src emacs-lisp
-(show-paren-mode t)
-(setq show-paren-delay 0.0)
-#+end_src
-
 *** In programming modes, treat words in camel case symbols as separate.
 
 #+begin_src emacs-lisp
