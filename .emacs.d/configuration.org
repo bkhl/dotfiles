@@ -623,10 +623,11 @@ This enables the [[https://github.com/joaotavora/eglot][Eglot]] LSP client. This
 **** C
 
 #+begin_src emacs-lisp
-(add-hook 'c-mode-hook
-          (defun my/c-mode-setup ()
-            (setq-local c-default-style "linux")
-            (setq-local c-basic-offset 4)))
+(add-to-list 'major-mode-remap-alist '(c-mode . c-ts-mode))
+
+(add-hook 'c-ts-mode-hook
+          (defun my/c-ts-mode-setup ()
+            (setq-local c-ts-mode-indent-style 'linux)))
 #+end_src
 
 **** Perl
