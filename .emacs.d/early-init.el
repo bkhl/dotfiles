@@ -24,9 +24,5 @@
 (add-to-list 'load-path
              (expand-file-name (concat user-emacs-directory
                                        "site-lisp/auto-compile")))
-(require 'auto-compile)
-(auto-compile-on-load-mode)
-(auto-compile-on-save-mode)
-
 ;; Disable package.el, as I don't use it.
 (setq package-enable-at-startup nil)

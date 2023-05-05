@@ -777,10 +777,6 @@ Configuration of add-on packages.
 
 Set ~load-path~ and load ~use-package~ package, used to configure the other add-on packages below.
 
-*** [[file:site-lisp/auto-compile][auto-compile]] to prevent loading outdated compiled modules
-
-This package needs to be loaded as early as possible, so see [[file:early-init.el][early-init.el]].
-
 *** [[file:site-lisp/use-package][use-package]]
 
 The ~use-package~ and ~bind-key~ macros provided with this package makes it easier to configure add-on packages without generally having to remember how to set up autoloading &c.
