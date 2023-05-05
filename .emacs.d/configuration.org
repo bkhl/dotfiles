@@ -1311,7 +1311,7 @@ This module allows a number of functions to operate on the current line if no re
 #+begin_src emacs-lisp
 (use-package dockerfile-mode
   :mode (rx (or "/" bos)
-            (or "Container" "Docker") "file"
+            (or "Containerfile" "Dockerfile")
             (opt "." (*  (not (any "/"))))
             eos))
 #+end_src
