@@ -658,6 +658,12 @@ This enables the [[https://github.com/joaotavora/eglot][Eglot]] LSP client. This
 (add-to-list 'major-mode-remap-alist '(python-mode . python-ts-mode))
 #+end_src
 
+**** TOML
+
+#+begin_src emacs-lisp
+(add-to-list 'major-mode-remap-alist '(toml-mode . toml-ts-mode))
+#+end_src
+
 **** YAML
 
 #+begin_src emacs-lisp
