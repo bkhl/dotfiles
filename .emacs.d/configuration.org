@@ -46,14 +46,16 @@ This section contains extensions to this macro to enable using packages from Git
 
 **** Provide default ~:load-path~ pointing to location of submodules
 
-This makes the ~:load-package~ keyword in ~use-package~ calls default to a directory under ~/.emacs.d/site-lisp/~ named the same as the package to be imported. For packages where for some reason the package name doesn't match the directory name, or that has its Lisp files in a subdirectory, an explicit ~:load-path~ needs to be added.
+This makes the ~:load-package~ keyword in ~use-package~ calls default to a directory under ~/.emacs.d/site-lisp/~ named the same as the package to be imported, if such a directory exists. For packages where for some reason the package name doesn't match the directory name, or that has its Lisp files in a subdirectory, an explicit ~:load-path~ needs to be added.
 
 #+begin_src emacs-lisp
 (setf (alist-get :load-path use-package-defaults)
       '((lambda (name args)
-          (list (expand-file-name (concat user-emacs-directory
-                                          "site-lisp/"
-                                          (symbol-name name)))))
+          (let ((path (expand-file-name (concat user-emacs-directory
+                                                "site-lisp/"
+                                                (symbol-name name)))))
+            (when (file-exists-p path)
+              (list path))))
         t))
 #+end_src
 
