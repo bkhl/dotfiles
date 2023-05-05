@@ -583,6 +583,36 @@ Package for showing diagnostics from linters and similar interactively.
      (define-key flymake-mode-map (kbd "M-p") 'flymake-goto-prev-error)))
 #+end_src
 
+*** Eglot for language server protocol support
+
+#+begin_src emacs-lisp
+(use-package eglot
+  :config
+  (bind-key "C-c l f" 'eglot-format eglot-mode-map)
+  (bind-key "C-c l r" 'eglot-rename eglot-mode-map))
+#+end_src
+
+This enables the [[https://github.com/joaotavora/eglot][Eglot]] LSP client. This will usually require some additional per-project settings to work. As an example, for Python projects I tend to do soemthing like this:
+
++ install the Pip packages ~python-lsp-server[pylint]~,  ~pyls-black~ and ~pyls-isort~.
++ add a ~Makefile~ that lets me start an LSP in the correct environment with ~make lsp~.
++ have a ~.dir-locals.el~ file like the below example, which will:
+  + set it to use the make target to start the LSP server.
+  + make Eglot pass configuration to the LSP sever to enable Pylint.
+  + use Eglot's formatting command to format buffers (with Black), before saving.
+  + enable Eglot automatically when opening Python buffers.
+
+#+begin_example emacs-lisp
+((python-mode
+  . ((eglot-server-programs . ((python-mode . ("make" "lsp"))))
+     (eglot-workspace-configuration . ((:pyls
+                                       . (:plugins (:pylint (:enabled t))))))
+     (eval
+      . (progn
+          (add-hook 'before-save-hook #'eglot-format-buffer nil t)
+          (eglot-ensure))))))
+#+end_example
+
 *** Languages
 **** C
 
@@ -1252,37 +1282,6 @@ This module allows a number of functions to operate on the current line if no re
 #+end_src
 
 ** Programming
-*** [[file:site-lisp/eglot][eglot]] for language server protocol support
-
-#+begin_src emacs-lisp
-(use-package eglot
-  :commands (eglot eglot-ensure)
-  :config
-  (bind-key "C-c l f" 'eglot-format eglot-mode-map)
-  (bind-key "C-c l r" 'eglot-rename eglot-mode-map))
-#+end_src
-
-This enables the [[https://github.com/joaotavora/eglot][Eglot]] LSP client. This will usually require some additional per-project settings to work. As an example, for Python projects I tend to do soemthing like this:
-
-+ install the Pip packages ~python-lsp-server[pylint]~,  ~pyls-black~ and ~pyls-isort~.
-+ add a ~Makefile~ that lets me start an LSP in the correct environment with ~make lsp~.
-+ have a ~.dir-locals.el~ file like the below example, which will:
-  + set it to use the make target to start the LSP server.
-  + make Eglot pass configuration to the LSP sever to enable Pylint.
-  + use Eglot's formatting command to format buffers (with Black), before saving.
-  + enable Eglot automatically when opening Python buffers.
-
-#+begin_example emacs-lisp
-((python-mode
-  . ((eglot-server-programs . ((python-mode . ("make" "lsp"))))
-     (eglot-workspace-configuration . ((:pyls
-                                       . (:plugins (:pylint (:enabled t))))))
-     (eval
-      . (progn
-          (add-hook 'before-save-hook #'eglot-format-buffer nil t)
-          (eglot-ensure))))))
-#+end_example
-
 *** Programming languages and file formats
 **** [[file:site-lisp/dockerfile-mode][dockerfile-mode]] for Dockerfile/Containerfile support
 
