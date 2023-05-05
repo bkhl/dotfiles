@@ -42,6 +42,84 @@ This makes the Emacs customization interface store values in a separate file, in
   (message "Emacs init time: %s" (emacs-init-time)))
 #+end_src
 
+** ~use-package~
+
+The ~use-package~ and ~bind-key~ macros  makes it easier to configure add-on packages without generally having to remember how to set up autoloading &c.
+
+#+begin_src emacs-lisp
+(require 'use-package)
+#+end_src
+
+This section contains extensions to this macro to enable using packages from Git submodules without involving a package manager.
+
+*** Provide default ~:load-path~ pointing to location of submodules
+
+This makes the ~:load-package~ keyword in ~use-package~ calls default to a directory under ~/.emacs.d/site-lisp/~ named the same as the package to be imported. For packages where for some reason the package name doesn't match the directory name, or that has its Lisp files in a subdirectory, an explicit ~:load-path~ needs to be added.
+
+#+begin_src emacs-lisp
+(setf (alist-get :load-path use-package-defaults)
+      '((lambda (name args)
+          (list (expand-file-name (concat user-emacs-directory
+                                          "site-lisp/"
+                                          (symbol-name name)))))
+        t))
+#+end_src
+
+*** Add ~:make-autoloads~ keyword extension to generate autoload files
+
+Some packages rely on ~package.el~ (or equivalent) to generate and register an autoloads file. This custom keyword will do that for packages included without a package manager.
+
+This is the function that actually generates the autoload file (if needed) and loads it.
+
+Since ~make-directory-autoloads~ has no logic to work out if the file needs to be regenerated, this function will skip calling it the file exists already, and is newer than all the other ~.el~ files in the directory.
+
+If a package has additional files in subdirectories and such, this function would not handle it, but then neither would ~package-generate-autoloads~, as far as I can tell, so this should work for any packages supported by ~package.el~.
+
+#+begin_src emacs-lisp
+(defun my/use-package-autoload-package (name package-directory)
+  "Set up autoloading for package NAME in directory PACKAGE-DIRECTORY."
+  (let* ((name (symbol-name name))
+         (auto-file (expand-file-name (format "%s/%s-autoloads.el"
+                                              package-directory
+                                              name))))
+    (when (or (not (file-exists-p auto-file))
+              (let* ((autoloads-attributes (file-attributes auto-file))
+                     (autoloads-age (file-attribute-modification-time autoloads-attributes))
+                     (autoloads-inode-number (file-attribute-inode-number autoloads-attributes)))
+                (seq-find (lambda (attributes)
+                            (time-less-p autoloads-age
+                                         (file-attribute-modification-time attributes)))
+                          (mapcar #'cdr (directory-files-and-attributes package-directory
+                                                                        nil
+                                                                        (rx ".el" eos))))))
+      (make-directory-autoloads package-directory auto-file))
+    (load auto-file package-directory)))
+#+end_src
+
+Register the custom keyword. This is added first in the list, so that it will have access to the ~:load-path~ parameter, and so that it will load before ~:defer~ or other keywords that might cause this to run after the package is loaded.
+
+#+begin_src emacs-lisp
+(add-to-list 'use-package-keywords :make-autoloads)
+#+end_src
+
+This makes the keyword take boolean parameters similar to other keywords like ~:defer~.
+
+#+begin_src emacs-lisp
+(defalias 'use-package-normalize/:make-autoloads
+  'use-package-normalize-predicate)
+#+end_src
+
+The handler function is what injects the call to the function to generate the autoloads file when the ~use-package~ macro is expanded.
+
+#+begin_src emacs-lisp
+(defun use-package-handler/:make-autoloads (name _keyword arg rest state)
+  (use-package-concat
+     (mapcar #'(lambda (path)
+                 `(my/use-package-autoload-package ',name ,path))
+             (plist-get rest :load-path))
+     (use-package-process-keywords name rest state)))
+#+end_src
+
 * Set personal information
 
 #+begin_src emacs-lisp
@@ -776,85 +854,6 @@ Configuration of add-on packages.
 ** Initialization
 
 Set ~load-path~ and load ~use-package~ package, used to configure the other add-on packages below.
-
-*** [[file:site-lisp/use-package][use-package]]
-
-The ~use-package~ and ~bind-key~ macros provided with this package makes it easier to configure add-on packages without generally having to remember how to set up autoloading &c.
-
-#+begin_src emacs-lisp
-(add-to-list 'load-path
-             (expand-file-name (concat user-emacs-directory
-                                       "site-lisp/use-package")))
-(require 'use-package)
-#+end_src
-
-**** Provide default ~:load-path~ pointing to location of submodules
-
-This makes the ~:load-package~ keyword in ~use-package~ calls default to a directory under ~/.emacs.d/site-lisp/~ named the same as the package to be imported. For packages where for some reason the package name doesn't match the directory name, or that has its Lisp files in a subdirectory, an explicit ~:load-path~ needs to be added.
-
-#+begin_src emacs-lisp
-(setf (alist-get :load-path use-package-defaults)
-      '((lambda (name args)
-          (list (expand-file-name (concat user-emacs-directory
-                                          "site-lisp/"
-                                          (symbol-name name)))))
-        t))
-#+end_src
-
-**** Add ~:make-autoloads~ keyword extension to generate autoload files
-
-Some packages rely on ~package.el~ (or equivalent) to generate and register an autoloads file. This custom keyword will do that for packages included without a package manager.
-
-This is the function that actually generates the autoload file (if needed) and loads it.
-
-Since ~make-directory-autoloads~ has no logic to work out if the file needs to be regenerated, this function will skip calling it the file exists already, and is newer than all the other ~.el~ files in the directory.
-
-If a package has additional files in subdirectories and such, this function would not handle it, but then neither would ~package-generate-autoloads~, as far as I can tell, so this should work for any packages supported by ~package.el~.
-
-#+begin_src emacs-lisp
-(defun my/use-package-autoload-package (name package-directory)
-  "Set up autoloading for package NAME in directory PACKAGE-DIRECTORY."
-  (let* ((name (symbol-name name))
-         (auto-file (expand-file-name (format "%s/%s-autoloads.el"
-                                              package-directory
-                                              name))))
-    (when (or (not (file-exists-p auto-file))
-              (let* ((autoloads-attributes (file-attributes auto-file))
-                     (autoloads-age (file-attribute-modification-time autoloads-attributes))
-                     (autoloads-inode-number (file-attribute-inode-number autoloads-attributes)))
-                (seq-find (lambda (attributes)
-                            (time-less-p autoloads-age
-                                         (file-attribute-modification-time attributes)))
-                          (mapcar #'cdr (directory-files-and-attributes package-directory
-                                                                        nil
-                                                                        (rx ".el" eos))))))
-      (make-directory-autoloads package-directory auto-file))
-    (load auto-file package-directory)))
-#+end_src
-
-Register the custom keyword. This is added first in the list, so that it will have access to the ~:load-path~ parameter, and so that it will load before ~:defer~ or other keywords that might cause this to run after the package is loaded.
-
-#+begin_src emacs-lisp
-(add-to-list 'use-package-keywords :make-autoloads)
-#+end_src
-
-This makes the keyword take boolean parameters similar to other keywords like ~:defer~.
-
-#+begin_src emacs-lisp
-(defalias 'use-package-normalize/:make-autoloads
-  'use-package-normalize-predicate)
-#+end_src
-
-The handler function is what injects the call to the function to generate the autoloads file when the ~use-package~ macro is expanded.
-
-#+begin_src emacs-lisp
-(defun use-package-handler/:make-autoloads (name _keyword arg rest state)
-  (use-package-concat
-     (mapcar #'(lambda (path)
-                 `(my/use-package-autoload-package ',name ,path))
-             (plist-get rest :load-path))
-     (use-package-process-keywords name rest state)))
-#+end_src
 
 ** Dependencies
 
