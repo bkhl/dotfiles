@@ -646,6 +646,13 @@ This enables the [[https://github.com/joaotavora/eglot][Eglot]] LSP client. This
                                            ("->" . ?→)))))
 #+end_src
 
+**** YAML
+
+#+begin_src emacs-lisp
+(use-package yaml-ts-mode
+  :mode (rx ".y" (? "a") "ml" eos))
+#+end_src
+
 ** Version control
 *** ~vc-diff~
 
@@ -1351,19 +1358,22 @@ Helpful functions for refactoring regular expressions to ~rx~ expressions.
 #+end_src
 
 **** YAML
-***** [[file:site-lisp/yaml-mode][yaml-mode]]
-
-#+begin_src emacs-lisp
-(use-package yaml-mode
-  :mode (rx ".y" (opt "a") "ml" eos)
-  :hook (yaml-mode . flymake-mode))
-#+end_src
 ***** [[file:flymake-yamllint][flymake-yamllint]]
 
 #+begin_src emacs-lisp
-(use-package flymake-yamllint
-  :hook (flymake-mode . flymake-yamllint-setup))
+(use-package flymake-yamllint)
 #+end_src
+
+To use this in a project a ~.dir-locals.el~ file is needed, looking something like this:
+
+#+begin_example emacs-lisp
+((yaml-ts-mode
+  . ((flymake-yamllint-program . "podman")
+     (flymake-yamllint-arguments
+      . ("run" "--rm" "--interactive" "docker.io/cytopia/yamllint"))
+     (eval . (progn (flymake-yamllint-setup)
+                    (flymake-mode))))))
+#+end_example
 
 ** Version control
 *** [[file:site-lisp/magit][magit]] Git integration
