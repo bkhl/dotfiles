@@ -1347,8 +1347,9 @@ Helpful functions for refactoring regular expressions to ~rx~ expressions.
 
 #+begin_src emacs-lisp
 (use-package go-mode
-  :mode (rx (or (seq (or bos "/") "go.mod" eos)
-                (seq ".go" eos)))
+  :mode (rx (or (seq (or bos "/") "go.mod")
+                (seq ".go"))
+            eos)
   :init
   (defun my/go-mode-add-hook-gofmt ()
     (add-hook 'after-save-hook 'gofmt nil t))
