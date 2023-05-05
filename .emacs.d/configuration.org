@@ -22,29 +22,21 @@ The configuration is organized so that basic configuration of Emacs comes first,
 
 Here is [[https://www.emacswiki.org/emacs/bkhl][my home page on EmacsWiki]].
 
-* Initialization
-
-Some initial setup that is required to run before other things, some of them sensitive to execution order.
-
-** Keep customizations in separate file
-
-This makes the Emacs customization interface store values in a separate file, instead of in ~init.el~.
+* Set personal information
 
 #+begin_src emacs-lisp
-(setq custom-file (concat user-emacs-directory "custom.el"))
-(load custom-file :noerror)
+(setq user-full-name "Björn Lindström"
+      user-mail-address "bkhl@elektrubadur.se")
 #+end_src
 
-** Show init time on startup
+* Built-in functionality
 
-#+begin_src emacs-lisp
-(defun display-startup-echo-area-message ()
-  (message "Emacs init time: %s" (emacs-init-time)))
-#+end_src
+Configuration of built-in Emacs behaviour and packages bundled with Emacs.
 
-** ~use-package~
+** Start-up
+*** ~use-package~
 
-The ~use-package~ and ~bind-key~ macros  makes it easier to configure add-on packages without generally having to remember how to set up autoloading &c.
+The ~use-package~ macro makes it easier to configure add-on packages without generally having to remember how to set up autoloading &c.
 
 #+begin_src emacs-lisp
 (require 'use-package)
@@ -52,7 +44,7 @@ The ~use-package~ and ~bind-key~ macros  makes it easier to configure add-on pac
 
 This section contains extensions to this macro to enable using packages from Git submodules without involving a package manager.
 
-*** Provide default ~:load-path~ pointing to location of submodules
+**** Provide default ~:load-path~ pointing to location of submodules
 
 This makes the ~:load-package~ keyword in ~use-package~ calls default to a directory under ~/.emacs.d/site-lisp/~ named the same as the package to be imported. For packages where for some reason the package name doesn't match the directory name, or that has its Lisp files in a subdirectory, an explicit ~:load-path~ needs to be added.
 
@@ -65,7 +57,7 @@ This makes the ~:load-package~ keyword in ~use-package~ calls default to a direc
         t))
 #+end_src
 
-*** Add ~:make-autoloads~ keyword extension to generate autoload files
+**** Add ~:make-autoloads~ keyword extension to generate autoload files
 
 Some packages rely on ~package.el~ (or equivalent) to generate and register an autoloads file. This custom keyword will do that for packages included without a package manager.
 
@@ -120,16 +112,26 @@ The handler function is what injects the call to the function to generate the au
      (use-package-process-keywords name rest state)))
 #+end_src
 
-* Set personal information
+*** Keep customizations in separate file
+
+This makes the Emacs customization interface store values in a separate file, instead of in ~init.el~.
 
 #+begin_src emacs-lisp
-(setq user-full-name "Björn Lindström"
-      user-mail-address "bkhl@elektrubadur.se")
+(use-package cus-edit
+  :custom
+  (custom-file (concat user-emacs-directory "custom.el"))
+  :config
+  (load custom-file :noerror))
 #+end_src
 
-* Built-in functionality
+*** Show init time on startup
 
-Configuration of built-in Emacs behaviour and packages bundled with Emacs.
+#+begin_src emacs-lisp
+(advice-add 'display-startup-echo-area-message
+            :after
+            (defun my/display-startup-echo-area-message ()
+              (message "Emacs init time: %s" (emacs-init-time))))
+#+end_src
 
 ** Interface
 *** Show line and column number in mode line
