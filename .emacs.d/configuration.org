@@ -614,6 +614,12 @@ This enables the [[https://github.com/joaotavora/eglot][Eglot]] LSP client. This
 #+end_example
 
 *** Languages
+**** Bash
+
+#+begin_src emacs-lisp
+(add-to-list 'major-mode-remap-alist '(sh-mode . bash-ts-mode))
+#+end_src
+
 **** C
 
 #+begin_src emacs-lisp
