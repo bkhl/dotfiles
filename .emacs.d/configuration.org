@@ -603,7 +603,7 @@ This enables the [[https://github.com/joaotavora/eglot][Eglot]] LSP client. This
   + enable Eglot automatically when opening Python buffers.
 
 #+begin_example emacs-lisp
-((python-mode
+((python-ts-mode
   . ((eglot-server-programs . ((python-mode . ("make" "lsp"))))
      (eglot-workspace-configuration . ((:pyls
                                        . (:plugins (:pylint (:enabled t))))))
@@ -644,6 +644,12 @@ This enables the [[https://github.com/joaotavora/eglot][Eglot]] LSP client. This
           (defun my/add-prolog-prettify-symbols ()
             (setq prettify-symbols-alist '((":-" . ?←)
                                            ("->" . ?→)))))
+#+end_src
+
+**** Python
+
+#+begin_src emacs-lisp
+(add-to-list 'major-mode-remap-alist '(python-mode . python-ts-mode))
 #+end_src
 
 **** YAML
