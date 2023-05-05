@@ -451,9 +451,9 @@ Make file sizes shown in dired human readable.
 Ensure that Tramp uses path of remote shell on remote hosts.
 
 #+begin_src emacs-lisp
-(eval-after-load 'tramp
-  '(add-to-list 'tramp-remote-path
-             'tramp-own-remote-path))
+(use-package tramp
+  :config
+  (add-to-list 'tramp-remote-path 'tramp-own-remote-path))
 #+end_src
 
 ** Text editing
