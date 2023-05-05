@@ -517,19 +517,16 @@ Package for showing diagnostics from linters and similar interactively.
 
 **** Perl
 
-Perl indentation preferences.
-
 #+begin_src emacs-lisp
-(setq perl-indent-parens-as-block t)
-#+end_src
-
-Custom prettify symbols for Perl.
-
-#+begin_src emacs-lisp
-(add-hook 'perl-mode-hook
+(use-package cperl-mode
+  :custom
+  (cperl-file-style "PBP")
+  :config
+  (add-to-list 'major-mode-remap-alist '(perl-mode . cperl-mode))
+  (add-hook 'cperl-mode-hook
           (defun my/add-perl-prettify-symbols ()
             (setq prettify-symbols-alist '(("->" . ?→)
-                                           ("=>" . ?⇒)))))
+                                           ("=>" . ?⇒))))))
 #+end_src
 
 **** Prolog
