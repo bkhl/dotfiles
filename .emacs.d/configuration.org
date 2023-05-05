@@ -907,10 +907,6 @@ Some agenda visual styling.
 
 Configuration of add-on packages.
 
-** Initialization
-
-Set ~load-path~ and load ~use-package~ package, used to configure the other add-on packages below.
-
 ** Dependencies
 
 These are add-on packages that are dependencies of other packages further down, as listed under each one.
