@@ -666,13 +666,6 @@ This enables the [[https://github.com/joaotavora/eglot][Eglot]] LSP client. This
 (add-to-list 'major-mode-remap-alist '(toml-mode . toml-ts-mode))
 #+end_src
 
-**** YAML
-
-#+begin_src emacs-lisp
-(use-package yaml-ts-mode
-  :mode (rx ".y" (? "a") "ml" eos))
-#+end_src
-
 ** Version control
 *** ~vc-diff~
 
@@ -1375,6 +1368,14 @@ Helpful functions for refactoring regular expressions to ~rx~ expressions.
 #+end_src
 
 **** YAML
+
+***** [[file:site-lisp/yaml-mode][yaml-mode]]
+
+#+begin_src emacs-lisp
+(use-package yaml-mode
+  :mode (rx ".y" (opt "a") "ml" eos))
+#+end_src
+
 ***** [[file:flymake-yamllint][flymake-yamllint]]
 
 #+begin_src emacs-lisp
@@ -1384,7 +1385,7 @@ Helpful functions for refactoring regular expressions to ~rx~ expressions.
 To use this in a project a ~.dir-locals.el~ file is needed, looking something like this:
 
 #+begin_example emacs-lisp
-((yaml-ts-mode
+((yaml-mode
   . ((flymake-yamllint-program . "podman")
      (flymake-yamllint-arguments
       . ("run" "--rm" "--interactive" "docker.io/cytopia/yamllint"))
