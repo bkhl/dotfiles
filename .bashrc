@@ -94,10 +94,9 @@ fi
 #
 
 alias du='du -h'
-alias egrep='egrep --color=auto'
-alias fgrep='fgrep --color=auto'
 alias grep='grep --color=auto'
 alias ls='ls --color=auto --classify --group-directories-first'
+alias ip='ip --color=auto'
 alias sudo='sudo '
 alias emacs="emacsclient --alternate-editor= --no-wait"
 
