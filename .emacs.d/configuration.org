@@ -1335,16 +1335,6 @@ Helpful functions for refactoring regular expressions to ~rx~ expressions.
     (setq prettify-symbols-alist '(("->" . ?→))))
   :hook (gdscript-mode . my/add-gdscript-prettify-symbols))
 #+end_src
-**** [[file:site-lisp/fennel-mode][fennel-mode]] for Fennel
-
-#+begin_src emacs-lisp
-(use-package fennel-mode
-  :mode (rx ".fnl" eos)
-  :init
-  (defun my/add-fennel-prettify-symbols ()
-    (setq prettify-symbols-alist '(("lambda" . ?λ))))
-  :hook (fennel-mode . my/add-fennel-prettify-symbols))
-#+end_src
 
 **** [[file:site-lisp/go-mode][go-mode]]
 
