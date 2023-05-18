@@ -93,13 +93,14 @@ fi
 # Aliases
 #
 
-alias du='du -h'
+alias du='du --human-readable'
 alias grep='grep --color=auto'
 alias ls='ls --color=auto --classify --group-directories-first'
+alias ll='ls -l --color=auto --classify --group-directories-first'
+alias l.='ls -d --color=auto --classify --group-directories-first .*'
 alias ip='ip --color=auto'
 alias sudo='sudo '
 alias emacs="emacsclient --alternate-editor= --no-wait"
-
 
 
 ####
