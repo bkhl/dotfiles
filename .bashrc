@@ -100,10 +100,6 @@ alias ip='ip --color=auto'
 alias sudo='sudo '
 alias emacs="emacsclient --alternate-editor= --no-wait"
 
-if [[ -n $DISPLAY ]] && hash xclip 2> /dev/null; then
-    alias clp='xclip -selection clipboard'
-    alias pst='xclip -selection clipboard -o'
-fi
 
 
 ####
