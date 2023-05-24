@@ -1413,7 +1413,34 @@ Load ~magit~, for working with Git.
 
   :custom
   (magit-push-always-verify nil)
-  (git-commit-summary-max-length 50))
+  (git-commit-summary-max-length 50)
+
+  :config
+  (transient-append-suffix 'magit-push "-t"
+    '(4
+      "-s"
+      "Skip pipeline"
+      "--push-option=ci.skip"))
+  (transient-append-suffix 'magit-push "-s"
+    '(4
+      "-m"
+      "Create merge request"
+      "--push-option=merge_request.create"))
+  (transient-append-suffix 'magit-push "-m"
+    '(4
+      "-M"
+      "Create merge request with target"
+      "--push-option=merge_request.create --push-option=merge_request.target="))
+  (transient-append-suffix 'magit-push "-M"
+    '(4
+      "-l"
+      "Set all tests label"
+      "--push-option=merge_request.unlabel=test::skip --push-option=merge_request.label=test::all"))
+  (transient-append-suffix 'magit-push "-l"
+    '(4
+      "-L"
+      "Set skip tests label"
+      "--push-option=merge_request.unlabel=test::all --push-option=merge_request.label=test::skip")))
 #+end_src
 
 **** Automatic commit on save
