@@ -1354,7 +1354,8 @@ Helpful functions for refactoring regular expressions to ~rx~ expressions.
 #+begin_src emacs-lisp
 (use-package just-mode
   :mode (rx (or "/" bos)
-            "Justfile"
+            (opt ".")
+            (or "Justfile" "justfile")
             eos))
 #+end_src
 
