@@ -13,9 +13,6 @@
 [submodule ".emacs.d/site-lisp/diff-hl"]
 	path = .emacs.d/site-lisp/diff-hl
 	url = https://github.com/dgutov/diff-hl.git
-[submodule ".emacs.d/site-lisp/org-present"]
-	path = .emacs.d/site-lisp/org-present
-	url = https://github.com/rlister/org-present.git
 [submodule ".emacs.d/site-lisp/markdown-mode"]
 	path = .emacs.d/site-lisp/markdown-mode
 	url = https://github.com/jrblevin/markdown-mode.git
@@ -52,9 +49,6 @@
 [submodule ".emacs.d/site-lisp/minions"]
 	path = .emacs.d/site-lisp/minions
 	url = https://github.com/tarsius/minions.git
-[submodule ".emacs.d/site-lisp/hide-mode-line"]
-	path = .emacs.d/site-lisp/hide-mode-line
-	url = https://github.com/hlissner/emacs-hide-mode-line.git
 [submodule ".emacs.d/site-lisp/edit-server"]
 	path = .emacs.d/site-lisp/edit-server
 	url = https://github.com/stsquad/emacs_chrome.git

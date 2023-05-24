@@ -1001,13 +1001,6 @@ Enable higlight of current line in selected modes.
   (lin-global-mode))
 #+end_src
 
-*** [[file:site-lisp/hide-mode-line][hide-mode-line]] to hide mode line when desired
-
-#+begin_src emacs-lisp
-(use-package hide-mode-line
-  :commands hide-mode-line-mode)
-#+end_src
-
 *** [[file:site-lisp/edit-server][edit-server]] to edit Firefox text areas
 
 This module provides the server allowing the [[https://addons.mozilla.org/en-US/firefox/addon/edit-with-emacs1/][Edit with Emacs]] Firefox add-on to open Emacs buffers where you can edit the content of text areas.
@@ -1524,8 +1517,7 @@ Shows changes that are not committed to the version control system for the file 
   (add-hook 'nov-mode-hook 'olivetti-mode))
 #+end_src
 
-*** Org add-ons
-**** [[file:site-lisp/org-modern][org-modern]] styling for Org mode
+*** [[file:site-lisp/org-modern][org-modern]] styling for Org mode
 :PROPERTIES:
 :CUSTOM_ID: org-modern
 :END:
@@ -1536,48 +1528,4 @@ Shows changes that are not committed to the version control system for the file 
   (dolist (face '(org-modern-symbol org-modern-label))
     (set-face-attribute face nil :family my/fixed-pitch-font-family))
   (global-org-modern-mode))
-#+end_src
-
-**** [[file:site-lisp/org-present][org-present]] presentation mode for Org files
-
-#+begin_src emacs-lisp
-(defun my/set-fullscreen (fullscreen)
-  "If fullscreen is non-nil, set fullscreen mode if not already enabled. If it is nil, leave fullscreen if it is enabled."
-  (when (xor fullscreen
-             (memq (frame-parameter nil 'fullscreen)
-                   '(fullscreen fullboth)))
-    (toggle-frame-fullscreen)))
-
-(use-package org-present
-  :custom
-  (org-present-text-scale 7)
-  :config
-  (defun my/org-present-edit ()
-    (interactive)
-    (org-present-show-cursor)
-    (org-present-read-write))
-  (defun my/org-present-read-only ()
-    (interactive)
-    (org-present-hide-cursor)
-    (org-present-read-only))
-  (add-hook 'org-present-mode-hook
-            (defun my/org-present-start ()
-              (org-present-big)
-              (org-display-inline-images)
-              (org-present-read-only)
-              (org-present-hide-cursor)
-              (hide-mode-line-mode)
-              (my/set-fullscreen t)))
-  (add-hook 'org-present-mode-quit-hook
-            (defun my/org-present-reset ()
-              (org-present-small)
-              (org-remove-inline-images)
-              (org-present-read-write)
-              (org-present-show-cursor)
-              (hide-mode-line-mode -1)
-              (my/set-fullscreen nil)))
-  :bind (:map org-present-mode-keymap
-              ("C-c C-e" . my/org-present-edit)
-              ("C-c C-r" . my/org-present-read-only))
-  :commands org-present)
 #+end_src
