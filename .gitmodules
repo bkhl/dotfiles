@@ -3,7 +3,7 @@
 	url = https://github.com/oantolin/orderless.git
 [submodule ".emacs.d/site-lisp/trimspace-mode"]
 	path = .emacs.d/site-lisp/trimspace-mode
-	url = https://gitlab.com/bkhl/trimspace-mode.git
+	url = https://git.sr.ht/~bkhl/trimspace-mode
 [submodule ".emacs.d/site-lisp/olivetti"]
 	path = .emacs.d/site-lisp/olivetti
 	url = https://github.com/rnkn/olivetti.git
