@@ -1,4 +1,4 @@
-default:
+_default:
     just --list
 
 IOSEVKA_VERSION := "23.0.0"
@@ -25,3 +25,4 @@ build_iosevka:
     echo "{{ IOSEVKA_VERSION }}" > "${font_dir}/FONT_VERSION"
 
     rm -rfv "${build_dir}"
+II
