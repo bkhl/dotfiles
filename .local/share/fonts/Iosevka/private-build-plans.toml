@@ -26,7 +26,7 @@ at = "fourfold-solid-inner-tall"
 dollar = "open"
 pilcrow = "low"
 
-[buildPlans.isoevka-bkhl-default.variants.italic]
+[buildPlans.iosevka-bkhl-default.variants.italic]
 g = "double-storey-open"
 
 [buildPlans.iosevka-bkhl-fixed]
