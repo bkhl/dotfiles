@@ -1,7 +1,7 @@
 _default:
     just --list
 
-IOSEVKA_VERSION := "23.0.0"
+IOSEVKA_VERSION := "24.1.0"
 IOSEVKA_BUILD_IMAGE := "docker.io/avivace/iosevka-build"
 
 build_iosevka:
@@ -25,4 +25,3 @@ build_iosevka:
     echo "{{ IOSEVKA_VERSION }}" > "${font_dir}/FONT_VERSION"
 
     rm -rfv "${build_dir}"
-II
