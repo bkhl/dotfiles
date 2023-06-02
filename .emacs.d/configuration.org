@@ -77,15 +77,19 @@ If a package has additional files in subdirectories and such, this function woul
                                               package-directory
                                               name))))
     (when (or (not (file-exists-p auto-file))
-              (let* ((autoloads-attributes (file-attributes auto-file))
-                     (autoloads-age (file-attribute-modification-time autoloads-attributes))
-                     (autoloads-inode-number (file-attribute-inode-number autoloads-attributes)))
+              (let* ((autoloads-attributes
+                      (file-attributes auto-file))
+                     (autoloads-age
+                      (file-attribute-modification-time autoloads-attributes))
+                     (autoloads-inode-number
+                      (file-attribute-inode-number autoloads-attributes)))
                 (seq-find (lambda (attributes)
                             (time-less-p autoloads-age
                                          (file-attribute-modification-time attributes)))
-                          (mapcar #'cdr (directory-files-and-attributes package-directory
-                                                                        nil
-                                                                        (rx ".el" eos))))))
+                          (mapcar #'cdr
+                                  (directory-files-and-attributes package-directory
+                                                                  nil
+                                                                  (rx ".el" eos))))))
       (make-directory-autoloads package-directory auto-file))
     (load auto-file package-directory)))
 #+end_src
