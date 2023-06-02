@@ -694,6 +694,7 @@ This will make e.g. ~project-compile~ run commands with the appropriate working 
             (when-let ((root (locate-dominating-file path ".exercism")))
               (cons 'transient (expand-file-name root)))))
 #+end_src
+
 *** Bug reference mode
 
 Enable bug reference mode, and in Org mode override the keybinding to open links in the bug reference overlays.
@@ -714,8 +715,11 @@ Enable bug reference mode, and in Org mode override the keybinding to open links
 To make this work in a project, a couple of variables need to be set, for example in ~.dir-locals.el~ like this:
 
 #+begin_example emacs-lisp
-((nil . ((bug-reference-bug-regexp . "\\<\\(\\(\\(?:PROJECTA\\|PROJECTB\\)-[[:digit:]]+\\)\\)\\>")
-         (bug-reference-url-format . "https://tracker.company.example/issue/%s"))))
+((nil
+  . ((bug-reference-bug-regexp
+      . "\\<\\(\\(\\(?:PROJECTA\\|PROJECTB\\)-[[:digit:]]+\\)\\)\\>")
+     (bug-reference-url-format
+      . "https://tracker.company.example/issue/%s"))))
 #+end_example
 
 ** ~org-mode~ planning and note-taking
