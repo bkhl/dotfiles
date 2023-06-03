@@ -20,9 +20,5 @@
 ;; files.
 (setq load-prefer-newer t)
 
-;; Enable the auto-compile package.
-(add-to-list 'load-path
-             (expand-file-name (concat user-emacs-directory
-                                       "site-lisp/auto-compile")))
 ;; Disable package.el, as I don't use it.
 (setq package-enable-at-startup nil)
