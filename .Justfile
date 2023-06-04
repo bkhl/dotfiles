@@ -1,7 +1,7 @@
 _default:
     just --list
 
-IOSEVKA_VERSION := "24.1.0"
+IOSEVKA_VERSION := "24.1.1"
 IOSEVKA_BUILD_IMAGE := "docker.io/avivace/iosevka-build"
 
 build_iosevka:
@@ -17,8 +17,7 @@ build_iosevka:
         -v "${font_dir}/private-build-plans.toml:/build/private-build-plans.toml:z" \
         -e FONT_VERSION="{{ IOSEVKA_VERSION  }}" \
         '{{ IOSEVKA_BUILD_IMAGE }}' \
-        contents::iosevka-bkhl-default \
-        contents::iosevka-bkhl-fixed
+        ttf::iosevka-bkhl-{default,fixed}
 
     cp -v "${build_dir}"/dist/iosevka-bkhl-*/ttf/*.ttf "${font_dir}/"
 
