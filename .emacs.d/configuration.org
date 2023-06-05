@@ -1001,9 +1001,11 @@ These are add-on packages that are dependencies of other packages further down, 
   (modus-themes-mixed-fonts t)
   (modus-themes-org-blocks 'gray-background)
   (modus-themes-common-palette-overrides
-   '((builtin rust)
-     (keyword blue)
-     (string green-faint)))
+   (append '((builtin slate)
+             (fnname blue-faint)
+             (keyword rust)
+             (accent-1 rust))
+           modus-themes-preset-overrides-faint))
   :config
   (modus-themes-load-theme 'modus-operandi))
 #+end_src
