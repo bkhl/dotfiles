@@ -1,26 +1,13 @@
 _default:
     just --list
 
-IOSEVKA_VERSION := "24.1.1"
-IOSEVKA_BUILD_IMAGE := "docker.io/avivace/iosevka-build"
+INTERFACE_FONT := "Noto Sans 11"
+DOCUMENT_FONT := "Noto Serif 11"
+MONOSPACE_FONT := "Noto Sans Mono 13"
 
-build_iosevka:
-    #!/bin/bash
-
-    set -xeuo pipefail
-
-    font_dir="{{ justfile_directory () }}/.local/share/fonts/Iosevka"
-    build_dir="$(mktemp -d -t iosevka.XXXXXXXX)"
-
-    podman run --rm \
-        -v "${build_dir}:/build:z" \
-        -v "${font_dir}/private-build-plans.toml:/build/private-build-plans.toml:z" \
-        -e FONT_VERSION="{{ IOSEVKA_VERSION  }}" \
-        '{{ IOSEVKA_BUILD_IMAGE }}' \
-        ttf::iosevka-bkhl-{default,fixed}
-
-    cp -v "${build_dir}"/dist/iosevka-bkhl-*/ttf/*.ttf "${font_dir}/"
-
-    echo "{{ IOSEVKA_VERSION }}" > "${font_dir}/FONT_VERSION"
-
-    rm -rfv "${build_dir}"
+# Apply desktop configuration
+configure:
+    dconf write /org/gnome/desktop/interface/font-name "'{{ INTERFACE_FONT }}'"
+    dconf write /org/gnome/desktop/interface/document-font-name "'{{ DOCUMENT_FONT }}'"
+    dconf write /org/gnome/desktop/interface/monospace-font-name "'{{ MONOSPACE_FONT }}'"
+    dconf write /org/gnome/desktop/wm/preferences/titlebar-font "'{{ INTERFACE_FONT }}'"

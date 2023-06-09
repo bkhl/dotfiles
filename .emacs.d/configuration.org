@@ -149,8 +149,9 @@ This makes the Emacs customization interface store values in a separate file, in
 Setting fonts. I primarily use the ~variable-pitch~ and ~fixed-pitch~ faces in ~org-mode~.
 
 #+begin_src emacs-lisp
-(setq my/fixed-pitch-font-family "Iosevka BKHL Default"
-      my/variable-pitch-font-family "Charis SIL")
+(setq my/fixed-pitch-font-family "Noto Sans Mono"
+      my/variable-pitch-font-family "Noto Serif"
+      my/variable-pitch-ui-font "Noto Sans")
 
 (set-face-attribute 'default nil
                     :family my/fixed-pitch-font-family
@@ -642,20 +643,7 @@ This enables the [[https://github.com/joaotavora/eglot][Eglot]] LSP client. This
   :custom
   (cperl-file-style "PBP")
   :config
-  (add-to-list 'major-mode-remap-alist '(perl-mode . cperl-mode))
-  (add-hook 'cperl-mode-hook
-          (defun my/add-perl-prettify-symbols ()
-            (setq prettify-symbols-alist '(("->" . ?→)
-                                           ("=>" . ?⇒))))))
-#+end_src
-
-**** Prolog
-
-#+begin_src emacs-lisp
-(add-hook 'prolog-mode-hook
-          (defun my/add-prolog-prettify-symbols ()
-            (setq prettify-symbols-alist '((":-" . ?←)
-                                           ("->" . ?→)))))
+  (add-to-list 'major-mode-remap-alist '(perl-mode . cperl-mode)))
 #+end_src
 
 **** Python
@@ -997,17 +985,16 @@ These are add-on packages that are dependencies of other packages further down, 
 #+begin_src emacs-lisp
 (use-package modus-themes
   :custom
-  (modus-themes-bold-constructs t)
-  (modus-themes-slanted-constructs t)
+  (modus-themes-italic-constructs t)
   (modus-themes-mixed-fonts t)
   (modus-themes-org-blocks 'gray-background)
+  :init
+  (defun my/set-modus-themes-ui-variable-pitch ()
+    (set-face-attribute 'modus-themes-ui-variable-pitch nil
+                        :family my/variable-pitch-ui-font))
   :config
-  (setq modus-themes-common-palette-overrides
-        (append '((builtin slate)
-                  (fnname blue-faint)
-                  (keyword rust)
-                  (accent-1 rust))
-                modus-themes-preset-overrides-faint))
+  (add-hook 'modus-themes-after-load-theme-hook
+            'my/set-modus-themes-ui-variable-pitch)
   (modus-themes-load-theme 'modus-operandi))
 #+end_src
 
@@ -1356,11 +1343,7 @@ Helpful functions for refactoring regular expressions to ~rx~ expressions.
 
 #+begin_src emacs-lisp
 (use-package gdscript-mode
-  :mode (rx ".gd" eos)
-  :init
-  (defun my/add-gdscript-prettify-symbols ()
-    (setq prettify-symbols-alist '(("->" . ?→))))
-  :hook (gdscript-mode . my/add-gdscript-prettify-symbols))
+  :mode (rx ".gd" eos))
 #+end_src
 
 **** [[file:site-lisp/go-mode][go-mode]]
