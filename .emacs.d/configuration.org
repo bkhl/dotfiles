@@ -1550,10 +1550,11 @@ Shows changes that are not committed to the version control system for the file 
 
 #+begin_src emacs-lisp
 (use-package org-modern
+  :custom
+  (org-modern-star '("◉" "○" "◆" "⋄" "●"))
   :config
-  (set-face-attribute 'org-modern-label nil
-                      :family my/fixed-pitch-font-family)
-  (set-face-attribute 'org-modern-symbol nil
-                      :family "Symbola")
+  (dolist (face '(org-modern-label org-modern-symbol))
+    (set-face-attribute face nil
+                        :family my/fixed-pitch-font-family))
   (global-org-modern-mode))
 #+end_src
