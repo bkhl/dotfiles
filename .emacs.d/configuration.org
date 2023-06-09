@@ -149,13 +149,13 @@ This makes the Emacs customization interface store values in a separate file, in
 Setting fonts. I primarily use the ~variable-pitch~ and ~fixed-pitch~ faces in ~org-mode~.
 
 #+begin_src emacs-lisp
-(setq my/fixed-pitch-font-family "Noto Sans Mono"
+(setq my/fixed-pitch-font-family "Source Code Pro"
       my/variable-pitch-font-family "Noto Serif"
       my/variable-pitch-ui-font "Noto Sans")
 
 (set-face-attribute 'default nil
                     :family my/fixed-pitch-font-family
-                    :height 130)
+                    :height 120)
 (set-face-attribute 'variable-pitch nil
                     :family my/variable-pitch-font-family)
 (set-face-attribute 'fixed-pitch nil

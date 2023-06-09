@@ -2,8 +2,8 @@ _default:
     just --list
 
 INTERFACE_FONT := "Noto Sans 11"
-DOCUMENT_FONT := "Noto Serif 11"
-MONOSPACE_FONT := "Noto Sans Mono 13"
+DOCUMENT_FONT := "Noto Serif 12"
+MONOSPACE_FONT := "Source Code Pro 12"
 
 INPUT_SOURCES := "[('xkb', 'us+altgr-intl'), ('xkb', 'th')]"
 
