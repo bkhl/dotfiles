@@ -167,15 +167,14 @@ Enable Emoji font if available. ☃
 This is run as a hook after the first frame is created, as this will otherwise not work when Emacs is started in daemon mode, or by ~emacsclient~.
 
 #+begin_src emacs-lisp
-(setq my/emoji-font-family "Noto Color Emoji")
-
-(add-hook
- 'server-after-make-frame-hook
- (defun my/set-fontset-fonts ()
-   (set-fontset-font t '(#x2600 . #x26ff) my/emoji-font-family)
-   (set-fontset-font t 'emoji my/emoji-font-family)
-   (remove-hook 'server-after-make-frame-hook
-                'my/set-fontset-fonts)))
+(add-hook 'server-after-make-frame-hook
+          (defun my/set-fontset-fonts ()
+            (dolist (font-spec '((#x2600 . #x26ff)
+                                 emoji))
+              (set-fontset-font t font-spec
+                                "Noto Color Emoji"))
+            (remove-hook 'server-after-make-frame-hook
+                         'my/set-fontset-fonts)))
 #+end_src
 
 *** Disable bell
@@ -1548,7 +1547,9 @@ Shows changes that are not committed to the version control system for the file 
 #+begin_src emacs-lisp
 (use-package org-modern
   :config
-  (dolist (face '(org-modern-symbol org-modern-label))
-    (set-face-attribute face nil :family my/fixed-pitch-font-family))
+  (set-face-attribute 'org-modern-label nil
+                      :family my/fixed-pitch-font-family)
+  (set-face-attribute 'org-modern-symbol nil
+                      :family "Symbola")
   (global-org-modern-mode))
 #+end_src
