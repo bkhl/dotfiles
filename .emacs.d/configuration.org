@@ -268,6 +268,12 @@ When the cursor moves close to the edge of the screen, scroll only one line at t
       scroll-margin 5)
 #+end_src
 
+*** Smooth scrolling with scroll wheel
+
+#+begin_src emacs-lisp
+(pixel-scroll-precision-mode)
+#+end_src
+
 *** Highlight error messages
 
 In ~next-error~ buffers, highligt the currently visited error.
