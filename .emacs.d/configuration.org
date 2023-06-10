@@ -152,13 +152,12 @@ This makes the Emacs customization interface store values in a separate file, in
 Setting fonts. I primarily use the ~variable-pitch~ and ~fixed-pitch~ faces in ~org-mode~.
 
 #+begin_src emacs-lisp
-(setq my/fixed-pitch-font-family "Source Code Pro"
-      my/variable-pitch-font-family "Noto Serif"
-      my/variable-pitch-ui-font "Noto Sans")
+(setq my/fixed-pitch-font-family "Iosevka BKHL Default"
+      my/variable-pitch-font-family "Charis SIL")
 
 (set-face-attribute 'default nil
                     :family my/fixed-pitch-font-family
-                    :height 120)
+                    :height 130)
 (set-face-attribute 'variable-pitch nil
                     :family my/variable-pitch-font-family)
 (set-face-attribute 'fixed-pitch nil
@@ -651,7 +650,20 @@ This enables the [[https://github.com/joaotavora/eglot][Eglot]] LSP client. This
   :custom
   (cperl-file-style "PBP")
   :config
-  (add-to-list 'major-mode-remap-alist '(perl-mode . cperl-mode)))
+  (add-to-list 'major-mode-remap-alist '(perl-mode . cperl-mode))
+  (add-hook 'cperl-mode-hook
+          (defun my/add-perl-prettify-symbols ()
+            (setq prettify-symbols-alist '(("->" . ?→)
+                                           ("=>" . ?⇒))))))
+#+end_src
+
+**** Prolog
+
+#+begin_src emacs-lisp
+(add-hook 'prolog-mode-hook
+          (defun my/add-prolog-prettify-symbols ()
+            (setq prettify-symbols-alist '((":-" . ?←)
+                                           ("->" . ?→)))))
 #+end_src
 
 **** Python
@@ -993,16 +1005,11 @@ These are add-on packages that are dependencies of other packages further down, 
 #+begin_src emacs-lisp
 (use-package modus-themes
   :custom
+  (modus-themes-bold-constructs t)
   (modus-themes-italic-constructs t)
   (modus-themes-mixed-fonts t)
   (modus-themes-org-blocks 'gray-background)
-  :init
-  (defun my/set-modus-themes-ui-variable-pitch ()
-    (set-face-attribute 'modus-themes-ui-variable-pitch nil
-                        :family my/variable-pitch-ui-font))
   :config
-  (add-hook 'modus-themes-after-load-theme-hook
-            'my/set-modus-themes-ui-variable-pitch)
   (modus-themes-load-theme 'modus-operandi))
 #+end_src
 
@@ -1351,7 +1358,11 @@ Helpful functions for refactoring regular expressions to ~rx~ expressions.
 
 #+begin_src emacs-lisp
 (use-package gdscript-mode
-  :mode (rx ".gd" eos))
+  :mode (rx ".gd" eos)
+  :init
+  (defun my/add-gdscript-prettify-symbols ()
+    (setq prettify-symbols-alist '(("->" . ?→))))
+  :hook (gdscript-mode . my/add-gdscript-prettify-symbols))
 #+end_src
 
 **** [[file:site-lisp/go-mode][go-mode]]
@@ -1550,11 +1561,8 @@ Shows changes that are not committed to the version control system for the file 
 
 #+begin_src emacs-lisp
 (use-package org-modern
-  :custom
-  (org-modern-star '("◉" "○" "◆" "⋄" "●"))
   :config
-  (dolist (face '(org-modern-label org-modern-symbol))
-    (set-face-attribute face nil
-                        :family my/fixed-pitch-font-family))
+  (dolist (face '(org-modern-symbol org-modern-label))
+    (set-face-attribute face nil :family my/fixed-pitch-font-family))
   (global-org-modern-mode))
 #+end_src

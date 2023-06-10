@@ -1,9 +1,9 @@
 _default:
     just --list
 
-INTERFACE_FONT := "Noto Sans 11"
-DOCUMENT_FONT := "Noto Serif 12"
-MONOSPACE_FONT := "Source Code Pro 12"
+INTERFACE_FONT := "Inter 11"
+DOCUMENT_FONT := "Inter 11"
+MONOSPACE_FONT := "Iosevka BKHL Fixed 13"
 
 INPUT_SOURCES := "[('xkb', 'us+altgr-intl'), ('xkb', 'th')]"
 
@@ -31,3 +31,27 @@ configure:
     dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/name "'Terminal'"
     dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/binding "'<Super>t'"
     dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/command "'/usr/bin/gnome-terminal'"
+
+IOSEVKA_VERSION := "24.1.1"
+IOSEVKA_BUILD_IMAGE := "docker.io/avivace/iosevka-build"
+
+build_iosevka:
+    #!/bin/bash
+
+    set -xeuo pipefail
+
+    font_dir="{{ justfile_directory () }}/.local/share/fonts/Iosevka"
+    build_dir="$(mktemp -d -t iosevka.XXXXXXXX)"
+
+    podman run --rm \
+        -v "${build_dir}:/build:z" \
+        -v "${font_dir}/private-build-plans.toml:/build/private-build-plans.toml:z" \
+        -e FONT_VERSION="{{ IOSEVKA_VERSION  }}" \
+        '{{ IOSEVKA_BUILD_IMAGE }}' \
+        ttf::iosevka-bkhl-{default,fixed}
+
+    cp -v "${build_dir}"/dist/iosevka-bkhl-*/ttf/*.ttf "${font_dir}/"
+
+    echo "{{ IOSEVKA_VERSION }}" > "${font_dir}/FONT_VERSION"
+
+    rm -rfv "${build_dir}"
