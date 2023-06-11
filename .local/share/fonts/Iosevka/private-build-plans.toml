@@ -20,8 +20,6 @@ lower-lambda = "curly-turn"
 
 zero = "reverse-slashed"
 one = "base-long-top-serif"
-six = "closed-contour"
-nine = "closed-contour"
 
 asterisk = "penta-low"
 underscore = "low"
