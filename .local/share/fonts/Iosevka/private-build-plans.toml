@@ -12,14 +12,19 @@ g = "double-storey"
 m = "short-leg-serifed"
 y = "cursive-serifed"
 
+long-s = "bent-hook-tailed"
 eszet = "longs-s-lig-tailed"
 
+turn-v = "curly"
 lower-lambda = "curly-turn"
 
 zero = "reverse-slashed"
 one = "base-long-top-serif"
+six = "closed-contour"
+nine = "closed-contour"
 
 asterisk = "penta-low"
+underscore = "low"
 number-sign = "upright-tall"
 ampersand = "upper-open"
 at = "fourfold-solid-inner-tall"

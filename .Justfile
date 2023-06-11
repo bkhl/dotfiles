@@ -32,7 +32,7 @@ configure:
     dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/binding "'<Super>t'"
     dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/command "'/usr/bin/gnome-terminal'"
 
-IOSEVKA_VERSION := "24.1.1"
+IOSEVKA_VERSION := "24.1.2"
 IOSEVKA_BUILD_IMAGE := "docker.io/avivace/iosevka-build"
 
 build_iosevka:
@@ -43,12 +43,14 @@ build_iosevka:
     font_dir="{{ justfile_directory () }}/.local/share/fonts/Iosevka"
     build_dir="$(mktemp -d -t iosevka.XXXXXXXX)"
 
-    podman run --rm \
-        -v "${build_dir}:/build:z" \
-        -v "${font_dir}/private-build-plans.toml:/build/private-build-plans.toml:z" \
-        -e FONT_VERSION="{{ IOSEVKA_VERSION  }}" \
-        '{{ IOSEVKA_BUILD_IMAGE }}' \
-        ttf::iosevka-bkhl-{default,fixed}
+    for plan in ttf::iosevka-bkhl-{default,fixed}; do
+        podman run --rm -t \
+            -v "${build_dir}:/build:z" \
+            -v "${font_dir}/private-build-plans.toml:/build/private-build-plans.toml:z" \
+            -e FONT_VERSION="{{ IOSEVKA_VERSION  }}" \
+            '{{ IOSEVKA_BUILD_IMAGE }}' \
+            "${plan}"
+    done
 
     cp -v "${build_dir}"/dist/iosevka-bkhl-*/ttf/*.ttf "${font_dir}/"
 
