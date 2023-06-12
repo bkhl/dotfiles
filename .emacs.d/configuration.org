@@ -716,13 +716,14 @@ Enable bug reference mode, and in Org mode override the keybinding to open links
   :custom
   (bug-reference-bug-regexp nil)
   (bug-reference-url-format nil)
-  (bug-reference-auto-setup-functions nil)
   :hook
   (text-mode . bug-reference-mode)
   (prog-mode . bug-reference-prog-mode)
   :bind
   (:map bug-reference-map
-        ("C-c C-o" . bug-reference-push-button)))
+        ("C-c C-o" . bug-reference-push-button))
+  :config
+  (setq bug-reference-auto-setup-functions nil))
 #+end_src
 
 To make this work in a project, a couple of variables need to be set, for example in ~.dir-locals.el~ like this:
