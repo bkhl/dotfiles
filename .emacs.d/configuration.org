@@ -460,10 +460,12 @@ Make file sizes shown in dired human readable.
 
 *** ~tramp~ remote editing
 
-Ensure that Tramp uses path of remote shell on remote hosts.
+Allow Tramp to write backups of root-owned files in ~/tmp~, and ensure that Tramp uses path of remote shell on remote hosts.
 
 #+begin_src emacs-lisp
 (use-package tramp
+  :custom
+  (tramp-allow-unsafe-temporary-files t)
   :config
   (add-to-list 'tramp-remote-path 'tramp-own-remote-path))
 #+end_src
