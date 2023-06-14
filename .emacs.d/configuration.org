@@ -332,7 +332,7 @@ In ~next-error~ buffers, highligt the currently visited error.
 Disabling ~C-z~, which normally minimizes the window, which is rather distracting.
 
 #+begin_src emacs-lisp
-(global-unset-key [(control z)])
+(keymap-global-unset "C-z")
 #+end_src
 
 *** Switch windows with ~M-o~
