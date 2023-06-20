@@ -25,8 +25,8 @@ Here is [[https://www.emacswiki.org/emacs/bkhl][my home page on EmacsWiki]].
 * Set personal information
 
 #+begin_src emacs-lisp
-(setq user-full-name "Björn Lindström"
-      user-mail-address "bkhl@elektrubadur.se")
+(customize-set-variable 'user-full-name "Björn Lindström")
+(customize-set-variable 'user-mail-address "bkhl@elektrubadur.se")
 #+end_src
 
 * Built-in functionality
@@ -126,7 +126,7 @@ The handler function is what injects the call to the function to generate the au
 This makes the Emacs customization interface store values in a separate file, instead of in ~init.el~.
 
 #+begin_src emacs-lisp
-(setq custom-file (concat user-emacs-directory "custom.el"))
+(customize-set-variable 'custom-file (concat user-emacs-directory "custom.el"))
 (load custom-file :noerror)
 #+end_src
 
@@ -184,7 +184,7 @@ This is run as a hook after the first frame is created, as this will otherwise n
 Disable warning bell, both the default audio one and the visual one.
 
 #+begin_src emacs-lisp
-(setq ring-bell-function 'ignore)
+(customize-set-variable 'ring-bell-function 'ignore)
 #+end_src
 
 *** Set window title
@@ -204,7 +204,7 @@ Set window title including current buffer or filename, along with system name. U
 Setting this variable allows resizing window by pixels, rather than rounding to an exact number of lines or columns. This is needed to be able to restore back from fullscreen to original frame size in Gnome.
 
 #+begin_src emacs-lisp
-(setq frame-resize-pixelwise t)
+(customize-set-variable 'frame-resize-pixelwise t)
 #+end_src
 
 *** Give ~emacsclient~ frames focus
@@ -221,19 +221,19 @@ Give new ~emacsclient~ frames focus when created.
 *** Disable message on new ~emacsclient~ frames
 
 #+begin_src emacs-lisp
-(setq server-client-instructions nil)
+(customize-set-variable 'server-client-instructions nil)
 #+end_src
 
 *** Prompt before closing Emacs
 
 #+begin_src emacs-lisp
-(setq confirm-kill-emacs 'y-or-n-p)
+(customize-set-variable 'confirm-kill-emacs 'y-or-n-p)
 #+end_src
 
 *** Make middle-clicking mouse yank at point
 
 #+begin_src emacs-lisp
-(setq mouse-yank-at-point t)
+(customize-set-variable 'mouse-yank-at-point t)
 #+end_src
 
 *** Set preferred dateformat
@@ -265,8 +265,8 @@ Give new ~emacsclient~ frames focus when created.
 When the cursor moves close to the edge of the screen, scroll only one line at time, but try to keep 5 rows within view.
 
 #+begin_src emacs-lisp
-(setq scroll-conservatively 101
-      scroll-margin 5)
+(customize-set-variable 'scroll-conservatively 101)
+(customize-set-variable 'scroll-margin 5)
 #+end_src
 
 *** Smooth scrolling with scroll wheel
@@ -280,32 +280,32 @@ When the cursor moves close to the edge of the screen, scroll only one line at t
 In ~next-error~ buffers, highligt the currently visited error.
 
 #+begin_src emacs-lisp
-(setq next-error-message-highlight t)
+(customize-set-variable 'next-error-message-highlight t)
 #+end_src
 
 *** Make yes/no prompts shorter
 
 #+begin_src emacs-lisp
-(setq use-short-answers t)
+(customize-set-variable 'use-short-answers t)
 #+end_src
 
 *** Don't show bookmarks in fringe
 
 #+begin_src emacs-lisp
-(setq bookmark-set-fringe-mark nil)
+(customize-set-variable 'bookmark-set-fringe-mark nil)
 #+end_src
 
 *** Use bar cursor
 
 #+begin_src emacs-lisp
-(setq-default cursor-type 'bar)
+(customize-set-variable 'cursor-type 'bar)
 #+end_src
 
 ** Documentation and help
 *** Make ~apropos~ search more extensively
 
 #+begin_src emacs-lisp
-(setq setqapropos-do-all t)
+(customize-set-variable 'apropos-do-all t)
 #+end_src
 
 *** Use variable pitch in Info reader
@@ -317,13 +317,13 @@ In ~next-error~ buffers, highligt the currently visited error.
 *** Autoload if documentation is missing from autoload objects
 
 #+begin_src emacs-lisp
-(setq help-enable-symbol-autoload t)
+(customize-set-variable 'help-enable-symbol-autoload t)
 #+end_src
 
 *** Show outlines in bindings description
 
 #+begin_src emacs-lisp
-(setq describe-bindings-outline t)
+(customize-set-variable 'describe-bindings-outline t)
 #+end_src
 
 ** Key bindings
@@ -367,14 +367,14 @@ This adds ability to repat some common commands by repeating the last key in its
 *** Start with an empty scratch buffer.
 
 #+begin_src emacs-lisp
-(setq inhibit-startup-screen t
-      initial-scratch-message nil)
+(customize-set-variable 'inhibit-startup-screen t)
+(customize-set-variable 'initial-scratch-message nil)
 #+end_src
 
 *** Use directory name in buffer names for files with same name
 
 #+begin_src emacs-lisp
-(setq uniquify-buffer-name-style 'forward)
+(customize-set-variable 'uniquify-buffer-name-style 'forward)
 #+end_src
 
 *** Allow remembering risky local variables
@@ -388,7 +388,7 @@ This overrides the Emacs settings that enforces having to accept local variables
 *** Load  ~.dir-locals.el~ files on remote hosts
 
 #+begin_src emacs-lisp
-(setq enable-remote-dir-locals t)
+(customize-set-variable 'enable-remote-dir-locals t)
 #+end_src
 
 ** Files
@@ -405,7 +405,7 @@ Unless overridden by a buffer, when prompting to open a file, start in the home 
 The default method here can break hardlinks.
 
 #+begin_src emacs-lisp
-(setq backup-by-copying t)
+(customize-set-variable 'backup-by-copying t)
 #+end_src
 
 *** Store backups in tmp directory
@@ -413,9 +413,9 @@ The default method here can break hardlinks.
 Store backups and autosaves in ~temporary-file-directory~. This risks losing some data on a system crash, but I am not very concerned about that as generally my important files are in some kind of version control.
 
 #+begin_src emacs-lisp
-(setq backup-directory-alist
+(customize-set-variable 'backup-directory-alist
       `((".*" . ,temporary-file-directory)))
-(setq auto-save-file-name-transforms
+(customize-set-variable 'auto-save-file-name-transforms
       `((".*" ,temporary-file-directory t)))
 #+end_src
 
@@ -452,7 +452,7 @@ If a file changes, automatically refresh buffers containing the file, so that it
 Disable use of those lock files with a ~.#~ prefix that Emacs by default creates. Since my ways of using Emacs rarely involves multiple Emacs instances opening the same file, they cause me more problems than they solve.
 
 #+begin_src emacs-lisp
-(setq create-lockfiles nil)
+(customize-set-variable 'create-lockfiles nil)
 #+end_src
 
 *** ~dired~
@@ -460,7 +460,7 @@ Disable use of those lock files with a ~.#~ prefix that Emacs by default creates
 Make file sizes shown in dired human readable.
 
 #+begin_src emacs-lisp
-(setq dired-listing-switches
+(customize-set-variable 'dired-listing-switches
       "-l --all --human-readable --group-directories-first")
 #+end_src
 
@@ -495,7 +495,7 @@ Make ~M-z~ kill characters up to the character /before/ the next occurrence of t
 *** Use single space to delimit sentences
 
 #+begin_src emacs-lisp
-(setq sentence-end-double-space nil)
+(customize-set-variable 'sentence-end-double-space nil)
 #+end_src
 
 *** Highlight selected region and apply changes to it
@@ -515,19 +515,19 @@ Set it so that if a selection is active, typed text will replace the selection.
 *** Disable indentation using tabs.
 
 #+begin_src emacs-lisp
-(setq-default indent-tabs-mode nil)
+(customize-set-variable 'indent-tabs-mode nil)
 #+end_src
 
 *** Set default line length to 80
 
 #+begin_src emacs-lisp
-(setq-default fill-column 80)
+(customize-set-variable 'fill-column 80)
 #+end_src
 
 *** Set default indentation width to 4.
 
 #+begin_src emacs-lisp
-(setq-default tab-width 4)
+(customize-set-variable 'tab-width 4)
 #+end_src
 
 *** Show character name in character description
@@ -536,7 +536,7 @@ When using ~C-x =~ to look up the character under the point, also show Unicode
 character name.
 
 #+begin_src emacs-lisp
-(setq what-cursor-show-names t)
+(customize-set-variable 'what-cursor-show-names t)
 #+end_src
 
 *** Automatically pair matching characters like parenthesis
@@ -552,7 +552,7 @@ Enable ~electric-pair-mode~, which enables automatic insert of matching characte
 Prevents killing text in Emacs from irrevocably deleting things from the system clipboard.
 
 #+begin_src emacs-lisp
-(setq save-interprogram-paste-before-kill t)
+(customize-set-variable 'save-interprogram-paste-before-kill t)
 #+end_src
 
 *** Enable ~downcase-region~ and ~upcase-region~
@@ -661,8 +661,8 @@ This enables the [[https://github.com/joaotavora/eglot][Eglot]] LSP client. This
   (add-to-list 'major-mode-remap-alist '(perl-mode . cperl-mode))
   (add-hook 'cperl-mode-hook
           (defun my/add-perl-prettify-symbols ()
-            (setq prettify-symbols-alist '(("->" . ?→)
-                                           ("=>" . ?⇒))))))
+            (setq-local prettify-symbols-alist '(("->" . ?→)
+                                                 ("=>" . ?⇒))))))
 #+end_src
 
 **** Prolog
@@ -670,8 +670,8 @@ This enables the [[https://github.com/joaotavora/eglot][Eglot]] LSP client. This
 #+begin_src emacs-lisp
 (add-hook 'prolog-mode-hook
           (defun my/add-prolog-prettify-symbols ()
-            (setq prettify-symbols-alist '((":-" . ?←)
-                                           ("->" . ?→)))))
+            (setq-local prettify-symbols-alist '((":-" . ?←)
+                                                 ("->" . ?→)))))
 #+end_src
 
 **** Python
@@ -692,7 +692,7 @@ This enables the [[https://github.com/joaotavora/eglot][Eglot]] LSP client. This
 Make ~vc-diff~ imitate the diff format of Magit.
 
 #+begin_src emacs-lisp
-(setq diff-font-lock-prettify t)
+(customize-set-variable 'diff-font-lock-prettify t)
 #+end_src
 
 *** ~ediff~
@@ -700,7 +700,8 @@ Make ~vc-diff~ imitate the diff format of Magit.
 Make ediff use existing frame instead of creating new one
 
 #+begin_src emacs-lisp
-(setq ediff-window-setup-function 'ediff-setup-windows-plain)
+(customize-set-variable 'ediff-window-setup-function
+                        'ediff-setup-windows-plain)
 #+end_src
 
 ** Project management
@@ -751,13 +752,13 @@ Set a custom variable for the notes directory, so that it can be referred to
 later.
 
 #+begin_src emacs-lisp
-(setq org-directory "~/Documents/Notes/")
+(customize-set-variable 'org-directory "~/Documents/Notes/")
 #+end_src
 
 *** Make initial scratch buffer use ~org-mode~
 
 #+begin_src emacs-lisp
-(setq initial-major-mode 'org-mode)
+(customize-set-variable 'initial-major-mode 'org-mode)
 #+end_src
 
 *** Editing
@@ -765,26 +766,26 @@ later.
 Edit src blocks in current window.
 
 #+begin_src emacs-lisp
-(setq org-src-window-setup 'current-window)
+(customize-set-variable 'org-src-window-setup 'current-window)
 #+end_src
 
 Make indentation and fonts in code blocks work according to mode for the language in the block.
 
 #+begin_src emacs-lisp
-(setq org-src-tab-acts-natively t
-      org-src-fontify-natively t)
+(customize-set-variable 'org-src-tab-acts-natively t)
+(customize-set-variable 'org-src-fontify-natively t)
 #+end_src
 
 Disable the extra indentation in src blocks.
 
 #+begin_src emacs-lisp
-(setq org-edit-src-content-indentation 0)
+(customize-set-variable 'org-edit-src-content-indentation 0)
 #+end_src
 
 This prevents accidental editing in invisible regions.
 
 #+begin_src emacs-lisp
-(setq org-catch-invisible-edits 'error)
+(customize-set-variable 'org-catch-invisible-edits 'error)
 #+end_src
 
 Shortcut for inserting a block of Elisp.
@@ -797,7 +798,7 @@ Shortcut for inserting a block of Elisp.
 When trying to edit in an hidden area, expand it before throwing an error.
 
 #+begin_src emacs-lisp
-(setq org-catch-invisible-edits 'show-and-error)
+(customize-set-variable 'org-catch-invisible-edits 'show-and-error)
 #+end_src
 
 *** Display
@@ -805,7 +806,7 @@ When trying to edit in an hidden area, expand it before throwing an error.
 Enable ~org-indent~ mode, which makes org-mode indent sections visually, but not in the saved files.
 
 #+begin_src emacs-lisp
-(setq org-startup-indented t)
+(customize-set-variable 'org-startup-indented t)
 #+end_src
 
 Use variable fonts in ~org-mode~ buffers.
@@ -817,26 +818,26 @@ Use variable fonts in ~org-mode~ buffers.
 Hide the characters surrounding emphasized phrases
 
 #+begin_src emacs-lisp
-(setq org-hide-emphasis-markers t)
+(customize-set-variable 'org-hide-emphasis-markers t)
 #+end_src
 
 Use real ellipsis character for collapsed subtrees, and prefix it with a space.
 
 #+begin_src emacs-lisp
-(setq org-ellipsis "…")
+(customize-set-variable 'org-ellipsis "…")
 #+end_src
 
 Put tags right after headline. This causes fewer conflicts with add-on packages affecting Org-mode style.
 
 #+begin_src emacs-lisp
-(setq org-tags-column 0
-      org-auto-align-tags nil)
+(customize-set-variable 'org-tags-column 0)
+(customize-set-variable 'org-auto-align-tags nil)
 #+end_src
 
 Show Latex-style entities as Unicode characters.
 
 #+begin_src emacs-lisp
-(setq org-pretty-entities t)
+(customize-set-variable 'org-pretty-entities t)
 #+end_src
 
 *** Key bindings
@@ -845,13 +846,13 @@ Show Latex-style entities as Unicode characters.
 When point is on a headline, make ~C-a~ and ~C-e~ go to beginning/end of headline text.
 
 #+begin_src emacs-lisp
-(setq org-special-ctrl-a/e t)
+(customize-set-variable 'org-special-ctrl-a/e t)
 #+end_src
 
 Insert new headlines after current subtree.
 
 #+begin_src emacs-lisp
-(setq org-insert-heading-respect-content t)
+(customize-set-variable 'org-insert-heading-respect-content t)
 #+end_src
 
 **** Global key binding to store links for ~org-mode~
@@ -876,7 +877,7 @@ Reduce conflict with the global ~windmove~ key bindings.
 Add templates for use by ~org-capture~.
 
 #+begin_src emacs-lisp
-(setq org-capture-templates
+(customize-set-variable 'org-capture-templates
       `(("i"
          "Inbox"
          entry
@@ -895,10 +896,11 @@ Bind ~C-c c~ to ~org-capture~ to quickly add notes.
 This allows refiling within the current buffer, or any agenda files.
 
 #+begin_src emacs-lisp
-(setq org-refile-targets '((nil :maxlevel . 9)
-                           (org-agenda-files :maxlevel . 9))
-      org-outline-path-complete-in-steps nil
-      org-refile-use-outline-path 'file)
+(customize-set-variable 'org-refile-targets
+                        '((nil :maxlevel . 9)
+                          (org-agenda-files :maxlevel . 9)))
+(customize-set-variable 'org-outline-path-complete-in-steps nil)
+(customize-set-variable 'org-refile-use-outline-path 'file)
 #+end_src
 
 *** Agendas
@@ -906,7 +908,7 @@ This allows refiling within the current buffer, or any agenda files.
 Search all files in the notes directory when creating agendas.
 
 #+begin_src emacs-lisp
-(setq org-agenda-files `(,org-directory))
+(customize-set-variable 'org-agenda-files `(,org-directory))
 #+end_src
 
 Key binding to open an agenda view.
@@ -918,31 +920,31 @@ Key binding to open an agenda view.
 Hide done tasks from the agenda.
 
 #+begin_src emacs-lisp
-(setq org-agenda-skip-scheduled-if-done t
-      org-agenda-skip-deadline-if-done t)
+(customize-set-variable 'org-agenda-skip-scheduled-if-done t)
+(customize-set-variable 'org-agenda-skip-deadline-if-done t)
 #+end_src
 
 Hide already scheduled tasks from the agenda.
 
 #+begin_src emacs-lisp
-(setq org-agenda-todo-ignore-scheduled 'all)
+(customize-set-variable 'org-agenda-todo-ignore-scheduled 'all)
 #+end_src
 
 Show tags right after headline. Reduces conflicts with packages that affect Org agenda style.
 
 #+begin_src emacs-lisp
-(setq org-agenda-tags-column 0)
+(customize-set-variable 'org-agenda-tags-column 0)
 #+end_src
 
 Some agenda visual styling.
 
 #+begin_src emacs-lisp
-(setq org-agenda-block-separator ?-
-      org-agenda-time-grid
+(customize-set-variable 'org-agenda-block-separator ?-)
+(customize-set-variable 'org-agenda-time-grid
       '((daily today require-timed)
         (800 1000 1200 1400 1600 1800)
-        " ┄┄┄" "")
-      org-agenda-current-time-string
+        " ┄┄┄" ""))
+(customize-set-variable 'org-agenda-current-time-string
       "🠨")
 #+end_src
 
@@ -1158,8 +1160,10 @@ This is a library for completion in the minibuffer, which integrates with the em
 Do not allow the cursor in the minibuffer prompt.
 
 #+begin_src emacs-lisp
-(setq minibuffer-prompt-properties
-      '(read-only t cursor-intangible t face minibuffer-prompt))
+(customize-set-variable 'minibuffer-prompt-properties
+                        '(read-only t
+                          cursor-intangible t
+                          face minibuffer-prompt))
 (add-hook 'minibuffer-setup-hook #'cursor-intangible-mode)
 #+end_src
 
@@ -1183,14 +1187,14 @@ Add prompt indicator to ~completing-read-multiple~.
 #+end_src
 
 #+begin_src emacs-lisp
-(setq read-extended-command-predicate
-      #'command-completion-default-include-p)
+(customize-set-variable 'read-extended-command-predicate
+                        #'command-completion-default-include-p)
 #+end_src
 
 Allow minibuffer commands while in the minibuffer.
 
 #+begin_src emacs-lisp
-(setq enable-recursive-minibuffers t)
+(customize-set-variable 'enable-recursive-minibuffers t)
 #+end_src
 
 **** [[file:site-lisp/marginalia][marginalia]] minibuffer annotations
@@ -1269,13 +1273,14 @@ Allow minibuffer commands while in the minibuffer.
          ("M-s" . consult-history)  ;; replaces next-matching-history-element
          ("M-r" . consult-history))  ;; replaces previous-matching-history-element
   :init
-  (setq register-preview-delay 0.5
-        register-preview-function #'consult-register-format)
+  (customize-set-variable 'register-preview-delay 0.5)
+  (customize-set-variable 'register-preview-function
+                          #'consult-register-format)
   (advice-add #'register-preview :override #'consult-register-window)
-  (setq xref-show-xrefs-function #'consult-xref
-        xref-show-definitions-function #'consult-xref)
+  (customize-set-variable 'xref-show-xrefs-function #'consult-xref)
+  (customize-set-variable 'xref-show-definitions-function #'consult-xref)
   :config
-  (setq consult-narrow-key "<"))
+  (customize-set-variable 'consult-narrow-key "<"))
 #+end_src
 
 **** [[file:site-lisp/embark][embark]] mini-buffer actions
@@ -1370,7 +1375,7 @@ Helpful functions for refactoring regular expressions to ~rx~ expressions.
   :mode (rx ".gd" eos)
   :init
   (defun my/add-gdscript-prettify-symbols ()
-    (setq prettify-symbols-alist '(("->" . ?→))))
+    (setq-local prettify-symbols-alist '(("->" . ?→))))
   :hook (gdscript-mode . my/add-gdscript-prettify-symbols))
 #+end_src
 
