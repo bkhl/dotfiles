@@ -1,16 +1,18 @@
-[buildPlans.iosevka-bkhl-default]
-family = "Iosevka BKHL Default"
+# Sans Default
+
+[buildPlans.iosevka-bkhl-sans-default]
+family = "Iosevka BKHL Sans Default"
 spacing = "normal"
-serifs = "slab"
+serifs = "sans"
 no-ligation = true
 no-cv-ss = true
 
-[buildPlans.iosevka-bkhl-default.variants.design]
+[buildPlans.iosevka-bkhl-sans-default.variants.design]
 capital-q = "open-swash"
 
 g = "double-storey"
-m = "short-leg-serifed"
-y = "cursive-serifed"
+m = "short-leg-serifless"
+y = "cursive-serifless"
 
 long-s = "bent-hook-tailed"
 eszet = "longs-s-lig-tailed"
@@ -19,7 +21,7 @@ turn-v = "curly"
 lower-lambda = "curly-turn"
 
 zero = "reverse-slashed"
-one = "base-long-top-serif"
+one = "no-base-long-top-serif"
 
 asterisk = "penta-low"
 underscore = "low"
@@ -29,15 +31,50 @@ at = "fourfold-solid-inner-tall"
 dollar = "open"
 pilcrow = "low"
 
-[buildPlans.iosevka-bkhl-default.variants.italic]
+[buildPlans.iosevka-bkhl-sans-default.variants.italic]
 g = "double-storey-open"
 
-[buildPlans.iosevka-bkhl-fixed]
-family = "Iosevka BKHL Fixed"
+
+# Sans Fixed
+
+[buildPlans.iosevka-bkhl-sans-fixed]
+family = "Iosevka BKHL Sans Fixed"
+spacing = "fixed"
+serifs = "sans"
+no-ligation = true
+no-cv-ss = true
+
+[buildPlans.iosevka-bkhl-sans-fixed.variants]
+inherits = "buildPlans.iosevka-bkhl-sans-default"
+
+
+# Serif Default
+
+[buildPlans.iosevka-bkhl-serif-default]
+family = "Iosevka BKHL Serif Default"
+spacing = "normal"
+serifs = "slab"
+no-ligation = true
+no-cv-ss = true
+
+[buildPlans.iosevka-bkhl-serif-default.variants]
+inherits = "buildPlans.iosevka-bkhl-sans-default"
+
+[buildPlans.iosevka-bkhl-serif-default.variants.design]
+m = "short-leg-serifed"
+y = "cursive-serifed"
+
+one = "base-long-top-serif"
+
+
+# Serif Fixed
+
+[buildPlans.iosevka-bkhl-serif-fixed]
+family = "Iosevka BKHL Serif Fixed"
 spacing = "fixed"
 serifs = "slab"
 no-ligation = true
 no-cv-ss = true
 
-[buildPlans.iosevka-bkhl-fixed.variants]
-inherits = "buildPlans.iosevka-bkhl-default"
+[buildPlans.iosevka-bkhl-serif-fixed.variants]
+inherits = "buildPlans.iosevka-bkhl-serif-default"
