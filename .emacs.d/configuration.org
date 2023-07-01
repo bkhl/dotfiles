@@ -152,7 +152,7 @@ This makes the Emacs customization interface store values in a separate file, in
 Setting fonts. I primarily use the ~variable-pitch~ and ~fixed-pitch~ faces in ~org-mode~.
 
 #+begin_src emacs-lisp
-(setq my/fixed-pitch-font-family "Iosevka BKHL Sans Default"
+(setq my/fixed-pitch-font-family "Iosevka BKHL Sans Normal"
       my/variable-pitch-font-family "Charis SIL")
 
 (set-face-attribute 'default nil

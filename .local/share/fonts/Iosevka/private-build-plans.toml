@@ -1,80 +1,81 @@
-# Sans Default
-
-[buildPlans.iosevka-bkhl-sans-default]
-family = "Iosevka BKHL Sans Default"
-spacing = "normal"
+[buildPlans.iosevka-bkhl-sans-normal]
+family = "Iosevka BKHL Sans Normal"
 serifs = "sans"
+spacing = "normal"
 no-ligation = true
 no-cv-ss = true
 
-[buildPlans.iosevka-bkhl-sans-default.variants.design]
-capital-q = "open-swash"
+  [buildPlans.iosevka-bkhl-sans-normal.variants.design]
+  capital-q = "open-swash"
 
-g = "double-storey"
-m = "short-leg-serifless"
-y = "cursive-serifless"
+  i = "zshaped"
+  l = "zshaped"
+  m = "short-leg-serifless"
+  y = "cursive-serifless"
 
-long-s = "bent-hook-tailed"
-eszet = "longs-s-lig-tailed"
+  cyrl-capital-u = "cursive-serifless"
 
-turn-v = "curly"
-lower-lambda = "curly-turn"
+  long-s = "bent-hook-tailed"
+  eszet = "longs-s-lig-tailed"
 
-zero = "reverse-slashed"
-one = "no-base-long-top-serif"
+  turn-v = "curly"
+  lower-lambda = "curly-turn"
 
-asterisk = "penta-low"
-underscore = "low"
-number-sign = "upright-tall"
-ampersand = "upper-open"
-at = "fourfold-solid-inner-tall"
-dollar = "open"
-pilcrow = "low"
+  zero = "reverse-slashed"
+  one = "no-base-long-top-serif"
 
-[buildPlans.iosevka-bkhl-sans-default.variants.italic]
-g = "double-storey-open"
-
-
-# Sans Fixed
+  ampersand = "upper-open"
+  asterisk = "penta-low"
+  at = "threefold-solid-inner-tall"
+  cent = "open"
+  dollar = "open"
+  number-sign = "upright-tall"
+  paren = "large-contour"
+  pilcrow = "low"
+  underscore = "low"
 
 [buildPlans.iosevka-bkhl-sans-fixed]
 family = "Iosevka BKHL Sans Fixed"
-spacing = "fixed"
 serifs = "sans"
+spacing = "fixed"
 no-ligation = true
 no-cv-ss = true
 
-[buildPlans.iosevka-bkhl-sans-fixed.variants]
-inherits = "buildPlans.iosevka-bkhl-sans-default"
+  [buildPlans.iosevka-bkhl-sans-fixed.variants]
+  inherits = "buildPlans.iosevka-bkhl-sans-normal"
 
-
-# Serif Default
-
-[buildPlans.iosevka-bkhl-serif-default]
-family = "Iosevka BKHL Serif Default"
-spacing = "normal"
+[buildPlans.iosevka-bkhl-serif-normal]
+family = "Iosevka BKHL Serif Normal"
 serifs = "slab"
+spacing = "normal"
 no-ligation = true
 no-cv-ss = true
 
-[buildPlans.iosevka-bkhl-serif-default.variants]
-inherits = "buildPlans.iosevka-bkhl-sans-default"
+  [buildPlans.iosevka-bkhl-serif-normal.variants]
+  inherits = "buildPlans.iosevka-bkhl-sans-normal"
 
-[buildPlans.iosevka-bkhl-serif-default.variants.design]
-m = "short-leg-serifed"
-y = "cursive-serifed"
+    [buildPlans.iosevka-bkhl-serif-normal.variants.design]
+    g = "double-storey"
+    i = "serifed"
+    l = "serifed"
+    m = "short-leg-serifed"
+    y = "cursive-serifed"
 
-one = "base-long-top-serif"
+    cyrl-capital-u = "cursive-serifed"
 
+    one = "base-long-top-serif"
 
-# Serif Fixed
+    at = "threefold-tall"
+
+    [buildPlans.iosevka-bkhl-serif-normal.variants.italic]
+    g = "double-storey-open"
 
 [buildPlans.iosevka-bkhl-serif-fixed]
 family = "Iosevka BKHL Serif Fixed"
-spacing = "fixed"
 serifs = "slab"
+spacing = "fixed"
 no-ligation = true
 no-cv-ss = true
 
-[buildPlans.iosevka-bkhl-serif-fixed.variants]
-inherits = "buildPlans.iosevka-bkhl-serif-default"
+  [buildPlans.iosevka-bkhl-serif-fixed.variants]
+  inherits = "buildPlans.iosevka-bkhl-serif-normal"

@@ -44,7 +44,7 @@ build_iosevka:
     font_dir="{{ justfile_directory () }}/.local/share/fonts/Iosevka"
     build_dir="$(mktemp -d -t iosevka.XXXXXXXX)"
 
-    for plan in ttf::iosevka-bkhl-{sans,serif}-{default,fixed}; do
+    for plan in ttf::iosevka-bkhl-{sans,serif}-{normal,fixed}; do
         podman run --rm -t \
             -v "${build_dir}:/build:z" \
             -v "${font_dir}/private-build-plans.toml:/build/private-build-plans.toml:z" \
