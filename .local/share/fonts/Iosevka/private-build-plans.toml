@@ -30,7 +30,6 @@ no-cv-ss = true
   cent = "open"
   dollar = "open"
   number-sign = "upright-tall"
-  paren = "large-contour"
   pilcrow = "low"
   underscore = "low"
 
