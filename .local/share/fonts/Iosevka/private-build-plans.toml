@@ -26,7 +26,7 @@ no-cv-ss = true
 
   ampersand = "upper-open"
   asterisk = "penta-low"
-  at = "threefold-solid-inner-tall"
+  at = "fourfold-tall"
   cent = "open"
   dollar = "open"
   number-sign = "upright-tall"
@@ -63,8 +63,6 @@ no-cv-ss = true
     cyrl-capital-u = "cursive-serifed"
 
     one = "base-long-top-serif"
-
-    at = "threefold-tall"
 
     [buildPlans.iosevka-bkhl-serif-normal.variants.italic]
     g = "double-storey-open"
