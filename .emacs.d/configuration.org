@@ -624,7 +624,7 @@ This enables the [[https://github.com/joaotavora/eglot][Eglot]] LSP client. This
   + enable Eglot automatically when opening Python buffers.
 
 #+begin_example emacs-lisp
-((python-ts-mode
+((python-mode
   . ((eglot-server-programs . ((python-mode . ("make" "lsp"))))
      (eglot-workspace-configuration . ((:pyls
                                        . (:plugins (:pylint (:enabled t))))))
@@ -635,20 +635,12 @@ This enables the [[https://github.com/joaotavora/eglot][Eglot]] LSP client. This
 #+end_example
 
 *** Languages
-**** Bash
-
-#+begin_src emacs-lisp
-(add-to-list 'major-mode-remap-alist '(sh-mode . bash-ts-mode))
-#+end_src
-
 **** C
 
 #+begin_src emacs-lisp
-(add-to-list 'major-mode-remap-alist '(c-mode . c-ts-mode))
-
-(add-hook 'c-ts-mode-hook
-          (defun my/c-ts-mode-setup ()
-            (setq-local c-ts-mode-indent-style 'linux)))
+(customize-set-variable 'c-default-style '((java-mode . "java")
+                                           (awk-mode . "awk")
+			                               (other . "linux")))
 #+end_src
 
 **** Perl
@@ -672,18 +664,6 @@ This enables the [[https://github.com/joaotavora/eglot][Eglot]] LSP client. This
           (defun my/add-prolog-prettify-symbols ()
             (setq-local prettify-symbols-alist '((":-" . ?←)
                                                  ("->" . ?→)))))
-#+end_src
-
-**** Python
-
-#+begin_src emacs-lisp
-(add-to-list 'major-mode-remap-alist '(python-mode . python-ts-mode))
-#+end_src
-
-**** TOML
-
-#+begin_src emacs-lisp
-(add-to-list 'major-mode-remap-alist '(toml-mode . toml-ts-mode))
 #+end_src
 
 ** Version control
