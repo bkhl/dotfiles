@@ -1,31 +1,31 @@
 [submodule ".emacs.d/site-lisp/orderless"]
 	path = .emacs.d/site-lisp/orderless
 	url = https://github.com/oantolin/orderless.git
-    branch = master
+	branch = master
 [submodule ".emacs.d/site-lisp/trimspace-mode"]
 	path = .emacs.d/site-lisp/trimspace-mode
 	url = https://git.sr.ht/~bkhl/trimspace-mode
-    branch = main
+	branch = main
 [submodule ".emacs.d/site-lisp/olivetti"]
 	path = .emacs.d/site-lisp/olivetti
 	url = https://github.com/rnkn/olivetti.git
-    branch = master
+	branch = master
 [submodule ".emacs.d/site-lisp/whole-line-or-region"]
 	path = .emacs.d/site-lisp/whole-line-or-region
 	url = https://github.com/purcell/whole-line-or-region.git
-    branch = master
+	branch = master
 [submodule ".emacs.d/site-lisp/diff-hl"]
 	path = .emacs.d/site-lisp/diff-hl
 	url = https://github.com/dgutov/diff-hl.git
-    branch = master
+	branch = master
 [submodule ".emacs.d/site-lisp/markdown-mode"]
 	path = .emacs.d/site-lisp/markdown-mode
 	url = https://github.com/jrblevin/markdown-mode.git
-    branch = master
+	branch = master
 [submodule ".emacs.d/site-lisp/dash"]
 	path = .emacs.d/site-lisp/dash
 	url = https://github.com/magnars/dash.el.git
-    branch = master
+	branch = master
 [submodule ".emacs.d/site-lisp/magit"]
 	path = .emacs.d/site-lisp/magit
 	url = https://github.com/magit/magit.git
@@ -33,104 +33,104 @@
 [submodule ".emacs.d/site-lisp/transient"]
 	path = .emacs.d/site-lisp/transient
 	url = https://github.com/magit/transient.git
-    branch = main
+	branch = main
 [submodule ".emacs.d/site-lisp/with-editor"]
 	path = .emacs.d/site-lisp/with-editor
 	url = https://github.com/magit/with-editor.git
-    branch = main
+	branch = main
 [submodule ".emacs.d/site-lisp/dockerfile-mode"]
 	path = .emacs.d/site-lisp/dockerfile-mode
 	url = https://github.com/spotify/dockerfile-mode.git
-    branch = master
+	branch = master
 [submodule ".emacs.d/site-lisp/git-timemachine"]
 	path = .emacs.d/site-lisp/git-timemachine
 	url = https://codeberg.org/pidu/git-timemachine.git
-    branch = master
+	branch = master
 [submodule ".emacs.d/site-lisp/lin"]
 	path = .emacs.d/site-lisp/lin
 	url = https://git.sr.ht/~protesilaos/lin
-    branch = main
+	branch = main
 [submodule ".emacs.d/site-lisp/nov"]
 	path = .emacs.d/site-lisp/nov
 	url = https://depp.brause.cc/nov.el.git
-    branch = master
+	branch = master
 [submodule ".emacs.d/site-lisp/esxml"]
 	path = .emacs.d/site-lisp/esxml
 	url = https://github.com/tali713/esxml.git
-    branch = master
+	branch = master
 [submodule ".emacs.d/site-lisp/compat"]
 	path = .emacs.d/site-lisp/compat
 	url = https://git.sr.ht/~pkal/compat
-    branch = master
+	branch = master
 [submodule ".emacs.d/site-lisp/minions"]
 	path = .emacs.d/site-lisp/minions
 	url = https://github.com/tarsius/minions.git
-    branch = main
+	branch = main
 [submodule ".emacs.d/site-lisp/edit-server"]
 	path = .emacs.d/site-lisp/edit-server
 	url = https://github.com/stsquad/emacs_chrome.git
-    branch = master
+	branch = master
 [submodule ".emacs.d/site-lisp/just-mode"]
 	path = .emacs.d/site-lisp/just-mode
 	url = https://github.com/leon-barrett/just-mode.el.git
-    branch = main
+	branch = main
 [submodule ".emacs.d/site-lisp/modus-themes"]
 	path = .emacs.d/site-lisp/modus-themes
 	url = https://git.sr.ht/~protesilaos/modus-themes
-    branch = main
+	branch = main
 [submodule ".emacs.d/site-lisp/corfu"]
 	path = .emacs.d/site-lisp/corfu
 	url = https://github.com/minad/corfu.git
-    branch = main
+	branch = main
 [submodule ".emacs.d/site-lisp/cape"]
 	path = .emacs.d/site-lisp/cape
 	url = https://github.com/minad/cape.git
-    branch = main
+	branch = main
 [submodule ".emacs.d/site-lisp/lua-mode"]
 	path = .emacs.d/site-lisp/lua-mode
 	url = https://github.com/immerrr/lua-mode.git
-    branch = master
+	branch = master
 [submodule ".emacs.d/site-lisp/vertico"]
 	path = .emacs.d/site-lisp/vertico
 	url = https://github.com/minad/vertico.git
-    branch = main
+	branch = main
 [submodule ".emacs.d/site-lisp/marginalia"]
 	path = .emacs.d/site-lisp/marginalia
 	url = https://github.com/minad/marginalia.git
-    branch = main
+	branch = main
 [submodule ".emacs.d/site-lisp/org-modern"]
 	path = .emacs.d/site-lisp/org-modern
 	url = https://github.com/minad/org-modern.git
-    branch = main
+	branch = main
 [submodule ".emacs.d/site-lisp/gdscript-mode"]
 	path = .emacs.d/site-lisp/gdscript-mode
 	url = https://github.com/godotengine/emacs-gdscript-mode.git
-    branch = master
+	branch = master
 [submodule ".emacs.d/site-lisp/consult"]
 	path = .emacs.d/site-lisp/consult
 	url = https://github.com/minad/consult.git
-    branch = main
+	branch = main
 [submodule ".emacs.d/site-lisp/embark"]
 	path = .emacs.d/site-lisp/embark
 	url = https://github.com/oantolin/embark.git
-    branch = master
+	branch = master
 [submodule ".emacs.d/site-lisp/go-mode"]
 	path = .emacs.d/site-lisp/go-mode
 	url = https://github.com/dominikh/go-mode.el.git
-    branch = master
+	branch = master
 [submodule ".emacs.d/site-lisp/xr"]
 	path = .emacs.d/site-lisp/xr
 	url = https://github.com/mattiase/xr.git
-    branch = master
+	branch = master
 [submodule ".emacs.d/site-lisp/flymake-yamllint"]
 	path = .emacs.d/site-lisp/flymake-yamllint
 	url = https://github.com/shaohme/flymake-yamllint.git
-    branch = main
+	branch = main
 [submodule ".emacs.d/site-lisp/git-link"]
 	path = .emacs.d/site-lisp/git-link
 	url = https://github.com/sshaw/git-link.git
-    branch = master
+	branch = master
 [submodule ".emacs.d/site-lisp/yaml-mode"]
 	path = .emacs.d/site-lisp/yaml-mode
 	url = https://github.com/yoshiki/yaml-mode.git
-    branch = master
+	branch = master
