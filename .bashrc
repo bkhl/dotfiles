@@ -100,28 +100,7 @@ alias emacs="emacsclient --alternate-editor= --no-wait"
 
 
 ####
-# Prompt update command
+# Prompt
 #
 
-_prompt_template="\u@\h:\w\$ "
-
-__update_prompt() {
-    local r=$?
-    PS1="$_prompt_template"
-    if [[ $r != 0 ]]; then
-        PS1="\[\033[1;31m\]?:${r}\[\033[0m\] ${PS1}"
-    fi
-}
-
-if (( ${VTE_VERSION:-0} < 3405 )) \
-    || ! declare -f __vte_prompt_command > /dev/null; then
-    __vte_prompt_command() { :; }
-fi
-
-__prompt_command() {
-    __update_prompt
-    __vte_prompt_command
-    history -a
-}
-
-PROMPT_COMMAND=__prompt_command
+PS1='[\[\033[1;31m\]$(r=$?; (( r == 0 )) || printf "?:%s " $r)\[\033[0m\]\[\e[1m\]\u@\h \w\[\e[0m\]]\$ '
