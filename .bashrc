@@ -103,4 +103,5 @@ alias emacs="emacsclient --alternate-editor= --no-wait"
 # Prompt
 #
 
-PS1='[\[\033[1;31m\]$(r=$?; (( r == 0 )) || printf "?:%s " $r)\[\033[0m\]\[\e[1m\]\u@\h \w\[\e[0m\]]\$ '
+_ps1_aux=([0]=)
+PS1='[\[\033[1;31m\]${_ps1_aux[$?]-?:$? }\[\033[0m\]\[\e[1m\]\u@\h \w\[\e[0m\]]\$ '
