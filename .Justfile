@@ -33,7 +33,7 @@ configure:
     dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/binding "'<Super>t'"
     dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/command "'/usr/bin/gnome-terminal'"
 
-IOSEVKA_VERSION := "24.1.4"
+IOSEVKA_VERSION := "25.0.1"
 IOSEVKA_BUILD_IMAGE := "docker.io/avivace/iosevka-build"
 
 build_iosevka:
