@@ -1363,9 +1363,7 @@ Helpful functions for refactoring regular expressions to ~rx~ expressions.
 
 #+begin_src emacs-lisp
 (use-package go-mode
-  :mode (rx (or (seq (or bos "/") "go.mod")
-                (seq ".go"))
-            eos))
+  :mode (rx (or (seq (or bos "/") "go.mod") ".go") eos))
 #+end_src
 
 **** [[file:site-lisp/just-mode][just-mode]] for Justfile support
