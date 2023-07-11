@@ -1365,11 +1365,7 @@ Helpful functions for refactoring regular expressions to ~rx~ expressions.
 (use-package go-mode
   :mode (rx (or (seq (or bos "/") "go.mod")
                 (seq ".go"))
-            eos)
-  :init
-  (defun my/go-mode-add-hook-gofmt ()
-    (add-hook 'after-save-hook 'gofmt nil t))
-  :hook (go-mode . my/go-mode-add-hook-gofmt))
+            eos))
 #+end_src
 
 **** [[file:site-lisp/just-mode][just-mode]] for Justfile support
