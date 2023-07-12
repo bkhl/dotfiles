@@ -104,4 +104,4 @@ alias emacs="emacsclient --alternate-editor= --no-wait"
 #
 
 _ps1_aux=([0]=)
-PS1='\[\e[1m\][\[\e[0m\]${_ps1_aux[$?]-\[\e[1;31m\]?:$?\[\e[0m\] }\[\e[1m\]\u@\h\[\e[0m\] \[\e[1;34m\]\w\[\e[0m\]\[\e[1m\]]\$\[\e[0m\] '
+PS1='[${_ps1_aux[$?]-\[\e[0;31m\]?:$?\[\e[0m\] }\u@\h \[\e[0;34m\]\w\[\e[0m\]]\$ '
