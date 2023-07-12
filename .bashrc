@@ -103,5 +103,31 @@ alias emacs="emacsclient --alternate-editor= --no-wait"
 # Prompt
 #
 
+function _ps1_git_status() {
+    local root="$(git rev-parse --show-toplevel 2> /dev/null)"
+    [[ -z $root || $root == $HOME ]] && return
+
+    local name_rev="$(git name-rev HEAD)"
+
+    case "$name_rev" in
+        HEAD\ tags*)
+            local name="${name_rev#HEAD tags/}"
+            ;;
+        HEAD\ *)
+            local name="${name_rev#HEAD }"
+            ;;
+        *)
+            return
+            ;;
+    esac
+
+    local status=""
+    if ! git diff --quiet; then
+        status="*"
+    fi
+
+    printf " %s%s" "$name" "$status"
+}
+
 _ps1_aux=([0]=)
-PS1='[${_ps1_aux[$?]-\[\e[0;31m\]?:$?\[\e[0m\] }\u@\h \[\e[0;34m\]\w\[\e[0m\]]\$ '
+PS1='[${_ps1_aux[$?]-\[\e[0;31m\]?:$?\[\e[0m\] }\u@\h \[\e[0;34m\]\w\[\e[0m\]\[\e[0;32m\]$(_ps1_git_status)\[\e[0m\]]\$ '
