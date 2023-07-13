@@ -4,3 +4,6 @@ filesystems=xdg-run/textern;
 
 [System Bus Policy]
 org.freedesktop.Flatpak=talk
+
+[Environment]
+MOZ_ENABLE_WAYLAND=1
