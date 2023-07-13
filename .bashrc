@@ -110,7 +110,7 @@ function _ps1_git_status() {
     local name_rev="$(git name-rev HEAD)"
 
     case "$name_rev" in
-        HEAD\ tags*)
+        HEAD\ tags/*)
             local name="${name_rev#HEAD tags/}"
             ;;
         HEAD\ *)
@@ -130,4 +130,4 @@ function _ps1_git_status() {
 }
 
 _ps1_aux=([0]=)
-PS1='[${_ps1_aux[$?]-\[\e[0;31m\]?:$?\[\e[0m\] }\u@\h \[\e[0;34m\]\w\[\e[0m\]\[\e[0;32m\]$(_ps1_git_status)\[\e[0m\]]\$ '
+PS1='[${_ps1_aux[$?]-\[\e[0;31m\]?:$?\[\e[0m\] }\u@\h \[\e[0;34m\]\w\[\e[0m\]\[\e[2;32m\]$(_ps1_git_status)\[\e[0m\]]\$ '
