@@ -107,19 +107,9 @@ function _ps1_git_status() {
     local root="$(git rev-parse --show-toplevel 2> /dev/null)"
     [[ -z $root || $root == $HOME ]] && return
 
-    local name_rev="$(git name-rev HEAD)"
-
-    case "$name_rev" in
-        HEAD\ tags/*)
-            local name="${name_rev#HEAD tags/}"
-            ;;
-        HEAD\ *)
-            local name="${name_rev#HEAD }"
-            ;;
-        *)
-            return
-            ;;
-    esac
+    local name="$(git branch --show-current)"
+    [[ -z $name ]] && name="$(git tag --points-at HEAD | head -1)"
+    [[ -z $name ]] && name="$(git rev-parse --short HEAD)"
 
     local status=""
     if ! git diff --quiet; then
