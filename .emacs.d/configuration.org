@@ -638,9 +638,15 @@ This enables the [[https://github.com/joaotavora/eglot][Eglot]] LSP client. This
 **** C
 
 #+begin_src emacs-lisp
-(customize-set-variable 'c-default-style '((java-mode . "java")
-                                           (awk-mode . "awk")
-			                               (other . "linux")))
+(use-package cc-mode
+  :custom
+  (c-default-style '((java-mode . "java")
+                     (awk-mode . "awk")
+                     (other . "linux")))
+  :config
+  (add-hook 'c-mode-hook
+            (defun my/add-c-prettify-symbols ()
+              (setq-local prettify-symbols-alist '(("->" . ?→))))))
 #+end_src
 
 **** Perl
