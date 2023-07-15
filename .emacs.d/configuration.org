@@ -736,7 +736,7 @@ To make this work in a project, a couple of variables need to be set, for exampl
       . "https://tracker.company.example/issue/%s"))))
 #+end_example
 
-** ~org-mode~ planning and note-taking
+** Org
 *** Default ~org-mode~ directory
 
 Set a custom variable for the notes directory, so that it can be referred to
@@ -1332,17 +1332,7 @@ This module allows a number of functions to operate on the current line if no re
 #+end_src
 
 ** Programming
-*** Programming languages and file formats
-**** [[file:site-lisp/dockerfile-mode][dockerfile-mode]] for Dockerfile/Containerfile support
-
-#+begin_src emacs-lisp
-(use-package dockerfile-mode
-  :mode (rx (or "/" bos)
-            (or "Containerfile" "Dockerfile")
-            (opt "." (*  (not (any "/"))))
-            eos))
-#+end_src
-
+*** Languages
 **** Emacs Lisp
 ***** [[file:site-lisp/xr][xr]] reverse rx
 
@@ -1377,16 +1367,6 @@ Helpful functions for refactoring regular expressions to ~rx~ expressions.
   :mode (rx (or (seq (or bos "/") "go.mod") ".go") eos))
 #+end_src
 
-**** [[file:site-lisp/just-mode][just-mode]] for Justfile support
-
-#+begin_src emacs-lisp
-(use-package just-mode
-  :mode (rx (or "/" bos)
-            (opt ".")
-            (or "Justfile" "justfile")
-            eos))
-#+end_src
-
 **** [[file:site-lisp/lua-mode][lua-mode]]
 
 #+begin_src emacs-lisp
@@ -1395,32 +1375,6 @@ Helpful functions for refactoring regular expressions to ~rx~ expressions.
   :custom
   (lua-indent-level 4))
 #+end_src
-
-**** YAML
-
-***** [[file:site-lisp/yaml-mode][yaml-mode]]
-
-#+begin_src emacs-lisp
-(use-package yaml-mode
-  :mode (rx ".y" (opt "a") "ml" eos))
-#+end_src
-
-***** [[file:site-lisp/flymake-yamllint][flymake-yamllint]]
-
-#+begin_src emacs-lisp
-(use-package flymake-yamllint)
-#+end_src
-
-To use this in a project a ~.dir-locals.el~ file is needed, looking something like this:
-
-#+begin_example emacs-lisp
-((yaml-mode
-  . ((flymake-yamllint-program . "podman")
-     (flymake-yamllint-arguments
-      . ("run" "--rm" "--interactive" "docker.io/cytopia/yamllint"))
-     (eval . (progn (flymake-yamllint-setup)
-                    (flymake-mode))))))
-#+end_example
 
 ** Version control
 *** [[file:site-lisp/magit][magit]] Git integration
@@ -1531,7 +1485,27 @@ Shows changes that are not committed to the version control system for the file 
     ("C-c g l" . git-link))
 #+end_src
 
-** Reading and writing
+** File formats
+*** [[file:site-lisp/dockerfile-mode][dockerfile-mode]] for Dockerfile/Containerfile support
+
+#+begin_src emacs-lisp
+(use-package dockerfile-mode
+  :mode (rx (or "/" bos)
+            (or "Containerfile" "Dockerfile")
+            (opt "." (*  (not (any "/"))))
+            eos))
+#+end_src
+
+*** [[file:site-lisp/just-mode][just-mode]] for Justfile support
+
+#+begin_src emacs-lisp
+(use-package just-mode
+  :mode (rx (or "/" bos)
+            (opt ".")
+            (or "Justfile" "justfile")
+            eos))
+#+end_src
+
 *** [[file:site-lisp/markdown-mode][markdown-mode]] for Markdown support
 
 #+begin_src emacs-lisp
@@ -1553,6 +1527,33 @@ Shows changes that are not committed to the version control system for the file 
   (add-hook 'nov-mode-hook 'olivetti-mode))
 #+end_src
 
+*** YAML
+
+**** [[file:site-lisp/yaml-mode][yaml-mode]]
+
+#+begin_src emacs-lisp
+(use-package yaml-mode
+  :mode (rx ".y" (opt "a") "ml" eos))
+#+end_src
+
+**** [[file:site-lisp/flymake-yamllint][flymake-yamllint]]
+
+#+begin_src emacs-lisp
+(use-package flymake-yamllint)
+#+end_src
+
+To use this in a project a ~.dir-locals.el~ file is needed, looking something like this:
+
+#+begin_example emacs-lisp
+((yaml-mode
+  . ((flymake-yamllint-program . "podman")
+     (flymake-yamllint-arguments
+      . ("run" "--rm" "--interactive" "docker.io/cytopia/yamllint"))
+     (eval . (progn (flymake-yamllint-setup)
+                    (flymake-mode))))))
+#+end_example
+
+** Org
 *** [[file:site-lisp/org-modern][org-modern]] styling for Org mode
 :PROPERTIES:
 :CUSTOM_ID: org-modern
