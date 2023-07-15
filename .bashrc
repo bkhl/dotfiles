@@ -103,21 +103,53 @@ alias emacs="emacsclient --alternate-editor= --no-wait"
 # Prompt
 #
 
-function _ps1_git_status() {
+if (( ${VTE_VERSION:-0} < 3405 )) \
+    || ! declare -f __vte_prompt_command > /dev/null; then
+    __vte_prompt_command() { :; }
+fi
+
+function __git_prompt_command() {
+    unset __git_prompt_name __git_prompt_colour __git_prompt_style
+
     local root="$(git rev-parse --show-toplevel 2> /dev/null)"
     [[ -z $root || $root == $HOME ]] && return
 
-    local name="$(git branch --show-current)"
-    [[ -z $name ]] && name="$(git tag --points-at HEAD | head -1)"
-    [[ -z $name ]] && name="$(git rev-parse --short HEAD)"
-
-    local status=""
-    if ! git diff --quiet; then
-        status="*"
+    __git_prompt_name="$(git branch --show-current)"
+    if [[ -n $__git_prompt_name ]]; then
+        __git_prompt_color='32'
+    else
+        __git_prompt_name="$(git tag --points-at HEAD | head -1)"
+        if [[ -n $__git_prompt_name ]]; then
+            __git_prompt_color='36'
+        else
+            __git_prompt_name="$(git rev-parse --short HEAD)"
+            if [[ -n $__git_prompt_name ]]; then
+                __git_prompt_color='33'
+            else
+                return
+            fi
+        fi
     fi
 
-    printf " %s%s" "$name" "$status"
+    if git diff --quiet; then
+        __git_prompt_style='0'
+    else
+        __git_prompt_style='3'
+    fi
 }
 
-_ps1_aux=([0]=)
-PS1='[${_ps1_aux[$?]-\[\e[0;31m\]?:$?\[\e[0m\] }\[\e[2;33m\]\u@\h\[\e[0m\] \[\e[0;34m\]\w\[\e[0m\]\[\e[2;32m\]$(_ps1_git_status)\[\e[0m\]]\$ '
+__prompt_command() {
+    __git_prompt_command
+    __vte_prompt_command
+    history -a
+}
+
+PROMPT_COMMAND=__prompt_command
+
+__ps1_rc_map=([0]=)
+__ps1_rc='${__ps1_rc_map[$?]-\[\e[0;31m\]?:$?\[\e[0m\] }'
+__ps1_host='\u@\h'
+__ps1_cwd='\[\e[0;34m\]\w\[\e[0m\]'
+__ps1_git='${__git_prompt_name:+|\[\e[${__git_prompt_style};${__git_prompt_color}m\]${__git_prompt_name}\[\e[0m\]}'
+
+PS1="[${__ps1_rc}${__ps1_host}:${__ps1_cwd}${__ps1_git}]\$ "
