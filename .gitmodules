@@ -30,10 +30,6 @@
 	path = .emacs.d/site-lisp/magit
 	url = https://github.com/magit/magit.git
 	branch = main
-[submodule ".emacs.d/site-lisp/transient"]
-	path = .emacs.d/site-lisp/transient
-	url = https://github.com/magit/transient.git
-	branch = main
 [submodule ".emacs.d/site-lisp/with-editor"]
 	path = .emacs.d/site-lisp/with-editor
 	url = https://github.com/magit/with-editor.git
