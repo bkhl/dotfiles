@@ -150,6 +150,6 @@ __ps1_rc_map=([0]=)
 __ps1_rc='${__ps1_rc_map[$?]-\[\e[0;31m\]?:$?\[\e[0m\] }'
 __ps1_host='\u@\h'
 __ps1_cwd='\[\e[0;34m\]\w\[\e[0m\]'
-__ps1_git='${__git_prompt_name:+|\[\e[${__git_prompt_style};${__git_prompt_color}m\]${__git_prompt_name}\[\e[0m\]}'
+__ps1_git='${__git_prompt_name:+ \[\e[${__git_prompt_style};${__git_prompt_color}m\]${__git_prompt_name}\[\e[0m\]}'
 
-PS1="[${__ps1_rc}${__ps1_host}:${__ps1_cwd}${__ps1_git}]\$ "
+PS1="[${__ps1_rc}${__ps1_host} ${__ps1_cwd}${__ps1_git}]\$ "
