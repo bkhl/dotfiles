@@ -981,17 +981,6 @@ These are add-on packages that are dependencies of other packages further down, 
   :defer)
 #+end_src
 
-*** [[file:site-lisp/transient][transient]]
-
-- [[#git-timemachine][git-timemachine]]
-- [[#magit][magit]]
-
-#+begin_src emacs-lisp
-(use-package transient
-  :defer
-  :load-path "site-lisp/transient/lisp")
-#+end_src
-
 *** [[file:site-lisp/with-editor][with-editor]]
 
 - [[#magit][magit]]
