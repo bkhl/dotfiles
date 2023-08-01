@@ -972,15 +972,6 @@ These are add-on packages that are dependencies of other packages further down, 
   :defer)
 #+end_src
 
-*** [[file:site-lisp/esxml][esxml]]
-
-- [[#nov][nov]]
-
-#+begin_src emacs-lisp
-(use-package esxml
-  :defer)
-#+end_src
-
 *** [[file:site-lisp/with-editor][with-editor]]
 
 - [[#magit][magit]]
@@ -1500,20 +1491,6 @@ Shows changes that are not committed to the version control system for the file 
 #+begin_src emacs-lisp
 (use-package markdown-mode
   :mode (rx ".md" eos))
-#+end_src
-
-*** [[file:site-lisp/nov][nov]] for Epub reading
-:PROPERTIES:
-:CUSTOM_ID: nov
-:END:
-
-#+begin_src emacs-lisp
-(use-package nov
-  :custom
-  (nov-text-width t)
-  :mode ((rx ".epub" eos) . nov-mode)
-  :config
-  (add-hook 'nov-mode-hook 'olivetti-mode))
 #+end_src
 
 *** YAML

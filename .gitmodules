@@ -46,14 +46,6 @@
 	path = .emacs.d/site-lisp/lin
 	url = https://git.sr.ht/~protesilaos/lin
 	branch = main
-[submodule ".emacs.d/site-lisp/nov"]
-	path = .emacs.d/site-lisp/nov
-	url = https://depp.brause.cc/nov.el.git
-	branch = master
-[submodule ".emacs.d/site-lisp/esxml"]
-	path = .emacs.d/site-lisp/esxml
-	url = https://github.com/tali713/esxml.git
-	branch = master
 [submodule ".emacs.d/site-lisp/compat"]
 	path = .emacs.d/site-lisp/compat
 	url = https://git.sr.ht/~pkal/compat
