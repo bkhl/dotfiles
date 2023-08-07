@@ -11,14 +11,15 @@ no-cv-ss = true
   i = "zshaped"
   l = "zshaped"
   m = "short-leg-serifless"
+  t = "bent-hook-asymmetric"
   y = "cursive-serifless"
 
   cyrl-capital-u = "cursive-serifless"
 
   long-s = "bent-hook-tailed"
-  eszet = "longs-s-lig-tailed"
+  eszet = "longs-s-lig-tailed-serifless"
 
-  turn-v = "curly"
+  capital-lambda = "curly-serifless"
   lower-lambda = "curly-turn"
 
   zero = "reverse-slashed"
@@ -58,9 +59,15 @@ no-cv-ss = true
     i = "serifed"
     l = "serifed"
     m = "short-leg-serifed"
+    t = "bent-hook"
     y = "cursive-serifed"
 
     cyrl-capital-u = "cursive-serifed"
+
+    long-s = "bent-hook-bottom-serifed"
+    eszet = "longs-s-lig-tailed-middle-serifed"
+
+    capital-lambda = "curly-base-serifed"
 
     one = "base-long-top-serif"
 
