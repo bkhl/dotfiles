@@ -656,13 +656,14 @@ This enables the [[https://github.com/joaotavora/eglot][Eglot]] LSP client. This
 (use-package cperl-mode
   :custom
   (cperl-file-style "PBP")
-  :hook
-  (cperl-mode . my/add-perl-prettify-symbols)
-  :config
+  :init
   (add-to-list 'major-mode-remap-alist '(perl-mode . cperl-mode))
+  :config
   (defun my/add-perl-prettify-symbols ()
     (setq-local prettify-symbols-alist '(("->" . ?→)
-                                         ("=>" . ?⇒)))))
+                                         ("=>" . ?⇒))))
+  :hook
+  (cperl-mode . my/add-perl-prettify-symbols))
 #+end_src
 
 **** Prolog
