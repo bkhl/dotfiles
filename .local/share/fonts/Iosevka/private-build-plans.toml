@@ -31,6 +31,7 @@ no-cv-ss = true
   at = "fourfold-tall"
   cent = "open"
   dollar = "open"
+  guillemet = "straight"
   number-sign = "upright-tall"
   pilcrow = "low"
   underscore = "low"
@@ -72,6 +73,8 @@ no-cv-ss = true
     capital-lambda = "curly-base-serifed"
 
     one = "base-long-top-serif"
+
+    guillemet = "curly"
 
     [buildPlans.iosevka-bkhl-serif-normal.variants.italic]
     g = "double-storey-open"
