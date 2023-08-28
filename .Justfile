@@ -3,7 +3,7 @@ _default:
 
 INTERFACE_FONT := "Inter 11"
 DOCUMENT_FONT := "Inter 11"
-MONOSPACE_FONT := "Iosevka BKHL Serif Fixed 13"
+MONOSPACE_FONT := "Iosevka BKHL Sans Fixed 13"
 
 INPUT_SOURCES := "[('xkb', 'us+altgr-intl'), ('xkb', 'th')]"
 
