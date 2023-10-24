@@ -21,11 +21,12 @@ no-cv-ss = true
   eszet = "longs-s-lig-tailed-serifless"
 
   capital-lambda = "curly-serifless"
-  lower-lambda = "curly-turn"
+  lower-lambda = "tailed-turn"
 
   zero = "reverse-slashed"
   one = "no-base-long-top-serif"
-
+  five = "upright-flat"
+  
   ampersand = "upper-open"
   asterisk = "penta-low"
   at = "fourfold-tall"
@@ -73,6 +74,7 @@ no-cv-ss = true
     capital-lambda = "curly-base-serifed"
 
     one = "base-long-top-serif"
+    five = "upright-arched"
 
     guillemet = "curly"
 
