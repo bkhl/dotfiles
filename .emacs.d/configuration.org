@@ -439,6 +439,12 @@ When saving a file to a directory that doesn't exist, offer to create it.
          (make-directory dir t))))))
 #+end_src
 
+*** Disable message when saving files
+
+#+begin_src emacs-lisp
+(customize-set-variable 'save-silently t)
+#+end_src
+
 *** Automatically sync updated files
 
 If a file changes, automatically refresh buffers containing the file, so that it doesn't get out of sync.
