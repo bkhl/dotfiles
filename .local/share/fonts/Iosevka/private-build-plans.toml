@@ -25,7 +25,6 @@ no-cv-ss = true
 
   zero = "reverse-slashed"
   one = "no-base-long-top-serif"
-  five = "upright-flat"
   
   ampersand = "upper-open"
   asterisk = "penta-low"
@@ -74,7 +73,6 @@ no-cv-ss = true
     capital-lambda = "curly-base-serifed"
 
     one = "base-long-top-serif"
-    five = "upright-arched"
 
     guillemet = "curly"
 
