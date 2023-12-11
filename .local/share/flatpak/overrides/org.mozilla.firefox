@@ -1,6 +1,5 @@
 [Context]
 sockets=session-bus;
-filesystems=xdg-run/textern;
 
 [System Bus Policy]
 org.freedesktop.Flatpak=talk
