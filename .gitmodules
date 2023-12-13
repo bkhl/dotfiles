@@ -48,8 +48,8 @@
 	branch = main
 [submodule ".emacs.d/site-lisp/compat"]
 	path = .emacs.d/site-lisp/compat
-	url = https://git.sr.ht/~pkal/compat
-	branch = master
+	url = https://github.com/emacs-compat/compat.git
+	branch = main
 [submodule ".emacs.d/site-lisp/minions"]
 	path = .emacs.d/site-lisp/minions
 	url = https://github.com/tarsius/minions.git
