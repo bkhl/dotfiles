@@ -122,3 +122,7 @@
 	path = .emacs.d/site-lisp/yaml-mode
 	url = https://github.com/yoshiki/yaml-mode.git
 	branch = master
+[submodule ".emacs.d/site-lisp/transient"]
+	path = .emacs.d/site-lisp/transient
+	url = https://github.com/magit/transient.git
+	branch = main
