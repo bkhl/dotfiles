@@ -979,6 +979,15 @@ These are add-on packages that are dependencies of other packages further down, 
   :defer)
 #+end_src
 
+*** [[file:site-lisp/transient][transient]]
+
+- [[#magit][magit]]
+
+#+begin_src emacs-lisp
+(use-package transient
+  :load-path "site-lisp/transient/lisp")
+#+end_src
+
 *** [[file:site-lisp/with-editor][with-editor]]
 
 - [[#magit][magit]]
