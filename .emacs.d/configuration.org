@@ -327,12 +327,6 @@ In ~next-error~ buffers, highligt the currently visited error.
 #+end_src
 
 ** Key bindings
-*** Enable CUA mode
-
-#+begin_src emacs-lisp
-(cua-mode)
-#+end_src
-
 *** Disable ~C-z~
 
 Disabling ~C-z~, which normally minimizes the window, which is rather distracting.
