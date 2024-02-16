@@ -1005,6 +1005,24 @@ These are add-on packages that are dependencies of other packages further down, 
   (modus-themes-load-theme 'modus-operandi))
 #+end_src
 
+*** [[file:site-lisp/auto-dark][auto-dark]] to follow desktop dark mode setting
+
+#+begin_src emacs-lisp
+(defun my/load-auto-dark (frame)
+  (use-package auto-dark
+    :demand t
+    :custom
+    (auto-dark-dark-theme 'modus-vivendi)
+    (auto-dark-light-theme 'modus-operandi)
+    :config
+    (auto-dark-mode))
+  (remove-hook 'server-after-make-frame-hook #'my/load-auto-dark))
+
+(if (bound-and-true-p server-process)
+    (add-hook 'server-after-make-frame-hook #'my/load-auto-dark)
+  (my/load-auto-dark nil))
+#+end_src
+
 *** [[file:site-lisp/minions][minions]] mode line minor mode listing improvements
 
 Hides minor modes in a popup menu to preserve space and make the mode line less noisy.
