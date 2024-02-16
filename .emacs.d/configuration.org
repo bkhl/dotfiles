@@ -169,14 +169,17 @@ Enable Emoji font if available. ☃
 This is run as a hook after the first frame is created, as this will otherwise not work when Emacs is started in daemon mode, or by ~emacsclient~.
 
 #+begin_src emacs-lisp
-(add-hook 'server-after-make-frame-hook
-          (defun my/set-fontset-fonts ()
-            (dolist (font-spec '((#x2600 . #x26ff)
-                                 emoji))
-              (set-fontset-font t font-spec
-                                "Noto Color Emoji"))
-            (remove-hook 'server-after-make-frame-hook
-                         'my/set-fontset-fonts)))
+(defun my/set-fontset-fonts ()
+  (dolist (font-spec '((#x2600 . #x26ff)
+                       emoji))
+    (set-fontset-font t font-spec
+                      "Noto Color Emoji"))
+  (remove-hook 'server-after-make-frame-hook
+               'my/set-fontset-fonts))
+
+(if (bound-and-true-p server-process)
+    (add-hook 'server-after-make-frame-hook #'my/set-fontset-fonts)
+  (my/set-fontset-fonts))
 #+end_src
 
 *** Disable bell
