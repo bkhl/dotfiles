@@ -1428,7 +1428,7 @@ Load ~magit~, for working with Git.
     '(4
       "-l"
       "Set all tests label"
-      "-omerge_request.unlabel=test::skip -o merge_request.label=test::all"))
+      "-o merge_request.unlabel=test::skip -o merge_request.label=test::all"))
   (transient-append-suffix 'magit-push "-l"
     '(4
       "-L"
