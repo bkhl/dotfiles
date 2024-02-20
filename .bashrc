@@ -96,7 +96,7 @@ alias ll='ls -l --color=auto --classify --group-directories-first'
 alias l.='ls -d --color=auto --classify --group-directories-first .*'
 alias ip='ip --color=auto'
 alias sudo='sudo '
-alias e="emacsclient --no-wait"
+alias e="emacsclient --alternate-editor= --no-wait"
 
 
 ####

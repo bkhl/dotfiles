@@ -42,7 +42,11 @@ for d in $HOME/.local/bin $HOME/.local/opt/*/bin; do
     fi
 done
 
+# Enable using emacsclient as editor of other commands.  Setting
+# ALTERNATE_EDITOR like this makes emacsclient start a server in the background
+# and try to reconnect, if it can't find one.
 export EDITOR="emacsclient --create-frame --tty"
+export ALTERNATE_EDITOR=""
 
 # Use less with -R (show ANSI colour)
 export PAGER='less -R'
