@@ -2,8 +2,8 @@
 family = "Iosevka BKHL Sans Normal"
 serifs = "sans"
 spacing = "normal"
-no-ligation = true
-no-cv-ss = true
+noLigation = true
+noCvSs = true
 
   [buildPlans.iosevka-bkhl-sans-normal.variants.design]
   capital-q = "open-swash"
@@ -40,8 +40,8 @@ no-cv-ss = true
 family = "Iosevka BKHL Sans Fixed"
 serifs = "sans"
 spacing = "fixed"
-no-ligation = true
-no-cv-ss = true
+noLigation = true
+noCvSs = true
 
   [buildPlans.iosevka-bkhl-sans-fixed.variants]
   inherits = "buildPlans.iosevka-bkhl-sans-normal"
@@ -50,8 +50,8 @@ no-cv-ss = true
 family = "Iosevka BKHL Serif Normal"
 serifs = "slab"
 spacing = "normal"
-no-ligation = true
-no-cv-ss = true
+noLigation = true
+noCvSs = true
 
   [buildPlans.iosevka-bkhl-serif-normal.variants]
   inherits = "buildPlans.iosevka-bkhl-sans-normal"
@@ -83,8 +83,8 @@ no-cv-ss = true
 family = "Iosevka BKHL Serif Fixed"
 serifs = "slab"
 spacing = "fixed"
-no-ligation = true
-no-cv-ss = true
+noLigation = true
+noCvSs = true
 
   [buildPlans.iosevka-bkhl-serif-fixed.variants]
   inherits = "buildPlans.iosevka-bkhl-serif-normal"
