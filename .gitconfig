@@ -4,7 +4,7 @@
 [include]
     path = .gitconfig.local
 [push]
-	default = current
+	autoSetupRemote = true
 [alias]
 	st = status
 [fetch]
