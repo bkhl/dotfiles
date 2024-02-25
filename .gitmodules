@@ -58,10 +58,6 @@
 	path = .emacs.d/site-lisp/edit-server
 	url = https://github.com/stsquad/emacs_chrome.git
 	branch = master
-[submodule ".emacs.d/site-lisp/just-mode"]
-	path = .emacs.d/site-lisp/just-mode
-	url = https://github.com/leon-barrett/just-mode.el.git
-	branch = main
 [submodule ".emacs.d/site-lisp/modus-themes"]
 	path = .emacs.d/site-lisp/modus-themes
 	url = https://git.sr.ht/~protesilaos/modus-themes
