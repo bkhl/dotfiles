@@ -130,3 +130,7 @@
 	path = .emacs.d/site-lisp/fennel-mode
 	url = https://git.sr.ht/~technomancy/fennel-mode
 	branch = main
+[submodule ".emacs.d/site-lisp/fancy-compilation"]
+	path = .emacs.d/site-lisp/fancy-compilation
+	url = https://codeberg.org/ideasman42/emacs-fancy-compilation.git
+	branch = main

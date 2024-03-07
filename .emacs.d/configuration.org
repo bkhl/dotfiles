@@ -1343,6 +1343,16 @@ This module allows a number of functions to operate on the current line if no re
 #+end_src
 
 ** Programming
+*** [[file:site-lisp/fancy-compilation][fancy-compilation]] to improve compilation output buffers
+
+#+begin_src emacs-lisp
+(use-package fancy-compilation
+  :custom
+  (fancy-compilation-override-colors nil)
+  :config
+  (fancy-compilation-mode))
+#+end_src
+
 *** Languages
 **** Emacs Lisp
 ***** [[file:site-lisp/xr][xr]] reverse rx
