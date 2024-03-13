@@ -565,6 +565,14 @@ Prevents killing text in Emacs from irrevocably deleting things from the system 
 (put 'upcase-region 'disabled nil)
 #+end_src
 
+*** Make replacements and completions preserve case
+
+This also affects ~dabbrev~ completions.
+
+#+begin_src emacs-lisp
+(customize-set-variable 'case-replace nil)
+#+end_src
+
 ** Programming
 *** Enable syntax highlighting everywhere
 
