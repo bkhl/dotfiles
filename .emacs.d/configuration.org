@@ -1083,67 +1083,6 @@ A minor mode that automatically adjusts margins &c. for reading and writing pros
   (ewww . olivetti-mode))
 #+end_src
 
-*** Completion
-
-**** [[file:site-lisp/corfu][corfu]] for completion at point
-:PROPERTIES:
-:CUSTOM_ID: corfu
-:END:
-
-#+begin_src emacs-lisp
-(use-package corfu
-  :custom
-  (corfu-auto t)
-  :config
-  (global-corfu-mode))
-#+end_src
-
-**** [[file:site-lisp/cape][cape]] completion at point extensions
-:PROPERTIES:
-:CUSTOM_ID: cape
-:END:
-
-#+begin_src emacs-lisp
-(use-package cape
-  :make-autoloads
-  :bind (("C-c p p" . completion-at-point)
-         ("C-c p t" . complete-tag)
-         ("C-c p d" . cape-dabbrev)
-         ("C-c p h" . cape-hist)
-         ("C-c p f" . cape-file)
-         ("C-c p k" . cape-keyword)
-         ("C-c p s" . cape-symbol)
-         ("C-c p a" . cape-abbrev)
-         ("C-c p i" . cape-ispell)
-         ("C-c p l" . cape-line)
-         ("C-c p w" . cape-dict)
-         ("C-c p \\" . cape-tex)
-         ("C-c p _" . cape-tex)
-         ("C-c p ^" . cape-tex)
-         ("C-c p &" . cape-sgml)
-         ("C-c p r" . cape-rfc1345))
-  :init
-  (add-to-list 'completion-at-point-functions #'cape-dabbrev)
-  (add-to-list 'completion-at-point-functions #'cape-file))
-#+end_src
-
-**** [[file:site-lisp/orderless][orderless]] completion style
-
-[[https://github.com/oantolin/orderless][Orderless]] provides a completion style that allows typing components of a canditate out of order.
-
-#+begin_src emacs-lisp
-(use-package orderless
-  :custom
-  (completition-styles '(orderless basic))
-  (completion-category-defaults nil)
-  (completion-category-overrides '((file (styles partial-completion))))
-  :config
-  (let ((hook (defun my/minibuffer-setup ()
-                (setq-local completion-styles '(orderless basic)))))
-    (remove-hook 'minibuffer-setup-hook hook)
-    (add-hook 'minibuffer-setup-hook hook 1)))
-#+end_src
-
 *** Minibuffer
 
 **** [[file:site-lisp/vertico][vertico]] for minibuffer completion
@@ -1340,6 +1279,67 @@ This module allows a number of functions to operate on the current line if no re
 (use-package whole-line-or-region
   :config
   (whole-line-or-region-global-mode))
+#+end_src
+
+*** Completion
+
+**** [[file:site-lisp/corfu][corfu]] for completion at point
+:PROPERTIES:
+:CUSTOM_ID: corfu
+:END:
+
+#+begin_src emacs-lisp
+(use-package corfu
+  :custom
+  (corfu-auto t)
+  :config
+  (global-corfu-mode))
+#+end_src
+
+**** [[file:site-lisp/cape][cape]] completion at point extensions
+:PROPERTIES:
+:CUSTOM_ID: cape
+:END:
+
+#+begin_src emacs-lisp
+(use-package cape
+  :make-autoloads
+  :bind (("C-c p p" . completion-at-point)
+         ("C-c p t" . complete-tag)
+         ("C-c p d" . cape-dabbrev)
+         ("C-c p h" . cape-hist)
+         ("C-c p f" . cape-file)
+         ("C-c p k" . cape-keyword)
+         ("C-c p s" . cape-symbol)
+         ("C-c p a" . cape-abbrev)
+         ("C-c p i" . cape-ispell)
+         ("C-c p l" . cape-line)
+         ("C-c p w" . cape-dict)
+         ("C-c p \\" . cape-tex)
+         ("C-c p _" . cape-tex)
+         ("C-c p ^" . cape-tex)
+         ("C-c p &" . cape-sgml)
+         ("C-c p r" . cape-rfc1345))
+  :init
+  (add-to-list 'completion-at-point-functions #'cape-dabbrev)
+  (add-to-list 'completion-at-point-functions #'cape-file))
+#+end_src
+
+**** [[file:site-lisp/orderless][orderless]] completion style
+
+[[https://github.com/oantolin/orderless][Orderless]] provides a completion style that allows typing components of a canditate out of order.
+
+#+begin_src emacs-lisp
+(use-package orderless
+  :custom
+  (completition-styles '(orderless basic))
+  (completion-category-defaults nil)
+  (completion-category-overrides '((file (styles partial-completion))))
+  :config
+  (let ((hook (defun my/minibuffer-setup ()
+                (setq-local completion-styles '(orderless basic)))))
+    (remove-hook 'minibuffer-setup-hook hook)
+    (add-hook 'minibuffer-setup-hook hook 1)))
 #+end_src
 
 ** Programming
