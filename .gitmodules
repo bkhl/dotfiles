@@ -60,7 +60,7 @@
 	branch = master
 [submodule ".emacs.d/site-lisp/modus-themes"]
 	path = .emacs.d/site-lisp/modus-themes
-	url = https://git.sr.ht/~protesilaos/modus-themes
+	url = https://github.com/protesilaos/modus-themes.git
 	branch = main
 [submodule ".emacs.d/site-lisp/corfu"]
 	path = .emacs.d/site-lisp/corfu
