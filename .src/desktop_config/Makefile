@@ -1,4 +1,4 @@
-INTERFACE_FONT := Inter 11
+IINTERFACE_FONT := Inter 11
 DOCUMENT_FONT := Inter 11
 MONOSPACE_FONT := Iosevka BKHL Sans Fixed 13
 
@@ -26,6 +26,9 @@ config:
 	dconf write /org/gnome/desktop/input-sources/mru-sources "$(INPUT_SOURCES)"
 	dconf write /org/gnome/desktop/input-sources/per-window 'false'
 	dconf write /org/gnome/desktop/input-sources/xkb-options "['lv3:ralt_switch', 'compose:caps']"
+
+	# Trackball settings
+	dconf write /org/gnome/desktop/peripherals/trackball/scroll-wheel-emulation-button 8
 
 	# Keyboard shortcut to launch terminal
 	dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']"
