@@ -1,4 +1,4 @@
-IINTERFACE_FONT := Inter 11
+INTERFACE_FONT := Inter 11
 DOCUMENT_FONT := Inter 11
 MONOSPACE_FONT := Iosevka BKHL Sans Fixed 13
 
