@@ -875,6 +875,27 @@ Reduce conflict with the global ~windmove~ key bindings.
 (add-hook 'org-shiftright-final-hook 'windmove-right)
 #+end_src
 
+**** Copy link location
+
+Function to copy the destination of a link in Org.
+
+I'd like to extend this to work more generally for example for ~bug-reference-mode~.
+
+#+begin_src emacs-lisp
+(defun my/org-copy-link (&optional arg)
+  (interactive "P")
+  (let* ((link (org-element-lineage (org-element-context) '(link) t))
+         (type (org-element-property :type link))
+         (path (org-element-property :path link)))
+    (if (and type path)
+        (let ((url (concat type ":" path)))
+          (kill-new url)
+          (message url))
+      (message "Not a link"))))
+
+(define-key org-mode-map (kbd "C-c y") #'my/org-copy-link)
+#+end_src
+
 *** Capturing
 
 Add templates for use by ~org-capture~.
