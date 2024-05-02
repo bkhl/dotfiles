@@ -1015,6 +1015,16 @@ These are add-on packages that are dependencies of other packages further down, 
   (modus-themes-load-theme 'modus-operandi))
 #+end_src
 
+*** [[file:site-lisp/spacious-padding][spacious-padding]] to increase padding in frames/windows
+
+#+begin_src emacs-lisp
+(use-package spacious-padding
+  :custom
+  (spacious-padding-subtle-mode-line t)
+  :config
+  (spacious-padding-mode))
+#+end_src
+
 *** [[file:site-lisp/auto-dark][auto-dark]] to follow desktop dark mode setting
 
 #+begin_src emacs-lisp
@@ -1084,6 +1094,8 @@ A minor mode that automatically adjusts margins &c. for reading and writing pros
 
 #+begin_src emacs-lisp
 (use-package olivetti
+  :custom
+  (olivetti-style nil)
   :hook
   (Info-mode . olivetti-mode)
   (org-mode . olivetti-mode)
