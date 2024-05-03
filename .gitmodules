@@ -134,6 +134,3 @@
 	path = .emacs.d/site-lisp/fancy-compilation
 	url = https://codeberg.org/ideasman42/emacs-fancy-compilation.git
 	branch = main
-[submodule ".emacs.d/site-lisp/spacious-padding"]
-	path = .emacs.d/site-lisp/spacious-padding
-	url = https://github.com/protesilaos/spacious-padding
