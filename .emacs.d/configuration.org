@@ -573,6 +573,14 @@ This also affects ~dabbrev~ completions.
 (customize-set-variable 'case-replace nil)
 #+end_src
 
+*** Completion
+
+**** Use ~C-<tab>~ for completion
+
+#+begin_src emacs-lisp
+(global-set-key (kbd "C-<tab>") 'completion-at-point)
+#+end_src
+
 ** Programming
 *** Enable syntax highlighting everywhere
 
@@ -1321,8 +1329,6 @@ This module allows a number of functions to operate on the current line if no re
 
 #+begin_src emacs-lisp
 (use-package corfu
-  :custom
-  (corfu-auto t)
   :config
   (global-corfu-mode))
 #+end_src
