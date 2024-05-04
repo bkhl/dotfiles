@@ -1312,6 +1312,19 @@ This adds some extra integration between Embark and Consult.
   :hook
   (embark-collect-mode . consult-preview-at-point-mode))
 #+end_src
+*** [[file:site-lisp/pulsar][pulsar]] to temporarily highlight current line
+
+#+begin_src emacs-lisp
+(use-package pulsar
+  :custom
+  (pulsar-face 'pulsar-yellow)
+  :bind
+  (("C-c o" . pulsar-pulse-line))
+  :hook
+  (next-error . pulsar-pulse-line)
+  :config
+  (pulsar-global-mode))
+#+end_src
 
 ** Text editing
 *** [[file:site-lisp/substitute][substitute]] text replacement commands
