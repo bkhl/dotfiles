@@ -134,3 +134,7 @@
 	path = .emacs.d/site-lisp/fancy-compilation
 	url = https://codeberg.org/ideasman42/emacs-fancy-compilation.git
 	branch = main
+[submodule ".emacs.d/site-lisp/substitute"]
+	path = .emacs.d/site-lisp/substitute
+	url = https://github.com/protesilaos/substitute.git
+	branch = main

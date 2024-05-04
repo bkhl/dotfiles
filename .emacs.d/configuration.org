@@ -1300,6 +1300,19 @@ This adds some extra integration between Embark and Consult.
 #+end_src
 
 ** Text editing
+*** [[file:site-lisp/substitute][substitute]] text replacement commands
+
+#+begin_src emacs-lisp
+(use-package substitute
+  :custom
+  (substitute-highlight t)
+  :bind
+  (("M-# s" . substitute-target-below-point)
+   ("M-# r" . substitute-target-above-point)
+   ("M-# d" . substitute-target-in-defun)
+   ("M-# b" . substitute-target-in-buffer)))
+#+end_src
+
 *** [[file:site-lisp/trimspace-mode][trimspace-mode]] for trimming trailing spaces and newlines
 
 ~trimspace-mode~ sets things up so that when a file is opened, it enables deleting trailing whitespace and newlines before saving the file, unless the file when first opened already has traling whitespace of each type.
