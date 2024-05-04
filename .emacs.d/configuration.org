@@ -313,6 +313,12 @@ Setting this to ~non-empty~ means this won't happen for empty strings, like when
 (customize-set-variable 'mouse-drag-copy-region 'non-empty)
 #+end_src
 
+*** Show matching parenthesis context when offscreen
+
+#+begin_src emacs-lisp
+(customize-set-variable 'show-paren-context-when-offscreen 'overlay)
+#+end_src
+
 ** Documentation and help
 *** Make ~apropos~ search more extensively
 
