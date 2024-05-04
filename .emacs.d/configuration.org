@@ -2,6 +2,7 @@
 #+AUTHOR: Björn Lindström
 #+EMAIL: bkhl@elektrubadur.se
 #+STARTUP: overview
+#+PROPERTY: header-args :results silent
 
 * Introduction
 
@@ -1209,10 +1210,9 @@ Allow minibuffer commands while in the minibuffer.
          ("C-x r b" . consult-bookmark)  ;; replaces `bookmark-jump'
          ("C-x p b" . consult-project-buffer)  ;; replaces `project-switch-to-buffer'
 
-         ;; Custom M-# bindings for fast register access
-         ("M-#" . consult-register-load)
+         ;; Custom bindings for quick register access
          ("M-'" . consult-register-store)  ;; replaces `abbrev-prefix-mark' (unrelated)
-         ("C-M-#" . consult-register)
+         ("M-\"" . consult-register-load)
 
          ;; Other custom bindings
          ("M-y" . consult-yank-pop)  ;; replaces `yank-pop'
@@ -1239,6 +1239,7 @@ Allow minibuffer commands while in the minibuffer.
          ("M-s L" . consult-line-multi)
          ("M-s k" . consult-keep-lines)
          ("M-s u" . consult-focus-lines)
+         ("M-s '" . consult-register)
 
          ;; Isearch integration
          ("M-s e" . consult-isearch-history)
