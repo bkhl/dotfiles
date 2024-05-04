@@ -1293,7 +1293,8 @@ This adds some extra integration between Embark and Consult.
 
 #+begin_src emacs-lisp
 (use-package embark-consult
-  :after consult
+  :after (embark consult)
+  :demand t
   :hook
   (embark-collect-mode . consult-preview-at-point-mode))
 #+end_src
