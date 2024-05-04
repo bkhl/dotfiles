@@ -305,6 +305,14 @@ In ~next-error~ buffers, highligt the currently visited error.
 (customize-set-variable 'cursor-type 'bar)
 #+end_src
 
+*** Save to kill ring when adjusting region with mouse
+
+Setting this to ~non-empty~ means this won't happen for empty strings, like when accidentally dragging for less than a character's width.
+
+#+begin_src emacs-lisp
+(customize-set-variable 'mouse-drag-copy-region 'non-empty)
+#+end_src
+
 ** Documentation and help
 *** Make ~apropos~ search more extensively
 
