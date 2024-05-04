@@ -338,6 +338,12 @@ Setting this to ~non-empty~ means this won't happen for empty strings, like when
 (customize-set-variable 'describe-bindings-outline t)
 #+end_src
 
+*** Reuse help window if already shown
+
+#+begin_src emacs-lisp
+(customize-set-variable 'help-window-keep-selected t)
+#+end_src
+
 ** Key bindings
 *** Disable ~C-z~
 
