@@ -47,7 +47,7 @@ noLigation = true
 noCvSs = true
 
   [buildPlans.iosevka-bkhl-sans-fixed.namingOverride]
-  inherits = "buildPlans.iosevka-bkhl-sans-normal"
+  description = "Spatial efficient monospace font family for programming. Built from code. http://be5invis.github.io/Iosevka Custom build by Björn Lindström. https://git.sr.ht/~bkhl/dotfiles/tree/main/item/.src/iosevka"
 
   [buildPlans.iosevka-bkhl-sans-fixed.variants]
   inherits = "buildPlans.iosevka-bkhl-sans-normal"
@@ -60,7 +60,7 @@ noLigation = true
 noCvSs = true
 
   [buildPlans.iosevka-bkhl-serif-normal.namingOverride]
-  inherits = "buildPlans.iosevka-bkhl-sans-normal"
+  description = "Spatial efficient monospace font family for programming. Built from code. http://be5invis.github.io/Iosevka Custom build by Björn Lindström. https://git.sr.ht/~bkhl/dotfiles/tree/main/item/.src/iosevka"
 
   [buildPlans.iosevka-bkhl-serif-normal.variants]
   inherits = "buildPlans.iosevka-bkhl-sans-normal"
@@ -96,7 +96,7 @@ noLigation = true
 noCvSs = true
 
   [buildPlans.iosevka-bkhl-serif-fixed.namingOverride]
-  inherits = "buildPlans.iosevka-bkhl-serif-normal"
+  description = "Spatial efficient monospace font family for programming. Built from code. http://be5invis.github.io/Iosevka Custom build by Björn Lindström. https://git.sr.ht/~bkhl/dotfiles/tree/main/item/.src/iosevka"
 
   [buildPlans.iosevka-bkhl-serif-fixed.variants]
   inherits = "buildPlans.iosevka-bkhl-serif-normal"
