@@ -1575,6 +1575,8 @@ Shows changes that are not committed to the version control system for the file 
 
 #+begin_src emacs-lisp
 (use-package diff-hl
+  :custom
+  (diff-hl-draw-borders nil)
   :config
   (global-diff-hl-mode)
   (add-hook 'magit-pre-refresh-hook
