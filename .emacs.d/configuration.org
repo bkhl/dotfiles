@@ -1326,12 +1326,13 @@ This adds some extra integration between Embark and Consult.
   :custom
   (pulsar-face 'pulsar-yellow)
   :bind
-  (("C-c o" . pulsar-pulse-line))
+  (("M-P" . pulsar-pulse-line))
   :hook
   (next-error . pulsar-pulse-line)
   :config
   (pulsar-global-mode))
 #+end_src
+
 *** [[file:site-lisp/free-keys][free-keys]] to show free bindings
 
 This package can show available bindings in the current buffer.
