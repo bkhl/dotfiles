@@ -1332,6 +1332,14 @@ This adds some extra integration between Embark and Consult.
   :config
   (pulsar-global-mode))
 #+end_src
+*** [[file:site-lisp/free-keys][free-keys]] to show free bindings
+
+This package can show available bindings in the current buffer.
+
+#+begin_src emacs-lisp
+(use-package free-keys
+  :commands free-keys)
+#+end_src
 
 ** Text editing
 *** [[file:site-lisp/substitute][substitute]] text replacement commands
