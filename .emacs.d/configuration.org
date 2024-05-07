@@ -535,6 +535,14 @@ This edits whitespace around point by cycling between leaving only one space, de
 (global-set-key (kbd "M-S-SPC") #'cycle-spacing)
 #+end_src
 
+*** Bind ~duplicate-dwim~ to ~M-R~
+
+Duplicates current line or active region.
+
+#+begin_src emacs-lisp
+(global-set-key (kbd "M-R") #'duplicate-dwim)
+#+end_src
+
 *** Use single space to delimit sentences
 
 #+begin_src emacs-lisp
