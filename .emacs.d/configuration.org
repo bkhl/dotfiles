@@ -518,6 +518,14 @@ Make ~M-z~ kill characters up to the character /before/ the next occurrence of t
 (global-set-key (kbd "M-z") #'zap-up-to-char)
 #+end_src
 
+*** Bind ~cycle-spacing~ to ~M-S-SPC~
+
+This edits whitespace around point by cycling between leaving only one space, deleting the space, and going back to what was there before.
+
+#+begin_src emacs-lisp
+(global-set-key (kbd "M-S-SPC") #'cycle-spacing)
+#+end_src
+
 *** Use single space to delimit sentences
 
 #+begin_src emacs-lisp
