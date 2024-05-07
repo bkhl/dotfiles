@@ -212,6 +212,15 @@ Setting this variable allows resizing window by pixels, rather than rounding to 
 (customize-set-variable 'frame-resize-pixelwise t)
 #+end_src
 
+*** Show multiple messages together in minibuffer
+
+Accumulate messages coming in quick succession and show them together in the minibuffer.
+
+#+begin_src emacs-lisp
+(customize-set-variable 'set-message-functions '(set-multi-message))
+#+end_src
+
+
 *** Give ~emacsclient~ frames focus
 
 Give new ~emacsclient~ frames focus when created.
