@@ -11,8 +11,12 @@
 	ff = only
 [push]
 	autoSetupRemote = true
+[status]
+    submoduleSummary = true
 [alias]
 	st = status
+[diff]
+    submodule = log
 [diff "elisp"]
     xfuncname="^\\((((def\\S+)|use-package)\\s+\\S+)"
 [diff "org"]
