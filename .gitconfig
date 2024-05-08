@@ -6,18 +6,32 @@
 [init]
 	defaultBranch = main
 [fetch]
+    fsckobjects = true
 	parallel = 10
 [pull]
 	ff = only
 [push]
 	autoSetupRemote = true
+[transfer]
+    fsckobjects = true
+[receive]
+    fsckobjects = true
+[merge]
+    conflictstyle = zdiff3
+[rebase]
+    autosquash = true
+[branch]
+    sort = -committerdate
+[tag]
+    sort = taggerdate
 [status]
     submoduleSummary = true
-[alias]
-	st = status
 [diff]
+    algorithm = histogram
     submodule = log
 [diff "elisp"]
     xfuncname="^\\((((def\\S+)|use-package)\\s+\\S+)"
 [diff "org"]
     xfuncname="^\\*+ +(.*)$"
+[alias]
+	st = status
