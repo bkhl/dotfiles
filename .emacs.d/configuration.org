@@ -1242,8 +1242,8 @@ Allow minibuffer commands while in the minibuffer.
          ("C-x p b" . consult-project-buffer)  ;; replaces `project-switch-to-buffer'
 
          ;; Custom bindings for quick register access
-         ("M-'" . consult-register-store)  ;; replaces `abbrev-prefix-mark' (unrelated)
-         ("M-\"" . consult-register-load)
+         ("M-\"" . consult-register-store)
+         ("M-'" . consult-register-load)  ;; replaces `abbrev-prefix-mark' (unrelated)
 
          ;; Other custom bindings
          ("M-y" . consult-yank-pop)  ;; replaces `yank-pop'
