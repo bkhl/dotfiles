@@ -709,10 +709,11 @@ This enables the [[https://github.com/joaotavora/eglot][Eglot]] LSP client. This
   :custom
   (c-default-style '((java-mode . "java")
                      (awk-mode . "awk")
-                     (other . "linux")))
+                     (other . "my")))
   :hook
   (c-mode . my/add-c-prettify-symbols)
   :config
+  (c-add-style "my" '("linux" (c-basic-offset . 2)))
   (defun my/add-c-prettify-symbols ()
     (setq-local prettify-symbols-alist '(("->" . ?→)))))
 #+end_src
