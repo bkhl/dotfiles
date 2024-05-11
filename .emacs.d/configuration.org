@@ -1020,6 +1020,17 @@ Some agenda visual styling.
       "🠨")
 #+end_src
 
+*** Allow opening links to anchors with ~org-open-at-point~
+
+~org-ctags~ otherwise breaks this functionality if it's loaded, which happens if you open some other filetype that uses ctags.
+
+This is caused by a [[https://lists.gnu.org/archive/html/emacs-orgmode/2023-03/msg00299.html][bug discussed on mailing list here]].
+
+#+begin_src emacs-lisp
+(with-eval-after-load 'org-ctags
+  (customize-set-variable 'org-open-link-functions nil))
+#+end_src
+
 * Add-on packages
 
 Configuration of add-on packages.
