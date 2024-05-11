@@ -663,6 +663,9 @@ Package for showing diagnostics from linters and similar interactively.
 #+end_src
 
 *** Eglot for language server protocol support
+:PROPERTIES:
+:CUSTOM_ID: eglot
+:END:
 
 #+begin_src emacs-lisp
 (use-package eglot
@@ -671,29 +674,15 @@ Package for showing diagnostics from linters and similar interactively.
   (bind-key "C-c l r" 'eglot-rename eglot-mode-map))
 #+end_src
 
-This enables the [[https://github.com/joaotavora/eglot][Eglot]] LSP client. This will usually require some additional per-project settings to work. As an example, for Python projects I tend to do soemthing like this:
+This enables the [[https://github.com/joaotavora/eglot][Eglot]] LSP client.
 
-+ install the Pip packages ~python-lsp-server[pylint]~,  ~pyls-black~ and ~pyls-isort~.
-+ add a ~Makefile~ that lets me start an LSP in the correct environment with ~make lsp~.
-+ have a ~.dir-locals.el~ file like the below example, which will:
-  + set it to use the make target to start the LSP server.
-  + make Eglot pass configuration to the LSP sever to enable Pylint.
-  + use Eglot's formatting command to format buffers (with Black), before saving.
-  + enable Eglot automatically when opening Python buffers.
-
-#+begin_example emacs-lisp
-((python-mode
-  . ((eglot-server-programs . ((python-mode . ("make" "lsp"))))
-     (eglot-workspace-configuration . ((:pyls
-                                       . (:plugins (:pylint (:enabled t))))))
-     (eval
-      . (progn
-          (add-hook 'before-save-hook #'eglot-format-buffer nil t)
-          (eglot-ensure))))))
-#+end_example
+See [[#c][C]] for an example of how to configure it for a project.
 
 *** Languages
 **** C
+:PROPERTIES:
+:CUSTOM_ID: c
+:END:
 
 #+begin_src emacs-lisp
 (use-package cc-mode
@@ -708,6 +697,26 @@ This enables the [[https://github.com/joaotavora/eglot][Eglot]] LSP client. This
   (defun my/add-c-prettify-symbols ()
     (setq-local prettify-symbols-alist '(("->" . ?→)))))
 #+end_src
+
+To use a language server through [[#eglot][Eglot]] for C, you can do something like this:
+
++ build a container image containing [[https://github.com/MaskRay/ccls][ccls]]. I have crated a [[https://github.com/lspcontainers/dockerfiles/pull/103][PR to add this to the LSP containers project]].
++ have a ~.dir-locals.el~ file like the below example, which will:
+  + set it to run this container for C mode buffers, with the project directory mounted to the same path within the container, to ensure full paths sent to the LSP server matches those on the host system.
+  + enable Eglot automatically when opening C mode buffers.
+
+#+begin_example emacs-lisp
+((c-mode
+  . ((eval
+      . (let ((root (project-root (project-current))))
+          (setq-local eglot-server-programs
+                      `((c-mode "podman" "run" "--rm" "--interactive"
+                                ,(concat "--volume=" root ":" root ":z")
+                                ,(concat "--workdir=" root)
+                                "localhost/ccls:latest")))
+          (eglot-ensure))))))
+#+end_example
+
 
 **** Perl
 
