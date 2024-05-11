@@ -1331,14 +1331,19 @@ This adds some extra integration between Embark and Consult.
   :hook
   (embark-collect-mode . consult-preview-at-point-mode))
 #+end_src
+
 *** [[file:site-lisp/pulsar][pulsar]] to temporarily highlight current line
+
+Press to flash line of point where the currently active cursor is.
+
+The ~M-p~ binding conflicts with my custom binding for ~flymake-mode~, but we can then use ~M-P~ as long as that is free.
 
 #+begin_src emacs-lisp
 (use-package pulsar
   :custom
   (pulsar-face 'pulsar-yellow)
   :bind
-  (("M-P" . pulsar-pulse-line))
+  (("M-p" . pulsar-pulse-line))
   :hook
   (next-error . pulsar-pulse-line)
   :config
