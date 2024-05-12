@@ -614,12 +614,6 @@ This also affects ~dabbrev~ completions.
 
 *** Completion
 
-**** Use ~C-<tab>~ for completion
-
-#+begin_src emacs-lisp
-(global-set-key (kbd "C-<tab>") 'completion-at-point)
-#+end_src
-
 ** Programming
 *** Enable syntax highlighting everywhere
 
