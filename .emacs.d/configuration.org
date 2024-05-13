@@ -1034,6 +1034,14 @@ This is caused by a [[https://lists.gnu.org/archive/html/emacs-orgmode/2023-03/m
   (customize-set-variable 'org-open-link-functions nil))
 #+end_src
 
+*** Allow evaluating Shell code blocks in Org
+
+Loading ~ob-shell~ will implicitly enable using source blocks in languages supported by ~shell-mode~.
+
+#+begin_src emacs-lisp
+(use-package ob-shell)
+#+end_src
+
 * Add-on packages
 
 Configuration of add-on packages.
