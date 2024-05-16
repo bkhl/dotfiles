@@ -692,12 +692,7 @@ See [[#c][C]] for an example of how to configure it for a project.
     (setq-local prettify-symbols-alist '(("->" . ?→)))))
 #+end_src
 
-To use a language server through [[#eglot][Eglot]] for C, you can do something like this:
-
-+ build a container image containing [[https://github.com/MaskRay/ccls][ccls]]. I have crated a [[https://github.com/lspcontainers/dockerfiles/pull/103][PR to add this to the LSP containers project]].
-+ have a ~.dir-locals.el~ file like the below example, which will:
-  + set it to run this container for C mode buffers, with the project directory mounted to the same path within the container, to ensure full paths sent to the LSP server matches those on the host system.
-  + enable Eglot automatically when opening C mode buffers.
+To use a language server through [[#eglot][Eglot]] for C, you can create a ~.dir-locals.el~ file to run it in a container for C mode buffers, with the project directory mounted to the same path within the container to ensure paths sent to the LSP server matches those on the host system, and enable Eglot automatically when opening C mode buffers.
 
 #+begin_example emacs-lisp
 ((c-mode
@@ -707,10 +702,9 @@ To use a language server through [[#eglot][Eglot]] for C, you can do something l
                       `((c-mode "podman" "run" "--rm" "--interactive"
                                 ,(concat "--volume=" root ":" root ":z")
                                 ,(concat "--workdir=" root)
-                                "localhost/ccls:latest")))
+                                "docker.io/lspcontainers/clangd-language-server:latest")))
           (eglot-ensure))))))
 #+end_example
-
 
 **** Perl
 
