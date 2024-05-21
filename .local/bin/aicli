@@ -14,5 +14,7 @@ exec podman run \
      --net host \
      --env "AI_OFFLINETOKEN=$(secret-tool lookup assistedinstaller token)" \
      --volume "${HOME}/.config/aicli:/root/.aicli" \
-     --volume "${PWD}:/workdir" \
+     --volume "${HOME}/.ssh:/root/.ssh" \
+     --volume "${PWD}:${PWD}" \
+     --workdir "${PWD}" \
      quay.io/karmab/aicli "$@"
