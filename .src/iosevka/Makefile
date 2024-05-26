@@ -8,11 +8,11 @@ all:
 	make --print-targets
 
 clean:
-	podman image rm $(IMAGE)
-	rm -r $(SRC) $(BUILD)
+	-podman image rm $(IMAGE)
+	-rm -rf $(SRC) $(BUILD)
 
 image:
-	git clone --branch v30.0.0 --depth=1 https://github.com/be5invis/Iosevka.git $(SRC)
+	git clone --branch v30.1.0 --depth=1 https://github.com/be5invis/Iosevka.git $(SRC)
 	podman build -t $(IMAGE) -f $(SRC)/docker/Dockerfile $(SRC)/docker
 
 fonts:
