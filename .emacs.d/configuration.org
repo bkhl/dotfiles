@@ -1036,6 +1036,14 @@ Loading ~ob-shell~ will implicitly enable using source blocks in languages suppo
 (use-package ob-shell)
 #+end_src
 
+** Eshell
+
+Alias to open file for editing
+
+#+begin_src emacs-lisp
+(defun eshell/e (f) (find-file f))
+#+end_src
+
 * Add-on packages
 
 Configuration of add-on packages.
