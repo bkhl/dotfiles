@@ -141,8 +141,12 @@
 [submodule ".emacs.d/site-lisp/pulsar"]
 	path = .emacs.d/site-lisp/pulsar
 	url = https://github.com/protesilaos/pulsar.git
-    branch = main
+	branch = main
 [submodule ".emacs.d/site-lisp/free-keys"]
 	path = .emacs.d/site-lisp/free-keys
 	url = https://github.com/Fuco1/free-keys.git
-    branch = master
+	branch = master
+[submodule ".emacs.d/site-lisp/package-lint"]
+	path = .emacs.d/site-lisp/package-lint
+	url = https://github.com/purcell/package-lint.git
+	branch = master

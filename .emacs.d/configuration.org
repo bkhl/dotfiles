@@ -1490,6 +1490,14 @@ This module allows a number of functions to operate on the current line if no re
 
 *** Languages
 **** Emacs Lisp
+***** [[file:site-lisp/package-lint][package-lint]] Emacs package linter
+
+#+begin_src emacs-lisp
+(use-package package-lint
+  :commands (package-lint-buffer
+             package-lint-current-buffer))
+#+end_src
+
 ***** [[file:site-lisp/xr][xr]] reverse rx
 
 Helpful functions for refactoring regular expressions to ~rx~ expressions.
