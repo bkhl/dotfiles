@@ -566,12 +566,6 @@ Set it so that if a selection is active, typed text will replace the selection.
 (customize-set-variable 'fill-column 80)
 #+end_src
 
-*** Set default indentation width to 4.
-
-#+begin_src emacs-lisp
-(customize-set-variable 'tab-width 4)
-#+end_src
-
 *** Show character name in character description
 
 When using ~C-x =~ to look up the character under the point, also show Unicode
