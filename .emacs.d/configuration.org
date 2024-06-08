@@ -1712,3 +1712,9 @@ To use this in a project a ~.dir-locals.el~ file is needed, looking something li
     (set-face-attribute face nil :family my/fixed-pitch-font-family))
   (global-org-modern-mode))
 #+end_src
+
+*** [[file:site-lisp/ob-jira][ob-jira]] Babel support for Jira JQL queries
+
+#+begin_src emacs-lisp
+(use-package ob-jira)
+#+end_src
