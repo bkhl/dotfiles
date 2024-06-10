@@ -1718,3 +1718,9 @@ To use this in a project a ~.dir-locals.el~ file is needed, looking something li
 #+begin_src emacs-lisp
 (use-package ob-jira)
 #+end_src
+
+Since there is no JQL mode, alias it to ~sql-mode~.
+
+#+begin_src emacs-lisp
+(defalias #'jql-mode #'sql-mode)
+#+end_src
