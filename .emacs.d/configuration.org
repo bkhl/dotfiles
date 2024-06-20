@@ -608,6 +608,23 @@ This also affects ~dabbrev~ completions.
 
 *** Completion
 
+**** ~dabbrev~ dynamic abbreviations
+
+Swap ~dabbrev-completion~ and ~dabbrev-expand~, which works nicer with Corfu.
+
+Also make it ignore some buffers where it does not make sense.
+
+#+begin_src emacs-lisp
+(use-package dabbrev
+  :bind (("M-/" . dabbrev-completion)
+         ("C-M-/" . dabbrev-expand))
+  :config
+  (add-to-list 'dabbrev-ignored-buffer-regexps "\\` ")
+  (add-to-list 'dabbrev-ignored-buffer-modes 'doc-view-mode)
+  (add-to-list 'dabbrev-ignored-buffer-modes 'pdf-view-mode)
+  (add-to-list 'dabbrev-ignored-buffer-modes 'tags-table-mode))
+#+end_src
+
 ** Programming
 *** Enable syntax highlighting everywhere
 
@@ -1421,6 +1438,9 @@ This module allows a number of functions to operate on the current line if no re
 
 #+begin_src emacs-lisp
 (use-package corfu
+  :demand t
+  :bind
+  (("C-<tab>" . complete-symbol))
   :config
   (global-corfu-mode))
 #+end_src
