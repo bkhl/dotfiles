@@ -97,6 +97,8 @@ alias ip='ip --color=auto'
 alias sudo='sudo '
 alias e="emacsclient --quiet --no-wait"
 
+# Remove l. alias added in Fedora.
+[[ $(type -t l.) = alias ]] && unalias l.
 
 ####
 # Prompt
