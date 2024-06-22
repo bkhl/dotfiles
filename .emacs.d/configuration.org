@@ -1061,10 +1061,60 @@ Loading ~ob-shell~ will implicitly enable using source blocks in languages suppo
 
 ** Eshell
 
-Alias to open file for editing
+
+
+*** Macro to add default arguments to built-ins
 
 #+begin_src emacs-lisp
-(defun eshell/e (f) (find-file f))
+(defmacro my/eshell-default-args (cmd &rest args)
+  `(advice-add #',(intern-soft (concat "eshell/" (symbol-name cmd)))
+               :filter-args
+               (lambda (r)
+                 (append ',args r))
+               '((name . "default-args"))))
+#+end_src
+
+*** Commands
+**** Open files for editing
+
+#+begin_src emacs-lisp
+(with-eval-after-load 'eshell
+  (defun eshell/e (&rest args)
+    (dolist (f (eshell-flatten-list (reverse args)))
+      (find-file f)))
+  (put 'eshell/e 'eshell-filename-arguments t))
+#+end_src
+
+**** ~du~
+
+#+begin_src emacs-lisp
+(with-eval-after-load 'eshell-unix
+  (my/eshell-default-args du "--human-readable"))
+#+end_src
+
+**** ~grep~
+
+#+begin_src emacs-lisp
+(with-eval-after-load 'eshell-unix
+  (my/eshell-default-args grep "--color=auto")
+  (my/eshell-default-args egrep "--color=auto")
+  (my/eshell-default-args fgrep "--color=auto")
+
+  (defun eshell/pgrep (&rest args)
+    (apply #'eshell/grep "--perl-regexp" args)))
+#+end_src
+
+**** ~ls~
+
+#+begin_src emacs-lisp
+(with-eval-after-load 'eshell-ls
+  (my/eshell-default-args ls
+                          "--color=auto"
+                          "--classify"
+                          "--group-directories-first")
+
+  (defun eshell/ll (&rest args)
+    (apply #'eshell/ls "-l" args)))
 #+end_src
 
 * Add-on packages
