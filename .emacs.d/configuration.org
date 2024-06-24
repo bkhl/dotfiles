@@ -411,7 +411,11 @@ This overrides the Emacs settings that enforces having to accept local variables
 (customize-set-variable 'enable-remote-dir-locals t)
 #+end_src
 
-*** Kill current buffer by default with ~C-x C-k~
+*** Key bindings to kill/bury current buffer
+
+Change the default keybinding for killing a buffer, ~C-x k~, so that it kills the current buffer rather than prompting for a buffer. Instead ~C-x K~ is used for the previous default.
+
+Also binds ~C-x M-k~ to bury the current buffer, a command that's not bound to any key by default.
 
 #+begin_src emacs-lisp
 (defun my/kill-this-buffer ()
@@ -421,6 +425,7 @@ This overrides the Emacs settings that enforces having to accept local variables
 
 (global-set-key (kbd "C-x k") #'my/kill-this-buffer)
 (global-set-key (kbd "C-x K") #'kill-buffer)
+(global-set-key (kbd "C-x M-k") #'bury-buffer)
 #+end_src
 
 ** Files
