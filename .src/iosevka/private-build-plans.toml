@@ -66,6 +66,9 @@ noCvSs = true
   inherits = "buildPlans.iosevka-bkhl-sans-normal"
 
     [buildPlans.iosevka-bkhl-serif-normal.variants.design]
+    capital-e = "serifed-capped"
+    capital-f = "serifed-capped"
+
     f = "serifed-crossbar-at-x-height"
     g = "double-storey"
     i = "serifed"
