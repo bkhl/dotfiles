@@ -717,7 +717,7 @@ See [[#c][C]] for an example of how to configure it for a project.
   :config
   (c-add-style "my" '("linux" (c-basic-offset . 2)))
   (defun my/add-c-prettify-symbols ()
-    (setq-local prettify-symbols-alist '(("->" . ?→)))))
+    (setq-local prettify-symbols-alist '(("->" . (?\s (Br . Bl) ?\s (Bc . Bc) ?→))))))
 #+end_src
 
 To use a language server through [[#eglot][Eglot]] for C, you can create a ~.dir-locals.el~ file to run it in a container for C mode buffers, with the project directory mounted to the same path within the container to ensure paths sent to the LSP server matches those on the host system, and enable Eglot automatically when opening C mode buffers.
@@ -744,8 +744,8 @@ To use a language server through [[#eglot][Eglot]] for C, you can create a ~.dir
   (add-to-list 'major-mode-remap-alist '(perl-mode . cperl-mode))
   :config
   (defun my/add-perl-prettify-symbols ()
-    (setq-local prettify-symbols-alist '(("->" . ?→)
-                                         ("=>" . ?⇒))))
+    (setq-local prettify-symbols-alist '(("->" . (?\s (Br . Bl) ?\s (Bc . Bc) ?→))
+                                         ("=>" . (?\s (Br . Bl) ?\s (Bc . Bc) ?⇒)))))
   :hook
   (cperl-mode . my/add-perl-prettify-symbols))
 #+end_src
@@ -758,8 +758,8 @@ To use a language server through [[#eglot][Eglot]] for C, you can create a ~.dir
   (prolog-mode . my/add-prolog-prettify-symbols)
   :config
   (defun my/add-prolog-prettify-symbols ()
-    (setq-local prettify-symbols-alist '((":-" . ?←)
-                                         ("->" . ?→)))))
+    (setq-local prettify-symbols-alist '((":-" . (?\s (Br . Bl) ?\s (Bc . Bc) ?←))
+                                         ("->" . (?\s (Br . Bl) ?\s (Bc . Bc) ?→))))))
 #+end_src
 
 ** Version control
@@ -1551,7 +1551,7 @@ Helpful functions for refactoring regular expressions to ~rx~ expressions.
   :mode (rx ".gd" eos)
   :init
   (defun my/add-gdscript-prettify-symbols ()
-    (setq-local prettify-symbols-alist '(("->" . ?→))))
+    (setq-local prettify-symbols-alist '(("->" . (?\s (Br . Bl) ?\s (Bc . Bc) ?→)))))
   :hook (gdscript-mode . my/add-gdscript-prettify-symbols))
 #+end_src
 **** [[file:site-lisp/fennel-mode][fennel-mode]] for Fennel
