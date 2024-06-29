@@ -670,6 +670,13 @@ Some reusable character compositions.
       '(?\s (Br . Bl) ?\s (Bc . Bc) ?∷))
 #+end_src
 
+Simplified predicate to determine if a substitution should be applied, which makes them apply everywhere except for in strings. ~prettify-symbols-compose-predicate~ can be set to this to apply substitutions more liberally.
+
+#+begin_src emacs-lisp
+(defun my/prettify-symbols-compose-p (_start _end _match)
+    (not (nth 3 (syntax-ppss))))
+#+end_src
+
 *** In programming modes, treat words in camel case symbols as separate.
 
 #+begin_src emacs-lisp
@@ -726,10 +733,10 @@ See [[#c][C]] for an example of how to configure it for a project.
                      (awk-mode . "awk")
                      (other . "my")))
   :hook
-  (c-mode . my/add-c-prettify-symbols)
+  (c-mode . my/config-c-mode)
   :config
   (c-add-style "my" '("linux" (c-basic-offset . 2)))
-  (defun my/add-c-prettify-symbols ()
+  (defun my/config-c-mode ()
     (setq-local prettify-symbols-alist
                 `(("->" . ,my/prettify-right-arrow)))))
 #+end_src
@@ -757,13 +764,15 @@ To use a language server through [[#eglot][Eglot]] for C, you can create a ~.dir
   :init
   (add-to-list 'major-mode-remap-alist '(perl-mode . cperl-mode))
   :config
-  (defun my/add-perl-prettify-symbols ()
-    (setq-local prettify-symbols-alist
+  (defun my/config-cperl-mode ()
+    (setq-local prettify-symbols-compose-predicate
+                #'my/prettify-symbols-compose-p
+                prettify-symbols-alist
                 `(("->" . ,my/prettify-right-arrow)
                   ("=>" . ,my/prettify-double-right-arrow)
                   ("::" . ,my/prettify-double-colon))))
   :hook
-  (cperl-mode . my/add-perl-prettify-symbols))
+  (cperl-mode . my/config-cperl-mode))
 #+end_src
 
 **** Prolog
@@ -771,9 +780,9 @@ To use a language server through [[#eglot][Eglot]] for C, you can create a ~.dir
 #+begin_src emacs-lisp
 (use-package prolog
   :hook
-  (prolog-mode . my/add-prolog-prettify-symbols)
+  (prolog-mode . my/config-prolog-mode)
   :config
-  (defun my/add-prolog-prettify-symbols ()
+  (defun my/config-prolog-mode ()
     (setq-local prettify-symbols-alist
                 `((":-" ,my/prettify-left-arrow)
                   ("->" ,my/prettify-right-arrow)))))
@@ -1567,10 +1576,10 @@ Helpful functions for refactoring regular expressions to ~rx~ expressions.
 (use-package gdscript-mode
   :mode (rx ".gd" eos)
   :init
-  (defun my/add-gdscript-prettify-symbols ()
+  (defun my/config-gdscript-mode ()
     (setq-local prettify-symbols-alist
                 `(("->" . ,my/prettify-right-arrow))))
-  :hook (gdscript-mode . my/add-gdscript-prettify-symbols))
+  :hook (gdscript-mode . my/config-gdscript-mode))
 #+end_src
 **** [[file:site-lisp/fennel-mode][fennel-mode]] for Fennel
 
@@ -1578,9 +1587,9 @@ Helpful functions for refactoring regular expressions to ~rx~ expressions.
 (use-package fennel-mode
   :mode (rx ".fnl" eos)
   :init
-  (defun my/add-fennel-prettify-symbols ()
+  (defun my/config-fennel-mode ()
     (setq prettify-symbols-alist '(("lambda" . ?λ))))
-  :hook (fennel-mode . my/add-fennel-prettify-symbols))
+  :hook (fennel-mode . my/config-fennel-mode))
 #+end_src
 
 **** [[file:site-lisp/go-mode][go-mode]]
