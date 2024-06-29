@@ -643,12 +643,6 @@ Also make it ignore some buffers where it does not make sense.
 #+end_src
 
 ** Programming
-*** Enable syntax highlighting everywhere
-
-#+begin_src emacs-lisp
-(global-font-lock-mode t)
-#+end_src
-
 *** Render some keywords and operators as symbols
 
 I use this to make =lambda= get rendered as =λ= in Emacs Lisp, and similar replacements in other languages.
