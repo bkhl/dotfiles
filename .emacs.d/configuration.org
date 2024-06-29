@@ -1452,8 +1452,8 @@ This package can show available bindings in the current buffer.
 #+begin_src emacs-lisp
 (use-package trimspace-mode
   :hook
-  (prog-mode . trimspace-mode-unless-trailing-whitespace)
-  (text-mode . trimspace-mode-unless-trailing-whitespace))
+  (prog-mode . trimspace-mode-maybe)
+  (text-mode . trimspace-mode-maybe))
 #+end_src
 
 *** [[file:site-lisp/whole-line-or-region][whole-line-or-region]]
