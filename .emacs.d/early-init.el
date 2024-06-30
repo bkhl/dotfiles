@@ -1,9 +1,12 @@
 ;;; early-init.el -*- no-byte-compile: t -*-
 
-;; Increase number of bytes of consing between garbage collections. This appears
-;; to increase performance at the cost of some memory increase. This is done
-;; first to decrease start-up time.
-(setq gc-cons-threshold (* 24 1024 1024))
+;; Increase number of bytes of consing between garbage collections. This
+;; increases startup speed at the cost of temporary memory usage increase. This
+;; is done first to decrease start-up time.
+;;
+;; The original value is stored so that it can be reverted in `init.el'.n
+(setq my/default-gc-cons-threshold (eval-when-compile (* 32 1024 1024))
+      gc-cons-threshold most-positive-fixnum)
 
 ;; Disable implied resizing of frames when display settings change. This speeds
 ;; up startup by skipping frame resizing when e.g. font settings change.

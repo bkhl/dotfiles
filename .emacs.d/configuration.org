@@ -140,6 +140,19 @@ This makes the Emacs customization interface store values in a separate file, in
               (message "Emacs init time: %s" (emacs-init-time))))
 #+end_src
 
+*** Disable garbage collection when in minibuffer
+
+Disable GC while minibuffer is open, and enabled again when it is closed. This helps prevent hanging while working in the minibuffer.
+
+#+begin_src emacs-lisp
+(add-hook 'minibuffer-setup-hook
+          (defun my/disable-gc ()
+            (setq gc-cons-threshold most-positive-fixnum)))
+(add-hook 'minibuffer-exit-hook
+          (defun my/default-gc ()
+            (setq gc-cons-threshold my/default-gc-cons-threshold)))
+#+end_src
+
 ** Interface
 *** Show line and column number in mode line
 
