@@ -1,0 +1,26 @@
+---
+image: alpine/latest
+oauth: >-
+  git.sr.ht/REPOSITORIES:RW
+  git.sr.ht/PROFILE:RO
+packages:
+  - emacs-nox
+  - hut
+sources:
+  - https://git.sr.ht/~bkhl/dotfiles
+tasks:
+  - env: >-
+      echo cd dotfiles >> .buildenv
+  - generate-html: >-
+      emacs --quick --batch
+      --load org README.org
+      --eval "(setq org-html-head \"\" org-html-head-extra \"\" org-html-head-include-default-style nil org-html-head-include-scripts nil org-html-preamble nil org-html-postamble nil org-html-use-infojs nil)"
+      --funcall org-html-export-to-html
+  - complete-unless-main: >-
+      git diff --quiet --exit-code origin/main || complete-build
+  - publish-readme: >-
+      hut git update --readme README.html
+triggers:
+  - action: email
+    condition: failure
+    to: "Björn Lindström <bkhl@elektrubadur.se>"
