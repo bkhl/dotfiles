@@ -1172,6 +1172,10 @@ These are add-on packages that are dependencies of other packages further down, 
 
 *** [[file:site-lisp/auto-dark][auto-dark]] to follow desktop dark mode setting
 
+This mode switches Emacs theme triggered by /dark style/ setting of the desktop.
+
+To get this to also change menu bar theme in Fedora, I need to install the [[https://packages.fedoraproject.org/pkgs/gnome-themes-extra/gnome-themes-extra/][gnome-themes-extra]] package, and the [[https://extensions.gnome.org/extension/4998/legacy-gtk3-theme-scheme-auto-switcher/][Legacy (GTK3) Theme Scheme Auto Switcher]] Gnome extension.
+
 #+begin_src emacs-lisp
 (use-package auto-dark
   :demand t
