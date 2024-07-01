@@ -21,6 +21,7 @@ noCvSs = true
   cyrl-capital-u = "cursive-serifless"
 
   long-s = "bent-hook-tailed"
+  capital-eszet = "corner-serifless"
   eszet = "longs-s-lig-tailed-serifless"
 
   capital-lambda = "curly-serifless"
@@ -79,8 +80,9 @@ noCvSs = true
 
     cyrl-capital-u = "cursive-serifed"
 
-    long-s = "bent-hook-bottom-serifed"
-    eszet = "longs-s-lig-tailed-middle-serifed"
+    long-s = "bent-hook-tailed-middle-serifed-xh"
+    capital-eszet = "corner-serifed"
+    eszet = "longs-s-lig-tailed-middle-serifed-xh"
 
     capital-lambda = "curly-base-serifed"
 
