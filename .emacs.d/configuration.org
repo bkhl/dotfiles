@@ -1002,6 +1002,24 @@ I'd like to extend this to work more generally for example for ~bug-reference-mo
 (define-key org-mode-map (kbd "C-c y") #'my/org-copy-link)
 #+end_src
 
+**** Copy element at point
+
+Org has ~org-copy-special~, but it doesn't have special handling of some cases I'd like, for example copying the content of the source/result block at point. This advices that function and will before falling back to the default behaviour try to do ~org-edit-special~ and copy the contents of anything that's opened for editing.
+
+#+begin_src emacs-lisp
+(defun my/org-copy-src-code ()
+  "Copy content of block at point."
+  (interactive)
+  (let ((element (org-element-at-point)))
+    (unless (and (eq (org-element-type element) 'comment-block)
+		 (org-src--on-datum-p element))
+      (user-error "Not in a comment block"))
+    (let ((area (org-src--contents-area element))))))
+
+(advice-add #'org-copy-special
+            :before-until #'my/org-copy-edit-special)
+#+end_src
+
 *** Capturing
 
 Add templates for use by ~org-capture~.
