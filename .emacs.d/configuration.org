@@ -584,12 +584,6 @@ Set it so that if a selection is active, typed text will replace the selection.
 (delete-selection-mode t)
 #+end_src
 
-*** Disable indentation using tabs.
-
-#+begin_src emacs-lisp
-(customize-set-variable 'indent-tabs-mode nil)
-#+end_src
-
 *** Set default line length to 80
 
 #+begin_src emacs-lisp
@@ -761,6 +755,17 @@ To use a language server through [[#eglot][Eglot]] for C, you can create a ~.dir
                                 "docker.io/lspcontainers/clangd-language-server:latest")))
           (eglot-ensure))))))
 #+end_example
+
+**** Go
+
+#+begin_src emacs-lisp
+(use-package go-ts-mode
+  :mode (rx (or (seq (or bos "/") "go.mod") ".go") eos)
+  :custom (go-ts-mode-indent-offset 4)
+  :config (defun my/config-go-ts-mode ()
+	    (setq-local tab-width 4))
+  :hook (go-ts-mode . my/config-go-ts-mode))
+#+end_src
 
 **** Perl
 
@@ -1601,13 +1606,6 @@ Helpful functions for refactoring regular expressions to ~rx~ expressions.
   (defun my/config-fennel-mode ()
     (setq prettify-symbols-alist '(("lambda" . ?λ))))
   :hook (fennel-mode . my/config-fennel-mode))
-#+end_src
-
-**** [[file:site-lisp/go-mode][go-mode]]
-
-#+begin_src emacs-lisp
-(use-package go-mode
-  :mode (rx (or (seq (or bos "/") "go.mod") ".go") eos))
 #+end_src
 
 **** [[file:site-lisp/lua-mode][lua-mode]]

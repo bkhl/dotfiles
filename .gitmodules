@@ -98,10 +98,6 @@
 	path = .emacs.d/site-lisp/embark
 	url = https://github.com/oantolin/embark.git
 	branch = master
-[submodule ".emacs.d/site-lisp/go-mode"]
-	path = .emacs.d/site-lisp/go-mode
-	url = https://github.com/dominikh/go-mode.el.git
-	branch = master
 [submodule ".emacs.d/site-lisp/xr"]
 	path = .emacs.d/site-lisp/xr
 	url = https://github.com/mattiase/xr.git
