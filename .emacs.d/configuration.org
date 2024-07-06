@@ -769,6 +769,22 @@ To use a language server through [[#eglot][Eglot]] for C, you can create a ~.dir
   :hook (go-ts-mode . my/config-go-ts-mode))
 #+end_src
 
+Example ~.dir-locals.el~ to use the [[https://cs.opensource.google/go/x/tools/+/master:gopls/][gopls]] language server with Eglot, also using it for code formatting on save.
+
+#+begin_example emacs-lisp
+((go-ts-mode
+  . ((eval
+      . (let ((root (project-root (project-current))))
+	  (setq-local eglot-server-programs
+                      `((go-ts-mode
+			 "podman" "run" "--rm" "--interactive"
+			 ,(concat "--volume=" root ":" root ":z")
+			 ,(concat "--workdir=" root)
+			 "docker.io/lspcontainers/gopls:latest")))
+	  (add-hook 'before-save-hook #'eglot-format-buffer nil t)
+	  (eglot-ensure))))))
+#+end_example
+
 **** Perl
 
 #+begin_src emacs-lisp
