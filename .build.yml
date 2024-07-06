@@ -9,16 +9,14 @@ packages:
 sources:
   - https://git.sr.ht/~bkhl/dotfiles
 tasks:
-  - env: >-
-      echo cd dotfiles >> .buildenv
   - generate-html: >-
       emacs --quick --batch
-      --load org README.org
-      --eval "(setq org-html-head \"\" org-html-head-extra \"\" org-html-head-include-default-style nil org-html-head-include-scripts nil org-html-preamble nil org-html-postamble nil org-html-use-infojs nil)"
-      --funcall org-html-export-to-html
+      --load org dotfiles/README.org
+      --eval "(org-html-export-to-html nil nil nil t)"
   - complete-unless-main: >-
-      git diff --quiet --exit-code origin/main || complete-build
-  - publish-readme: >-
+      git -C dotfiles diff --quiet --exit-code origin/main || complete-build
+  - publish-readme: |
+      cd dotfiles
       hut git update --readme README.html
 triggers:
   - action: email
