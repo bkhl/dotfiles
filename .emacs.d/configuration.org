@@ -749,10 +749,11 @@ To use a language server through [[#eglot][Eglot]] for C, you can create a ~.dir
   . ((eval
       . (let ((root (project-root (project-current))))
           (setq-local eglot-server-programs
-                      `((c-mode "podman" "run" "--rm" "--interactive"
-                                ,(concat "--volume=" root ":" root ":z")
-                                ,(concat "--workdir=" root)
-                                "docker.io/lspcontainers/clangd-language-server:latest")))
+                      `((c-mode
+                         "podman" "run" "--rm" "--interactive"
+                         ,(concat "--volume=" root ":" root ":z")
+                         ,(concat "--workdir=" root)
+                         "ghcr.io/bkhl/lsp-containers/ccls:latest")))
           (eglot-ensure))))))
 #+end_example
 
