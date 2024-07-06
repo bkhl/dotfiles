@@ -10,9 +10,7 @@ sources:
   - https://git.sr.ht/~bkhl/dotfiles
 tasks:
   - generate-html: >-
-      emacs --quick --batch
-      --load org dotfiles/README.org
-      --eval "(org-html-export-to-html nil nil nil t)"
+      make -C dotfiles README.html
   - complete-unless-main: >-
       git -C dotfiles diff --quiet --exit-code origin/main || complete-build
   - publish-readme: |
