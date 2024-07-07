@@ -1,13 +1,17 @@
 ---
 image: alpine/latest
 oauth: >-
-  git.sr.ht/REPOSITORIES:RW
   git.sr.ht/PROFILE:RO
+  git.sr.ht/REPOSITORIES:RW
+  builds.sr.ht/PROFILE:RO
+  builds.sr.ht/JOBS:RW
+  builds.sr.ht/SECRETS:RO
 packages:
   - emacs-nox
   - hut
 sources:
   - https://git.sr.ht/~bkhl/dotfiles
+  - https://git.sr.ht/~bkhl/elektrubadur.se
 tasks:
   - generate-html: >-
       make -C dotfiles README.html
@@ -16,6 +20,8 @@ tasks:
   - publish-readme: |
       cd dotfiles
       hut git update --readme README.html
+  - trigger-web-page-build: >-
+      hut builds submit elektrubadur.se/.build.yml
 triggers:
   - action: email
     condition: failure
