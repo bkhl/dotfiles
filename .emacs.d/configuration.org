@@ -13,7 +13,12 @@
 :CUSTOM_ID: introduction
 :END:
 
-This is my Emacs configuration. Inspirations include:
+This is my Emacs configuration. It is available online in these forms:
+
+- [[https://git.sr.ht/~bkhl/dotfiles/tree/main/item/.emacs.d/configuration.org][Org mode source file]] in a Git repository.
+- [[https://elektrubadur.se/emacs-configuration][HTML article]] on my personal web page.
+
+Inspirations for this Emacs configuration include:
 
 - Harry R. Schwartz' [[https://github.com/hrs/dotfiles/blob/main/emacs/.config/emacs/configuration.org][Emacs configuration]] and [[https://github.com/hrs/sensible-defaults.el][sensible-defaults.el]].
 - Phil Hagelberg's [[https://git.sr.ht/~technomancy/better-defaults][better-defaults.el]].
