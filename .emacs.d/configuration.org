@@ -1044,7 +1044,9 @@ To use a language server through [[#eglot][Eglot]] for C, you can create a ~.dir
   ((rx (or "/" bos) "go.mod" eos) . go-mod-ts-mode)
   :custom (go-ts-mode-indent-offset 4)
   :config (defun my/config-go-ts-mode ()
-	    (setq-local tab-width 4))
+	    (setq-local tab-width 4)
+	    (setq-local prettify-symbols-alist
+			`(("<-" . ,my/prettify-left-arrow))))
   :hook (go-ts-mode . my/config-go-ts-mode))
 #+end_src
 
