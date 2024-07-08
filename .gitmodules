@@ -34,10 +34,6 @@
 	path = .emacs.d/site-lisp/with-editor
 	url = https://github.com/magit/with-editor.git
 	branch = main
-[submodule ".emacs.d/site-lisp/dockerfile-mode"]
-	path = .emacs.d/site-lisp/dockerfile-mode
-	url = https://github.com/spotify/dockerfile-mode.git
-	branch = master
 [submodule ".emacs.d/site-lisp/git-timemachine"]
 	path = .emacs.d/site-lisp/git-timemachine
 	url = https://codeberg.org/pidu/git-timemachine.git

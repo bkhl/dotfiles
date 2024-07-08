@@ -1019,6 +1019,19 @@ To use a language server through [[#eglot][Eglot]] for C, you can create a ~.dir
           (eglot-ensure))))))
 #+end_example
 
+**** Containerfile/Dockerfile
+:PROPERTIES:
+:CUSTOM_ID: containerfile
+:END:
+
+#+begin_src emacs-lisp
+(use-package dockerfile-ts-mode
+  :mode (rx (or "/" bos)
+            (or "Containerfile" "Dockerfile")
+            (opt "." (*  (not (any "/"))))
+            eos))
+#+end_src
+
 **** Go
 :PROPERTIES:
 :CUSTOM_ID: go
@@ -2204,19 +2217,6 @@ Shows changes that are not committed to the version control system for the file 
 :PROPERTIES:
 :CUSTOM_ID: file-formats
 :END:
-
-*** [[https://github.com/spotify/dockerfile-mode][dockerfile-mode]] for Dockerfile/Containerfile support
-:PROPERTIES:
-:CUSTOM_ID: dockerfile
-:END:
-
-#+begin_src emacs-lisp
-(use-package dockerfile-mode
-  :mode (rx (or "/" bos)
-            (or "Containerfile" "Dockerfile")
-            (opt "." (*  (not (any "/"))))
-            eos))
-#+end_src
 
 *** [[https://jblevins.org/projects/markdown-mode/][markdown-mode]] for Markdown support
 :PROPERTIES:
