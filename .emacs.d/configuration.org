@@ -917,7 +917,9 @@ Some reusable character compositions.
       my/prettify-left-arrow
       '(?\s (Br . Bl) ?\s (Bc . Bc) ?←)
       my/prettify-double-colon
-      '(?\s (Br . Bl) ?\s (Bc . Bc) ?∷))
+      '(?\s (Br . Bl) ?\s (Bc . Bc) ?∷)
+      my/prettify-ellipsis
+      '(?\s (Br . Bl) ?\s (Br . Bl) ?\s (Bc . Bc) ?…))
 #+end_src
 
 Simplified predicate to determine if a substitution should be applied, which makes them apply everywhere except for in strings. ~prettify-symbols-compose-predicate~ can be set to this to apply substitutions more liberally.
@@ -1046,7 +1048,8 @@ To use a language server through [[#eglot][Eglot]] for C, you can create a ~.dir
   :config (defun my/config-go-ts-mode ()
 	    (setq-local tab-width 4)
 	    (setq-local prettify-symbols-alist
-			`(("<-" . ,my/prettify-left-arrow))))
+			`(("<-" . ,my/prettify-left-arrow)
+			  ("..." . ,my/prettify-ellipsis))))
   :hook (go-ts-mode . my/config-go-ts-mode))
 #+end_src
 
