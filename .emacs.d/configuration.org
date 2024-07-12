@@ -909,6 +909,14 @@ I use this to make =lambda= get rendered as =λ= in Emacs Lisp, and similar repl
 
 Some reusable character compositions.
 
+Most of these are double-wide characters in the font that I use, meaning that for example ~→~ will for me occupy the space of two normal characters.
+
+In principle I should then be able to replace two characters with that one and everything should line up, but I've sometimes seen subtle alignment issues when doing that, so now use this method where you first draw the correct number of spaces, and then the character on top of them.
+
+This also works when the replacement character is not actually the same width as the characters I'm replacing, like with ~∷~ and ~…~ in my case.
+
+This also incidentally means this should work regardless of the width of the glyph in your font.
+
 #+begin_src emacs-lisp
 (setq my/prettify-right-arrow
       '(?\s (Br . Bl) ?\s (Bc . Bc) ?→)
