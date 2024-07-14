@@ -1490,6 +1490,13 @@ Loading ~ob-shell~ will implicitly enable using source blocks in languages suppo
 :CUSTOM_ID: eshell
 :END:
 
+*** Disable banner
+
+#+begin_src emacs-lisp
+(customize-set-variable 'eshell-banner-message "")
+#+end_src
+
+*** Aliases
 Alias to open file for editing
 
 #+begin_src emacs-lisp
