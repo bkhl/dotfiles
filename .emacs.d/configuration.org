@@ -1625,7 +1625,7 @@ To get this to also change menu bar theme in Fedora, I need to install the [[htt
 (use-package auto-dark
   :demand t
   :custom
-  (auto-dark-dark-theme 'modus-vivendi)
+  (auto-dark-dark-theme 'modus-vivendi-tritanopia)
   (auto-dark-light-theme 'modus-operandi)
   :config
   (add-hook 'auto-dark-dark-mode-hook
