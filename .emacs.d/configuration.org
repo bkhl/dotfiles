@@ -802,6 +802,12 @@ Set it so that if a selection is active, typed text will replace the selection.
 (delete-selection-mode t)
 #+end_src
 
+*** Disable indentation using tabs.
+
+#+begin_src emacs-lisp
+(customize-set-variable 'indent-tabs-mode nil)
+#+end_src
+
 *** Set default line length to 80
 :PROPERTIES:
 :CUSTOM_ID: default-line-length
@@ -1054,10 +1060,10 @@ To use a language server through [[#eglot][Eglot]] for C, you can create a ~.dir
   ((rx (or "/" bos) "go.mod" eos) . go-mod-ts-mode)
   :custom (go-ts-mode-indent-offset 4)
   :config (defun my/config-go-ts-mode ()
-	    (setq-local tab-width 4)
-	    (setq-local prettify-symbols-alist
-			`(("<-" . ,my/prettify-left-arrow)
-			  ("..." . ,my/prettify-ellipsis))))
+            (setq-local tab-width 4)
+            (setq-local prettify-symbols-alist
+                        `(("<-" . ,my/prettify-left-arrow)
+                          ("..." . ,my/prettify-ellipsis))))
   :hook (go-ts-mode . my/config-go-ts-mode))
 #+end_src
 
@@ -1067,14 +1073,14 @@ Example ~.dir-locals.el~ to use the [[https://cs.opensource.google/go/x/tools/+/
 ((go-ts-mode
   . ((eval
       . (let ((root (project-root (project-current))))
-	  (setq-local eglot-server-programs
+          (setq-local eglot-server-programs
                       `((go-ts-mode
-			 "podman" "run" "--rm" "--interactive"
-			 ,(concat "--volume=" root ":" root ":z")
-			 ,(concat "--workdir=" root)
-			 "docker.io/lspcontainers/gopls:latest")))
-	  (add-hook 'before-save-hook #'eglot-format-buffer nil t)
-	  (eglot-ensure))))))
+                         "podman" "run" "--rm" "--interactive"
+                         ,(concat "--volume=" root ":" root ":z")
+                         ,(concat "--workdir=" root)
+                         "docker.io/lspcontainers/gopls:latest")))
+          (add-hook 'before-save-hook #'eglot-format-buffer nil t)
+          (eglot-ensure))))))
 #+end_example
 
 **** Perl
