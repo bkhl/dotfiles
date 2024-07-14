@@ -208,25 +208,10 @@ Disable GC while minibuffer is open, and enabled again when it is closed. This h
 (column-number-mode)
 #+end_src
 
-*** Fonts
+*** Emoji font
 :PROPERTIES:
-:CUSTOM_ID: fonts
+:CUSTOM_ID: emoji-font
 :END:
-
-Setting fonts. I primarily use the ~variable-pitch~ and ~fixed-pitch~ faces in ~org-mode~.
-
-#+begin_src emacs-lisp
-(setq my/fixed-pitch-font-family "Iosevka BKHL Sans Normal"
-      my/variable-pitch-font-family "Charis SIL")
-
-(set-face-attribute 'default nil
-                    :family my/fixed-pitch-font-family
-                    :height 130)
-(set-face-attribute 'variable-pitch nil
-                    :family my/variable-pitch-font-family)
-(set-face-attribute 'fixed-pitch nil
-                    :family my/fixed-pitch-font-family)
-#+end_src
 
 Enable Emoji font if available. ☃
 
@@ -246,6 +231,7 @@ This is run as a hook after the first graphical frame is created, as this will o
 
 (my/set-fontset-fonts (selected-frame))
 #+end_src
+
 
 *** Disable bell
 :PROPERTIES:
@@ -1583,6 +1569,35 @@ These are add-on packages that are dependencies of other packages further down, 
 :CUSTOM_ID: add-on-interface
 :END:
 
+*** [[https://protesilaos.com/emacs/fontaine][fontaine]] font configuration
+:properties:
+:custom_id: fontaine
+:end:
+
+This package provides a concise way to define multiple font configurations and switch between them.
+
+#+begin_src emacs-lisp
+(use-package fontaine
+  :custom
+  (fontaine-presets
+   '((serif :default-family "Iosevka BKHL Serif Normal"
+            :variable-pitch-family "Charis SIL"
+            :fixed-pitch-family "Iosevka BKHL Serif Normal")
+     (sans-serif :default-family "Iosevka BKHL Sans Normal"
+                 :variable-pitch-family "Inter BKHL Variable"
+                 :variable-pitch-weight medium
+                 :fixed-pitch-family "Iosevka BKHL Sans Normal"
+                 :line-spacing 2)
+     (t :default-height 130
+        :default-weight normal
+        :variable-pitch-weight normal
+        :fixed-pitch-weight normal
+        :mode-line-active-family "Iosevka BKHL Sans Normal"
+        :mode-line-inactive-family "Iosevka BKHL Sans Normal"))))
+
+(fontaine-set-preset 'sans-serif)
+#+end_src
+
 *** [[https://protesilaos.com/emacs/modus-themes][modus-themes]] accessible themes
 :PROPERTIES:
 :CUSTOM_ID: modus-themes
@@ -1594,9 +1609,7 @@ These are add-on packages that are dependencies of other packages further down, 
   (modus-themes-bold-constructs t)
   (modus-themes-italic-constructs t)
   (modus-themes-mixed-fonts t)
-  (modus-themes-common-palette-overrides '((fringe unspecified)))
-  :config
-  (modus-themes-load-theme 'modus-operandi))
+  (modus-themes-common-palette-overrides '((fringe unspecified))))
 #+end_src
 
 *** [[https://github.com/LionyxML/auto-dark-emacs][auto-dark]] to follow desktop dark mode setting
@@ -1615,6 +1628,12 @@ To get this to also change menu bar theme in Fedora, I need to install the [[htt
   (auto-dark-dark-theme 'modus-vivendi)
   (auto-dark-light-theme 'modus-operandi)
   :config
+  (add-hook 'auto-dark-dark-mode-hook
+            (defun my/config-dark-mode ()
+              (fontaine-set-preset 'sans-serif)))
+  (add-hook 'auto-dark-light-mode-hook
+            (defun my/config-light-mode ()
+              (fontaine-set-preset 'serif)))
   (auto-dark-mode))
 #+end_src
 
@@ -2303,7 +2322,7 @@ To use this in a project a ~.dir-locals.el~ file is needed, looking something li
 (use-package org-modern
   :config
   (dolist (face '(org-modern-symbol org-modern-label))
-    (set-face-attribute face nil :family my/fixed-pitch-font-family))
+    (set-face-attribute face nil :family "Iosevka BKHL Sans Normal"))
   (global-org-modern-mode))
 #+end_src
 

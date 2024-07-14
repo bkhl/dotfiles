@@ -1,0 +1,5 @@
+FROM docker.io/library/alpine:latest
+
+RUN apk add bash curl python3 && \
+    python -m venv /opt/opentype-feature-freezer && \
+    /opt/opentype-feature-freezer/bin/pip install opentype-feature-freezer
