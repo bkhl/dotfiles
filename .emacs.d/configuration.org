@@ -29,7 +29,7 @@ Some interesting properties of this configuration:
 
 - Almost all of the configuration is kept in an Org file.
 - The startup time is quite fast. There are some tweaks in [[https://git.sr.ht/~bkhl/dotfiles/tree/main/item/.emacs.d/init.el][init.el]] and [[https://git.sr.ht/~bkhl/dotfiles/tree/main/item/.emacs.d/early-init.el][early-init.el]] that makes helps with this, together with prudent use of autoloading, and in general trying to keep the number of add-on packages low.
-- Addon packages are managed manually as Git submodules.
+- Add-on packages are managed manually as Git submodules.
 
 The configuration is organized so that basic configuration of Emacs comes first, then built-in packages that are bundles with Emacs, followed by the add-on packages that are kept in [[https://git.sr.ht/~bkhl/dotfiles/tree/main/item/.emacs.d/site-lisp][~/.emacs.d/site-lisp/]].
 
@@ -2134,6 +2134,20 @@ Helpful functions for refactoring regular expressions to ~rx~ expressions.
   (lua-indent-level 4))
 #+end_src
 
+** Writing
+*** [[https://github.com/minad/jinx][Jinx]] spell checking
+
+#+begin_src emacs-lisp
+(use-package jinx
+  :demand t
+  :custom
+  (jinx-languages "sv_SE en_GB en_US th_TH")
+  :config
+  (global-jinx-mode)
+  :bind
+  ("M-$" . jinx-correct))
+#+end_src
+
 ** Version control
 :PROPERTIES:
 :CUSTOM_ID: add-on-version-control
@@ -2214,7 +2228,7 @@ To use this as an ~after-save-hook~ in a project, create a ~.dir-locals.el~ with
                        nil t)))))
 #+end_example
 
-*** [[https://github.com/dgutov/diff-hl][diff-hl]] to show uncommited changes in gutter
+*** [[https://github.com/dgutov/diff-hl][diff-hl]] to show uncommitted changes in gutter
 :PROPERTIES:
 :CUSTOM_ID: diff-hl
 :END:

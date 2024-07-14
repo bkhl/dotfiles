@@ -150,3 +150,7 @@
 	path = .emacs.d/site-lisp/fontaine
 	url = https://github.com/protesilaos/fontaine.git
 	branch = main
+[submodule ".emacs.d/site-lisp/jinx"]
+	path = .emacs.d/site-lisp/jinx
+	url = https://github.com/minad/jinx.git
+	branch = main
