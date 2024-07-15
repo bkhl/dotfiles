@@ -2131,10 +2131,9 @@ Helpful functions for refactoring regular expressions to ~rx~ expressions.
 #+begin_src emacs-lisp
 (use-package jinx
   :demand t
+  :commands (jinx-mode global-jinx-mode)
   :custom
   (jinx-languages "sv_SE en_GB en_US th_TH")
-  :config
-  (global-jinx-mode)
   :bind
   ("M-$" . jinx-correct))
 #+end_src
