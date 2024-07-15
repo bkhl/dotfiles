@@ -1580,22 +1580,13 @@ This package provides a concise way to define multiple font configurations and s
 (use-package fontaine
   :custom
   (fontaine-presets
-   '((serif :default-family "Iosevka BKHL Serif Normal"
+   '((serif :default-family "Iosevka BKHL Sans Normal"
             :variable-pitch-family "Charis SIL"
             :fixed-pitch-family "Iosevka BKHL Serif Normal")
      (sans-serif :default-family "Iosevka BKHL Sans Normal"
-                 :variable-pitch-family "Inter BKHL Variable"
-                 :variable-pitch-weight medium
-                 :fixed-pitch-family "Iosevka BKHL Sans Normal"
-                 :line-spacing 2)
-     (t :default-height 130
-        :default-weight normal
-        :variable-pitch-weight normal
-        :fixed-pitch-weight normal
-        :mode-line-active-family "Iosevka BKHL Sans Normal"
-        :mode-line-inactive-family "Iosevka BKHL Sans Normal"))))
-
-(fontaine-set-preset 'sans-serif)
+                 :variable-pitch-family "Inclusive Sans"
+                 :fixed-pitch-family "Iosevka BKHL Sans Normal")
+     (t :default-height 130))))
 #+end_src
 
 *** [[https://protesilaos.com/emacs/modus-themes][modus-themes]] accessible themes
