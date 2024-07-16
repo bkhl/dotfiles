@@ -1580,13 +1580,17 @@ This package provides a concise way to define multiple font configurations and s
 (use-package fontaine
   :custom
   (fontaine-presets
-   '((serif :default-family "Iosevka BKHL Sans Normal"
+   '((light :default-family "Iosevka BKHL Sans Normal"
             :variable-pitch-family "Charis SIL"
             :fixed-pitch-family "Iosevka BKHL Serif Normal")
-     (sans-serif :default-family "Iosevka BKHL Sans Normal"
-                 :variable-pitch-family "Inclusive Sans"
-                 :fixed-pitch-family "Iosevka BKHL Sans Normal")
-     (t :default-height 130))))
+     (dark :default-family "Iosevka BKHL Sans Normal"
+           :variable-pitch-family "Inter BKHL Variable"
+           :variable-pitch-weight medium
+           :fixed-pitch-family "Iosevka BKHL Sans Normal")
+     (t :default-height 130
+        :default-weight normal
+        :variable-pitch-weight normal
+        :fixed-pitch-weight normal))))
 #+end_src
 
 *** [[https://protesilaos.com/emacs/modus-themes][modus-themes]] accessible themes
@@ -1621,10 +1625,10 @@ To get this to also change menu bar theme in Fedora, I need to install the [[htt
   :config
   (add-hook 'auto-dark-dark-mode-hook
             (defun my/config-dark-mode ()
-              (fontaine-set-preset 'sans-serif)))
+              (fontaine-set-preset 'dark)))
   (add-hook 'auto-dark-light-mode-hook
             (defun my/config-light-mode ()
-              (fontaine-set-preset 'serif)))
+              (fontaine-set-preset 'light)))
   (auto-dark-mode))
 #+end_src
 
