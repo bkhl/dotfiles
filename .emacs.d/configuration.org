@@ -270,20 +270,6 @@ Setting this variable allows resizing window by pixels, rather than rounding to 
 (customize-set-variable 'frame-resize-pixelwise t)
 #+end_src
 
-*** Give ~emacsclient~ frames focus
-:PROPERTIES:
-:CUSTOM_ID: emacsclient-frame-focus
-:END:
-
-Give new ~emacsclient~ frames focus when created.
-
-#+begin_src emacs-lisp
-(defun my/focus-frame ()
-  (select-frame-set-input-focus (selected-frame)))
-(add-hook 'server-switch-hook 'my/focus-frame)
-(add-hook 'server-after-make-frame-hook 'my/focus-frame)
-#+end_src
-
 *** Disable message on new ~emacsclient~ frames
 :PROPERTIES:
 :CUSTOM_ID: emacsclient-disable-message
