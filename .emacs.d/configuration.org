@@ -2120,14 +2120,15 @@ Helpful functions for refactoring regular expressions to ~rx~ expressions.
 
 #+begin_src emacs-lisp
 (use-package jinx
-  :demand t
   :custom
   (jinx-languages "sv_SE en_GB en_US th_TH")
   :config
   (add-to-list 'jinx--syntax-overrides '(?: . "."))
-  (global-jinx-mode)
   :bind
-  ("M-$" . jinx-correct))
+  ("M-$" . jinx-correct)
+  :commands (jinx-mode
+             global-jinx-mode
+             jinx-correct))
 #+end_src
 
 *** [[https://jblevins.org/projects/markdown-mode/][markdown-mode]] for Markdown support
