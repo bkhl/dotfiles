@@ -40,7 +40,7 @@
 	branch = master
 [submodule ".emacs.d/site-lisp/lin"]
 	path = .emacs.d/site-lisp/lin
-	url = https://git.sr.ht/~protesilaos/lin
+	url = https://github.com/protesilaos/lin.git
 	branch = main
 [submodule ".emacs.d/site-lisp/compat"]
 	path = .emacs.d/site-lisp/compat
