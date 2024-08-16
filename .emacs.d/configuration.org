@@ -1521,7 +1521,7 @@ These are add-on packages that are dependencies of other packages further down, 
 - [[#consult][consult]]
 - [[#corfu][corfu]]
 - [[#embark][embark]]
-- [[#magit][magit]]
+- [[#magit][Magit]]
 - [[#marginalia][marginalia]]
 - [[#org-modern][org-modern]]
 - [[#vertico][vertico]]
@@ -1536,7 +1536,7 @@ These are add-on packages that are dependencies of other packages further down, 
 :CUSTOM_ID: dash
 :END:
 
-- [[#magit][magit]]
+- [[#magit][Magit]]
 
 #+begin_src emacs-lisp
 (use-package dash
@@ -1548,7 +1548,7 @@ These are add-on packages that are dependencies of other packages further down, 
 :CUSTOM_ID: transient
 :END:
 
-- [[#magit][magit]]
+- [[#magit][Magit]]
 
 #+begin_src emacs-lisp
 (use-package transient
@@ -1560,7 +1560,7 @@ These are add-on packages that are dependencies of other packages further down, 
 :CUSTOM_ID: with-editor
 :END:
 
-- [[#magit][magit]]
+- [[#magit][Magit]]
 
 #+begin_src emacs-lisp
 (use-package with-editor
@@ -2174,12 +2174,10 @@ To use this in a project a ~.dir-locals.el~ file is needed, looking something li
 :CUSTOM_ID: add-on-version-control
 :END:
 
-*** [[https://magit.vc/][magit]] Git integration
+*** [[https://magit.vc/][Magit]] Git interface
 :PROPERTIES:
 :CUSTOM_ID: magit
 :END:
-
-Load ~magit~, for working with Git.
 
 #+begin_src emacs-lisp
 (use-package magit
