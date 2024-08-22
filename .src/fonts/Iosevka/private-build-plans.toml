@@ -16,6 +16,7 @@ noCvSs = true
   l = "zshaped"
   m = "short-leg-serifless"
   t = "bent-hook-asymmetric"
+  w = "rounded-vertical-sides-serifless"
   y = "cursive-serifless"
 
   cyrl-capital-u = "cursive-serifless"
@@ -76,6 +77,7 @@ noCvSs = true
     l = "serifed"
     m = "short-leg-serifed"
     t = "bent-hook"
+    w = "rounded-vertical-sides-serifed"
     y = "cursive-serifed"
 
     cyrl-capital-u = "cursive-serifed"
