@@ -134,10 +134,6 @@
 	path = .emacs.d/site-lisp/package-lint
 	url = https://github.com/purcell/package-lint.git
 	branch = master
-[submodule ".emacs.d/site-lisp/ob-jira"]
-	path = .emacs.d/site-lisp/ob-jira
-	url = https://git.sr.ht/~bkhl/ob-jira
-	branch = main
 [submodule ".emacs.d/site-lisp/fontaine"]
 	path = .emacs.d/site-lisp/fontaine
 	url = https://github.com/protesilaos/fontaine.git

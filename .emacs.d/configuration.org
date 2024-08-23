@@ -2308,18 +2308,3 @@ Shows changes that are not committed to the version control system for the file 
     (set-face-attribute face nil :family "Iosevka BKHL Sans Normal"))
   (global-org-modern-mode))
 #+end_src
-
-*** [[https://git.sr.ht/~bkhl/ob-jira][ob-jira]] Babel support for Jira JQL queries
-:PROPERTIES:
-:CUSTOM_ID: ob-jira
-:END:
-
-#+begin_src emacs-lisp
-(use-package ob-jira)
-#+end_src
-
-Since there is no JQL mode, alias it to ~sql-mode~.
-
-#+begin_src emacs-lisp
-(defalias #'jql-mode #'sql-mode)
-#+end_src
