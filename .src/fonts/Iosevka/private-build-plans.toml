@@ -10,6 +10,7 @@ noCvSs = true
 
   [buildPlans.iosevka-bkhl-sans-normal.variants.design]
   capital-q = "open-swash"
+  capital-w = "rounded-vertical-sides-serifless"
 
   f = "serifless-crossbar-at-x-height"
   i = "zshaped"
@@ -70,6 +71,7 @@ noCvSs = true
     [buildPlans.iosevka-bkhl-serif-normal.variants.design]
     capital-e = "serifed-capped"
     capital-f = "serifed-capped"
+    capital-w = "rounded-vertical-sides-serifed"
 
     f = "serifed-crossbar-at-x-height"
     g = "double-storey"
