@@ -9,6 +9,7 @@ noCvSs = true
   description = "Spatial efficient monospace font family for programming. Built from code. http://be5invis.github.io/Iosevka Custom build by Björn Lindström. https://git.sr.ht/~bkhl/dotfiles/tree/main/item/.src/iosevka"
 
   [buildPlans.iosevka-bkhl-sans-normal.variants.design]
+  capital-a = "round-top-serifless"
   capital-q = "open-swash"
   capital-w = "rounded-vertical-sides-serifless"
 
@@ -42,6 +43,12 @@ noCvSs = true
   pilcrow = "low"
   underscore = "low"
 
+  [buildPlans.iosevka-bkhl-sans-normal.variants.italic]
+  capital-a = "straight-serifless"
+  capital-w = "straight-serifless"
+
+  w = "straight-serifless"  
+
 [buildPlans.iosevka-bkhl-sans-fixed]
 family = "Iosevka BKHL Sans Fixed"
 serifs = "sans"
@@ -69,6 +76,7 @@ noCvSs = true
   inherits = "buildPlans.iosevka-bkhl-sans-normal"
 
     [buildPlans.iosevka-bkhl-serif-normal.variants.design]
+    capital-a = "round-top-base-serifed"
     capital-e = "serifed-capped"
     capital-f = "serifed-capped"
     capital-w = "rounded-vertical-sides-serifed"
@@ -95,7 +103,11 @@ noCvSs = true
     guillemet = "curly"
 
     [buildPlans.iosevka-bkhl-serif-normal.variants.italic]
+    capital-a = "straight-base-serifed"
+    capital-w = "straight-serifed"
+
     g = "double-storey-open"
+    w = "straight-serifed"
 
 [buildPlans.iosevka-bkhl-serif-fixed]
 family = "Iosevka BKHL Serif Fixed"
