@@ -29,9 +29,14 @@
 [diff]
     algorithm = histogram
     submodule = log
+    tool = meld_flatpak
 [diff "elisp"]
     xfuncname="^\\((((def\\S+)|use-package)\\s+\\S+)"
 [diff "org"]
     xfuncname="^\\*+ +(.*)$"
-[alias]
+[difftool]
+    prompt = false
+[difftool "meld_flatpak"]
+     cmd = flatpak run --filesystem=/tmp:ro --file-forwarding org.gnome.meld \"@@\" $LOCAL \"@@\" \"@@\" $REMOTE \"@@\"
+ [alias]
 	st = status
