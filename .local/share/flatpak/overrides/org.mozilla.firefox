@@ -1,8 +1,9 @@
 [Context]
-sockets=session-bus;
+sockets=session-bus
 
 [System Bus Policy]
 org.freedesktop.Flatpak=talk
 
 [Environment]
 MOZ_ENABLE_WAYLAND=1
+MOZ_USE_XINPUT2=1
