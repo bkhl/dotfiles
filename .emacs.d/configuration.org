@@ -2024,15 +2024,6 @@ This module allows a number of functions to operate on the current line if no re
 :CUSTOM_ID: add-on-programming
 :END:
 
-*** [[https://github.com/emacs-tree-sitter/treesit-langs][treesit-langs]] to provide Tree-sitter grammars
-
-#+begin_src emacs-lisp
-(use-package treesit-langs
-  :demand t
-  :config
-  (treesit-langs-major-mode-setup))
-#+end_src
-
 *** [[https://codeberg.org/ideasman42/emacs-fancy-compilation.git][fancy-compilation]] to improve compilation output buffers
 :PROPERTIES:
 :CUSTOM_ID: fancy-compilation

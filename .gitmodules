@@ -142,7 +142,3 @@
 	path = .emacs.d/site-lisp/jinx
 	url = https://github.com/minad/jinx.git
 	branch = main
-[submodule ".emacs.d/site-lisp/treesit-langs"]
-	path = .emacs.d/site-lisp/treesit-langs
-	url = https://github.com/emacs-tree-sitter/treesit-langs.git
-	branch = main
