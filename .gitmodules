@@ -142,7 +142,3 @@
 	path = .emacs.d/site-lisp/jinx
 	url = https://github.com/minad/jinx.git
 	branch = main
-[submodule ".emacs.d/site-lisp/janet-ts-mode"]
-	path = .emacs.d/site-lisp/janet-ts-mode
-	url = https://github.com/sogaiu/janet-ts-mode.git
-        branch = master
