@@ -2171,6 +2171,13 @@ To use this in a project a ~.dir-locals.el~ file is needed, looking something li
                     (flymake-mode))))))
 #+end_example
 
+*** CMake
+
+#+begin_src emacs-lisp
+(use-package cmake-mode
+  :load-path "site-lisp/cmake/Auxiliary")
+#+end_src
+
 ** Version control
 :PROPERTIES:
 :CUSTOM_ID: add-on-version-control
