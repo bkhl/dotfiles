@@ -3,8 +3,6 @@
 #+EMAIL: bkhl@elektrubadur.se
 #+STARTUP: overview
 #+PROPERTY: header-args :results silent
-#+CATEGORIES[]: Software
-#+TAGS[]: Org Emacs
 #+TOC: t
 #+URL: /emacs-configuration
 
