@@ -15,7 +15,7 @@
 
 This is my Emacs configuration. It is available online in these forms:
 
-- [[https://git.sr.ht/~bkhl/dotfiles/tree/main/item/.emacs.d/configuration.org][Org mode source file]] in a Git repository.
+- [[https://github.com/bkhl/dotfiles/blob/main/.emacs.d/configuration.org][Org mode source file]] in a Git repository.
 - [[https://elektrubadur.se/emacs-configuration][HTML article]] on my personal web page.
 
 Inspirations for this Emacs configuration include:
@@ -28,10 +28,10 @@ Inspirations for this Emacs configuration include:
 Some interesting properties of this configuration:
 
 - Almost all of the configuration is kept in an Org file.
-- The startup time is quite fast. There are some tweaks in [[https://git.sr.ht/~bkhl/dotfiles/tree/main/item/.emacs.d/init.el][init.el]] and [[https://git.sr.ht/~bkhl/dotfiles/tree/main/item/.emacs.d/early-init.el][early-init.el]] that makes helps with this, together with prudent use of autoloading, and in general trying to keep the number of add-on packages low.
+- The startup time is quite fast. There are some tweaks in [[https://github.com/bkhl/dotfiles/blob/main/.emacs.d/init.el][init.el]] and [[https://github.com/bkhl/dotfiles/blob/main/.emacs.d/early-init.el][early-init.el]] that makes helps with this, together with prudent use of autoloading, and in general trying to keep the number of add-on packages low.
 - Add-on packages are managed manually as Git submodules.
 
-The configuration is organized so that basic configuration of Emacs comes first, then built-in packages that are bundles with Emacs, followed by the add-on packages that are kept in [[https://git.sr.ht/~bkhl/dotfiles/tree/main/item/.emacs.d/site-lisp][~/.emacs.d/site-lisp/]].
+The configuration is organized so that basic configuration of Emacs comes first, then built-in packages that are bundles with Emacs, followed by the add-on packages that are kept in [[https://github.com/bkhl/dotfiles/tree/main/.emacs.d/site-lisp][~/.emacs.d/site-lisp/]].
 
 Here is [[https://www.emacswiki.org/emacs/bkhl][my home page on EmacsWiki]].
 
@@ -1924,7 +1924,7 @@ This package can show available bindings in the current buffer.
    ("M-# b" . substitute-target-in-buffer)))
 #+end_src
 
-*** [[https://git.sr.ht/~bkhl/trimspace-mode][trimspace-mode]] for trimming trailing spaces and newlines
+*** [[https://github.com/bkhl/trimspace-mode][trimspace-mode]] for trimming trailing spaces and newlines
 :PROPERTIES:
 :CUSTOM_ID: trimspace-mode
 :END:
