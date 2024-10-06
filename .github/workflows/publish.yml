@@ -1,0 +1,52 @@
+---
+name: Publish Emacs configuration
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Publish Emacs configuration
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          path: dotfiles
+
+      - name: Check out home page repository
+        uses: actions/checkout@v4
+        with:
+          repository: bkhl/elektrubadur.se
+          token: "${{ secrets.ELEKTRUBADUR_SE_TOKEN }}"
+          path: elektrubadur.se
+          ref: main
+          fetch-depth: 0
+
+      - name: Commit and push changes
+        run: |
+          set -xeuo pipefail
+
+          install -v -m 0644 -T \
+              dotfiles/.emacs.d/configuration.org \
+              elektrubadur.se/content/emacs-configuration.org
+
+          # Get Git commiter and commit message
+          pushd dotfiles
+          git config --global user.name "$(git log -1 --pretty='%an')"
+          git config --global user.email "$(git log -1 --pretty='%ae')"
+          message="$(git log -1 --pretty='%B')"
+          popd
+
+          # Commit and push changes
+          pushd elektrubadur.se
+          git add --all
+          if git diff --quiet HEAD --; then
+              # No changes
+              exit 0
+          fi
+          git commit --message="${message}"
+          git push origin main:main
