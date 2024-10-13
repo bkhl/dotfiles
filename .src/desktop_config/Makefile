@@ -15,11 +15,8 @@ config:
 	dconf write /org/gnome/desktop/interface/monospace-font-name "'$(MONOSPACE_FONT)'"
 	dconf write /org/gnome/desktop/wm/preferences/titlebar-font "'$(INTERFACE_FONT)'"
 
-	# Disable activity hot corner
-	dconf write /org/gnome/desktop/interface/enable-hot-corners 'false'
-
-	# Add some menu bar buttons
-	dconf write /org/gnome/desktop/wm/preferences/button-layout "'appmenu:minimize,maximize,close'"
+	# Disable menu bar buttons
+	dconf write /org/gnome/desktop/wm/preferences/button-layout "'appmenu:'"
 
 	# Keyboard settings
 	dconf write /org/gnome/desktop/input-sources/sources "$(INPUT_SOURCES)"
