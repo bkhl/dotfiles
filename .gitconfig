@@ -40,3 +40,8 @@
      cmd = flatpak run --filesystem=/tmp:ro --file-forwarding org.gnome.meld \"@@\" $LOCAL \"@@\" \"@@\" $REMOTE \"@@\"
  [alias]
 	st = status
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
