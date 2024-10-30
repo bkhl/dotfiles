@@ -26,9 +26,3 @@ config:
 	dconf write /org/gnome/desktop/input-sources/mru-sources "$(INPUT_SOURCES)"
 	dconf write /org/gnome/desktop/input-sources/per-window 'false'
 	dconf write /org/gnome/desktop/input-sources/xkb-options "['lv3:ralt_switch', 'compose:caps']"
-
-	# Keyboard shortcut to launch terminal
-	dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']"
-	dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/name "'Terminal'"
-	dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/binding "'<Super>t'"
-	dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/command "'/usr/bin/gnome-terminal'"
