@@ -2,15 +2,15 @@
 
 set -xeuo pipefail
 
-curl -sSLO 'https://github.com/rsms/inter/releases/download/v4.0/Inter-4.0.zip'
+curl -sSLO 'https://github.com/rsms/inter/releases/download/v4.1/Inter-4.1.zip'
 sha256sum -c - <<HERE
-ff970a5d4561a04f102a7cb781adbd6ac4e9b6c460914c7a101f15acb7f7d1a4 Inter-4.0.zip
+9883fdd4a49d4fb66bd8177ba6625ef9a64aa45899767dde3d36aa425756b11e Inter-4.1.zip
 HERE
 
 rm -rf src
 mkdir src
 pushd src
-unzip ../Inter-4.0.zip
+unzip ../Inter-4.1.zip
 popd
 
 for suffix in "" "-Italic"; do
