@@ -100,7 +100,7 @@
 	branch = master
 [submodule ".emacs.d/site-lisp/flymake-yamllint"]
 	path = .emacs.d/site-lisp/flymake-yamllint
-	url = https://github.com/shaohme/flymake-yamllint.git
+	url = https://codeberg.org/shaohme/flymake-yamllint.git
 	branch = main
 [submodule ".emacs.d/site-lisp/git-link"]
 	path = .emacs.d/site-lisp/git-link
