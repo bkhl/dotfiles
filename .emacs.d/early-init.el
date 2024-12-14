@@ -4,7 +4,7 @@
 ;; increases startup speed at the cost of temporary memory usage increase. This
 ;; is done first to decrease start-up time.
 ;;
-;; The original value is stored so that it can be reverted in `init.el'.n
+;; The original value is stored so that it can be reverted in `init.el'.
 (setq my/default-gc-cons-threshold (eval-when-compile (* 32 1024 1024))
       gc-cons-threshold most-positive-fixnum)
 
