@@ -1,7 +1,7 @@
 IMAGE := iosevka-builder
 SRC := src
 BUILD := dist
-VERSION = v32.1.0
+VERSION = v32.3.0
 
 .PHONY: all clean image fonts
 
