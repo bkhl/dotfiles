@@ -114,10 +114,6 @@
 	path = .emacs.d/site-lisp/auto-dark
 	url = https://github.com/LionyxML/auto-dark-emacs.git
 	branch = master
-[submodule ".emacs.d/site-lisp/fennel-mode"]
-	path = .emacs.d/site-lisp/fennel-mode
-	url = https://git.sr.ht/~technomancy/fennel-mode
-	branch = main
 [submodule ".emacs.d/site-lisp/fancy-compilation"]
 	path = .emacs.d/site-lisp/fancy-compilation
 	url = https://codeberg.org/ideasman42/emacs-fancy-compilation.git
