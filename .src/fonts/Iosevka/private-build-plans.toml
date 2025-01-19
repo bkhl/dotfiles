@@ -102,6 +102,8 @@ noCvSs = true
 
     guillemet = "curly"
 
+    pilcrow = "curved"
+
     [buildPlans.iosevka-bkhl-serif-normal.variants.italic]
     capital-a = "straight-base-serifed"
     capital-w = "straight-serifed"
