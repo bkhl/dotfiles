@@ -1558,6 +1558,18 @@ These are add-on packages that are dependencies of other packages further down, 
   :load-path "site-lisp/with-editor/lisp")
 #+end_src
 
+*** [[https://github.com/xenodium/shell-maker/][shell-maker]]
+:PROPERTIES:
+:CUSTOM_ID: shell-maker
+:END:
+
+- [[#kagi][Kagi]]
+
+#+begin_src emacs-lisp
+(use-package shell-maker
+  :defer)
+#+end_src
+
 ** Interface
 :PROPERTIES:
 :CUSTOM_ID: add-on-interface
@@ -2307,4 +2319,18 @@ Shows changes that are not committed to the version control system for the file 
   (dolist (face '(org-modern-symbol org-modern-label))
     (set-face-attribute face nil :family "Iosevka BKHL Sans Normal"))
   (global-org-modern-mode))
+#+end_src
+
+** [[https://codeberg.org/bram85/kagi.el][Kagi]]
+
+#+begin_src emacs-lisp
+(use-package kagi
+  :custom
+  ;; or use a function, e.g. with the password-store package:
+  (kagi-api-token (lambda () (password-store-get "Kagi/API")))
+
+  ;; Universal Summarizer settings
+  (kagi-summarizer-engine "cecil")
+  (kagi-summarizer-default-language "EN")
+  (kagi-summarizer-cache t))
 #+end_src

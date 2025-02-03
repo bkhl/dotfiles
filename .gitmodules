@@ -146,3 +146,11 @@
 	path = .emacs.d/site-lisp/cmake
 	url = https://gitlab.kitware.com/cmake/cmake.git
 	branch = master
+[submodule ".emacs.d/site-lisp/shell-maker"]
+	path = .emacs.d/site-lisp/shell-maker
+	url = https://github.com/xenodium/shell-maker.git
+	branch = main
+[submodule ".emacs.d/site-lisp/kagi"]
+	path = .emacs.d/site-lisp/kagi
+	url = https://codeberg.org/bram85/kagi.el.git
+	branch = main
