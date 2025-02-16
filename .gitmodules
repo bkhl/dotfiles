@@ -146,3 +146,7 @@
 	path = .emacs.d/site-lisp/cmake
 	url = https://gitlab.kitware.com/cmake/cmake.git
 	branch = master
+[submodule ".emacs.d/site-lisp/llama"]
+	path = .emacs.d/site-lisp/llama
+	url = https://github.com/tarsius/llama.git
+	branch = main
