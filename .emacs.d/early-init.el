@@ -1,12 +1,11 @@
-;;; early-init.el -*- no-byte-compile: t -*-
+;;; early-init.el --- Emacs pre-initialisation  -*- no-byte-compile: t -*-
+;;; Commentary:
+;;; Code:
 
 ;; Increase number of bytes of consing between garbage collections. This
 ;; increases startup speed at the cost of temporary memory usage increase. This
 ;; is done first to decrease start-up time.
-;;
-;; The original value is stored so that it can be reverted in `init.el'.
-(setq my/default-gc-cons-threshold (eval-when-compile (* 32 1024 1024))
-      gc-cons-threshold most-positive-fixnum)
+(setq gc-cons-threshold most-positive-fixnum)
 
 ;; Disable implied resizing of frames when display settings change. This speeds
 ;; up startup by skipping frame resizing when e.g. font settings change.
@@ -25,3 +24,11 @@
 
 ;; Disable package.el, as I don't use it.
 (setq package-enable-at-startup nil)
+
+(provide 'early-init)
+
+;; Local Variables:
+;; coding: utf-8
+;; no-byte-compile: t
+;; End:
+;;; early-init.el ends here

@@ -1,46 +1,27 @@
 #+TITLE: Emacs Configuration
 #+AUTHOR: Björn Lindström
 #+EMAIL: bkhl@elektrubadur.se
-#+STARTUP: overview
-#+PROPERTY: header-args :results silent
-#+TOC: t
 
-* Introduction
-:PROPERTIES:
-:CUSTOM_ID: introduction
-:END:
-
-This is my Emacs configuration. It is available online in these forms:
-
-- [[https://github.com/bkhl/dotfiles/blob/main/.emacs.d/configuration.org][Org mode source file]] in a Git repository.
-- [[https://elektrubadur.se/emacs-configuration/][Exported as HTML]] on my personal web page.
+This is my Emacs configuration.
 
 Inspirations for this Emacs configuration include:
 
 - Harry R. Schwartz' [[https://github.com/hrs/dotfiles/blob/main/emacs/.config/emacs/configuration.org][Emacs configuration]] and [[https://github.com/hrs/sensible-defaults.el][sensible-defaults.el]].
 - Phil Hagelberg's [[https://git.sr.ht/~technomancy/better-defaults][better-defaults.el]].
+- Steve Purcell's [[https://github.com/purcell/emacs.d][emacs.d]].
 - [[https://emacscast.org/][EmacsCast]].
 - Protesilaos Stavrou's [[https://protesilaos.com/codelog/][blog]] and [[https://www.youtube.com/channel/UC0uTPqBCFIpZxlz_Lv1tk_g][videos]].
 
 These are some interesting properties of this configuration:
 
-- Almost all of the configuration is kept in an Org file.
 - The startup time is quite fast. There are some tweaks in [[https://github.com/bkhl/dotfiles/blob/main/.emacs.d/init.el][init.el]] and [[https://github.com/bkhl/dotfiles/blob/main/.emacs.d/early-init.el][early-init.el]] that makes helps with this, together with prudent use of autoloading, and in general trying to keep the number of add-on packages low.
 - Add-on packages are managed manually as Git submodules.
 
-The configuration is organized so that basic configuration of Emacs comes first, then built-in packages that are bundles with Emacs, followed by the add-on packages that are kept in [[https://github.com/bkhl/dotfiles/tree/main/.emacs.d/site-lisp][~/.emacs.d/site-lisp/]].
+The configuration is organized so that basic configuration of Emacs are loaded first, then built-in packages that are bundles with Emacs, followed by the add-on packages that are kept in [[https://github.com/bkhl/dotfiles/tree/main/.emacs.d/site-lisp][~/.emacs.d/site-lisp/]].
 
 Here is [[https://www.emacswiki.org/emacs/bkhl][my home page on EmacsWiki]].
 
-* Set personal information
-:PROPERTIES:
-:CUSTOM_ID: personal-information
-:END:
-
-#+begin_src emacs-lisp
-(setopt user-full-name "Björn Lindström"
-        user-mail-address "bkhl@elektrubadur.se")
-#+end_src
+Work in progress: moving the below into the appropriate ~.el~ files.
 
 * Built-in functionality
 :PROPERTIES:
@@ -49,411 +30,10 @@ Here is [[https://www.emacswiki.org/emacs/bkhl][my home page on EmacsWiki]].
 
 Configuration of built-in Emacs behaviour and packages bundled with Emacs.
 
-** Start-up
-:PROPERTIES:
-:CUSTOM_ID: start-up
-:END:
-
-*** ~use-package~
-:PROPERTIES:
-:CUSTOM_ID: use-package
-:END:
-
-The ~use-package~ macro makes it easier to configure add-on packages without generally having to remember how to set up autoloading &c.
-
-#+begin_src emacs-lisp
-(require 'use-package)
-#+end_src
-
-This section contains extensions to this macro to enable using packages from Git submodules without involving a package manager.
-
-**** Provide default ~:load-path~ pointing to location of submodules
-:PROPERTIES:
-:CUSTOM_ID: use-package-default-load-path
-:END:
-
-This makes the ~:load-package~ keyword in ~use-package~ calls default to a directory under ~/.emacs.d/site-lisp/~ named the same as the package to be imported, if such a directory exists. For packages where for some reason the package name doesn't match the directory name, or that has its Lisp files in a subdirectory, an explicit ~:load-path~ needs to be added.
-
-#+begin_src emacs-lisp
-(setf (alist-get :load-path use-package-defaults)
-      '((lambda (name args)
-          (let ((path (expand-file-name (concat user-emacs-directory
-                                                "site-lisp/"
-                                                (symbol-name name)))))
-            (when (file-exists-p path)
-              (list path))))
-        t))
-#+end_src
-
-**** Add ~:make-autoloads~ keyword extension to generate autoload files
-:PROPERTIES:
-:CUSTOM_ID: use-package-make-autoloads
-:END:
-
-Some packages rely on ~package.el~ (or equivalent) to generate and register an autoloads file. This custom keyword will do that for packages included without a package manager.
-
-This is the function that actually generates the autoload file (if needed) and loads it.
-
-Since ~make-directory-autoloads~ has no logic to work out if the file needs to be regenerated, this function will skip calling it the file exists already, and is newer than all the other ~.el~ files in the directory.
-
-If a package has additional files in subdirectories and such, this function would not handle it, but then neither would ~package-generate-autoloads~, as far as I can tell, so this should work for any packages supported by ~package.el~.
-
-#+begin_src emacs-lisp
-(defun my/use-package-autoload-package (name package-directory)
-  "Set up autoloading for package NAME in directory PACKAGE-DIRECTORY."
-  (let* ((name (symbol-name name))
-         (auto-file (expand-file-name (format "%s/%s-autoloads.el"
-                                              package-directory
-                                              name))))
-    (when (or (not (file-exists-p auto-file))
-              (let* ((autoloads-attributes
-                      (file-attributes auto-file))
-                     (autoloads-age
-                      (file-attribute-modification-time
-                       autoloads-attributes))
-                     (autoloads-inode-number
-                      (file-attribute-inode-number autoloads-attributes)))
-                (seq-find (lambda (attributes)
-                            (time-less-p autoloads-age
-                                         (file-attribute-modification-time
-                                          attributes)))
-                          (mapcar #'cdr
-                                  (directory-files-and-attributes
-                                   package-directory
-                                   nil
-                                   (rx ".el" eos))))))
-      (make-directory-autoloads package-directory auto-file))
-    (load auto-file package-directory)))
-#+end_src
-
-Register the custom keyword. This is added first in the list, so that it will have access to the ~:load-path~ parameter, and so that it will load before ~:defer~ or other keywords that might cause this to run after the package is loaded.
-
-#+begin_src emacs-lisp
-(add-to-list 'use-package-keywords :make-autoloads)
-#+end_src
-
-This makes the keyword take boolean parameters similar to other keywords like ~:defer~.
-
-#+begin_src emacs-lisp
-(defalias 'use-package-normalize/:make-autoloads
-  'use-package-normalize-predicate)
-#+end_src
-
-The handler function is what injects the call to the function to generate the autoloads file when the ~use-package~ macro is expanded.
-
-#+begin_src emacs-lisp
-(defun use-package-handler/:make-autoloads (name _keyword arg rest state)
-  (use-package-concat
-     (mapcar #'(lambda (path)
-                 `(my/use-package-autoload-package ',name ,path))
-             (plist-get rest :load-path))
-     (use-package-process-keywords name rest state)))
-#+end_src
-
-*** Keep customizations in separate file
-:PROPERTIES:
-:CUSTOM_ID: customize-separate
-:END:
-
-This makes the Emacs customization interface store values in a separate file, instead of in ~init.el~.
-
-#+begin_src emacs-lisp
-(use-package cus-edit
-  :custom
-  (custom-file (concat user-emacs-directory "custom.el"))
-  :config
-  (load custom-file :noerror))
-#+end_src
-
-*** Show init time on startup
-:PROPERTIES:
-:CUSTOM_ID: show-init-time
-:END:
-
-#+begin_src emacs-lisp
-(advice-add 'display-startup-echo-area-message
-            :after
-            (defun my/display-startup-echo-area-message ()
-              (message "Emacs init time: %s" (emacs-init-time))))
-#+end_src
-
-*** Disable garbage collection when in minibuffer
-:PROPERTIES:
-:CUSTOM_ID: minibuffer-disable-gc
-:END:
-
-Disable GC while minibuffer is open, and enabled again when it is closed. This helps prevent hanging while working in the minibuffer.
-
-#+begin_src emacs-lisp
-(add-hook 'minibuffer-setup-hook
-          (defun my/disable-gc ()
-            (setq gc-cons-threshold most-positive-fixnum)))
-(add-hook 'minibuffer-exit-hook
-          (defun my/default-gc ()
-            (setq gc-cons-threshold my/default-gc-cons-threshold)))
-#+end_src
-
-** Interface
-:PROPERTIES:
-:CUSTOM_ID: built-in-interface
-:END:
-
-*** Show line and column number in mode line
-:PROPERTIES:
-:CUSTOM_ID: line-column-number
-:END:
-
-#+begin_src emacs-lisp
-(use-package simple
-  :config
-  (line-number-mode)
-  (column-number-mode))
-#+end_src
-
-*** Emoji font
-:PROPERTIES:
-:CUSTOM_ID: emoji-font
-:END:
-
-Enable Emoji font if available. This is a test emoji: ☃
-
-This is run as a hook after the first graphical frame is created, as this will otherwise not work when Emacs is started in daemon mode, or by ~emacsclient~.
-
-#+begin_src emacs-lisp
-(use-package frame
-  :config
-  (defun my/set-fontset-fonts (frame)
-    (when (display-graphic-p frame)
-      (dolist (font-spec '((#x2600 . #x26ff)
-                           emoji))
-        (set-fontset-font t font-spec
-                          "Noto Color Emoji"))
-      (remove-hook 'after-make-frame-functions
-                   'my/set-fontset-fonts)))
-  (add-hook 'after-make-frame-functions #'my/set-fontset-fonts)
-  (my/set-fontset-fonts (selected-frame)))
-#+end_src
-
-
-*** Disable bell
-:PROPERTIES:
-:CUSTOM_ID: disable-bell
-:END:
-
-Disable warning bell, both the default audio one and the visual one.
-
-#+begin_src emacs-lisp
-(setopt ring-bell-function 'ignore)
-#+end_src
-
-*** Set window title
-:PROPERTIES:
-:CUSTOM_ID: window-title
-:END:
-
-Set window title including current buffer or filename, along with system name. Use a straight or squiggly line to show if the buffer has modifications.
-
-#+begin_src emacs-lisp
-(setq frame-title-format
-      '(
-        "%b"
-        (:eval (if (buffer-modified-p) " ⁓ " " — "))
-        (:eval (system-name))))
-#+end_src
-
-*** Enable restoring exact window size
-:PROPERTIES:
-:CUSTOM_ID: restore-exact-window-size
-:END:
-
-Setting this variable allows resizing window by pixels, rather than rounding to an exact number of lines or columns. This is needed to be able to restore back from fullscreen to original frame size in Gnome.
-
-#+begin_src emacs-lisp
-(setopt frame-resize-pixelwise t)
-#+end_src
-
-*** Disable message on new ~emacsclient~ frames
-:PROPERTIES:
-:CUSTOM_ID: emacsclient-disable-message
-:END:
-
-#+begin_src emacs-lisp
-(use-package server
-  :custom
-  (server-client-instructions nil))
-#+end_src
-
-*** Prompt before closing Emacs
-:PROPERTIES:
-:CUSTOM_ID: prompt-before-close
-:END:
-
-#+begin_src emacs-lisp
-(use-package files
-  :custom
-  (confirm-kill-emacs 'y-or-n-p))
-#+end_src
-
-*** Set preferred dateformat
-:PROPERTIES:
-:CUSTOM_ID: date-format
-:END:
-
-#+begin_src emacs-lisp
-(use-package calendar
-  :config
-  (calendar-set-date-style 'iso))
-#+end_src
-
-*** Allow undo of window layout changes
-:PROPERTIES:
-:CUSTOM_ID: window-layout-undo
-:END:
-
-#+begin_src emacs-lisp
-(use-package winner
-  :config
-  (winner-mode))
-#+end_src
-
-*** Preserve ~M-x~ command history between sessions
-:PROPERTIES:
-:CUSTOM_ID: m-x-command-history
-:END:
-
-#+begin_src emacs-lisp
-(use-package savehist
-  :config
-  (savehist-mode))
-#+end_src
-
-*** Use saved point position in previously opened files
-:PROPERTIES:
-:CUSTOM_ID: save-place
-:END:
-
-#+begin_src emacs-lisp
-(use-package saveplace
-  :config
-  (save-place-mode))
-#+end_src
-
-*** Scrolling behaviour when moving cursor
-:PROPERTIES:
-:CUSTOM_ID: cursor-scrolling
-:END:
-
-When the cursor moves close to the edge of the screen, scroll only one line at time, but try to keep 5 rows within view.
-
-#+begin_src emacs-lisp
-(setopt scroll-conservatively 101
-        scroll-margin 5)
-#+end_src
-
-*** Smooth scrolling with scroll wheel
-:PROPERTIES:
-:CUSTOM_ID: smooth-scrolling
-:END:
-
-#+begin_src emacs-lisp
-(use-package pixel-scroll
-  :config
-  (pixel-scroll-precision-mode))
-#+end_src
-
-*** Highlight error messages
-:PROPERTIES:
-:CUSTOM_ID: highlight-visited-error
-:END:
-
-In ~next-error~ buffers, highligt the currently visited error.
-
-#+begin_src emacs-lisp
-(use-package simple
-  :custom
-  (setopt next-error-message-highlight t))
-#+end_src
-
-*** Make yes/no prompts shorter
-:PROPERTIES:
-:CUSTOM_ID: short-yes-no-prompts
-:END:
-
-#+begin_src emacs-lisp
-(setopt use-short-answers t)
-#+end_src
-
-*** Don't show bookmarks in fringe
-:PROPERTIES:
-:CUSTOM_ID: hide-bookmarks
-:END:
-
-#+begin_src emacs-lisp
-(use-package bookmark
-  :custom
-  (bookmark-set-fringe-mark nil))
-#+end_src
-
-*** Use bar cursor
-:PROPERTIES:
-:CUSTOM_ID: bar-cursor
-:END:
-
-#+begin_src emacs-lisp
-(setopt cursor-type 'bar)
-#+end_src
-
-*** Show matching parenthesis context when offscreen
-:PROPERTIES:
-:CUSTOM_ID: show-matching-offscreen
-:END:
-
-#+begin_src emacs-lisp
-(use-package paren
-  :custom
-  (setopt show-paren-context-when-offscreen 'overlay))
-#+end_src
-
-*** Switch windows with ~M-o~
-:PROPERTIES:
-:CUSTOM_ID: switch-windows-binding
-:END:
-
-Bind ~M-o~ (by default bound to a rarely used command) to ~other-window~.
-
-#+begin_src emacs-lisp
-(use-package window
-  :bind (("M-o" . other-window)))
-#+end_src
-
-*** Switch between windows with ~S-<direction>~
-:PROPERTIES:
-:CUSTOM_ID: directional-window-switch-binding
-:END:
-
-#+begin_src emacs-lisp
-(use-package windmove
-  :config
-  (windmove-default-keybindings))
-#+end_src
-
 ** Key bindings
 :PROPERTIES:
 :CUSTOM_ID: key-bindings
 :END:
-
-*** Disable ~C-z~
-:PROPERTIES:
-:CUSTOM_ID: disable-c-z
-:END:
-
-Disabling ~C-z~, which normally minimizes the window, which is rather distracting.
-
-#+begin_src emacs-lisp
-(use-package keymap
-  :config
-  (keymap-global-unset "C-z"))
-#+end_src
 
 *** Enable repeat maps for commands that have them
 :PROPERTIES:
@@ -562,16 +142,6 @@ Setting this to ~non-empty~ means this won't happen for empty strings, like when
 :CUSTOM_ID: buffers
 :END:
 
-*** Start with an empty scratch buffer.
-:PROPERTIES:
-:CUSTOM_ID: empty-scratch
-:END:
-
-#+begin_src emacs-lisp
-(setopt inhibit-startup-screen t
-        initial-scratch-message nil)
-#+end_src
-
 *** Use directory name in buffer names for files with same name
 :PROPERTIES:
 :CUSTOM_ID: uniquify-name-style
@@ -605,30 +175,6 @@ This overrides the Emacs settings that enforces having to accept local variables
 (use-package files
   :custom
   (enable-remote-dir-locals t))
-#+end_src
-
-*** Key bindings to kill/bury current buffer
-:PROPERTIES:
-:CUSTOM_ID: kill-bury-bindings
-:END:
-
-Change the default keybinding for killing a buffer, ~C-x k~, so that it kills the current buffer rather than prompting for a buffer. Instead ~C-x K~ is used for the previous default.
-
-#+begin_src emacs-lisp
-(global-set-key
- (kbd "C-x k")
- (defun my/kill-this-buffer ()
-   "Kill current buffer, prompting if there are unsaved changes."
-   (interactive)
-   (kill-buffer)))
-(global-set-key (kbd "C-x K") #'kill-buffer)
-#+end_src
-
-Also bind ~C-x M-k~ to bury the current buffer, a command that's not bound to any key by default.
-
-#+begin_src emacs-lisp
-(use-package window
-  :bind ("C-x M-k". bury-buffer))
 #+end_src
 
 ** Files
@@ -768,18 +314,6 @@ Allow Tramp to write backups of root-owned files in ~/tmp~, and ensure that Tram
 :CUSTOM_ID: built-in-text-editing
 :END:
 
-*** Bind Home/End to move to start/end of line
-:PROPERTIES:
-:CUSTOM_ID: home-end-bindings
-:END:
-
-#+begin_src emacs-lisp
-(use-package simple
-  :bind
-  ("<home>" . move-beginning-of-line)
-  ("<end>" . move-end-of-line))
-#+end_src
-
 *** Change behaviour of ~M-z~ for zapping to character
 :PROPERTIES:
 :CUSTOM_ID: m-z-zap-to-char
@@ -791,19 +325,6 @@ Make ~M-z~ kill characters up to the character /before/ the next occurrence of t
 (use-package misc
   :bind
   ("M-z" . zap-up-to-char))
-#+end_src
-
-*** Bind ~cycle-spacing~ to ~M-S-SPC~
-:PROPERTIES:
-:CUSTOM_ID: cycle-spacing
-:END:
-
-This edits whitespace around point by cycling between leaving only one space, deleting the space, and going back to what was there before.
-
-#+begin_src emacs-lisp
-(use-package simple
-  :bind
-  ("M-S-SPC" . cycle-spacing))
 #+end_src
 
 *** Bind ~duplicate-dwim~ to ~M-R~
@@ -826,35 +347,6 @@ Duplicates current line or active region.
 
 #+begin_src emacs-lisp
 (setopt sentence-end-double-space nil)
-#+end_src
-
-*** Highlight selected region and apply changes to it
-:PROPERTIES:
-:CUSTOM_ID: highlight-and-apply-to-region
-:END:
-
-Highlight the region when the mark is active.
-
-#+begin_src emacs-lisp
-(use-package simple
-  :config
-  (transient-mark-mode))
-#+end_src
-
-Set it so that if a selection is active, typed text will replace the selection.
-
-#+begin_src emacs-lisp
-(use-package delsel
-  :config
-  (delete-selection-mode))
-#+end_src
-
-*** Disable indentation using tabs.
-
-#+begin_src emacs-lisp
-(use-package simple
-  :custom
-  (indent-tabs-mode nil))
 #+end_src
 
 *** Set default line length to 80
