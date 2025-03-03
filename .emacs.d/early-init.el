@@ -4,9 +4,8 @@
 ;; increases startup speed at the cost of temporary memory usage increase. This
 ;; is done first to decrease start-up time.
 ;;
-;; The original value is stored so that it can be reverted in `init.el'.
-(setq my/default-gc-cons-threshold (eval-when-compile (* 32 1024 1024))
-      gc-cons-threshold most-positive-fixnum)
+;; It will be reduced to a smaller value in `init.el'.
+(setq gc-cons-threshold most-positive-fixnum)
 
 ;; Disable implied resizing of frames when display settings change. This speeds
 ;; up startup by skipping frame resizing when e.g. font settings change.
