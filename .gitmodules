@@ -82,6 +82,10 @@
 	path = .emacs.d/site-lisp/org-modern
 	url = https://github.com/minad/org-modern.git
 	branch = main
+[submodule ".emacs.d/site-lisp/gdscript-mode"]
+	path = .emacs.d/site-lisp/gdscript-mode
+	url = https://github.com/godotengine/emacs-gdscript-mode.git
+	branch = master
 [submodule ".emacs.d/site-lisp/consult"]
 	path = .emacs.d/site-lisp/consult
 	url = https://github.com/minad/consult.git
