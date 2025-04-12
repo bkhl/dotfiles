@@ -16,4 +16,4 @@
 
 ;; Set `gc-cons-threshold' to value used during normal operation, after
 ;; increasing it in `early-init.el'.
-(setq gc-cons-threshold (eval-when-compile (* 32 1024 1024)))
+(setq gc-cons-threshold my/default-gc-cons-threshold)
