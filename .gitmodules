@@ -152,5 +152,5 @@
 	branch = main
 [submodule ".emacs.d/site-lisp/racket-mode"]
 	path = .emacs.d/site-lisp/racket-mode
-	url = https://github.com/greghendershott/racket-mode.git
+	url = https://github.com/bkhl/racket-mode.git
 	branch = master
