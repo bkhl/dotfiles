@@ -1,9 +1,9 @@
+MAKEFLAGS += --always-make
+
 IMAGE := iosevka-builder
 SRC := src
 BUILD := dist
 VERSION = v33.1.0
-
-.PHONY: all clean image fonts
 
 all:
 	make --print-targets

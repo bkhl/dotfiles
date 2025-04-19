@@ -1,4 +1,4 @@
-.PHONY: all desktop_config
+MAKEFLAGS += --always-make
 
 all:
 	make --print-targets

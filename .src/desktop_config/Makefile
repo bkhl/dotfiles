@@ -1,8 +1,8 @@
+MAKEFLAGS += --always-make
+
 MONOSPACE_FONT := Iosevka BKHL Sans Fixed 13
 
 INPUT_SOURCES := [('xkb', 'us+altgr-intl'), ('xkb', 'th')]
-
-.PHONY: all config
 
 all: config
 
