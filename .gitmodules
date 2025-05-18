@@ -50,10 +50,6 @@
 	path = .emacs.d/site-lisp/minions
 	url = https://github.com/tarsius/minions.git
 	branch = main
-[submodule ".emacs.d/site-lisp/edit-server"]
-	path = .emacs.d/site-lisp/edit-server
-	url = https://github.com/stsquad/emacs_chrome.git
-	branch = master
 [submodule ".emacs.d/site-lisp/modus-themes"]
 	path = .emacs.d/site-lisp/modus-themes
 	url = https://github.com/protesilaos/modus-themes.git
