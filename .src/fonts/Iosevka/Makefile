@@ -3,7 +3,7 @@ MAKEFLAGS += --always-make
 IMAGE := iosevka-builder
 SRC := src
 BUILD := dist
-VERSION = v33.1.0
+VERSION = v33.2.6
 
 all:
 	make --print-targets
@@ -17,4 +17,4 @@ image:
 	podman build -t $(IMAGE) -f $(SRC)/docker/Dockerfile $(SRC)/docker
 
 fonts:
-	podman run --cpus=1 --rm --tty --volume .:/work:z $(IMAGE) ttf::iosevka-bkhl-{sans,serif}-{normal,fixed}
+	podman run --rm --tty --volume .:/work:z $(IMAGE) ttf::iosevka-bkhl-{sans,serif}-{normal,fixed}
