@@ -14,7 +14,7 @@ git init
 Add this repository as  a remote.
 
 #+begin_example
-git remote add origin 'git@github.com:bkhl/dotfiles'
+git remote add origin 'git@github.com:bkhl/dotfiles.git'
 #+end_example
 
 Make ~status~ ignore untracked files. This way you won't get a huge list of your regular files in the status commands. Some people may prefer a ~.gitignore~ with a ~*~ in it to ignore all files, which would also affect ~git add~, but I haven't found I need that.
