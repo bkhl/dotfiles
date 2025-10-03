@@ -1,3 +1,0 @@
-#!/bin/bash
-
-exec podman run --rm --userns=keep-id -v "${PWD}:${PWD}" -w "${PWD}" pandoc/latex "$@"
