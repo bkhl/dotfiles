@@ -42,6 +42,17 @@ for d in $HOME/.local/bin $HOME/.local/opt/*/bin; do
     fi
 done
 
+# Library path
+for d in $HOME/.local/opt/*/lib; do
+    if [ -d "$d" ]; then
+        LD_LIBRARY_PATH="$d${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+    fi
+done
+
+if [ -n "$LD_LIBRARY_PATH" ]; then
+    export LD_LIBRARY_PATH
+fi
+
 # Enable using emacsclient as editor of other commands. Setting ALTERNATE_EDITOR
 # like this makes emacsclient start a server in the background and try to
 # reconnect, if it can't find one.
