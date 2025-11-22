@@ -3,7 +3,7 @@ MAKEFLAGS += --always-make
 IMAGE := iosevka-builder
 SRC := src
 BUILD := dist
-VERSION = v33.3.4
+VERSION = v33.3.5
 
 all:
 	make --print-targets
