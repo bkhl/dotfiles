@@ -154,3 +154,6 @@
 	path = .emacs.d/site-lisp/janet-ts-mode
 	url = https://github.com/sogaiu/janet-ts-mode.git
         branch = master
+[submodule ".emacs.d/site-lisp/dape"]
+	path = .emacs.d/site-lisp/dape
+	url = https://github.com/svaante/dape.git

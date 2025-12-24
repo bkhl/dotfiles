@@ -437,6 +437,12 @@ Bind ~M-o~ (by default bound to a rarely used command) to ~other-window~.
   (windmove-default-keybindings))
 #+end_src
 
+*** Left and right side windows to occupy full frame height
+
+#+begin_src emacs-lisp
+(setopt window-sides-vertical t)
+#+end_src
+
 ** Key bindings
 :PROPERTIES:
 :CUSTOM_ID: key-bindings
@@ -2163,6 +2169,14 @@ This module allows a number of functions to operate on the current line if no re
 :PROPERTIES:
 :CUSTOM_ID: add-on-programming
 :END:
+
+*** [[https://github.com/svaante/dape][dape]] DAP client
+
+#+begin_src emacs-lisp
+(use-package dape)
+
+
+#+end_src
 
 *** [[https://codeberg.org/ideasman42/emacs-fancy-compilation.git][fancy-compilation]] to improve compilation output buffers
 :PROPERTIES:
