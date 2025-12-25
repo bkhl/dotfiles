@@ -82,6 +82,11 @@ if ! shopt -oq posix; then
     elif [[ -f /etc/bash_completion ]]; then
         source /etc/bash_completion
     fi
+
+    # Completion for exercism CLI if present
+    if command -v exercism >/dev/null 2>&1; then
+        . <(exercism completion bash)
+    fi
 fi
 
 
