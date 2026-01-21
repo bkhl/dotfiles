@@ -1,7 +1,0 @@
-#!/bin/sh
-
-exec podman run --rm --interactive \
-     --volume "${PWD}:${PWD}:z" \
-     --workdir "${PWD}" \
-     docker.io/pipelinecomponents/luacheck:latest \
-     luacheck "$@"
