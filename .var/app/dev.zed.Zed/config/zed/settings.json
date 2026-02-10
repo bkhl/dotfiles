@@ -17,6 +17,7 @@
     "ansible": true,
     "csv": true,
     "dockerfile": true,
+    "git-firefly": true,
     "github-actions": true,
     "helm": true,
     "html": true,
