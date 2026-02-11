@@ -158,3 +158,27 @@
 	path = .emacs.d/site-lisp/dockerfile-mode
 	url = https://github.com/spotify/dockerfile-mode
 	branch = master
+[submodule ".emacs.d/site-lisp/plz"]
+	path = .emacs.d/site-lisp/plz
+	url = https://github.com/alphapapa/plz.el.git
+	branch = master
+[submodule ".emacs.d/site-lisp/plz-event-source"]
+	path = .emacs.d/site-lisp/plz-event-source
+	url = https://github.com/r0man/plz-event-source.git
+	branch = main
+[submodule ".emacs.d/site-lisp/plz-media-type"]
+	path = .emacs.d/site-lisp/plz-media-type
+	url = https://github.com/r0man/plz-media-type.git
+	branch = main
+[submodule ".emacs.d/site-lisp/llm"]
+	path = .emacs.d/site-lisp/llm
+	url = https://github.com/ahyatt/llm.git
+	branch = main
+[submodule ".emacs.d/site-lisp/ellama"]
+	path = .emacs.d/site-lisp/ellama
+	url = https://github.com/s-kostyaev/ellama.git
+	branch = main
+[submodule ".emacs.d/site-lisp/yaml"]
+	path = .emacs.d/site-lisp/yaml
+	url = https://github.com/zkry/yaml.el.git
+	branch = master

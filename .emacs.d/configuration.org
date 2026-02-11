@@ -1607,6 +1607,7 @@ These are add-on packages that are dependencies of other packages further down, 
 - [[#cape][cape]]
 - [[#consult][consult]]
 - [[#corfu][corfu]]
+- [[#ellama][ellama]]
 - [[#embark][embark]]
 - [[#magit][Magit]]
 - [[#marginalia][marginalia]]
@@ -1642,6 +1643,18 @@ These are add-on packages that are dependencies of other packages further down, 
   :defer)
 #+end_src
 
+*** [[https://github.com/ahyatt/llm][llm]]
+:PROPERTIES:
+:CUSTOM_ID: llm
+:END:
+
+- [[#ellama][ellama]]
+
+#+begin_src emacs-lisp
+(use-package llm
+  :defer)
+#+end_src
+
 *** [[https://github.com/tarsius/llama][llama]]
 :PROPERTIES:
 :CUSTOM_ID: llama
@@ -1654,11 +1667,48 @@ These are add-on packages that are dependencies of other packages further down, 
   :defer)
 #+end_src
 
+*** [[https://github.com/alphapapa/plz.el][plz]]
+:PROPERTIES:
+:CUSTOM_ID: plz
+:END:
+
+- [[#ellama][ellama]]
+
+#+begin_src emacs-lisp
+(use-package plz
+  :defer)
+#+end_src
+
+*** [[https://github.com/r0man/plz-media-type][plz-media-type]]
+:PROPERTIES:
+:CUSTOM_ID: plz-media-type
+:END:
+
+- [[#ellama][ellama]]
+
+#+begin_src emacs-lisp
+(use-package plz-media-type
+  :defer)
+#+end_src
+
+*** [[https://github.com/r0man/plz-event-source][plz-event-source]]
+:PROPERTIES:
+:CUSTOM_ID: plz-event-source
+:END:
+
+- [[#ellama][ellama]]
+
+#+begin_src emacs-lisp
+(use-package plz-event-source
+  :defer)
+#+end_src
+
 *** [[https://github.com/magit/transient][transient]]
 :PROPERTIES:
 :CUSTOM_ID: transient
 :END:
 
+- [[#ellama][ellama]]
 - [[#magit][Magit]]
 
 #+begin_src emacs-lisp
@@ -1676,6 +1726,18 @@ These are add-on packages that are dependencies of other packages further down, 
 #+begin_src emacs-lisp
 (use-package with-editor
   :load-path "site-lisp/with-editor/lisp")
+#+end_src
+
+*** [[https://github.com/zkry/yaml.el][yaml]]
+:PROPERTIES:
+:CUSTOM_ID: yaml
+:END:
+
+- [[#ellama][ellama]]
+
+#+begin_src emacs-lisp
+(use-package yaml
+  :defer)
 #+end_src
 
 ** Interface
@@ -2435,4 +2497,26 @@ Shows changes that are not committed to the version control system for the file 
   (dolist (face '(org-modern-symbol org-modern-label))
     (set-face-attribute face nil :family "Iosevka BKHL Sans Normal"))
   (global-org-modern-mode))
+#+end_src
+
+** Language model interaction
+
+*** [[https://github.com/s-kostyaev/ellama][ellama]] large language model interaction package
+:PROPERTIES:
+:CUSTOM_ID: ellama
+:END:
+
+#+begin_src emacs-lisp
+(use-package ellama
+  :bind ("C-c e" . ellama)
+  :custom
+  (ellama-auto-scroll t))
+
+(use-package ellama-transient
+  :after ellama
+  :load-path "site-lisp/ellama")
+
+(use-package ellama-blueprint
+  :after ellama
+  :load-path "site-lisp/ellama")
 #+end_src
