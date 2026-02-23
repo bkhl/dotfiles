@@ -6,12 +6,17 @@
   "session": {
     "trust_all_worktrees": true,
   },
-  "ui_font_size": 16,
+  "ui_font_size": 18.0,
   "buffer_font_size": 16.0,
   "theme": {
     "mode": "system",
     "light": "Modus Operandi",
     "dark": "Modus Vivendi Tritanopia",
+  },
+  "show_edit_predictions": true,
+  "edit_predictions": {
+    "mode": "subtle",
+    "provider": "copilot",
   },
   "auto_install_extensions": {
     "ansible": true,
