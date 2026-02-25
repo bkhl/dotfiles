@@ -53,11 +53,8 @@ if [ -n "$LD_LIBRARY_PATH" ]; then
     export LD_LIBRARY_PATH
 fi
 
-# Enable using emacsclient as editor of other commands. Setting ALTERNATE_EDITOR
-# like this makes emacsclient start a server in the background and try to
-# reconnect, if it can't find one.
-export EDITOR="emacsclient --quiet --tty --create-frame"
-export ALTERNATE_EDITOR=""
+# nano as default terminal editor
+export EDITOR='nano'
 
 # Use less with -R (show ANSI colour)
 export PAGER='less -R'
