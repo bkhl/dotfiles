@@ -22,6 +22,7 @@
   },
   "auto_install_extensions": {
     "ansible": true,
+    "basher": true,
     "csv": true,
     "dockerfile": true,
     "git-firefly": true,
@@ -32,6 +33,7 @@
     "make": true,
     "modus-themes": true,
     "perl": true,
+    "toml": true,
     "xml": true,
   },
 }
