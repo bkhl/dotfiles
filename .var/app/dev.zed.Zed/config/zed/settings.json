@@ -33,6 +33,7 @@
     "make": true,
     "modus-themes": true,
     "perl": true,
+    "scss": true,
     "toml": true,
     "xml": true,
   },
