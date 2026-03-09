@@ -10,6 +10,7 @@
   "restore_on_startup": "launchpad",
   "ui_font_size": 18.0,
   "buffer_font_size": 16.0,
+  "agent_buffer_font_size": 18.0,
   "theme": {
     "mode": "system",
     "light": "Modus Operandi",
