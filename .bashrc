@@ -100,8 +100,6 @@ alias ls='ls --color=auto --classify --group-directories-first'
 alias ll='ls -l --color=auto --classify --group-directories-first'
 alias ip='ip --color=auto'
 alias sudo='sudo '
-alias zed='flatpak run dev.zed.Zed'
-alias z=zed
 
 # Remove l. alias added in Fedora.
 [[ $(type -t l.) = alias ]] && unalias l.

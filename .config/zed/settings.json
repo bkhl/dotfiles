@@ -2,7 +2,6 @@
   "base_keymap": "VSCode",
   "ui_font_family": "Inter BKHL Variable",
   "buffer_font_family": "Iosevka BKHL Sans Normal",
-  "auto_update": false,
   "session": {
     "restore_unsaved_buffers": true,
     "trust_all_worktrees": true,
@@ -21,6 +20,7 @@
     "mode": "subtle",
     "provider": "copilot",
   },
+  "auto_update": true,
   "auto_install_extensions": {
     "ansible": true,
     "basher": true,
