@@ -4,7 +4,7 @@
   "buffer_font_family": "Iosevka BKHL Sans Normal",
   "session": {
     "restore_unsaved_buffers": true,
-    "trust_all_worktrees": true,
+    "trust_all_worktrees": false,
   },
   "restore_on_startup": "launchpad",
   "ui_font_size": 18.0,
