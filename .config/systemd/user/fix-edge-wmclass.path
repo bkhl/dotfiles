@@ -1,0 +1,8 @@
+[Unit]
+Description=Watch applications dir for Edge .desktop changes
+
+[Path]
+PathModified=%h/.local/share/applications
+
+[Install]
+WantedBy=default.target

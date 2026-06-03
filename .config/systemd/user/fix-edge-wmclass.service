@@ -1,0 +1,6 @@
+[Unit]
+Description=Fix StartupWMClass in Microsoft Edge .desktop files
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/fix-edge-wmclass
