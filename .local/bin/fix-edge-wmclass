@@ -34,27 +34,27 @@ def fix_file(path):
     try:
         cfg.read(path, encoding="utf-8")
     except (OSError, configparser.Error):
-        return False
+        return
 
     if not cfg.has_section("Desktop Entry"):
-        return False
+        return
 
     section = cfg["Desktop Entry"]
     icon_value = section.get("Icon")
     if icon_value is None:
-        return False
+        return
 
     wanted = desired_wmclass(icon_value)
     if wanted is None:
-        return False
+        return
 
     if section.get("StartupWMClass") == wanted:
-        return False
+        return
 
     section["StartupWMClass"] = wanted
     with path.open("w", encoding="utf-8") as f:
         cfg.write(f, space_around_delimiters=False)
-    return True
+    return
 
 
 def main():
