@@ -54,7 +54,6 @@ def fix_file(path):
     section["StartupWMClass"] = wanted
     with path.open("w", encoding="utf-8") as f:
         cfg.write(f, space_around_delimiters=False)
-    return
 
 
 def main():
