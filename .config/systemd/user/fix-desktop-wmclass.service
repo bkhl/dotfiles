@@ -1,6 +1,6 @@
 [Unit]
-Description=Fix StartupWMClass in Microsoft Edge .desktop files
+Description=Fix StartupWMClass in Vivaldi and Microsoft Edge .desktop files
 
 [Service]
 Type=oneshot
-ExecStart=%h/.local/bin/fix-edge-wmclass
+ExecStart=%h/.local/bin/fix-desktop-wmclass
