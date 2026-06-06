@@ -1,17 +1,18 @@
 #!/usr/bin/env python3
 
 """
-Fix StartupWMClass in Microsoft Edge app (.desktop) launchers.
+Fix StartupWMClass in Vivaldi and Microsoft Edge app (.desktop) launchers.
 
-Edge regenerates the .desktop files for installed web apps and resets the
-StartupWMClass to a value that no longer matches the window's actual WM_CLASS,
-which breaks taskbar icon grouping. The correct value is the Icon= value with
-an underscore inserted right after the first hyphen, e.g.:
+These, and I guess other Chromium derived browsers, regenerates the .desktop
+files for installed web apps and resets the StartupWMClass to a value that no
+longer matches the window's actual WM_CLASS, which breaks taskbar icon
+grouping. The correct value is the Icon= value with an underscore inserted
+right after the first hyphen, e.g.:
 
-    Icon=msedge-dhmcgdjoiiejjlpmbpgdbkfhjbhomgfm-Default
-    StartupWMClass=msedge-_dhmcgdjoiiejjlpmbpgdbkfhjbhomgfm-Default
+    Icon=vivaldi-dhmcgdjoiiejjlpmbpgdbkfhjbhomgfm-Default
+    StartupWMClass=vivaldi-_dhmcgdjoiiejjlpmbpgdbkfhjbhomgfm-Default
 
-Fixes all msedge-*.desktop files in ~/.local/share/applications.
+Fixes all vivaldi-*.desktop and msedge-*.desktop files in ~/.local/share/applications.
 """
 
 import configparser
@@ -24,6 +25,8 @@ APPLICATIONS_DIR = Path.home() / ".local" / "share" / "applications"
 def desired_wmclass(icon_value):
     head, sep, tail = icon_value.partition("-")
     if not sep:
+        return None
+    if head not in ("msedge", "vivaldi"):
         return None
     return f"{head}-_{tail}"
 
@@ -57,7 +60,7 @@ def fix_file(path):
 
 
 def main():
-    targets = sorted(APPLICATIONS_DIR.glob("msedge-*.desktop"))
+    targets = sorted(APPLICATIONS_DIR.glob("*-*.desktop"))
     if not targets:
         return 1
 
