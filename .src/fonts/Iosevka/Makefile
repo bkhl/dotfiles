@@ -14,7 +14,7 @@ clean:
 
 image:
 	git clone --branch $(VERSION) --depth=1 https://github.com/be5invis/Iosevka.git $(SRC)
-	podman build -t $(IMAGE) -f $(SRC)/docker/Dockerfile $(SRC)
+	podman build -t $(IMAGE) -f $(SRC)/docker/Dockerfile $(SRC)/docker
 
 fonts:
-	podman run --rm --tty --volume .:/work:z $(IMAGE) ttf::iosevka-bkhl-{sans,serif}-{normal,fixed}
+	podman run --rm --interactive --tty --volume .:/work:z --env=REF=$(VERSION) $(IMAGE) ttf::iosevka-bkhl-{sans,serif}-{normal,fixed}
