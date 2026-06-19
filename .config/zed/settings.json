@@ -1,4 +1,20 @@
 {
+  "project_panel": {
+    "dock": "left"
+  },
+  "outline_panel": {
+    "dock": "left"
+  },
+  "collaboration_panel": {
+    "dock": "left"
+  },
+  "git_panel": {
+    "dock": "left"
+  },
+  "agent": {
+    "dock": "left",
+    "use_modifier_to_send": true,
+  },
   "base_keymap": "VSCode",
   "ui_font_family": "Inter BKHL Variable",
   "buffer_font_family": "Iosevka BKHL Sans Normal",
