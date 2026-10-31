@@ -1,5 +1,34 @@
 {
+  "git_panel": {
+    "group_by": "staging"
+  },
   "disable_ai": true,
+  "enable_language_server": false,
+  "node": {
+    "ignore_system_version": false
+  },
+  "granted_extension_capabilities": [
+    { "kind": "process:exec", "command": "*", "args": ["**"] }
+  ],
+  "formatter": "language_server",
+  "prettier": { "allowed": false },
+  "languages": {
+    "JSONC": {
+      "enable_language_server": true,
+      "language_servers": ["json-language-server"]
+    }
+  },
+  "lsp": {
+    "json-language-server": {
+      "binary": {
+        "path": "podman",
+        "arguments": [
+          "run", "--rm", "--interactive", "--init", "--network=none",
+          "ghcr.io/bkhl/lsp-images/json-lsp:latest"
+        ]
+      }
+    }
+  },
   "cli_default_open_behavior": "existing_window",
   "diff_view_style": "split",
   "use_podman": true,
