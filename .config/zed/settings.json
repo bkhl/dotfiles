@@ -24,7 +24,7 @@
         "path": "podman",
         "arguments": [
           "run", "--rm", "--interactive", "--init", "--network=none",
-          "ghcr.io/bkhl/lsp-images/json-lsp:latest"
+          "ghcr.io/bkhl/tool-images/json-lsp:latest"
         ]
       }
     }
