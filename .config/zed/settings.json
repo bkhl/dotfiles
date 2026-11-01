@@ -13,6 +13,14 @@
   "formatter": "language_server",
   "prettier": { "allowed": false },
   "languages": {
+    "Dockerfile": {
+      "enable_language_server": true,
+      "language_servers": ["dockerfile-language-server"],
+    },
+    "GitHub Actions": {
+      "enable_language_server": true,
+      "language_servers": ["gh-actions-language-server"],
+    },
     "JSONC": {
       "enable_language_server": true,
       "language_servers": ["json-language-server"],
@@ -23,6 +31,7 @@
             "run",
             "--rm",
             "--interactive",
+            "--pid=host",
             "--network=none",
             "ghcr.io/bkhl/tool-images/prettier:latest",
             "--parser=jsonc",
@@ -34,6 +43,31 @@
     },
   },
   "lsp": {
+    "dockerfile-language-server": {
+      "binary": {
+        "path": "podman",
+        "arguments": [
+          "run",
+          "--rm",
+          "--interactive",
+          "--pid=host",
+          "--network=none",
+          "ghcr.io/bkhl/tool-images/dockerfile-language-server:latest",
+        ],
+      },
+    },
+    "gh-actions-language-server": {
+      "binary": {
+        "path": "podman",
+        "arguments": [
+          "run",
+          "--rm",
+          "--interactive",
+          "--pid=host",
+          "ghcr.io/bkhl/tool-images/gh-actions-language-server:latest",
+        ],
+      },
+    },
     "json-language-server": {
       "binary": {
         "path": "podman",
@@ -41,7 +75,7 @@
           "run",
           "--rm",
           "--interactive",
-          "--init",
+          "--pid=host",
           "--network=none",
           "ghcr.io/bkhl/tool-images/json-lsp:latest",
         ],
