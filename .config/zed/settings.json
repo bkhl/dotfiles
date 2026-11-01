@@ -1,17 +1,83 @@
 {
-  "git_panel": {
-    "group_by": "staging",
-  },
+  "base_keymap": "VSCode",
+  "auto_update": true,
   "disable_ai": true,
-  "enable_language_server": false,
+  "use_podman": true,
+
+  // This prevents Zed from downloading Node.
   "node": {
     "ignore_system_version": false,
   },
+
+  /*
+   * Panels and windows
+   */
+
+  "cli_default_open_behavior": "existing_window",
+  "restore_on_startup": "launchpad",
+  "session": {
+    "restore_unsaved_buffers": true,
+    "trust_all_worktrees": false,
+  },
+
+  /*
+   * Appearance
+   */
+
+  "ui_font_family": "Inter BKHL Variable",
+  "buffer_font_family": "Iosevka BKHL Sans Normal",
+  "ui_font_size": 18.0,
+  "buffer_font_size": 16.0,
+  "theme": {
+    "mode": "system",
+    "light": "Modus Operandi",
+    "dark": "Modus Vivendi Tritanopia",
+  },
+
+  /*
+   * Extensions
+   */
+
+  "auto_install_extensions": {
+    "ansible": true,
+    "csv": true,
+    "dockerfile": true,
+    "git-firefly": true,
+    "github-actions": true,
+    "helm": true,
+    "html": true,
+    "ini": true,
+    "json5": true,
+    "lua": true,
+    "make": true,
+    "modus-themes": true,
+    "perl": true,
+    "scss": true,
+    "sql": true,
+    "terraform": true,
+    "toml": true,
+    "xml": true,
+  },
+
+  // Prevent extensions from downloading language servers &c. I prefer instead
+  // to launch them with Podman, see below.
   "granted_extension_capabilities": [
     { "kind": "process:exec", "command": "*", "args": ["**"] },
   ],
+
+  /*
+   * Languages and language servers
+   */
+
+  // This disables language servers by default, so that I can instead enable
+  // them selectively by language or by project.
+  "enable_language_server": false,
+
+  // These prevent Zed from downloading and running its own copy of Prettier.
+  // Formatter can still be configured per language below.
   "formatter": "language_server",
   "prettier": { "allowed": false },
+
   "languages": {
     "Dockerfile": {
       "enable_language_server": true,
@@ -122,43 +188,13 @@
       },
     },
   },
-  "cli_default_open_behavior": "existing_window",
+
+  /*
+   * Git
+   */
+
+  "git_panel": {
+    "group_by": "staging",
+  },
   "diff_view_style": "split",
-  "use_podman": true,
-  "base_keymap": "VSCode",
-  "ui_font_family": "Inter BKHL Variable",
-  "buffer_font_family": "Iosevka BKHL Sans Normal",
-  "session": {
-    "restore_unsaved_buffers": true,
-    "trust_all_worktrees": false,
-  },
-  "restore_on_startup": "launchpad",
-  "ui_font_size": 18.0,
-  "buffer_font_size": 16.0,
-  "theme": {
-    "mode": "system",
-    "light": "Modus Operandi",
-    "dark": "Modus Vivendi Tritanopia",
-  },
-  "auto_update": true,
-  "auto_install_extensions": {
-    "ansible": true,
-    "basher": true,
-    "csv": true,
-    "dockerfile": true,
-    "git-firefly": true,
-    "github-actions": true,
-    "helm": true,
-    "html": true,
-    "ini": true,
-    "lua": true,
-    "make": true,
-    "modus-themes": true,
-    "perl": true,
-    "scss": true,
-    "sql": true,
-    "terraform": true,
-    "toml": true,
-    "xml": true,
-  },
 }
