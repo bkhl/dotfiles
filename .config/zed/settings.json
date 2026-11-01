@@ -31,7 +31,6 @@
             "run",
             "--rm",
             "--interactive",
-            "--pid=host",
             "--network=none",
             "ghcr.io/bkhl/tool-images/prettier:latest",
             "--parser=jsonc",
@@ -41,8 +40,36 @@
       },
       "format_on_save": "on",
     },
+    "Shell Script": {
+      "enable_language_server": true,
+      "language_servers": ["bash-language-server"],
+    },
+    "YAML": {
+      "enable_language_server": true,
+      "language_servers": ["yaml-language-server"],
+    },
   },
   "lsp": {
+    "bash-language-server": {
+      "binary": {
+        "path": "podman",
+        "arguments": [
+          "run",
+          "--rm",
+          "--interactive",
+          "--pid=host",
+          "--userns=keep-id",
+          "--network=none",
+          "ghcr.io/bkhl/tool-images/bash-language-server:latest",
+        ],
+      },
+      "settings": {
+        "bashIde": {
+          "shellcheckArguments": "--exclude=SC1091",
+          "backgroundAnalysisMaxFiles": 0,
+        },
+      },
+    },
     "dockerfile-language-server": {
       "binary": {
         "path": "podman",
@@ -78,6 +105,19 @@
           "--pid=host",
           "--network=none",
           "ghcr.io/bkhl/tool-images/json-lsp:latest",
+        ],
+      },
+    },
+    "yaml-language-server": {
+      "binary": {
+        "path": "podman",
+        "arguments": [
+          "run",
+          "--rm",
+          "--interactive",
+          "--pid=host",
+          "--userns=keep-id",
+          "ghcr.io/bkhl/tool-images/yaml-language-server:latest",
         ],
       },
     },
