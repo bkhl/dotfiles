@@ -116,6 +116,15 @@
       "language_servers": ["yaml-language-server"],
     },
   },
+
+  // The GitHub Actions extension does not itself detect workflow files.
+  "file_types": {
+    "GitHub Actions": [
+      "**/.github/workflows/*.yml",
+      "**/.github/workflows/*.yaml",
+    ],
+  },
+
   "lsp": {
     "bash-language-server": {
       "binary": {
