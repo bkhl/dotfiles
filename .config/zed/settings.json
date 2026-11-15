@@ -111,6 +111,10 @@
       "enable_language_server": true,
       "language_servers": ["bash-language-server"],
     },
+    "TOML": {
+      "enable_language_server": true,
+      "language_servers": ["taplo"],
+    },
     "YAML": {
       "enable_language_server": true,
       "language_servers": ["yaml-language-server"],
@@ -181,6 +185,18 @@
           "--pid=host",
           "--network=none",
           "ghcr.io/bkhl/tool-images/json-lsp:latest",
+        ],
+      },
+    },
+    "taplo": {
+      "binary": {
+        "path": "podman",
+        "arguments": [
+          "run",
+          "--rm",
+          "--interactive",
+          "--pid=host",
+          "ghcr.io/bkhl/tool-images/taplo:latest",
         ],
       },
     },
