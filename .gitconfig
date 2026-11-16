@@ -35,3 +35,5 @@
     xfuncname="^\\*+ +(.*)$"
 [alias]
 	st = status
+[gpg "ssh"]
+	allowedSignersFile = /home/bnl/.ssh/allowed_signers
