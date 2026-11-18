@@ -28,9 +28,3 @@ Checkout the main branch. /Will overwrite files in home directory if needed./
 #+begin_example
 git checkout -f main
 #+end_example
-
-Initialize the submodules.
-
-#+begin_example
-git submodule update --init
-#+end_example
