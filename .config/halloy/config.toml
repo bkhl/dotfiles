@@ -26,3 +26,7 @@ cycle_next_unread_buffer = "alt+shift+down"
 cycle_previous_unread_buffer = "alt+shift+up"
 focus_down = "ctrl+alt+shift+down"
 focus_up = "ctrl+alt+shift+up"
+
+[buffer.server_messages.condense]
+messages = ["change-nick", "join", "part", "quit"]
+format = "brief"
