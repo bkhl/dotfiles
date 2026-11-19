@@ -30,3 +30,15 @@ focus_up = "ctrl+alt+shift+up"
 [buffer.server_messages.condense]
 messages = ["change-nick", "join", "part", "quit"]
 format = "brief"
+
+[buffer.server_messages.join]
+smart = 900
+
+[buffer.server_messages.part]
+smart = 900
+
+[buffer.server_messages.quit]
+smart = 900
+
+[buffer.server_messages.change_nick]
+smart = 900
