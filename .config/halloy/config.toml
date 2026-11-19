@@ -1,0 +1,28 @@
+[servers.irctoday]
+nickname = "bkhl"
+server = "irctoday.com"
+port = 6697
+use_tls = true
+
+[servers.irctoday.sasl.plain]
+username = "bkhl"
+password_file = "irctoday.secret"
+
+[buffer.chathistory]
+infinite_scroll = true
+
+[theme]
+light = "Macaw Light"
+dark = "Macaw Dark"
+
+[font]
+family = "Iosevka BKHL Sans Normal"
+size = 18
+
+[keyboard]
+cycle_next_buffer = "alt+down"
+cycle_previous_buffer = "alt+up"
+cycle_next_unread_buffer = "alt+shift+down"
+cycle_previous_unread_buffer = "alt+shift+up"
+focus_down = "ctrl+alt+shift+down"
+focus_up = "ctrl+alt+shift+up"
