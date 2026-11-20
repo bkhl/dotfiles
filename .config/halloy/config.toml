@@ -25,7 +25,7 @@ dark = "Macaw Dark"
 
 [font]
 family = "Inter BKHL Variable"
-size = 16
+size = 18
 
 [keyboard]
 cycle_next_buffer = "alt+down"
