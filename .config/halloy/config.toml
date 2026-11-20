@@ -27,6 +27,18 @@ cycle_previous_unread_buffer = "alt+shift+up"
 focus_down = "ctrl+alt+shift+down"
 focus_up = "ctrl+alt+shift+up"
 
+[actions.sidebar]
+buffer = "replace-pane"
+
+[actions.buffer]
+click_channel_name = "replace-pane"
+click_highlight = "replace-pane"
+click_nickname = { "open-query" = "replace-pane" }
+join_channel = "replace-pane"
+open_internal = "replace-pane"
+message_channel = "replace-pane"
+message_user = "replace-pane"
+
 [buffer.server_messages.condense]
 messages = ["change-nick", "join", "part", "quit"]
 format = "brief"
