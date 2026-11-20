@@ -8,6 +8,14 @@ use_tls = true
 username = "bkhl"
 password_file = "irctoday.secret"
 
+[buffer]
+line_spacing = 8
+
+[buffer.nickname]
+alignment = "right"
+truncate = 10
+hide_consecutive.enabled = { smart = 180 }
+
 [buffer.chathistory]
 infinite_scroll = true
 
@@ -16,8 +24,8 @@ light = "Macaw Light"
 dark = "Macaw Dark"
 
 [font]
-family = "Iosevka BKHL Sans Normal"
-size = 18
+family = "Inter BKHL Variable"
+size = 16
 
 [keyboard]
 cycle_next_buffer = "alt+down"
