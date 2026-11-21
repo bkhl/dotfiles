@@ -62,3 +62,6 @@ smart = 900
 
 [buffer.server_messages.change_nick]
 smart = 900
+
+[preview]
+enabled = false
